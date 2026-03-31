@@ -18,3 +18,53 @@ body {
 
 button, input, select, textarea { font: inherit; color: inherit; }
 img, svg { display: block; max-width: 100%; }
+
+/* ── Card overrides to match production ── */
+
+.home-card {
+  border-radius: 16px !important;
+  border-color: var(--ink-neutral-fade-5, rgba(0,0,0,0.05)) !important;
+}
+
+.promo-card {
+  display: flex !important;
+}
+.promo-card > * {
+  flex: 1;
+  display: flex;
+}
+
+/* ── Home page refinements ── */
+
+/* ── Page transition animation ── */
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: pageIn 0.25s ease-out;
+}
+
+.activity-row {
+  cursor: pointer;
+}
+
+.banner-btn {
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.banner-btn:hover {
+  background-color: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.45) !important;
+}
+
+.overview-row {
+  cursor: pointer;
+}

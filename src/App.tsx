@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import {
   DocuSignShell,
   AgreementTableView,
@@ -11,6 +11,10 @@ import {
   Card,
   Stack,
   Grid,
+  Inline,
+  Container,
+  Heading,
+  Text,
 } from '@/design-system';
 
 /* ═══════════════════════════════════════
@@ -102,6 +106,14 @@ const partyColumns = [
    Home Page
    ═══════════════════════════════════════ */
 
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <Text as="span" size="xs" weight="semibold" style={{ letterSpacing: '0.08em', textTransform: 'uppercase' as const }}>
+      {children}
+    </Text>
+  );
+}
+
 function HomePage() {
   const activity = [
     { name: 'Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'slash' as const },
@@ -120,104 +132,214 @@ function HomePage() {
     { label: 'Upcoming renewals', value: 0 },
   ];
 
+  const favoriteTemplates = [
+    { name: 'quick send', lastUsed: 'Last used on 03/13/2026' },
+    { name: 'shared template info', lastUsed: 'Last used on 08/12/2025' },
+  ];
+
   return (
-    <div>
+    <Stack gap="none">
       {/* Welcome banner */}
       <div style={{
-        background: 'linear-gradient(135deg, var(--ink-cobalt-100) 0%, var(--ink-cobalt-90) 100%)',
+        background: 'linear-gradient(174deg, var(--ink-cobalt-100, #4C00FB) 1.48%, var(--ink-cobalt-140, #260559) 97.92%)',
         color: 'white',
-        padding: 'var(--ink-spacing-400) var(--ink-spacing-300)',
+        padding: '100px var(--ink-spacing-300) 72px',
         textAlign: 'center',
       }}>
-        <div style={{ fontSize: 20, fontWeight: 500, marginBottom: 'var(--ink-spacing-200)' }}>
-          Welcome back, DocuSign User
-        </div>
-        <div style={{ display: 'flex', gap: 'var(--ink-spacing-100)', justifyContent: 'center' }}>
-          <Button kind="brand" size="small">Start</Button>
-          <Button kind="secondary" size="small" startElement={<Icon name="play" size={14} />}>Send an Envelope</Button>
-          <Button kind="secondary" size="small" startElement={<Icon name="sparkles" size={14} />}>Send with AI</Button>
-          <Button kind="secondary" size="small" startElement={<Icon name="layout" size={14} />}>Create a Request</Button>
-        </div>
+        <Heading level={3} style={{ color: 'white', fontWeight: 400, marginBottom: 'var(--ink-spacing-300)' }}>
+          Welcome back, Akshat Mishra
+        </Heading>
+        <Inline gap="small" justify="center">
+          <Button kind="brand" menuTrigger>Start</Button>
+          {[
+            { icon: 'send' as const, label: 'Send an Envelope' },
+            { icon: 'ai-spark-filled' as const, label: 'Send with AI' },
+            { icon: 'templates' as const, label: 'Create a Request' },
+          ].map((btn) => (
+            <button
+              key={btn.label}
+              className="banner-btn"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 'var(--ink-spacing-125)',
+                padding: 'var(--ink-spacing-125) var(--ink-spacing-250)', background: 'transparent',
+                border: '1px solid rgba(255,255,255,0.25)', borderRadius: 'var(--ink-radius-sm)',
+                color: 'white', fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
+              }}
+            >
+              <Icon name={btn.icon} size={16} color="white" /> {btn.label}
+            </button>
+          ))}
+        </Inline>
       </div>
 
-      <div style={{ padding: 'var(--ink-spacing-300)', display: 'flex', gap: 'var(--ink-spacing-300)' }}>
-        {/* Left column */}
-        <div style={{ flex: 1 }}>
-          {/* Tasks */}
-          <Card>
-            <div style={{ padding: 'var(--ink-spacing-200)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--ink-spacing-200)' }}>
-                <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--ink-font-secondary)' }}>Tasks</span>
-                <Icon name="chevron-right" size={16} />
-              </div>
-              <div style={{ padding: 'var(--ink-spacing-300) 0', textAlign: 'center' }}>
-                <div style={{ fontSize: 16, fontWeight: 500, marginBottom: 4 }}>You don't have any tasks yet</div>
-                <div style={{ fontSize: 13, color: 'var(--ink-font-secondary)' }}>When you have new tasks assigned to you, they will show up here.</div>
-              </div>
-            </div>
-          </Card>
+      {/* Main content */}
+      <Container style={{ maxWidth: 1120, padding: 'var(--ink-spacing-400) var(--ink-spacing-400)' }}>
+        <Inline gap="large" align="start">
+          {/* Left column */}
+          <Stack gap="medium" style={{ flex: 1 }}>
+            {/* Tasks */}
+            <Card radius="large" className="home-card">
+              <Stack gap="none" style={{ padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
+                <Inline justify="between" align="center" style={{ paddingBottom: 'var(--ink-spacing-150)' }}>
+                  <SectionLabel>Tasks</SectionLabel>
+                  <Icon name="chevron-right" size={18} />
+                </Inline>
+                <Stack gap="none" style={{ gap: 'var(--ink-spacing-50)', padding: 'var(--ink-spacing-250) 0 var(--ink-spacing-150)' }}>
+                  <Text size="lg" weight="regular">You don&apos;t have any tasks yet</Text>
+                  <Text size="sm" color="secondary">When you have new tasks assigned to you, they will show up here.</Text>
+                </Stack>
+              </Stack>
+            </Card>
 
-          {/* Agreement Activity */}
-          <Card style={{ marginTop: 'var(--ink-spacing-200)' }}>
-            <div style={{ padding: 'var(--ink-spacing-200)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ink-spacing-50)', marginBottom: 'var(--ink-spacing-200)' }}>
-                <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--ink-font-secondary)' }}>Agreement Activity</span>
-                <Icon name="info" size={14} />
-              </div>
-              {activity.map((item, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: 'var(--ink-spacing-150) 0',
-                    borderTop: i > 0 ? '1px solid var(--ink-border-default)' : 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <div>
-                    <div style={{ fontSize: 14 }}>{item.name}</div>
-                    <div style={{ fontSize: 12, color: 'var(--ink-font-secondary)', marginTop: 2 }}>{item.time}</div>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ink-spacing-100)', flexShrink: 0 }}>
-                    <Icon name={item.statusIcon} size={14} />
-                    <span style={{ fontSize: 13, color: 'var(--ink-font-secondary)' }}>{item.status}</span>
-                    <Icon name="chevron-right" size={14} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </div>
-
-        {/* Right column - Overview */}
-        <div style={{ width: 240 }}>
-          <Card>
-            <div style={{ padding: 'var(--ink-spacing-200)' }}>
-              <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--ink-font-secondary)' }}>Overview</span>
-              <div style={{ marginTop: 'var(--ink-spacing-200)' }}>
-                {overview.map((item, i) => (
-                  <div
+            {/* Agreement Activity */}
+            <Card radius="large" className="home-card">
+              <Stack gap="none" style={{ padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
+                <Inline gap="none" align="center" style={{ gap: 'var(--ink-spacing-50)', marginBottom: 'var(--ink-spacing-150)' }}>
+                  <SectionLabel>Agreement Activity</SectionLabel>
+                  <Icon name="info" size={14} />
+                </Inline>
+                {activity.map((item, i) => (
+                  <Inline
                     key={i}
+                    justify="between"
+                    align="center"
+                    className="activity-row"
                     style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
                       padding: 'var(--ink-spacing-150) 0',
-                      borderTop: i > 0 ? '1px solid var(--ink-border-default)' : 'none',
-                      fontSize: 14,
+                      borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none',
                     }}
                   >
-                    <span>{item.label}</span>
-                    <span style={{ fontWeight: 600 }}>{item.value}</span>
-                  </div>
+                    <Stack gap="none" style={{ gap: "var(--ink-spacing-25)" }}>
+                      <Text size="sm">{item.name}</Text>
+                      <Text size="xs" color="secondary" style={{ textDecoration: 'underline', textDecorationColor: 'var(--ink-border-subtle)' }}>{item.time}</Text>
+                    </Stack>
+                    <Inline gap="small" align="center" style={{ flexShrink: 0 }}>
+                      <Icon name={item.statusIcon} size={14} />
+                      <Text size="xs" color="secondary">{item.status}</Text>
+                      <Icon name="chevron-right" size={14} />
+                    </Inline>
+                  </Inline>
                 ))}
-              </div>
-            </div>
-          </Card>
-        </div>
-      </div>
-    </div>
+              </Stack>
+            </Card>
+
+            {/* Favorite Templates */}
+            <Card radius="large" className="home-card">
+              <Stack gap="none" style={{ padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
+                <Inline justify="between" align="center" style={{ marginBottom: 'var(--ink-spacing-200)' }}>
+                  <SectionLabel>Favorite Templates</SectionLabel>
+                  <Icon name="chevron-right" size={18} />
+                </Inline>
+                <Grid columns={3} gap="medium">
+                  {favoriteTemplates.map((t) => (
+                    <Card key={t.name} radius="medium" className="home-card activity-row" style={{ padding: 0 }}>
+                      <Stack gap="small" style={{ padding: 'var(--ink-spacing-150)' }}>
+                        <div style={{ height: 140, background: '#f5f5f5', borderRadius: 'var(--ink-radius-sm)', position: 'relative', overflow: 'hidden', padding: 6 }}>
+                          {/* Mock document preview */}
+                          <div style={{ background: 'white', borderRadius: 3, height: '100%', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: 4, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+                            {/* Header area */}
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <div style={{ height: 5, width: '35%', background: '#ddd', borderRadius: 1 }} />
+                              <div style={{ height: 5, width: '15%', background: '#e8e8e8', borderRadius: 1 }} />
+                            </div>
+                            <div style={{ height: 1, background: '#eee' }} />
+                            {/* Table-like rows */}
+                            <div style={{ display: 'flex', gap: 6 }}>
+                              <div style={{ height: 4, width: '25%', background: '#e5e5e5', borderRadius: 1 }} />
+                              <div style={{ height: 4, width: '20%', background: '#efefef', borderRadius: 1 }} />
+                              <div style={{ height: 4, width: '30%', background: '#efefef', borderRadius: 1 }} />
+                            </div>
+                            <div style={{ display: 'flex', gap: 6 }}>
+                              <div style={{ height: 4, width: '25%', background: '#efefef', borderRadius: 1 }} />
+                              <div style={{ height: 4, width: '20%', background: '#f2f2f2', borderRadius: 1 }} />
+                              <div style={{ height: 4, width: '30%', background: '#f2f2f2', borderRadius: 1 }} />
+                            </div>
+                            <div style={{ display: 'flex', gap: 6 }}>
+                              <div style={{ height: 4, width: '25%', background: '#efefef', borderRadius: 1 }} />
+                              <div style={{ height: 4, width: '20%', background: '#f2f2f2', borderRadius: 1 }} />
+                              <div style={{ height: 4, width: '30%', background: '#f2f2f2', borderRadius: 1 }} />
+                            </div>
+                            <div style={{ height: 1, background: '#eee', marginTop: 2 }} />
+                            {/* More text lines */}
+                            <div style={{ height: 3, width: '70%', background: '#efefef', borderRadius: 1 }} />
+                            <div style={{ height: 3, width: '50%', background: '#f2f2f2', borderRadius: 1 }} />
+                          </div>
+                          {/* Favorite badge */}
+                          <div style={{ position: 'absolute', top: 8, right: 8, background: 'rgba(0,0,0,0.6)', color: 'white', fontSize: 10, padding: '2px 6px', borderRadius: 3, display: 'flex', alignItems: 'center', gap: 3 }}>
+                            <Icon name="star" size={9} color="gold" /> Favorite
+                          </div>
+                        </div>
+                        <Text size="sm" weight="medium" style={{ color: 'var(--ink-cobalt-90)' }}>{t.name}</Text>
+                        <Text size="xs" color="secondary">{t.lastUsed}</Text>
+                      </Stack>
+                    </Card>
+                  ))}
+                  <Card radius="medium" className="home-card activity-row" style={{ padding: 0 }}>
+                    <Stack gap="small" align="center" justify="center" style={{ padding: 'var(--ink-spacing-200)', height: '100%' }}>
+                      <Text size="sm" weight="semibold" style={{ textTransform: 'uppercase', letterSpacing: '0.03em' }}>Add Favorite Template</Text>
+                      <Text size="xs" color="secondary" style={{ textAlign: 'center' }}>Send future documents faster with favorited templates.</Text>
+                      <Button kind="secondary" size="small">Browse templates</Button>
+                    </Stack>
+                  </Card>
+                </Grid>
+              </Stack>
+            </Card>
+
+            {/* Promo cards */}
+            <Grid columns={2} gap="medium">
+              <Card radius="large" className="home-card promo-card activity-row" noPadding>
+                <Inline gap="none" align="stretch" style={{ minHeight: '100%' }}>
+                  <div style={{ width: 120, flexShrink: 0, background: 'rgb(247, 246, 247)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--ink-radius-lg) 0 0 var(--ink-radius-lg)', alignSelf: 'stretch' }}>
+                    <img src="/illustration-bulk-send.svg" alt="" width={72} height={72} />
+                  </div>
+                  <Stack gap="none" style={{ gap: 'var(--ink-spacing-50)', padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
+                    <Text size="sm" weight="medium">Save time with bulk send</Text>
+                    <Text size="xs" color="secondary">No need to send separate envelopes. Import a bulk list and each recipient receives a unique copy. <span style={{ textDecoration: 'underline', cursor: 'pointer', color: 'var(--ink-cobalt-90)' }}>Learn More</span></Text>
+                  </Stack>
+                </Inline>
+              </Card>
+              <Card radius="large" className="home-card promo-card activity-row" noPadding>
+                <Inline gap="none" align="stretch" style={{ minHeight: '100%' }}>
+                  <div style={{ width: 120, flexShrink: 0, background: 'rgb(247, 246, 247)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--ink-radius-lg) 0 0 var(--ink-radius-lg)', alignSelf: 'stretch' }}>
+                    <img src="/illustration-help.svg" alt="" width={72} height={72} />
+                  </div>
+                  <Stack gap="none" style={{ gap: 'var(--ink-spacing-50)', padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
+                    <Text size="sm" weight="medium">Need help getting started?</Text>
+                    <Text size="xs" color="secondary">Get help with basic questions. <span style={{ textDecoration: 'underline', cursor: 'pointer', color: 'var(--ink-cobalt-90)' }}>View Our Guide</span></Text>
+                  </Stack>
+                </Inline>
+              </Card>
+            </Grid>
+          </Stack>
+
+          {/* Right column - Overview */}
+          <div style={{ width: 220, flexShrink: 0 }}>
+            <Card radius="large" className="home-card">
+              <Stack gap="none" style={{ padding: 'var(--ink-spacing-200)' }}>
+                <SectionLabel>Overview</SectionLabel>
+                <Stack gap="none" style={{ marginTop: 'var(--ink-spacing-150)' }}>
+                  {overview.map((item, i) => (
+                    <Inline
+                      key={i}
+                      justify="between"
+                      className="overview-row"
+                      style={{
+                        padding: 'var(--ink-spacing-150) var(--ink-spacing-50)',
+                        borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none',
+                        borderRadius: 'var(--ink-radius-sm)',
+                      }}
+                    >
+                      <Text size="sm">{item.label}</Text>
+                      <Text size="sm" weight="semibold">{item.value}</Text>
+                    </Inline>
+                  ))}
+                </Stack>
+              </Stack>
+            </Card>
+          </div>
+        </Inline>
+      </Container>
+    </Stack>
   );
 }
 
@@ -248,7 +370,7 @@ function InsightsPage() {
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          border: '1px solid var(--ink-border-default)',
+          border: '1px solid var(--ink-border-subtle)',
           borderRadius: 'var(--ink-radius-md)',
           padding: 'var(--ink-spacing-100) var(--ink-spacing-150)',
           gap: 'var(--ink-spacing-100)',
@@ -260,17 +382,17 @@ function InsightsPage() {
 
       <Grid columns={2} gap="medium">
         {/* Your Recents */}
-        <Card>
+        <Card radius="large">
           <div style={{ padding: 'var(--ink-spacing-200)' }}>
             <span style={{ fontSize: 15, fontWeight: 600 }}>Your Recents</span>
-            <Stack gap={0} style={{ marginTop: 'var(--ink-spacing-150)' }}>
+            <Stack gap="none" style={{ marginTop: 'var(--ink-spacing-150)' }}>
               {recents.map((r, i) => (
                 <div key={i} style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   padding: 'var(--ink-spacing-100) 0',
-                  borderTop: i > 0 ? '1px solid var(--ink-border-default)' : 'none',
+                  borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--ink-spacing-100)' }}>
                     <Icon name="bar-chart-2" size={16} />
@@ -280,24 +402,24 @@ function InsightsPage() {
                 </div>
               ))}
             </Stack>
-            <div style={{ textAlign: 'center', marginTop: 'var(--ink-spacing-150)', borderTop: '1px solid var(--ink-border-default)', paddingTop: 'var(--ink-spacing-100)' }}>
+            <div style={{ textAlign: 'center', marginTop: 'var(--ink-spacing-150)', borderTop: '1px solid var(--ink-border-subtle)', paddingTop: 'var(--ink-spacing-100)' }}>
               <span style={{ fontSize: 13, color: 'var(--ink-cobalt-90)', cursor: 'pointer' }}>View all</span>
             </div>
           </div>
         </Card>
 
         {/* Your Favorites */}
-        <Card>
+        <Card radius="large">
           <div style={{ padding: 'var(--ink-spacing-200)' }}>
             <span style={{ fontSize: 15, fontWeight: 600 }}>Your Favorites</span>
-            <Stack gap={0} style={{ marginTop: 'var(--ink-spacing-150)' }}>
+            <Stack gap="none" style={{ marginTop: 'var(--ink-spacing-150)' }}>
               {favorites.map((f, i) => (
                 <div key={i} style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: 'var(--ink-spacing-100)',
                   padding: 'var(--ink-spacing-100) 0',
-                  borderTop: i > 0 ? '1px solid var(--ink-border-default)' : 'none',
+                  borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none',
                 }}>
                   <Icon name="bar-chart-2" size={16} />
                   <span style={{ fontSize: 14 }}>{f}</span>
@@ -312,7 +434,7 @@ function InsightsPage() {
       <div style={{ marginTop: 'var(--ink-spacing-300)' }}>
         <span style={{ fontSize: 16, fontWeight: 600 }}>Weekly Insights</span>
         <Grid columns={2} gap="medium" style={{ marginTop: 'var(--ink-spacing-200)' }}>
-          <Card>
+          <Card radius="large">
             <div style={{ padding: 'var(--ink-spacing-200)', textAlign: 'center' }}>
               <div style={{ fontSize: 14, fontWeight: 500, marginBottom: 'var(--ink-spacing-200)' }}>All agreements</div>
               <div style={{ fontSize: 12, color: 'var(--ink-font-secondary)' }}>Count</div>
@@ -320,7 +442,7 @@ function InsightsPage() {
               <div style={{ fontSize: 13 }}>Agreements</div>
             </div>
           </Card>
-          <Card>
+          <Card radius="large">
             <div style={{ padding: 'var(--ink-spacing-200)', textAlign: 'center' }}>
               <div style={{ fontSize: 14, fontWeight: 500, marginBottom: 'var(--ink-spacing-200)' }}>New agreements ingested</div>
               <div style={{ fontSize: 12, color: 'var(--ink-font-secondary)' }}>Count</div>
@@ -346,7 +468,7 @@ function TemplatesPage() {
         marginTop: 'var(--ink-spacing-200)',
         display: 'flex',
         alignItems: 'center',
-        border: '1px solid var(--ink-border-default)',
+        border: '1px solid var(--ink-border-subtle)',
         borderRadius: 'var(--ink-radius-md)',
         padding: 'var(--ink-spacing-100) var(--ink-spacing-150)',
         gap: 'var(--ink-spacing-100)',
@@ -382,17 +504,64 @@ function AdminPage() {
 }
 
 /* ═══════════════════════════════════════
+   Footer
+   ═══════════════════════════════════════ */
+
+function Footer() {
+  const links = ['Contact Us', 'Terms of Use', 'Privacy', 'Intellectual Property', 'Trust'];
+  return (
+    <footer style={{
+      borderTop: '1px solid var(--ink-border-subtle)',
+      padding: 'var(--ink-spacing-200) var(--ink-spacing-300)',
+      marginTop: 'auto',
+    }}>
+      <Inline justify="between" align="center">
+        <Inline gap="small" align="center">
+          <Text size="xs" color="secondary">English (US)</Text>
+          <Icon name="chevron-down" size={12} />
+          <Text size="xs" color="secondary" style={{ margin: '0 var(--ink-spacing-100)' }}>|</Text>
+          {links.map((link, i) => (
+            <Text key={i} as="span" size="xs" color="secondary" style={{ cursor: 'pointer', textDecoration: 'underline', textDecorationColor: 'transparent' }}>
+              {link}
+            </Text>
+          ))}
+        </Inline>
+        <Text size="xs" color="secondary">
+          Version: 1.13043 &middot; Copyright &copy; 2026 Docusign, Inc. All rights reserved.
+        </Text>
+      </Inline>
+    </footer>
+  );
+}
+
+/* ═══════════════════════════════════════
    App
    ═══════════════════════════════════════ */
 
+const VALID_TABS: TabId[] = ['home', 'agreements', 'templates', 'insights', 'admin'];
+
+function getTabFromHash(): TabId {
+  const hash = window.location.hash.replace('#', '');
+  return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'home';
+}
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('home');
+  const [activeTab, setActiveTab] = useState<TabId>(getTabFromHash);
   const [sidebarView, setSidebarView] = useState<SidebarView>('all-agreements');
   const [search, setSearch] = useState('');
 
+  /* ── Sync hash ↔ state ── */
+  useEffect(() => {
+    const onHashChange = () => {
+      setActiveTab(getTabFromHash());
+      setSearch('');
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
   const handleTabClick = useCallback((tabId: string) => {
-    setActiveTab(tabId as TabId);
-    setSearch('');
+    window.location.hash = tabId;
     if (tabId === 'agreements') setSidebarView('all-agreements');
   }, []);
 
@@ -410,7 +579,7 @@ export default function App() {
     ],
     showSettings: true,
     settingsIcon: 'sliders-horizontal' as const,
-    user: { name: 'DocuSign User' },
+    user: { name: 'Akshat Mishra' },
   };
 
   /* ── LocalNav — Agreements tab ── */
@@ -542,12 +711,18 @@ export default function App() {
     admin: <AdminPage />,
   };
 
+  /* ── Transition key — changes on tab OR sidebar view to trigger animation ── */
+  const transitionKey = `${activeTab}-${sidebarView}`;
+
   return (
     <DocuSignShell
       globalNav={globalNavConfig}
       localNav={sidebarMap[activeTab]}
     >
-      {contentMap[activeTab]}
+      <div key={transitionKey} className="page-transition" style={{ flex: 1 }}>
+        {contentMap[activeTab]}
+      </div>
+      <Footer />
     </DocuSignShell>
   );
 }

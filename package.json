@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "agentation": "^3.0.2",
     "lucide-react": "^0.487.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
