@@ -1,0 +1,177 @@
+/* Ink Design System - Alert/Banner - Exact Figma Specs */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-150); /* 12px gap between icon, content, button, close */
+  padding: var(--ink-spacing-200) var(--ink-spacing-300); /* 16px 24px */
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-body-m-size); /* 16px */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: var(--ink-font-body-m-line-height); /* 1.5 */
+  min-height: 52px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Shape variants */
+.alert.square {
+  border-radius: 0;
+}
+
+.alert.round {
+  border-radius: var(--ink-radius-md); /* 8px */
+}
+
+/* Bottom border variant */
+.alert.bottomBorder {
+  border-bottom: 4px solid;
+}
+
+/* Kind: information */
+.alert.information {
+  background-color: var(--ink-cobalt-10); /* Light blue */
+  color: var(--ink-cobalt-110); /* Dark blue text */
+}
+
+.alert.information.bottomBorder {
+  border-bottom-color: var(--ink-cobalt-110);
+}
+
+/* Kind: danger */
+.alert.danger {
+  background-color: var(--ink-red-20);
+  color: var(--ink-red-100); /* Error emphasis color */
+}
+
+.alert.danger.bottomBorder {
+  border-bottom-color: var(--ink-red-100);
+}
+
+/* Kind: success */
+.alert.success {
+  background-color: var(--ink-green-20); /* #b9f6dd */
+  color: var(--ink-green-100); /* #005f43 */
+}
+
+.alert.success.bottomBorder {
+  border-bottom-color: var(--ink-green-100);
+}
+
+/* Kind: warning */
+.alert.warning {
+  background-color: var(--ink-orange-20); /* #fce1c2 */
+  color: var(--ink-orange-100); /* #a52608 */
+}
+
+.alert.warning.bottomBorder {
+  border-bottom-color: var(--ink-orange-100);
+}
+
+/* Kind: promo */
+.alert.promo {
+  background-color: var(--ink-cobalt-20); /* Light purple */
+  color: var(--ink-cobalt-110); /* Purple accent */
+}
+
+.alert.promo.bottomBorder {
+  border-bottom-color: var(--ink-cobalt-110);
+}
+
+/* Kind: subtle */
+.alert.subtle {
+  background-color: var(--ink-neutral-20); /* #f0eff0 */
+  color: var(--ink-neutral-fade-70); /* rgba(19,0,50,0.7) */
+}
+
+.alert.subtle.bottomBorder {
+  border-bottom-color: var(--ink-neutral-fade-70);
+}
+
+/* Kind: neutral */
+.alert.neutral {
+  background-color: var(--ink-white-100); /* #ffffff */
+  color: var(--ink-neutral-100); /* Dark text */
+  border: 1px solid var(--ink-neutral-30);
+}
+
+.alert.neutral.bottomBorder {
+  border-bottom-color: var(--ink-neutral-100);
+}
+
+/* Dark variant for neutral */
+.alert.neutralDark {
+  background-color: var(--ink-neutral-110); /* #2b2843 */
+  color: var(--ink-white-100);
+}
+
+.alert.neutralDark.bottomBorder {
+  border-bottom-color: var(--ink-white-100);
+}
+
+/* Icon styling */
+.icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50); /* 4px between title and message */
+  min-width: 0; /* Allow text to wrap */
+}
+
+.title {
+  font-weight: var(--ink-font-weight-semibold); /* 600 */
+  font-size: var(--ink-font-body-m-size); /* 16px */
+  line-height: var(--ink-font-body-m-line-height); /* 1.5 */
+}
+
+.message {
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  font-size: var(--ink-font-body-m-size); /* 16px */
+  line-height: var(--ink-font-body-m-line-height); /* 1.5 */
+}
+
+/* Close button */
+.closeButton {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: currentColor;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity var(--ink-transition-fast);
+  border-radius: var(--ink-radius-sm);
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.closeButton:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.closeButton svg {
+  width: 16px;
+  height: 16px;
+}

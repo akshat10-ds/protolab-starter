@@ -1,0 +1,96 @@
+/* Ink Design System - Skeleton Component Styles */
+@import '../../1-tokens/tokens.css';
+
+.skeleton {
+  display: block;
+  background-color: var(--ink-neutral-20);
+  border-radius: var(--ink-radius-sm);
+}
+
+.animated {
+  background: linear-gradient(
+    90deg,
+    var(--ink-neutral-20) 0%,
+    var(--ink-neutral-10) 50%,
+    var(--ink-neutral-20) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Variants */
+.text {
+  height: 1em;
+  width: 100%;
+  border-radius: var(--ink-radius-sm);
+  transform-origin: 0 60%;
+  transform: scale(1, 0.6);
+}
+
+.circular {
+  border-radius: var(--ink-radius-full);
+  aspect-ratio: 1;
+}
+
+.rectangular {
+  border-radius: var(--ink-radius-sm);
+  width: 100%;
+  height: 100px;
+}
+
+.rounded {
+  border-radius: var(--ink-radius-lg);
+  width: 100%;
+  height: 100px;
+}
+
+/* Sizes (for circular variant) */
+.xs {
+  width: 24px;
+  height: 24px;
+}
+
+.sm {
+  width: 32px;
+  height: 32px;
+}
+
+.md {
+  width: 40px;
+  height: 40px;
+}
+
+.lg {
+  width: 56px;
+  height: 56px;
+}
+
+.xl {
+  width: 80px;
+  height: 80px;
+}
+
+/* Skeleton Group */
+.skeletonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-2);
+  width: 100%;
+}
+
+.skeletonGroup .skeleton {
+  margin: 0;
+}
+
+.lastLine {
+  width: 80%;
+}

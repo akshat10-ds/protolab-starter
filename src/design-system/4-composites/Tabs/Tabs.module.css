@@ -1,0 +1,53 @@
+.wrapper {
+  font-family: var(--ink-font-family);
+}
+
+.tabList {
+  display: flex;
+  gap: 0; /* Tabs should touch - no gap between tabs */
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  padding: var(--ink-spacing-3) var(--ink-spacing-5); /* Horizontal padding: 20px */
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-regular); /* 400 - Unselected tabs use regular weight */
+  color: var(--ink-font-color-neutral); /* Unselected tab text color */
+  cursor: pointer;
+  transition: all var(--ink-transition-fast);
+  border-bottom: 2px solid var(--ink-border-color-subtle); /* 2px border, subtle color for unselected */
+  position: relative;
+  min-width: 80px;
+  min-height: 32px;
+}
+
+.tab:hover:not(:disabled) {
+  color: var(--ink-font-color-default);
+  background: var(--ink-neutral-fade-5);
+}
+
+.tab:focus {
+  outline: 2px solid var(--ink-cobalt-60);
+  outline-offset: -2px;
+  border-radius: var(--ink-radius-sm) var(--ink-radius-sm) 0 0;
+}
+
+.tab.active {
+  color: var(--ink-font-color-default); /* Selected tab text color */
+  font-weight: var(--ink-font-weight-semibold); /* Selected tabs use semibold */
+  border-bottom-color: var(
+    --ink-border-color-emphasis
+  ); /* #130032 - emphasis border for selected */
+}
+
+.tab.disabled {
+  color: var(--ink-font-color-disabled);
+  cursor: not-allowed;
+  border-bottom-color: var(--ink-border-color-subtle);
+}
+
+.panel {
+  padding: var(--ink-spacing-4) 0;
+}

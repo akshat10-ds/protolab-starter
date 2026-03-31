@@ -1,0 +1,100 @@
+/**
+ * DataTableColumnControl Styles - Production Match
+ */
+
+@import '../../1-tokens/tokens.css';
+
+.searchContainer {
+  padding: var(--ink-spacing-200);
+  border-bottom: 1px solid var(--ink-neutral-fade-10);
+}
+
+.columnList {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.columnItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  border-bottom: 1px solid var(--ink-neutral-fade-10);
+  transition: background-color var(--ink-transition-fast);
+  cursor: grab;
+}
+
+.columnItem:last-child {
+  border-bottom: none;
+}
+
+.columnItem:hover {
+  background: var(--ink-neutral-fade-5);
+}
+
+.columnItem.dragging {
+  opacity: 0.5;
+  background: var(--ink-neutral-fade-10);
+}
+
+.columnItem.dragOver {
+  border-top: 2px solid var(--ink-cobalt-100);
+}
+
+.columnItemLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-150);
+}
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  color: var(--ink-neutral-fade-40);
+  cursor: grab;
+  transition: color var(--ink-transition-fast);
+}
+
+.dragHandle:hover {
+  color: var(--ink-font-color-default);
+}
+
+.dragHandle.disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.columnLabel {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-default);
+}
+
+.columnItemRight {
+  display: flex;
+  align-items: center;
+}
+
+.lockedBadge {
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-neutral-fade-60);
+  padding: var(--ink-spacing-25) var(--ink-spacing-100);
+  background: var(--ink-neutral-fade-5);
+  border-radius: var(--ink-radius-size-s);
+}
+
+.emptyState {
+  padding: var(--ink-spacing-400) var(--ink-spacing-200);
+  text-align: center;
+  color: var(--ink-neutral-fade-60);
+  font-size: var(--ink-font-size-sm);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-200);
+  border-top: 1px solid var(--ink-neutral-fade-10);
+}

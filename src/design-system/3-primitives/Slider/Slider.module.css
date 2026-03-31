@@ -1,0 +1,288 @@
+/* Ink Design System - Slider Component Styles */
+/* Updated to match Figma specifications */
+@import '../../1-tokens/tokens.css';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50); /* 4px gap per Figma */
+  width: 256px; /* Default width per Figma */
+  border-radius: var(--ink-radius-xs);
+}
+
+/* Label */
+.label {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  color: var(--ink-font-color-default);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}
+
+.label.disabled {
+  opacity: 0.25;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Description */
+.description {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs); /* 12px per Figma */
+  color: var(--ink-font-color-subtle);
+  line-height: 1.5;
+  letter-spacing: 0.16px; /* wide per Figma */
+}
+
+/* Container with optional value display */
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-200); /* 16px gap per Figma */
+  width: 100%;
+}
+
+.container.withValue {
+  gap: var(--ink-spacing-200);
+}
+
+/* IconButton styling for start/end elements */
+.sliderIconButton {
+  flex-shrink: 0;
+}
+
+/* Slider Container */
+.sliderContainer {
+  position: relative;
+  flex: 1;
+  height: 40px; /* 40px per Figma */
+  display: flex;
+  align-items: center;
+  border-radius: var(--ink-radius-full);
+}
+
+/* Track */
+.track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: var(--ink-bar-width-s); /* 4px */
+  background: var(--ink-bar-track-default);
+  border-radius: var(--ink-radius-full);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Stop indicator at end of track */
+.stopIndicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--ink-bar-width-s); /* 4px */
+  height: var(--ink-bar-width-s); /* 4px */
+  background: var(--ink-bar-stop-indicator);
+  border-radius: var(--ink-radius-full);
+  pointer-events: none;
+}
+
+/* Filled Track */
+.trackFilled {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: var(--ink-bar-width-s); /* 4px */
+  background: var(--ink-bar-fill-subtle); /* neutral-fade-70 per Figma default state */
+  border-radius: var(--ink-radius-full);
+  transform: translateY(-50%);
+  transition: background-color var(--ink-transition-fast);
+  pointer-events: none;
+}
+
+/* Track fill color states - emphasis on hover/active */
+.trackFilled.hover {
+  background: var(--ink-bar-fill-emphasis); /* neutral-140 on hover */
+}
+
+.trackFilled.active {
+  background: var(--ink-bar-fill-accent-emphasis); /* cobalt-120 on active */
+}
+
+/* Range Input */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  margin: 0;
+}
+
+.slider:disabled {
+  cursor: not-allowed;
+}
+
+.wrapper.disabled {
+  opacity: 0.25;
+}
+
+.slider:disabled + .tooltip {
+  display: none;
+}
+
+/* Webkit Thumb - Solid filled circle per Figma */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--ink-form-control-thumb-bg-default); /* neutral-100 */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--ink-transition-fast);
+  position: relative;
+  z-index: 2;
+}
+
+.slider:hover:not(:disabled)::-webkit-slider-thumb {
+  background: var(--ink-form-control-thumb-bg-hover); /* neutral-140 on hover */
+  box-shadow: 0 0 0 8px var(--ink-neutral-fade-10); /* hover ring effect */
+  transform: scale(1.5); /* 24px total with ring */
+}
+
+.slider:focus-visible:not(:disabled)::-webkit-slider-thumb {
+  background: var(--ink-form-control-thumb-bg-hover);
+  box-shadow: 0 0 0 8px var(--ink-neutral-fade-10);
+  outline: none;
+}
+
+.slider:active:not(:disabled)::-webkit-slider-thumb {
+  background: var(--ink-form-control-thumb-bg-active); /* cobalt-120 on active */
+  box-shadow: none;
+  transform: scale(1);
+}
+
+.slider:disabled::-webkit-slider-thumb {
+  background: var(--ink-form-control-thumb-bg-default);
+  cursor: not-allowed;
+}
+
+/* Firefox Thumb */
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--ink-form-control-thumb-bg-default);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--ink-transition-fast);
+}
+
+.slider:hover:not(:disabled)::-moz-range-thumb {
+  background: var(--ink-form-control-thumb-bg-hover);
+  box-shadow: 0 0 0 8px var(--ink-neutral-fade-10);
+  transform: scale(1.5);
+}
+
+.slider:focus-visible:not(:disabled)::-moz-range-thumb {
+  background: var(--ink-form-control-thumb-bg-hover);
+  box-shadow: 0 0 0 8px var(--ink-neutral-fade-10);
+  outline: none;
+}
+
+.slider:active:not(:disabled)::-moz-range-thumb {
+  background: var(--ink-form-control-thumb-bg-active);
+  box-shadow: none;
+  transform: scale(1);
+}
+
+.slider:disabled::-moz-range-thumb {
+  background: var(--ink-form-control-thumb-bg-default);
+  cursor: not-allowed;
+}
+
+/* Firefox Track (hide default track) */
+.slider::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+/* Tooltip - Updated per Figma with white border and caret */
+.tooltip {
+  position: absolute;
+  top: -44px; /* Adjusted for proper positioning above thumb */
+  transform: translateX(-50%);
+  background: var(--ink-message-bg-default); /* #2b2843 per Figma */
+  color: var(--ink-white-100);
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px per Figma */
+  font-weight: var(--ink-font-weight-regular); /* 400 per Figma */
+  line-height: 1.4;
+  padding: var(--ink-spacing-100); /* 8px per Figma */
+  border-radius: var(--ink-radius-xs); /* 4px per Figma */
+  border: 1px solid var(--ink-border-emphasis-inverse); /* white border */
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 4px 8px var(--ink-neutral-fade-15); /* elevationLow per Figma */
+  max-width: 272px;
+}
+
+/* Tooltip caret pointing down */
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px 7px 0 7px;
+  border-style: solid;
+  border-color: var(--ink-message-bg-default) transparent transparent transparent;
+}
+
+/* Tooltip caret border (white outline) */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 9px 8px 0 8px;
+  border-style: solid;
+  border-color: var(--ink-white-100) transparent transparent transparent;
+  z-index: -1;
+}
+
+/* Value Display */
+.valueDisplay {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  min-width: 40px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Disabled track - uses subtle variant */
+.wrapper.disabled .trackFilled {
+  background: var(--ink-bar-fill-subtle);
+}

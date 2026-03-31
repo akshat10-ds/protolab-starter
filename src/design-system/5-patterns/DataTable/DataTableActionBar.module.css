@@ -1,0 +1,56 @@
+/**
+ * DataTableActionBar Styles - Production Match
+ */
+
+@import '../../1-tokens/tokens.css';
+
+.actionBar {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-200);
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  background: var(--ink-white-100);
+  border: 1px solid var(--ink-neutral-fade-10);
+  border-radius: var(--ink-radius-size-s);
+  margin-bottom: var(--ink-spacing-100);
+  box-shadow: var(--ink-elevation-low);
+
+  /* Animation */
+  transform: translateY(-100%);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease-out,
+    opacity 0.2s ease-out,
+    max-height 0.2s ease-out,
+    margin-bottom 0.2s ease-out;
+}
+
+.actionBar.visible {
+  transform: translateY(0);
+  opacity: 1;
+  max-height: 60px;
+  margin-bottom: var(--ink-spacing-100);
+}
+
+.count {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  white-space: nowrap;
+  padding-right: var(--ink-spacing-200);
+  border-right: 1px solid var(--ink-neutral-fade-10);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+.customContent {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}

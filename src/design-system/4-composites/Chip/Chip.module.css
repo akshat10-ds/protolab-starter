@@ -1,0 +1,113 @@
+/* Ink Design System - Chip Component */
+@import '../../1-tokens/tokens.css';
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50); /* 4px - gap50 from Figma */
+  height: var(--ink-spacing-400); /* 32px */
+  padding: 0 var(--ink-spacing-100); /* 0 8px - gap100 from Figma */
+  background-color: var(
+    --ink-neutral-fade-5
+  ); /* rgba(19,0,50,0.05) - Figma ctaBgColorTertiaryDefault */
+  border-radius: var(--ink-radius-size-xs); /* 4px - radiusSizeXS from Figma */
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+  border: none;
+  transition: background-color var(--ink-transition-fast);
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Clickable state */
+.chip.clickable {
+  cursor: pointer;
+}
+
+.chip.clickable:hover {
+  background-color: var(
+    --ink-neutral-fade-10
+  ); /* rgba(19,0,50,0.1) - Figma ctaBgColorTertiaryHover */
+}
+
+.chip.clickable:active {
+  background-color: var(
+    --ink-neutral-fade-15
+  ); /* rgba(19,0,50,0.15) - Figma ctaBgColorTertiaryActive */
+}
+
+/* Focus state for keyboard navigation */
+.chip.clickable:focus-visible {
+  outline: 2px solid var(--ink-form-control-border-color-active);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.chip.disabled {
+  opacity: var(--ink-opacity-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Selected state */
+.chip.selected {
+  background-color: var(--ink-cobalt-10);
+  color: var(--ink-cobalt-100);
+  box-shadow: inset 0 0 0 1px var(--ink-cobalt-30);
+}
+
+.chip.selected.clickable:hover {
+  background-color: var(--ink-cobalt-20);
+}
+
+.chip.selected.clickable:active {
+  background-color: var(--ink-cobalt-30);
+}
+
+/* Start element (avatar, icon, etc.) */
+.startElement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Text content */
+.text {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--ink-spacing-50); /* 4px horizontal padding per Figma */
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+/* Remove/close button */
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ink-icon-size-s); /* 20px */
+  height: var(--ink-icon-size-s); /* 20px */
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--ink-font-color-default);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* No hover or active states - the icon is static, only the chip changes */
+
+.removeButton:focus-visible {
+  outline: 2px solid var(--ink-form-control-border-color-active);
+  outline-offset: 1px;
+}
+
+.removeButton:disabled {
+  opacity: var(--ink-opacity-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}

@@ -1,0 +1,51 @@
+@import '../../1-tokens/tokens.css';
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--ink-form-border-width-s) solid var(--ink-border-emphasis-inverse);
+  border-radius: var(--ink-radius-full);
+  box-sizing: border-box;
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-badge-size);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-inverse);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Kind variants */
+.emphasis {
+  background: var(--ink-message-bg-alert);
+}
+
+.subtle {
+  background: var(--ink-status-bg-subtle-inverse);
+}
+
+/* Size variants */
+.number {
+  min-height: 20px;
+  max-height: 20px;
+  min-width: 16px;
+  padding: 0 4px;
+}
+
+.multipleDigits {
+  min-height: 20px;
+  max-height: 20px;
+  min-width: 20px;
+  padding: 0 var(--ink-spacing-100);
+}
+
+.dot {
+  min-height: 12px;
+  max-height: 12px;
+  min-width: 12px;
+  max-width: 12px;
+  width: 12px;
+  height: 12px;
+}

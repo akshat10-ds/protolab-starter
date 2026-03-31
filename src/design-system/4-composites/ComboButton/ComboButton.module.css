@@ -1,0 +1,238 @@
+/* Ink Design System - ComboButton Component Styles */
+@import '../../1-tokens/tokens.css';
+
+/* Wrapper */
+.comboButton {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Main Button (Left) */
+.mainButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ink-spacing-2);
+  font-family: var(--ink-font-family);
+  font-weight: var(--ink-font-weight-medium);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  transition: all var(--ink-transition-fast);
+  white-space: nowrap;
+  user-select: none;
+  min-width: 80px;
+  border-top-left-radius: var(--ink-radius-size-xs);
+  border-bottom-left-radius: var(--ink-radius-size-xs);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Dropdown Button (Right) */
+.dropdownButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ink-font-family);
+  font-weight: var(--ink-font-weight-medium);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--ink-transition-fast);
+  user-select: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: var(--ink-radius-size-xs);
+  border-bottom-right-radius: var(--ink-radius-size-xs);
+}
+
+/* Size Variants */
+.mainButton.medium {
+  height: 40px;
+  padding: var(--ink-spacing-2) var(--ink-spacing-3);
+  font-size: var(--ink-font-size-md); /* 16px */
+  line-height: 1.5;
+}
+
+.dropdownButton.medium {
+  width: 40px;
+  height: 40px;
+}
+
+.mainButton.small {
+  height: 32px;
+  padding: 6px var(--ink-spacing-2);
+  font-size: var(--ink-font-size-sm); /* 14px */
+  line-height: 1.4;
+  gap: var(--ink-spacing-1);
+}
+
+.dropdownButton.small {
+  width: 32px;
+  height: 32px;
+}
+
+/* Compact Mode (icon-only for tertiary) */
+.comboButton.compact .mainButton {
+  min-width: auto;
+  padding: 0;
+}
+
+.comboButton.compact.medium .mainButton {
+  width: 40px;
+}
+
+.comboButton.compact.small .mainButton {
+  width: 32px;
+}
+
+.comboButton.compact.medium .dropdownButton {
+  width: 20px;
+}
+
+.comboButton.compact.small .dropdownButton {
+  width: 20px;
+}
+
+/* Brand Variant */
+.mainButton.brand,
+.dropdownButton.brand {
+  background-color: var(--ink-button-brand-bg);
+  color: var(--ink-button-brand-text);
+}
+
+.dropdownButton.brand {
+  border-left: 1px solid var(--ink-white-100);
+}
+
+.mainButton.brand:hover:not(:disabled),
+.dropdownButton.brand:hover:not(:disabled) {
+  background-color: var(--ink-button-brand-bg-hover);
+}
+
+.mainButton.brand:active:not(:disabled),
+.dropdownButton.brand:active:not(:disabled) {
+  background-color: var(--ink-button-brand-bg-active);
+}
+
+/* Primary Variant */
+.mainButton.primary,
+.dropdownButton.primary {
+  background-color: var(--ink-cta-bg-color-primary-default);
+  color: var(--ink-button-primary-text);
+}
+
+.dropdownButton.primary {
+  border-left: 1px solid var(--ink-white-100);
+}
+
+.mainButton.primary:hover:not(:disabled),
+.dropdownButton.primary:hover:not(:disabled) {
+  background-color: var(--ink-cta-bg-color-primary-hover);
+}
+
+.mainButton.primary:active:not(:disabled),
+.dropdownButton.primary:active:not(:disabled) {
+  background-color: var(--ink-cta-bg-color-primary-active);
+}
+
+/* Secondary Variant */
+.mainButton.secondary,
+.dropdownButton.secondary {
+  background-color: var(--ink-cta-bg-color-secondary-default);
+  color: var(--ink-button-secondary-text);
+  border: 1px solid var(--ink-cta-border-color-secondary-default);
+}
+
+.mainButton.secondary {
+  border-right: none;
+}
+
+.mainButton.secondary:hover:not(:disabled),
+.dropdownButton.secondary:hover:not(:disabled) {
+  background-color: var(--ink-cta-bg-color-secondary-hover);
+  border-color: var(--ink-cta-border-color-secondary-hover);
+}
+
+.mainButton.secondary:active:not(:disabled),
+.dropdownButton.secondary:active:not(:disabled) {
+  background-color: var(--ink-cta-bg-color-secondary-active);
+  border-color: var(--ink-cta-border-color-secondary-active);
+}
+
+/* Tertiary Variant */
+.mainButton.tertiary,
+.dropdownButton.tertiary {
+  background-color: var(--ink-cta-bg-color-tertiary-default);
+  color: var(--ink-button-tertiary-text);
+}
+
+/* Tertiary Compact Mode - Transparent backgrounds by default */
+.comboButton.compact.tertiary .mainButton,
+.comboButton.compact.tertiary .dropdownButton {
+  background-color: transparent;
+}
+
+/* Tertiary Compact - Individual button hovers */
+.comboButton.compact.tertiary .mainButton:hover:not(:disabled),
+.comboButton.compact.tertiary .dropdownButton:hover:not(:disabled) {
+  background-color: var(--ink-cta-bg-color-tertiary-hover);
+}
+
+/* Tertiary Non-Compact Hover */
+.comboButton:not(.compact) .mainButton.tertiary:hover:not(:disabled),
+.comboButton:not(.compact) .dropdownButton.tertiary:hover:not(:disabled) {
+  background-color: var(--ink-cta-bg-color-tertiary-hover);
+}
+
+.mainButton.tertiary:active:not(:disabled),
+.dropdownButton.tertiary:active:not(:disabled) {
+  background-color: var(--ink-cta-bg-color-tertiary-active);
+}
+
+/* Focus States */
+.mainButton:focus-visible,
+.dropdownButton:focus-visible {
+  outline: 2px solid var(--ink-form-control-border-color-active);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* Disabled State */
+.comboButton.disabled {
+  opacity: var(--ink-opacity-disabled);
+  pointer-events: none;
+}
+
+.mainButton:disabled,
+.dropdownButton:disabled {
+  cursor: not-allowed;
+}
+
+/* Text */
+.text {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Inverted Variant (for dark backgrounds) */
+.comboButton.inverted .mainButton,
+.comboButton.inverted .dropdownButton {
+  background-color: var(--ink-bg-color-default);
+  color: var(--ink-font-color-default);
+  border-color: var(--ink-bg-color-default);
+}
+
+.comboButton.inverted .mainButton:hover:not(:disabled),
+.comboButton.inverted .dropdownButton:hover:not(:disabled) {
+  background-color: var(--ink-neutral-10);
+}
+
+.comboButton.inverted .mainButton:active:not(:disabled),
+.comboButton.inverted .dropdownButton:active:not(:disabled) {
+  background-color: var(--ink-neutral-20);
+}

@@ -1,0 +1,199 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-4);
+  flex-wrap: wrap;
+  font-family: var(--ink-font-family);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-1);
+}
+
+.pagination.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Nav button - for simple mode text+icon buttons */
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-1);
+  min-width: 36px;
+  height: 36px;
+  padding: var(--ink-spacing-2) var(--ink-spacing-2);
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-neutral-80);
+  background-color: transparent;
+  border: 1px solid var(--ink-neutral-30);
+  border-radius: var(--ink-radius-md);
+  cursor: pointer;
+  transition: all var(--ink-transition-fast);
+}
+
+.navButton:hover:not(:disabled) {
+  background-color: var(--ink-neutral-fade-5);
+  border-color: var(--ink-neutral-40);
+}
+
+.navButton:active:not(:disabled) {
+  background-color: var(--ink-neutral-fade-10);
+}
+
+.navButton:disabled {
+  color: var(--ink-neutral-40);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.navButton svg {
+  flex-shrink: 0;
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-1);
+}
+
+.pageButton {
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  cursor: pointer;
+  transition: all var(--ink-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageButton:hover:not(:disabled):not(.active) {
+  background-color: var(--ink-cta-toggle-bg-hover);
+}
+
+.pageButton:active:not(:disabled):not(.active) {
+  background-color: var(--ink-cta-toggle-bg-active);
+}
+
+.pageButton.active {
+  color: var(--ink-font-color-inverse);
+  background-color: var(--ink-cta-toggle-bg-selected);
+  cursor: default;
+}
+
+.pageButton.active:hover:not(:disabled) {
+  background-color: var(--ink-cta-toggle-bg-selected-hover);
+}
+
+.pageButton.active:active:not(:disabled) {
+  background-color: var(--ink-cta-toggle-bg-selected-active);
+}
+
+.pageButton:disabled {
+  color: var(--ink-neutral-40);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  user-select: none;
+}
+
+.pageInfo {
+  padding: var(--ink-spacing-2) var(--ink-spacing-3);
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-neutral-80);
+  white-space: nowrap;
+}
+
+.itemsPerPage {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-2);
+}
+
+.label {
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-neutral-80);
+  white-space: nowrap;
+}
+
+.select {
+  height: 36px;
+  padding: var(--ink-spacing-2) var(--ink-spacing-3);
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-neutral-100);
+  background-color: var(--ink-white-100);
+  border: 1px solid var(--ink-neutral-30);
+  border-radius: var(--ink-radius-md);
+  cursor: pointer;
+  transition: all var(--ink-transition-fast);
+}
+
+.select:hover:not(:disabled) {
+  border-color: var(--ink-neutral-40);
+}
+
+.select:focus {
+  outline: 2px solid var(--ink-cobalt-60);
+  outline-offset: 0;
+  border-color: var(--ink-cobalt-60);
+}
+
+.select:disabled {
+  background-color: var(--ink-neutral-10);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    gap: var(--ink-spacing-3);
+  }
+
+  .navButton span {
+    display: none;
+  }
+
+  .pageButton {
+    min-width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: var(--ink-font-size-sm);
+  }
+
+  .navButton {
+    min-width: 32px;
+    height: 32px;
+  }
+
+  .dots {
+    min-width: 32px;
+    height: 32px;
+  }
+}

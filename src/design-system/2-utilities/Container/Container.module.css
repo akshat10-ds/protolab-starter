@@ -1,0 +1,41 @@
+@import '../../1-tokens/tokens.css';
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Sizes */
+.size-small {
+  max-width: 640px;
+}
+
+.size-medium {
+  max-width: 768px;
+}
+
+.size-large {
+  max-width: 1024px;
+}
+
+.size-xlarge {
+  max-width: 1280px;
+}
+
+.size-full {
+  max-width: 100%;
+}
+
+/* Padding */
+.padded {
+  padding-left: var(--ink-spacing-200);
+  padding-right: var(--ink-spacing-200);
+}
+
+@media (min-width: 768px) {
+  .padded {
+    padding-left: var(--ink-spacing-300);
+    padding-right: var(--ink-spacing-300);
+  }
+}

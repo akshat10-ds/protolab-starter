@@ -1,0 +1,232 @@
+/* Ink Design System - Banner - Exact Figma Specs */
+
+/* Banner Container - Figma Specs */
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Figma: items centered */
+  gap: var(--ink-spacing-100); /* 8px */
+  padding: var(--ink-spacing-100) var(--ink-spacing-100) var(--ink-spacing-100) 48px; /* 8px 8px 8px 48px - Figma spec */
+  min-height: 52px; /* Figma spec */
+  min-width: 480px; /* Figma spec */
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Shape Variants */
+.shape-square {
+  border-radius: 0;
+}
+
+.shape-round {
+  border-radius: var(--ink-radius-size-s); /* 8px */
+  overflow: hidden;
+}
+
+/* Bottom Border */
+.bottomBorder {
+  border-bottom: var(--ink-form-border-width) solid;
+}
+
+/* Content Wrapper - Figma: children */
+.content {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  justify-content: center; /* Figma: centered */
+  gap: var(--ink-spacing-200); /* 16px */
+  padding-right: var(--ink-spacing-100); /* 8px */
+  min-width: 0;
+  min-height: 1px;
+}
+
+/* Message Wrapper - Figma: startElement + string */
+.messageWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100); /* 8px */
+  padding: var(--ink-spacing-100) 0; /* 8px top/bottom */
+  flex-shrink: 1;
+  min-width: 0; /* Allow truncation */
+  overflow: hidden;
+}
+
+/* Icon Wrapper */
+.iconWrapper {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Message Text - Figma: fontBodyS */
+.message {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: 1.4;
+  margin: 0;
+  flex-shrink: 1;
+  min-width: 0; /* Allow truncation */
+}
+
+/* Line Wrap */
+.lineWrap .content {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100); /* 8px */
+}
+
+.lineWrap .messageWrapper {
+  width: 100%;
+}
+
+.lineWrap .message {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  flex: 1;
+}
+
+.banner:not(.lineWrap) .message {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Close Button Wrapper - Figma: closeButton Position */
+.closeButtonWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Action button wrapper */
+.actionButton {
+  flex-shrink: 0;
+}
+
+/* ============================================ */
+/* Kind Variants - Figma exact specs            */
+/* ============================================ */
+
+/* Information (default) - Figma: messageBgColorSubtle, fontColorDefault */
+.kind-information {
+  background-color: var(--ink-message-bg-color-subtle);
+  color: var(--ink-font-color-default);
+}
+
+.kind-information .iconWrapper {
+  color: var(--ink-font-color-default); /* Default gray icon */
+}
+
+.kind-information.bottomBorder {
+  border-bottom-color: var(--ink-cobalt-100);
+}
+
+/* Danger - Figma: messageBgColorError (#fee8ea), fontColorErrorEmphasis (#a6003f) */
+.kind-danger {
+  background-color: var(--ink-message-bg-color-error); /* #fee8ea */
+  color: var(--ink-font-color-error); /* #a6003f */
+}
+
+.kind-danger .iconWrapper {
+  color: var(--ink-font-color-error);
+}
+
+.kind-danger.bottomBorder {
+  border-bottom-color: var(--ink-border-color-error);
+}
+
+/* Success - Figma: messageBgColorSuccess (#b9f6dd), fontColorSuccessEmphasis (#005f43) */
+.kind-success {
+  background-color: var(--ink-message-bg-color-success); /* #b9f6dd */
+  color: var(--ink-font-color-success); /* #005f43 */
+}
+
+.kind-success .iconWrapper {
+  color: var(--ink-font-color-success);
+}
+
+.kind-success.bottomBorder {
+  border-bottom-color: var(--ink-border-success);
+}
+
+/* Warning - Figma: messageBgColorWarning (#fce1c2), fontColorWarningEmphasis (#a52608) */
+.kind-warning {
+  background-color: var(--ink-message-bg-color-warning); /* #fce1c2 */
+  color: var(--ink-font-color-warning); /* #a52608 */
+}
+
+.kind-warning .iconWrapper {
+  color: var(--ink-font-color-warning);
+}
+
+.kind-warning.bottomBorder {
+  border-bottom-color: var(--ink-border-warning);
+}
+
+/* Promo - Light purple background with dark text */
+.kind-promo {
+  background-color: var(--ink-message-bg-color-promo); /* #e9e6fd - cobalt-20 */
+  color: var(--ink-font-color-default); /* Dark text for readability */
+}
+
+.kind-promo .iconWrapper {
+  color: var(--ink-font-color-accent-emphasis); /* Purple icon */
+}
+
+.kind-promo.bottomBorder {
+  border-bottom-color: var(--ink-cobalt-100);
+}
+
+/* Promo action link - dark text to match banner text */
+.kind-promo .actionButton a {
+  color: var(--ink-font-color-default);
+}
+
+/* Subtle - Figma: messageBgColorSubtle, fontColorDefault */
+.kind-subtle {
+  background-color: var(--ink-message-bg-color-subtle);
+  color: var(--ink-font-color-default);
+}
+
+.kind-subtle .iconWrapper {
+  color: var(--ink-font-color-default);
+}
+
+.kind-subtle.bottomBorder {
+  border-bottom-color: var(--ink-neutral-30);
+}
+
+/* Neutral (dark) - Figma: messageBgColorDefault (#2b2843), fontColorInverse (white) */
+.kind-neutral {
+  background-color: var(--ink-message-bg-color-default); /* #2b2843 - neutral-110 */
+  color: var(--ink-font-color-inverse); /* white */
+}
+
+.kind-neutral .iconWrapper {
+  color: var(--ink-font-color-inverse);
+}
+
+/* Neutral close button - inverse icon color */
+.kind-neutral .closeButtonWrapper button {
+  color: var(--ink-font-color-inverse);
+}
+
+/* Neutral action button - inverted styling */
+.kind-neutral .actionButton button {
+  background-color: var(--ink-white-fade-5);
+  color: var(--ink-font-color-inverse);
+}
+
+.kind-neutral .actionButton button:hover {
+  background-color: var(--ink-white-fade-10);
+}
+
+.kind-neutral.bottomBorder {
+  border-bottom-color: var(--ink-white-fade-20);
+}

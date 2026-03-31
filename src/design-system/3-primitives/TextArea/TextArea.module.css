@@ -1,0 +1,156 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50); /* 4px - gap50 from Figma */
+  font-family: var(--ink-font-family);
+}
+
+.wrapperDisabled {
+  opacity: 0.2;
+}
+
+.label {
+  font-size: var(--ink-font-size-sm); /* 14px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  color: var(--ink-font-color-default);
+  line-height: 1.4; /* Exact Figma spec */
+}
+
+.label.disabled {
+  opacity: var(--ink-opacity-disabled);
+}
+
+.required {
+  color: var(--ink-red-60);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.description {
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+  line-height: var(--ink-line-height-normal);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 64px;
+  padding: var(--ink-spacing-100) var(--ink-spacing-100);
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-md);
+  line-height: 1.5;
+  color: var(--ink-font-color-default);
+  background-color: var(--ink-form-bg-default);
+  border: 1px solid var(--ink-form-control-border-color-default);
+  border-radius: var(--ink-radius-size-xs);
+  transition:
+    border-color var(--ink-transition-fast),
+    box-shadow var(--ink-transition-fast);
+  outline: none;
+}
+
+.textarea:hover:not(:disabled):not(.error) {
+  border-color: var(--ink-form-control-border-color-hover);
+}
+
+.textarea:focus {
+  border: 2px solid var(--ink-form-control-border-color-active);
+  padding: calc(var(--ink-spacing-100) - 1px) calc(var(--ink-spacing-100) - 1px);
+  box-shadow: var(--ink-focus-ring-accent-subtle);
+}
+
+.textarea.error {
+  border-color: var(--ink-form-control-border-color-error);
+}
+
+.textarea.error:focus {
+  border: 2px solid var(--ink-form-control-border-color-error);
+  padding: calc(var(--ink-spacing-100) - 1px) calc(var(--ink-spacing-100) - 1px);
+  box-shadow: var(--ink-focus-ring-error);
+}
+
+.textarea:disabled {
+  background-color: var(--ink-form-bg-disabled);
+  cursor: not-allowed;
+  border-color: var(--ink-form-control-border-color-default);
+}
+
+.textarea:read-only {
+  background-color: var(--ink-form-bg-read);
+  border: none;
+  cursor: default;
+}
+
+.textarea::placeholder {
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* Resize options */
+.resize-both {
+  resize: both;
+}
+
+.resize-horizontal {
+  resize: horizontal;
+}
+
+.resize-vertical {
+  resize: vertical;
+}
+
+.resize-none {
+  resize: none;
+}
+
+/* Auto-expand */
+.autoExpand {
+  resize: none;
+  overflow: hidden;
+}
+
+/* Character count */
+.count {
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-font-color-neutral-subtle);
+  line-height: var(--ink-line-height-normal);
+  text-align: right;
+}
+
+.countError {
+  color: var(--ink-red-60);
+}
+
+.countOverMessage {
+  font-weight: var(--ink-font-weight-medium);
+}
+
+/* Error message */
+.errorMessage {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-1);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-red-60);
+  line-height: var(--ink-line-height-normal);
+}
+
+.errorIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-red-60);
+}

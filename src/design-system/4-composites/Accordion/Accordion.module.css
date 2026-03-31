@@ -1,0 +1,224 @@
+/* Ink Design System - Accordion Component Styles */
+@import '../../1-tokens/tokens.css';
+
+.accordion {
+  font-family: var(--ink-font-family);
+}
+
+/* Bordered variant: items have border-top separators */
+.accordion.bordered .item {
+  border-top: 1px solid var(--ink-border-color-subtle);
+}
+
+/* Card variant (not bordered): items have gap, radius, and selected bg */
+.accordion:not(.bordered) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-1); /* 4px gap between items */
+}
+
+.accordion:not(.bordered) .item {
+  border-radius: var(--ink-radius-size-s); /* 8px */
+}
+
+.accordion:not(.bordered) .itemOpen .header {
+  background-color: var(--ink-item-bg-color-selected-subtle);
+  border-radius: var(--ink-radius-size-s);
+}
+
+/* Item states */
+.item.itemDisabled {
+  opacity: var(--ink-opacity-disabled);
+  cursor: not-allowed;
+}
+
+/* Header - base styles */
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-4); /* 16px between elements */
+  padding: var(--ink-spacing-3) var(--ink-spacing-4); /* 12px vertical (default), 16px horizontal */
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-md); /* 16px */
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.25;
+  letter-spacing: -0.16px;
+  color: var(--ink-font-color-default);
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--ink-transition-fast);
+}
+
+.header:hover:not(:disabled) {
+  background-color: var(--ink-item-bg-color-hover);
+}
+
+.header:disabled {
+  cursor: not-allowed;
+}
+
+/* Header height variants */
+.accordion.compact .header {
+  padding-top: var(--ink-spacing-2); /* 8px */
+  padding-bottom: var(--ink-spacing-2);
+}
+
+.accordion.tall .header {
+  padding-top: var(--ink-spacing-5); /* 20px */
+  padding-bottom: var(--ink-spacing-5);
+}
+
+/* Start icon */
+.startIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ink-icon-color-secondary);
+}
+
+/* Title wrapper - contains title and subtitle */
+.titleWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0; /* Allow text truncation */
+}
+
+/* Title row - for inline elements with title */
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.title {
+  line-height: 1.25;
+  letter-spacing: -0.16px;
+}
+
+/* Display level variants for title */
+.accordion.displayLevelXs .title {
+  font-size: var(--ink-font-size-sm); /* 14px */
+}
+
+.accordion.displayLevelS .title {
+  font-size: var(--ink-font-size-lg); /* 18px */
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-subtle);
+  width: 100%;
+}
+
+/* Metadata */
+.metadata {
+  flex-shrink: 0;
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-subtle);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Chevron */
+.chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-icon-color-secondary);
+  transition: transform var(--ink-transition-normal);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Panel - collapsible container */
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--ink-transition-normal) ease-out;
+}
+
+.panelOpen {
+  max-height: 2000px; /* Large enough for most content */
+  transition: max-height var(--ink-transition-normal) ease-in;
+}
+
+/* Content - body padding */
+.content {
+  min-height: 0;
+  padding: var(--ink-spacing-2) var(--ink-spacing-4) var(--ink-spacing-6); /* 8px top, 16px horizontal, 24px bottom (default) */
+  font-size: var(--ink-font-size-sm); /* 14px */
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-default);
+  line-height: 1.4;
+}
+
+/* Content height variants */
+.accordion.compact .content {
+  padding-bottom: var(--ink-spacing-4); /* 16px */
+}
+
+.accordion.tall .content {
+  padding-bottom: var(--ink-spacing-8); /* 32px */
+}
+
+/* Card variant content padding */
+.accordion:not(.bordered) .content {
+  padding-top: var(--ink-spacing-3); /* 12px */
+  padding-bottom: var(--ink-spacing-3); /* 12px */
+}
+
+/* No padding variant */
+.content.noPadding {
+  padding: 0;
+}
+
+/* Focus styles */
+.header:focus-visible {
+  outline: 2px solid var(--ink-form-control-border-color-active);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+/* Nested content spacing */
+.content > *:first-child {
+  margin-top: 0;
+}
+
+.content > *:last-child {
+  margin-bottom: 0;
+}
+
+.content p {
+  margin: var(--ink-spacing-2) 0;
+}
+
+.content ul,
+.content ol {
+  margin: var(--ink-spacing-2) 0;
+  padding-left: var(--ink-spacing-5);
+}
+
+.content li {
+  margin: var(--ink-spacing-1) 0;
+}

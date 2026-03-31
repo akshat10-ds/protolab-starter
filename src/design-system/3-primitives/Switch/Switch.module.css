@@ -1,0 +1,147 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100); /* 8px - matches Figma gap100 */
+}
+
+.container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Container width per Figma - provides space for 32px hover circle */
+  height: 24px; /* Container height per Figma */
+  cursor: pointer;
+  user-select: none;
+}
+
+.container.disabled {
+  cursor: not-allowed;
+  opacity: 0.25; /* Figma disabled opacity */
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.track {
+  position: relative;
+  display: block;
+  width: 36px; /* Track width per Figma */
+  height: 20px; /* Track height per Figma */
+  background-color: var(--ink-form-control-bg-color-default); /* White fill per Figma */
+  border: 2px solid var(--ink-form-control-border-color-default); /* 2px inside border per Figma */
+  border-radius: var(--ink-radius-full);
+  transition:
+    background-color var(--ink-transition-fast),
+    border-color var(--ink-transition-fast);
+  cursor: pointer;
+  overflow: visible; /* Allow hover circle to extend beyond track */
+  box-sizing: border-box; /* Border inside the 36x20 dimensions */
+}
+
+/* Hover background circle - 32x32, centered on thumb, extends beyond track */
+.track::before {
+  content: '';
+  position: absolute;
+  width: 32px; /* Hover circle size per Figma */
+  height: 32px;
+  top: 50%;
+  left: 8px; /* Center of 12px thumb when off: 2px + 6px = 8px from inner edge */
+  transform: translate(-50%, -50%);
+  border-radius: var(--ink-radius-full);
+  background-color: transparent;
+  transition:
+    background-color var(--ink-transition-fast),
+    left var(--ink-transition-fast);
+  pointer-events: none;
+}
+
+.track.checked::before {
+  left: 24px; /* Center of thumb when on: (2px + 16px) + 6px = 24px from inner edge */
+}
+
+.track.checked {
+  background-color: var(--ink-form-control-bg-color-selected);
+  border-color: var(--ink-form-control-bg-color-selected); /* Same as fill when checked */
+}
+
+.container.disabled .track {
+  cursor: not-allowed;
+}
+
+.thumb {
+  position: absolute;
+  top: 2px; /* 2px from inner edge = 4px from outer with 2px border */
+  left: 2px; /* 2px from inner edge = 4px from outer with 2px border */
+  width: 12px; /* Thumb size per Figma */
+  height: 12px;
+  background-color: var(--ink-form-control-thumb-bg-default); /* Dark thumb color per Figma */
+  border-radius: var(--ink-radius-full);
+  transition:
+    transform var(--ink-transition-fast),
+    background-color var(--ink-transition-fast);
+  box-shadow: var(--ink-shadow-sm);
+  z-index: 1; /* Above hover background */
+}
+
+.track.checked .thumb {
+  transform: translateX(16px); /* 36 - 12 - 4 - 4 = 16px translation */
+  background-color: var(--ink-white-100); /* White thumb when checked per Figma */
+}
+
+/* Show hover circle on track::before when hovering */
+.container:not(.disabled):hover .track::before {
+  background-color: var(--ink-neutral-fade-10); /* Subtle hover background per Figma */
+}
+
+/* Label styles */
+.labelContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-0);
+  padding-top: var(--ink-focus-width); /* 2px */
+}
+
+.label {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px - fontBodyS per Figma */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  color: var(--ink-font-color-default); /* rgba(19,0,50,0.9) - fontColorDefault per Figma */
+  line-height: var(--ink-font-body-s-line-height); /* 1.4 */
+}
+
+.description {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-medium); /* 500 per Figma */
+  color: var(--ink-neutral-fade-70); /* rgba(19,0,50,0.7) - fontColorSubtle per Figma */
+  line-height: var(--ink-line-height-normal); /* 1.5 */
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px per Figma */
+}
+
+/* Focus styles */
+.input:focus-visible + .track {
+  outline: var(--ink-focus-width) solid var(--ink-cobalt-60);
+  outline-offset: var(--ink-focus-width);
+}
+
+/* Hover state */
+.container:not(.disabled):hover .track:not(.checked) {
+  border-color: var(--ink-form-control-border-color-hover);
+}
+
+.container:not(.disabled):hover .track.checked {
+  background-color: var(--ink-form-control-bg-color-selected-hover);
+  border-color: var(--ink-form-control-bg-color-selected-hover);
+}
+
+/* Active state */
+.container:not(.disabled):active .track.checked {
+  background-color: var(--ink-form-control-bg-color-selected-active);
+  border-color: var(--ink-form-control-bg-color-selected-active);
+}

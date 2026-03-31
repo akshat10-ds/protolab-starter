@@ -1,0 +1,141 @@
+.card {
+  background: var(--ink-white-100);
+  border-radius: var(--ink-radius-size-s); /* 8px - radiusSizeS from Figma */
+  overflow: hidden;
+  font-family: var(--ink-font-family);
+  border: var(--ink-border-width-xs) solid var(--ink-neutral-fade-10); /* borderWidthXS, borderColorSubtle from Figma */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background variants from Figma */
+.card.light {
+  background: var(--ink-bg-color-default); /* bgColorDefault - white */
+  border-color: var(--ink-neutral-fade-10);
+}
+
+.card.dark {
+  background: var(--ink-bg-color-inverse); /* bgColorDefault - #130032 dark purple */
+  border-color: var(--ink-white-fade-10); /* rgba(255,255,255,0.1) for dark mode */
+  color: var(--ink-font-color-inverse);
+}
+
+.card.secondary {
+  background: var(--ink-bg-color-canvas-page); /* bgColorCanvasPage - #f7f6f7 */
+  border-color: var(--ink-neutral-fade-10);
+}
+
+/* Disabled state */
+.card.disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.header {
+  padding: var(--ink-spacing-150); /* 12px - gap150 from Figma */
+  border-bottom: var(--ink-border-width-xs) solid var(--ink-neutral-fade-10);
+  font-weight: var(--ink-font-weight-semibold);
+  font-size: var(--ink-font-size-lg);
+  color: var(--ink-font-color-default);
+}
+
+.body {
+  padding: var(--ink-spacing-150); /* 12px - gap150 from Figma */
+  color: var(--ink-font-color-neutral);
+  font-size: var(--ink-font-size-md);
+  line-height: var(--ink-line-height-normal);
+}
+
+.footer {
+  padding: var(--ink-spacing-150); /* 12px - gap150 from Figma */
+  border-top: var(--ink-border-width-xs) solid var(--ink-neutral-fade-10);
+  background: var(--ink-neutral-10);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--ink-spacing-100); /* 8px */
+}
+
+/* noPadding variant */
+.card.noPadding .header,
+.card.noPadding .body,
+.card.noPadding .footer {
+  padding: 0;
+}
+
+/* Dark variant text color for header and body */
+.card.dark .header,
+.card.dark .body {
+  color: var(--ink-font-color-inverse);
+}
+
+.card.dark .footer {
+  background: var(--ink-neutral-fade-10);
+  border-top-color: var(--ink-white-fade-10);
+}
+
+/* Radius variants */
+.card.radius-small {
+  border-radius: var(--ink-radius-size-xs);
+}
+
+.card.radius-medium {
+  border-radius: var(--ink-radius-size-md);
+}
+
+.card.radius-large {
+  border-radius: var(--ink-radius-size-lg);
+}
+
+/* Image position variants from Figma */
+.card.imageStart {
+  flex-direction: row;
+}
+
+.card.imageTop {
+  flex-direction: column;
+}
+
+/* Card.Image subcomponent */
+.image {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Image at top position - full width */
+.imageTop .image {
+  width: 100%;
+  aspect-ratio: 3 / 2; /* 352/234.67 ≈ 3/2 from Figma */
+}
+
+/* Image at start position - takes 1/3 width by default */
+.imageStart .image {
+  flex: 1 0 0;
+  min-height: 100%;
+  aspect-ratio: 3 / 2; /* 135/90 ≈ 3/2 from Figma */
+}
+
+.image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content wrapper for imageStart layout */
+.imageStart .content {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content wrapper for imageTop layout (default) */
+.imageTop .content,
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

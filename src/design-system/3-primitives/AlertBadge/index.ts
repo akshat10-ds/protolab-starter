@@ -1,0 +1,1 @@
+export { AlertBadge } from './AlertBadge';

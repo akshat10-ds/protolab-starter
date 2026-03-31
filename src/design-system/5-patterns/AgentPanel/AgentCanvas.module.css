@@ -1,0 +1,206 @@
+/**
+ * AgentCanvas Component Styles
+ *
+ * Multi-mode canvas for document viewing, forms, and visualizations.
+ * Uses Ink Design System tokens for consistent theming.
+ */
+
+@import '../../../design-system/1-tokens/tokens.css';
+
+/* =============================================================================
+   Container
+   ============================================================================= */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--ink-neutral-10);
+  border-radius: var(--ink-radius-size-m);
+  overflow: hidden;
+}
+
+/* =============================================================================
+   Empty State
+   ============================================================================= */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: var(--ink-spacing-400);
+  text-align: center;
+}
+
+.emptyIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--ink-radius-size-full);
+  background: var(--ink-neutral-15);
+  color: var(--ink-neutral-60);
+  margin-bottom: var(--ink-spacing-200);
+}
+
+.emptyTitle {
+  color: var(--ink-neutral-100);
+  margin-bottom: var(--ink-spacing-100);
+}
+
+.emptyDescription {
+  color: var(--ink-neutral-70);
+  max-width: 280px;
+}
+
+/* =============================================================================
+   Document Viewer
+   ============================================================================= */
+
+.documentViewer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  background: var(--ink-white-100);
+  border-bottom: 1px solid var(--ink-neutral-30);
+  gap: var(--ink-spacing-200);
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  flex: 1;
+  min-width: 0;
+}
+
+.toolbarCenter {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}
+
+.documentTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-75);
+  font-family: var(--ink-font-family), system-ui, sans-serif;
+  font-size: var(--ink-font-size-body-s);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-neutral-100);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pageIndicator {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: var(--ink-font-size-body-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-neutral-70);
+  padding: var(--ink-spacing-50) var(--ink-spacing-100);
+  background: var(--ink-neutral-15);
+  border-radius: var(--ink-radius-size-xs);
+  min-width: 60px;
+  text-align: center;
+}
+
+.zoomIndicator {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: var(--ink-font-size-body-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-neutral-70);
+  min-width: 40px;
+  text-align: center;
+}
+
+.documentContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ink-spacing-200);
+  overflow: auto;
+  background: var(--ink-neutral-20);
+}
+
+.documentPage {
+  background: var(--ink-white-100);
+  box-shadow: var(--ink-shadow-lg);
+  border-radius: var(--ink-radius-size-xs);
+  min-width: 400px;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  transition: transform 200ms ease;
+}
+
+.documentPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ink-spacing-150);
+  color: var(--ink-neutral-50);
+}
+
+/* =============================================================================
+   Mode-Specific Styling
+   ============================================================================= */
+
+/* For tight integration with chat */
+.container[data-embedded='true'] {
+  border-radius: 0;
+  border-left: 1px solid var(--ink-neutral-30);
+}
+
+/* Loading state overlay */
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink-white-100);
+  opacity: 0.9;
+  z-index: 10;
+}
+
+/* Highlight regions in document (for annotations) */
+.highlight {
+  position: absolute;
+  background: var(--ink-yellow-20);
+  border: 2px solid var(--ink-yellow-60);
+  border-radius: var(--ink-radius-size-xs);
+  pointer-events: none;
+  animation: highlightPulse 2s ease-in-out infinite;
+}
+
+@keyframes highlightPulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,157 @@
+/* Ink Design System - Modal - Exact Figma Specs */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--ink-bg-scrim); /* bgColorScrim from Figma */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--ink-z-modal);
+  padding: 80px 0; /* 80px top/bottom padding from Figma */
+  animation: fadeIn var(--ink-transition-fast);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Contained mode - positions within parent container instead of viewport */
+.contained {
+  position: absolute;
+}
+
+.modal {
+  background: var(--ink-white-100); /* #ffffff */
+  border-radius: var(--ink-radius-size-l); /* 16px - radiusSizeL from Figma */
+  box-shadow: var(--ink-shadow-xl);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 160px); /* Account for 80px top/bottom padding */
+  width: 100%;
+  position: relative;
+  animation: slideUp var(--ink-transition-normal);
+  outline: none;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Size variants - From Figma */
+.small {
+  max-width: 480px;
+  min-width: 480px;
+}
+
+.medium {
+  max-width: 480px;
+  min-width: 480px;
+}
+
+.large {
+  max-width: 640px;
+  min-width: 640px;
+}
+
+.xlarge {
+  max-width: 800px;
+  min-width: 800px;
+}
+
+/* Header - From Figma: 32px top, 16px bottom, 32px horizontal, no border */
+.header {
+  display: flex;
+  align-items: center;
+  padding: var(--ink-spacing-400) var(--ink-spacing-400) var(--ink-spacing-200)
+    var(--ink-spacing-400); /* 32px 32px 16px 32px */
+  position: relative;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-heading-s-size); /* 24px fontHeadingS from Figma */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: var(--ink-font-heading-s-line-height); /* 1.25 */
+  letter-spacing: -0.16px; /* cozy tracking from Figma */
+  color: var(--ink-neutral-fade-90); /* fontColorDefault rgba(19,0,50,0.9) */
+  flex: 1;
+}
+
+/* Close button - Positioned absolutely in top-right corner */
+.closeButton {
+  position: absolute;
+  top: var(--ink-spacing-200); /* 16px from top */
+  right: var(--ink-spacing-200); /* 16px from right */
+  background: transparent;
+  border: none;
+  padding: var(--ink-spacing-100); /* 8px */
+  cursor: pointer;
+  color: var(--ink-neutral-fade-90);
+  border-radius: var(--ink-radius-sm); /* 4px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  transition: all var(--ink-transition-fast);
+}
+
+.closeButton:hover {
+  background-color: var(--ink-neutral-fade-5);
+}
+
+.closeButton:active {
+  background-color: var(--ink-neutral-fade-10);
+}
+
+/* Body - From Figma: 32px horizontal padding, no top/bottom padding */
+.body {
+  padding: 0 var(--ink-spacing-400); /* 0 32px */
+  overflow-y: auto;
+  flex: 1;
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-body-s-size); /* 14px fontBodyS from Figma */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: var(--ink-font-body-s-line-height); /* 1.4 */
+  color: var(--ink-neutral-fade-90);
+}
+
+/* Footer - From Figma: 32px horizontal, 32px bottom, 24px top padding, 16px gap, no border */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--ink-spacing-200); /* 16px gap from Figma */
+  padding: var(--ink-spacing-300) var(--ink-spacing-400) var(--ink-spacing-400)
+    var(--ink-spacing-400); /* 24px 32px 32px 32px */
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .overlay {
+    padding: 0;
+  }
+
+  .modal {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+}

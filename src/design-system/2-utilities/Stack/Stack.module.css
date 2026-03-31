@@ -1,0 +1,72 @@
+@import '../../1-tokens/tokens.css';
+
+.stack {
+  display: flex;
+}
+
+.stack.vertical {
+  flex-direction: column;
+}
+
+.stack.horizontal {
+  flex-direction: row;
+}
+
+.stack.wrap {
+  flex-wrap: wrap;
+}
+
+/* Gap */
+.stack.gap-none {
+  gap: 0;
+}
+
+.stack.gap-small {
+  gap: var(--ink-spacing-100);
+}
+
+.stack.gap-medium {
+  gap: var(--ink-spacing-200);
+}
+
+.stack.gap-large {
+  gap: var(--ink-spacing-300);
+}
+
+/* Align */
+.stack.align-start {
+  align-items: flex-start;
+}
+
+.stack.align-center {
+  align-items: center;
+}
+
+.stack.align-end {
+  align-items: flex-end;
+}
+
+.stack.align-stretch {
+  align-items: stretch;
+}
+
+/* Justify */
+.stack.justify-start {
+  justify-content: flex-start;
+}
+
+.stack.justify-center {
+  justify-content: center;
+}
+
+.stack.justify-end {
+  justify-content: flex-end;
+}
+
+.stack.justify-between {
+  justify-content: space-between;
+}
+
+.stack.justify-around {
+  justify-content: space-around;
+}

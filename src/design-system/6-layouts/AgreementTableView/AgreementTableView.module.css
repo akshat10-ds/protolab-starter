@@ -1,0 +1,83 @@
+/**
+ * AgreementTableView Layout Styles
+ *
+ * Provides consistent spacing for Navigator-style table pages.
+ * Supports two padding variants: default (80px) and compact (32px).
+ */
+
+@import '../../1-tokens/tokens.css';
+
+/* Container - fills available space with white background */
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--ink-white-100);
+}
+
+/* =============================================================================
+   Padding Variants
+   ============================================================================= */
+
+/* Default padding (80px) - standard Navigator layout */
+.paddingDefault .pageHeader {
+  padding: var(--ink-spacing-400) 80px var(--ink-spacing-200);
+}
+
+.paddingDefault .banner {
+  padding: 0 80px;
+}
+
+.paddingDefault .filterBar {
+  padding: var(--ink-spacing-200) 80px;
+}
+
+.paddingDefault .tableWrapper {
+  margin: var(--ink-spacing-300) 80px;
+  margin-top: 0;
+}
+
+/* Compact padding (32px) - narrower screens */
+.paddingCompact .pageHeader {
+  padding: var(--ink-spacing-400) var(--ink-spacing-400) var(--ink-spacing-200);
+}
+
+.paddingCompact .banner {
+  padding: 0 var(--ink-spacing-400);
+}
+
+.paddingCompact .filterBar {
+  padding: var(--ink-spacing-200) var(--ink-spacing-400);
+}
+
+.paddingCompact .tableWrapper {
+  margin: var(--ink-spacing-300) var(--ink-spacing-400);
+  margin-top: 0;
+}
+
+/* =============================================================================
+   Section Styles
+   ============================================================================= */
+
+/* Page header section */
+.pageHeader {
+  /* Padding set by variant classes above */
+}
+
+/* Banner section - no top padding (adjacent to header) */
+.banner {
+  margin-bottom: 0;
+}
+
+/* Filter bar */
+.filterBar {
+  background: var(--ink-white-100);
+}
+
+/* Table wrapper - fills remaining space, lets DataTable handle its own scrolling */
+.tableWrapper {
+  flex: 1;
+  min-height: 0; /* Allow flex child to shrink below content size */
+  background: var(--ink-white-100);
+}

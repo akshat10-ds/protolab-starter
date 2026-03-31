@@ -1,0 +1,65 @@
+.avatarGroup {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  gap: var(--ink-spacing-50); /* 4px gap between group and +N text */
+  isolation: isolate; /* Create stacking context for z-index */
+}
+
+.avatarWrapper {
+  position: relative;
+  margin-left: calc(-1 * var(--ink-spacing-100)); /* -8px overlap */
+  box-sizing: border-box;
+  transition: transform var(--ink-transition-fast);
+}
+
+.avatarWrapper:first-child {
+  margin-left: 0;
+}
+
+/* Add white border to create separation between overlapping avatars */
+.avatarWrapper > div {
+  border: 2px solid var(--ink-white-100);
+  box-sizing: border-box;
+}
+
+.avatarWrapper:hover {
+  transform: translateY(-2px);
+  z-index: 11; /* Higher than max nth-child z-index (10) */
+}
+
+/* Stacking order - later items appear behind earlier ones */
+.avatarWrapper:nth-child(1) {
+  z-index: 10;
+}
+
+.avatarWrapper:nth-child(2) {
+  z-index: 9;
+}
+
+.avatarWrapper:nth-child(3) {
+  z-index: 8;
+}
+
+.avatarWrapper:nth-child(4) {
+  z-index: 7;
+}
+
+.avatarWrapper:nth-child(5) {
+  z-index: 6;
+}
+
+.avatarWrapper:nth-child(6) {
+  z-index: 5;
+}
+
+/* Overflow count styling */
+.overflowCount {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-avatar-group-size); /* 12px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  line-height: var(--ink-font-avatar-group-line-height); /* 1.5 */
+  letter-spacing: 0.16px; /* wide tracking */
+  color: var(--ink-font-color-default);
+  white-space: nowrap;
+}

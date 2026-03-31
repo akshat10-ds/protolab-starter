@@ -1,0 +1,93 @@
+@import '../../1-tokens/tokens.css';
+
+.breadcrumb {
+  font-family: var(--ink-font-family);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+}
+
+.itemText {
+  display: block;
+  max-width: 208px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Link item - clickable breadcrumb (not current page) */
+.link {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  color: var(--ink-font-link-subtle);
+  text-decoration: none;
+  font-weight: var(--ink-font-weight-regular);
+  transition: color var(--ink-transition-fast);
+  cursor: pointer;
+}
+
+/* Hover state per Figma: fontColorLinkHover with underline */
+.link:hover {
+  color: var(--ink-font-link-hover);
+  text-decoration: underline;
+}
+
+/* Active state per Figma: fontColorLinkActive with underline */
+.link:active {
+  color: var(--ink-font-link-active);
+  text-decoration: underline;
+}
+
+/* Text item - non-clickable breadcrumb */
+.text {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  color: var(--ink-font-link-subtle);
+  font-weight: var(--ink-font-weight-regular);
+}
+
+/* Current page - medium weight, no hover/active states per Figma */
+.current {
+  font-weight: var(--ink-font-weight-medium);
+}
+
+/* Separator - always chevron-right */
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--ink-font-default);
+  user-select: none;
+}
+
+/* IconButton overrides for root and overflow icons */
+.rootIconButton,
+.overflowButton {
+  /* IconButton handles sizing and states */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+  .itemText {
+    max-width: 120px;
+  }
+}

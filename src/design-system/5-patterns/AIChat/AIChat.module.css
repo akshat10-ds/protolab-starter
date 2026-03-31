@@ -1,0 +1,796 @@
+/**
+ * AIChat Pattern Styles
+ * Uses design tokens exclusively - no hardcoded values
+ */
+
+@import '../../1-tokens/tokens.css';
+
+/* ============================================================================
+   Container
+   ============================================================================ */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0; /* Critical: allow flex item to shrink below content size */
+  overflow: hidden;
+}
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-100) var(--ink-spacing-150) var(--ink-spacing-100)
+    var(--ink-spacing-150);
+  background: var(--ink-bg-color-default);
+  flex-shrink: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+/* ============================================================================
+   Message List
+   ============================================================================ */
+
+.messageList {
+  flex: 1;
+  min-height: 0; /* Allow flex item to shrink below content size */
+  overflow-y: auto;
+  padding: var(--ink-spacing-200);
+  /* scroll-behavior removed to allow instant scrolls from JS */
+  overflow-anchor: none; /* Prevent browser from auto-adjusting scroll on content changes */
+  animation: messageListFadeIn 400ms ease-out forwards;
+}
+
+@keyframes messageListFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.messages {
+  min-height: 100%;
+}
+
+/* ============================================================================
+   Message Styles
+   ============================================================================ */
+
+.message {
+  display: flex;
+  gap: var(--ink-spacing-150);
+  max-width: 85%;
+}
+
+/* Message entrance animation - cascade up */
+@keyframes messageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.userMessage {
+  margin-left: auto;
+  flex-direction: row-reverse;
+  animation: messageFadeIn 300ms ease-out forwards;
+}
+
+.assistantMessage {
+  margin-right: auto;
+  max-width: 100%; /* Allow full width for tables and rich content */
+  animation: messageFadeIn 300ms ease-out forwards;
+}
+
+.messageAvatar {
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: var(--ink-spacing-50);
+}
+
+.messageContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  min-width: 0; /* Allow text to wrap properly */
+}
+
+.messageBubble {
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  border-radius: var(--ink-radius-size-m);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap; /* Preserve line breaks and formatting */
+}
+
+/* User message bubble */
+.userMessage .messageBubble {
+  background: var(--ink-bg-color-muted);
+  color: var(--ink-font-color-default);
+  width: fit-content;
+  max-width: 85%;
+  margin-left: auto;
+}
+
+/* Assistant message bubble - no background, just plain text */
+.assistantMessage .messageBubble {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* System message (centered, subtle) */
+.systemMessage {
+  display: flex;
+  justify-content: center;
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+}
+
+/* Message actions (copy, etc.) */
+.messageActions {
+  display: flex;
+  gap: var(--ink-spacing-50);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.message:hover .messageActions {
+  opacity: 1;
+}
+
+/* ============================================================================
+   Typing Indicator / Response Skeleton
+   ============================================================================ */
+
+.typingIndicator {
+  display: flex;
+  flex-direction: column;
+  animation: messageFadeIn 300ms ease-out forwards;
+  min-width: 200px;
+  max-width: 320px;
+}
+
+.typingContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+}
+
+.typingLine {
+  height: 16px;
+  border-radius: var(--ink-radius-size-xs);
+  background: linear-gradient(
+    90deg,
+    var(--ink-neutral-15) 25%,
+    var(--ink-neutral-10) 50%,
+    var(--ink-neutral-15) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+.typingLine:nth-child(1) {
+  width: 100%;
+  animation-delay: 0ms;
+}
+
+.typingLine:nth-child(2) {
+  width: 70%;
+  animation-delay: 75ms;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes typingBounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   Input Area
+   ============================================================================ */
+
+.inputArea {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-150) var(--ink-spacing-150) var(--ink-spacing-100);
+  background: var(--ink-bg-color-default);
+  border-radius: var(--ink-radius-size-s) var(--ink-radius-size-s) 0 0;
+  flex-shrink: 0; /* Prevent input area from being squeezed out */
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-50) var(--ink-spacing-200) var(--ink-spacing-150);
+  background: var(--ink-form-control-bg-color-default);
+  border: var(--ink-form-border-width) solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-m);
+}
+
+/* Expanded state for the input container */
+.inputContainerExpanded {
+  padding-top: var(--ink-spacing-100);
+}
+
+/* Expand/Collapse button - positioned in top-right corner */
+.expandButton {
+  position: absolute;
+  top: var(--ink-spacing-100);
+  right: var(--ink-spacing-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: var(--ink-bg-color-default);
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-xs);
+  color: var(--ink-font-color-neutral);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+  z-index: 1;
+}
+
+.expandButton:hover {
+  background: var(--ink-bg-color-neutral-subtle);
+  border-color: var(--ink-border-color-default);
+  color: var(--ink-font-color-default);
+}
+
+.expandButton:active {
+  background: var(--ink-bg-color-neutral);
+}
+
+/* Focus state removed - no border change on focus */
+
+/* Multi-ring ripple animation to draw attention when quick action populates input */
+.inputContainerAttention {
+  position: relative;
+}
+
+.inputContainerAttention::before,
+.inputContainerAttention::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.inputContainerAttention::before {
+  animation: inputRippleRing1 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.inputContainerAttention::after {
+  animation: inputRippleRing2 800ms cubic-bezier(0.4, 0, 0.2, 1) 100ms forwards;
+}
+
+@keyframes inputRippleRing1 {
+  0% {
+    box-shadow: 0 0 0 0 var(--ink-cobalt-140);
+    opacity: 0.7;
+  }
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+    opacity: 0;
+  }
+}
+
+@keyframes inputRippleRing2 {
+  0% {
+    box-shadow: 0 0 0 0 var(--ink-cobalt-120);
+    opacity: 0.5;
+  }
+  100% {
+    box-shadow: 0 0 0 16px transparent;
+    opacity: 0;
+  }
+}
+
+.inputContent {
+  flex: 1;
+}
+
+/* Remove gap from TextArea wrapper inside input */
+.inputContent > div {
+  gap: 0;
+}
+
+.textInput.textInput {
+  border: none !important;
+  background: transparent !important;
+  resize: none;
+  padding: var(--ink-spacing-100) 0 0 0 !important;
+  min-height: 40px !important;
+  max-height: 200px;
+  overflow-y: auto;
+  transition: height 150ms ease;
+  box-shadow: none !important;
+}
+
+.textInput.textInput:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.textInput.textInput:hover:not(:disabled) {
+  border: none !important;
+  background: transparent !important;
+}
+
+.textInput.textInput:active {
+  background: transparent !important;
+  border: none !important;
+}
+
+.textInput.textInput::placeholder {
+  color: var(--ink-font-color-neutral-subtle) !important;
+  opacity: 1 !important;
+}
+
+/* Expanded state for textarea */
+.textInputExpanded.textInputExpanded {
+  max-height: 500px !important;
+}
+
+/* When expand button is visible, add right padding to prevent text overlap */
+.textInputWithExpandButton.textInputWithExpandButton {
+  padding-right: 40px !important;
+}
+
+.inputActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-100);
+}
+
+.addSourceButton {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  background: transparent;
+  border: 1px dashed var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-full);
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-detail-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  transition: all 150ms ease;
+}
+
+.addSourceButton:hover:not(:disabled) {
+  border-color: var(--ink-border-color-subtle);
+  background: var(--ink-bg-color-muted);
+}
+
+.addSourceButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contextSourcePill {
+  display: flex;
+  align-items: center;
+  background: var(--ink-neutral-10);
+  border: none;
+  border-radius: var(--ink-radius-full);
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  overflow: hidden;
+  transition: box-shadow 300ms ease;
+}
+
+.contextSourcePillMain {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  transition: background 150ms ease;
+}
+
+.contextSourcePillMain:hover:not(:disabled) {
+  background: var(--ink-neutral-20);
+}
+
+.contextSourcePillMain:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contextSourcePillClear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  background: transparent;
+  border: none;
+  border-left: 2px solid var(--ink-white-100);
+  cursor: pointer;
+  color: var(--ink-font-color-secondary);
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.contextSourcePillClear:hover:not(:disabled) {
+  background: var(--ink-neutral-20);
+  color: var(--ink-font-color-default);
+}
+
+.contextSourcePillClear:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Multi-ring ripple animation to draw attention when context is loaded */
+.contextSourcePillAttention {
+  position: relative;
+}
+
+.contextSourcePillAttention::before,
+.contextSourcePillAttention::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.contextSourcePillAttention::before {
+  animation: pillRippleRing1 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.contextSourcePillAttention::after {
+  animation: pillRippleRing2 800ms cubic-bezier(0.4, 0, 0.2, 1) 150ms forwards;
+}
+
+@keyframes pillRippleRing1 {
+  0% {
+    box-shadow: 0 0 0 0 var(--ink-cobalt-140);
+    opacity: 0.7;
+  }
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+    opacity: 0;
+  }
+}
+
+@keyframes pillRippleRing2 {
+  0% {
+    box-shadow: 0 0 0 0 var(--ink-cobalt-120);
+    opacity: 0.5;
+  }
+  100% {
+    box-shadow: 0 0 0 20px transparent;
+    opacity: 0;
+  }
+}
+
+.disclaimer {
+  margin: 0;
+  padding: 0 var(--ink-spacing-100);
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: var(--ink-letter-spacing-open);
+  line-height: 1.4;
+  color: var(--ink-font-color-secondary);
+  text-align: center;
+}
+
+/* ============================================================================
+   Welcome State
+   ============================================================================ */
+
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 200px;
+  padding: var(--ink-spacing-400);
+}
+
+.welcomeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: var(--ink-bg-accent-subtle);
+  border-radius: var(--ink-radius-full);
+  color: var(--ink-font-accent);
+}
+
+/* Zero Query State */
+.welcomeZeroQuery {
+  padding: var(--ink-spacing-300) var(--ink-spacing-300) var(--ink-spacing-300)
+    var(--ink-spacing-150);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Entrance animation for welcome content */
+@keyframes welcomeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcomeGreeting {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  padding-bottom: var(--ink-spacing-300);
+  border-bottom: 1px solid var(--ink-border-color-subtle);
+  animation: welcomeFadeIn 400ms ease-out forwards;
+}
+
+/* Add spacing below AIBadge */
+.welcomeGreeting > span:first-child {
+  margin-bottom: var(--ink-spacing-100);
+}
+
+.greetingText {
+  font-family: 'DS Indigo', DSIndigo, Helvetica, Arial, sans-serif;
+  font-size: var(--ink-font-size-2xl);
+  font-weight: var(--ink-font-weight-semibold);
+  font-style: normal;
+  line-height: 125%;
+  letter-spacing: var(--ink-letter-spacing-cozy, -0.16px);
+  margin: 0;
+  color: var(--ink-cobalt-140);
+}
+
+.greetingHello,
+.greetingName {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.greetingSubtitle {
+  font-family: 'DS Indigo', DSIndigo, Helvetica, Arial, sans-serif;
+  font-size: var(--ink-font-size-2xl);
+  font-weight: var(--ink-font-weight-regular);
+  font-style: normal;
+  line-height: 125%;
+  margin: 0;
+  color: var(--ink-font-color-default);
+  letter-spacing: var(--ink-letter-spacing-cozy, -0.16px);
+}
+
+.suggestionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-150);
+  opacity: 0;
+  animation: welcomeFadeIn 400ms ease-out forwards;
+}
+
+/* Stagger the sections */
+.suggestionsSection:nth-of-type(1) {
+  animation-delay: 100ms;
+}
+
+.suggestionsSection:nth-of-type(2) {
+  animation-delay: 200ms;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+  animation: welcomeFadeIn 300ms ease-out forwards;
+  animation-delay: 80ms;
+}
+
+.sectionHeader:hover {
+  opacity: 0.8;
+}
+
+.sectionHeaderAction {
+  color: var(--ink-font-color-secondary);
+}
+
+.sectionHeaderClickable .sectionHeaderAction:hover {
+  color: var(--ink-font-color-default);
+}
+
+.suggestionCard {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  background: var(--ink-ecru-10);
+  border: none;
+  border-radius: var(--ink-radius-size-m);
+  cursor: pointer;
+  text-align: left;
+  transition: background 150ms ease;
+  width: 100%;
+  /* Staggered card animations */
+  opacity: 0;
+  animation: welcomeFadeIn 350ms ease-out forwards;
+}
+
+/* Stagger individual prompt cards */
+.suggestionCard:nth-child(1) {
+  animation-delay: 150ms;
+}
+.suggestionCard:nth-child(2) {
+  animation-delay: 200ms;
+}
+.suggestionCard:nth-child(3) {
+  animation-delay: 250ms;
+}
+.suggestionCard:nth-child(4) {
+  animation-delay: 300ms;
+}
+
+.suggestionCard:hover:not(:disabled) {
+  background: var(--ink-ecru-20);
+}
+
+.suggestionCardCompleted {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.suggestionCardCompleted:hover {
+  background: var(--ink-ecru-10);
+}
+
+.suggestionIconCompleted {
+  color: var(--ink-font-success);
+}
+
+.suggestionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  color: var(--ink-font-color-default);
+}
+
+.suggestionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+.questionCard {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  background: var(--ink-ecru-10);
+  border: none;
+  border-radius: var(--ink-radius-size-m);
+  cursor: pointer;
+  text-align: left;
+  transition: background 150ms ease;
+  width: 100%;
+  color: var(--ink-font-color-default);
+  /* Staggered card animations */
+  opacity: 0;
+  animation: welcomeFadeIn 350ms ease-out forwards;
+}
+
+/* Stagger individual question cards (offset from prompts section) */
+.questionCard:nth-child(1) {
+  animation-delay: 250ms;
+}
+.questionCard:nth-child(2) {
+  animation-delay: 300ms;
+}
+.questionCard:nth-child(3) {
+  animation-delay: 350ms;
+}
+.questionCard:nth-child(4) {
+  animation-delay: 400ms;
+}
+
+.questionCard:hover {
+  background: var(--ink-ecru-20);
+}
+
+/* ============================================================================
+   Scrollbar Styling - Hidden but scrollable
+   ============================================================================ */
+
+.messageList {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.messageList::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* ============================================================================
+   Feedback Buttons
+   ============================================================================ */
+
+.feedbackActive {
+  color: var(--ink-cobalt-100);
+  background: var(--ink-cobalt-10);
+}
+
+.feedbackActive:hover {
+  background: var(--ink-cobalt-20);
+}

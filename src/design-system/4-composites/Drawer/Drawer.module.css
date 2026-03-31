@@ -1,0 +1,279 @@
+/* Container and Overlay */
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ink-neutral-fade-50);
+  pointer-events: auto;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Drawer Base */
+.drawer {
+  position: absolute;
+  background: white;
+  box-shadow: var(--ink-shadow-xl);
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* Position Variants */
+.drawer.left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.drawer.right {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.drawer.top {
+  top: 0;
+  left: 0;
+  right: 0;
+  animation: slideInTop 0.3s ease-out;
+}
+
+.drawer.bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: slideInBottom 0.3s ease-out;
+}
+
+/* Size Variants - Horizontal (left/right) */
+.drawer.left.small,
+.drawer.right.small {
+  width: 300px;
+}
+
+.drawer.left.medium,
+.drawer.right.medium {
+  width: 400px;
+}
+
+.drawer.left.large,
+.drawer.right.large {
+  width: 600px;
+}
+
+.drawer.left.full,
+.drawer.right.full {
+  width: calc(100vw - 60px);
+}
+
+/* Size Variants - Vertical (top/bottom) */
+.drawer.top.small,
+.drawer.bottom.small {
+  height: 200px;
+}
+
+.drawer.top.medium,
+.drawer.bottom.medium {
+  height: 300px;
+}
+
+.drawer.top.large,
+.drawer.bottom.large {
+  height: 500px;
+}
+
+.drawer.top.full,
+.drawer.bottom.full {
+  height: calc(100vh - 60px);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-lg) var(--ink-spacing-xl);
+  border-bottom: 1px solid var(--ink-neutral-30);
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+}
+
+.title h2 {
+  margin: 0;
+  font-size: var(--ink-font-size-lg);
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-neutral-100);
+  line-height: var(--ink-line-height-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-md);
+  margin-left: var(--ink-spacing-lg);
+  flex-shrink: 0;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--ink-radius-md);
+  cursor: pointer;
+  color: var(--ink-neutral-70);
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.closeButton:hover {
+  background: var(--ink-neutral-20);
+  color: var(--ink-neutral-100);
+}
+
+.closeButton:focus {
+  outline: 2px solid var(--ink-cobalt-60);
+  outline-offset: 2px;
+}
+
+/* Body */
+.body {
+  flex: 1;
+  padding: var(--ink-spacing-xl);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+}
+
+/* Custom scrollbar */
+.body::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.body::-webkit-scrollbar-track {
+  background: var(--ink-neutral-10);
+}
+
+.body::-webkit-scrollbar-thumb {
+  background: var(--ink-neutral-40);
+  border-radius: 4px;
+}
+
+.body::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-neutral-50);
+}
+
+/* Footer */
+.footer {
+  padding: var(--ink-spacing-lg) var(--ink-spacing-xl);
+  border-top: 1px solid var(--ink-neutral-30);
+  background: var(--ink-neutral-10);
+  flex-shrink: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .drawer.left.small,
+  .drawer.left.medium,
+  .drawer.left.large,
+  .drawer.left.full,
+  .drawer.right.small,
+  .drawer.right.medium,
+  .drawer.right.large,
+  .drawer.right.full {
+    width: calc(100vw - 20px);
+  }
+
+  .drawer.top,
+  .drawer.bottom {
+    height: auto;
+    max-height: calc(100vh - 20px);
+  }
+
+  .header {
+    padding: var(--ink-spacing-md) var(--ink-spacing-lg);
+  }
+
+  .body {
+    padding: var(--ink-spacing-lg);
+  }
+
+  .footer {
+    padding: var(--ink-spacing-md) var(--ink-spacing-lg);
+  }
+}

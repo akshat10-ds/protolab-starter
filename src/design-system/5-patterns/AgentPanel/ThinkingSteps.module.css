@@ -1,0 +1,438 @@
+/**
+ * ThinkingSteps Component Styles
+ *
+ * Progressive reasoning visualization with warm amber accents.
+ * Uses Ink Design System tokens for consistent theming.
+ */
+
+@import '../../../design-system/1-tokens/tokens.css';
+
+/* =============================================================================
+   Container
+   ============================================================================= */
+
+.container {
+  background: linear-gradient(135deg, var(--ink-neutral-10) 0%, var(--ink-orange-10) 100%);
+  border-radius: var(--ink-radius-size-m);
+  border: 1px solid var(--ink-neutral-30);
+  overflow: hidden;
+  box-shadow: var(--ink-shadow-sm);
+  position: relative;
+}
+
+/* Subtle paper texture via noise */
+.container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+}
+
+/* =============================================================================
+   Header
+   ============================================================================= */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.header:hover {
+  background: var(--ink-orange-10);
+}
+
+.header:active {
+  background: var(--ink-orange-20);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-125);
+}
+
+.headerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ink-radius-size-s);
+  background: linear-gradient(135deg, var(--ink-orange-50) 0%, var(--ink-orange-60) 100%);
+  color: var(--ink-white-100);
+  box-shadow: var(--ink-shadow-sm);
+  position: relative;
+}
+
+/* Subtle glow animation for active thinking */
+.headerIcon::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 11px;
+  background: var(--ink-orange-50);
+  opacity: 0;
+  animation: thinkingGlow 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes thinkingGlow {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+}
+
+.headerIconComplete {
+  background: linear-gradient(135deg, var(--ink-green-70) 0%, var(--ink-green-80) 100%);
+  box-shadow: var(--ink-shadow-sm);
+}
+
+.headerIconComplete::after {
+  display: none;
+}
+
+.headerIconError {
+  background: linear-gradient(135deg, var(--ink-red-70) 0%, var(--ink-red-80) 100%);
+  box-shadow: var(--ink-shadow-sm);
+}
+
+.headerIconError::after {
+  display: none;
+}
+
+.headerTitle {
+  font-family: var(--ink-font-family), system-ui, sans-serif;
+  font-size: var(--ink-font-size-body-s);
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-neutral-110);
+  letter-spacing: -0.01em;
+}
+
+.headerProgress {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: var(--ink-font-size-body-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-neutral-70);
+  padding: 3px var(--ink-spacing-100);
+  background: var(--ink-neutral-15);
+  border-radius: var(--ink-radius-size-xs);
+  border: 1px solid var(--ink-neutral-30);
+  letter-spacing: 0.02em;
+}
+
+.headerChevron {
+  color: var(--ink-neutral-60);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header[aria-expanded='true'] .headerChevron {
+  transform: rotate(180deg);
+}
+
+/* =============================================================================
+   Steps List
+   ============================================================================= */
+
+.stepsList {
+  display: flex;
+  flex-direction: column;
+  padding: var(--ink-spacing-50) var(--ink-spacing-200) var(--ink-spacing-200);
+  gap: 2px;
+}
+
+/* =============================================================================
+   Individual Step
+   ============================================================================= */
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-150);
+  padding: var(--ink-spacing-125) 0;
+  position: relative;
+  opacity: 1;
+  transform: translateX(0);
+  animation: stepSlideIn 300ms cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+@keyframes stepSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+
+/* Stagger animation for each step */
+.step:nth-child(1) {
+  animation-delay: 0ms;
+}
+.step:nth-child(2) {
+  animation-delay: 50ms;
+}
+.step:nth-child(3) {
+  animation-delay: 100ms;
+}
+.step:nth-child(4) {
+  animation-delay: 150ms;
+}
+.step:nth-child(5) {
+  animation-delay: 200ms;
+}
+.step:nth-child(6) {
+  animation-delay: 250ms;
+}
+.step:nth-child(7) {
+  animation-delay: 300ms;
+}
+.step:nth-child(8) {
+  animation-delay: 350ms;
+}
+
+/* Connector line between steps */
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 32px;
+  bottom: -4px;
+  width: 2px;
+  background: var(--ink-neutral-30);
+  border-radius: 1px;
+  transition: background 300ms ease;
+}
+
+.stepComplete:not(:last-child)::after {
+  background: var(--ink-green-70);
+}
+
+.stepActive:not(:last-child)::after {
+  background: linear-gradient(to bottom, var(--ink-orange-50) 0%, var(--ink-neutral-30) 100%);
+}
+
+/* =============================================================================
+   Step Icon
+   ============================================================================= */
+
+.stepIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--ink-radius-size-full);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stepIconComplete {
+  background: var(--ink-green-70);
+  color: var(--ink-white-100);
+  box-shadow: var(--ink-shadow-sm);
+}
+
+.stepIconActive {
+  background: linear-gradient(135deg, var(--ink-orange-50) 0%, var(--ink-orange-60) 100%);
+  box-shadow:
+    0 0 0 4px var(--ink-orange-20),
+    var(--ink-shadow-sm);
+}
+
+.stepIconError {
+  background: var(--ink-red-70);
+  color: var(--ink-white-100);
+  box-shadow: var(--ink-shadow-sm);
+}
+
+.stepIconPending {
+  background: var(--ink-neutral-15);
+  border: 2px solid var(--ink-neutral-30);
+}
+
+.stepIconDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--ink-radius-size-full);
+  background: var(--ink-neutral-60);
+}
+
+.stepIconPulse {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--ink-radius-size-full);
+  background: var(--ink-white-100);
+  animation: activePulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes activePulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.75);
+  }
+}
+
+/* =============================================================================
+   Step Content
+   ============================================================================= */
+
+.stepContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  padding-top: 2px;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-150);
+}
+
+.stepTitle {
+  font-family: var(--ink-font-family), system-ui, sans-serif;
+  font-size: var(--ink-font-size-body-s);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-neutral-100);
+  line-height: 1.4;
+  transition: color 200ms ease;
+}
+
+.stepPending .stepTitle {
+  color: var(--ink-neutral-60);
+}
+
+.stepActive .stepTitle {
+  color: var(--ink-neutral-130);
+  font-weight: var(--ink-font-weight-semibold);
+}
+
+.stepComplete .stepTitle {
+  color: var(--ink-neutral-80);
+}
+
+.stepDuration {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: var(--ink-font-size-body-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-neutral-60);
+  padding: 2px var(--ink-spacing-50);
+  background: var(--ink-neutral-15);
+  border-radius: var(--ink-radius-size-xs);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.stepProgress {
+  max-width: 180px;
+  margin-top: 2px;
+}
+
+.stepDescription {
+  font-family: var(--ink-font-family), system-ui, sans-serif;
+  font-size: var(--ink-font-size-body-xs);
+  color: var(--ink-neutral-70);
+  line-height: 1.5;
+}
+
+.stepError {
+  font-family: var(--ink-font-family), system-ui, sans-serif;
+  font-size: var(--ink-font-size-body-xs);
+  color: var(--ink-red-90);
+  background: var(--ink-red-10);
+  padding: var(--ink-spacing-50) var(--ink-spacing-125);
+  border-radius: var(--ink-radius-size-xs);
+  line-height: 1.4;
+}
+
+/* =============================================================================
+   Streaming Text Effect
+   ============================================================================= */
+
+.streamingText {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: var(--ink-font-size-body-xs);
+  color: var(--ink-neutral-80);
+  background: var(--ink-neutral-10);
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  border-radius: var(--ink-radius-size-xs);
+  border: 1px solid var(--ink-neutral-30);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.streamingText::after {
+  content: '▋';
+  animation: cursorBlink 1s steps(1) infinite;
+  color: var(--ink-orange-60);
+}
+
+@keyframes cursorBlink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =============================================================================
+   Tool Call Display
+   ============================================================================= */
+
+.toolCall {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  font-size: var(--ink-font-size-body-xs);
+  background: var(--ink-neutral-110);
+  color: var(--ink-neutral-15);
+  padding: var(--ink-spacing-125) var(--ink-spacing-150);
+  border-radius: var(--ink-radius-size-s);
+  margin-top: var(--ink-spacing-50);
+  position: relative;
+  overflow: hidden;
+}
+
+.toolCall::before {
+  content: '>';
+  color: var(--ink-orange-50);
+  margin-right: var(--ink-spacing-100);
+  font-weight: var(--ink-font-weight-semibold);
+}
+
+.toolCallName {
+  color: var(--ink-orange-40);
+  font-weight: var(--ink-font-weight-semibold);
+}
+
+.toolCallParams {
+  color: var(--ink-neutral-60);
+  margin-left: var(--ink-spacing-50);
+}

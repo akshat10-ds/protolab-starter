@@ -1,0 +1,74 @@
+/* Ink Design System - Status Badge - Exact Figma Specs (node-id: 83-2801) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ink-font-family);
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  font-size: var(--ink-font-badge-size); /* fontBadge: 12px from Figma */
+  line-height: var(--ink-font-badge-line-height); /* fontBadge: 1.5 from Figma */
+  letter-spacing: 0.16px; /* font.letterSpacing.wide from Figma */
+  border-radius: var(--ink-radius-size-xs); /* radiusSizeXS: 4px from Figma */
+  /* Figma: pl-[4px] pr-[8px] - asymmetric padding */
+  padding-left: var(--ink-spacing-50); /* gap50: 4px */
+  padding-right: var(--ink-spacing-100); /* gap100: 8px */
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 24px;
+  min-width: 30px; /* from Figma min-w-[30px] */
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.text {
+  /* Figma: text.padding has pl-[4px] */
+  padding-left: var(--ink-spacing-50); /* 4px from Figma */
+}
+
+/* Variant: subtle (neutral/default) */
+.badge.subtle {
+  background-color: var(--ink-neutral-20); /* statusBgColorSubtle #f0eff0 */
+  color: var(--ink-neutral-fade-70); /* fontColorSubtle rgba(19,0,50,0.7) */
+}
+
+/* Variant: emphasis (cobalt/primary) */
+.badge.emphasis {
+  background-color: var(--ink-neutral-110); /* statusBgColorEmphasis */
+  color: var(--ink-white-100); /* fontColorInverse #ffffff */
+}
+
+/* Variant: success */
+.badge.success {
+  background-color: var(--ink-green-20); /* statusBgColorSuccess #b9f6dd */
+  color: var(--ink-green-100); /* fontColorSuccessEmphasis #005f43 */
+}
+
+/* Variant: warning */
+.badge.warning {
+  background-color: var(--ink-orange-20); /* statusBgColorWarning #fce1c2 */
+  color: var(--ink-orange-100); /* fontColorWarningEmphasis #a52608 */
+}
+
+/* Variant: alert (error/danger) */
+.badge.alert {
+  background-color: var(--ink-red-20); /* statusBgColorAlert #fee8ea */
+  color: var(--ink-red-100); /* fontColorErrorEmphasis */
+}
+
+/* Variant: promo (purple accent) */
+.badge.promo {
+  background-color: var(--ink-cobalt-110); /* statusBgColorAccent #4200ca */
+  color: var(--ink-white-100); /* fontColorInverse #ffffff */
+}
+
+/* Variant: promoSubtle (light purple accent) */
+.badge.promoSubtle {
+  background-color: var(--ink-cobalt-20); /* statusBgColorAccent #e9e6fd */
+  color: var(--ink-cobalt-110); /* fontColorAccentEmphasis #4200ca */
+}

@@ -1,0 +1,640 @@
+/**
+ * DataTable Styles - Production Match
+ *
+ * CSS values mapped from DocuSign Navigator production table to Ink design tokens.
+ * These values are equivalent to production @ds/tokens.
+ */
+
+@import '../../1-tokens/tokens.css';
+
+/* =============================================================================
+   CSS Custom Properties - Production Values via Design Tokens
+   ============================================================================= */
+
+.wrapper {
+  /* Backgrounds - mapped to Ink tokens */
+  --dt-bg-default: var(--ink-white-100);
+  --dt-bg-canvas-page: var(--ink-bg-color-canvas-page);
+  --dt-bg-canvas-document: var(--ink-bg-color-canvas-document);
+
+  /* Borders - mapped to Ink tokens */
+  --dt-border-subtle: var(--ink-neutral-fade-10);
+  --dt-border-default: var(--ink-neutral-fade-50);
+
+  /* Interactive States - EXACT production values via Ink tokens */
+  --dt-hover-bg: var(--ink-item-bg-color-active-subtle);
+  --dt-selected-bg: var(--ink-item-bg-color-selected-subtle);
+
+  /* Text - mapped to Ink tokens */
+  --dt-text-default: var(--ink-font-color-default);
+  --dt-text-secondary: var(--ink-neutral-fade-60);
+  --dt-text-inverse: var(--ink-white-100);
+
+  /* Spacing - using Ink spacing tokens */
+  --dt-cell-padding-h: var(--ink-spacing-200);
+  --dt-cell-padding-v: var(--ink-spacing-50);
+  --dt-gap-xxs: var(--ink-spacing-100);
+  --dt-gap-xs: var(--ink-spacing-200);
+  --dt-gap-s: var(--ink-spacing-300);
+  --dt-gap-m: var(--ink-spacing-400);
+
+  /* Row Heights */
+  --dt-row-compact: 48px;
+  --dt-row-default: 56px;
+  --dt-row-tall: 96px;
+
+  /* Header Height */
+  --dt-header-height: 49px;
+
+  /* Z-Index Hierarchy - Footer must be above sticky columns (100-200) */
+  --dt-z-header: 91;
+  --dt-z-footer: 210;
+  --dt-z-header-wrapper: 93;
+
+  /* Shadows - using Ink elevation tokens */
+  --dt-elevation-low: var(--ink-elevation-low);
+  --dt-elevation-medium: var(--ink-elevation-medium);
+
+  /* Border Radius - using Ink radius tokens */
+  --dt-radius-default: var(--ink-radius-size-xs);
+  --dt-radius-alternate: var(--ink-radius-size-s);
+
+  /* Transitions */
+  --dt-transition-fast: var(--ink-transition-fast);
+}
+
+/* =============================================================================
+   Table Wrapper
+   ============================================================================= */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--dt-bg-default);
+}
+
+/* =============================================================================
+   Container (scrollable area)
+   ============================================================================= */
+
+.container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =============================================================================
+   Table Base
+   ============================================================================= */
+
+.table {
+  width: 100%;
+  min-width: max-content; /* Force table to expand for all columns */
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--dt-bg-default);
+  font-family: var(--ink-font-family);
+}
+
+/* =============================================================================
+   Table Header - Production Match
+   ============================================================================= */
+
+.thead {
+  background: var(--dt-bg-default); /* White background */
+}
+
+.th {
+  min-height: var(--dt-header-height);
+  height: var(--dt-header-height);
+  padding: var(--dt-cell-padding-v) var(--dt-cell-padding-h);
+  text-align: left;
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-semibold);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--dt-text-default);
+  white-space: nowrap;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--dt-border-subtle);
+  background: var(--dt-bg-default); /* White background, not canvas */
+  /* No z-index or position on regular headers - let sticky columns naturally stack on top */
+}
+
+/* Sticky Header - apply to th cells for better browser support */
+.stickyHeader .th {
+  position: sticky;
+  top: 0;
+  /* Low z-index for non-sticky columns - they should scroll UNDER sticky columns */
+  z-index: 1;
+  background: var(--dt-bg-default);
+}
+
+/* Sticky Column - MUST have higher z-index to cover non-sticky columns */
+.th.stickyColumn,
+.td.stickyColumn {
+  position: sticky;
+  /* High z-index to always render on top of non-sticky cells */
+  z-index: 100 !important;
+  /* Opaque white background - critical for hiding scrolled content */
+  background-color: var(--ink-white-100) !important;
+}
+
+/* When header is also sticky (both vertical and horizontal sticky) */
+.stickyHeader .th.stickyColumn {
+  z-index: 200 !important;
+}
+
+/* Shadow on sticky column edge for visual separation */
+.th.stickyColumn::after,
+.td.stickyColumn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -8px;
+  bottom: 0;
+  width: 8px;
+  pointer-events: none;
+  background: linear-gradient(to right, var(--ink-neutral-fade-10), transparent);
+  opacity: 0;
+  transition: opacity var(--dt-transition-fast);
+}
+
+/* Show shadow when container is scrolled */
+.container.isScrolled .th.stickyColumn::after,
+.container.isScrolled .td.stickyColumn::after {
+  opacity: 1;
+}
+
+/* Maintain background on hover for sticky column - layer hover over opaque white */
+.tr:hover .td.stickyColumn {
+  background: linear-gradient(var(--dt-hover-bg), var(--dt-hover-bg)), var(--ink-white-100) !important;
+}
+
+.tr.selected .td.stickyColumn {
+  background: linear-gradient(var(--dt-selected-bg), var(--dt-selected-bg)), var(--ink-white-100) !important;
+}
+
+.tr.selected:hover .td.stickyColumn {
+  background: linear-gradient(var(--dt-hover-bg), var(--dt-hover-bg)), var(--ink-white-100) !important;
+}
+
+/* Header Content */
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--dt-gap-xxs);
+}
+
+/* Header Alignment */
+.th.alignLeft .headerContent {
+  justify-content: flex-start;
+}
+
+.th.alignCenter .headerContent {
+  justify-content: center;
+}
+
+.th.alignRight .headerContent {
+  justify-content: flex-end;
+}
+
+/* Sortable Columns */
+.th.sortable {
+  cursor: pointer;
+  user-select: none;
+  /* No background change on hover - matches production */
+}
+
+.sortIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--dt-text-default);
+  /* Full opacity always - matches IconButton behavior */
+}
+
+/* =============================================================================
+   Table Body
+   ============================================================================= */
+
+.tbody {
+  background: var(--dt-bg-default);
+}
+
+/* =============================================================================
+   Table Row - Production Match
+   ============================================================================= */
+
+.tr {
+  transition: background-color var(--dt-transition-fast);
+}
+
+/* Row border applied via cells since border-collapse: separate doesn't show tr borders */
+.tbody .tr .td {
+  border-bottom: 1px solid var(--dt-border-subtle);
+}
+
+.tbody .tr:last-child .td {
+  border-bottom: none;
+}
+
+/* Hover State - apply to cells since they have explicit backgrounds */
+.tr:hover .td {
+  background-color: var(--dt-hover-bg);
+}
+
+/* Selected State - apply to cells since they have explicit backgrounds */
+.tr.selected .td {
+  background-color: var(--dt-selected-bg);
+}
+
+/* Selected + Hover */
+.tr.selected:hover .td {
+  background-color: var(--dt-hover-bg);
+}
+
+/* Clickable Row */
+.tr.clickable {
+  cursor: pointer;
+}
+
+/* =============================================================================
+   Table Cells - Production Match
+   ============================================================================= */
+
+.td {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+  line-height: 1.4;
+  color: var(--dt-text-default);
+  vertical-align: middle;
+  /* Explicit background for proper stacking with sticky columns */
+  background-color: var(--dt-bg-default);
+  /* No z-index or position on regular cells - let sticky cells naturally stack on top */
+}
+
+/* Row Height Variants */
+.rowCompact .td {
+  height: var(--dt-row-compact);
+  padding: var(--dt-cell-padding-v) var(--dt-cell-padding-h);
+}
+
+.rowDefault .td {
+  height: var(--dt-row-default);
+  padding: var(--dt-cell-padding-v) var(--dt-cell-padding-h);
+}
+
+.rowTall .td {
+  height: var(--dt-row-tall);
+  padding: var(--dt-gap-xxs) var(--dt-cell-padding-h);
+}
+
+/* Cell Alignment */
+.td.alignLeft {
+  text-align: left;
+}
+
+.td.alignCenter {
+  text-align: center;
+}
+
+.td.alignRight {
+  text-align: right;
+}
+
+/* =============================================================================
+   Checkbox Cell
+   ============================================================================= */
+
+.checkboxCell {
+  width: 56px;
+  text-align: center;
+  vertical-align: middle;
+  padding-left: var(--dt-cell-padding-h);
+  padding-right: var(--dt-cell-padding-h);
+  /* Make checkbox cell sticky */
+  position: sticky;
+  left: 0;
+  z-index: 100 !important;
+  background-color: var(--ink-white-100) !important;
+}
+
+/* Checkbox cell hover state - only for body rows, not header */
+.tbody .tr:hover .checkboxCell {
+  background: linear-gradient(var(--dt-hover-bg), var(--dt-hover-bg)), var(--ink-white-100) !important;
+}
+
+.tbody .tr.selected .checkboxCell {
+  background: linear-gradient(var(--dt-selected-bg), var(--dt-selected-bg)), var(--ink-white-100) !important;
+}
+
+.tbody .tr.selected:hover .checkboxCell {
+  background: linear-gradient(var(--dt-hover-bg), var(--dt-hover-bg)), var(--ink-white-100) !important;
+}
+
+/* Header checkbox cell needs higher z-index */
+.th.checkboxCell {
+  z-index: 200 !important;
+}
+
+.stickyHeader .th.checkboxCell {
+  z-index: 200 !important;
+}
+
+/* Ensure checkbox is centered in cell */
+.checkboxCell > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============================================================================
+   Column Control Cell
+   ============================================================================= */
+
+.columnControlCell {
+  width: 48px;
+  text-align: center;
+  padding: 0 var(--dt-gap-xxs);
+}
+
+.columnControlButton {
+  /* No opacity change - matches DocuSign production */
+}
+
+/* =============================================================================
+   Loading State
+   ============================================================================= */
+
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--dt-gap-m);
+  min-height: 200px;
+  background: var(--dt-bg-default);
+}
+
+.spinner {
+  color: var(--dt-text-secondary);
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+}
+
+/* =============================================================================
+   Empty State
+   ============================================================================= */
+
+.emptyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--dt-gap-m);
+  min-height: 200px;
+  background: var(--dt-bg-default);
+}
+
+.emptyMessage {
+  color: var(--dt-text-secondary);
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+  text-align: center;
+}
+
+/* =============================================================================
+   Cell Content Helpers
+   ============================================================================= */
+
+.cellContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  min-width: 0; /* Allow flex children to shrink below content size */
+}
+
+.cellPrimary {
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--dt-text-default);
+  line-height: 1.4;
+  /* Truncation for long text */
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cellSecondary {
+  font-size: var(--ink-font-size-xs);
+  color: var(--dt-text-secondary);
+  line-height: 1.4;
+  /* Truncation for long text */
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cellSecondary a {
+  color: var(--dt-text-secondary); /* Subtle link color matching secondary text */
+  text-decoration: none;
+}
+
+.cellSecondary a:hover {
+  text-decoration: underline;
+}
+
+/* =============================================================================
+   Column Border Helper
+   ============================================================================= */
+
+.columnBorderRight {
+  border-right: 1px solid var(--dt-border-subtle);
+}
+
+/* =============================================================================
+   Status Indicators
+   ============================================================================= */
+
+.statusCell {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px; /* Align with first line of text when using flex-start */
+  background: var(--ink-neutral-40);
+}
+
+/* Status via class names */
+.statusDot.active {
+  background: var(--ink-icon-color-success);
+}
+
+.statusDot.inactive {
+  background: var(--ink-neutral-40);
+}
+
+.statusDot.warning {
+  background: var(--ink-status-warn-icon-color);
+}
+
+.statusDot.error {
+  background: var(--ink-status-critical-icon-color);
+}
+
+/* Status via data attributes (alternative API) */
+.statusDot[data-status='active'] {
+  background: var(--ink-icon-color-success);
+}
+
+.statusDot[data-status='inactive'],
+.statusDot[data-status='expired'] {
+  background: var(--ink-neutral-40);
+}
+
+.statusDot[data-status='warning'],
+.statusDot[data-status='pending'] {
+  background: var(--ink-status-warn-icon-color);
+}
+
+.statusDot[data-status='error'],
+.statusDot[data-status='failed'] {
+  background: var(--ink-status-critical-icon-color);
+}
+
+.statusText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statusLabel {
+  font-size: var(--ink-font-size-sm);
+  color: var(--dt-text-default);
+  line-height: 1.4;
+}
+
+.statusDate {
+  font-size: var(--ink-font-size-xs);
+  color: var(--dt-text-secondary);
+  line-height: 1.4;
+}
+
+/* AI sparkle indicator */
+.aiSparkle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============================================================================
+   Party Chips (DocuSign Navigator style)
+   ============================================================================= */
+
+.partyChip {
+  display: inline-block;
+  background-color: var(--ink-cobalt-10);
+  padding: 1px 8px;
+  border-radius: 0;
+  border-bottom: 1px dashed var(--ink-cobalt-50);
+
+  /* Single line with ellipsis truncation */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+
+  /* Typography */
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-regular);
+  line-height: 1.4;
+  color: var(--dt-text-default);
+}
+
+/* Party link - dark text with underline */
+.partyLink {
+  display: inline;
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-link-subtle-default);
+  text-decoration: underline;
+  line-height: 1.4;
+}
+
+.partyLink:hover {
+  text-decoration: underline;
+  color: var(--ink-font-color-link-subtle-hover);
+}
+
+/* +X More link - no chip background */
+.partyMoreLink {
+  display: block;
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-link-subtle-default);
+  text-decoration: underline;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.partyMoreLink:hover {
+  color: var(--ink-font-color-link-subtle-hover);
+}
+
+/* =============================================================================
+   Agreement ID (Monospace)
+   ============================================================================= */
+
+.agreementId {
+  font-size: var(--ink-font-size-xs);
+  font-family: var(--ink-font-family-mono, monospace);
+  color: var(--dt-text-default);
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+/* =============================================================================
+   Actions Cell
+   ============================================================================= */
+
+.actionsCellContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--dt-gap-xxs);
+}
+
+/* =============================================================================
+   Scrollbar Styling
+   ============================================================================= */
+
+.container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: var(--dt-bg-canvas-page);
+  border-radius: var(--dt-radius-alternate);
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: var(--ink-neutral-fade-30);
+  border-radius: var(--dt-radius-alternate);
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-neutral-fade-50);
+}

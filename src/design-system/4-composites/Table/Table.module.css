@@ -1,0 +1,580 @@
+/* Ink Design System - Table - Production Match */
+@import '../../1-tokens/tokens.css';
+
+/* ==========================================================================
+   Table Wrapper (for action bar + table + pagination)
+   ========================================================================== */
+
+.tableWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Container
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table Base */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--ink-white-100); /* #ffffff */
+  font-family: var(--ink-font-family);
+}
+
+/* Table Variants */
+.table.bordered {
+  border: 1px solid var(--ink-neutral-30); /* #e5e4e5 */
+  border-radius: var(--ink-radius-md); /* 8px */
+  overflow: hidden;
+}
+
+.table.striped tbody tr:nth-child(even) {
+  background: var(--ink-neutral-10); /* #f7f6f7 */
+}
+
+/* Table Sizes - Exact Figma Specs */
+/* Header cells - DocuSign uses 49px height, 4px vertical padding */
+.th {
+  min-height: 49px;
+  height: 49px;
+  padding: var(--ink-spacing-50) var(--ink-spacing-200); /* 4px vertical, 16px horizontal - matches DocuSign */
+}
+
+/* Compact: 48px row height */
+.table.small .td {
+  height: 48px;
+  padding: var(--ink-spacing-50) var(--ink-spacing-200); /* 4px vertical, 16px horizontal */
+}
+
+/* Default/Medium: 65px row height - matches DocuSign production */
+.table.medium .td {
+  height: 65px;
+  padding: var(--ink-spacing-50) var(--ink-spacing-200); /* 4px vertical, 16px horizontal */
+}
+
+/* Tall/Large: 96px row height */
+.table.large .td {
+  height: 96px;
+  padding: var(--ink-spacing-100) var(--ink-spacing-200); /* 8px vertical, 16px horizontal */
+}
+
+/* Table Header - Production Match (light gray) */
+.thead {
+  background: var(--ink-neutral-10); /* Light gray background - matches production */
+}
+
+.th {
+  text-align: left;
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-semibold); /* 600 */
+  line-height: 1.5;
+  letter-spacing: 0.12px; /* Matches DocuSign */
+  color: var(--ink-font-color-default); /* rgba(19,0,50,0.9) */
+  white-space: nowrap;
+  position: relative;
+  vertical-align: middle;
+}
+
+/* Sticky Header */
+.table.stickyHeader .thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Header Content */
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50); /* 4px */
+}
+
+/* Header Content Alignment - Figma Spec */
+.align-left .headerContent {
+  justify-content: flex-start;
+}
+
+.align-center .headerContent {
+  justify-content: center;
+}
+
+.align-right .headerContent {
+  justify-content: flex-end;
+}
+
+/* Sortable Columns */
+.th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--ink-transition-fast);
+}
+
+.th.sortable:hover {
+  background: var(--ink-neutral-20); /* #f0eff0 */
+}
+
+.sortIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--ink-font-color-default);
+  transition: color var(--ink-transition-fast);
+}
+
+/* Table Body - From Figma */
+.tbody {
+  background: var(--ink-white-100);
+}
+
+.tr {
+  border-bottom: 1px solid var(--ink-neutral-fade-5); /* More subtle border - matches production */
+  transition: background-color var(--ink-transition-fast);
+}
+
+.tbody .tr:last-child {
+  border-bottom: none;
+}
+
+/* Hoverable Rows - Subtle hover from Figma */
+.table.hoverable .tbody .tr:hover {
+  background: var(--ink-neutral-10); /* #f7f6f7 */
+}
+
+/* Clickable Rows */
+.tr.clickable {
+  cursor: pointer;
+}
+
+/* Selected Rows - Production Match (light purple) */
+.tr.selected {
+  background: var(--ink-cobalt-10) !important; /* Light purple - matches production */
+}
+
+/* Table Cells - Matches DocuSign production */
+.td {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px - matches DocuSign */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: 1.4; /* ~19.6px at 14px base - matches DocuSign */
+  color: var(--ink-font-color-default); /* rgba(19,0,50,0.9) */
+  vertical-align: middle;
+}
+
+/* Text Alignment */
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+/* Checkbox Cell - Using design system Checkbox component */
+.checkboxCell {
+  width: 56px; /* 56px from Figma for checkbox column */
+  text-align: center;
+  padding-left: var(--ink-spacing-200); /* 16px */
+  padding-right: var(--ink-spacing-200); /* 16px */
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ink-spacing-500); /* 40px */
+  min-height: 200px;
+  background: var(--ink-white-100);
+  border: 1px solid var(--ink-neutral-30);
+  border-radius: var(--ink-radius-md); /* 8px */
+}
+
+.spinner {
+  color: var(--ink-neutral-fade-60); /* rgba(19,0,50,0.6) */
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-body-m-size); /* 14px */
+  font-weight: var(--ink-font-weight-regular);
+}
+
+/* Empty State */
+.emptyContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ink-spacing-500); /* 40px */
+  min-height: 200px;
+  background: var(--ink-white-100);
+  border: 1px solid var(--ink-neutral-30);
+  border-radius: var(--ink-radius-md); /* 8px */
+}
+
+.emptyMessage {
+  color: var(--ink-neutral-fade-60); /* rgba(19,0,50,0.6) */
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-body-m-size); /* 14px */
+  font-weight: var(--ink-font-weight-regular);
+  text-align: center;
+}
+
+/* Action Cell Styling - For icon buttons */
+.actionCell {
+  width: 80px;
+  text-align: center;
+}
+
+.actionButtons {
+  display: flex;
+  gap: var(--ink-spacing-50); /* 4px */
+  justify-content: center;
+  align-items: center;
+}
+
+.actionButton {
+  background: transparent;
+  border: none;
+  padding: var(--ink-spacing-50); /* 4px */
+  cursor: pointer;
+  border-radius: var(--ink-radius-sm); /* 4px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-neutral-fade-70);
+  transition: all var(--ink-transition-fast);
+}
+
+.actionButton:hover {
+  background: var(--ink-neutral-20);
+  color: var(--ink-neutral-fade-90);
+}
+
+.actionButton:active {
+  background: var(--ink-neutral-30);
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .container.responsive {
+    border: 0;
+  }
+
+  .container.responsive .table,
+  .container.responsive .thead,
+  .container.responsive .tbody,
+  .container.responsive .th,
+  .container.responsive .td,
+  .container.responsive .tr {
+    display: block;
+  }
+
+  .container.responsive .thead .tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .container.responsive .tr {
+    border: 1px solid var(--ink-neutral-30);
+    border-radius: var(--ink-radius-md); /* 8px */
+    margin-bottom: var(--ink-spacing-200); /* 16px */
+    padding: var(--ink-spacing-200); /* 16px */
+  }
+
+  .container.responsive .td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+  }
+
+  .container.responsive .td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: var(--ink-spacing-200); /* 16px */
+    width: 45%;
+    padding-right: var(--ink-spacing-100); /* 8px */
+    white-space: nowrap;
+    font-weight: var(--ink-font-weight-medium); /* 500 */
+    color: var(--ink-neutral-fade-70);
+    text-align: left;
+  }
+
+  .container.responsive .checkboxCell {
+    padding-left: var(--ink-spacing-200);
+  }
+
+  .container.responsive .checkboxCell:before {
+    content: 'Select';
+  }
+
+  .container.responsive .td.align-center,
+  .container.responsive .td.align-right {
+    text-align: left;
+  }
+}
+
+/* Scrollbar Styling - Matching Ink Design */
+.container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: var(--ink-neutral-10);
+  border-radius: var(--ink-radius-sm); /* 4px */
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: var(--ink-neutral-40);
+  border-radius: var(--ink-radius-sm); /* 4px */
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-neutral-50);
+}
+
+/* ==========================================================================
+   NEW: Column Control Cell
+   ========================================================================== */
+
+.columnControlCell {
+  width: 48px;
+  text-align: center;
+  padding: 0 var(--ink-spacing-100) !important;
+}
+
+.columnControlButton {
+  /* No opacity change - matches DocuSign production */
+}
+
+/* ==========================================================================
+   NEW: Favorite Column
+   ========================================================================== */
+
+.favoriteCell {
+  width: 48px;
+  text-align: center;
+  padding: 0 var(--ink-spacing-50) !important;
+}
+
+.favoriteButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-neutral-fade-40);
+  padding: var(--ink-spacing-50);
+  border-radius: var(--ink-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--ink-transition-fast);
+}
+
+.favoriteButton:hover {
+  color: var(--ink-orange-50);
+}
+
+.favoriteButton.active {
+  color: var(--ink-orange-60);
+}
+
+/* ==========================================================================
+   NEW: Multi-line Cell Content
+   ========================================================================== */
+
+.cellContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-25);
+}
+
+.cellPrimary {
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  line-height: 1.4;
+}
+
+.cellSecondary {
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-neutral-fade-60);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}
+
+.cellSecondary a {
+  color: var(--ink-neutral-fade-60); /* Subtle link color matching secondary text */
+  text-decoration: none;
+}
+
+.cellSecondary a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   NEW: Status Cell with Dot
+   ========================================================================== */
+
+.statusCell {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.statusDot.active {
+  background: var(--ink-status-success);
+}
+
+.statusDot.inactive {
+  background: var(--ink-neutral-40);
+}
+
+.statusDot.warning {
+  background: var(--ink-status-warning);
+}
+
+.statusDot.error {
+  background: var(--ink-status-error);
+}
+
+.statusText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-25);
+}
+
+.statusLabel {
+  color: var(--ink-font-color-default);
+}
+
+.statusDate {
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-neutral-fade-60);
+}
+
+/* ==========================================================================
+   NEW: Hover Action Icons
+   ========================================================================== */
+
+.hoverActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  opacity: 0;
+  transition: opacity var(--ink-transition-fast);
+}
+
+.tr:hover .hoverActions {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   NEW: Action Bar (Selection Actions)
+   ========================================================================== */
+
+.actionBar {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-200);
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  background: var(--ink-white-100);
+  border: 1px solid var(--ink-neutral-30);
+  border-radius: var(--ink-radius-md);
+  margin-bottom: var(--ink-spacing-100);
+  box-shadow: 0 2px 4px var(--ink-neutral-fade-5);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  overflow: hidden;
+  max-height: 0;
+}
+
+.actionBar.visible {
+  transform: translateY(0);
+  opacity: 1;
+  max-height: 60px;
+}
+
+.actionBarCount {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  white-space: nowrap;
+  padding-right: var(--ink-spacing-200);
+  border-right: 1px solid var(--ink-neutral-30);
+}
+
+.actionBarActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+/* ==========================================================================
+   NEW: Pagination Footer
+   ========================================================================== */
+
+.paginationFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  border-top: 1px solid var(--ink-neutral-fade-5);
+  background: var(--ink-white-100);
+}
+
+.paginationLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+.paginationPageSize {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+.paginationPageSizeLabel {
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-default);
+}
+
+.paginationRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-200);
+}
+
+.paginationInfo {
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-default);
+}
+
+.paginationNav {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}

@@ -1,0 +1,175 @@
+/* Ink Design System - FilterTag - Exact Figma Specs */
+
+/* Base FilterTag */
+.filterTag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  max-width: 280px;
+  padding: 0 var(--ink-spacing-100) 0 var(--ink-spacing-150); /* 0 8px 0 12px */
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-md); /* 14px */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+  background: transparent;
+  border: 1px solid var(--ink-form-control-border-color-default); /* rgba(19,0,50,0.5) */
+  border-radius: var(--ink-radius-size-xs); /* 4px */
+  cursor: pointer;
+  transition: all var(--ink-transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Label */
+.label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: var(--ink-spacing-50); /* 4px gap before trigger */
+  text-align: center;
+  max-width: 240px;
+}
+
+/* Trigger Icon */
+.trigger {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* Hover State - Inactive */
+.filterTag:hover:not(.active):not(.disabled) {
+  border-color: var(--ink-font-color-default); /* Emphasis border */
+}
+
+/* Active State - Inactive (pressed) */
+.filterTag:active:not(.active):not(.disabled) {
+  background: var(--ink-neutral-fade-15); /* var(--ctaBgColorTertiaryActive) */
+  border-width: 2px;
+  border-color: var(--ink-font-color-default);
+}
+
+/* Active Filter */
+.filterTag.active {
+  background: var(--ink-neutral-fade-5); /* var(--ctaBgColorTertiaryDefault) */
+  border: none;
+}
+
+/* Active - Hover */
+.filterTag.active:hover:not(.disabled) {
+  background: var(--ink-neutral-fade-10); /* var(--ctaBgColorTertiaryHover) */
+}
+
+/* Active - Active/Pressed */
+.filterTag.active:active:not(.disabled) {
+  background: var(--ink-neutral-fade-15); /* var(--ctaBgColorTertiaryActive) */
+}
+
+/* Disabled State */
+.filterTag.disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Dismissible Variant */
+.filterTag.dismissible {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  border: none;
+  background: transparent;
+}
+
+/* Tag Button (in dismissible variant) */
+.tagButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  max-width: 232px;
+  padding: 0 var(--ink-spacing-150); /* 12px horizontal */
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-md); /* 14px */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+  background: var(--ink-neutral-fade-5); /* Active background */
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color var(--ink-transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.tagButton .label {
+  padding-right: 0;
+  max-width: none;
+}
+
+/* Dismiss Button */
+.dismissButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: var(--ink-neutral-fade-5);
+  border: none;
+  border-left: 1px solid var(--ink-white-100); /* White divider */
+  cursor: pointer;
+  transition: background-color var(--ink-transition-fast);
+  flex-shrink: 0;
+  color: var(--ink-font-color-default);
+}
+
+/* Dismissible Hover States */
+.filterTag.dismissible .tagButton:hover:not(:disabled) {
+  background: var(--ink-neutral-fade-10); /* var(--ctaBgColorTertiaryHover) */
+}
+
+.filterTag.dismissible .tagButton:active:not(:disabled) {
+  background: var(--ink-neutral-fade-15); /* var(--ctaBgColorTertiaryActive) */
+}
+
+.filterTag.dismissible .dismissButton:hover:not(:disabled) {
+  background: var(--ink-neutral-fade-10); /* var(--ctaBgColorTertiaryHover) */
+}
+
+.filterTag.dismissible .dismissButton:active:not(:disabled) {
+  background: var(--ink-neutral-fade-15); /* var(--ctaBgColorTertiaryActive) */
+}
+
+/* Dismissible with border radius */
+.filterTag.dismissible {
+  border-radius: var(--ink-radius-size-xs); /* 4px */
+}
+
+/* Disabled Dismissible */
+.filterTag.dismissible.disabled {
+  opacity: 0.25;
+}
+
+.filterTag.dismissible.disabled .tagButton,
+.filterTag.dismissible.disabled .dismissButton {
+  cursor: not-allowed;
+}
+
+/* Focus States */
+.filterTag:focus-visible {
+  outline: 2px solid var(--ink-form-control-border-color-active);
+  outline-offset: 2px;
+}
+
+.filterTag.dismissible .tagButton:focus-visible,
+.filterTag.dismissible .dismissButton:focus-visible {
+  outline: 2px solid var(--ink-form-control-border-color-active);
+  outline-offset: -2px;
+}

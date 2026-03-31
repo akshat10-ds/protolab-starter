@@ -1,0 +1,129 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink-neutral-20);
+  color: var(--ink-neutral-70);
+  font-family: var(--ink-font-family);
+  font-weight: var(--ink-font-weight-medium); /* 500 from Figma */
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.circle {
+  border-radius: var(--ink-radius-size-full);
+}
+
+.square {
+  border-radius: var(--ink-radius-size-m); /* 12px for square avatars */
+}
+
+/* Size variants - exact Figma specs */
+.xsmall {
+  width: var(--ink-spacing-300);
+  height: var(--ink-spacing-300);
+  font-size: var(--ink-font-detail-xs-size); /* 10px */
+  line-height: var(--ink-font-detail-xs-line-height); /* 1.4 */
+  letter-spacing: 0.32px; /* open tracking from Figma */
+}
+
+.small {
+  width: var(--ink-spacing-400);
+  height: var(--ink-spacing-400);
+  font-size: var(--ink-font-detail-s-size); /* 12px */
+  line-height: var(--ink-font-detail-s-line-height); /* 1.5 */
+  letter-spacing: 0.16px; /* wide tracking from Figma */
+}
+
+.medium {
+  width: var(--ink-spacing-500);
+  height: var(--ink-spacing-500);
+  font-size: var(--ink-font-size-md); /* 16px - DocuSign standard */
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.large {
+  width: var(--ink-spacing-600);
+  height: var(--ink-spacing-600);
+  font-size: var(--ink-font-size-xl); /* 20px from Figma */
+  line-height: var(--ink-line-height-tight); /* 1.25 - exact Figma spec */
+  letter-spacing: -0.16px; /* cozy from Figma */
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  user-select: none;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+}
+
+.placeholder {
+  width: 60%;
+  height: 60%;
+  color: var(--ink-neutral-50);
+}
+
+/* Color variations - Based on Figma recipient colors and design system */
+.color0 {
+  background-color: var(--ink-cyan-20); /* #caf4fc - recipientBgColor100 */
+  color: var(--ink-cyan-100); /* #035a6c - recipientFontColor100 */
+}
+
+.color1 {
+  background-color: var(--ink-purple-20);
+  color: var(--ink-purple-100);
+}
+
+.color2 {
+  background-color: var(--ink-fuchsia-20);
+  color: var(--ink-fuchsia-100);
+}
+
+.color3 {
+  background-color: var(--ink-cobalt-20);
+  color: var(--ink-cobalt-110);
+}
+
+.color4 {
+  background-color: var(--ink-green-20);
+  color: var(--ink-green-100);
+}
+
+.color5 {
+  background-color: var(--ink-cyan-10); /* #dbf9fd - recipientBgColor150 */
+  color: var(--ink-cyan-100); /* #035a6c - recipientFontColor150 */
+}
+
+.color6 {
+  background-color: var(--ink-orange-20);
+  color: var(--ink-orange-100);
+}
+
+.color7 {
+  background-color: var(--ink-red-20);
+  color: var(--ink-red-100);
+}
+
+.color8 {
+  background-color: var(--ink-purple-30);
+  color: var(--ink-purple-110);
+}
+
+.color9 {
+  background-color: var(--ink-green-30);
+  color: var(--ink-green-110);
+}
+
+.colorsign {
+  background-color: var(--ink-cobalt-100);
+  color: var(--ink-white-100);
+}

@@ -1,0 +1,62 @@
+/* Ink Design System - TaskCard Component Styles */
+/* Based on Figma: [INK] Task Card */
+@import '../../1-tokens/tokens.css';
+
+.taskCard {
+  background: var(--ink-bg-color-default);
+  border: var(--ink-border-width-xs) solid var(--ink-neutral-fade-10);
+  border-radius: var(--ink-radius-size-s); /* 8px - radiusSizeS */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-300); /* 24px - gap300 */
+  padding: var(--ink-spacing-250); /* 20px - gap250 */
+  min-width: 240px;
+  width: 352px;
+  font-family: var(--ink-font-family);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ink-spacing-100); /* 8px - gap100 */
+  width: 100%;
+}
+
+.heading {
+  flex: 1;
+  font-size: var(--ink-font-size-lg); /* 20px - fontHeadingXS */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  line-height: 1.25;
+  color: var(--ink-font-color-default);
+  margin: 0;
+}
+
+/* Body */
+.body {
+  width: 100%;
+  font-size: var(--ink-font-size-md); /* 14px - fontBodyS */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--ink-spacing-300); /* 24px - gap300 */
+  width: 100%;
+}
+
+.metadata {
+  flex: 1;
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  line-height: 1.5;
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px */
+  color: var(--ink-font-color-subtle);
+}

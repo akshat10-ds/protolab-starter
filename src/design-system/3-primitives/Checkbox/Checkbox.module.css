@@ -1,0 +1,307 @@
+/* Ink Design System - Checkbox - Official DS-UI Pattern */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  /* No gap - description sits directly below label per Figma (matches Radio) */
+  min-height: var(--ink-icon-size-s);
+  min-width: var(--ink-icon-size-s);
+  position: relative;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Visually Hidden Input - Accessible but not visible */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Label - Contains the visual checkbox via pseudo-elements */
+.label {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  line-height: var(--ink-font-body-s-line-height); /* 1.4 */
+  color: var(--ink-font-color-default);
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  /* No vertical padding - matches Radio tight spacing between label and description */
+  padding-inline-start: var(--ink-spacing-400); /* 32px - 24px checkbox container + 8px gap */
+  isolation: isolate; /* Create stacking context for proper z-index layering */
+}
+
+/* Checkbox box - 20px × 20px in 24px container */
+.label::before {
+  content: '';
+  position: absolute;
+  width: var(--ink-icon-size-s);
+  height: var(--ink-icon-size-s);
+  background-color: var(--ink-form-control-bg-color-default);
+  border: var(--ink-form-border-width-active) solid var(--ink-form-control-border-color-default);
+  border-radius: var(--ink-radius-size-xs); /* 4px */
+  left: 2px; /* 2px offset from left to center in 24px space */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition-duration: 0.2s;
+  transition-property: border, background;
+  transition-timing-function: ease;
+  z-index: 2; /* Above hover background */
+}
+
+/* Checkbox icon container - positioned over the checkbox box */
+/* Using .label > .checkboxIcon for higher specificity than .label > span */
+.label > .checkboxIcon {
+  position: absolute;
+  left: 2px; /* Match checkbox box position */
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--ink-icon-size-s);
+  height: var(--ink-icon-size-s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 3; /* Above checkbox box */
+}
+
+/* Check and Minus icons - white color on selected background */
+.checkIcon,
+.minusIcon {
+  color: var(--ink-white-100);
+}
+
+/* Label content wrapper - contains startElement, labelText, endElement */
+.labelContent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-50); /* 4px */
+  position: relative;
+}
+
+/* Start/End elements */
+.startElement,
+.endElement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Label content span - Used for hover/focus effects */
+.label > .labelContent {
+  position: relative;
+}
+
+.label > .labelContent::before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  inset-inline-start: -33px; /* Position over checkbox - span starts at 32px, checkbox at 2px, need to go back 31px + center */
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: var(--ink-radius-sm);
+  background-color: transparent;
+  transition-duration: 0.1s;
+  transition-property: background-color, height, width, inset, transform;
+  transition-timing-function: ease;
+  z-index: 1; /* Behind the checkbox but above background */
+}
+
+/* Label text container */
+.labelText {
+  align-items: center;
+  display: flex;
+  min-height: var(--ink-icon-size-s);
+  padding-block-start: 2px; /* Align with checkbox baseline */
+}
+
+/* Checked state - checkbox box background */
+.input:checked + .label::before {
+  background-color: var(--ink-form-control-bg-color-selected);
+  border-color: var(--ink-form-border-selected);
+}
+
+/* Indeterminate state - checkbox box background */
+.input:indeterminate + .label::before {
+  background-color: var(--ink-form-control-bg-color-selected);
+  border-color: var(--ink-form-border-selected);
+}
+
+/* Hover state - Border changes to hover color */
+.label:hover::before {
+  border-color: var(--ink-form-control-border-color-hover);
+}
+
+/* Hover effect - Background area around checkbox - 32px per Figma */
+.label:hover > .labelContent::before {
+  background-color: var(--ink-form-bg-highlight);
+  border-radius: var(--ink-radius-size-xs); /* 4px to match checkbox */
+  content: '';
+  height: var(--ink-spacing-400);
+  width: var(--ink-spacing-400);
+  inset-inline-start: -36px; /* Center 32px bg over 20px checkbox (checkbox at 2px + 10px center = 12px, 32px hover centered = 12-16 = -4px, from span at 32px = -4-32 = -36px) */
+  /* Vertical centering handled by top: 50% + transform in base style */
+}
+
+/* Active state - Remove hover background on click */
+.label:active > .labelContent::before {
+  background-color: transparent;
+}
+
+.input:checked + .label:hover::before,
+.input:indeterminate + .label:hover::before {
+  background-color: var(--ink-form-control-bg-color-selected-hover);
+  border-color: var(--ink-form-border-selected-hover);
+}
+
+/* Focus state - Focus ring on labelContent::after */
+.input:focus-visible + .label > .labelContent::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 22px;
+  inset-inline-start: -31px; /* Position to center around checkbox */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  border: 2px solid var(--ink-form-control-border-color-active);
+  border-radius: var(--ink-radius-size-xs); /* 4px */
+  box-shadow: var(--ink-focus-ring-accent);
+  pointer-events: none;
+}
+
+/* Error State */
+.input[aria-invalid='true'] + .label::before {
+  border-color: var(--ink-form-control-border-color-error);
+}
+
+.input[aria-invalid='true']:checked + .label::before,
+.input[aria-invalid='true']:indeterminate + .label::before {
+  background-color: var(--ink-form-control-border-color-error);
+}
+
+.input[aria-invalid='true'] + .label:hover::before {
+  border-color: var(--ink-form-control-border-color-error);
+}
+
+.input[aria-invalid='true']:focus-visible + .label > .labelContent::after {
+  border-color: var(--ink-form-control-border-color-error);
+  box-shadow: var(--ink-focus-ring-error);
+}
+
+/* Error state icons - Ensure white icons are visible on red background */
+.input[aria-invalid='true']:checked + .label .checkIcon,
+.input[aria-invalid='true']:indeterminate + .label .minusIcon {
+  color: var(--ink-white-100);
+}
+
+/* Error state icon SVG - Ensure fill is explicitly white */
+.input[aria-invalid='true']:checked + .label .checkIcon svg,
+.input[aria-invalid='true']:indeterminate + .label .minusIcon svg {
+  fill: var(--ink-white-100);
+}
+
+.input[aria-invalid='true']:checked + .label .checkIcon svg path,
+.input[aria-invalid='true']:indeterminate + .label .minusIcon svg path {
+  fill: var(--ink-white-100);
+}
+
+/* Disabled state - Figma uses 0.25 opacity */
+.input:disabled + .label {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.input:disabled + .label::before {
+  background-color: var(--ink-neutral-10);
+  border-color: var(--ink-neutral-30);
+  cursor: not-allowed;
+}
+
+/* Prevent hover effect on disabled */
+.input:disabled + .label:hover > .labelContent::before {
+  background-color: transparent;
+}
+
+.input:disabled + .label:hover::before {
+  border-color: var(--ink-neutral-30);
+}
+
+.input:disabled:active + .label::before {
+  border-color: var(--ink-neutral-30);
+}
+
+.input:checked:disabled + .label::before,
+.input:indeterminate:disabled + .label::before {
+  background-color: var(--ink-neutral-50);
+  border-color: var(--ink-neutral-50);
+}
+
+.label.disabled {
+  color: var(--ink-form-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Visually Hidden Label */
+.visuallyHidden .labelText {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Description text per Figma fontDetailS - matches Radio description styling */
+.description {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs); /* 12px - Figma font.fontSize.12 */
+  font-weight: var(--ink-font-weight-medium); /* 500 - Figma font.fontWeight.500 */
+  color: var(--ink-neutral-fade-70); /* rgba(19,0,50,0.7) - Figma fontColorSubtle */
+  line-height: var(--ink-line-height-normal); /* 1.5 - Figma fontDetailS line-height */
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px - Figma font.letterSpacing.wide */
+  padding-left: var(--ink-spacing-400); /* 32px - aligns with label (24px control + 8px gap) */
+}
+
+/* Error Message */
+.errorMessage {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  line-height: var(--ink-line-height-normal); /* 1.5 */
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px */
+  color: var(--ink-font-color-error);
+  margin-left: var(--ink-spacing-400);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-50);
+}
+
+/* Error Icon */
+.errorIcon {
+  color: var(--ink-font-color-error);
+  flex-shrink: 0;
+}

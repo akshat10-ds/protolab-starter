@@ -1,0 +1,276 @@
+/**
+ * AgentPanel Component Styles
+ *
+ * Resizable side panel with split layout support.
+ * Uses Ink Design System tokens for consistent theming.
+ */
+
+@import '../../../design-system/1-tokens/tokens.css';
+
+/* =============================================================================
+   Backdrop
+   ============================================================================= */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--ink-black-100);
+  opacity: 0.3;
+  z-index: 999;
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/* =============================================================================
+   Panel Container
+   ============================================================================= */
+
+.panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--ink-white-100);
+  box-shadow: var(--ink-shadow-xl);
+  z-index: 1000;
+  animation: slideIn 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.positionRight {
+  right: 0;
+  border-left: 1px solid var(--ink-neutral-30);
+}
+
+.positionLeft {
+  left: 0;
+  border-right: 1px solid var(--ink-neutral-30);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+.positionLeft.panel {
+  animation-name: slideInLeft;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+/* Disable pointer events and transitions during resize */
+.isResizing {
+  user-select: none;
+}
+
+.isResizing * {
+  pointer-events: none;
+}
+
+/* =============================================================================
+   Resize Handle
+   ============================================================================= */
+
+.resizeHandle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  cursor: ew-resize;
+  z-index: 10;
+  transition: background 150ms ease;
+}
+
+.resizeHandle:hover,
+.resizeHandle:active {
+  background: var(--ink-cobalt-30);
+}
+
+.resizeRight {
+  left: -3px;
+}
+
+.resizeLeft {
+  right: -3px;
+}
+
+/* =============================================================================
+   Header
+   ============================================================================= */
+
+.header {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--ink-neutral-30);
+  background: var(--ink-white-100);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  gap: var(--ink-spacing-150);
+}
+
+.headerTitles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-25);
+  min-width: 0;
+}
+
+.title {
+  color: var(--ink-neutral-130);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtitle {
+  color: var(--ink-neutral-70);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   Body (Split Layout)
+   ============================================================================= */
+
+.body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chatArea {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.canvasArea {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--ink-neutral-10);
+}
+
+/* =============================================================================
+   Split Resizer
+   ============================================================================= */
+
+.splitResizer {
+  flex-shrink: 0;
+  width: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  background: var(--ink-neutral-15);
+  transition: background 150ms ease;
+}
+
+.splitResizer:hover,
+.splitResizer:active {
+  background: var(--ink-neutral-30);
+}
+
+.splitResizerLine {
+  width: 2px;
+  height: 40px;
+  border-radius: 1px;
+  background: var(--ink-neutral-50);
+  transition: background 150ms ease;
+}
+
+.splitResizer:hover .splitResizerLine,
+.splitResizer:active .splitResizerLine {
+  background: var(--ink-cobalt-60);
+}
+
+/* =============================================================================
+   Responsive Behavior
+   ============================================================================= */
+
+@media (max-width: 768px) {
+  .panel {
+    width: 100% !important;
+    max-width: 100%;
+  }
+
+  .resizeHandle {
+    display: none;
+  }
+
+  /* Stack split layout vertically on mobile */
+  .body {
+    flex-direction: column;
+  }
+
+  .chatArea,
+  .canvasArea {
+    width: 100% !important;
+  }
+
+  .chatArea {
+    flex: 1;
+    min-height: 50%;
+  }
+
+  .canvasArea {
+    flex: 1;
+    min-height: 200px;
+    border-top: 1px solid var(--ink-neutral-30);
+  }
+
+  .splitResizer {
+    width: 100%;
+    height: 8px;
+    cursor: ns-resize;
+  }
+
+  .splitResizerLine {
+    width: 40px;
+    height: 2px;
+  }
+}
+
+/* =============================================================================
+   Utility Classes
+   ============================================================================= */
+
+/* Full height content wrapper */
+.fullHeight {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Scrollable content area */
+.scrollable {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

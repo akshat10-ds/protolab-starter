@@ -1,0 +1,113 @@
+/* Ink Design System - Link - Exact Figma Specs */
+
+/* Base Link */
+.link {
+  font-family: var(--ink-font-family);
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+  text-decoration-thickness: auto;
+  cursor: pointer;
+  transition:
+    color var(--ink-transition-fast),
+    text-decoration var(--ink-transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50); /* 4px */
+}
+
+/* Size Variants */
+.size-medium {
+  font-size: var(--ink-font-size-md); /* 16px */
+  line-height: 1.5;
+}
+
+.size-small {
+  font-size: var(--ink-font-size-sm); /* 14px */
+  line-height: 1.4;
+}
+
+/* Extra small - for "View Job" style links (matches DocuSign) */
+.size-xs {
+  font-size: var(--ink-font-size-xs); /* 12px */
+  line-height: 1.4;
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+}
+
+/* Discrete Mode - no underline by default, only on hover/active */
+.discrete {
+  text-decoration: none;
+}
+
+.discrete:hover,
+.discrete:active {
+  text-decoration: underline;
+}
+
+/* Discrete mode height for consistent hit area */
+.discrete.size-medium {
+  height: 40px;
+  align-items: center;
+}
+
+.discrete.size-small {
+  height: 32px;
+  align-items: center;
+}
+
+/* Kind: Default - Cobalt Colors */
+.kind-default {
+  color: var(--ink-cobalt-100); /* #4c00fb */
+}
+
+.kind-default:hover {
+  color: var(--ink-cobalt-110); /* #4200ca */
+}
+
+.kind-default:active {
+  color: var(--ink-cobalt-120); /* #37039e */
+}
+
+.kind-default:visited {
+  color: var(--ink-cobalt-140); /* #260559 */
+}
+
+/* Kind: Subtle - Production: fontColorSubtle */
+.kind-subtle {
+  color: var(--ink-neutral-fade-70); /* Production: fontColorSubtle = rgba(19,0,50,0.7) */
+}
+
+.kind-subtle:hover {
+  color: var(--ink-neutral-fade-60); /* rgba(19,0,50,0.6) */
+}
+
+.kind-subtle:active {
+  color: var(--ink-neutral-fade-90); /* rgba(19,0,50,0.9) */
+}
+
+.kind-subtle:visited {
+  color: var(--ink-neutral-fade-60); /* rgba(19,0,50,0.6) */
+}
+
+/* Disabled State */
+.disabled {
+  color: var(--ink-neutral-fade-20); /* rgba(19,0,50,0.2) */
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.disabled:hover,
+.disabled:active,
+.disabled:visited {
+  color: var(--ink-neutral-fade-20);
+  text-decoration: none;
+}
+
+/* Focus State */
+.link:focus-visible {
+  outline: 2px solid var(--ink-cobalt-100);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs); /* 4px */
+}

@@ -1,0 +1,152 @@
+@import '../../1-tokens/tokens.css';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  /* No gap - description sits directly below label per Figma */
+}
+
+.radioWrapper {
+  display: flex;
+  align-items: center; /* Center-align radio with label text */
+  gap: var(--ink-spacing-100); /* 8px - matches Figma gap100 */
+  position: relative;
+}
+
+/* Disabled state applies to entire wrapper per Figma */
+.radioWrapper.disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Control container - 24px to match Figma, provides space for hover bg */
+.control {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover background circle - extends beyond control per Figma */
+.control::before {
+  content: '';
+  position: absolute;
+  inset: -4px; /* Extends 4px beyond 24px container = 32px total */
+  border-radius: var(--ink-radius-full);
+  background: transparent;
+  transition: background-color var(--ink-transition-fast);
+}
+
+.radioWrapper:not(.disabled):hover .control::before {
+  background: var(
+    --ink-neutral-fade-10
+  ); /* rgba(19,0,50,0.1) - Figma formHighlightBgColorDefault */
+}
+
+.input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 2px solid var(--ink-form-control-border-color-default); /* rgba(19,0,50,0.5) - Figma formBorderColorDefault */
+  border-radius: var(--ink-radius-full);
+  background: var(--ink-white-100);
+  cursor: pointer;
+  transition: all var(--ink-transition-fast);
+  flex-shrink: 0;
+  appearance: none;
+  position: relative;
+}
+
+/* Hover state - border color change per Figma */
+.radioWrapper:not(.disabled):hover .input {
+  border-color: var(--ink-neutral-fade-70); /* rgba(19,0,50,0.7) - Figma formBorderColorHover */
+}
+
+/* Active/pressed state per Figma */
+.input:active:not(:disabled) {
+  border-color: var(--ink-cobalt-100); /* Figma formBorderColorActive */
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--ink-cobalt-100);
+  box-shadow: var(--ink-focus-ring-accent-subtle);
+}
+
+.input:checked {
+  border-color: var(--ink-cobalt-100);
+}
+
+.input:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--ink-radius-full);
+  background: var(--ink-cobalt-100);
+}
+
+/* Disabled uses wrapper opacity, but keep cursor style */
+.input:disabled {
+  cursor: not-allowed;
+}
+
+.label {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px - matches Figma fontBodyS */
+  color: var(--ink-font-color-default); /* rgba(19,0,50,0.9) - Figma fontColorDefault */
+  line-height: 1.4; /* Figma fontBodyS line-height */
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Disabled label inherits opacity from wrapper, just change cursor */
+.label.disabled {
+  cursor: not-allowed;
+}
+
+.label.error {
+  color: var(--ink-red-60);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Description text per Figma fontDetailS */
+.description {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs); /* 12px - Figma font.fontSize.12 */
+  font-weight: var(--ink-font-weight-medium); /* 500 - Figma font.fontWeight.500 */
+  color: var(--ink-neutral-fade-70); /* rgba(19,0,50,0.7) - Figma fontColorSubtle */
+  line-height: var(--ink-line-height-normal); /* 1.5 - Figma fontDetailS line-height */
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px - Figma font.letterSpacing.wide */
+  padding-left: var(--ink-spacing-400); /* 32px - aligns with label (24px control + 8px gap) */
+}
+
+/* Error message per Figma fontDetailS with error color */
+.errorMessage {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  color: var(--ink-font-color-error); /* Figma fontColorError */
+  line-height: var(--ink-line-height-normal); /* 1.5 */
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px */
+  padding-left: var(--ink-spacing-400); /* 32px */
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-50); /* 4px gap between icon and text */
+}

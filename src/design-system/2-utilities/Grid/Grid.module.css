@@ -1,0 +1,56 @@
+@import '../../1-tokens/tokens.css';
+
+.grid {
+  display: grid;
+}
+
+/* Gap */
+.grid.gap-none {
+  gap: 0;
+}
+
+.grid.gap-small {
+  gap: var(--ink-spacing-100);
+}
+
+.grid.gap-medium {
+  gap: var(--ink-spacing-200);
+}
+
+.grid.gap-large {
+  gap: var(--ink-spacing-300);
+}
+
+/* Align */
+.grid.align-start {
+  align-items: start;
+}
+
+.grid.align-center {
+  align-items: center;
+}
+
+.grid.align-end {
+  align-items: end;
+}
+
+.grid.align-stretch {
+  align-items: stretch;
+}
+
+/* Justify */
+.grid.justify-start {
+  justify-items: start;
+}
+
+.grid.justify-center {
+  justify-items: center;
+}
+
+.grid.justify-end {
+  justify-items: end;
+}
+
+.grid.justify-stretch {
+  justify-items: stretch;
+}

@@ -1,0 +1,134 @@
+@import '../../1-tokens/tokens.css';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  width: 100%;
+}
+
+/* Label row with label on left, percentage on right */
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--ink-spacing-200);
+  width: 100%;
+}
+
+.labelText {
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-14);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+  flex: 1 0 0;
+}
+
+.percentageText {
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-14);
+  font-weight: var(--ink-font-weight-regular);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Track container */
+.track {
+  position: relative;
+  width: 100%;
+  height: var(--ink-bar-width-s);
+  background-color: var(--ink-bar-track-default);
+  border-radius: var(--ink-radius-full);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Fill bar */
+.fill {
+  height: 100%;
+  min-width: 0;
+  min-height: 1px;
+  transition: width var(--ink-motion-duration-300) var(--ink-motion-curve-default);
+}
+
+/* Kind variants */
+.info .fill {
+  background-color: var(--ink-bar-fill-default);
+}
+
+.success .fill {
+  background-color: var(--ink-bar-fill-success);
+}
+
+/* Stop indicator - appears at the end of the track */
+.stopIndicator {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: var(--ink-bar-width-s);
+  height: var(--ink-bar-width-s);
+  background-color: var(--ink-bar-stop-indicator);
+  border-radius: var(--ink-radius-full);
+}
+
+/* Indeterminate state */
+.trackIndeterminate {
+  position: relative;
+  width: 100%;
+  height: var(--ink-bar-width-s);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.trackIndeterminateBackground {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: var(--ink-bar-width-s);
+  background-color: var(--ink-bar-track-default);
+  transform: translateY(-50%);
+}
+
+.fillIndeterminate {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: var(--ink-bar-width-s);
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-700);
+  transform: translateY(-50%);
+  animation: indeterminate var(--ink-motion-duration-2000) var(--ink-motion-curve-default) infinite;
+}
+
+.fillIndeterminateBar {
+  width: var(--ink-spacing-700);
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.info .fillIndeterminateBar {
+  background-color: var(--ink-bar-fill-default);
+}
+
+.success .fillIndeterminateBar {
+  background-color: var(--ink-bar-fill-success);
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateY(-50%) translateX(-100%);
+  }
+  50% {
+    transform: translateY(-50%) translateX(50%);
+  }
+  100% {
+    transform: translateY(-50%) translateX(200%);
+  }
+}

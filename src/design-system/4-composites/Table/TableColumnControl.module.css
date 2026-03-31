@@ -1,0 +1,112 @@
+/* TableColumnControl Modal Styles */
+@import '../../1-tokens/tokens.css';
+
+.searchContainer {
+  padding: 0 0 var(--ink-spacing-200) 0;
+}
+
+.columnList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.columnItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-150) var(--ink-spacing-100);
+  border-bottom: 1px solid var(--ink-neutral-fade-5);
+  transition: background-color var(--ink-transition-fast);
+}
+
+.columnItem:last-child {
+  border-bottom: none;
+}
+
+.columnItem:hover {
+  background: var(--ink-neutral-5);
+}
+
+.columnItem.dragging {
+  background: var(--ink-cobalt-10);
+  opacity: 0.8;
+}
+
+.columnItem.dragOver {
+  border-top: 2px solid var(--ink-cobalt-100);
+}
+
+.columnItemLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-150);
+  flex: 1;
+  min-width: 0;
+}
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  color: var(--ink-neutral-fade-40);
+  padding: var(--ink-spacing-50);
+  border-radius: var(--ink-radius-sm);
+  transition: color var(--ink-transition-fast);
+}
+
+.dragHandle:hover {
+  color: var(--ink-neutral-fade-70);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.dragHandle.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.columnLabel {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.columnItemRight {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.lockedBadge {
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-neutral-fade-60);
+  padding: var(--ink-spacing-25) var(--ink-spacing-100);
+  background: var(--ink-neutral-10);
+  border-radius: var(--ink-radius-sm);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--ink-spacing-100);
+  padding-top: var(--ink-spacing-200);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ink-spacing-500);
+  color: var(--ink-neutral-fade-60);
+  font-size: var(--ink-font-size-sm);
+}

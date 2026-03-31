@@ -1,0 +1,149 @@
+/* Ink Design System - Input Component Styles */
+@import '../../1-tokens/tokens.css';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  width: 100%;
+}
+
+/* Label */
+.label {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm); /* 14px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  color: var(--ink-font-color-default);
+  line-height: 1.4; /* Exact Figma spec */
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}
+
+.label.disabled {
+  opacity: var(--ink-opacity-disabled);
+}
+
+.required {
+  color: var(--ink-form-text-required);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Description */
+.description {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral);
+  line-height: var(--ink-line-height-normal);
+}
+
+/* Input */
+.input {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-md); /* 16px */
+  font-weight: var(--ink-font-weight-regular); /* 400 */
+  color: var(--ink-font-color-default);
+  background: var(--ink-form-control-bg-color-default);
+  border: var(--ink-form-border-width) solid var(--ink-form-control-border-color-default);
+  border-radius: var(--ink-radius-sm); /* 4px */
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+  padding-left: var(--ink-spacing-200);
+  transition: all var(--ink-transition-fast);
+  width: 100%;
+  line-height: 1.5; /* Exact Figma spec */
+  outline: none;
+}
+
+/* Size variants */
+.input.medium {
+  height: 40px;
+}
+
+.input.small {
+  height: 32px;
+}
+
+.input.multiline {
+  height: auto;
+  resize: vertical;
+  min-height: 80px;
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+}
+
+/* Hover state */
+.input:hover:not(:disabled):not(:read-only):not(.error) {
+  border-color: var(--ink-form-control-border-color-hover);
+}
+
+/* Focus/Active state - 2px border per Figma spec */
+.input:focus:not(.error) {
+  border: 2px solid var(--ink-cobalt-120);
+  /* Adjust padding to compensate for thicker border */
+  padding: calc(var(--ink-spacing-100) - 1px) calc(var(--ink-spacing-200) - 1px);
+  padding-left: calc(var(--ink-spacing-200) - 1px);
+}
+
+/* Error state */
+.input.error {
+  border-color: var(--ink-form-control-border-color-error);
+}
+
+.input.error:focus {
+  border: var(--ink-form-border-width) solid var(--ink-form-control-border-color-error);
+  /* Keep same padding for error state */
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+  padding-left: var(--ink-spacing-200);
+}
+
+/* Read-only state */
+.input:read-only {
+  background: var(--ink-form-bg-read);
+  border: none;
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+}
+
+/* Disabled state */
+.input:disabled {
+  background: var(--ink-form-bg-disabled);
+  opacity: var(--ink-opacity-disabled);
+  cursor: not-allowed;
+  border-color: var(--ink-form-control-border-color-default);
+}
+
+/* Placeholder */
+.input::placeholder {
+  color: var(--ink-font-color-placeholder);
+  opacity: 1;
+}
+
+/* Error message */
+.errorMessage {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  color: var(--ink-font-color-error);
+  line-height: 1.5; /* Exact Figma spec */
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-50);
+}
+
+.errorIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

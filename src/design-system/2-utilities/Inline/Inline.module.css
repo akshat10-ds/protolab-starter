@@ -1,0 +1,78 @@
+@import '../../1-tokens/tokens.css';
+
+.inline {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Gap Sizes */
+.gap-none {
+  gap: 0;
+}
+
+.gap-xs {
+  gap: var(--ink-spacing-50);
+}
+
+.gap-small {
+  gap: var(--ink-spacing-100);
+}
+
+.gap-medium {
+  gap: var(--ink-spacing-150);
+}
+
+.gap-large {
+  gap: var(--ink-spacing-200);
+}
+
+.gap-xl {
+  gap: var(--ink-spacing-300);
+}
+
+/* Alignment */
+.align-start {
+  align-items: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-baseline {
+  align-items: baseline;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
+
+/* Justification */
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+/* Wrap */
+.wrap {
+  flex-wrap: wrap;
+}

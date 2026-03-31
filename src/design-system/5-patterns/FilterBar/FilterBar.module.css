@@ -1,0 +1,70 @@
+/* FilterBar Pattern - Exact DocuSign Navigator Specs */
+
+@import '../../1-tokens/tokens.css';
+
+/* Main Container */
+.filterBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 40px; /* Matches button height */
+  box-sizing: border-box;
+  gap: var(--ink-spacing-50); /* Tight gap (4px) */
+}
+
+/* Gap variants using data attribute */
+.filterBar[data-gap='medium'] {
+  gap: var(--ink-spacing-150); /* 12px */
+}
+
+/* View Selector (Documents dropdown) */
+.viewSelector {
+  flex-shrink: 0;
+}
+
+/* Vertical Divider between view selector and search */
+.dividerWrapper {
+  width: 1px;
+  height: 24px;
+  flex-shrink: 0;
+  background-color: var(--ink-neutral-fade-20); /* Divider color */
+  margin: 0 var(--ink-spacing-100); /* 8px space on either side */
+}
+
+/* Search Wrapper with indicator */
+.searchWrapper {
+  position: relative;
+  flex: 1;
+  min-width: 300px; /* Ensure placeholder text is fully visible */
+  max-width: 500px; /* Match production - constrained width */
+}
+
+/* AI/Special Search Indicator - Blue dot above search icon */
+.searchIndicator {
+  position: absolute;
+  top: -4px;
+  left: 20px; /* Position above search icon, not centered */
+  width: 6px;
+  height: 6px;
+  background-color: var(--ink-cobalt-100);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Search Input */
+.searchInput {
+  width: 100%;
+}
+
+/* Quick Actions Container */
+.quickActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100); /* 8px gap between actions */
+  flex-shrink: 0;
+}
+
+/* Filters Container */
+.filters {
+  flex-shrink: 0;
+}

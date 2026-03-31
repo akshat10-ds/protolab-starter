@@ -1,0 +1,70 @@
+/**
+ * DataTableFooter Styles - Production Match
+ */
+
+@import '../../1-tokens/tokens.css';
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-200);
+  border-top: 1px solid var(--ink-neutral-fade-10);
+  background: var(--ink-white-100);
+}
+
+.footer.sticky {
+  position: sticky;
+  bottom: 0;
+  /* Must be higher than sticky columns (z-index: 100-200) to cover them */
+  z-index: 210;
+  /* Extend to edges using negative margins to break out of parent container margins */
+  margin-left: -80px;
+  margin-right: -80px;
+  padding-left: calc(var(--ink-spacing-200) + 80px);
+  padding-right: calc(var(--ink-spacing-200) + 80px);
+  box-sizing: border-box;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+.pageSize {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+.pageSizeLabel {
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-default);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-200);
+}
+
+.info {
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-default);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}
+
+/* Simple variant - just navigation */
+.simple .left {
+  display: none;
+}
+
+.simple .info {
+  display: none;
+}

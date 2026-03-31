@@ -1,0 +1,40 @@
+@import '../../1-tokens/tokens.css';
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  background: var(--ink-bg-canvas);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--ink-z-sticky);
+  flex-shrink: 0;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* No border-right per DocuSign production - separation via background color difference */
+  background: var(--ink-bg-color-default);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+  background: var(--ink-white-100); /* Pure white content area per DocuSign production */
+}
