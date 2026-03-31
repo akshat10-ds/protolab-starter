@@ -1,416 +1,445 @@
-import { useState, useCallback } from 'react';
+import { useMemo, useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import NavigatorPage from './NavigatorPage';
 import {
-  DocuSignShell,
   AgreementTableView,
-  PageHeader,
-  FilterBar,
-  DataTable,
-  Button,
   Badge,
+  Button,
+  DataTable,
+  DocuSignShell,
+  FilterBar,
   Icon,
-  Card,
-  Stack,
-  Grid,
-  ProgressBar,
+  IconButton,
+  Link,
+  PageHeader,
+  StatusLight,
+  Text,
 } from '@/design-system';
+import type {
+  DataTableColumn,
+  DataTableSortDirection,
+  PageSizeOption,
+} from '@/design-system/5-patterns/DataTable/types';
 
-/* ─── Types ──────────────────────────────────────────────────────────────── */
-
-type TabId = 'home' | 'agreements' | 'templates' | 'reports' | 'admin';
-
-/* ─── Agreements data ────────────────────────────────────────────────────── */
+type AgreementStatus = 'active' | 'inactive';
+type SubtitleKind = 'completed' | 'uploaded';
 
 interface Agreement {
   id: string;
-  name: string;
-  status: string;
-  statusKind: 'success' | 'warning' | 'info' | 'neutral';
-  sender: string;
-  lastUpdated: string;
+  fileName: string;
+  subtitleKind: SubtitleKind;
+  subtitleLink: string;
+  subtitleLinkLabel: string;
+  hasAI: boolean;
+  parties: string[];
+  status: AgreementStatus;
+  agreementType: string;
 }
 
-const agreementColumns = [
-  { key: 'name', header: 'Agreement Name', sortable: true },
+const AGREEMENTS: Agreement[] = [
   {
-    key: 'status',
-    header: 'Status',
-    sortable: true,
-    cell: (row: Agreement) => (
-      <Badge kind={row.statusKind} size="small">{row.status}</Badge>
-    ),
+    id: 'agr-001',
+    fileName: 'Sample_Service_Agreement.pdf',
+    subtitleKind: 'completed',
+    subtitleLink: '#',
+    subtitleLinkLabel: 'Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf',
+    hasAI: true,
+    parties: ['Acme Solutions, Inc.', 'GlobalTech Industries, LLC'],
+    status: 'active',
+    agreementType: 'Miscellaneous',
   },
-  { key: 'sender', header: 'Sender' },
-  { key: 'lastUpdated', header: 'Last Updated', sortable: true },
-];
-
-const agreements: Agreement[] = [
-  { id: '1', name: 'NDA - Acme Corporation', status: 'Completed', statusKind: 'success', sender: 'John Doe', lastUpdated: 'Mar 24, 2026' },
-  { id: '2', name: 'MSA - TechStart Inc', status: 'Waiting for Review', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 23, 2026' },
-  { id: '3', name: 'SOW - Phase 2 Development', status: 'Draft', statusKind: 'neutral', sender: 'Jane Smith', lastUpdated: 'Mar 22, 2026' },
-  { id: '4', name: 'Employment Agreement - Senior Engineer', status: 'Completed', statusKind: 'success', sender: 'HR Team', lastUpdated: 'Mar 21, 2026' },
-  { id: '5', name: 'Vendor Agreement - CloudCo', status: 'Waiting for Signature', statusKind: 'info', sender: 'John Doe', lastUpdated: 'Mar 20, 2026' },
-  { id: '6', name: 'Lease Amendment - Office Space', status: 'Completed', statusKind: 'success', sender: 'Legal Team', lastUpdated: 'Mar 19, 2026' },
-  { id: '7', name: 'Consulting Agreement - DesignLab', status: 'Action Required', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 18, 2026' },
-];
-
-/* ─── Parties data ───────────────────────────────────────────────────────── */
-
-interface Party {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-  status: string;
-  statusKind: 'success' | 'warning' | 'info' | 'neutral';
-  documents: number;
-}
-
-const partyColumns = [
-  { key: 'name', header: 'Name', sortable: true },
-  { key: 'email', header: 'Email', sortable: true },
-  { key: 'role', header: 'Role', sortable: true },
   {
-    key: 'status',
-    header: 'Status',
-    sortable: true,
-    cell: (row: Party) => (
-      <Badge kind={row.statusKind} size="small">{row.status}</Badge>
-    ),
+    id: 'agr-002',
+    fileName: 'rhi.pdf',
+    subtitleKind: 'completed',
+    subtitleLink: '#',
+    subtitleLinkLabel: 'Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf',
+    hasAI: true,
+    parties: ['DocuSign International (EME...', 'ROBERT HALF INTERNATION...'],
+    status: 'active',
+    agreementType: 'Miscellaneous',
   },
-  { key: 'documents', header: 'Documents', sortable: true },
+  {
+    id: 'agr-003',
+    fileName: 'venkaTestFilename.mp3',
+    subtitleKind: 'uploaded',
+    subtitleLink: '#',
+    subtitleLinkLabel: 'View Job',
+    hasAI: true,
+    parties: [],
+    status: 'active',
+    agreementType: '',
+  },
+  {
+    id: 'agr-004',
+    fileName: 'Screenshot 2026-03-18 at 10.27.30 AM.png',
+    subtitleKind: 'completed',
+    subtitleLink: '#',
+    subtitleLinkLabel: 'Complete with Docusign: Screenshot 2026-03-18 at 10.27.30 AM.png',
+    hasAI: true,
+    parties: [],
+    status: 'inactive',
+    agreementType: 'Miscellaneous',
+  },
+  {
+    id: 'agr-005',
+    fileName: 'Screenshot 2026-03-18 at 10.27.21 AM.png',
+    subtitleKind: 'completed',
+    subtitleLink: '#',
+    subtitleLinkLabel: 'Complete with Docusign: Screenshot 2026-03-18 at 10.27.21 AM.png',
+    hasAI: true,
+    parties: [],
+    status: 'inactive',
+    agreementType: 'Miscellaneous',
+  },
+  {
+    id: 'agr-006',
+    fileName: 'Screenshot 2026-03-18 at 10.27.30 AM.png',
+    subtitleKind: 'completed',
+    subtitleLink: '#',
+    subtitleLinkLabel: 'Complete with Docusign: Screenshot 2026-03-18 at 10.27.30 AM.png',
+    hasAI: true,
+    parties: [],
+    status: 'inactive',
+    agreementType: 'Miscellaneous',
+  },
+  {
+    id: 'agr-007',
+    fileName: 'yourfilename',
+    subtitleKind: 'uploaded',
+    subtitleLink: '#',
+    subtitleLinkLabel: 'View Job',
+    hasAI: false,
+    parties: [],
+    status: 'inactive',
+    agreementType: '',
+  },
 ];
 
-const parties: Party[] = [
-  { id: '1', name: 'Acme Corporation', email: 'legal@acme.com', role: 'Signer', status: 'Active', statusKind: 'success', documents: 14 },
-  { id: '2', name: 'TechStart Inc', email: 'contracts@techstart.io', role: 'Recipient', status: 'Active', statusKind: 'success', documents: 6 },
-  { id: '3', name: 'DesignLab Studio', email: 'hello@designlab.co', role: 'Approver', status: 'Pending', statusKind: 'warning', documents: 3 },
-  { id: '4', name: 'CloudCo Services', email: 'vendor@cloudco.com', role: 'Signer', status: 'Active', statusKind: 'success', documents: 9 },
-  { id: '5', name: 'GlobalTech Partners', email: 'partners@globaltech.com', role: 'Recipient', status: 'Inactive', statusKind: 'neutral', documents: 1 },
-  { id: '6', name: 'NextGen Solutions', email: 'info@nextgen.dev', role: 'Signer', status: 'Pending', statusKind: 'warning', documents: 2 },
-];
+const globalNavConfig = {
+  logo: <img src="/docusign-logo.svg" alt="DocuSign" />,
+  navItems: [
+    { id: 'home', label: 'Home', href: '#' },
+    { id: 'agreements', label: 'Agreements', href: '#', active: true },
+    { id: 'templates', label: 'Templates', href: '#' },
+    { id: 'insights', label: 'Insights', href: '#' },
+    { id: 'admin', label: 'Admin', href: '#' },
+  ],
+  showSearch: true,
+  showNotifications: true,
+  notificationCount: 3,
+  showSettings: true,
+  user: { name: 'Jane Smith', email: 'jane@example.com' },
+};
 
-/* ─── Templates data ─────────────────────────────────────────────────────── */
+const localNavConfig = {
+  headerLabel: 'Start',
+  sections: [
+    {
+      id: 'main',
+      items: [
+        { id: 'all-agreements', label: 'All Agreements' },
+        { id: 'drafts', label: 'Drafts' },
+        { id: 'in-progress', label: 'In Progress' },
+        { id: 'completed', label: 'Completed', active: true },
+        { id: 'deleted', label: 'Deleted' },
+      ],
+    },
+    {
+      id: 'folders',
+      title: 'Folders',
+      headerLabel: true,
+      hasDivider: true,
+      items: [
+        { id: 'folders-all', label: 'All Folders' },
+        { id: 'folders-procurement', label: 'Procurement' },
+        { id: 'folders-legal', label: 'Legal' },
+      ],
+    },
+  ],
+};
 
-interface Template {
-  id: string;
-  name: string;
-  category: string;
-  lastUsed: string;
-  uses: number;
-}
+const statusLabelMap: Record<AgreementStatus, string> = {
+  active: 'Active',
+  inactive: 'Inactive',
+};
 
-const templateColumns = [
-  { key: 'name', header: 'Template Name', sortable: true },
-  { key: 'category', header: 'Category', sortable: true },
-  { key: 'lastUsed', header: 'Last Used', sortable: true },
-  { key: 'uses', header: 'Uses', sortable: true },
-];
-
-const templates: Template[] = [
-  { id: '1', name: 'Standard NDA', category: 'Legal', lastUsed: 'Mar 24, 2026', uses: 47 },
-  { id: '2', name: 'Employment Offer Letter', category: 'HR', lastUsed: 'Mar 22, 2026', uses: 31 },
-  { id: '3', name: 'Master Services Agreement', category: 'Legal', lastUsed: 'Mar 20, 2026', uses: 28 },
-  { id: '4', name: 'Vendor Onboarding', category: 'Procurement', lastUsed: 'Mar 18, 2026', uses: 15 },
-  { id: '5', name: 'Sales Proposal', category: 'Sales', lastUsed: 'Mar 15, 2026', uses: 52 },
-];
-
-/* ─── Home Page ──────────────────────────────────────────────────────────── */
-
-function HomePage() {
-  const metrics = [
-    { label: 'Total Agreements', value: '1,247', icon: 'inbox' as const, kind: 'info' as const },
-    { label: 'Pending Review', value: '23', icon: 'clock' as const, kind: 'warning' as const },
-    { label: 'Completed', value: '1,189', icon: 'check-circle' as const, kind: 'success' as const },
-    { label: 'Action Required', value: '35', icon: 'alert-triangle' as const, kind: 'warning' as const },
-  ];
-
-  const recentActivity = [
-    { text: 'NDA - Acme Corporation was completed', time: '2 hours ago' },
-    { text: 'MSA - TechStart Inc is waiting for review', time: '4 hours ago' },
-    { text: 'SOW - Phase 2 Development was created', time: '1 day ago' },
-    { text: 'Vendor Agreement - CloudCo sent for signature', time: '2 days ago' },
-    { text: 'Employment Agreement signed by all parties', time: '3 days ago' },
-  ];
-
-  return (
-    <div style={{ padding: 'var(--ink-spacing-300)' }}>
-      <PageHeader title="Home" showAIBadge />
-      <Grid columns={4} gap="medium" style={{ marginTop: 'var(--ink-spacing-200)' }}>
-        {metrics.map((m) => (
-          <Card key={m.label}>
-            <Stack gap={8} style={{ padding: 'var(--ink-spacing-200)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: 13, color: 'var(--ink-font-secondary)' }}>{m.label}</span>
-                <Icon name={m.icon} size={16} />
-              </div>
-              <span style={{ fontSize: 28, fontWeight: 600 }}>{m.value}</span>
-              <Badge kind={m.kind} size="small">{m.label.split(' ').pop()}</Badge>
-            </Stack>
-          </Card>
-        ))}
-      </Grid>
-
-      <Card style={{ marginTop: 'var(--ink-spacing-300)' }}>
-        <Stack gap={0} style={{ padding: 'var(--ink-spacing-200)' }}>
-          <span style={{ fontSize: 15, fontWeight: 600, marginBottom: 'var(--ink-spacing-100)' }}>Recent Activity</span>
-          {recentActivity.map((item, i) => (
-            <div
-              key={i}
-              style={{
-                padding: 'var(--ink-spacing-100) 0',
-                borderBottom: i < recentActivity.length - 1 ? '1px solid var(--ink-border-default)' : 'none',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <span style={{ fontSize: 13 }}>{item.text}</span>
-              <span style={{ fontSize: 12, color: 'var(--ink-font-secondary)', whiteSpace: 'nowrap', marginLeft: 'var(--ink-spacing-200)' }}>{item.time}</span>
-            </div>
-          ))}
-        </Stack>
-      </Card>
-    </div>
-  );
-}
-
-/* ─── Reports Page ───────────────────────────────────────────────────────── */
-
-function ReportsPage() {
-  const stats = [
-    { label: 'Average Completion Time', value: '2.3 days', progress: 65 },
-    { label: 'On-Time Rate', value: '94%', progress: 94 },
-    { label: 'Templates Reuse Rate', value: '78%', progress: 78 },
-  ];
-
-  const topSenders = [
-    { name: 'Jane Smith', count: 47, pct: 100 },
-    { name: 'John Doe', count: 35, pct: 74 },
-    { name: 'Legal Team', count: 28, pct: 60 },
-    { name: 'HR Team', count: 19, pct: 40 },
-  ];
-
-  return (
-    <div style={{ padding: 'var(--ink-spacing-300)' }}>
-      <PageHeader title="Reports" showAIBadge />
-      <Grid columns={3} gap="medium" style={{ marginTop: 'var(--ink-spacing-200)' }}>
-        {stats.map((s) => (
-          <Card key={s.label}>
-            <Stack gap={8} style={{ padding: 'var(--ink-spacing-200)' }}>
-              <span style={{ fontSize: 13, color: 'var(--ink-font-secondary)' }}>{s.label}</span>
-              <span style={{ fontSize: 24, fontWeight: 600 }}>{s.value}</span>
-              <ProgressBar value={s.progress} />
-            </Stack>
-          </Card>
-        ))}
-      </Grid>
-
-      <Card style={{ marginTop: 'var(--ink-spacing-300)' }}>
-        <Stack gap={12} style={{ padding: 'var(--ink-spacing-200)' }}>
-          <span style={{ fontSize: 15, fontWeight: 600 }}>Top Senders</span>
-          {topSenders.map((s) => (
-            <div key={s.name}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4, fontSize: 13 }}>
-                <span>{s.name}</span>
-                <span style={{ color: 'var(--ink-font-secondary)' }}>{s.count} agreements</span>
-              </div>
-              <ProgressBar value={s.pct} />
-            </div>
-          ))}
-        </Stack>
-      </Card>
-    </div>
-  );
-}
-
-/* ─── Placeholder Page ───────────────────────────────────────────────────── */
-
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <div style={{ padding: 'var(--ink-spacing-300)', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 400 }}>
-      <Card>
-        <Stack gap={12} align="center" style={{ padding: 'var(--ink-spacing-400)' }}>
-          <Icon name="layout" size={32} />
-          <span style={{ fontSize: 16, fontWeight: 600 }}>{title}</span>
-          <span style={{ fontSize: 13, color: 'var(--ink-font-secondary)' }}>This page is ready to be built. Try asking AI to create it!</span>
-        </Stack>
-      </Card>
-    </div>
-  );
-}
-
-/* ─── Sidebar configs per tab ────────────────────────────────────────────── */
-
-function buildAgreementsSidebar(activeItem: string, setActiveItem: (id: string) => void) {
-  return {
-    headerLabel: 'Start',
-    headerIcon: 'plus' as const,
-    headerMenuItems: [
-      { id: 'new-agreement', label: 'New Agreement', icon: 'edit' as const },
-      { id: 'new-template', label: 'New Template', icon: 'star' as const },
-      { id: 'upload', label: 'Upload Document', icon: 'upload' as const },
-    ],
-    activeItemId: activeItem,
-    sections: [
-      {
-        id: 'agreements',
-        items: [
-          { id: 'all-agreements', label: 'All Agreements', icon: 'inbox' as const, onClick: () => setActiveItem('all-agreements') },
-          { id: 'drafts', label: 'Drafts', nested: true, onClick: () => setActiveItem('drafts') },
-          { id: 'in-progress', label: 'In Progress', nested: true, onClick: () => setActiveItem('in-progress') },
-          { id: 'completed', label: 'Completed', nested: true, onClick: () => setActiveItem('completed') },
-          { id: 'deleted', label: 'Deleted', nested: true, onClick: () => setActiveItem('deleted') },
-        ],
-      },
-      {
-        id: 'folders',
-        title: 'Folders',
-        collapsible: true,
-        defaultExpanded: true,
-        items: [
-          { id: 'folders-item', label: 'Folders', icon: 'folder' as const, hasMenu: true },
-        ],
-        hasDivider: true,
-      },
-      {
-        id: 'features',
-        hasDivider: true,
-        items: [
-          { id: 'parties', label: 'Parties', icon: 'people' as const, badge: 'New', onClick: () => setActiveItem('parties') },
-          { id: 'requests', label: 'Requests', icon: 'send' as const, badge: 'New', onClick: () => setActiveItem('requests') },
-          { id: 'maestro', label: 'Maestro Workflows', icon: 'list' as const, badge: 'New', onClick: () => setActiveItem('maestro') },
-          { id: 'workspaces', label: 'Workspaces', icon: 'grid' as const, onClick: () => setActiveItem('workspaces') },
-          { id: 'powerforms', label: 'PowerForms', icon: 'zap' as const, onClick: () => setActiveItem('powerforms') },
-          { id: 'bulk-send', label: 'Bulk Send', icon: 'copy' as const, onClick: () => setActiveItem('bulk-send') },
-        ],
-      },
-    ],
-  };
-}
-
-/* ─── App ────────────────────────────────────────────────────────────────── */
+const statusKindMap: Record<AgreementStatus, 'success' | 'neutral'> = {
+  active: 'success',
+  inactive: 'neutral',
+};
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('agreements');
-  const [activeNavItem, setActiveNavItem] = useState('all-agreements');
-  const [search, setSearch] = useState('');
+  const [searchValue, setSearchValue] = useState('');
+  const [sortColumn, setSortColumn] = useState<string | undefined>('fileName');
+  const [sortDirection, setSortDirection] = useState<DataTableSortDirection>('ascending');
+  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set());
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState<PageSizeOption>(25);
 
-  const handleTabClick = useCallback((tabId: string) => {
-    setActiveTab(tabId as TabId);
-    setSearch('');
-    if (tabId === 'agreements') setActiveNavItem('all-agreements');
-  }, []);
+  const filteredAgreements = useMemo(() => {
+    const query = searchValue.trim().toLowerCase();
 
-  const globalNavConfig = {
-    logo: <img src="/docusign-logo.svg" alt="DocuSign" />,
-    navItems: [
-      { id: 'home', label: 'Home', active: activeTab === 'home', onClick: () => handleTabClick('home') },
-      { id: 'agreements', label: 'Agreements', active: activeTab === 'agreements', onClick: () => handleTabClick('agreements') },
-      { id: 'templates', label: 'Templates', active: activeTab === 'templates', onClick: () => handleTabClick('templates') },
-      { id: 'reports', label: 'Reports', active: activeTab === 'reports', onClick: () => handleTabClick('reports') },
-      { id: 'admin', label: 'Admin', active: activeTab === 'admin', onClick: () => handleTabClick('admin') },
+    if (!query) {
+      return AGREEMENTS;
+    }
+
+    return AGREEMENTS.filter((agreement) => {
+      const haystack = [
+        agreement.fileName,
+        agreement.parties.join(' '),
+        agreement.agreementType,
+        statusLabelMap[agreement.status],
+      ]
+        .join(' ')
+        .toLowerCase();
+
+      return haystack.includes(query);
+    });
+  }, [searchValue]);
+
+  const sortedAgreements = useMemo(() => {
+    if (!sortColumn || !sortDirection) {
+      return filteredAgreements;
+    }
+
+    const sortMultiplier = sortDirection === 'ascending' ? 1 : -1;
+
+    return [...filteredAgreements].sort((a, b) => {
+      if (sortColumn === 'parties') {
+        return a.parties[0].localeCompare(b.parties[0]) * sortMultiplier;
+      }
+
+      if (sortColumn === 'status') {
+        return statusLabelMap[a.status].localeCompare(statusLabelMap[b.status]) * sortMultiplier;
+      }
+
+      const aValue = String((a as Record<string, unknown>)[sortColumn] ?? '');
+      const bValue = String((b as Record<string, unknown>)[sortColumn] ?? '');
+      return aValue.localeCompare(bValue) * sortMultiplier;
+    });
+  }, [filteredAgreements, sortColumn, sortDirection]);
+
+  const totalItems = sortedAgreements.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+  const currentPage = Math.min(page, totalPages);
+
+  const paginatedAgreements = useMemo(() => {
+    const start = (currentPage - 1) * pageSize;
+    return sortedAgreements.slice(start, start + pageSize);
+  }, [currentPage, pageSize, sortedAgreements]);
+
+  const columns = useMemo<DataTableColumn<Agreement>[]>(
+    () => [
+      {
+        key: 'fileName',
+        header: 'File Name',
+        width: '36%',
+        sortable: true,
+        sortValue: (row) => row.fileName.toLowerCase(),
+        cell: (row) => (
+          <div style={{ display: 'flex', gap: '6px', alignItems: 'flex-start' }}>
+            {row.hasAI && (
+              <Icon
+                name="ai-spark-filled"
+                size="small"
+                color="var(--ink-cobalt-100)"
+                aria-label="AI processed"
+                style={{ flexShrink: 0, marginTop: '2px' }}
+              />
+            )}
+            <div style={{ minWidth: 0 }}>
+              <Text as="div" size="sm" weight="regular">
+                {row.fileName}
+              </Text>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginTop: '2px' }}>
+                {row.subtitleKind === 'completed' ? (
+                  <>
+                    <Icon name="check" size="small" color="var(--ink-green-80)" aria-hidden />
+                    <Text as="span" size="xs" color="secondary">
+                      Completed envelope:{' '}
+                      <Link href={row.subtitleLink} size="xs">{row.subtitleLinkLabel.replace('Complete with Docusign: ', '')}</Link>
+                    </Text>
+                  </>
+                ) : (
+                  <>
+                    <Icon name="upload" size="small" color="var(--ink-cobalt-100)" aria-hidden />
+                    <Text as="span" size="xs" color="secondary">
+                      Uploaded:{' '}
+                      <Link href={row.subtitleLink} size="xs">{row.subtitleLinkLabel}</Link>
+                    </Text>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        ),
+      },
+      {
+        key: 'parties',
+        header: 'Parties',
+        width: '24%',
+        sortable: true,
+        sortValue: (row) => (row.parties[0] ?? '').toLowerCase(),
+        cell: (row) =>
+          row.parties.length > 0 ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              {row.parties.map((party) => (
+                <Link
+                  href="#"
+                  size="xs"
+                  key={`${row.id}-${party}`}
+                  style={{
+                    border: '1px solid var(--ink-cobalt-40)',
+                    borderRadius: 'var(--ink-radius-size-xs)',
+                    padding: '2px 8px',
+                    display: 'inline-block',
+                    maxWidth: '100%',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {party}
+                </Link>
+              ))}
+            </div>
+          ) : null,
+      },
+      {
+        key: 'status',
+        header: 'Status',
+        width: '12%',
+        sortable: true,
+        sortValue: (row) => statusLabelMap[row.status],
+        cell: (row) => (
+          <StatusLight
+            kind={statusKindMap[row.status]}
+            text={statusLabelMap[row.status]}
+            noFill
+          />
+        ),
+      },
+      {
+        key: 'agreementType',
+        header: 'Agreement Type',
+        width: '18%',
+        sortable: true,
+        cell: (row) =>
+          row.agreementType ? (
+            <Badge kind="success" text={row.agreementType} />
+          ) : null,
+      },
     ],
-    showSearch: true,
-    showNotifications: true,
-    notificationCount: 3,
-    showSettings: true,
-    user: { name: 'Jane Smith' },
+    []
+  );
+
+  const handleSortChange = (column: string, direction: DataTableSortDirection) => {
+    setSortColumn(direction ? column : undefined);
+    setSortDirection(direction);
   };
 
-  const isPartiesView = activeNavItem === 'parties';
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+    setPage(1);
+  };
 
-  // Agreements + Parties table view (OG layout)
-  const agreementsContent = (
-    <AgreementTableView
-      pageHeader={
-        <PageHeader
-          title={isPartiesView ? 'Parties' : 'Agreements'}
-          showAIBadge
-          actions={
-            <Button kind="brand">
-              {isPartiesView ? 'Add Party' : 'New Agreement'}
-            </Button>
-          }
-        />
-      }
-      filterBar={
-        <FilterBar
-          search={{
-            value: search,
-            onChange: setSearch,
-            placeholder: isPartiesView
-              ? 'Search parties by name, email, or role'
-              : 'Try keywords, phrases, or a question',
+  const pageTitle = 'Completed Documents';
+
+  const view = (
+    <DocuSignShell globalNav={globalNavConfig} localNav={localNavConfig}>
+      <AgreementTableView
+        paddingVariant="compact"
+        pageHeader={
+          <PageHeader
+            title={pageTitle}
+            showAIBadge
+            actions={
+              <>
+                <IconButton
+                  icon="plus"
+                  variant="tertiary"
+                  size="small"
+                  aria-label="Add agreement"
+                />
+                <IconButton
+                  icon="settings"
+                  variant="tertiary"
+                  size="small"
+                  aria-label="Table settings"
+                />
+              </>
+            }
+          />
+        }
+        filterBar={
+          <FilterBar
+            viewSelector={
+              <Button kind="secondary" size="small" menuTrigger>
+                Completed Documents
+              </Button>
+            }
+            search={{
+              value: searchValue,
+              onChange: handleSearchChange,
+              placeholder: 'Try keywords or phrases',
+            }}
+            showSearchIndicator
+            filters={
+              <Button kind="secondary" size="small" menuTrigger>
+                Filters
+              </Button>
+            }
+            quickActions={[
+              <Button key="canvases" kind="tertiary" size="small" menuTrigger>
+                Canvases
+              </Button>,
+            ]}
+          />
+        }
+      >
+        <DataTable
+          columns={columns}
+          data={paginatedAgreements}
+          getRowKey={(row) => row.id}
+          selectable
+          selectedRows={selectedRows}
+          onSelectionChange={setSelectedRows}
+          sortColumn={sortColumn}
+          sortDirection={sortDirection}
+          onSortChange={handleSortChange}
+          pagination={{
+            page: currentPage,
+            pageSize,
+            totalItems,
+            onPageChange: setPage,
+            onPageSizeChange: (size) => {
+              setPageSize(size);
+              setPage(1);
+            },
           }}
-          showSearchIndicator={!isPartiesView}
-          filters={
-            <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>
-              Filters
-            </Button>
-          }
-        />
-      }
-    >
-      {isPartiesView ? (
-        <DataTable
-          columns={partyColumns}
-          data={parties}
-          getRowKey={(row) => row.id}
-          selectable
+          renderRowActions={(row) => (
+            <IconButton
+              icon="overflow-vertical"
+              variant="tertiary"
+              size="small"
+              aria-label={`More actions for ${row.fileName}`}
+            />
+          )}
+          showColumnControl
+          rowHeight="tall"
           stickyHeader
-          pagination={{ page: 1, pageSize: 25, totalItems: parties.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }}
+          stickyFooter
+          emptyMessage="No agreements match your current filters."
         />
-      ) : (
-        <DataTable
-          columns={agreementColumns}
-          data={agreements}
-          getRowKey={(row) => row.id}
-          selectable
-          stickyHeader
-          pagination={{ page: 1, pageSize: 25, totalItems: 127, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }}
-        />
-      )}
-    </AgreementTableView>
+      </AgreementTableView>
+    </DocuSignShell>
   );
-
-  // Templates table view
-  const templatesContent = (
-    <AgreementTableView
-      pageHeader={<PageHeader title="Templates" showAIBadge actions={<Button kind="brand">New Template</Button>} />}
-      filterBar={
-        <FilterBar
-          search={{ value: search, onChange: setSearch, placeholder: 'Search templates' }}
-          filters={<Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>Filters</Button>}
-        />
-      }
-    >
-      <DataTable
-        columns={templateColumns}
-        data={templates}
-        getRowKey={(row) => row.id}
-        selectable
-        stickyHeader
-        pagination={{ page: 1, pageSize: 25, totalItems: templates.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }}
-      />
-    </AgreementTableView>
-  );
-
-  // Pick content + sidebar based on active tab
-  const showSidebar = activeTab === 'agreements';
-  const localNav = showSidebar ? buildAgreementsSidebar(activeNavItem, setActiveNavItem) : undefined;
-
-  let content;
-  switch (activeTab) {
-    case 'home': content = <HomePage />; break;
-    case 'agreements': content = agreementsContent; break;
-    case 'templates': content = templatesContent; break;
-    case 'reports': content = <ReportsPage />; break;
-    case 'admin': content = <PlaceholderPage title="Admin" />; break;
-  }
 
   return (
-    <DocuSignShell globalNav={globalNavConfig} localNav={localNav}>
-      {content}
-    </DocuSignShell>
+    <Routes>
+      <Route path="/navigator" element={<NavigatorPage />} />
+      <Route path="*" element={<Navigate to="/navigator" replace />} />
+    </Routes>
   );
 }
