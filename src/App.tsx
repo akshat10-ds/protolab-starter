@@ -1,179 +1,147 @@
-import { useState } from 'react';
-import {
-  DocuSignShell,
-  AgreementTableView,
-  PageHeader,
-  FilterBar,
-  DataTable,
-  Button,
-  Badge,
-  Icon,
-} from '@/design-system';
+import { useState, useEffect, useCallback } from 'react';
+import { DocuSignShell } from '@/design-system';
+import { buildNavItems } from '@/config/globalNav';
+import { sidebars } from '@/config/sidebars';
+import { resolveRoute } from '@/config/pages';
+import type { TabId } from '@/config/globalNav';
+import type { RouteConfig } from '@/config/pages';
+
+import DashboardPage from '@/pages/DashboardPage';
+import TablePage from '@/pages/TablePage';
+import InsightsPage from '@/pages/InsightsPage';
+import PlaceholderPage from '@/pages/PlaceholderPage';
 
 /* ═══════════════════════════════════════
-   GlobalNav Config
-   ALWAYS include: logo, 5 navItems, showSearch,
-   showNotifications, showSettings, and user.
+   Hash Router
+   Reads window.location.hash, resolves it
+   to a RouteConfig, and renders the right page.
    ═══════════════════════════════════════ */
 
-const globalNavConfig = {
-  logo: <img src="/docusign-logo.svg" alt="DocuSign" />,
-  navItems: [
-    { id: 'home', label: 'Home', href: '#' },
-    { id: 'agreements', label: 'Agreements', href: '#', active: true },
-    { id: 'templates', label: 'Templates', href: '#' },
-    { id: 'reports', label: 'Reports', href: '#' },
-    { id: 'admin', label: 'Admin', href: '#' },
-  ],
-  showSearch: true,
-  showNotifications: true,
-  notificationCount: 3,
-  showSettings: true,
-  user: { name: 'Jane Smith' },
-};
+function useHashRoute() {
+  const [route, setRoute] = useState<RouteConfig>(() =>
+    resolveRoute(window.location.hash)
+  );
 
-/* ═══════════════════════════════════════
-   LocalNav Config
-   Use headerLabel + headerMenuItems for the
-   "Start" button dropdown. Include 4-5 items.
-   ═══════════════════════════════════════ */
+  useEffect(() => {
+    const onHashChange = () => {
+      setRoute(resolveRoute(window.location.hash));
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
-const localNavConfig = {
-  headerLabel: 'Start',
-  headerIcon: 'plus' as const,
-  headerMenuItems: [
-    { id: 'new-agreement', label: 'New Agreement', icon: 'edit' as const },
-    { id: 'new-template', label: 'New Template', icon: 'star' as const },
-    { id: 'upload', label: 'Upload Document', icon: 'upload' as const },
-  ],
-  sections: [
-    {
-      id: 'agreements',
-      items: [
-        { id: 'all-agreements', label: 'All Agreements', icon: 'inbox' as const, active: true },
-        { id: 'drafts', label: 'Drafts', nested: true },
-        { id: 'in-progress', label: 'In Progress', nested: true },
-        { id: 'completed', label: 'Completed', nested: true },
-        { id: 'deleted', label: 'Deleted', nested: true },
-      ],
-    },
-    {
-      id: 'folders',
-      title: 'Folders',
-      collapsible: true,
-      defaultExpanded: true,
-      items: [
-        { id: 'folders-item', label: 'Folders', icon: 'folder' as const, hasMenu: true },
-      ],
-      hasDivider: true,
-    },
-    {
-      id: 'features',
-      hasDivider: true,
-      items: [
-        { id: 'parties', label: 'Parties', icon: 'users' as const, badge: 'New' },
-        { id: 'requests', label: 'Requests', icon: 'send' as const, badge: 'New' },
-        { id: 'maestro', label: 'Maestro Workflows', icon: 'list' as const, badge: 'New' },
-        { id: 'workspaces', label: 'Workspaces', icon: 'grid' as const },
-        { id: 'powerforms', label: 'PowerForms', icon: 'zap' as const },
-        { id: 'bulk-send', label: 'Bulk Send', icon: 'copy' as const },
-      ],
-    },
-  ],
-};
+  const navigate = useCallback((hash: string) => {
+    window.location.hash = hash;
+  }, []);
 
-/* ═══════════════════════════════════════
-   DataTable Config
-   Data-driven: NO children. Pass columns + data.
-   Tables are NOT wrapped in Cards (DocuSign convention).
-   ═══════════════════════════════════════ */
-
-interface Agreement {
-  id: string;
-  name: string;
-  status: string;
-  statusKind: 'success' | 'warning' | 'info' | 'neutral';
-  sender: string;
-  lastUpdated: string;
+  return { route, navigate };
 }
 
-const columns = [
-  { key: 'name', header: 'Agreement Name', sortable: true },
-  {
-    key: 'status',
-    header: 'Status',
-    sortable: true,
-    cell: (row: Agreement) => (
-      <Badge kind={row.statusKind} size="small">{row.status}</Badge>
-    ),
-  },
-  { key: 'sender', header: 'Sender' },
-  { key: 'lastUpdated', header: 'Last Updated', sortable: true },
-];
+/* ═══════════════════════════════════════
+   Page Renderer
+   Maps route.page to the correct component.
+   ═══════════════════════════════════════ */
 
-const agreements: Agreement[] = [
-  { id: '1', name: 'NDA - Acme Corporation', status: 'Completed', statusKind: 'success', sender: 'John Doe', lastUpdated: 'Mar 24, 2026' },
-  { id: '2', name: 'MSA - TechStart Inc', status: 'Waiting for Review', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 23, 2026' },
-  { id: '3', name: 'SOW - Phase 2 Development', status: 'Draft', statusKind: 'neutral', sender: 'Jane Smith', lastUpdated: 'Mar 22, 2026' },
-  { id: '4', name: 'Employment Agreement - Senior Engineer', status: 'Completed', statusKind: 'success', sender: 'HR Team', lastUpdated: 'Mar 21, 2026' },
-  { id: '5', name: 'Vendor Agreement - CloudCo', status: 'Waiting for Signature', statusKind: 'info', sender: 'John Doe', lastUpdated: 'Mar 20, 2026' },
-  { id: '6', name: 'Lease Amendment - Office Space', status: 'Completed', statusKind: 'success', sender: 'Legal Team', lastUpdated: 'Mar 19, 2026' },
-  { id: '7', name: 'Consulting Agreement - DesignLab', status: 'Action Required', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 18, 2026' },
-];
+function renderPage(route: RouteConfig) {
+  switch (route.page) {
+    case 'dashboard':
+      return <DashboardPage />;
+    case 'table':
+      return <TablePage />;
+    case 'insights':
+      return <InsightsPage />;
+    case 'placeholder':
+      return <PlaceholderPage title={route.placeholderTitle ?? 'Page'} />;
+    default:
+      return <PlaceholderPage title="Page Not Found" />;
+  }
+}
 
 /* ═══════════════════════════════════════
-   App — List Page (Navigator Style)
-   DocuSignShell > AgreementTableView > DataTable
+   Build LocalNav config from sidebar config
+   Wires up onClick handlers and active state.
+   ═══════════════════════════════════════ */
+
+function buildLocalNav(
+  tabId: TabId,
+  activeItemId: string,
+  navigate: (hash: string) => void,
+) {
+  const sidebar = sidebars[tabId];
+
+  return {
+    headerLabel: sidebar.headerLabel,
+    headerIcon: sidebar.headerIcon as any,
+    headerMenuItems: sidebar.headerMenuItems?.map((item) => ({
+      ...item,
+      icon: item.icon as any,
+    })),
+    sections: sidebar.sections.map((section) => ({
+      ...section,
+      items: section.items.map((item) => ({
+        ...item,
+        icon: item.icon as any,
+        active: item.id === activeItemId,
+        onClick: () => navigate(item.hash),
+      })),
+    })),
+  };
+}
+
+/* ═══════════════════════════════════════
+   App — Config-driven multi-page shell
+   DocuSignShell + hash routing + page transitions
    ═══════════════════════════════════════ */
 
 export default function App() {
-  const [search, setSearch] = useState('');
+  const { route, navigate } = useHashRoute();
+
+  // Fade transition state
+  const [visible, setVisible] = useState(true);
+  const [displayedRoute, setDisplayedRoute] = useState(route);
+
+  useEffect(() => {
+    if (route === displayedRoute) return;
+
+    // Fade out, swap page, fade in
+    setVisible(false);
+    const timer = setTimeout(() => {
+      setDisplayedRoute(route);
+      setVisible(true);
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, [route, displayedRoute]);
+
+  const globalNavConfig = {
+    logo: <img src="/docusign-logo.svg" alt="DocuSign" />,
+    navItems: buildNavItems(displayedRoute.tab, navigate),
+    showSearch: true,
+    showNotifications: true,
+    notificationCount: 3,
+    showSettings: true,
+    user: { name: 'Jane Smith' },
+  };
+
+  const localNavConfig = buildLocalNav(
+    displayedRoute.tab,
+    displayedRoute.sidebarItemId,
+    navigate,
+  );
 
   return (
     <DocuSignShell
       globalNav={globalNavConfig}
       localNav={localNavConfig}
     >
-      <AgreementTableView
-        pageHeader={
-          <PageHeader
-            title="Agreements"
-            showAIBadge
-            actions={<Button kind="brand">New Agreement</Button>}
-          />
-        }
-        filterBar={
-          <FilterBar
-            search={{
-              value: search,
-              onChange: setSearch,
-              placeholder: 'Try keywords, phrases, or a question',
-            }}
-            showSearchIndicator
-            filters={
-              <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>
-                Filters
-              </Button>
-            }
-          />
-        }
+      <div
+        style={{
+          opacity: visible ? 1 : 0,
+          transition: 'opacity 150ms ease-in-out',
+        }}
       >
-        <DataTable
-          columns={columns}
-          data={agreements}
-          getRowKey={(row) => row.id}
-          selectable
-          stickyHeader
-          pagination={{
-            page: 1,
-            pageSize: 25,
-            totalItems: 127,
-            onPageChange: () => {},
-            onPageSizeChange: () => {},
-            showInfo: true,
-          }}
-        />
-      </AgreementTableView>
+        {renderPage(displayedRoute)}
+      </div>
     </DocuSignShell>
   );
 }
