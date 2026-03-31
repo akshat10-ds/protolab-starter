@@ -1,147 +1,223 @@
-import { useState, useEffect, useCallback } from 'react';
-import { DocuSignShell } from '@/design-system';
-import { buildNavItems } from '@/config/globalNav';
-import { sidebars } from '@/config/sidebars';
-import { resolveRoute } from '@/config/pages';
-import type { TabId } from '@/config/globalNav';
-import type { RouteConfig } from '@/config/pages';
+import { useState } from 'react';
+import {
+  DocuSignShell,
+  AgreementTableView,
+  PageHeader,
+  FilterBar,
+  DataTable,
+  Button,
+  Badge,
+  Icon,
+} from '@/design-system';
 
-import DashboardPage from '@/pages/DashboardPage';
-import TablePage from '@/pages/TablePage';
-import InsightsPage from '@/pages/InsightsPage';
-import PlaceholderPage from '@/pages/PlaceholderPage';
+/* ─── GlobalNav ──────────────────────────────────────────────────────────── */
 
-/* ═══════════════════════════════════════
-   Hash Router
-   Reads window.location.hash, resolves it
-   to a RouteConfig, and renders the right page.
-   ═══════════════════════════════════════ */
+const globalNavConfig = {
+  logo: <img src="/docusign-logo.svg" alt="DocuSign" />,
+  navItems: [
+    { id: 'home', label: 'Home', href: '#' },
+    { id: 'agreements', label: 'Agreements', href: '#', active: true },
+    { id: 'templates', label: 'Templates', href: '#' },
+    { id: 'reports', label: 'Reports', href: '#' },
+    { id: 'admin', label: 'Admin', href: '#' },
+  ],
+  showSearch: true,
+  showNotifications: true,
+  notificationCount: 3,
+  showSettings: true,
+  user: { name: 'Jane Smith' },
+};
 
-function useHashRoute() {
-  const [route, setRoute] = useState<RouteConfig>(() =>
-    resolveRoute(window.location.hash)
-  );
+/* ─── Agreements data ────────────────────────────────────────────────────── */
 
-  useEffect(() => {
-    const onHashChange = () => {
-      setRoute(resolveRoute(window.location.hash));
-    };
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
-  }, []);
-
-  const navigate = useCallback((hash: string) => {
-    window.location.hash = hash;
-  }, []);
-
-  return { route, navigate };
+interface Agreement {
+  id: string;
+  name: string;
+  status: string;
+  statusKind: 'success' | 'warning' | 'info' | 'neutral';
+  sender: string;
+  lastUpdated: string;
 }
 
-/* ═══════════════════════════════════════
-   Page Renderer
-   Maps route.page to the correct component.
-   ═══════════════════════════════════════ */
+const agreementColumns = [
+  { key: 'name', header: 'Agreement Name', sortable: true },
+  {
+    key: 'status',
+    header: 'Status',
+    sortable: true,
+    cell: (row: Agreement) => (
+      <Badge kind={row.statusKind} size="small">{row.status}</Badge>
+    ),
+  },
+  { key: 'sender', header: 'Sender' },
+  { key: 'lastUpdated', header: 'Last Updated', sortable: true },
+];
 
-function renderPage(route: RouteConfig) {
-  switch (route.page) {
-    case 'dashboard':
-      return <DashboardPage />;
-    case 'table':
-      return <TablePage />;
-    case 'insights':
-      return <InsightsPage />;
-    case 'placeholder':
-      return <PlaceholderPage title={route.placeholderTitle ?? 'Page'} />;
-    default:
-      return <PlaceholderPage title="Page Not Found" />;
-  }
+const agreements: Agreement[] = [
+  { id: '1', name: 'NDA - Acme Corporation', status: 'Completed', statusKind: 'success', sender: 'John Doe', lastUpdated: 'Mar 24, 2026' },
+  { id: '2', name: 'MSA - TechStart Inc', status: 'Waiting for Review', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 23, 2026' },
+  { id: '3', name: 'SOW - Phase 2 Development', status: 'Draft', statusKind: 'neutral', sender: 'Jane Smith', lastUpdated: 'Mar 22, 2026' },
+  { id: '4', name: 'Employment Agreement - Senior Engineer', status: 'Completed', statusKind: 'success', sender: 'HR Team', lastUpdated: 'Mar 21, 2026' },
+  { id: '5', name: 'Vendor Agreement - CloudCo', status: 'Waiting for Signature', statusKind: 'info', sender: 'John Doe', lastUpdated: 'Mar 20, 2026' },
+  { id: '6', name: 'Lease Amendment - Office Space', status: 'Completed', statusKind: 'success', sender: 'Legal Team', lastUpdated: 'Mar 19, 2026' },
+  { id: '7', name: 'Consulting Agreement - DesignLab', status: 'Action Required', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 18, 2026' },
+];
+
+/* ─── Parties data ───────────────────────────────────────────────────────── */
+
+interface Party {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  status: string;
+  statusKind: 'success' | 'warning' | 'info' | 'neutral';
+  documents: number;
 }
 
-/* ═══════════════════════════════════════
-   Build LocalNav config from sidebar config
-   Wires up onClick handlers and active state.
-   ═══════════════════════════════════════ */
+const partyColumns = [
+  { key: 'name', header: 'Name', sortable: true },
+  { key: 'email', header: 'Email', sortable: true },
+  { key: 'role', header: 'Role', sortable: true },
+  {
+    key: 'status',
+    header: 'Status',
+    sortable: true,
+    cell: (row: Party) => (
+      <Badge kind={row.statusKind} size="small">{row.status}</Badge>
+    ),
+  },
+  { key: 'documents', header: 'Documents', sortable: true },
+];
 
-function buildLocalNav(
-  tabId: TabId,
-  activeItemId: string,
-  navigate: (hash: string) => void,
-) {
-  const sidebar = sidebars[tabId];
+const parties: Party[] = [
+  { id: '1', name: 'Acme Corporation', email: 'legal@acme.com', role: 'Signer', status: 'Active', statusKind: 'success', documents: 14 },
+  { id: '2', name: 'TechStart Inc', email: 'contracts@techstart.io', role: 'Recipient', status: 'Active', statusKind: 'success', documents: 6 },
+  { id: '3', name: 'DesignLab Studio', email: 'hello@designlab.co', role: 'Approver', status: 'Pending', statusKind: 'warning', documents: 3 },
+  { id: '4', name: 'CloudCo Services', email: 'vendor@cloudco.com', role: 'Signer', status: 'Active', statusKind: 'success', documents: 9 },
+  { id: '5', name: 'GlobalTech Partners', email: 'partners@globaltech.com', role: 'Recipient', status: 'Inactive', statusKind: 'neutral', documents: 1 },
+  { id: '6', name: 'NextGen Solutions', email: 'info@nextgen.dev', role: 'Signer', status: 'Pending', statusKind: 'warning', documents: 2 },
+];
 
-  return {
-    headerLabel: sidebar.headerLabel,
-    headerIcon: sidebar.headerIcon as any,
-    headerMenuItems: sidebar.headerMenuItems?.map((item) => ({
-      ...item,
-      icon: item.icon as any,
-    })),
-    sections: sidebar.sections.map((section) => ({
-      ...section,
-      items: section.items.map((item) => ({
-        ...item,
-        icon: item.icon as any,
-        active: item.id === activeItemId,
-        onClick: () => navigate(item.hash),
-      })),
-    })),
-  };
-}
-
-/* ═══════════════════════════════════════
-   App — Config-driven multi-page shell
-   DocuSignShell + hash routing + page transitions
-   ═══════════════════════════════════════ */
+/* ─── App ────────────────────────────────────────────────────────────────── */
 
 export default function App() {
-  const { route, navigate } = useHashRoute();
+  const [activeNavItem, setActiveNavItem] = useState('all-agreements');
+  const [search, setSearch] = useState('');
 
-  // Fade transition state
-  const [visible, setVisible] = useState(true);
-  const [displayedRoute, setDisplayedRoute] = useState(route);
+  const isPartiesView = activeNavItem === 'parties';
 
-  useEffect(() => {
-    if (route === displayedRoute) return;
-
-    // Fade out, swap page, fade in
-    setVisible(false);
-    const timer = setTimeout(() => {
-      setDisplayedRoute(route);
-      setVisible(true);
-    }, 150);
-
-    return () => clearTimeout(timer);
-  }, [route, displayedRoute]);
-
-  const globalNavConfig = {
-    logo: <img src="/docusign-logo.svg" alt="DocuSign" />,
-    navItems: buildNavItems(displayedRoute.tab, navigate),
-    showSearch: true,
-    showNotifications: true,
-    notificationCount: 3,
-    showSettings: true,
-    user: { name: 'Jane Smith' },
+  const localNavConfig = {
+    headerLabel: 'Start',
+    headerIcon: 'plus' as const,
+    headerMenuItems: [
+      { id: 'new-agreement', label: 'New Agreement', icon: 'edit' as const },
+      { id: 'new-template', label: 'New Template', icon: 'star' as const },
+      { id: 'upload', label: 'Upload Document', icon: 'upload' as const },
+    ],
+    activeItemId: activeNavItem,
+    sections: [
+      {
+        id: 'agreements',
+        items: [
+          { id: 'all-agreements', label: 'All Agreements', icon: 'inbox' as const, onClick: () => setActiveNavItem('all-agreements') },
+          { id: 'drafts', label: 'Drafts', nested: true, onClick: () => setActiveNavItem('drafts') },
+          { id: 'in-progress', label: 'In Progress', nested: true, onClick: () => setActiveNavItem('in-progress') },
+          { id: 'completed', label: 'Completed', nested: true, onClick: () => setActiveNavItem('completed') },
+          { id: 'deleted', label: 'Deleted', nested: true, onClick: () => setActiveNavItem('deleted') },
+        ],
+      },
+      {
+        id: 'folders',
+        title: 'Folders',
+        collapsible: true,
+        defaultExpanded: true,
+        items: [
+          { id: 'folders-item', label: 'Folders', icon: 'folder' as const, hasMenu: true },
+        ],
+        hasDivider: true,
+      },
+      {
+        id: 'features',
+        hasDivider: true,
+        items: [
+          { id: 'parties', label: 'Parties', icon: 'people' as const, badge: 'New', onClick: () => setActiveNavItem('parties') },
+          { id: 'requests', label: 'Requests', icon: 'send' as const, badge: 'New', onClick: () => setActiveNavItem('requests') },
+          { id: 'maestro', label: 'Maestro Workflows', icon: 'list' as const, badge: 'New', onClick: () => setActiveNavItem('maestro') },
+          { id: 'workspaces', label: 'Workspaces', icon: 'grid' as const, onClick: () => setActiveNavItem('workspaces') },
+          { id: 'powerforms', label: 'PowerForms', icon: 'zap' as const, onClick: () => setActiveNavItem('powerforms') },
+          { id: 'bulk-send', label: 'Bulk Send', icon: 'copy' as const, onClick: () => setActiveNavItem('bulk-send') },
+        ],
+      },
+    ],
   };
 
-  const localNavConfig = buildLocalNav(
-    displayedRoute.tab,
-    displayedRoute.sidebarItemId,
-    navigate,
-  );
-
   return (
-    <DocuSignShell
-      globalNav={globalNavConfig}
-      localNav={localNavConfig}
-    >
-      <div
-        style={{
-          opacity: visible ? 1 : 0,
-          transition: 'opacity 150ms ease-in-out',
-        }}
+    <DocuSignShell globalNav={globalNavConfig} localNav={localNavConfig}>
+      <AgreementTableView
+        pageHeader={
+          <PageHeader
+            title={isPartiesView ? 'Parties' : 'Agreements'}
+            showAIBadge
+            actions={
+              <Button kind="brand">
+                {isPartiesView ? 'Add Party' : 'New Agreement'}
+              </Button>
+            }
+          />
+        }
+        filterBar={
+          <FilterBar
+            search={{
+              value: search,
+              onChange: setSearch,
+              placeholder: isPartiesView
+                ? 'Search parties by name, email, or role'
+                : 'Try keywords, phrases, or a question',
+            }}
+            showSearchIndicator={!isPartiesView}
+            filters={
+              <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>
+                Filters
+              </Button>
+            }
+          />
+        }
       >
-        {renderPage(displayedRoute)}
-      </div>
+        {isPartiesView ? (
+          <DataTable
+            columns={partyColumns}
+            data={parties}
+            getRowKey={(row) => row.id}
+            selectable
+            stickyHeader
+            pagination={{
+              page: 1,
+              pageSize: 25,
+              totalItems: parties.length,
+              onPageChange: () => {},
+              onPageSizeChange: () => {},
+              showInfo: true,
+            }}
+          />
+        ) : (
+          <DataTable
+            columns={agreementColumns}
+            data={agreements}
+            getRowKey={(row) => row.id}
+            selectable
+            stickyHeader
+            pagination={{
+              page: 1,
+              pageSize: 25,
+              totalItems: 127,
+              onPageChange: () => {},
+              onPageSizeChange: () => {},
+              showInfo: true,
+            }}
+          />
+        )}
+      </AgreementTableView>
     </DocuSignShell>
   );
 }
