@@ -8,6 +8,7 @@ import {
   Button,
   Badge,
   Icon,
+  IconButton,
   Card,
   Stack,
   Grid,
@@ -15,6 +16,8 @@ import {
   Container,
   Heading,
   Text,
+  Chip,
+  StatusLight,
 } from '@/design-system';
 
 /* ═══════════════════════════════════════
@@ -31,32 +34,79 @@ type SidebarView = 'all-agreements' | 'drafts' | 'in-progress' | 'completed' | '
 interface Agreement {
   id: string;
   name: string;
+  recipient: string;
   status: string;
+  statusIcon: 'status-check' | 'status-void' | 'clock' | 'status-warn';
   statusKind: 'success' | 'warning' | 'info' | 'neutral';
-  sender: string;
-  lastUpdated: string;
+  statusSub?: string;
+  date: string;
+  time: string;
+  action: 'Copy' | 'Download';
 }
 
 const AGREEMENTS_DATA: Agreement[] = [
-  { id: '1', name: 'NDA - Acme Corporation', status: 'Completed', statusKind: 'success', sender: 'John Doe', lastUpdated: 'Mar 24, 2026' },
-  { id: '2', name: 'MSA - TechStart Inc', status: 'Waiting for Review', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 23, 2026' },
-  { id: '3', name: 'SOW - Phase 2 Development', status: 'Draft', statusKind: 'neutral', sender: 'Jane Smith', lastUpdated: 'Mar 22, 2026' },
-  { id: '4', name: 'Employment Agreement - Senior Engineer', status: 'Completed', statusKind: 'success', sender: 'HR Team', lastUpdated: 'Mar 21, 2026' },
-  { id: '5', name: 'Vendor Agreement - CloudCo', status: 'Waiting for Signature', statusKind: 'info', sender: 'John Doe', lastUpdated: 'Mar 20, 2026' },
-  { id: '6', name: 'Lease Amendment - Office Space', status: 'Completed', statusKind: 'success', sender: 'Legal Team', lastUpdated: 'Mar 19, 2026' },
-  { id: '7', name: 'Consulting Agreement - DesignLab', status: 'Action Required', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 18, 2026' },
+  { id: '1', name: 'Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf', recipient: 'To: Akshat Mishra', status: 'Voided', statusIcon: 'status-void', statusKind: 'neutral', statusSub: 'Purging soon', date: '24/3/2026', time: '20:26', action: 'Copy' },
+  { id: '2', name: 'Here is your signed document: Sample_Service_Agreement.pdf', recipient: 'To: Akshat Mishra, [Placeholder]', status: 'Voided', statusIcon: 'status-void', statusKind: 'neutral', statusSub: 'Purging soon', date: '24/3/2026', time: '20:23', action: 'Copy' },
+  { id: '3', name: 'Complete with Docusign: rhi.pdf', recipient: 'To: Akshat Mishra', status: 'Voided', statusIcon: 'status-void', statusKind: 'neutral', statusSub: 'Purging soon', date: '24/3/2026', time: '20:16', action: 'Copy' },
+  { id: '4', name: 'Complete with Docusign: Sample_Service_Agreement.pdf', recipient: 'To: Akshat Mishra', status: 'Voided', statusIcon: 'status-void', statusKind: 'neutral', statusSub: 'Purging soon', date: '24/3/2026', time: '20:14', action: 'Copy' },
+  { id: '5', name: 'Complete with Docusign: Sample_Service_Agreement.pdf', recipient: 'To: Akshat Mishra', status: 'Voided', statusIcon: 'status-void', statusKind: 'neutral', statusSub: 'Purging soon', date: '24/3/2026', time: '20:10', action: 'Copy' },
+  { id: '6', name: 'Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf', recipient: 'To: Akshat Mishra', status: 'Completed', statusIcon: 'status-check', statusKind: 'success', statusSub: 'Purging soon', date: '23/3/2026', time: '20:25', action: 'Download' },
+  { id: '7', name: 'Complete with Docusign: Screenshot 2026-03-18 at 10.27.30 AM.png', recipient: 'To: Akshat Mishra', status: 'Completed', statusIcon: 'status-check', statusKind: 'success', statusSub: 'Purging soon', date: '18/3/2026', time: '11:05', action: 'Download' },
+  { id: '8', name: 'Complete with Docusign: Screenshot 2026-03-18 at 10.27.21 AM.png', recipient: 'To: Akshat Mishra', status: 'Completed', statusIcon: 'status-check', statusKind: 'success', statusSub: 'Purging soon', date: '18/3/2026', time: '10:57', action: 'Download' },
+  { id: '9', name: 'Please sign: test.txt', recipient: 'To: Akshat Mishra', status: 'Completed', statusIcon: 'status-check', statusKind: 'success', statusSub: 'Purged', date: '26/2/2026', time: '12:15', action: 'Download' },
+  { id: '10', name: 'Complete with Docusign: Fontara Financial SOW.pdf', recipient: 'To: Akshat Mishra', status: 'Completed', statusIcon: 'status-check', statusKind: 'success', statusSub: 'Purged', date: '24/2/2026', time: '10:50', action: 'Download' },
+  { id: '11', name: 'Complete with DocuSign: Georgia-Residential-Lease-Agreement.pdf', recipient: 'From: Renewal Management', status: 'Completed', statusIcon: 'status-check', statusKind: 'success', date: '24/2/2026', time: '10:44', action: 'Download' },
 ];
 
 const agreementColumns = [
-  { key: 'name', header: 'Agreement Name', sortable: true },
+  {
+    key: 'name',
+    header: 'Name',
+    sortable: true,
+    width: '50%',
+    cell: (row: Agreement) => (
+      <Stack gap="none" style={{ gap: 'var(--ink-spacing-25)' }}>
+        <Text size="sm">{row.name}</Text>
+        <Text size="xs" color="secondary">{row.recipient}</Text>
+      </Stack>
+    ),
+  },
   {
     key: 'status',
     header: 'Status',
-    sortable: true,
-    cell: (row: Agreement) => <Badge kind={row.statusKind} size="small">{row.status}</Badge>,
+    cell: (row: Agreement) => (
+      <Stack gap="none" style={{ gap: 'var(--ink-spacing-25)' }}>
+        <Inline gap="small" align="center">
+          <Icon name={row.statusIcon} size={16} color={row.statusKind === 'success' ? 'var(--ink-green-80)' : undefined} />
+          <Text size="sm">{row.status}</Text>
+        </Inline>
+        {row.statusSub && (
+          <Text size="xs" color="secondary" style={{ textDecoration: 'underline', textDecorationColor: 'var(--ink-border-subtle)' }}>{row.statusSub}</Text>
+        )}
+      </Stack>
+    ),
   },
-  { key: 'sender', header: 'Sender' },
-  { key: 'lastUpdated', header: 'Last Updated', sortable: true },
+  {
+    key: 'date',
+    header: 'Last Change',
+    sortable: true,
+    cell: (row: Agreement) => (
+      <Stack gap="none" style={{ gap: 'var(--ink-spacing-25)' }}>
+        <Text size="sm">{row.date}</Text>
+        <Text size="xs" color="secondary">{row.time}</Text>
+      </Stack>
+    ),
+  },
+  {
+    key: 'action',
+    header: '',
+    cell: (row: Agreement) => (
+      <Inline gap="small" align="center">
+        <Button kind="secondary" size="small">{row.action}</Button>
+        <IconButton icon="overflow-vertical" variant="tertiary" size="small" aria-label="More actions" />
+      </Inline>
+    ),
+  },
 ];
 
 /* ═══════════════════════════════════════
@@ -116,9 +166,9 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function HomePage() {
   const activity = [
-    { name: 'Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'slash' as const },
-    { name: 'Here is your signed document: Sample_Service_Agreement.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'slash' as const },
-    { name: 'Complete with Docusign: rhi.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'slash' as const },
+    { name: 'Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'status-void' as const },
+    { name: 'Here is your signed document: Sample_Service_Agreement.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'status-void' as const },
+    { name: 'Complete with Docusign: rhi.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'status-void' as const },
     { name: 'Change Order.docx', time: 'Expiring on 07/31/2026', status: 'Expiring Soon', statusIcon: 'clock' as const },
     { name: 'SOW(2).docx', time: 'Expiring on 06/30/2026', status: 'Expiring Soon', statusIcon: 'clock' as const },
     { name: 'SOW(1).docx', time: 'Expiring on 06/30/2026', status: 'Expiring Soon', statusIcon: 'clock' as const },
@@ -663,10 +713,9 @@ export default function App() {
       pageHeader={
         <PageHeader
           title={VIEW_LABELS[sidebarView]}
-          showAIBadge={!isPartiesView}
           actions={isPartiesView
             ? <Button kind="brand" startElement={<Icon name="plus" size={16} />}>Add Party</Button>
-            : <Button kind="brand">New Agreement</Button>
+            : <Button kind="secondary" menuTrigger>Shared Access</Button>
           }
         />
       }
@@ -678,18 +727,24 @@ export default function App() {
             placeholder: isPartiesView ? 'Search parties by name, email, or role' : 'Search Envelopes',
           }}
           showSearchIndicator={!isPartiesView}
-          filters={<>
-            <Button kind="secondary" size="small">Status</Button>
-            <Button kind="secondary" size="small">Sender</Button>
-            <Button kind="secondary" size="small">Quick views</Button>
-          </>}
+          filters={isPartiesView ? (
+            <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>Filters</Button>
+          ) : (
+            <Inline gap="small" align="center" style={{ flexWrap: 'nowrap' }}>
+              <Chip onRemove={() => {}}>Date: Last 6 Months</Chip>
+              <div style={{ width: 1, height: 20, background: 'var(--ink-border-subtle)', flexShrink: 0 }} />
+              <Button kind="secondary" size="small" menuTrigger>Status</Button>
+              <Button kind="secondary" size="small" menuTrigger>Sender</Button>
+              <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>All Filters</Button>
+            </Inline>
+          )}
         />
       }
     >
       {isPartiesView ? (
         <DataTable columns={partyColumns} data={filteredParties} getRowKey={(row) => row.id} selectable stickyHeader emptyMessage="No parties match your search" pagination={{ page: 1, pageSize: 25, totalItems: filteredParties.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : (
-        <DataTable columns={agreementColumns} data={filteredAgreements} getRowKey={(row) => row.id} selectable stickyHeader emptyMessage="No agreements match your search" pagination={{ page: 1, pageSize: 25, totalItems: 127, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
+        <DataTable columns={agreementColumns} data={filteredAgreements} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl rowHeight="tall" emptyMessage="No agreements match your search" pagination={{ page: 1, pageSize: 25, totalItems: filteredAgreements.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       )}
     </AgreementTableView>
   );
