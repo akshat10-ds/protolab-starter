@@ -100,8 +100,9 @@ const agreementColumns = [
   {
     key: 'action',
     header: '',
+    align: 'end',
     cell: (row: Agreement) => (
-      <Inline gap="small" align="center">
+      <Inline gap="small" align="center" justify="end" style={{ marginLeft: 'auto' }}>
         <Button kind="secondary" size="small">{row.action}</Button>
         <IconButton icon="overflow-vertical" variant="tertiary" size="small" aria-label="More actions" />
       </Inline>
@@ -687,12 +688,38 @@ export default function App() {
     ],
   };
 
-  /* ── Filtered data ── */
+  /* ── View-filtered data ── */
+  const viewAgreements = useMemo(() => {
+    switch (sidebarView) {
+      case 'drafts':
+        return [
+          { id: 'd1', name: 'Q2 Partnership Agreement - Draft', recipient: 'To: Legal Team', status: 'Draft', statusIcon: 'clock' as const, statusKind: 'neutral' as const, date: '31/3/2026', time: '09:15', action: 'Edit' as const },
+          { id: 'd2', name: 'Contractor NDA - Pending Review', recipient: 'To: Akshat Mishra', status: 'Draft', statusIcon: 'clock' as const, statusKind: 'neutral' as const, date: '30/3/2026', time: '14:30', action: 'Edit' as const },
+          { id: 'd3', name: 'Office Lease Renewal 2026', recipient: 'To: Facilities', status: 'Draft', statusIcon: 'clock' as const, statusKind: 'neutral' as const, date: '28/3/2026', time: '11:00', action: 'Edit' as const },
+        ];
+      case 'in-progress':
+        return [
+          { id: 'ip1', name: 'Vendor Agreement - CloudCo Services', recipient: 'To: CloudCo Services', status: 'Sent', statusIcon: 'clock' as const, statusKind: 'info' as const, statusSub: 'Waiting for others', date: '30/3/2026', time: '16:45', action: 'Copy' as const },
+          { id: 'ip2', name: 'Consulting Agreement - DesignLab', recipient: 'To: DesignLab Studio', status: 'Sent', statusIcon: 'clock' as const, statusKind: 'info' as const, statusSub: 'Waiting for others', date: '29/3/2026', time: '10:20', action: 'Copy' as const },
+          { id: 'ip3', name: 'Software License Agreement - Acme', recipient: 'To: Acme Solutions, Inc.', status: 'Delivered', statusIcon: 'clock' as const, statusKind: 'info' as const, statusSub: '1 of 2 signed', date: '27/3/2026', time: '09:00', action: 'Copy' as const },
+          { id: 'ip4', name: 'Service Level Agreement - TechStart', recipient: 'To: TechStart Inc', status: 'Delivered', statusIcon: 'clock' as const, statusKind: 'info' as const, statusSub: 'Viewed', date: '25/3/2026', time: '14:10', action: 'Copy' as const },
+        ];
+      case 'completed':
+        return AGREEMENTS_DATA.filter(a => a.status === 'Completed');
+      case 'deleted':
+        return [
+          { id: 'del1', name: 'Old NDA - Expired', recipient: 'To: Akshat Mishra', status: 'Voided', statusIcon: 'status-void' as const, statusKind: 'neutral' as const, statusSub: 'Deleted', date: '15/3/2026', time: '08:30', action: 'Copy' as const },
+        ];
+      default:
+        return AGREEMENTS_DATA;
+    }
+  }, [sidebarView]);
+
   const filteredAgreements = useMemo(() => {
-    if (!search) return AGREEMENTS_DATA;
+    if (!search) return viewAgreements;
     const q = search.toLowerCase();
-    return AGREEMENTS_DATA.filter((a) => a.name.toLowerCase().includes(q) || a.sender.toLowerCase().includes(q));
-  }, [search]);
+    return viewAgreements.filter((a) => a.name.toLowerCase().includes(q) || a.recipient.toLowerCase().includes(q));
+  }, [search, viewAgreements]);
 
   const filteredParties = useMemo(() => {
     if (!search) return PARTIES_DATA;
@@ -744,7 +771,13 @@ export default function App() {
       {isPartiesView ? (
         <DataTable columns={partyColumns} data={filteredParties} getRowKey={(row) => row.id} selectable stickyHeader emptyMessage="No parties match your search" pagination={{ page: 1, pageSize: 25, totalItems: filteredParties.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : (
-        <DataTable columns={agreementColumns} data={filteredAgreements} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl rowHeight="tall" emptyMessage="No agreements match your search" pagination={{ page: 1, pageSize: 25, totalItems: filteredAgreements.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
+        <DataTable columns={agreementColumns} data={filteredAgreements} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl rowHeight="tall" emptyMessage={
+          sidebarView === 'drafts' ? 'No drafts found' :
+          sidebarView === 'in-progress' ? 'No documents in progress' :
+          sidebarView === 'completed' ? 'No completed documents' :
+          sidebarView === 'deleted' ? 'No deleted documents' :
+          'No agreements match your search'
+        } pagination={{ page: 1, pageSize: 25, totalItems: filteredAgreements.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       )}
     </AgreementTableView>
   );

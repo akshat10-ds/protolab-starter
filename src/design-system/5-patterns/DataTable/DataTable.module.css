@@ -359,7 +359,7 @@
 .columnControlCell {
   width: 48px;
   text-align: center;
-  padding: 0 var(--dt-gap-xxs);
+  padding: 0 var(--dt-cell-padding-h) 0 var(--dt-gap-xxs);
 }
 
 .columnControlButton {

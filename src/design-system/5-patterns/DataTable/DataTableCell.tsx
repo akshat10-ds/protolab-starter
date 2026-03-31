@@ -14,7 +14,8 @@ export function DataTableCell<T = any>({
   rowIndex,
   value,
   stickyLeft,
-}: DataTableCellProps<T>) {
+  colSpan,
+}: DataTableCellProps<T> & { colSpan?: number }) {
   // Determine cell content
   let content: React.ReactNode = value;
 
@@ -37,6 +38,7 @@ export function DataTableCell<T = any>({
   return (
     <td
       className={cellClasses}
+      colSpan={colSpan}
       style={{
         width: column.width,
         maxWidth: column.maxWidth,

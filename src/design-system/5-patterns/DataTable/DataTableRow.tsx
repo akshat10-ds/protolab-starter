@@ -88,6 +88,9 @@ export function DataTableRow<T = any>({
         if (column.isVisible === false) return null;
 
         const value = (row as any)[column.key];
+        const visibleColumns = columns.filter(c => c.isVisible !== false);
+        const isLastColumn = column === visibleColumns[visibleColumns.length - 1];
+        const shouldSpan = isLastColumn && showColumnControl && !rowActions;
 
         return (
           <DataTableCell
@@ -97,12 +100,13 @@ export function DataTableRow<T = any>({
             rowIndex={rowIndex}
             value={value}
             stickyLeft={getStickyLeft(columnIndex)}
+            colSpan={shouldSpan ? 2 : undefined}
           />
         );
       })}
 
-      {/* Column control cell - renders row actions if provided */}
-      {showColumnControl && (
+      {/* Column control cell - only render if row actions are provided */}
+      {showColumnControl && rowActions && (
         <td className={`${styles.td} ${styles.columnControlCell}`}>
           {rowActions}
         </td>

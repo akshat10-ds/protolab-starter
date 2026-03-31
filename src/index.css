@@ -53,6 +53,7 @@ img, svg { display: block; max-width: 100%; }
   animation: pageIn 0.25s ease-out;
 }
 
+
 .activity-row {
   cursor: pointer;
 }
