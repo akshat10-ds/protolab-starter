@@ -1,0 +1,41 @@
+{
+  "page": "Agreements",
+  "url": "https://protolab-starter.vercel.app/#agreements",
+  "scannedAt": "2026-03-31T17:28:00.000Z",
+  "totalInstances": 238,
+  "uniqueComponents": 20,
+  "layers": {
+    "layouts": ["DocuSignShell", "AgreementTableView"],
+    "patterns": ["GlobalNav", "LocalNav", "DataTable", "PageHeader", "FilterBar"],
+    "composites": ["Chip", "SearchInput"],
+    "primitives": ["Button", "Badge", "Card", "Checkbox", "Icon", "IconButton", "Text", "Heading", "Avatar", "Select"],
+    "utilities": ["Stack", "Inline"]
+  },
+  "components": {
+    "DocuSignShell": 1,
+    "GlobalNav": 1,
+    "LocalNav": 1,
+    "AgreementTableView": 1,
+    "DataTable": 1,
+    "PageHeader": 1,
+    "FilterBar": 1,
+    "SearchInput": 1,
+    "Chip": 1,
+    "Select": 1,
+    "Button": 16,
+    "Badge": 3,
+    "Checkbox": 12,
+    "IconButton": 20,
+    "Icon": 42,
+    "Text": 73,
+    "Heading": 1,
+    "Avatar": 1,
+    "Stack": 33,
+    "Inline": 27
+  },
+  "icons": {
+    "total": 42,
+    "unique": 20,
+    "names": ["menu", "help", "chevron-down", "plus", "inbox", "folder", "overflow-horizontal", "people", "send", "lock", "search", "close", "filter", "sort", "boolean", "status-void", "overflow-vertical", "status-check", "chevron-left", "chevron-right"]
+  }
+}

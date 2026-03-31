@@ -1,0 +1,246 @@
+{
+  "page": "Home",
+  "description": "Condensed Ink DS component tree showing nesting hierarchy. Repeated siblings are collapsed with 'repeat' count.",
+  "tree": {
+    "component": "DocuSignShell",
+    "children": [
+      {
+        "component": "GlobalNav",
+        "children": [
+          {
+            "component": "IconButton",
+            "props": { "kind": "tertiary", "size": "medium" },
+            "children": [
+              { "component": "Icon", "props": { "name": "menu" } }
+            ]
+          },
+          { "component": "IconButton", "props": { "kind": "tertiary" }, "repeat": 2 },
+          { "component": "Avatar", "props": { "size": "small" } }
+        ]
+      },
+      {
+        "component": "Stack",
+        "props": { "gap": "none" },
+        "description": "Main page content wrapper",
+        "children": [
+          {
+            "description": "Welcome banner (dark gradient)",
+            "component": "Heading",
+            "props": { "level": "3" }
+          },
+          {
+            "component": "Inline",
+            "props": { "gap": "small", "justify": "center" },
+            "description": "Banner action buttons",
+            "children": [
+              { "component": "Button", "props": { "kind": "brand" } },
+              { "component": "Icon", "props": { "name": "send" } },
+              { "component": "Icon", "props": { "name": "ai-spark-filled" } },
+              { "component": "Icon", "props": { "name": "templates" } }
+            ]
+          },
+          {
+            "component": "Container",
+            "description": "Max-width content area (1120px)",
+            "children": [
+              {
+                "component": "Inline",
+                "props": { "gap": "large", "align": "start" },
+                "description": "Two-column layout: content + overview sidebar",
+                "children": [
+                  {
+                    "component": "Stack",
+                    "props": { "gap": "medium" },
+                    "description": "Left column — main content cards",
+                    "children": [
+                      {
+                        "component": "Card",
+                        "props": { "radius": "large" },
+                        "description": "TASKS card",
+                        "children": [
+                          {
+                            "component": "Stack",
+                            "children": [
+                              {
+                                "component": "Inline",
+                                "props": { "justify": "between" },
+                                "children": [
+                                  { "component": "Text", "props": { "size": "xs", "weight": "semibold" } },
+                                  { "component": "Icon", "props": { "name": "chevron-right" } }
+                                ]
+                              },
+                              { "component": "Text", "props": { "size": "lg" } },
+                              { "component": "Text", "props": { "size": "sm", "color": "secondary" } }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "component": "Card",
+                        "props": { "radius": "large" },
+                        "description": "AGREEMENT ACTIVITY card",
+                        "children": [
+                          {
+                            "component": "Stack",
+                            "children": [
+                              {
+                                "component": "Inline",
+                                "description": "Section header",
+                                "children": [
+                                  { "component": "Text", "props": { "size": "xs", "weight": "semibold" } },
+                                  { "component": "Icon", "props": { "name": "info" } }
+                                ]
+                              },
+                              {
+                                "component": "Inline",
+                                "props": { "justify": "between" },
+                                "description": "Activity row (x6)",
+                                "repeat": 6,
+                                "children": [
+                                  {
+                                    "component": "Stack",
+                                    "children": [
+                                      { "component": "Text", "props": { "size": "sm" } },
+                                      { "component": "Text", "props": { "size": "xs", "color": "secondary" } }
+                                    ]
+                                  },
+                                  {
+                                    "component": "Inline",
+                                    "children": [
+                                      { "component": "Icon", "props": { "name": "status-void" } },
+                                      { "component": "Text", "props": { "size": "xs" } },
+                                      { "component": "Icon", "props": { "name": "chevron-right" } }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "component": "Card",
+                        "props": { "radius": "large" },
+                        "description": "FAVORITE TEMPLATES card",
+                        "children": [
+                          {
+                            "component": "Stack",
+                            "children": [
+                              {
+                                "component": "Inline",
+                                "props": { "justify": "between" },
+                                "children": [
+                                  { "component": "Text", "props": { "size": "xs", "weight": "semibold" } },
+                                  { "component": "Icon", "props": { "name": "chevron-right" } }
+                                ]
+                              },
+                              {
+                                "component": "Grid",
+                                "props": { "columns": "3", "gap": "medium" },
+                                "children": [
+                                  {
+                                    "component": "Card",
+                                    "props": { "radius": "medium" },
+                                    "description": "Template thumbnail (x2)",
+                                    "repeat": 2,
+                                    "children": [
+                                      { "component": "Text", "props": { "size": "sm", "weight": "medium" } },
+                                      { "component": "Text", "props": { "size": "xs", "color": "secondary" } }
+                                    ]
+                                  },
+                                  {
+                                    "component": "Card",
+                                    "props": { "radius": "medium" },
+                                    "description": "Add Favorite Template CTA",
+                                    "children": [
+                                      { "component": "Text", "props": { "size": "sm", "weight": "semibold" } },
+                                      { "component": "Text", "props": { "size": "xs", "color": "secondary" } },
+                                      { "component": "Button", "props": { "kind": "secondary", "size": "small" } }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "component": "Grid",
+                        "props": { "columns": "2", "gap": "medium" },
+                        "description": "Promo cards row",
+                        "children": [
+                          {
+                            "component": "Card",
+                            "props": { "radius": "large" },
+                            "description": "Bulk send promo",
+                            "children": [
+                              {
+                                "component": "Inline",
+                                "props": { "gap": "medium" },
+                                "children": [
+                                  { "component": "Text", "props": { "size": "sm", "weight": "medium" } },
+                                  { "component": "Text", "props": { "size": "xs", "color": "secondary" } }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "component": "Card",
+                            "props": { "radius": "large" },
+                            "description": "Help promo",
+                            "children": [
+                              {
+                                "component": "Inline",
+                                "props": { "gap": "medium" },
+                                "children": [
+                                  { "component": "Text", "props": { "size": "sm", "weight": "medium" } },
+                                  { "component": "Text", "props": { "size": "xs", "color": "secondary" } }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "component": "Card",
+                    "props": { "radius": "large" },
+                    "description": "OVERVIEW sidebar card",
+                    "children": [
+                      {
+                        "component": "Stack",
+                        "children": [
+                          { "component": "Text", "props": { "size": "xs", "weight": "semibold" } },
+                          {
+                            "component": "Inline",
+                            "props": { "justify": "between" },
+                            "description": "Overview row (x5)",
+                            "repeat": 5,
+                            "children": [
+                              { "component": "Text", "props": { "size": "sm" } },
+                              { "component": "Text", "props": { "size": "sm", "weight": "semibold" } }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "Inline",
+        "description": "Footer",
+        "props": { "justify": "between" },
+        "children": [
+          { "component": "Text", "props": { "size": "xs" }, "repeat": 7 },
+          { "component": "Icon", "props": { "name": "chevron-down" } }
+        ]
+      }
+    ]
+  }
+}

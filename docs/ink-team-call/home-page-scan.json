@@ -1,0 +1,138 @@
+{
+  "page": "Home",
+  "url": "https://protolab-starter.vercel.app/#home",
+  "scannedAt": "2026-03-31T17:27:35.295Z",
+  "totalInstances": 141,
+  "uniqueComponents": 13,
+  "layers": {
+    "layouts": ["DocuSignShell"],
+    "patterns": ["GlobalNav"],
+    "composites": [],
+    "primitives": ["Button", "Card", "Icon", "IconButton", "Text", "Heading", "Avatar"],
+    "utilities": ["Stack", "Inline", "Grid", "Container"],
+    "tokens": ["spacing", "colors", "radius", "gradients"]
+  },
+  "components": {
+    "DocuSignShell": {
+      "count": 1,
+      "props": {}
+    },
+    "GlobalNav": {
+      "count": 1,
+      "props": {}
+    },
+    "IconButton": {
+      "count": 3,
+      "props": {
+        "kind": ["tertiary"],
+        "size": ["medium"]
+      }
+    },
+    "Icon": {
+      "count": 23,
+      "props": {
+        "name": ["menu", "help", "send", "ai-spark-filled", "templates", "chevron-right", "info", "status-void", "clock", "star", "chevron-down"]
+      }
+    },
+    "Avatar": {
+      "count": 1,
+      "props": {
+        "size": "small"
+      }
+    },
+    "Stack": {
+      "count": 19,
+      "props": {
+        "gap": ["none", "medium", "small"]
+      }
+    },
+    "Heading": {
+      "count": 1,
+      "props": {
+        "level": "3"
+      }
+    },
+    "Inline": {
+      "count": 26,
+      "props": {
+        "justify": ["center", "between"],
+        "align": ["center", "start", "stretch"],
+        "gap": ["small", "medium", "large", "none"]
+      }
+    },
+    "Button": {
+      "count": 2,
+      "props": {
+        "kind": ["brand", "secondary"],
+        "size": ["small"]
+      }
+    },
+    "Container": {
+      "count": 1,
+      "props": {}
+    },
+    "Card": {
+      "count": 9,
+      "props": {
+        "radius": ["large", "medium"]
+      }
+    },
+    "Text": {
+      "count": 52,
+      "props": {
+        "size": ["xs", "sm", "lg"],
+        "weight": ["semibold", "regular", "medium"],
+        "color": ["secondary"]
+      }
+    },
+    "Grid": {
+      "count": 2,
+      "props": {
+        "columns": ["3", "2"],
+        "gap": ["medium"]
+      }
+    }
+  },
+  "designTokens": {
+    "spacing": [
+      "--ink-spacing-25 (2px)",
+      "--ink-spacing-50 (4px)",
+      "--ink-spacing-100 (8px)",
+      "--ink-spacing-125 (10px)",
+      "--ink-spacing-150 (12px)",
+      "--ink-spacing-200 (16px)",
+      "--ink-spacing-250 (20px)",
+      "--ink-spacing-300 (24px)",
+      "--ink-spacing-400 (32px)",
+      "--ink-spacing-500 (40px)",
+      "--ink-spacing-600 (48px)",
+      "--ink-spacing-700 (64px)"
+    ],
+    "colors": [
+      "--ink-cobalt-100 (#4C00FB)",
+      "--ink-cobalt-140 (#260559)",
+      "--ink-cobalt-90",
+      "--ink-cobalt-10",
+      "--ink-green-80",
+      "--ink-font-default",
+      "--ink-font-secondary",
+      "--ink-bg-default",
+      "--ink-bg-secondary",
+      "--ink-border-subtle"
+    ],
+    "radius": [
+      "--ink-radius-sm (4px)",
+      "--ink-radius-md (8px)",
+      "--ink-radius-lg (12px)",
+      "16px (custom home cards)"
+    ],
+    "gradients": [
+      "gradientBlueHaze: linear-gradient(174deg, var(--ink-cobalt-100) 1.48%, var(--ink-cobalt-140) 97.92%)"
+    ]
+  },
+  "icons": {
+    "total": 23,
+    "unique": 11,
+    "names": ["menu", "help", "send", "ai-spark-filled", "templates", "chevron-right", "info", "status-void", "clock", "star", "chevron-down"]
+  }
+}
