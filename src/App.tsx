@@ -6,7 +6,11 @@ import {
   PageHeader,
   FilterBar,
   Button,
+  Banner,
   Badge,
+  ComboButton,
+  AIIcon,
+  IrisIcon,
   Icon,
   IconButton,
   Card,
@@ -18,6 +22,8 @@ import {
   Text,
   Chip,
   StatusLight,
+  Link,
+  dataTableStyles,
 } from '@/design-system';
 
 /* ═══════════════════════════════════════
@@ -107,6 +113,145 @@ const agreementColumns = [
         <IconButton icon="overflow-vertical" variant="tertiary" size="small" aria-label="More actions" />
       </Inline>
     ),
+  },
+];
+
+/* ═══════════════════════════════════════
+   Navigator (Completed) Data — matches Navigator view
+   ═══════════════════════════════════════ */
+
+interface NavigatorAgreement {
+  id: string;
+  fileName: string;
+  fileStatus: 'uploaded' | 'completed';
+  fileStatusDetail: string;
+  parties: string[];
+  status: 'active' | 'inactive';
+  statusDate?: string;
+  agreementType: string;
+  contractValue?: string;
+  effectiveDate?: string;
+  expirationDate?: string;
+  isAIAssisted: boolean;
+}
+
+const NAVIGATOR_DATA: NavigatorAgreement[] = [
+  { id: '1', fileName: '01_people_ai_guidebook.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: [], status: 'inactive', agreementType: 'Handbook', isAIAssisted: true },
+  { id: '2', fileName: 'Restricted Access Request Form 1726...', fileStatus: 'completed', fileStatusDetail: 'Please DocuSign this...', parties: ['Akshat Mishra', '+2 More'], status: 'active', agreementType: 'Form', effectiveDate: '5/20/2025', isAIAssisted: true },
+  { id: '3', fileName: 'Offer Letter 1.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['KENNETH L. HARRIS', 'UNIVERSAL BIOENERGY INC'], status: 'inactive', statusDate: 'Expired 3/31/2016', agreementType: 'Offer Letter', contractValue: '$27,600.00 USD', effectiveDate: '3/26/2015', expirationDate: '3/31/2016', isAIAssisted: false },
+  { id: '4', fileName: '1100.L0005-US01 - Inventor-approved...', fileStatus: 'completed', fileStatusDetail: '[SIGNATURE REQUIRE...', parties: [], status: 'inactive', agreementType: 'Miscellaneous', isAIAssisted: true },
+  { id: '5', fileName: '1100.L0005-US01 - Inventor-approved...', fileStatus: 'completed', fileStatusDetail: '[SIGNATURE REQUIRE...', parties: [], status: 'inactive', agreementType: 'Form', isAIAssisted: true },
+  { id: '6', fileName: '1100.L0005-US01 Combined Declaration...', fileStatus: 'completed', fileStatusDetail: '[SIGNATURE REQUIRE...', parties: ['INVENTOR', 'Docusign, Inc.'], status: 'active', agreementType: 'Miscellaneous', effectiveDate: '2/4/2025', isAIAssisted: false },
+  { id: '7', fileName: 'reseller6.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['[INSERT FULL NAME OF RES...', 'Voyager Worldwide'], status: 'inactive', agreementType: 'C_Mariya_27s...', isAIAssisted: true },
+  { id: '8', fileName: 'reseller8.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['MiniQ, Inc.'], status: 'active', agreementType: 'C_Mariya_27s...', effectiveDate: '11/19/2024', isAIAssisted: false },
+];
+
+function capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+const navigatorColumns: any[] = [
+  {
+    key: 'aiAssisted',
+    header: '',
+    width: '40px',
+    cell: (row: NavigatorAgreement) =>
+      row.isAIAssisted ? (
+        <span className={dataTableStyles.aiSparkle}>
+          <AIIcon name="ai-spark-filled" size={14} />
+        </span>
+      ) : null,
+  },
+  {
+    key: 'fileName',
+    header: 'File Name',
+    sortable: true,
+    width: '280px',
+    className: dataTableStyles.columnBorderRight,
+    cell: (row: NavigatorAgreement) => (
+      <div className={dataTableStyles.cellContent}>
+        <a href="#" className={dataTableStyles.cellPrimary} style={{ textDecoration: 'none', color: 'inherit' }}>
+          {row.fileName}
+        </a>
+        <span className={dataTableStyles.cellSecondary}>
+          {row.fileStatus === 'uploaded' ? '↑' : '✓'}{' '}
+          {row.fileStatus === 'uploaded' ? 'Uploaded: ' : 'Completed envelope: '}
+          <a href="#">{row.fileStatusDetail}</a>
+        </span>
+      </div>
+    ),
+  },
+  {
+    key: 'parties',
+    header: 'Parties',
+    width: '180px',
+    cell: (row: NavigatorAgreement) => (
+      <div className={dataTableStyles.cellContent}>
+        {row.parties.length > 0 ? (
+          row.parties.map((party, i) => {
+            const isMoreLink = party.startsWith('+');
+            if (isMoreLink) {
+              return <a key={i} href="#" className={dataTableStyles.partyMoreLink}>{party}</a>;
+            }
+            return (
+              <span key={i} className={dataTableStyles.partyChip}>
+                <a href="#" className={dataTableStyles.partyLink}>{party}</a>
+              </span>
+            );
+          })
+        ) : (
+          <span className={dataTableStyles.cellSecondary}>&mdash;</span>
+        )}
+      </div>
+    ),
+  },
+  {
+    key: 'status',
+    header: 'Status',
+    sortable: true,
+    width: '120px',
+    cell: (row: NavigatorAgreement) => (
+      <div className={dataTableStyles.statusCell}>
+        <span className={dataTableStyles.statusDot} data-status={row.status} />
+        <div className={dataTableStyles.statusText}>
+          <span className={dataTableStyles.statusLabel}>
+            {row.status === 'active' ? 'Active' : 'Inactive'}
+          </span>
+          {row.statusDate && (
+            <span className={dataTableStyles.statusDate}>{row.statusDate}</span>
+          )}
+        </div>
+      </div>
+    ),
+  },
+  {
+    key: 'agreementType',
+    header: 'Agreement Type',
+    sortable: true,
+    width: '140px',
+  },
+  {
+    key: 'contractValue',
+    header: 'Total Contract Value',
+    sortable: true,
+    width: '160px',
+    alignment: 'right',
+    cell: (row: NavigatorAgreement) => row.contractValue || '—',
+  },
+  {
+    key: 'effectiveDate',
+    header: 'Effective Date',
+    sortable: true,
+    width: '130px',
+    cell: (row: NavigatorAgreement) => row.effectiveDate || '—',
+  },
+  {
+    key: 'expirationDate',
+    header: 'Expiration Date',
+    sortable: true,
+    width: '140px',
+    alignment: 'right',
+    cell: (row: NavigatorAgreement) => row.expirationDate || '—',
   },
 ];
 
@@ -733,28 +878,58 @@ export default function App() {
   };
 
   const isPartiesView = sidebarView === 'parties';
+  const isNavigatorView = sidebarView === 'completed';
+
+  /* ── Navigator filtered data ── */
+  const filteredNavigator = useMemo(() => {
+    if (!search) return NAVIGATOR_DATA;
+    const q = search.toLowerCase();
+    return NAVIGATOR_DATA.filter(a => a.fileName.toLowerCase().includes(q) || a.parties.some(p => p.toLowerCase().includes(q)));
+  }, [search]);
 
   /* ── Agreements content ── */
   const agreementsContent = (
     <AgreementTableView
+      banner={isNavigatorView ? (
+        <Banner kind="promo" closable customIcon={<IrisIcon />}>
+          <strong>0 agreements</strong> with renewal notice dates in the next 30 days.
+        </Banner>
+      ) : undefined}
       pageHeader={
         <PageHeader
-          title={VIEW_LABELS[sidebarView]}
+          title={isNavigatorView ? 'Completed' : VIEW_LABELS[sidebarView]}
+          showAIBadge={isNavigatorView}
+          aiBadgeText="AI-Assisted"
           actions={isPartiesView
             ? <Button kind="brand" startElement={<Icon name="plus" size={16} />}>Add Party</Button>
+            : isNavigatorView
+            ? (<>
+                <ComboButton variant="secondary" startIcon="plus">New</ComboButton>
+                <IconButton icon="settings" variant="tertiary" size="small" aria-label="Settings" />
+              </>)
             : <Button kind="secondary" menuTrigger>Shared Access</Button>
           }
         />
       }
       filterBar={
         <FilterBar
+          viewSelector={isNavigatorView ? (
+            <Button kind="secondary" size="small" menuTrigger>Documents</Button>
+          ) : undefined}
           search={{
             value: search,
             onChange: setSearch,
-            placeholder: isPartiesView ? 'Search parties by name, email, or role' : 'Search Envelopes',
+            placeholder: isNavigatorView
+              ? "Try 'which agreements expire in 90 days'"
+              : isPartiesView ? 'Search parties by name, email, or role' : 'Search Envelopes',
           }}
           showSearchIndicator={!isPartiesView}
+          quickActions={isNavigatorView ? [
+            <IconButton key="bm" icon="bookmark" variant="secondary" size="small" aria-label="Bookmarks" />,
+          ] : undefined}
           filters={isPartiesView ? (
+            <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>Filters</Button>
+          ) : isNavigatorView ? (
             <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>Filters</Button>
           ) : (
             <Inline gap="small" align="center" style={{ flexWrap: 'nowrap' }}>
@@ -770,11 +945,12 @@ export default function App() {
     >
       {isPartiesView ? (
         <DataTable columns={partyColumns} data={filteredParties} getRowKey={(row) => row.id} selectable stickyHeader emptyMessage="No parties match your search" pagination={{ page: 1, pageSize: 25, totalItems: filteredParties.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
+      ) : isNavigatorView ? (
+        <DataTable columns={navigatorColumns} data={filteredNavigator} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl rowHeight="tall" emptyMessage="No completed documents" pagination={{ page: 1, pageSize: 50, totalItems: 687, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : (
         <DataTable columns={agreementColumns} data={filteredAgreements} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl rowHeight="tall" emptyMessage={
           sidebarView === 'drafts' ? 'No drafts found' :
           sidebarView === 'in-progress' ? 'No documents in progress' :
-          sidebarView === 'completed' ? 'No completed documents' :
           sidebarView === 'deleted' ? 'No deleted documents' :
           'No agreements match your search'
         } pagination={{ page: 1, pageSize: 25, totalItems: filteredAgreements.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />

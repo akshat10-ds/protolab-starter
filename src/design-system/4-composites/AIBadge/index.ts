@@ -1,1 +1,1 @@
-export { AIBadge } from './AIBadge';
+export { AIBadge, IrisIcon } from './AIBadge';

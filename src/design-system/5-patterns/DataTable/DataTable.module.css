@@ -638,3 +638,147 @@
 .container::-webkit-scrollbar-thumb:hover {
   background: var(--ink-neutral-fade-50);
 }
+
+/* =============================================================================
+   Navigator Cell Styles — used by Navigator/Completed view
+   ============================================================================= */
+
+.cellContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cellPrimary {
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--dt-text-default);
+  line-height: 1.4;
+}
+
+.cellSecondary {
+  font-size: var(--ink-font-size-xs);
+  color: var(--dt-text-secondary);
+  line-height: 1.4;
+}
+
+.cellSecondary a {
+  color: var(--dt-text-secondary);
+  text-decoration: none;
+}
+
+.cellSecondary a:hover {
+  text-decoration: underline;
+}
+
+.columnBorderRight {
+  border-right: 1px solid var(--dt-border-subtle);
+}
+
+/* ── Status Cell ── */
+
+.statusCell {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.statusDot[data-status='active'] {
+  background: var(--ink-icon-color-success);
+}
+
+.statusDot[data-status='inactive'],
+.statusDot[data-status='expired'] {
+  background: var(--ink-neutral-40);
+}
+
+.statusDot[data-status='warning'],
+.statusDot[data-status='pending'] {
+  background: var(--ink-status-warn-icon-color);
+}
+
+.statusDot[data-status='error'],
+.statusDot[data-status='failed'] {
+  background: var(--ink-status-critical-icon-color);
+}
+
+.statusText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statusLabel {
+  font-size: var(--ink-font-size-sm);
+  color: var(--dt-text-default);
+  line-height: 1.4;
+}
+
+.statusDate {
+  font-size: var(--ink-font-size-xs);
+  color: var(--dt-text-secondary);
+  line-height: 1.4;
+}
+
+/* ── AI Sparkle ── */
+
+.aiSparkle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Party Chips ── */
+
+.partyChip {
+  display: inline-block;
+  background-color: var(--ink-cobalt-10);
+  padding: 1px 8px;
+  border-radius: var(--ink-radius-size-xs);
+  border: 1px solid var(--ink-cobalt-30);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.partyLink {
+  display: inline;
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-link-subtle);
+  text-decoration: none;
+}
+
+.partyLink:hover {
+  text-decoration: underline;
+  color: var(--ink-font-color-link-subtle-hover);
+}
+
+.partyMoreLink {
+  display: block;
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-link-subtle);
+  text-decoration: none;
+  margin-top: 2px;
+}
+
+.partyMoreLink:hover {
+  color: var(--ink-font-color-link-subtle-hover);
+}
+
+/* ── Agreement ID ── */
+
+.agreementId {
+  font-size: var(--ink-font-size-xs);
+  font-family: var(--ink-font-family-mono, monospace);
+  color: var(--dt-text-default);
+}

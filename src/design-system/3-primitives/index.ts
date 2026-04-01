@@ -6,7 +6,7 @@ export { Card } from './Card';
 export { Checkbox } from './Checkbox';
 export { Divider } from './Divider';
 export { Heading, Text } from './Typography';
-export { Icon } from './Icon';
+export { AIIcon, Icon } from './Icon';
 export { IconButton } from './IconButton';
 export { Input } from './Input';
 export { Link } from './Link';
