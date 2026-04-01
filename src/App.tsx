@@ -14,6 +14,7 @@ import {
   Accordion,
   Avatar,
   Divider,
+  Dropdown,
   Input,
   IrisIcon,
   Icon,
@@ -24,6 +25,8 @@ import {
   Inline,
   Container,
   Heading,
+  Modal,
+  SearchInput,
   Tabs,
   Text,
   Chip,
@@ -878,10 +881,136 @@ function InsightsOverview() {
    Admin Page
    ═══════════════════════════════════════ */
 
-function AdminPage() {
+/* ═══════════════════════════════════════
+   Manage Agreement Data Modal
+   ═══════════════════════════════════════ */
+
+interface ManageDataOption {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+const MANAGE_DATA_OPTIONS: ManageDataOption[] = [
+  { id: 'types-fields', title: 'Types and Fields', description: 'Track data inside your agreements', icon: 'data-server' },
+  { id: 'parties', title: 'Parties', description: 'Maintain business relationships', icon: 'people' },
+  { id: 'obligations', title: 'Obligations', description: 'Sort and label common tasks', icon: 'flag' },
+  { id: 'sets', title: 'Sets', description: 'Filter and share related agreements', icon: 'diamond-stack' },
+];
+
+const MANAGE_DATA_UPLOAD_OPTIONS: ManageDataOption[] = [
+  { id: 'uploads-status', title: 'Uploads and Processing Status', description: '', icon: 'refresh' },
+];
+
+const MANAGE_DATA_OTHER_OPTIONS: ManageDataOption[] = [
+  { id: 'activity-log', title: 'View Activity Log', description: '', icon: 'history' },
+];
+
+function ManageAgreementDataModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  if (!isOpen) return null;
+
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} title="Manage agreement data" size="medium">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--ink-spacing-400)' }}>
+        {/* Main options */}
+        <div>
+          {MANAGE_DATA_OPTIONS.map((option) => (
+            <div
+              key={option.id}
+              onClick={() => setSelectedOption(option.id)}
+              style={{
+                display: 'flex',
+                gap: 'var(--ink-spacing-200)',
+                padding: 'var(--ink-spacing-200)',
+                borderRadius: 'var(--ink-radius-100)',
+                cursor: 'pointer',
+                backgroundColor: selectedOption === option.id ? 'var(--ink-background-hover)' : 'transparent',
+                transition: 'background-color 0.2s ease',
+                marginBottom: 'var(--ink-spacing-100)',
+              }}
+            >
+              <Icon name={option.icon as any} size={24} style={{ flexShrink: 0 }} />
+              <div style={{ flex: 1 }}>
+                <Text size="sm" weight="medium">{option.title}</Text>
+                <Text size="xs" color="secondary" style={{ marginTop: 'var(--ink-spacing-25)' }}>{option.description}</Text>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Divider */}
+        <Divider />
+
+        {/* Upload options */}
+        <div>
+          {MANAGE_DATA_UPLOAD_OPTIONS.map((option) => (
+            <div
+              key={option.id}
+              onClick={() => setSelectedOption(option.id)}
+              style={{
+                display: 'flex',
+                gap: 'var(--ink-spacing-200)',
+                padding: 'var(--ink-spacing-200)',
+                borderRadius: 'var(--ink-radius-100)',
+                cursor: 'pointer',
+                backgroundColor: selectedOption === option.id ? 'var(--ink-background-hover)' : 'transparent',
+                transition: 'background-color 0.2s ease',
+              }}
+            >
+              <Icon name={option.icon as any} size={24} style={{ flexShrink: 0 }} />
+              <div style={{ flex: 1 }}>
+                <Text size="sm" weight="medium">{option.title}</Text>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Divider */}
+        <Divider />
+
+        {/* Other options */}
+        <div>
+          {MANAGE_DATA_OTHER_OPTIONS.map((option) => (
+            <div
+              key={option.id}
+              onClick={() => setSelectedOption(option.id)}
+              style={{
+                display: 'flex',
+                gap: 'var(--ink-spacing-200)',
+                padding: 'var(--ink-spacing-200)',
+                borderRadius: 'var(--ink-radius-100)',
+                cursor: 'pointer',
+                backgroundColor: selectedOption === option.id ? 'var(--ink-background-hover)' : 'transparent',
+                transition: 'background-color 0.2s ease',
+              }}
+            >
+              <Icon name={option.icon as any} size={24} style={{ flexShrink: 0 }} />
+              <div style={{ flex: 1 }}>
+                <Text size="sm" weight="medium">{option.title}</Text>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Modal>
+  );
+}
+
+function AdminPage({ onOpenManageData }: { onOpenManageData: () => void }) {
   return (
     <div style={{ padding: 'var(--ink-spacing-300)' }}>
-      <PageHeader title="Admin" />
+      <Inline justify="between" align="center" style={{ marginBottom: 'var(--ink-spacing-400)' }}>
+        <div>
+          <div style={{ fontSize: '20px', fontWeight: 600 }}>Admin</div>
+        </div>
+        <div style={{ display: 'flex', gap: 'var(--ink-spacing-200)', alignItems: 'center' }}>
+          <IconButton icon="arrow-up" variant="tertiary" size="small" aria-label="Export" />
+          <IconButton icon="sliders-horizontal" variant="tertiary" size="small" aria-label="Settings" onClick={onOpenManageData} />
+        </div>
+      </Inline>
       <div style={{ marginTop: 'var(--ink-spacing-400)', textAlign: 'center' }}>
         <Icon name="settings" size={48} />
         <div style={{ fontSize: 16, fontWeight: 500, marginTop: 'var(--ink-spacing-150)' }}>Account Settings</div>
@@ -1290,6 +1419,8 @@ export default function App() {
   const [insightsSidebarView, setInsightsSidebarView] = useState<InsightsSidebarView>('overview');
   const [search, setSearch] = useState('');
   const [showAgreementDetail, setShowAgreementDetail] = useState(false);
+  const [showManageDataModal, setShowManageDataModal] = useState(false);
+  const [selectedManageOption, setSelectedManageOption] = useState<string | null>(null);
 
   /* ── Sync hash ↔ state ── */
   useEffect(() => {
@@ -1651,7 +1782,24 @@ export default function App() {
             : isNavigatorView
             ? (<>
                 <ComboButton variant="secondary" startIcon="plus">New</ComboButton>
-                <IconButton icon="settings" variant="tertiary" size="small" aria-label="Settings" />
+                <Dropdown
+                  position="bottom"
+                  align="end"
+                  header="Manage agreement data"
+                  iconStyle="boxed"
+                  items={[
+                    { label: 'Types and Fields', description: 'Track data inside your agreements', icon: <Icon name="data-server" size={18} />, onClick: () => {} },
+                    { label: 'Parties', description: 'Maintain business relationships', icon: <Icon name="people" size={18} />, onClick: () => {} },
+                    { label: 'Obligations', description: 'Sort and label common tasks', icon: <Icon name="flag" size={18} />, onClick: () => {} },
+                    { label: 'Sets', description: 'Filter and share related agreements', icon: <Icon name="diamond-stack" size={18} />, onClick: () => {} },
+                    { label: 'UPLOAD OPTIONS', divider: true, disabled: true, onClick: () => {} },
+                    { label: 'Uploads and Processing Status', icon: <Icon name="refresh" size={18} />, onClick: () => {} },
+                    { label: '', divider: true, disabled: true, onClick: () => {} },
+                    { label: 'View Activity Log', icon: <Icon name="history" size={18} />, onClick: () => {} },
+                  ]}
+                >
+                  <IconButton icon="settings" variant="tertiary" size="small" aria-label="Settings" />
+                </Dropdown>
               </>)
             : <Button kind="secondary" menuTrigger>Shared Access</Button>
           }
@@ -1738,7 +1886,7 @@ export default function App() {
     agreements: agreementsContent,
     templates: templatesContent,
     insights: insightsContent,
-    admin: <AdminPage />,
+    admin: <AdminPage onOpenManageData={() => setShowManageDataModal(true)} />,
   };
 
   /* ── Transition key — changes on tab OR sidebar view to trigger animation ── */
@@ -1758,6 +1906,7 @@ export default function App() {
     {showAgreementDetail && (
       <AgreementDetailView onClose={() => setShowAgreementDetail(false)} />
     )}
+    <ManageAgreementDataModal isOpen={showManageDataModal} onClose={() => setShowManageDataModal(false)} />
     </>
   );
 }
