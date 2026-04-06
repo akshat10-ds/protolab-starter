@@ -42,7 +42,7 @@
   top: 16px;
   width: calc(100% - 48px);
   background-color: var(--ink-neutral-30);
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .horizontal .completed:not(:last-child)::after {
@@ -93,7 +93,7 @@
   font-size: var(--ink-font-body-s-size); /* 14px from Figma */
   font-weight: var(--ink-font-weight-regular); /* 400 */
   line-height: 1;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
   border: 2px solid transparent;
   flex-shrink: 0;
 }
@@ -146,7 +146,7 @@
 .connector {
   position: absolute;
   background-color: var(--ink-neutral-30);
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .horizontal .connector {
@@ -192,7 +192,7 @@
   font-weight: var(--ink-font-weight-regular); /* 400 */
   line-height: var(--ink-font-body-s-line-height); /* 1.4 */
   color: var(--ink-neutral-fade-90);
-  transition: color var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .active .stepTitle {
@@ -218,7 +218,7 @@
   font-weight: var(--ink-font-weight-regular); /* 400 */
   line-height: var(--ink-font-detail-s-line-height); /* 1.5 */
   color: var(--ink-neutral-fade-70);
-  transition: color var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .active .stepDescription {

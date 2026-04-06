@@ -10,7 +10,7 @@
   position: relative;
   margin-left: calc(-1 * var(--ink-spacing-100)); /* -8px overlap */
   box-sizing: border-box;
-  transition: transform var(--ink-transition-fast);
+  transition: transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 .avatarWrapper:first-child {

@@ -38,7 +38,7 @@
   color: var(--ink-font-link-subtle);
   text-decoration: none;
   font-weight: var(--ink-font-weight-regular);
-  transition: color var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   cursor: pointer;
 }
 

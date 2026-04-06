@@ -116,7 +116,7 @@
 .th.sortable {
   cursor: pointer;
   user-select: none;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .th.sortable:hover {
@@ -128,7 +128,7 @@
   align-items: center;
   flex-shrink: 0;
   color: var(--ink-font-color-default);
-  transition: color var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 /* Table Body - From Figma */
@@ -138,7 +138,7 @@
 
 .tr {
   border-bottom: 1px solid var(--ink-neutral-fade-5); /* More subtle border - matches production */
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .tbody .tr:last-child {
@@ -253,7 +253,7 @@
   align-items: center;
   justify-content: center;
   color: var(--ink-neutral-fade-70);
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .actionButton:hover {
@@ -381,7 +381,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .favoriteButton:hover {
@@ -483,7 +483,7 @@
   align-items: center;
   gap: var(--ink-spacing-50);
   opacity: 0;
-  transition: opacity var(--ink-transition-fast);
+  transition: opacity var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .tr:hover .hoverActions {
@@ -506,7 +506,7 @@
   box-shadow: 0 2px 4px var(--ink-neutral-fade-5);
   transform: translateY(-100%);
   opacity: 0;
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  transition: transform var(--ink-motion-duration-200) var(--ink-motion-curve-default), opacity var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   overflow: hidden;
   max-height: 0;
 }

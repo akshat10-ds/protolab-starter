@@ -10,8 +10,8 @@
   text-decoration-thickness: auto;
   cursor: pointer;
   transition:
-    color var(--ink-transition-fast),
-    text-decoration var(--ink-transition-fast);
+    color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    text-decoration var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   display: inline-flex;
   align-items: center;
   gap: var(--ink-spacing-50); /* 4px */

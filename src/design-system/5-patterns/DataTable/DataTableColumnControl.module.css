@@ -20,7 +20,7 @@
   justify-content: space-between;
   padding: var(--ink-spacing-150) var(--ink-spacing-200);
   border-bottom: 1px solid var(--ink-neutral-fade-10);
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   cursor: grab;
 }
 
@@ -52,7 +52,7 @@
   align-items: center;
   color: var(--ink-neutral-fade-40);
   cursor: grab;
-  transition: color var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .dragHandle:hover {

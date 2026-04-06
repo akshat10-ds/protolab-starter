@@ -8,8 +8,8 @@
   border-radius: var(--ink-radius-size-xs); /* 4px */
   cursor: pointer;
   transition-property: background-color, border-color, color;
-  transition-duration: 100ms; /* Production: 0.1s */
-  transition-timing-function: cubic-bezier(0.33, 0, 0.67, 1); /* Production easing */
+  transition-duration: var(--ink-motion-duration-100);
+  transition-timing-function: var(--ink-motion-curve-opacity);
   font-family: var(--ink-font-family);
   position: relative;
   user-select: none;

@@ -37,8 +37,8 @@
   border: 2px solid var(--ink-form-control-border-color-default); /* 2px inside border per Figma */
   border-radius: var(--ink-radius-full);
   transition:
-    background-color var(--ink-transition-fast),
-    border-color var(--ink-transition-fast);
+    background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   cursor: pointer;
   overflow: visible; /* Allow hover circle to extend beyond track */
   box-sizing: border-box; /* Border inside the 36x20 dimensions */
@@ -56,8 +56,8 @@
   border-radius: var(--ink-radius-full);
   background-color: transparent;
   transition:
-    background-color var(--ink-transition-fast),
-    left var(--ink-transition-fast);
+    background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    left var(--ink-motion-duration-200) var(--ink-motion-curve-default);
   pointer-events: none;
 }
 
@@ -83,8 +83,8 @@
   background-color: var(--ink-form-control-thumb-bg-default); /* Dark thumb color per Figma */
   border-radius: var(--ink-radius-full);
   transition:
-    transform var(--ink-transition-fast),
-    background-color var(--ink-transition-fast);
+    transform var(--ink-motion-duration-200) var(--ink-motion-curve-default),
+    background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   box-shadow: var(--ink-shadow-sm);
   z-index: 1; /* Above hover background */
 }

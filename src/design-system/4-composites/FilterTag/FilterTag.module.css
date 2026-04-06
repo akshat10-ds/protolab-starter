@@ -17,7 +17,7 @@
   border: 1px solid var(--ink-form-control-border-color-default); /* rgba(19,0,50,0.5) */
   border-radius: var(--ink-radius-size-xs); /* 4px */
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -101,7 +101,7 @@
   border: none;
   border-radius: 0;
   cursor: pointer;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -125,7 +125,7 @@
   border: none;
   border-left: 1px solid var(--ink-white-100); /* White divider */
   cursor: pointer;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   flex-shrink: 0;
   color: var(--ink-font-color-default);
 }

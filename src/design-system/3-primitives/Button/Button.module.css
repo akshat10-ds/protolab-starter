@@ -15,7 +15,7 @@
   cursor: pointer;
   text-decoration: none;
   position: relative;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   white-space: nowrap;
   user-select: none;
   min-width: 80px;

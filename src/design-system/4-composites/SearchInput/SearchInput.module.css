@@ -10,7 +10,7 @@
   background-color: var(--ink-white-100);
   border: var(--ink-form-border-width) solid var(--ink-form-control-border-color-default);
   border-radius: var(--ink-radius-size-xs);
-  transition: border-color var(--ink-transition-fast);
+  transition: border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .inputWrapper:focus-within {
@@ -99,7 +99,7 @@
   border-radius: var(--ink-radius-size-xs);
   color: var(--ink-font-color-default);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .clearButton:hover {
@@ -136,7 +136,7 @@
   padding: var(--ink-spacing-100) var(--ink-spacing-150);
   border-radius: var(--ink-radius-size-xs);
   cursor: pointer;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .suggestion:hover,

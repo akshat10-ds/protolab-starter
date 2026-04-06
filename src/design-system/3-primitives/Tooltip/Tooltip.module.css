@@ -17,7 +17,7 @@
   max-width: 272px; /* Figma spec */
   z-index: var(--ink-z-tooltip);
   pointer-events: none;
-  animation: tooltipFadeIn var(--ink-transition-fast);
+  animation: tooltipFadeIn var(--ink-motion-duration-200) var(--ink-motion-curve-default);
   word-wrap: break-word;
   box-shadow: var(--ink-shadow-elevated); /* 0px 4px 8px 0px rgba(19, 0, 50, 0.15) */
 }

@@ -57,7 +57,7 @@
   border-radius: var(--ink-radius-lg);
   background-color: var(--ink-neutral-10);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   outline: none;
 }
 
@@ -105,7 +105,7 @@
 
 .uploadIcon {
   color: var(--ink-neutral-60);
-  transition: color var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .dropzone:hover:not(.disabled) .uploadIcon,
@@ -157,7 +157,7 @@
   background-color: var(--ink-white-100);
   border: 1px solid var(--ink-neutral-20);
   border-radius: var(--ink-radius-md);
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .fileItem:hover {
@@ -217,7 +217,7 @@
   border-radius: var(--ink-radius-md);
   color: var(--ink-neutral-60);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   flex-shrink: 0;
 }
 

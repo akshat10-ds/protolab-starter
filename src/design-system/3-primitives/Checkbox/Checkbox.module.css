@@ -58,9 +58,9 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  transition-duration: 0.2s;
+  transition-duration: var(--ink-motion-duration-200);
   transition-property: border, background;
-  transition-timing-function: ease;
+  transition-timing-function: var(--ink-motion-curve-opacity);
   z-index: 2; /* Above hover background */
 }
 
@@ -121,9 +121,9 @@
   transform: translateY(-50%);
   border-radius: var(--ink-radius-sm);
   background-color: transparent;
-  transition-duration: 0.1s;
+  transition-duration: var(--ink-motion-duration-100);
   transition-property: background-color, height, width, inset, transform;
-  transition-timing-function: ease;
+  transition-timing-function: var(--ink-motion-curve-default);
   z-index: 1; /* Behind the checkbox but above background */
 }
 

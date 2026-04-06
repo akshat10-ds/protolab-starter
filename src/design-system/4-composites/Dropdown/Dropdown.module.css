@@ -18,7 +18,7 @@
   ); /* shadowElevated from Figma: 0px 4px 8px rgba(19,0,50,0.15) */
   padding: var(--ink-spacing-100); /* 8px all around - gap100 from Figma */
   z-index: var(--ink-z-dropdown);
-  animation: dropdownFadeIn var(--ink-transition-fast) forwards;
+  animation: dropdownFadeIn var(--ink-motion-duration-200) var(--ink-motion-curve-default) forwards;
   min-width: 200px;
   max-width: 380px; /* Increased for boxed icons with descriptions */
   max-height: 400px;
@@ -70,7 +70,7 @@
   border-radius: var(--ink-radius-size-xs); /* 4px - radiusSizeXS from Figma */
   text-align: left;
   cursor: pointer;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   font-family: var(--ink-font-family);
   font-size: var(--ink-font-size-sm); /* 14px from Figma */
   font-weight: var(--ink-font-weight-regular); /* 400 from Figma */

@@ -73,7 +73,7 @@ ol.list .item::before {
   font-family: inherit;
   font-size: var(--ink-font-size-md);
   color: var(--ink-neutral-100);
-  transition: background-color 0.2s;
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   position: relative;
 }
 

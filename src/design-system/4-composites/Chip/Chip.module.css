@@ -17,7 +17,7 @@
   line-height: 1.4;
   color: var(--ink-font-color-default);
   border: none;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   user-select: none;
   white-space: nowrap;
 }
