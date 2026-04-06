@@ -33,6 +33,48 @@ import {
 } from '@/design-system';
 
 /* ═══════════════════════════════════════
+   DataTable Row Stagger Animation (CSS)
+   ═══════════════════════════════════════ */
+
+const tableRowStaggerStyles = `
+@keyframes inkRowEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply staggered entrance to DataTable body rows */
+[data-ink-component="DataTable"] tbody tr {
+  animation: inkRowEntrance 300ms cubic-bezier(0.33, 0, 0.67, 1) backwards;
+}
+
+/* Stagger rows — 20ms increments, capped at 10 rows (200ms) */
+[data-ink-component="DataTable"] tbody tr:nth-child(1) { animation-delay: 0ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(2) { animation-delay: 20ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(3) { animation-delay: 40ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(4) { animation-delay: 60ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(5) { animation-delay: 80ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(6) { animation-delay: 100ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(7) { animation-delay: 120ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(8) { animation-delay: 140ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(9) { animation-delay: 160ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(10) { animation-delay: 180ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(n+11) { animation-delay: 200ms; }
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  [data-ink-component="DataTable"] tbody tr {
+    animation: none;
+  }
+}
+`;
+
+/* ═══════════════════════════════════════
    Entrance Animation Hooks
    ═══════════════════════════════════════ */
 
@@ -1836,6 +1878,7 @@ export default function App() {
 
   return (
     <>
+    <style>{tableRowStaggerStyles}</style>
     <DocuSignShell
       globalNav={globalNavConfig}
       localNav={sidebarMap[activeTab]}
