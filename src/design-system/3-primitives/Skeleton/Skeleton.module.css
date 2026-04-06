@@ -15,7 +15,7 @@
     var(--ink-neutral-20) 100%
   );
   background-size: 200% 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
+  animation: shimmer 1.5s var(--ink-motion-curve-opacity) infinite;
 }
 
 @keyframes shimmer {

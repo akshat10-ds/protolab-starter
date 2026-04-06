@@ -37,7 +37,7 @@
 .headerChevron {
   display: inline-flex;
   align-items: center;
-  transition: transform var(--ink-transition-fast);
+  transition: transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 .headerChevronRotated {
@@ -100,7 +100,7 @@
   background: transparent;
   cursor: pointer;
   text-align: left;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   font-family: inherit;
 }
 
@@ -175,7 +175,7 @@
   background: transparent;
   width: 100%;
   text-align: left;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   font-family: inherit;
   font-size: var(--ink-font-body-s-size); /* 14px - DocuSign section header font size */
 }
@@ -240,7 +240,7 @@
   display: flex;
   align-items: center;
   color: var(--ink-neutral-fade-70);
-  transition: transform var(--ink-transition-fast);
+  transition: transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 .sectionHeader.collapsed .sectionChevron {
@@ -250,7 +250,7 @@
 .sectionItems {
   overflow: hidden;
   max-height: 1000px; /* Large enough for any reasonable nav section */
-  transition: max-height var(--ink-transition-fast);
+  transition: max-height var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 .sectionItems.collapsed {
@@ -277,7 +277,7 @@
   cursor: pointer;
   position: relative;
   text-align: left;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   font-family: inherit;
   font-size: var(--ink-font-body-s-size); /* 14px - DocuSign item font size */
 }
@@ -380,7 +380,7 @@
   cursor: pointer;
   position: relative;
   color: var(--ink-neutral-fade-70);
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .itemCollapsed:hover {

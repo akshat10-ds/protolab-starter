@@ -39,7 +39,7 @@
   border: 1px solid var(--ink-neutral-30);
   border-radius: var(--ink-radius-md);
   outline: none;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   cursor: pointer;
 }
 
@@ -93,7 +93,7 @@
   box-shadow: var(--ink-shadow-lg);
   padding: var(--ink-spacing-4);
   min-width: 280px;
-  animation: slideDown 150ms ease-out;
+  animation: slideDown var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 @keyframes slideDown {
@@ -132,7 +132,7 @@
   border-radius: var(--ink-radius-md);
   color: var(--ink-neutral-70);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .navButton:hover {
@@ -183,7 +183,7 @@
   border: none;
   border-radius: var(--ink-radius-md);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   position: relative;
 }
 

@@ -109,7 +109,7 @@
   background: var(--ink-bar-fill-subtle); /* neutral-fade-70 per Figma default state */
   border-radius: var(--ink-radius-full);
   transform: translateY(-50%);
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   pointer-events: none;
 }
 
@@ -157,7 +157,7 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
   position: relative;
   z-index: 2;
 }
@@ -193,7 +193,7 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 .slider:hover:not(:disabled)::-moz-range-thumb {

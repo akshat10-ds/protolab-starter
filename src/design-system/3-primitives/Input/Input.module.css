@@ -61,7 +61,7 @@
   border-radius: var(--ink-radius-sm); /* 4px */
   padding: var(--ink-spacing-100) var(--ink-spacing-200);
   padding-left: var(--ink-spacing-200);
-  transition: all var(--ink-transition-fast);
+  transition: border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   width: 100%;
   line-height: 1.5; /* Exact Figma spec */
   outline: none;

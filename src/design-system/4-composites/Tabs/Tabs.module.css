@@ -16,7 +16,7 @@
   font-weight: var(--ink-font-weight-regular); /* 400 - Unselected tabs use regular weight */
   color: var(--ink-font-color-neutral); /* Unselected tab text color */
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   border-bottom: 2px solid var(--ink-border-color-subtle); /* 2px border, subtle color for unselected */
   position: relative;
   min-width: 80px;

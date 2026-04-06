@@ -49,7 +49,7 @@
   border: none;
   text-align: left;
   cursor: pointer;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .header:hover:not(:disabled) {
@@ -144,7 +144,7 @@
   align-items: center;
   justify-content: center;
   color: var(--ink-icon-color-secondary);
-  transition: transform var(--ink-transition-normal);
+  transition: transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 .chevronOpen {
@@ -155,12 +155,12 @@
 .panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--ink-transition-normal) ease-out;
+  transition: max-height var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 .panelOpen {
   max-height: 2000px; /* Large enough for most content */
-  transition: max-height var(--ink-transition-normal) ease-in;
+  transition: max-height var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 /* Content - body padding */

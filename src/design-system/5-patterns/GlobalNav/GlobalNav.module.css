@@ -42,7 +42,7 @@
   border: none;
   color: var(--ink-font-color-default);
   cursor: pointer;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .appSwitcher:hover {
@@ -87,7 +87,7 @@
   color: var(--ink-font-secondary); /* rgba(25,24,35,0.65) */
   text-decoration: none;
   border-bottom: 3px solid transparent;
-  transition: all var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   cursor: pointer;
   position: relative;
 }
@@ -122,7 +122,7 @@
   border: none;
   color: var(--ink-font-color-default);
   cursor: pointer;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   position: relative;
 }
 
@@ -168,7 +168,7 @@
   font-size: var(--ink-font-size-md); /* 16px */
   font-weight: var(--ink-font-weight-regular);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   white-space: nowrap;
 }
 
@@ -191,7 +191,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: background-color var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .avatarButton:hover {

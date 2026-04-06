@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef, type CSSProperties } from 'react';
 import {
   DocuSignShell,
   AgreementTableView,
@@ -31,6 +31,111 @@ import {
   Link,
   dataTableStyles,
 } from '@/design-system';
+
+/* ═══════════════════════════════════════
+   DataTable Row Stagger Animation (CSS)
+   ═══════════════════════════════════════ */
+
+const tableRowStaggerStyles = `
+@keyframes inkRowEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply staggered entrance to DataTable body rows */
+[data-ink-component="DataTable"] tbody tr {
+  animation: inkRowEntrance 300ms cubic-bezier(0.33, 0, 0.67, 1) backwards;
+}
+
+/* Stagger rows — 20ms increments, capped at 10 rows (200ms) */
+[data-ink-component="DataTable"] tbody tr:nth-child(1) { animation-delay: 0ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(2) { animation-delay: 20ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(3) { animation-delay: 40ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(4) { animation-delay: 60ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(5) { animation-delay: 80ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(6) { animation-delay: 100ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(7) { animation-delay: 120ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(8) { animation-delay: 140ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(9) { animation-delay: 160ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(10) { animation-delay: 180ms; }
+[data-ink-component="DataTable"] tbody tr:nth-child(n+11) { animation-delay: 200ms; }
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  [data-ink-component="DataTable"] tbody tr {
+    animation: none;
+  }
+}
+`;
+
+/* ═══════════════════════════════════════
+   Entrance Animation Hooks
+   ═══════════════════════════════════════ */
+
+/**
+ * Hook for staggered entrance animations.
+ * Returns a function that generates style props for each item.
+ */
+function useStaggerEntrance(itemCount: number, options?: {
+  baseDelay?: number;
+  staggerInterval?: number;
+  duration?: number;
+  distance?: number;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const {
+    baseDelay = 0,
+    staggerInterval = 30,
+    duration = 400,
+    distance = 8,
+  } = options || {};
+
+  return (index: number) => ({
+    style: {
+      opacity: mounted ? 1 : 0,
+      transform: mounted ? 'translateY(0)' : `translateY(${distance}px)`,
+      transition: `opacity ${duration}ms cubic-bezier(0.33, 0, 0.67, 1) ${baseDelay + index * staggerInterval}ms, transform ${duration}ms cubic-bezier(0.35, 0, 0.2, 1) ${baseDelay + index * staggerInterval}ms`,
+    } as CSSProperties,
+  });
+}
+
+/**
+ * Hook for a simple fade-in on mount.
+ */
+function useFadeIn(delay: number = 0, duration: number = 300) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+  return {
+    style: {
+      opacity: mounted ? 1 : 0,
+      transition: `opacity ${duration}ms cubic-bezier(0.33, 0, 0.67, 1) ${delay}ms`,
+    } as CSSProperties,
+  };
+}
+
+/**
+ * Wrapper component that fades in its children.
+ * Use key={someValue} on the component to re-trigger on changes.
+ */
+function FadeIn({ children, keyProp: _keyProp }: { children: React.ReactNode; keyProp: string }) {
+  const fade = useFadeIn(0, 250);
+  return <div {...fade}>{children}</div>;
+}
 
 /* ═══════════════════════════════════════
    Types
@@ -532,6 +637,8 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function HomePage() {
+  const getStaggerProps = useStaggerEntrance(6, { baseDelay: 100, staggerInterval: 60, duration: 400, distance: 12 });
+
   const activity = [
     { name: 'Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'status-void' as const },
     { name: 'Here is your signed document: Sample_Service_Agreement.pdf', time: '6 days ago', status: 'Voided', statusIcon: 'status-void' as const },
@@ -595,6 +702,7 @@ function HomePage() {
           {/* Left column */}
           <Stack gap="medium" style={{ flex: 1 }}>
             {/* Tasks */}
+            <div {...getStaggerProps(0)}>
             <Card radius="large" className="home-card">
               <Stack gap="none" style={{ padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
                 <Inline justify="between" align="center" style={{ paddingBottom: 'var(--ink-spacing-150)' }}>
@@ -607,8 +715,10 @@ function HomePage() {
                 </Stack>
               </Stack>
             </Card>
+            </div>
 
             {/* Agreement Activity */}
+            <div {...getStaggerProps(1)}>
             <Card radius="large" className="home-card">
               <Stack gap="none" style={{ padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
                 <Inline gap="none" align="center" style={{ gap: 'var(--ink-spacing-50)', marginBottom: 'var(--ink-spacing-150)' }}>
@@ -639,8 +749,10 @@ function HomePage() {
                 ))}
               </Stack>
             </Card>
+            </div>
 
             {/* Favorite Templates */}
+            <div {...getStaggerProps(2)}>
             <Card radius="large" className="home-card">
               <Stack gap="none" style={{ padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
                 <Inline justify="between" align="center" style={{ marginBottom: 'var(--ink-spacing-200)' }}>
@@ -701,8 +813,10 @@ function HomePage() {
                 </Grid>
               </Stack>
             </Card>
+            </div>
 
             {/* Promo cards */}
+            <div {...getStaggerProps(3)}>
             <Grid columns={2} gap="medium">
               <Card radius="large" className="home-card promo-card activity-row" noPadding>
                 <Inline gap="none" align="stretch" style={{ minHeight: '100%' }}>
@@ -727,10 +841,11 @@ function HomePage() {
                 </Inline>
               </Card>
             </Grid>
+            </div>
           </Stack>
 
           {/* Right column - Overview */}
-          <div style={{ width: 220, flexShrink: 0 }}>
+          <div style={{ width: 220, flexShrink: 0, ...getStaggerProps(4).style }}>
             <Card radius="large" className="home-card">
               <Stack gap="none" style={{ padding: 'var(--ink-spacing-200)' }}>
                 <SectionLabel>Overview</SectionLabel>
@@ -765,6 +880,8 @@ function HomePage() {
    ═══════════════════════════════════════ */
 
 function InsightsOverview() {
+  const getStaggerProps = useStaggerEntrance(4, { baseDelay: 50, staggerInterval: 80, duration: 400, distance: 10 });
+
   const recents = [
     { name: 'Expiring agreements', time: 'viewed 5 days ago' },
     { name: 'Upcoming renewals', time: 'viewed 13 days ago' },
@@ -781,9 +898,11 @@ function InsightsOverview() {
 
   return (
     <div style={{ padding: 'var(--ink-spacing-300)' }}>
-      <PageHeader title="Overview" />
+      <div {...getStaggerProps(0)}>
+        <PageHeader title="Overview" />
+      </div>
 
-      <div style={{ marginTop: 'var(--ink-spacing-200)', marginBottom: 'var(--ink-spacing-300)' }}>
+      <div {...getStaggerProps(1)} style={{ ...getStaggerProps(1).style, marginTop: 'var(--ink-spacing-200)', marginBottom: 'var(--ink-spacing-300)' }}>
         <div style={{
           display: 'flex', alignItems: 'center',
           border: '1px solid var(--ink-border-subtle)', borderRadius: 'var(--ink-radius-md)',
@@ -794,6 +913,7 @@ function InsightsOverview() {
         </div>
       </div>
 
+      <div {...getStaggerProps(2)}>
       <Grid columns={2} gap="medium">
         <Card radius="large">
           <div style={{ padding: 'var(--ink-spacing-200)' }}>
@@ -835,8 +955,9 @@ function InsightsOverview() {
           </div>
         </Card>
       </Grid>
+      </div>
 
-      <div style={{ marginTop: 'var(--ink-spacing-300)' }}>
+      <div {...getStaggerProps(3)} style={{ ...getStaggerProps(3).style, marginTop: 'var(--ink-spacing-300)' }}>
         <Text size="md" weight="semibold">Weekly Insights</Text>
         <Grid columns={3} gap="medium" style={{ marginTop: 'var(--ink-spacing-200)' }}>
           <Card radius="large">
@@ -971,6 +1092,8 @@ const DETAIL_TABS = [
 function AgreementDetailView({ onClose }: { onClose: () => void }) {
   const detail = AGREEMENT_DETAIL;
   const [activeDetailTab, setActiveDetailTab] = useState<string | null>('details');
+  const fadeIn = useFadeIn(0, 250);
+  const getDetailStagger = useStaggerEntrance(5, { baseDelay: 150, staggerInterval: 50, duration: 350, distance: 8 });
 
   const handleSidebarTabClick = (tabId: string) => {
     if (activeDetailTab === tabId) {
@@ -983,21 +1106,27 @@ function AgreementDetailView({ onClose }: { onClose: () => void }) {
   const detailContent = (
     <Stack gap="medium" style={{ padding: 'var(--ink-spacing-200)' }}>
       {/* AI suggestion banner */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ink-spacing-100)', flexDirection: 'column' }}>
-        <AIBadge infoContent={false}>AI-Assisted</AIBadge>
-        <Text size="sm">
-          It looks like this agreement type is <strong>{detail.agreementType}</strong>. There are <strong>{detail.fields}</strong> fields and <strong>{detail.suggestions}</strong> new suggestions for you to review.
-        </Text>
-        <Button kind="secondary" size="small">Review All</Button>
+      <div {...getDetailStagger(0)}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--ink-spacing-100)', flexDirection: 'column' }}>
+          <AIBadge infoContent={false}>AI-Assisted</AIBadge>
+          <Text size="sm">
+            It looks like this agreement type is <strong>{detail.agreementType}</strong>. There are <strong>{detail.fields}</strong> fields and <strong>{detail.suggestions}</strong> new suggestions for you to review.
+          </Text>
+          <Button kind="secondary" size="small">Review All</Button>
+        </div>
       </div>
 
-      <Divider />
+      <div {...getDetailStagger(1)}>
+        <Divider />
+      </div>
 
       {/* Search */}
-      <Input placeholder="Find details" />
+      <div {...getDetailStagger(2)}>
+        <Input placeholder="Find details" />
+      </div>
 
       {/* Agreement Type */}
-      <div>
+      <div {...getDetailStagger(3)}>
         <Inline gap="small" align="center">
           <Text size="xs" weight="semibold" color="secondary" style={{ textTransform: 'uppercase', letterSpacing: '0.05em' }}>Agreement Type</Text>
           <AIIcon name="ai-spark-filled" size={12} />
@@ -1006,6 +1135,7 @@ function AgreementDetailView({ onClose }: { onClose: () => void }) {
       </div>
 
       {/* Accordion sections */}
+      <div {...getDetailStagger(4)}>
       <Accordion
         allowMultiple
         defaultOpenItems={['general', 'termination', 'clauses', 'legal']}
@@ -1108,12 +1238,14 @@ function AgreementDetailView({ onClose }: { onClose: () => void }) {
           },
         ]}
       />
+      </div>
     </Stack>
   );
 
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 1060,
+      ...fadeIn.style,
       background: 'var(--ink-bg-color-default)',
       display: 'grid', gridTemplateRows: 'auto auto 1fr',
     }}>
@@ -1746,13 +1878,16 @@ export default function App() {
 
   return (
     <>
+    <style>{tableRowStaggerStyles}</style>
     <DocuSignShell
       globalNav={globalNavConfig}
       localNav={sidebarMap[activeTab]}
     >
-      <div key={transitionKey} className="page-transition" style={{ flex: 1 }}>
-        {contentMap[activeTab]}
-      </div>
+      <FadeIn keyProp={transitionKey} key={transitionKey}>
+        <div className="page-transition" style={{ flex: 1 }}>
+          {contentMap[activeTab]}
+        </div>
+      </FadeIn>
       <Footer />
     </DocuSignShell>
     {showAgreementDetail && (

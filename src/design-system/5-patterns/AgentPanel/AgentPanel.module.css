@@ -17,7 +17,7 @@
   background: var(--ink-black-100);
   opacity: 0.3;
   z-index: 999;
-  animation: fadeIn 200ms ease;
+  animation: fadeIn var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 @keyframes fadeIn {
@@ -39,7 +39,7 @@
   background: var(--ink-white-100);
   box-shadow: var(--ink-shadow-xl);
   z-index: 1000;
-  animation: slideIn 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideIn var(--ink-motion-duration-300) var(--ink-motion-curve-default);
 }
 
 .positionRight {
@@ -88,7 +88,7 @@
   width: 6px;
   cursor: ew-resize;
   z-index: 10;
-  transition: background 150ms ease;
+  transition: background var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .resizeHandle:hover,
@@ -188,7 +188,7 @@
   justify-content: center;
   cursor: ew-resize;
   background: var(--ink-neutral-15);
-  transition: background 150ms ease;
+  transition: background var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .splitResizer:hover,
@@ -201,7 +201,7 @@
   height: 40px;
   border-radius: 1px;
   background: var(--ink-neutral-50);
-  transition: background 150ms ease;
+  transition: background var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .splitResizer:hover .splitResizerLine,

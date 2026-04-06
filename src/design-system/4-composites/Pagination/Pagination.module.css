@@ -34,7 +34,7 @@
   border: 1px solid var(--ink-neutral-30);
   border-radius: var(--ink-radius-md);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .navButton:hover:not(:disabled) {
@@ -74,7 +74,7 @@
   border: none;
   border-radius: var(--ink-radius-size-xs);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,7 +150,7 @@
   border: 1px solid var(--ink-neutral-30);
   border-radius: var(--ink-radius-md);
   cursor: pointer;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .select:hover:not(:disabled) {

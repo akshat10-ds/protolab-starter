@@ -21,7 +21,7 @@
   cursor: pointer;
   text-decoration: none;
   position: relative;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   white-space: nowrap;
   user-select: none;
   min-width: 80px;
@@ -42,7 +42,7 @@
   outline: none;
   cursor: pointer;
   position: relative;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   user-select: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

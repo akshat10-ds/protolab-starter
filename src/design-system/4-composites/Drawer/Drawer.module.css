@@ -16,7 +16,7 @@
   bottom: 0;
   background: var(--ink-neutral-fade-50);
   pointer-events: auto;
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn var(--ink-motion-duration-300) var(--ink-motion-curve-opacity);
 }
 
 /* Drawer Base */
@@ -37,28 +37,28 @@
   top: 0;
   left: 0;
   bottom: 0;
-  animation: slideInLeft 0.3s ease-out;
+  animation: slideInLeft var(--ink-motion-duration-400) var(--ink-motion-curve-default) 50ms both;
 }
 
 .drawer.right {
   top: 0;
   right: 0;
   bottom: 0;
-  animation: slideInRight 0.3s ease-out;
+  animation: slideInRight var(--ink-motion-duration-400) var(--ink-motion-curve-default) 50ms both;
 }
 
 .drawer.top {
   top: 0;
   left: 0;
   right: 0;
-  animation: slideInTop 0.3s ease-out;
+  animation: slideInTop var(--ink-motion-duration-400) var(--ink-motion-curve-default) 50ms both;
 }
 
 .drawer.bottom {
   bottom: 0;
   left: 0;
   right: 0;
-  animation: slideInBottom 0.3s ease-out;
+  animation: slideInBottom var(--ink-motion-duration-400) var(--ink-motion-curve-default) 50ms both;
 }
 
 /* Size Variants - Horizontal (left/right) */
@@ -150,8 +150,8 @@
   cursor: pointer;
   color: var(--ink-neutral-70);
   transition:
-    background-color 0.2s,
-    color 0.2s;
+    background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .closeButton:hover {

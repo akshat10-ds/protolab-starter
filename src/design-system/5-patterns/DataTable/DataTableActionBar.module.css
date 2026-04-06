@@ -21,10 +21,10 @@
   max-height: 0;
   overflow: hidden;
   transition:
-    transform 0.2s ease-out,
-    opacity 0.2s ease-out,
-    max-height 0.2s ease-out,
-    margin-bottom 0.2s ease-out;
+    transform var(--ink-motion-duration-200) var(--ink-motion-curve-default),
+    opacity var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    max-height var(--ink-motion-duration-200) var(--ink-motion-curve-default),
+    margin-bottom var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
 
 .actionBar.visible {

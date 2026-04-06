@@ -1021,9 +1021,9 @@
   /* TRANSITIONS                                */
   /* ========================================== */
 
-  --ink-transition-fast: 150ms ease-in-out;
-  --ink-transition-normal: 250ms ease-in-out;
-  --ink-transition-slow: 350ms ease-in-out;
+  --ink-transition-fast: 150ms var(--ink-motion-curve-opacity);
+  --ink-transition-normal: 250ms var(--ink-motion-curve-default);
+  --ink-transition-slow: 350ms var(--ink-motion-curve-default);
 
   /* ========================================== */
   /* MOTION                                     */
@@ -1046,6 +1046,18 @@
   --ink-motion-duration-1000: 1000ms;
   --ink-motion-duration-2000: 2000ms;
   --ink-motion-duration-3000: 3000ms;
+
+  /* Motion Semantic Presets */
+  --ink-motion-hover: var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
+  --ink-motion-state: var(--ink-motion-duration-200) var(--ink-motion-curve-default);
+  --ink-motion-control: var(--ink-motion-duration-300) var(--ink-motion-curve-default);
+  --ink-motion-container: var(--ink-motion-duration-400) var(--ink-motion-curve-default);
+  --ink-motion-overlay: var(--ink-motion-duration-300) var(--ink-motion-curve-opacity);
+  --ink-motion-page: var(--ink-motion-duration-600) var(--ink-motion-curve-default);
+
+  /* Stagger & Partial Clipping */
+  --ink-motion-stagger-delay: 30ms;
+  --ink-motion-clip-distance: 30%;
 
   /* ========================================== */
   /* Z-INDEX                                    */

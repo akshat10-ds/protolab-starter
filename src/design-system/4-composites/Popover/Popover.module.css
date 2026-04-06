@@ -6,7 +6,7 @@
   box-shadow: var(--ink-shadow-lg);
   padding: var(--ink-spacing-4);
   z-index: var(--ink-z-popover);
-  animation: popoverFadeIn var(--ink-transition-fast);
+  animation: popoverFadeIn var(--ink-motion-duration-200) var(--ink-motion-curve-default);
   max-width: 350px;
 }
 

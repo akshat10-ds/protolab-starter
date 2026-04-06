@@ -13,7 +13,7 @@
   justify-content: center;
   z-index: var(--ink-z-modal);
   padding: 80px 0; /* 80px top/bottom padding from Figma */
-  animation: fadeIn var(--ink-transition-fast);
+  animation: fadeIn var(--ink-motion-duration-300) var(--ink-motion-curve-opacity);
 }
 
 @keyframes fadeIn {
@@ -39,17 +39,17 @@
   max-height: calc(100vh - 160px); /* Account for 80px top/bottom padding */
   width: 100%;
   position: relative;
-  animation: slideUp var(--ink-transition-normal);
+  animation: slideUp 350ms var(--ink-motion-curve-default) 50ms both;
   outline: none;
 }
 
 @keyframes slideUp {
   from {
-    transform: translateY(20px);
+    transform: translateY(20px) scale(0.95);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
@@ -111,7 +111,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  transition: all var(--ink-transition-fast);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .closeButton:hover {

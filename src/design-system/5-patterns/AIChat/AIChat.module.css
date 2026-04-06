@@ -54,7 +54,7 @@
   padding: var(--ink-spacing-200);
   /* scroll-behavior removed to allow instant scrolls from JS */
   overflow-anchor: none; /* Prevent browser from auto-adjusting scroll on content changes */
-  animation: messageListFadeIn 400ms ease-out forwards;
+  animation: messageListFadeIn var(--ink-motion-duration-400) var(--ink-motion-curve-default) forwards;
 }
 
 @keyframes messageListFadeIn {
@@ -95,13 +95,13 @@
 .userMessage {
   margin-left: auto;
   flex-direction: row-reverse;
-  animation: messageFadeIn 300ms ease-out forwards;
+  animation: messageFadeIn var(--ink-motion-duration-300) var(--ink-motion-curve-default) forwards;
 }
 
 .assistantMessage {
   margin-right: auto;
   max-width: 100%; /* Allow full width for tables and rich content */
-  animation: messageFadeIn 300ms ease-out forwards;
+  animation: messageFadeIn var(--ink-motion-duration-300) var(--ink-motion-curve-default) forwards;
 }
 
 .messageAvatar {
@@ -153,7 +153,7 @@
   display: flex;
   gap: var(--ink-spacing-50);
   opacity: 0;
-  transition: opacity 150ms ease;
+  transition: opacity var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .message:hover .messageActions {
@@ -167,7 +167,7 @@
 .typingIndicator {
   display: flex;
   flex-direction: column;
-  animation: messageFadeIn 300ms ease-out forwards;
+  animation: messageFadeIn var(--ink-motion-duration-300) var(--ink-motion-curve-default) forwards;
   min-width: 200px;
   max-width: 320px;
 }
@@ -188,7 +188,7 @@
     var(--ink-neutral-15) 75%
   );
   background-size: 200% 100%;
-  animation: skeletonShimmer 1.5s ease-in-out infinite;
+  animation: skeletonShimmer 1.5s var(--ink-motion-curve-opacity) infinite;
 }
 
 .typingLine:nth-child(1) {
@@ -270,9 +270,9 @@
   color: var(--ink-font-color-neutral);
   cursor: pointer;
   transition:
-    background-color 150ms ease,
-    color 150ms ease,
-    border-color 150ms ease;
+    background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   z-index: 1;
 }
 
@@ -349,7 +349,7 @@
   min-height: 40px !important;
   max-height: 200px;
   overflow-y: auto;
-  transition: height 150ms ease;
+  transition: height var(--ink-motion-duration-200) var(--ink-motion-curve-default);
   box-shadow: none !important;
 }
 
@@ -405,7 +405,7 @@
   font-size: var(--ink-font-size-detail-xs);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-font-color-default);
-  transition: all 150ms ease;
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .addSourceButton:hover:not(:disabled) {
@@ -429,7 +429,7 @@
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-font-color-default);
   overflow: hidden;
-  transition: box-shadow 300ms ease;
+  transition: box-shadow var(--ink-motion-duration-300) var(--ink-motion-curve-opacity);
 }
 
 .contextSourcePillMain {
@@ -444,7 +444,7 @@
   font-size: inherit;
   font-weight: inherit;
   color: inherit;
-  transition: background 150ms ease;
+  transition: background var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .contextSourcePillMain:hover:not(:disabled) {
@@ -467,8 +467,8 @@
   cursor: pointer;
   color: var(--ink-font-color-secondary);
   transition:
-    background 150ms ease,
-    color 150ms ease;
+    background var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .contextSourcePillClear:hover:not(:disabled) {
@@ -588,7 +588,7 @@
   gap: var(--ink-spacing-50);
   padding-bottom: var(--ink-spacing-300);
   border-bottom: 1px solid var(--ink-border-color-subtle);
-  animation: welcomeFadeIn 400ms ease-out forwards;
+  animation: welcomeFadeIn var(--ink-motion-duration-400) var(--ink-motion-curve-default) forwards;
 }
 
 /* Add spacing below AIBadge */
@@ -633,7 +633,7 @@
   flex-direction: column;
   gap: var(--ink-spacing-150);
   opacity: 0;
-  animation: welcomeFadeIn 400ms ease-out forwards;
+  animation: welcomeFadeIn var(--ink-motion-duration-400) var(--ink-motion-curve-default) forwards;
 }
 
 /* Stagger the sections */
@@ -652,7 +652,7 @@
   width: 100%;
   cursor: pointer;
   opacity: 0;
-  animation: welcomeFadeIn 300ms ease-out forwards;
+  animation: welcomeFadeIn var(--ink-motion-duration-300) var(--ink-motion-curve-default) forwards;
   animation-delay: 80ms;
 }
 
@@ -678,11 +678,11 @@
   border-radius: var(--ink-radius-size-m);
   cursor: pointer;
   text-align: left;
-  transition: background 150ms ease;
+  transition: background var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   width: 100%;
   /* Staggered card animations */
   opacity: 0;
-  animation: welcomeFadeIn 350ms ease-out forwards;
+  animation: welcomeFadeIn 350ms var(--ink-motion-curve-default) forwards;
 }
 
 /* Stagger individual prompt cards */
@@ -743,12 +743,12 @@
   border-radius: var(--ink-radius-size-m);
   cursor: pointer;
   text-align: left;
-  transition: background 150ms ease;
+  transition: background var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   width: 100%;
   color: var(--ink-font-color-default);
   /* Staggered card animations */
   opacity: 0;
-  animation: welcomeFadeIn 350ms ease-out forwards;
+  animation: welcomeFadeIn 350ms var(--ink-motion-curve-default) forwards;
 }
 
 /* Stagger individual question cards (offset from prompts section) */

@@ -56,8 +56,8 @@
   border: 1px solid var(--ink-form-control-border-color-default);
   border-radius: var(--ink-radius-size-xs);
   transition:
-    border-color var(--ink-transition-fast),
-    box-shadow var(--ink-transition-fast);
+    border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   outline: none;
 }
 
