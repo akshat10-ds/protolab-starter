@@ -1,6 +1,6 @@
 {
   "servers": {
-    "ink-design-system": {
+    "protolab": {
       "type": "http",
       "url": "https://protolab-mcp.vercel.app/api/mcp"
     }
