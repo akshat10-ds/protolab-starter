@@ -11,6 +11,8 @@ import {
   ComboButton,
   AIIcon,
   AIBadge,
+  AIChat,
+  AgentPanel,
   Accordion,
   Avatar,
   Divider,
@@ -145,6 +147,26 @@ type TabId = 'home' | 'agreements' | 'templates' | 'insights' | 'admin';
 type SidebarView = 'all-agreements' | 'drafts' | 'in-progress' | 'completed' | 'deleted' | 'parties' | 'requests';
 type TemplatesSidebarView = 'my-templates' | 'shared-with-me' | 'favorites' | 'all-templates';
 type InsightsSidebarView = 'overview' | 'dashboards' | 'reports';
+
+/* ═══════════════════════════════════════
+   AI Chat Messages Data (Iris Assistant)
+   ═══════════════════════════════════════ */
+
+interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  timestamp: Date;
+}
+
+const INITIAL_CHAT_MESSAGES: ChatMessage[] = [
+  {
+    id: '1',
+    role: 'assistant',
+    content: "Hello! I'm Iris, your AI assistant. I can help you with agreement analysis, document summaries, finding specific clauses, and answering questions about your contracts. How can I assist you today?",
+    timestamp: new Date(Date.now() - 60000),
+  },
+];
 
 /* ═══════════════════════════════════════
    Agreements Data
@@ -1415,6 +1437,32 @@ function getTabFromHash(): TabId {
   return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'home';
 }
 
+/* ═══════════════════════════════════════
+   AI Response Generator (Simulated)
+   ═══════════════════════════════════════ */
+
+function getAIResponse(userMessage: string): string {
+  const lowerMessage = userMessage.toLowerCase();
+  
+  if (lowerMessage.includes('expir') || lowerMessage.includes('renewal')) {
+    return "Based on your agreements, I found 3 contracts expiring in the next 90 days:\n\n1. **Change Order.docx** - Expires July 31, 2026\n2. **SOW(2).docx** - Expires June 30, 2026\n3. **SOW(1).docx** - Expires June 30, 2026\n\nWould you like me to set up renewal reminders or draft renewal notices for any of these?";
+  }
+  
+  if (lowerMessage.includes('clause') || lowerMessage.includes('find') || lowerMessage.includes('search')) {
+    return "I can search through your agreements for specific clauses. What type of clause are you looking for? Common examples include:\n\n- Termination clauses\n- Liability limitations\n- Confidentiality terms\n- Payment terms\n- Indemnification provisions";
+  }
+  
+  if (lowerMessage.includes('summar') || lowerMessage.includes('overview')) {
+    return "Here's a summary of your agreement portfolio:\n\n**Total Agreements:** 687\n**Active:** 423 (62%)\n**Completed:** 198 (29%)\n**Voided:** 66 (9%)\n\n**Key Insights:**\n- 7 open requests pending action\n- 3 agreements expiring within 90 days\n- Most active party: DocuSign, Inc. (1,009 active agreements)";
+  }
+  
+  if (lowerMessage.includes('help') || lowerMessage.includes('what can')) {
+    return "I can help you with:\n\n- **Agreement Analysis** - Summarize contracts, extract key terms\n- **Search & Discovery** - Find specific clauses or agreements\n- **Renewals & Expirations** - Track upcoming deadlines\n- **Compliance** - Identify potential risks or missing clauses\n- **Comparisons** - Compare terms across multiple agreements\n\nWhat would you like to explore?";
+  }
+  
+  return "I understand you're asking about \"" + userMessage.substring(0, 50) + (userMessage.length > 50 ? "..." : "") + "\". I can help analyze your agreements, find specific clauses, track renewals, and provide insights. Could you provide more details about what you're looking for?";
+}
+
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>(getTabFromHash);
   const [sidebarView, setSidebarView] = useState<SidebarView>('all-agreements');
@@ -1422,6 +1470,34 @@ export default function App() {
   const [insightsSidebarView, setInsightsSidebarView] = useState<InsightsSidebarView>('overview');
   const [search, setSearch] = useState('');
   const [showAgreementDetail, setShowAgreementDetail] = useState(false);
+
+  /* ── Iris AI Panel State ── */
+  const [isAIPanelOpen, setIsAIPanelOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>(INITIAL_CHAT_MESSAGES);
+  const [isAILoading, setIsAILoading] = useState(false);
+
+  const handleSendMessage = useCallback((content: string) => {
+    const userMessage: ChatMessage = {
+      id: `user-${Date.now()}`,
+      role: 'user',
+      content,
+      timestamp: new Date(),
+    };
+    setChatMessages(prev => [...prev, userMessage]);
+    setIsAILoading(true);
+
+    // Simulate AI response
+    setTimeout(() => {
+      const aiResponse: ChatMessage = {
+        id: `ai-${Date.now()}`,
+        role: 'assistant',
+        content: getAIResponse(content),
+        timestamp: new Date(),
+      };
+      setChatMessages(prev => [...prev, aiResponse]);
+      setIsAILoading(false);
+    }, 1500);
+  }, []);
 
   /* ── Sync hash ↔ state ── */
   useEffect(() => {
@@ -1893,6 +1969,79 @@ export default function App() {
     {showAgreementDetail && (
       <AgreementDetailView onClose={() => setShowAgreementDetail(false)} />
     )}
+
+    {/* Iris AI Floating Action Button */}
+    {!isAIPanelOpen && (
+      <button
+        onClick={() => setIsAIPanelOpen(true)}
+        style={{
+          position: 'fixed',
+          bottom: 24,
+          right: 24,
+          width: 56,
+          height: 56,
+          borderRadius: '50%',
+          background: 'linear-gradient(135deg, #D9155D 0%, #A02AAC 50%, #4C06FF 100%)',
+          border: 'none',
+          boxShadow: '0 4px 12px rgba(76, 6, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1)',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+          transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.05)';
+          e.currentTarget.style.boxShadow = '0 6px 16px rgba(76, 6, 255, 0.4), 0 3px 6px rgba(0, 0, 0, 0.15)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+          e.currentTarget.style.boxShadow = '0 4px 12px rgba(76, 6, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1)';
+        }}
+        aria-label="Open Iris AI Assistant"
+      >
+        <svg width="24" height="24" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.6809 5.53526C10.689 5.16763 9.95376 4.82775 9.36416 4.44624C8.60116 3.96069 8.04624 3.40578 7.56069 2.64277C7.18613 2.05318 6.83931 1.31098 6.47168 0.326012C6.40231 0.124856 6.21503 0 6.00694 0C5.79884 0 5.61156 0.124856 5.5422 0.326012C5.17457 1.31792 4.83468 2.05318 4.45318 2.64277C3.96763 3.40578 3.40578 3.96069 2.64277 4.44624C2.05318 4.82081 1.31098 5.16763 0.326012 5.53526C0.124856 5.60462 0 5.79191 0 6C0 6.20809 0.124856 6.39538 0.326012 6.46474C1.31792 6.82543 2.05318 7.17225 2.64277 7.55376C3.40578 8.03931 3.96069 8.59422 4.45318 9.35723C4.82775 9.95376 5.17457 10.689 5.5422 11.674C5.6185 11.8751 5.79884 12 6.00694 12C6.21503 12 6.40231 11.8682 6.47168 11.674C6.83931 10.6821 7.17919 9.94682 7.56069 9.35723C8.04624 8.59422 8.60116 8.03931 9.36416 7.55376C9.96069 7.17919 10.696 6.83237 11.6809 6.46474C11.8821 6.38844 12.0069 6.20809 12.0069 6C12.0069 5.79191 11.8751 5.60462 11.6809 5.53526Z" fill="white"/>
+        </svg>
+      </button>
+    )}
+
+    {/* Iris AI Agent Panel */}
+    <AgentPanel
+      isOpen={isAIPanelOpen}
+      onClose={() => setIsAIPanelOpen(false)}
+      title="Iris AI Assistant"
+      subtitle="Powered by DocuSign AI"
+      width={480}
+      headerActions={
+        <IconButton
+          icon="window-maximize"
+          size="small"
+          variant="tertiary"
+          aria-label="Expand"
+        />
+      }
+    >
+      <AIChat
+        messages={chatMessages}
+        onSendMessage={handleSendMessage}
+        isLoading={isAILoading}
+        placeholder="Ask Iris about your agreements..."
+        assistantName="Iris"
+        userName="Akshat"
+        showFeedback
+        showActions
+        welcomeTitle="What can I help you with today?"
+        suggestedQuestions={[
+          "Which agreements expire in the next 90 days?",
+          "Show me a summary of my agreement portfolio",
+          "Find all agreements with termination clauses",
+          "What can you help me with?",
+        ]}
+        onSuggestionClick={(suggestion) => handleSendMessage(suggestion)}
+      />
+    </AgentPanel>
     </>
   );
 }
