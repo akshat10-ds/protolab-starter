@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "eval:button": "tsx evals/button-skill.eval.ts"
   },
   "dependencies": {
     "agentation": "^3.0.2",
@@ -14,9 +15,11 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.52.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react-swc": "^3.10.0",
+    "tsx": "^4.19.0",
     "typescript": "~5.7.0",
     "vite": "^6.3.0"
   }
