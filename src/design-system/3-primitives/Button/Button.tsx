@@ -104,7 +104,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
           <span className={styles.text}>
             {accessibilityText ? (
               <>
-                <span className="sr-only">{accessibilityText}</span>
+                <span className={styles['sr-only']}>{accessibilityText}</span>
                 <span aria-hidden="true">{children}</span>
               </>
             ) : (
