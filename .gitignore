@@ -2,3 +2,8 @@ node_modules/
 dist/
 .DS_Store
 *.local
+
+# Secrets — the evals read ANTHROPIC_API_KEY from the environment.
+.env
+.env.*
+!.env.example
