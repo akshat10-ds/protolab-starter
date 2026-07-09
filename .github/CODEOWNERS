@@ -1,0 +1,4 @@
+# Every change to this repo requires review from @akshat10-ds.
+# Enforced by the "protect-main" ruleset (require_code_owner_review).
+# CODEOWNERS only takes effect on the default branch.
+* @akshat10-ds
