@@ -6,6 +6,9 @@ dist/
 # Browser-automation debug logs (Playwright MCP) — not source
 .playwright-mcp/
 
+# Local Claude Code config — not shared
+.claude/launch.json
+
 # Secrets — the evals read ANTHROPIC_API_KEY from the environment.
 .env
 .env.*
