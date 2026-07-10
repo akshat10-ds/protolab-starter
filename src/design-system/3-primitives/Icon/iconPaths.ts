@@ -10,6 +10,9 @@ export interface IconPath {
 }
 
 export const iconPaths: Record<string, IconPath> = {
+  'sliders-horizontal': {
+    path: 'M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z',
+  },
   'align-bottom': {
     path: 'M21 21H3v-2h18zM9 5H7v10h2zm2-2v14H5V3zm6 5h-2v7h2zm2-2v11h-6V6z',
   },

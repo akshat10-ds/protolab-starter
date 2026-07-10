@@ -1,7 +1,7 @@
 /* Heading styles */
 .heading {
   font-family: var(--ink-font-family);
-  color: var(--ink-neutral-100);
+  color: var(--ink-font-primary);
   margin: 0;
   font-weight: var(--ink-font-weight-semibold);
   line-height: var(--ink-line-height-tight);
@@ -82,15 +82,15 @@
 
 /* Color */
 .text.color-primary {
-  color: var(--ink-neutral-100);
+  color: var(--ink-font-primary);
 }
 
 .text.color-secondary {
-  color: var(--ink-neutral-70);
+  color: var(--ink-font-secondary);
 }
 
 .text.color-tertiary {
-  color: var(--ink-neutral-50);
+  color: var(--ink-font-tertiary);
 }
 
 .text.color-success {

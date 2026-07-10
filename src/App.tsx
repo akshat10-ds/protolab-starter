@@ -665,20 +665,20 @@ function HomePage() {
     <Stack gap="none">
       {/* Welcome banner */}
       <div style={{
-        background: 'linear-gradient(174deg, var(--ink-cobalt-100, #4C00FB) 1.48%, var(--ink-cobalt-140, #260559) 97.92%)',
+        background: 'radial-gradient(106.11% 145.09% at 50% -23.62%, #4200CA 0%, #260559 100%)',
         color: 'white',
-        padding: '100px var(--ink-spacing-300) 72px',
+        padding: '70px var(--ink-spacing-300) 63px',
         textAlign: 'center',
       }}>
-        <Heading level={3} style={{ color: 'white', fontWeight: 400, marginBottom: 'var(--ink-spacing-300)' }}>
-          Welcome back, Akshat Mishra
+        <Heading level={3} style={{ color: 'white', fontWeight: 400, marginBottom: 'var(--ink-spacing-700)' }}>
+          Welcome, Akshat Mishra
         </Heading>
         <Inline gap="small" justify="center">
-          <Button kind="brand" menuTrigger>Start</Button>
+          <Button kind="brand" menuTrigger style={{ background: 'var(--ink-cobalt-40)', color: 'var(--ink-font-primary)' }}>Start</Button>
           {[
-            { icon: 'send' as const, label: 'Send an Envelope' },
-            { icon: 'ai-spark-filled' as const, label: 'Send with AI' },
-            { icon: 'templates' as const, label: 'Create a Request' },
+            { icon: 'send' as const, label: 'Send Envelope' },
+            { icon: 'templates' as const, label: 'Create Request' },
+            { icon: 'globe-language' as const, label: 'Create Web Form' },
           ].map((btn) => (
             <button
               key={btn.label}
@@ -697,10 +697,10 @@ function HomePage() {
       </div>
 
       {/* Main content */}
-      <Container style={{ maxWidth: 1120, padding: 'var(--ink-spacing-400) var(--ink-spacing-400)' }}>
-        <Inline gap="large" align="start">
+      <Container style={{ maxWidth: 1328, padding: 'var(--ink-spacing-400) var(--ink-spacing-300)' }}>
+        <Inline gap="large" align="start" className="home-content-row" style={{ gap: 32 }}>
           {/* Left column */}
-          <Stack gap="medium" style={{ flex: 1 }}>
+          <Stack gap="medium" className="home-main-col" style={{ flex: 1 }}>
             {/* Tasks */}
             <div {...getStaggerProps(0)}>
             <Card radius="large" className="home-card">
@@ -710,7 +710,7 @@ function HomePage() {
                   <Icon name="chevron-right" size={18} />
                 </Inline>
                 <Stack gap="none" style={{ gap: 'var(--ink-spacing-50)', padding: 'var(--ink-spacing-250) 0 var(--ink-spacing-150)' }}>
-                  <Text size="lg" weight="regular">You don&apos;t have any tasks yet</Text>
+                  <Text size="lg" weight="regular" style={{ fontSize: 'var(--ink-font-size-2xl)', lineHeight: 'var(--ink-line-height-tight)' }}>You don&apos;t have any tasks yet</Text>
                   <Text size="sm" color="secondary">When you have new tasks assigned to you, they will show up here.</Text>
                 </Stack>
               </Stack>
@@ -737,80 +737,18 @@ function HomePage() {
                     }}
                   >
                     <Stack gap="none" style={{ gap: "var(--ink-spacing-25)" }}>
-                      <Text size="sm">{item.name}</Text>
+                      <Text size="md">{item.name}</Text>
                       <Text size="xs" color="secondary" style={{ textDecoration: 'underline', textDecorationColor: 'var(--ink-border-subtle)' }}>{item.time}</Text>
                     </Stack>
-                    <Inline gap="small" align="center" style={{ flexShrink: 0 }}>
-                      <Icon name={item.statusIcon} size={14} />
-                      <Text size="xs" color="secondary">{item.status}</Text>
-                      <Icon name="chevron-right" size={14} />
+                    <Inline align="center" justify="between" style={{ flexShrink: 0, width: 230 }}>
+                      <Inline gap="small" align="center">
+                        <Icon name={item.statusIcon} size={20} />
+                        <Text size="md" color="secondary">{item.status}</Text>
+                      </Inline>
+                      <Icon name="chevron-right" size={20} color="var(--ink-font-secondary)" />
                     </Inline>
                   </Inline>
                 ))}
-              </Stack>
-            </Card>
-            </div>
-
-            {/* Favorite Templates */}
-            <div {...getStaggerProps(2)}>
-            <Card radius="large" className="home-card">
-              <Stack gap="none" style={{ padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
-                <Inline justify="between" align="center" style={{ marginBottom: 'var(--ink-spacing-200)' }}>
-                  <SectionLabel>Favorite Templates</SectionLabel>
-                  <Icon name="chevron-right" size={18} />
-                </Inline>
-                <Grid columns={3} gap="medium">
-                  {favoriteTemplates.map((t) => (
-                    <Card key={t.name} radius="medium" className="home-card activity-row" style={{ padding: 0 }}>
-                      <Stack gap="small" style={{ padding: 'var(--ink-spacing-150)' }}>
-                        <div style={{ height: 140, background: '#f5f5f5', borderRadius: 'var(--ink-radius-sm)', position: 'relative', overflow: 'hidden', padding: 6 }}>
-                          {/* Mock document preview */}
-                          <div style={{ background: 'white', borderRadius: 3, height: '100%', padding: '8px 10px', display: 'flex', flexDirection: 'column', gap: 4, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
-                            {/* Header area */}
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                              <div style={{ height: 5, width: '35%', background: '#ddd', borderRadius: 1 }} />
-                              <div style={{ height: 5, width: '15%', background: '#e8e8e8', borderRadius: 1 }} />
-                            </div>
-                            <div style={{ height: 1, background: '#eee' }} />
-                            {/* Table-like rows */}
-                            <div style={{ display: 'flex', gap: 6 }}>
-                              <div style={{ height: 4, width: '25%', background: '#e5e5e5', borderRadius: 1 }} />
-                              <div style={{ height: 4, width: '20%', background: '#efefef', borderRadius: 1 }} />
-                              <div style={{ height: 4, width: '30%', background: '#efefef', borderRadius: 1 }} />
-                            </div>
-                            <div style={{ display: 'flex', gap: 6 }}>
-                              <div style={{ height: 4, width: '25%', background: '#efefef', borderRadius: 1 }} />
-                              <div style={{ height: 4, width: '20%', background: '#f2f2f2', borderRadius: 1 }} />
-                              <div style={{ height: 4, width: '30%', background: '#f2f2f2', borderRadius: 1 }} />
-                            </div>
-                            <div style={{ display: 'flex', gap: 6 }}>
-                              <div style={{ height: 4, width: '25%', background: '#efefef', borderRadius: 1 }} />
-                              <div style={{ height: 4, width: '20%', background: '#f2f2f2', borderRadius: 1 }} />
-                              <div style={{ height: 4, width: '30%', background: '#f2f2f2', borderRadius: 1 }} />
-                            </div>
-                            <div style={{ height: 1, background: '#eee', marginTop: 2 }} />
-                            {/* More text lines */}
-                            <div style={{ height: 3, width: '70%', background: '#efefef', borderRadius: 1 }} />
-                            <div style={{ height: 3, width: '50%', background: '#f2f2f2', borderRadius: 1 }} />
-                          </div>
-                          {/* Favorite badge */}
-                          <div style={{ position: 'absolute', top: 8, right: 8, background: 'rgba(0,0,0,0.6)', color: 'white', fontSize: 10, padding: '2px 6px', borderRadius: 3, display: 'flex', alignItems: 'center', gap: 3 }}>
-                            <Icon name="star" size={9} color="gold" /> Favorite
-                          </div>
-                        </div>
-                        <Text size="sm" weight="medium" style={{ color: 'var(--ink-cobalt-90)' }}>{t.name}</Text>
-                        <Text size="xs" color="secondary">{t.lastUsed}</Text>
-                      </Stack>
-                    </Card>
-                  ))}
-                  <Card radius="medium" className="home-card activity-row" style={{ padding: 0 }}>
-                    <Stack gap="small" align="center" justify="center" style={{ padding: 'var(--ink-spacing-200)', height: '100%' }}>
-                      <Text size="sm" weight="semibold" style={{ textTransform: 'uppercase', letterSpacing: '0.03em' }}>Add Favorite Template</Text>
-                      <Text size="xs" color="secondary" style={{ textAlign: 'center' }}>Send future documents faster with favorited templates.</Text>
-                      <Button kind="secondary" size="small">Browse templates</Button>
-                    </Stack>
-                  </Card>
-                </Grid>
               </Stack>
             </Card>
             </div>
@@ -845,7 +783,7 @@ function HomePage() {
           </Stack>
 
           {/* Right column - Overview */}
-          <div style={{ width: 220, flexShrink: 0, ...getStaggerProps(4).style }}>
+          <div className="home-overview" style={{ width: 332, flexShrink: 0, ...getStaggerProps(4).style }}>
             <Card radius="large" className="home-card">
               <Stack gap="none" style={{ padding: 'var(--ink-spacing-200)' }}>
                 <SectionLabel>Overview</SectionLabel>
@@ -1450,7 +1388,11 @@ export default function App() {
       { id: 'agreements', label: 'Agreements', active: activeTab === 'agreements', onClick: () => handleTabClick('agreements') },
       { id: 'templates', label: 'Templates', active: activeTab === 'templates', onClick: () => handleTabClick('templates') },
       { id: 'insights', label: 'Insights', active: activeTab === 'insights', onClick: () => handleTabClick('insights') },
+      { id: 'admin', label: 'Admin', active: activeTab === 'admin', onClick: () => handleTabClick('admin') },
     ],
+    showSearch: true,
+    searchVariant: 'pill' as const,
+    onSearchClick: () => {},
     showSettings: true,
     settingsIcon: 'sliders-horizontal' as const,
     user: { name: 'Akshat Mishra' },
