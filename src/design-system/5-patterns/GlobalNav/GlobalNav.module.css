@@ -202,13 +202,30 @@
   background-color: var(--ink-item-bg-color-active);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Mobile menu button (hamburger) — hidden on desktop, revealed on small viewports */
+.mobileMenuButton {
+  display: none !important;
+}
+
+/* Responsive — collapse to a mobile nav (hamburger + logo) matching production (~992px) */
+@media (max-width: 992px) {
+  .appSwitcher {
+    display: none !important;
+  }
+
+  .mobileMenuButton {
+    display: inline-flex !important;
+  }
+
   .navigation {
     display: none;
   }
 
+  .end {
+    display: none;
+  }
+
   .start {
-    gap: var(--ink-spacing-200); /* 24px on mobile */
+    gap: var(--ink-spacing-200); /* 16px on mobile */
   }
 }

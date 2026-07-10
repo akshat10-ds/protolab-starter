@@ -336,7 +336,7 @@
   /* Font Color */
   --ink-font-color-default: var(--ink-neutral-fade-90);
   --ink-font-color-primary: var(--ink-neutral-fade-90);
-  --ink-font-color-secondary: var(--ink-neutral-fade-65);
+  --ink-font-color-secondary: var(--ink-neutral-fade-70);
   --ink-font-color-tertiary: var(--ink-neutral-fade-50);
   --ink-font-color-accent: var(--ink-cobalt-100);
   --ink-font-color-accent-emphasis: var(--ink-cobalt-110);

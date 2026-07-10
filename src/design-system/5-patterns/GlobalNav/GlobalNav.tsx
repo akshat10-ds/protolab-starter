@@ -5,6 +5,14 @@ import { Icon } from '../../3-primitives/Icon';
 import { IconButton } from '../../3-primitives/IconButton';
 import type { IconName } from '../../3-primitives/Icon';
 
+/** Derive up-to-two-letter initials from a display name (e.g. "Akshat Mishra" → "AM"). */
+function getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return '';
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
 export interface GlobalNavItem {
   id: string;
   label: string;
@@ -83,7 +91,7 @@ export const GlobalNav = ({
           {/* App Switcher */}
           {showAppSwitcher && (
             <IconButton
-              icon="menu"
+              icon="waffle"
               variant="tertiary"
               size="medium"
               onClick={onAppSwitcherClick}
@@ -91,6 +99,16 @@ export const GlobalNav = ({
               className={styles.appSwitcher}
             />
           )}
+
+          {/* Hamburger — shown in place of the app switcher on small viewports */}
+          <IconButton
+            icon="menu"
+            variant="tertiary"
+            size="medium"
+            onClick={onAppSwitcherClick}
+            aria-label="Menu"
+            className={styles.mobileMenuButton}
+          />
 
           {/* Logo */}
           {logo && <div className={styles.logo}>{logo}</div>}
@@ -181,7 +199,7 @@ export const GlobalNav = ({
         {/* User Avatar */}
         {user && (
           <button className={styles.avatarButton} onClick={onUserMenuClick} aria-label="User menu">
-            <Avatar name={user.name} src={user.avatar} size="small" />
+            <Avatar initials={getInitials(user.name)} src={user.avatar} size="small" />
           </button>
         )}
       </div>

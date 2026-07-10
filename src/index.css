@@ -23,7 +23,22 @@ img, svg { display: block; max-width: 100%; }
 
 .home-card {
   border-radius: 16px !important;
-  border-color: var(--ink-neutral-fade-5, rgba(0,0,0,0.05)) !important;
+  border-color: var(--ink-neutral-fade-10, rgba(19,0,50,0.1)) !important;
+}
+
+/* Home: collapse the two-column (main + Overview) layout to a single stacked
+   column on smaller viewports, matching the production app (~992px). */
+@media (max-width: 992px) {
+  .home-content-row {
+    flex-direction: column !important;
+  }
+  .home-main-col {
+    flex: none !important;
+    width: 100% !important;
+  }
+  .home-overview {
+    width: 100% !important;
+  }
 }
 
 .promo-card {

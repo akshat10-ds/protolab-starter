@@ -37,4 +37,8 @@
   overflow-y: auto;
   min-width: 0;
   background: var(--ink-white-100); /* Pure white content area per DocuSign production */
+  /* Flex column so a trailing Footer (margin-top:auto) sticks to the viewport bottom
+     when page content is short, and flows after content when it's tall. */
+  display: flex;
+  flex-direction: column;
 }
