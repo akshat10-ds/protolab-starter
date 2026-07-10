@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+TIMEOUT=${VERIFY_TIMEOUT:-30}
+URL="${FIGMA_MAKE_URL:-http://localhost:${PORT:-3002}}"
+ELAPSED=0
+
+echo "Waiting for $URL ..."
+
+while [ $ELAPSED -lt $TIMEOUT ]; do
+  if curl -sf -o /dev/null "$URL"; then
+    echo "Dev server is up at $URL"
+    exit 0
+  fi
+  sleep 1
+  ELAPSED=$((ELAPSED + 1))
+done
+
+echo "Error: Dev server not reachable at $URL after ${TIMEOUT}s"
+exit 1

@@ -821,7 +821,7 @@ function HomePage() {
               <Card radius="large" className="home-card promo-card activity-row" noPadding>
                 <Inline gap="none" align="stretch" style={{ minHeight: '100%' }}>
                   <div style={{ width: 120, flexShrink: 0, background: 'rgb(247, 246, 247)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--ink-radius-lg) 0 0 var(--ink-radius-lg)', alignSelf: 'stretch' }}>
-                    <img src="/illustration-bulk-send.svg" alt="" width={72} height={72} />
+                    <img src={`${import.meta.env.BASE_URL}illustration-bulk-send.svg`} alt="" width={72} height={72} />
                   </div>
                   <Stack gap="none" style={{ gap: 'var(--ink-spacing-50)', padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
                     <Text size="sm" weight="medium">Save time with bulk send</Text>
@@ -832,7 +832,7 @@ function HomePage() {
               <Card radius="large" className="home-card promo-card activity-row" noPadding>
                 <Inline gap="none" align="stretch" style={{ minHeight: '100%' }}>
                   <div style={{ width: 120, flexShrink: 0, background: 'rgb(247, 246, 247)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--ink-radius-lg) 0 0 var(--ink-radius-lg)', alignSelf: 'stretch' }}>
-                    <img src="/illustration-help.svg" alt="" width={72} height={72} />
+                    <img src={`${import.meta.env.BASE_URL}illustration-help.svg`} alt="" width={72} height={72} />
                   </div>
                   <Stack gap="none" style={{ gap: 'var(--ink-spacing-50)', padding: 'var(--ink-spacing-200) var(--ink-spacing-250)' }}>
                     <Text size="sm" weight="medium">Need help getting started?</Text>
@@ -1442,7 +1442,7 @@ export default function App() {
 
   /* ── GlobalNav — matches production DocuSign ── */
   const globalNavConfig = {
-    logo: <img src="/docusign-logo.svg" alt="DocuSign" />,
+    logo: <img src={`${import.meta.env.BASE_URL}docusign-logo.svg`} alt="DocuSign" />,
     showAppSwitcher: true,
     onAppSwitcherClick: () => {},
     navItems: [

@@ -7,6 +7,6 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-    <Agentation endpoint="http://localhost:4747" />
+    {import.meta.env.DEV && <Agentation endpoint="http://localhost:4747" />}
   </React.StrictMode>
 );

@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+
+if ! command -v node &> /dev/null; then
+  echo "Error: Node.js is not installed"
+  exit 1
+fi
+
+echo "Node $(node --version) found"
+echo "npm $(npm --version) found"
