@@ -6,16 +6,17 @@ import {
   PageHeader,
   FilterBar,
   Button,
-  Banner,
   Badge,
   ComboButton,
   AIIcon,
   AIBadge,
+  IrisIcon,
+  IrisIconInverse,
+  Dropdown,
   Accordion,
   Avatar,
   Divider,
   Input,
-  IrisIcon,
   Icon,
   IconButton,
   Card,
@@ -240,6 +241,9 @@ interface NavigatorAgreement {
   fileStatusDetail: string;
   parties: string[];
   status: 'active' | 'inactive';
+  /** Optional override for the status label (defaults to Active/Inactive) */
+  statusLabel?: string;
+  /** Secondary line under the status, e.g. "Renews 12/31/2026" */
   statusDate?: string;
   agreementType: string;
   contractValue?: string;
@@ -248,15 +252,23 @@ interface NavigatorAgreement {
   isAIAssisted: boolean;
 }
 
+// Mirrors the production Navigator "Completed Documents" table
 const NAVIGATOR_DATA: NavigatorAgreement[] = [
-  { id: '1', fileName: '01_people_ai_guidebook.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: [], status: 'inactive', agreementType: 'Handbook', isAIAssisted: true },
-  { id: '2', fileName: 'Restricted Access Request Form 1726...', fileStatus: 'completed', fileStatusDetail: 'Please DocuSign this...', parties: ['Akshat Mishra', '+2 More'], status: 'active', agreementType: 'Form', effectiveDate: '5/20/2025', isAIAssisted: true },
-  { id: '3', fileName: 'Offer Letter 1.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['KENNETH L. HARRIS', 'UNIVERSAL BIOENERGY INC'], status: 'inactive', statusDate: 'Expired 3/31/2016', agreementType: 'Offer Letter', contractValue: '$27,600.00 USD', effectiveDate: '3/26/2015', expirationDate: '3/31/2016', isAIAssisted: false },
-  { id: '4', fileName: '1100.L0005-US01 - Inventor-approved...', fileStatus: 'completed', fileStatusDetail: '[SIGNATURE REQUIRE...', parties: [], status: 'inactive', agreementType: 'Miscellaneous', isAIAssisted: true },
-  { id: '5', fileName: '1100.L0005-US01 - Inventor-approved...', fileStatus: 'completed', fileStatusDetail: '[SIGNATURE REQUIRE...', parties: [], status: 'inactive', agreementType: 'Form', isAIAssisted: true },
-  { id: '6', fileName: '1100.L0005-US01 Combined Declaration...', fileStatus: 'completed', fileStatusDetail: '[SIGNATURE REQUIRE...', parties: ['INVENTOR', 'Docusign, Inc.'], status: 'active', agreementType: 'Miscellaneous', effectiveDate: '2/4/2025', isAIAssisted: false },
-  { id: '7', fileName: 'reseller6.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['[INSERT FULL NAME OF RES...', 'Voyager Worldwide'], status: 'inactive', agreementType: 'C_Mariya_27s...', isAIAssisted: true },
-  { id: '8', fileName: 'reseller8.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['MiniQ, Inc.'], status: 'active', agreementType: 'C_Mariya_27s...', effectiveDate: '11/19/2024', isAIAssisted: false },
+  { id: '1', fileName: 'Obligation Management – Supported Extractions (Limited) (1).pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['Acme Technologies, Inc.', 'Brightline Solutions, LLC'], status: 'active', statusDate: 'Renews 12/31/2026', agreementType: 'Master Service Agreement', isAIAssisted: true },
+  { id: '2', fileName: 'Stellar_Logical_Fontara_Order_Form_100123 (2).pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['Stellar Logical', 'Fontara'], status: 'inactive', agreementType: 'Order Form', isAIAssisted: true },
+  { id: '3', fileName: '3.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['Hamburger, Inc.', 'Sorrel Co.'], status: 'inactive', agreementType: 'Purchase Agreement', isAIAssisted: true },
+  { id: '4', fileName: 'White-Label Software Licensing and Integrated Payment Services Agreement (1).pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['CoreStream Processing Corp.', 'SaaS Growth Ventures, LLC'], status: 'active', agreementType: 'License', isAIAssisted: true },
+  { id: '5', fileName: 'Global Affiliate Marketing Network Contract (1).pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['Delta Traffic Brokers', 'NexaCharge Gateways'], status: 'active', agreementType: 'Marketing', isAIAssisted: true },
+  { id: '6', fileName: 'Test Agreement for Party Cleanup', fileStatus: 'completed', fileStatusDetail: 'View Job', parties: [], status: 'inactive', agreementType: 'Master Service Agreement', isAIAssisted: true },
+  { id: '7', fileName: 'Test Agreement for Party Cleanup', fileStatus: 'completed', fileStatusDetail: 'View Job', parties: [], status: 'inactive', agreementType: 'Master Service Agreement', isAIAssisted: true },
+  { id: '8', fileName: 'Test Agreement for Party Cleanup', fileStatus: 'completed', fileStatusDetail: 'View Job', parties: [], status: 'inactive', agreementType: 'Master Service Agreement', isAIAssisted: true },
+  { id: '9', fileName: 'SpaceX_DocAnalyser-DCF-CX-2026-07-07-004.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['OrbitalNet Solutions', 'SpaceX Orbital Logistics'], status: 'inactive', statusDate: 'Expired 6/21/2024', agreementType: 'SpaceX Launch Agreement', isAIAssisted: true },
+  { id: '10', fileName: 'SpaceX_DocAnalyser-DCF-CX-2026-07-07-003.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['SkyReach Satellite Systems GmbH', 'SpaceX Starship Launch Services'], status: 'inactive', statusDate: 'Expired 10/27/2025', agreementType: 'Services Agreement', isAIAssisted: true },
+  { id: '11', fileName: 'SpaceX_DocAnalyser-DCF-CX-2026-07-07-001.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['OrbitalNet Solutions Ltd.', 'SpaceX Launch Services'], status: 'active', statusDate: 'Expires 10/31/2026', agreementType: 'SpaceX Launch Agreement', isAIAssisted: true },
+  { id: '12', fileName: 'SpaceX_DocAnalyser-DCF-CX-2026-07-07-002.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['Quasar Broadband Holdings, Inc.', 'SpaceX Commercial Launch Division'], status: 'inactive', statusDate: 'Expired 2/19/2026', agreementType: 'SpaceX Launch Agreement', isAIAssisted: true },
+  { id: '13', fileName: 'SpaceX_DocAnalyser-DCF-CX-2026-07-07-005.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['SpaceX Starship Launch Services', 'Vela Navigation Services S.A.'], status: 'active', statusDate: 'Expires 2/17/2028', agreementType: 'SpaceX Launch Agreement', isAIAssisted: true },
+  { id: '14', fileName: 'SXTesting-DCF-MSA-2026-07-07-002.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: ['NexGen Data Services Ltd.', 'Pinnacle Dynamics Corp.'], status: 'active', statusDate: 'Renews 4/25/2027', agreementType: 'Miscellaneous', isAIAssisted: true },
+  { id: '15', fileName: 'ARTSpaceXdemo-DCF-CX-2026-07-06-001.pdf', fileStatus: 'uploaded', fileStatusDetail: 'View Job', parties: [], status: 'active', statusLabel: 'Effective Soon', statusDate: 'Effective 7/16/2026', agreementType: 'SpaceX Launch Agreement', isAIAssisted: true },
 ];
 
 function capitalize(str: string): string {
@@ -277,13 +289,13 @@ const navigatorColumns: any[] = [
   },
   {
     key: 'fileName',
-    header: 'File Name',
+    header: 'Original File Name',
     sortable: true,
-    width: '280px',
+    width: '320px',
     className: dataTableStyles.columnBorderRight,
     cell: (row: NavigatorAgreement) => (
-      <div className={dataTableStyles.cellContent}>
-        <a href="#" className={dataTableStyles.cellPrimary} style={{ textDecoration: 'none', color: 'inherit' }}>
+      <div className={dataTableStyles.cellContent} style={{ minWidth: 0 }}>
+        <a href="#" className={dataTableStyles.cellPrimary} title={row.fileName} style={{ textDecoration: 'none', color: 'inherit', display: 'block', maxWidth: 300, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {row.fileName}
         </a>
         <span className={dataTableStyles.cellSecondary}>
@@ -297,7 +309,7 @@ const navigatorColumns: any[] = [
   {
     key: 'parties',
     header: 'Parties',
-    width: '180px',
+    width: '200px',
     cell: (row: NavigatorAgreement) => (
       <div className={dataTableStyles.cellContent}>
         {row.parties.length > 0 ? (
@@ -307,8 +319,8 @@ const navigatorColumns: any[] = [
               return <a key={i} href="#" className={dataTableStyles.partyMoreLink}>{party}</a>;
             }
             return (
-              <span key={i} className={dataTableStyles.partyChip}>
-                <a href="#" className={dataTableStyles.partyLink}>{party}</a>
+              <span key={i}>
+                <a href="#" className={dataTableStyles.partyLink} style={{ textDecoration: 'underline', color: 'var(--ink-font-color, rgba(19,0,50,0.9))', fontWeight: 400 }}>{party}</a>
               </span>
             );
           })
@@ -322,13 +334,13 @@ const navigatorColumns: any[] = [
     key: 'status',
     header: 'Status',
     sortable: true,
-    width: '120px',
+    width: '110px',
     cell: (row: NavigatorAgreement) => (
       <div className={dataTableStyles.statusCell}>
         <span className={dataTableStyles.statusDot} data-status={row.status} />
         <div className={dataTableStyles.statusText}>
           <span className={dataTableStyles.statusLabel}>
-            {row.status === 'active' ? 'Active' : 'Inactive'}
+            {row.statusLabel ?? (row.status === 'active' ? 'Active' : 'Inactive')}
           </span>
           {row.statusDate && (
             <span className={dataTableStyles.statusDate}>{row.statusDate}</span>
@@ -341,30 +353,7 @@ const navigatorColumns: any[] = [
     key: 'agreementType',
     header: 'Agreement Type',
     sortable: true,
-    width: '140px',
-  },
-  {
-    key: 'contractValue',
-    header: 'Total Contract Value',
-    sortable: true,
-    width: '160px',
-    alignment: 'right',
-    cell: (row: NavigatorAgreement) => row.contractValue || '—',
-  },
-  {
-    key: 'effectiveDate',
-    header: 'Effective Date',
-    sortable: true,
-    width: '130px',
-    cell: (row: NavigatorAgreement) => row.effectiveDate || '—',
-  },
-  {
-    key: 'expirationDate',
-    header: 'Expiration Date',
-    sortable: true,
-    width: '140px',
-    alignment: 'right',
-    cell: (row: NavigatorAgreement) => row.expirationDate || '—',
+    width: '155px',
   },
 ];
 
@@ -674,7 +663,29 @@ function HomePage() {
           Welcome, Akshat Mishra
         </Heading>
         <Inline gap="small" justify="center">
-          <Button kind="brand" menuTrigger style={{ background: 'var(--ink-cobalt-40)', color: 'var(--ink-font-primary)' }}>Start</Button>
+          <Dropdown
+            position="bottom"
+            align="start"
+            variant="solid"
+            maxHeight={520}
+            items={[
+              { section: 'Agreements' },
+              { label: 'Envelopes', icon: <Icon name="envelope" size={18} />, children: [{ label: 'Send an Envelope' }, { label: 'Sign a Document' }, { label: 'Use a Template' }] },
+              { label: 'Workflows', icon: <Icon name="workflow" size={18} />, children: [{ label: 'View Workflows' }, { label: 'Create New Workflow' }] },
+              { label: 'Workspaces', icon: <Icon name="transaction" size={18} />, children: [{ label: 'Create a Workspace' }, { label: 'Use a Workspace Template' }] },
+              { label: 'Create Request', icon: <Icon name="tag" size={18} />, badge: 'New' },
+              { label: 'Create PowerForm', icon: <Icon name="flash" size={18} /> },
+              { label: 'Generate Agreement', icon: <Icon name="document-stack" size={18} />, badge: 'New' },
+              { divider: true },
+              { section: 'Templates' },
+              { label: 'Envelope Templates', icon: <Icon name="templates" size={18} />, children: [{ label: 'Create an Envelope Template' }] },
+              { label: 'Web Forms', icon: <Icon name="browser" size={18} />, children: [{ label: 'Create a Web Form' }, { label: 'Upload Configuration' }] },
+              { label: 'Create Document Template', icon: <Icon name="document" size={18} />, badge: 'New' },
+              { label: 'Create Workspace Template', icon: <Icon name="transaction" size={18} /> },
+            ]}
+          >
+            <Button kind="brand" menuTrigger style={{ background: 'var(--ink-cobalt-40)', color: 'var(--ink-font-primary)' }}>Start</Button>
+          </Dropdown>
           {[
             { icon: 'send' as const, label: 'Send Envelope' },
             { icon: 'templates' as const, label: 'Create Request' },
@@ -685,9 +696,9 @@ function HomePage() {
               className="banner-btn"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 'var(--ink-spacing-125)',
-                padding: 'var(--ink-spacing-125) var(--ink-spacing-250)', background: 'transparent',
+                padding: 'var(--ink-spacing-100) var(--ink-spacing-250)', background: 'transparent',
                 border: '1px solid rgba(255,255,255,0.25)', borderRadius: 'var(--ink-radius-sm)',
-                color: 'white', fontSize: 14, cursor: 'pointer', fontFamily: 'inherit',
+                color: 'white', fontSize: 16, fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit',
               }}
             >
               <Icon name={btn.icon} size={16} color="white" /> {btn.label}
@@ -1348,6 +1359,266 @@ function AgreementDetailView({ onClose }: { onClose: () => void }) {
   );
 }
 
+/* ═══════════════════════════════════════
+   Completed → My Insights panel
+   Mirrors the production Navigator insights band
+   ═══════════════════════════════════════ */
+
+const insightsPanelStyles = `
+.ink-insights {
+  background: rgb(246, 242, 255);
+  border-radius: 8px;
+  padding: 16px 20px 20px;
+}
+.ink-insights__tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 2px 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--ink-font-color-secondary, rgba(19, 0, 50, 0.7));
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ink-insights__tab[data-active='true'] {
+  color: var(--ink-font-color, rgba(19, 0, 50, 0.9));
+  font-weight: 600;
+  box-shadow: inset 0 -2px 0 0 var(--ink-iris-70, #4c00b0);
+}
+.ink-insights__linkbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-font-color-secondary, rgba(19, 0, 50, 0.7));
+}
+.ink-insights__linkbtn:hover { color: var(--ink-font-color, rgba(19, 0, 50, 0.9)); }
+.ink-insights__cta {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: rgba(19, 0, 50, 0.15) 0px 4px 8px 0px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.ink-insights__cta-accent {
+  height: 4px;
+  background: linear-gradient(to right, #7b2ff7, #f107a3);
+}
+.ink-insights__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(19, 0, 50, 0.2);
+}
+.ink-insights__dot[data-active='true'] { background: rgba(19, 0, 50, 0.7); }
+@media (max-width: 900px) {
+  .ink-insights__body { flex-direction: column; }
+}
+
+/* Navigator "Completed" table — framed card with gray header + column dividers (matches production) */
+.ink-nav-table {
+  border: 1px solid rgba(19, 0, 50, 0.12);
+  border-radius: 8px 8px 0 0;
+  /* clip (not hidden) rounds the corners without creating a scroll container,
+     so the content clips flush to the border and the sticky footer still works */
+  overflow: clip;
+}
+.ink-nav-table table thead th {
+  background: rgb(247, 246, 247) !important;
+}
+.ink-nav-table table thead th,
+.ink-nav-table table tbody td {
+  border-right: 1px solid rgba(19, 0, 50, 0.12);
+}
+.ink-nav-table table thead th:last-child,
+.ink-nav-table table tbody td:last-child {
+  border-right: none;
+}
+/* Sticky pagination footer — must sit above the sticky first column (z-index 100–200) */
+.ink-nav-table [class*="footer"] {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid rgba(19, 0, 50, 0.1);
+  z-index: 220;
+}
+`;
+
+// Title segments: key phrases (b: true) render bold, connectors regular — matches production
+interface TitleSegment {
+  t: string;
+  b?: boolean;
+}
+interface InsightCard {
+  title: TitleSegment[];
+  body: string;
+  action: string;
+}
+
+const INSIGHT_CARDS: InsightCard[] = [
+  { title: [{ t: 'Stay ahead of your renewals' }], body: 'Review your upcoming renewal data and set up notifications in minutes.', action: 'Review Data' },
+  { title: [{ t: '128 Master Service Agreement', b: true }, { t: ' documents have ' }, { t: 'Limitation of Liability Clause', b: true }], body: 'You can now track and compare clauses across your agreements to flag risks and nonstandard terms.', action: 'View Agreements' },
+  { title: [{ t: '170 new agreements', b: true }, { t: ' are HR-related' }], body: 'Run our latest AI model to find all the HR agreements in your account, then share them with the right people.', action: 'Run Update' },
+];
+
+const titleToString = (segs: TitleSegment[]) => segs.map((s) => s.t).join('');
+
+// 12-month renewal notice histogram (matches production sample)
+const RENEWAL_BARS = [4, 4, 6, 7, 5, 13, 10, 5, 7, 2, 5, 7, 2];
+
+function RenewalsChart() {
+  const W = 480, H = 200;
+  const padL = 30, padR = 8, padT = 12, baseline = 160;
+  const plotW = W - padL - padR;
+  const maxY = 16;
+  const yTicks = [0, 4, 8, 12, 16];
+  const yFor = (v: number) => baseline - (v / maxY) * (baseline - padT);
+  const n = RENEWAL_BARS.length;
+  const slot = plotW / n;
+  const barW = Math.min(20, slot * 0.55);
+  const xLabels = [
+    { text: 'Jul 2026', i: 0 },
+    { text: 'Dec 2026', i: Math.floor(n / 2) },
+    { text: 'May 2027', i: n - 1 },
+  ];
+  const tickColor = 'rgba(19, 0, 50, 0.55)';
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="200" role="img" aria-label="Upcoming renewals by month" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="renewalBar" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#009EB3" stopOpacity="1" />
+          <stop offset="100%" stopColor="#009EB3" stopOpacity="0.65" />
+        </linearGradient>
+      </defs>
+      {yTicks.map((t) => (
+        <g key={t}>
+          <line x1={padL} y1={yFor(t)} x2={W - padR} y2={yFor(t)} stroke="rgba(19,0,50,0.12)" strokeWidth="1" strokeDasharray="3 3" />
+          <text x={padL - 8} y={yFor(t) + 4} textAnchor="end" fontSize="11" fill={tickColor}>{t}</text>
+        </g>
+      ))}
+      {RENEWAL_BARS.map((v, i) => {
+        const x = padL + i * slot + (slot - barW) / 2;
+        const y = yFor(v);
+        return (
+          <g key={i}>
+            <text x={x + barW / 2} y={y - 5} textAnchor="middle" fontSize="11" fill="rgba(19,0,50,0.75)">{v}</text>
+            <rect x={x} y={y} width={barW} height={baseline - y} rx="2" fill="url(#renewalBar)" />
+          </g>
+        );
+      })}
+      {xLabels.map((l) => (
+        <text key={l.text} x={padL + l.i * slot + slot / 2} y={baseline + 18} textAnchor="middle" fontSize="11" fill={tickColor}>{l.text}</text>
+      ))}
+      <text x={padL + plotW / 2} y={H - 6} textAnchor="middle" fontSize="12" fill={tickColor}>Renewal Notice Date</text>
+    </svg>
+  );
+}
+
+function CompletedInsightsPanel() {
+  const [hidden, setHidden] = useState(false);
+  const [tab, setTab] = useState<'insights' | 'review'>('insights');
+  const [card, setCard] = useState(0);
+  const active = INSIGHT_CARDS[card];
+
+  // Auto-rotate the insight carousel (and the collapsed teaser text)
+  useEffect(() => {
+    const id = setInterval(() => setCard((c) => (c + 1) % INSIGHT_CARDS.length), 5000);
+    return () => clearInterval(id);
+  }, []);
+
+  const controls = (
+    <Inline gap="medium" align="center" style={{ flexShrink: 0 }}>
+      <button
+        className="ink-insights__linkbtn"
+        style={hidden ? { background: 'rgba(19, 0, 50, 0.05)', borderRadius: 4, padding: '4px 8px' } : undefined}
+        onClick={() => setHidden((h) => !h)}
+      >
+        {hidden ? 'Show Insights' : 'Hide Insights'}
+        <Icon name={hidden ? 'chevron-down' : 'chevron-up'} size={14} />
+      </button>
+      <IconButton icon="close" variant="tertiary" size="small" aria-label="Dismiss insights" onClick={() => setHidden(true)} />
+    </Inline>
+  );
+
+  return (
+    <div className="ink-insights" style={hidden ? { padding: '8px 20px' } : undefined}>
+      <style>{insightsPanelStyles}</style>
+      {hidden ? (
+        /* Collapsed: centered rotating teaser + right-aligned controls */
+        <div style={{ position: 'relative', display: 'flex', alignItems: 'center', minHeight: 32 }}>
+          <Text size="sm" color="secondary" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', maxWidth: '60%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>
+            {titleToString(active.title)}
+          </Text>
+          <div style={{ marginLeft: 'auto', zIndex: 1 }}>{controls}</div>
+        </div>
+      ) : (
+        /* Expanded: tabs + controls */
+        <Inline align="center" style={{ justifyContent: 'space-between', marginBottom: 16 }}>
+          <Inline gap="large" align="center">
+            <Inline gap="small" align="center">
+              <IrisIcon />
+              <button className="ink-insights__tab" data-active={tab === 'insights'} onClick={() => setTab('insights')}>
+                My Insights
+              </button>
+            </Inline>
+            <button className="ink-insights__tab" data-active={tab === 'review'} onClick={() => setTab('review')}>
+              Data Review
+            </button>
+          </Inline>
+          {controls}
+        </Inline>
+      )}
+
+      {!hidden && (
+        <div className="ink-insights__body" style={{ display: 'flex', gap: 24, alignItems: 'stretch' }}>
+          {/* Chart card */}
+          <div style={{ flex: '1 1 440px', maxWidth: 560, minWidth: 0, background: '#fff', borderRadius: 8, padding: '20px 24px' }}>
+            <Text size="md" weight="semibold" style={{ display: 'block' }}>Upcoming renewals</Text>
+            <Text size="sm" color="secondary" style={{ display: 'block', marginBottom: 4 }}>Next 12 months</Text>
+            <RenewalsChart />
+          </div>
+          {/* CTA carousel card */}
+          <div className="ink-insights__cta" style={{ flex: '0 1 460px', maxWidth: 500, minWidth: 0 }}>
+            <div className="ink-insights__cta-accent" />
+            <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+              <Text weight="regular" style={{ display: 'block', marginBottom: 8, fontSize: 24, lineHeight: 1.25 }}>
+                {active.title.map((seg, i) => (seg.b ? <strong key={i} style={{ fontWeight: 600 }}>{seg.t}</strong> : <span key={i}>{seg.t}</span>))}
+              </Text>
+              <Text size="sm" color="secondary" style={{ display: 'block', marginBottom: 20 }}>{active.body}</Text>
+              <Inline gap="small" align="center" style={{ marginTop: 'auto' }}>
+                <Button kind="secondary" size="small" startElement={<AIIcon name="ai-spark-filled" size={12} />}>{active.action}</Button>
+                <Button kind="tertiary" size="small">Do This Later</Button>
+              </Inline>
+              <Inline gap="small" align="center" style={{ marginTop: 16 }}>
+                {INSIGHT_CARDS.map((_, i) => (
+                  <button
+                    key={i}
+                    className="ink-insights__dot"
+                    data-active={i === card}
+                    aria-label={`Show insight ${i + 1}`}
+                    onClick={() => setCard(i)}
+                  />
+                ))}
+              </Inline>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function getTabFromHash(): TabId {
   const hash = window.location.hash.replace('#', '');
   return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'home';
@@ -1395,7 +1666,7 @@ export default function App() {
     onSearchClick: () => {},
     showSettings: true,
     settingsIcon: 'sliders-horizontal' as const,
-    user: { name: 'Akshat Mishra' },
+    user: { name: 'Akshat Mishra', org: 'Protolab', avatar: `${import.meta.env.BASE_URL}avatar.jpg?v=1` },
   };
 
   /* ── LocalNav — Agreements tab ── */
@@ -1705,15 +1976,41 @@ export default function App() {
   /* ── Agreements content ── */
   const agreementsContent = (
     <AgreementTableView
-      banner={isNavigatorView ? (
-        <Banner kind="promo" closable customIcon={<IrisIcon />}>
-          <strong>0 agreements</strong> with renewal notice dates in the next 30 days.
-        </Banner>
-      ) : undefined}
+      banner={isNavigatorView ? <CompletedInsightsPanel /> : undefined}
       pageHeader={
+        isNavigatorView ? (
+          <Inline align="center" style={{ justifyContent: 'space-between', width: '100%' }}>
+            <Inline gap="medium" align="center">
+              <Heading level={1} style={{ fontSize: 32, fontWeight: 400, color: 'var(--ink-font-color, rgba(19,0,50,0.9))', margin: 0 }}>
+                Completed
+              </Heading>
+              <Dropdown
+                position="bottom"
+                align="start"
+                items={[
+                  { label: 'Documents', description: 'Analyze agreement data with AI', icon: <Icon name="document" size={18} />, selected: true },
+                  { label: 'Envelopes', description: 'View signatures and activity', icon: <Icon name="envelope" size={18} /> },
+                ]}
+              >
+                <button
+                  aria-label="Select a view"
+                  style={{ background: 'none', border: 'none', borderBottom: '1px solid var(--ink-font-color, rgba(19,0,50,0.9))', cursor: 'pointer', font: 'inherit', fontSize: 32, fontWeight: 500, color: 'var(--ink-font-color, rgba(19,0,50,0.9))', display: 'inline-flex', alignItems: 'center', gap: 4, padding: 0 }}
+                >
+                  Documents
+                  <Icon name="chevron-down" size={22} />
+                </button>
+              </Dropdown>
+              <AIBadge infoContent={false} style={{ marginLeft: 4, flexShrink: 0 }} />
+            </Inline>
+            <Inline gap="small" align="center">
+              <ComboButton variant="secondary" size="small" startIcon="plus" compact />
+              <Button kind="secondary" size="small" menuTrigger startElement={<Icon name="settings" size={14} />}>Manage</Button>
+            </Inline>
+          </Inline>
+        ) : (
         <PageHeader
-          title={isNavigatorView ? 'Completed' : isPartiesView ? 'Parties' : isRequestsView ? 'Requests' : VIEW_LABELS[sidebarView]}
-          showAIBadge={isNavigatorView || isPartiesView}
+          title={isPartiesView ? 'Parties' : isRequestsView ? 'Requests' : VIEW_LABELS[sidebarView]}
+          showAIBadge={isPartiesView}
           aiBadgeText="AI-Assisted"
           actions={isPartiesView
             ? (<>
@@ -1722,20 +2019,14 @@ export default function App() {
               </>)
             : isRequestsView
             ? <Button kind="secondary">Create Request</Button>
-            : isNavigatorView
-            ? (<>
-                <ComboButton variant="secondary" startIcon="plus">New</ComboButton>
-                <IconButton icon="settings" variant="tertiary" size="small" aria-label="Settings" />
-              </>)
             : <Button kind="secondary" menuTrigger>Shared Access</Button>
           }
         />
+        )
       }
       filterBar={
         <FilterBar
-          viewSelector={isNavigatorView ? (
-            <Button kind="secondary" size="small" menuTrigger>Documents</Button>
-          ) : isPartiesView ? (
+          viewSelector={isPartiesView ? (
             <Button kind="secondary" size="small" menuTrigger>Role View</Button>
           ) : undefined}
           search={{
@@ -1748,8 +2039,10 @@ export default function App() {
               : 'Search Envelopes',
           }}
           showSearchIndicator={!isPartiesView && !isRequestsView}
+          rightAlignFilters={isNavigatorView}
           quickActions={isNavigatorView ? [
-            <IconButton key="bm" icon="bookmark" variant="secondary" size="small" aria-label="Bookmarks" />,
+            <IconButton key="bm" icon="bookmark" variant="secondary" size="small" aria-label="Saved searches" />,
+            <Button key="filters" kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>Filters</Button>,
           ] : isRequestsView ? [
             <IconButton key="bm" icon="bookmark" variant="secondary" size="small" aria-label="Bookmarks" />,
           ] : undefined}
@@ -1768,7 +2061,22 @@ export default function App() {
               <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>All Filters</Button>
             </Inline>
           ) : isNavigatorView ? (
-            <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>Filters</Button>
+            <Inline gap="small" align="center" style={{ flexWrap: 'nowrap' }}>
+              <Button kind="secondary" size="small" menuTrigger startElement={<Icon name="layout-grid" size={14} />}>Worksheets</Button>
+              <button
+                aria-label="Ask Iris"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  background: 'linear-gradient(174.22deg, #4C00FB 1.48%, #260559 97.92%)',
+                  color: '#fff', border: 'none', borderRadius: 4,
+                  padding: '7px 12px', fontSize: 14, fontWeight: 500,
+                  fontFamily: 'inherit', cursor: 'pointer', lineHeight: 1, whiteSpace: 'nowrap',
+                }}
+              >
+                <IrisIconInverse size={18} />
+                Ask Iris
+              </button>
+            </Inline>
           ) : (
             <Inline gap="small" align="center" style={{ flexWrap: 'nowrap' }}>
               <Chip onRemove={() => {}}>Date: Last 6 Months</Chip>
@@ -1786,7 +2094,7 @@ export default function App() {
       ) : isRequestsView ? (
         <DataTable columns={requestColumns} data={filteredRequests} getRowKey={(row) => row.id} stickyHeader showColumnControl rowHeight="tall" emptyMessage="No requests found" pagination={{ page: 1, pageSize: 10, totalItems: filteredRequests.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : isNavigatorView ? (
-        <DataTable columns={navigatorColumns} data={filteredNavigator} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl rowHeight="tall" emptyMessage="No completed documents" onRowClick={() => setShowAgreementDetail(true)} pagination={{ page: 1, pageSize: 50, totalItems: 687, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
+        <DataTable className="ink-nav-table" columns={navigatorColumns} data={filteredNavigator} getRowKey={(row) => row.id} selectable stickyHeader stickyFooter showColumnControl rowHeight="tall" emptyMessage="No completed documents" onRowClick={() => setShowAgreementDetail(true)} pagination={{ page: 1, pageSize: 25, totalItems: 1659, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : (
         <DataTable columns={agreementColumns} data={filteredAgreements} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl rowHeight="tall" emptyMessage={
           sidebarView === 'drafts' ? 'No drafts found' :

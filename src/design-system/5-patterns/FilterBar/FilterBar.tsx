@@ -84,6 +84,12 @@ export interface FilterBarProps {
   showSearchIndicator?: boolean;
 
   /**
+   * Right-align the filters cluster to the far edge of the bar, leaving
+   * search + quick actions on the left (Navigator "Completed" layout).
+   */
+  rightAlignFilters?: boolean;
+
+  /**
    * Gap between elements
    * @default "small"
    */
@@ -102,6 +108,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   quickActions,
   filters,
   showSearchIndicator = false,
+  rightAlignFilters = false,
   gap = 'small',
   className,
   'data-qa': dataQa,
@@ -147,7 +154,11 @@ export const FilterBar: React.FC<FilterBarProps> = ({
       )}
 
       {/* Filters */}
-      {filters && <div className={styles.filters}>{filters}</div>}
+      {filters && (
+        <div className={[styles.filters, rightAlignFilters ? styles.filtersEnd : ''].filter(Boolean).join(' ')}>
+          {filters}
+        </div>
+      )}
     </div>
   );
 };

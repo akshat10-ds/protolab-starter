@@ -12,8 +12,8 @@ interface Coords {
 }
 
 export interface DropdownItemProps {
-  /** Item label */
-  label: string;
+  /** Item label (optional for dividers and section headers) */
+  label?: string;
   /** Item icon */
   icon?: React.ReactNode;
   /** Item description (secondary text) */
@@ -24,6 +24,10 @@ export interface DropdownItemProps {
   disabled?: boolean;
   /** Whether the item is a divider */
   divider?: boolean;
+  /** Renders a non-interactive section header (e.g. "Agreements") instead of a menu item */
+  section?: string;
+  /** Small badge shown after the label (e.g. "New") */
+  badge?: string;
   /** Keyboard shortcut hint */
   shortcut?: string;
   /** Sub-menu items */
@@ -53,6 +57,14 @@ export interface DropdownProps {
   header?: string;
   /** Show icons with background box styling */
   iconStyle?: 'default' | 'boxed';
+  /** Override the menu's max-height (px). Defaults to the CSS value (400px). */
+  maxHeight?: number;
+  /**
+   * Surface style. 'glass' (default) is the frosted translucent panel;
+   * 'solid' is an opaque white panel with no internal scroll (so submenu
+   * fly-outs are never clipped).
+   */
+  variant?: 'glass' | 'solid';
   /** Data QA attribute for testing */
   'data-qa'?: string;
 }
@@ -68,6 +80,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
   closeOnItemClick = true,
   header,
   iconStyle = 'default',
+  maxHeight,
+  variant = 'glass',
   'data-qa': dataQa,
 }) => {
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
@@ -190,7 +204,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    const validItems = items.filter((item) => !item.divider && !item.disabled);
+    const validItems = items.filter((item) => !item.divider && !item.disabled && !item.section);
 
     switch (e.key) {
       case 'ArrowDown':
@@ -275,14 +289,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
       return <div key={`divider-${index}`} className={styles.divider} />;
     }
 
+    if (item.section) {
+      return <div key={`section-${index}`} className={styles.header}>{item.section}</div>;
+    }
+
     const hasSubmenu = item.children && item.children.length > 0;
     const isSubmenuOpen = submenuOpenIndex === index;
     const iconClassName =
       iconStyle === 'boxed' ? `${styles.icon} ${styles.iconBoxed}` : styles.icon;
 
-    return (
+    const itemButton = (
       <button
-        key={index}
         ref={(el) => {
           itemRefs.current[index] = el;
         }}
@@ -300,6 +317,23 @@ export const Dropdown: React.FC<DropdownProps> = ({
           <span className={styles.label}>{item.label}</span>
           {item.description && <span className={styles.description}>{item.description}</span>}
         </div>
+        {item.badge && (
+          <span
+            style={{
+              marginLeft: 'auto',
+              background: 'var(--ink-iris-70, #4c00b0)',
+              color: '#fff',
+              fontSize: 11,
+              fontWeight: 600,
+              lineHeight: 1,
+              padding: '3px 6px',
+              borderRadius: 4,
+              letterSpacing: '0.02em',
+            }}
+          >
+            {item.badge}
+          </span>
+        )}
         {item.shortcut && <span className={styles.shortcut}>{item.shortcut}</span>}
         {hasSubmenu && (
           <span className={styles.arrow}>
@@ -312,6 +346,60 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </span>
         )}
       </button>
+    );
+
+    if (!hasSubmenu) {
+      return React.cloneElement(itemButton, { key: index });
+    }
+
+    return (
+      <div
+        key={index}
+        style={{ position: 'relative' }}
+        onMouseEnter={() => setSubmenuOpenIndex(index)}
+        onMouseLeave={() => setSubmenuOpenIndex((i) => (i === index ? -1 : i))}
+      >
+        {itemButton}
+        {isSubmenuOpen && (
+          <div
+            role="menu"
+            className={styles.dropdown}
+            style={{
+              position: 'absolute',
+              top: -8,
+              left: '100%',
+              minWidth: 240,
+              maxHeight: 'none',
+              overflow: 'visible',
+              background: '#fff',
+              backdropFilter: 'none',
+              WebkitBackdropFilter: 'none',
+              animation: 'none',
+              transform: 'none',
+            }}
+          >
+            {item.children!.map((child, ci) => (
+              <button
+                key={ci}
+                className={styles.item}
+                type="button"
+                role="menuitem"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  child.onClick?.();
+                  setOpen(false);
+                  setSubmenuOpenIndex(-1);
+                }}
+              >
+                {child.icon && <span className={iconClassName}>{child.icon}</span>}
+                <div className={styles.content}>
+                  <span className={styles.label}>{child.label}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     );
   };
 
@@ -338,7 +426,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
           <div
             ref={dropdownRef}
             className={`${styles.dropdown} ${alignClass}`}
-            style={{ position: 'fixed', visibility: 'hidden' }}
+            style={{
+              position: 'fixed',
+              visibility: 'hidden',
+              ...(maxHeight ? { maxHeight } : {}),
+              ...(variant === 'solid'
+                ? { background: '#fff', backdropFilter: 'none', WebkitBackdropFilter: 'none', overflow: 'visible' }
+                : {}),
+            }}
             role="menu"
             onKeyDown={handleKeyDown}
             data-qa={dataQa}

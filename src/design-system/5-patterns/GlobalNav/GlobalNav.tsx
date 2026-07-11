@@ -52,6 +52,8 @@ export interface GlobalNavProps {
   user?: {
     name: string;
     avatar?: string;
+    /** Secondary line shown in the hover card (e.g. organization) */
+    org?: string;
   };
   /** User menu items */
   onUserMenuClick?: () => void;
@@ -81,6 +83,7 @@ export const GlobalNav = ({
   className,
 }: GlobalNavProps) => {
   const containerClasses = [styles.container, className].filter(Boolean).join(' ');
+  const [userCardOpen, setUserCardOpen] = React.useState(false);
 
   return (
     <header data-ink-component="GlobalNav" className={containerClasses}>
@@ -196,11 +199,23 @@ export const GlobalNav = ({
           className={styles.iconButton}
         />
 
-        {/* User Avatar */}
+        {/* User Avatar + hover card */}
         {user && (
-          <button className={styles.avatarButton} onClick={onUserMenuClick} aria-label="User menu">
-            <Avatar initials={getInitials(user.name)} src={user.avatar} size="small" />
-          </button>
+          <div
+            className={styles.avatarWrapper}
+            onMouseEnter={() => setUserCardOpen(true)}
+            onMouseLeave={() => setUserCardOpen(false)}
+          >
+            <button className={styles.avatarButton} onClick={onUserMenuClick} aria-label="User menu">
+              <Avatar initials={getInitials(user.name)} src={user.avatar} size="small" />
+            </button>
+            {userCardOpen && (
+              <div className={styles.userCard} role="tooltip">
+                <span className={styles.userCardName}>{user.name}</span>
+                {user.org && <span className={styles.userCardOrg}>{user.org}</span>}
+              </div>
+            )}
+          </div>
         )}
       </div>
     </header>
