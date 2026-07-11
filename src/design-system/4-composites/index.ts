@@ -1,4 +1,4 @@
-export { AIBadge, IrisIcon } from './AIBadge';
+export { AIBadge, IrisIcon, IrisIconInverse } from './AIBadge';
 export { Accordion } from './Accordion';
 export { Alert } from './Alert';
 export { Banner } from './Banner';

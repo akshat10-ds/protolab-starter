@@ -68,3 +68,8 @@
 .filters {
   flex-shrink: 0;
 }
+
+/* Right-aligned filters cluster (Navigator "Completed" layout) */
+.filtersEnd {
+  margin-left: auto;
+}

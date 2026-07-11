@@ -20,11 +20,13 @@ export const Avatar: React.FC<AvatarProps> = ({
   className,
   ...props
 }) => {
+  const [imgError, setImgError] = React.useState(false);
+
   const avatarClasses = [
     styles.avatar,
     styles[size],
     styles[shape],
-    !src && styles[`color${colorIndex}`],
+    (!src || imgError) && styles[`color${colorIndex}`],
     className,
   ]
     .filter(Boolean)
@@ -39,8 +41,8 @@ export const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <div data-ink-component="Avatar" data-ink-prop-size={size} className={avatarClasses} {...props}>
-      {src ? (
-        <img src={src} alt={alt} className={styles.image} />
+      {src && !imgError ? (
+        <img src={src} alt={alt} className={styles.image} onError={() => setImgError(true)} />
       ) : initials ? (
         <span className={styles.initials}>{getInitials()}</span>
       ) : (

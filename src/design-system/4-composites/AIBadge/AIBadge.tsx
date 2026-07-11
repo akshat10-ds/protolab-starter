@@ -63,6 +63,39 @@ export const IrisIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
+// Iris Icon — inverse / light variant (white center bloom, gradient petals).
+// Use on dark or saturated backgrounds (e.g. the "Ask Iris" gradient button),
+// where the standard IrisIcon's gradient center would lack contrast.
+export const IrisIconInverse: React.FC<{ className?: string; size?: number }> = ({ className, size = 16 }) => (
+  <svg
+    className={className}
+    width={size}
+    height={size}
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    focusable="false"
+    aria-hidden="true"
+  >
+    {/* Corner petals - red → blue-violet gradient */}
+    <path d="M8.334 6.074C7.582 5.15 6.448 4.684 4.546 4.3a.207.207 0 0 0-.202.073.203.203 0 0 0-.043.172c.386 1.902.85 3.036 1.776 3.788a7.105 7.105 0 0 0 2.257-2.258Z" fill="url(#irisInvA)" />
+    <path d="M13.923 8.332c.925-.752 1.39-1.886 1.775-3.788a.203.203 0 0 0-.043-.172.207.207 0 0 0-.201-.073c-1.903.385-3.037.85-3.789 1.775a7.1 7.1 0 0 0 2.258 2.258Z" fill="url(#irisInvB)" />
+    <path d="M6.078 11.662c-.926.752-1.39 1.886-1.776 3.788a.202.202 0 0 0 .043.172c.05.06.124.089.202.073 1.902-.385 3.036-.85 3.788-1.775a7.106 7.106 0 0 0-2.257-2.258Z" fill="url(#irisInvC)" />
+    <path d="M11.665 13.92c.752.925 1.886 1.39 3.789 1.775a.207.207 0 0 0 .244-.245c-.385-1.902-.85-3.036-1.775-3.788a7.1 7.1 0 0 0-2.258 2.258Z" fill="url(#irisInvD)" />
+    {/* Center bloom - white */}
+    <g clipPath="url(#irisInvClip)">
+      <path d="M16.62 9.455c-1.156-.428-2.013-.824-2.7-1.269a6.526 6.526 0 0 1-2.102-2.101c-.436-.687-.84-1.552-1.269-2.7a.566.566 0 0 0-.541-.38.566.566 0 0 0-.542.38c-.428 1.156-.824 2.013-1.269 2.7a6.55 6.55 0 0 1-2.11 2.101c-.687.437-1.552.841-2.7 1.27a.565.565 0 0 0-.38.541c0 .243.146.46.38.542 1.156.42 2.013.824 2.7 1.269a6.631 6.631 0 0 1 2.11 2.101c.437.695.84 1.552 1.27 2.7.088.234.298.38.54.38a.577.577 0 0 0 .542-.38c.429-1.156.825-2.013 1.27-2.7a6.526 6.526 0 0 1 2.1-2.101c.696-.437 1.553-.841 2.7-1.27a.577.577 0 0 0 0-1.083Zm-3.508.631c-1.795.639-2.385 1.229-3.024 3.023-.032.08-.153.08-.177 0-.639-1.794-1.229-2.384-3.023-3.023-.081-.032-.081-.154 0-.178C8.682 9.27 9.272 8.68 9.91 6.885c.032-.089.153-.089.178 0 .638 1.795 1.228 2.385 3.023 3.023.08.032.08.154 0 .178Z" fill="#fff" />
+    </g>
+    <defs>
+      <linearGradient id="irisInvA" x1="4.297" y1="4.295" x2="8.875" y2="8.721" gradientUnits="userSpaceOnUse"><stop stopColor="#FF5252" /><stop offset="1" stopColor="#4C00FF" /></linearGradient>
+      <linearGradient id="irisInvB" x1="15.702" y1="4.295" x2="11.165" y2="8.856" gradientUnits="userSpaceOnUse"><stop stopColor="#FF5252" /><stop offset="1" stopColor="#4C00FF" /></linearGradient>
+      <linearGradient id="irisInvC" x1="4.298" y1="15.699" x2="8.695" y2="11.191" gradientUnits="userSpaceOnUse"><stop stopColor="#FF5252" /><stop offset="1" stopColor="#4C00FF" /></linearGradient>
+      <linearGradient id="irisInvD" x1="15.702" y1="15.699" x2="11.165" y2="11.146" gradientUnits="userSpaceOnUse"><stop stopColor="#FF5252" /><stop offset="1" stopColor="#4C00FF" /></linearGradient>
+      <clipPath id="irisInvClip"><path fill="#fff" d="M3 2.997h14v14H3z" /></clipPath>
+    </defs>
+  </svg>
+);
+
 // Default callout content
 const DefaultInfoContent: React.FC = () => (
   <>
