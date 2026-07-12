@@ -7,6 +7,7 @@ import {
   FilterBar,
   Button,
   Badge,
+  BarChart,
   ComboButton,
   AIIcon,
   AIBadge,
@@ -1425,34 +1426,6 @@ const insightsPanelStyles = `
 @media (max-width: 900px) {
   .ink-insights__body { flex-direction: column; }
 }
-
-/* Navigator "Completed" table — framed card with gray header + column dividers (matches production) */
-.ink-nav-table {
-  border: 1px solid rgba(19, 0, 50, 0.12);
-  border-radius: 8px 8px 0 0;
-  /* clip (not hidden) rounds the corners without creating a scroll container,
-     so the content clips flush to the border and the sticky footer still works */
-  overflow: clip;
-}
-.ink-nav-table table thead th {
-  background: rgb(247, 246, 247) !important;
-}
-.ink-nav-table table thead th,
-.ink-nav-table table tbody td {
-  border-right: 1px solid rgba(19, 0, 50, 0.12);
-}
-.ink-nav-table table thead th:last-child,
-.ink-nav-table table tbody td:last-child {
-  border-right: none;
-}
-/* Sticky pagination footer — must sit above the sticky first column (z-index 100–200) */
-.ink-nav-table [class*="footer"] {
-  position: sticky;
-  bottom: 0;
-  background: #fff;
-  border-top: 1px solid rgba(19, 0, 50, 0.1);
-  z-index: 220;
-}
 `;
 
 // Title segments: key phrases (b: true) render bold, connectors regular — matches production
@@ -1475,53 +1448,23 @@ const INSIGHT_CARDS: InsightCard[] = [
 const titleToString = (segs: TitleSegment[]) => segs.map((s) => s.t).join('');
 
 // 12-month renewal notice histogram (matches production sample)
+// 12-month renewal-notice histogram (matches the production sample)
 const RENEWAL_BARS = [4, 4, 6, 7, 5, 13, 10, 5, 7, 2, 5, 7, 2];
 
 function RenewalsChart() {
-  const W = 480, H = 200;
-  const padL = 30, padR = 8, padT = 12, baseline = 160;
-  const plotW = W - padL - padR;
-  const maxY = 16;
-  const yTicks = [0, 4, 8, 12, 16];
-  const yFor = (v: number) => baseline - (v / maxY) * (baseline - padT);
-  const n = RENEWAL_BARS.length;
-  const slot = plotW / n;
-  const barW = Math.min(20, slot * 0.55);
-  const xLabels = [
-    { text: 'Jul 2026', i: 0 },
-    { text: 'Dec 2026', i: Math.floor(n / 2) },
-    { text: 'May 2027', i: n - 1 },
-  ];
-  const tickColor = 'rgba(19, 0, 50, 0.55)';
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="200" role="img" aria-label="Upcoming renewals by month" preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <linearGradient id="renewalBar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#009EB3" stopOpacity="1" />
-          <stop offset="100%" stopColor="#009EB3" stopOpacity="0.65" />
-        </linearGradient>
-      </defs>
-      {yTicks.map((t) => (
-        <g key={t}>
-          <line x1={padL} y1={yFor(t)} x2={W - padR} y2={yFor(t)} stroke="rgba(19,0,50,0.12)" strokeWidth="1" strokeDasharray="3 3" />
-          <text x={padL - 8} y={yFor(t) + 4} textAnchor="end" fontSize="11" fill={tickColor}>{t}</text>
-        </g>
-      ))}
-      {RENEWAL_BARS.map((v, i) => {
-        const x = padL + i * slot + (slot - barW) / 2;
-        const y = yFor(v);
-        return (
-          <g key={i}>
-            <text x={x + barW / 2} y={y - 5} textAnchor="middle" fontSize="11" fill="rgba(19,0,50,0.75)">{v}</text>
-            <rect x={x} y={y} width={barW} height={baseline - y} rx="2" fill="url(#renewalBar)" />
-          </g>
-        );
-      })}
-      {xLabels.map((l) => (
-        <text key={l.text} x={padL + l.i * slot + slot / 2} y={baseline + 18} textAnchor="middle" fontSize="11" fill={tickColor}>{l.text}</text>
-      ))}
-      <text x={padL + plotW / 2} y={H - 6} textAnchor="middle" fontSize="12" fill={tickColor}>Renewal Notice Date</text>
-    </svg>
+    <BarChart
+      data={RENEWAL_BARS}
+      yMax={16}
+      yTicks={[0, 4, 8, 12, 16]}
+      xLabels={[
+        { text: 'Jul 2026', index: 0 },
+        { text: 'Dec 2026', index: Math.floor(RENEWAL_BARS.length / 2) },
+        { text: 'May 2027', index: RENEWAL_BARS.length - 1 },
+      ]}
+      xAxisTitle="Renewal Notice Date"
+      aria-label="Upcoming renewals by month"
+    />
   );
 }
 
@@ -2094,7 +2037,7 @@ export default function App() {
       ) : isRequestsView ? (
         <DataTable columns={requestColumns} data={filteredRequests} getRowKey={(row) => row.id} stickyHeader showColumnControl rowHeight="tall" emptyMessage="No requests found" pagination={{ page: 1, pageSize: 10, totalItems: filteredRequests.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : isNavigatorView ? (
-        <DataTable className="ink-nav-table" columns={navigatorColumns} data={filteredNavigator} getRowKey={(row) => row.id} selectable stickyHeader stickyFooter showColumnControl rowHeight="tall" emptyMessage="No completed documents" onRowClick={() => setShowAgreementDetail(true)} pagination={{ page: 1, pageSize: 25, totalItems: 1659, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
+        <DataTable bordered columns={navigatorColumns} data={filteredNavigator} getRowKey={(row) => row.id} selectable stickyHeader stickyFooter showColumnControl rowHeight="tall" emptyMessage="No completed documents" onRowClick={() => setShowAgreementDetail(true)} pagination={{ page: 1, pageSize: 25, totalItems: 1659, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : (
         <DataTable columns={agreementColumns} data={filteredAgreements} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl rowHeight="tall" emptyMessage={
           sidebarView === 'drafts' ? 'No drafts found' :

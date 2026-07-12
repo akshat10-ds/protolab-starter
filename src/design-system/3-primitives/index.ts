@@ -1,6 +1,7 @@
 export { AlertBadge } from './AlertBadge';
 export { Avatar } from './Avatar';
 export { Badge } from './Badge';
+export { BarChart } from './BarChart';
 export { Button } from './Button';
 export { Card } from './Card';
 export { Checkbox } from './Checkbox';

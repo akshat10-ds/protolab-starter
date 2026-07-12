@@ -75,6 +75,38 @@
 }
 
 /* =============================================================================
+   Bordered / framed variant (Navigator "Completed" style)
+   Outer border + rounded top corners, tinted header, column dividers,
+   and a footer that reads as the bottom of the frame.
+   `overflow: clip` (not hidden) rounds the corners without creating a scroll
+   container, so a sticky footer still pins to the page scroll.
+   ============================================================================= */
+
+.bordered {
+  border: 1px solid var(--dt-border-subtle);
+  border-radius: 8px 8px 0 0;
+  overflow: clip;
+}
+
+.bordered .thead .th {
+  background: var(--dt-bg-canvas-page);
+}
+
+.bordered .th,
+.bordered .td {
+  border-right: 1px solid var(--dt-border-subtle);
+}
+
+.bordered .th:last-child,
+.bordered .td:last-child {
+  border-right: none;
+}
+
+/* The footer already carries its own top border, sticky behavior and z-index
+   (see DataTableFooter). `overflow: clip` above keeps its edge-to-edge sticky
+   background contained within the rounded frame. */
+
+/* =============================================================================
    Container (scrollable area)
    ============================================================================= */
 

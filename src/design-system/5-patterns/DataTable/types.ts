@@ -212,6 +212,12 @@ export interface DataTableProps<T = any> {
 
   /** Sticky footer */
   stickyFooter?: boolean;
+
+  /**
+   * Framed appearance (Navigator "Completed" style): an outer border with
+   * rounded top corners, a tinted header, and vertical column dividers.
+   */
+  bordered?: boolean;
 }
 
 // =============================================================================

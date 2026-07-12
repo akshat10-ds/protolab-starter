@@ -69,6 +69,9 @@ export function DataTable<T = any>({
   // Sticky
   stickyHeader = false,
   stickyFooter = false,
+
+  // Appearance
+  bordered = false,
 }: DataTableProps<T>) {
   // -------------------------------------------------------------------------
   // State
@@ -272,7 +275,11 @@ export function DataTable<T = any>({
   // -------------------------------------------------------------------------
 
   return (
-    <div data-ink-component="DataTable" className={`${styles.wrapper} ${className}`} data-qa={dataQa}>
+    <div
+      data-ink-component="DataTable"
+      className={`${styles.wrapper} ${bordered ? styles.bordered : ''} ${className}`}
+      data-qa={dataQa}
+    >
       {/* Action Bar - visible when rows selected */}
       {selectable && (selectionActions.length > 0 || actionBarContent) && (
         <DataTableActionBar
