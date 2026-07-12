@@ -26,6 +26,38 @@
   transform: translateX(var(--dropdown-align-x));
 }
 
+/* "New"-style badge shown after an item label */
+.badge {
+  margin-left: auto;
+  padding: 3px 6px;
+  background: var(--ink-iris-70, #4c00b0);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  border-radius: var(--ink-radius-size-xs, 4px);
+}
+
+/* Sub-menu fly-out (opaque, opens to the right of a parent item) */
+.submenuWrapper {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: -8px;
+  left: 100%;
+  min-width: 240px;
+  max-height: none;
+  overflow: visible;
+  background: #fff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  animation: none;
+  transform: none;
+}
+
 /* Alignment transforms (applied via JS-calculated left position) */
 .alignCenter {
   --dropdown-align-x: -50%;

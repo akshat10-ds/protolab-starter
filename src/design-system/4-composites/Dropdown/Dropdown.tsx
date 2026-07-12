@@ -317,23 +317,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           <span className={styles.label}>{item.label}</span>
           {item.description && <span className={styles.description}>{item.description}</span>}
         </div>
-        {item.badge && (
-          <span
-            style={{
-              marginLeft: 'auto',
-              background: 'var(--ink-iris-70, #4c00b0)',
-              color: '#fff',
-              fontSize: 11,
-              fontWeight: 600,
-              lineHeight: 1,
-              padding: '3px 6px',
-              borderRadius: 4,
-              letterSpacing: '0.02em',
-            }}
-          >
-            {item.badge}
-          </span>
-        )}
+        {item.badge && <span className={styles.badge}>{item.badge}</span>}
         {item.shortcut && <span className={styles.shortcut}>{item.shortcut}</span>}
         {hasSubmenu && (
           <span className={styles.arrow}>
@@ -355,29 +339,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
     return (
       <div
         key={index}
-        style={{ position: 'relative' }}
+        className={styles.submenuWrapper}
         onMouseEnter={() => setSubmenuOpenIndex(index)}
         onMouseLeave={() => setSubmenuOpenIndex((i) => (i === index ? -1 : i))}
       >
         {itemButton}
         {isSubmenuOpen && (
-          <div
-            role="menu"
-            className={styles.dropdown}
-            style={{
-              position: 'absolute',
-              top: -8,
-              left: '100%',
-              minWidth: 240,
-              maxHeight: 'none',
-              overflow: 'visible',
-              background: '#fff',
-              backdropFilter: 'none',
-              WebkitBackdropFilter: 'none',
-              animation: 'none',
-              transform: 'none',
-            }}
-          >
+          <div role="menu" className={`${styles.dropdown} ${styles.submenu}`}>
             {item.children!.map((child, ci) => (
               <button
                 key={ci}
