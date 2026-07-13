@@ -144,7 +144,7 @@ function FadeIn({ children, keyProp: _keyProp }: { children: React.ReactNode; ke
    ═══════════════════════════════════════ */
 
 type TabId = 'home' | 'agreements' | 'templates' | 'insights' | 'admin';
-type SidebarView = 'all-agreements' | 'drafts' | 'in-progress' | 'completed' | 'deleted' | 'parties' | 'requests';
+type SidebarView = 'all-agreements' | 'drafts' | 'in-progress' | 'completed' | 'deleted' | 'parties' | 'requests' | 'workspaces';
 type TemplatesSidebarView = 'my-templates' | 'shared-with-me' | 'favorites' | 'all-templates';
 type InsightsSidebarView = 'overview' | 'dashboards' | 'reports';
 
@@ -426,16 +426,19 @@ interface RequestItem {
   submitterEmail: string;
   submitterInitials: string;
   owner: string;
+  requestType: string;
+  description: string;
+  created: string;
 }
 
 const REQUESTS_DATA: RequestItem[] = [
-  { id: '1', title: '[Example] General Legal Request by DocuSign User Rename', requestId: 'REQ-0006', status: 'New', lastActivityAt: '6/3/2026 07:16', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned' },
-  { id: '2', title: '[Example] General Legal Request by DocuSign User JR', requestId: 'REQ-0007', status: 'New', lastActivityAt: '26/2/2026 21:31', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned' },
-  { id: '3', title: '[Example] General Legal Request by DocuSign User', requestId: 'REQ-0005', status: 'New', lastActivityAt: '9/2/2026 19:19', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned' },
-  { id: '4', title: '[Example] NDA Request by DocuSign User', requestId: 'REQ-0004', status: 'New', lastActivityAt: '18/12/2025 23:10', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned' },
-  { id: '5', title: '[Example] General Legal Request by DocuSign User', requestId: 'REQ-0003', status: 'New', lastActivityAt: '18/12/2025 21:55', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned' },
-  { id: '6', title: '[Example] NDA Request by DocuSign User', requestId: 'REQ-0002', status: 'New', lastActivityAt: '15/11/2025 21:25', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned' },
-  { id: '7', title: '[Example] NDA Request by DocuSign User', requestId: 'REQ-0001', status: 'New', lastActivityAt: '23/10/2025 18:35', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned' },
+  { id: '1', title: '[Example] General Legal Request by DocuSign User Rename', requestId: 'REQ-0006', status: 'New', lastActivityAt: '6/3/2026 07:16', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned', requestType: 'General Request', description: 'Review and advise on the updated vendor master services agreement before the renewal deadline.', created: '6/3/2026' },
+  { id: '2', title: '[Example] General Legal Request by DocuSign User JR', requestId: 'REQ-0007', status: 'New', lastActivityAt: '26/2/2026 21:31', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned', requestType: 'General Request', description: 'Need legal sign-off on a junior contractor engagement scope of work.', created: '26/2/2026' },
+  { id: '3', title: '[Example] General Legal Request by DocuSign User', requestId: 'REQ-0005', status: 'New', lastActivityAt: '9/2/2026 19:19', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned', requestType: 'General Request', description: 'General legal review requested for an inbound partnership proposal.', created: '9/2/2026' },
+  { id: '4', title: '[Example] NDA Request by DocuSign User', requestId: 'REQ-0004', status: 'New', lastActivityAt: '18/12/2025 23:10', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned', requestType: 'NDA Request', description: 'Mutual non-disclosure agreement needed ahead of early diligence conversations.', created: '18/12/2025' },
+  { id: '5', title: '[Example] General Legal Request by DocuSign User', requestId: 'REQ-0003', status: 'New', lastActivityAt: '18/12/2025 21:55', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned', requestType: 'General Request', description: 'Requesting standard contract terms review for a new SaaS subscription.', created: '18/12/2025' },
+  { id: '6', title: '[Example] NDA Request by DocuSign User', requestId: 'REQ-0002', status: 'New', lastActivityAt: '15/11/2025 21:25', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned', requestType: 'NDA Request', description: 'One-way NDA for a prospective supplier evaluation.', created: '15/11/2025' },
+  { id: '7', title: '[Example] NDA Request by DocuSign User', requestId: 'REQ-0001', status: 'New', lastActivityAt: '23/10/2025 18:35', dueDate: '', submitterName: 'DocuSign User', submitterEmail: 'navigator_test_admin@dsxtr.com', submitterInitials: 'DU', owner: 'Unassigned', requestType: 'NDA Request', description: 'Standard mutual NDA requested for an upcoming vendor pilot.', created: '23/10/2025' },
 ];
 
 const requestColumns: any[] = [
@@ -489,6 +492,68 @@ const requestColumns: any[] = [
       <Inline gap="small" align="center">
         <Icon name="person" size={16} color="var(--ink-text-secondary)" />
         <Text size="sm" color="secondary">{row.owner}</Text>
+      </Inline>
+    ),
+  },
+];
+
+/* ═══════════════════════════════════════
+   Workspaces Data (matches real DocuSign)
+   ═══════════════════════════════════════ */
+
+interface Workspace {
+  id: string;
+  name: string;
+  status: 'active' | 'inactive';
+  created: string;
+  owner: string;
+}
+
+const WORKSPACES_DATA: Workspace[] = [
+  { id: '1', name: '[Example] New Patient Intake', status: 'active', created: '6/12/2026', owner: 'Akshat Mishra' },
+  { id: '2', name: 'Acme Corp – Acquisition Due Diligence', status: 'active', created: '5/28/2026', owner: 'Akshat Mishra' },
+  { id: '3', name: 'Q3 Vendor Onboarding', status: 'active', created: '5/14/2026', owner: 'Procurement Team' },
+  { id: '4', name: '2026 Commercial Lease Closings', status: 'active', created: '4/30/2026', owner: 'Legal Team' },
+  { id: '5', name: 'Contractor Statement of Work – DesignLab', status: 'inactive', created: '3/19/2026', owner: 'Akshat Mishra' },
+  { id: '6', name: 'Series B Financing Round', status: 'active', created: '2/26/2026', owner: 'Finance Team' },
+  { id: '7', name: 'Employee Offer Packages – Spring Cohort', status: 'inactive', created: '1/15/2026', owner: 'HR Department' },
+];
+
+const workspaceColumns: any[] = [
+  {
+    key: 'name',
+    header: 'Name',
+    sortable: true,
+    cell: (row: Workspace) => (
+      <a href="#" className={dataTableStyles.cellPrimary} style={{ textDecoration: 'none', color: 'inherit', fontWeight: 600 }}>
+        {row.name}
+      </a>
+    ),
+  },
+  {
+    key: 'status',
+    header: 'Status',
+    sortable: true,
+    width: '160px',
+    cell: (row: Workspace) => (
+      <div className={dataTableStyles.statusCell}>
+        <span className={dataTableStyles.statusDot} data-status={row.status} />
+        <div className={dataTableStyles.statusText}>
+          <span className={dataTableStyles.statusLabel}>{row.status === 'active' ? 'Active' : 'Inactive'}</span>
+        </div>
+      </div>
+    ),
+  },
+  { key: 'created', header: 'Created', sortable: true, width: '160px' },
+  {
+    key: 'action',
+    header: '',
+    align: 'end',
+    width: '140px',
+    cell: () => (
+      <Inline gap="small" align="center" justify="end" style={{ marginLeft: 'auto' }}>
+        <Button kind="secondary" size="small">View</Button>
+        <IconButton icon="overflow-vertical" variant="tertiary" size="small" aria-label="More actions" />
       </Inline>
     ),
   },
@@ -1361,6 +1426,452 @@ function AgreementDetailView({ onClose }: { onClose: () => void }) {
 }
 
 /* ═══════════════════════════════════════
+   Detail Page Shell — shared by Workspace + Request
+   detail views (full-screen takeover: back bar,
+   title + status badge, tab row, content area)
+   ═══════════════════════════════════════ */
+
+const detailShellStyles = `
+.detail-shell__header {
+  background: var(--ink-bg-color-subtle, #f6f5f7);
+  padding: 0 var(--ink-spacing-300);
+}
+.detail-shell__tabbar {
+  display: flex;
+  gap: var(--ink-spacing-50);
+  border-bottom: 1px solid var(--ink-border-subtle);
+}
+.detail-shell__tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 10px 16px;
+  color: var(--ink-font-color-secondary, rgba(19, 0, 50, 0.7));
+  border-radius: 6px 6px 0 0;
+}
+.detail-shell__tab[data-active='true'] {
+  color: var(--ink-iris-70, #4c00b0);
+  font-weight: 600;
+  background: var(--ink-iris-10, rgba(76, 0, 176, 0.06));
+  box-shadow: inset 0 -2px 0 0 var(--ink-iris-70, #4c00b0);
+}
+.detail-shell__empty {
+  border: 1px solid var(--ink-border-subtle);
+  border-radius: var(--ink-radius-lg, 12px);
+  padding: 64px var(--ink-spacing-300);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--ink-spacing-100);
+}
+.detail-shell__empty-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--ink-radius-md, 8px);
+  background: var(--ink-bg-color-subtle, #f0eff2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--ink-spacing-100);
+}
+`;
+
+interface DetailTab {
+  id: string;
+  label: string;
+}
+
+function DetailPageShell({
+  title,
+  statusLabel,
+  statusKind = 'success',
+  tabs,
+  activeTab,
+  onTabChange,
+  topBarActions,
+  onClose,
+  children,
+}: {
+  title: string;
+  statusLabel?: string;
+  statusKind?: 'success' | 'subtle';
+  tabs: DetailTab[];
+  activeTab: string;
+  onTabChange: (id: string) => void;
+  topBarActions?: React.ReactNode;
+  onClose: () => void;
+  children: React.ReactNode;
+}) {
+  const fadeIn = useFadeIn(0, 250);
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 1060,
+        ...fadeIn.style,
+        background: 'var(--ink-bg-color-default)',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'auto',
+      }}
+    >
+      <style>{detailShellStyles}</style>
+      <div className="detail-shell__header">
+        {/* Top bar: back + right-aligned actions */}
+        <Inline align="center" style={{ height: 64 }}>
+          <IconButton icon="arrow-left" variant="tertiary" aria-label="Back" onClick={onClose} />
+          <div style={{ flex: 1 }} />
+          <Inline gap="small" align="center">{topBarActions}</Inline>
+        </Inline>
+        {/* Title + status */}
+        <Inline gap="medium" align="center" style={{ padding: 'var(--ink-spacing-100) 0 var(--ink-spacing-300)' }}>
+          <Heading level={1} style={{ fontSize: 32, fontWeight: 400, margin: 0, color: 'var(--ink-font-color, rgba(19,0,50,0.9))' }}>
+            {title}
+          </Heading>
+          {statusLabel && <Badge kind={statusKind}>{statusLabel}</Badge>}
+        </Inline>
+        {/* Tab row */}
+        <div className="detail-shell__tabbar" role="tablist">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              role="tab"
+              aria-selected={activeTab === tab.id}
+              className="detail-shell__tab"
+              data-active={activeTab === tab.id}
+              onClick={() => onTabChange(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      {/* Content */}
+      <div style={{ width: '100%', maxWidth: 1200, margin: '0 auto', padding: 'var(--ink-spacing-300)', flex: 1 }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function DetailEmptyState({
+  icon,
+  title,
+  subtitle,
+  action,
+}: {
+  icon: 'upload' | 'document' | 'stamp' | 'envelope';
+  title: string;
+  subtitle: string;
+  action: React.ReactNode;
+}) {
+  return (
+    <div className="detail-shell__empty">
+      <div className="detail-shell__empty-icon">
+        <Icon name={icon} size={22} />
+      </div>
+      <Text size="lg" weight="medium">{title}</Text>
+      <Text size="sm" color="secondary">{subtitle}</Text>
+      <div style={{ marginTop: 'var(--ink-spacing-150)' }}>{action}</div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════
+   Workspace Detail View
+   ═══════════════════════════════════════ */
+
+interface WorkspaceItem {
+  id: string;
+  name: string;
+  type: string;
+  icon: 'envelope' | 'upload';
+  recipients: string;
+  status: string;
+  date: string;
+  time: string;
+}
+
+const WORKSPACE_ITEMS: WorkspaceItem[] = [
+  { id: '1', name: '[Example] Patient Intake Form', type: 'Envelope', icon: 'envelope', recipients: 'Unassigned', status: 'Draft', date: '6/12/2026', time: '8:09 PM' },
+  { id: '2', name: '[Example] Photo ID', type: 'Upload Request', icon: 'upload', recipients: 'Unassigned', status: 'Draft', date: '6/12/2026', time: '8:09 PM' },
+  { id: '3', name: '[Example] Medical Insurance Card (Front & Back)', type: 'Upload Request', icon: 'upload', recipients: 'Unassigned', status: 'Draft', date: '6/12/2026', time: '8:09 PM' },
+];
+
+const WORKSPACE_ITEM_GRID = '40px minmax(0, 1fr) 130px 110px 150px 96px';
+
+function WorkspaceDetailView({ workspace, onClose }: { workspace: Workspace; onClose: () => void }) {
+  const [activeTab, setActiveTab] = useState('overview');
+  const isActive = workspace.status === 'active';
+
+  const topBarActions = (
+    <>
+      <IconButton icon="comment" variant="tertiary" aria-label="Messages" />
+      <Button kind="secondary" startElement={<Icon name="people" size={16} />}>Share</Button>
+      <Button kind="primary" menuTrigger>Add</Button>
+      <IconButton icon="overflow-vertical" variant="tertiary" aria-label="More actions" />
+    </>
+  );
+
+  return (
+    <DetailPageShell
+      title={workspace.name}
+      statusLabel={isActive ? 'Active' : 'Inactive'}
+      statusKind={isActive ? 'success' : 'subtle'}
+      tabs={[{ id: 'overview', label: 'Overview' }, { id: 'documents', label: 'Documents' }]}
+      activeTab={activeTab}
+      onTabChange={setActiveTab}
+      topBarActions={topBarActions}
+      onClose={onClose}
+    >
+      {activeTab === 'overview' ? (
+        <Stack gap="small">
+          {/* Column header */}
+          <div style={{ display: 'grid', gridTemplateColumns: WORKSPACE_ITEM_GRID, alignItems: 'center', gap: 'var(--ink-spacing-150)', padding: '0 var(--ink-spacing-200)' }}>
+            <div />
+            <Inline gap="small" align="center"><Text size="xs" weight="semibold" color="secondary">Name</Text><Icon name="sort" size={12} color="var(--ink-font-secondary)" /></Inline>
+            <Text size="xs" weight="semibold" color="secondary">Recipients</Text>
+            <Inline gap="small" align="center"><Text size="xs" weight="semibold" color="secondary">Status</Text><Icon name="sort" size={12} color="var(--ink-font-secondary)" /></Inline>
+            <Text size="xs" weight="semibold" color="secondary">Last Change</Text>
+            <Text size="xs" weight="semibold" color="secondary" style={{ textAlign: 'right' }}>Actions</Text>
+          </div>
+          {/* Item cards */}
+          {WORKSPACE_ITEMS.map((item) => (
+            <Card key={item.id} radius="large" className="activity-row">
+              <div style={{ display: 'grid', gridTemplateColumns: WORKSPACE_ITEM_GRID, alignItems: 'center', gap: 'var(--ink-spacing-150)', padding: 'var(--ink-spacing-150) var(--ink-spacing-200)' }}>
+                <input type="checkbox" aria-label={`Select ${item.name}`} style={{ width: 18, height: 18 }} />
+                <Inline gap="medium" align="center" style={{ minWidth: 0 }}>
+                  <Icon name={item.icon} size={20} color="var(--ink-font-secondary)" />
+                  <Stack gap="none" style={{ gap: 'var(--ink-spacing-25)', minWidth: 0 }}>
+                    <Text size="sm" weight="medium" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</Text>
+                    <Text size="xs" color="secondary">{item.type}</Text>
+                  </Stack>
+                </Inline>
+                <div>
+                  <Badge kind="subtle">{item.recipients}</Badge>
+                </div>
+                <Inline gap="small" align="center">
+                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--ink-neutral-70, #6b6b6b)', flexShrink: 0 }} />
+                  <Text size="sm">{item.status}</Text>
+                </Inline>
+                <Stack gap="none" style={{ gap: 'var(--ink-spacing-25)' }}>
+                  <Text size="sm">{item.date}</Text>
+                  <Text size="xs" color="secondary">{item.time}</Text>
+                </Stack>
+                <Inline gap="small" align="center" justify="end">
+                  <Button kind="secondary" size="small">Edit</Button>
+                  <IconButton icon="overflow-vertical" variant="tertiary" size="small" aria-label="More actions" />
+                </Inline>
+              </div>
+            </Card>
+          ))}
+        </Stack>
+      ) : (
+        <Stack gap="medium">
+          <Heading level={2} style={{ fontSize: 24, fontWeight: 400, margin: 0 }}>Documents</Heading>
+          <DetailEmptyState
+            icon="upload"
+            title="Upload documents to share"
+            subtitle="Add documents that anyone in this workspace can view and download."
+            action={<Button kind="primary" menuTrigger>Upload</Button>}
+          />
+        </Stack>
+      )}
+    </DetailPageShell>
+  );
+}
+
+/* ═══════════════════════════════════════
+   Request Detail View
+   ═══════════════════════════════════════ */
+
+function RequestInfoCard({ request }: { request: RequestItem }) {
+  const requestType = request.requestType;
+  const created = request.created;
+  return (
+    <Stack gap="medium">
+      <Card radius="large">
+        <Stack gap="medium" style={{ padding: 'var(--ink-spacing-200)' }}>
+          <Inline justify="between" align="center">
+            <Text size="md" weight="semibold">Information</Text>
+            <IconButton icon="edit" variant="tertiary" size="small" aria-label="Edit request information" />
+          </Inline>
+          <div>
+            <Text size="sm" weight="semibold">Request ID</Text>
+            <Text size="sm" color="secondary">{request.requestId}</Text>
+          </div>
+          <div>
+            <Text size="sm" weight="semibold" style={{ display: 'block', marginBottom: 'var(--ink-spacing-50)' }}>Status</Text>
+            <Inline gap="small" align="center" style={{ background: 'var(--ink-green-10, #e6f7ee)', borderRadius: 'var(--ink-radius-sm)', padding: '2px 8px', width: 'fit-content' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--ink-green-60)' }} />
+              <Text size="sm">{request.status}</Text>
+            </Inline>
+          </div>
+          <div>
+            <Text size="sm" weight="semibold">Request type</Text>
+            <Text size="sm" color="secondary">{requestType}</Text>
+          </div>
+          <div>
+            <Text size="sm" weight="semibold" style={{ display: 'block', marginBottom: 'var(--ink-spacing-50)' }}>Submitter</Text>
+            <Inline gap="small" align="center">
+              <Avatar size="small" initials={request.submitterInitials} />
+              <Text size="sm">{request.submitterName}</Text>
+            </Inline>
+          </div>
+          <div>
+            <Text size="sm" weight="semibold">Owner</Text>
+            <Text size="sm" color="secondary">{request.owner === 'Unassigned' ? '—' : request.owner}</Text>
+          </div>
+          <div>
+            <Text size="sm" weight="semibold">Created</Text>
+            <Text size="sm" color="secondary">{created}</Text>
+          </div>
+        </Stack>
+      </Card>
+      <Card radius="large">
+        <button style={{ display: 'flex', alignItems: 'center', gap: 'var(--ink-spacing-100)', width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: 'var(--ink-spacing-200)', fontFamily: 'inherit' }}>
+          <Icon name="trash" size={18} />
+          <Text size="sm">Delete Request</Text>
+        </button>
+      </Card>
+    </Stack>
+  );
+}
+
+function RequestDetailView({ request, onClose }: { request: RequestItem; onClose: () => void }) {
+  const [activeTab, setActiveTab] = useState('overview');
+  const requestType = request.requestType;
+  const created = request.created;
+  const time = request.lastActivityAt.split(' ')[1] || '';
+
+  const topBarActions = (
+    <>
+      <Button kind="secondary">Follow</Button>
+      <Button kind="secondary">Share</Button>
+    </>
+  );
+
+  return (
+    <DetailPageShell
+      title={request.title.replace(/^\[Example\]\s*/, '')}
+      statusLabel={request.status}
+      statusKind="success"
+      tabs={[
+        { id: 'overview', label: 'Overview' },
+        { id: 'details', label: 'Details' },
+        { id: 'documents', label: 'Documents' },
+        { id: 'approvals', label: 'Approvals' },
+        { id: 'envelopes', label: 'Envelopes' },
+      ]}
+      activeTab={activeTab}
+      onTabChange={setActiveTab}
+      topBarActions={topBarActions}
+      onClose={onClose}
+    >
+      {activeTab === 'overview' && (
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 'var(--ink-spacing-300)', alignItems: 'start' }}>
+          <Stack gap="medium">
+            <Inline justify="between" align="center">
+              <Heading level={2} style={{ fontSize: 24, fontWeight: 400, margin: 0 }}>Activity Feed</Heading>
+              <Inline gap="small" align="center">
+                <Button kind="secondary" size="small" menuTrigger>All activity</Button>
+                <Button kind="primary" size="small" startElement={<Icon name="comment" size={14} />}>Send Message</Button>
+              </Inline>
+            </Inline>
+            <div>
+              <Text size="sm" weight="semibold" color="secondary">{created}</Text>
+              <Inline gap="medium" align="center" style={{ marginTop: 'var(--ink-spacing-150)' }}>
+                <Avatar size="small" initials={request.submitterInitials} />
+                <Stack gap="none" style={{ gap: 'var(--ink-spacing-25)' }}>
+                  <Text size="sm">{request.submitterName} created this request</Text>
+                  <Text size="xs" color="secondary">{time}</Text>
+                </Stack>
+              </Inline>
+            </div>
+          </Stack>
+          <Stack gap="medium">
+            <Button kind="secondary" fullWidth startElement={<AIIcon name="ai-spark-filled" size={14} />} style={{ background: 'var(--ink-iris-10, rgba(76,0,176,0.06))', border: 'none', justifyContent: 'center' }}>
+              Chat with request
+            </Button>
+            <RequestInfoCard request={request} />
+          </Stack>
+        </div>
+      )}
+
+      {activeTab === 'details' && (
+        <Stack gap="medium">
+          <Inline justify="between" align="center">
+            <Heading level={2} style={{ fontSize: 24, fontWeight: 400, margin: 0 }}>Details</Heading>
+            <Button kind="primary">Change Request Type</Button>
+          </Inline>
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 'var(--ink-spacing-300)', alignItems: 'start' }}>
+            <Card radius="large">
+              <Stack gap="none">
+                <Inline justify="between" align="center" style={{ padding: 'var(--ink-spacing-200)', borderBottom: '1px solid var(--ink-border-subtle)' }}>
+                  <Text size="md" weight="semibold">Intake Form</Text>
+                  <Button kind="secondary" size="small">Edit</Button>
+                </Inline>
+                <Stack gap="medium" style={{ padding: 'var(--ink-spacing-200)' }}>
+                  <div>
+                    <Text size="sm" weight="semibold">Request type</Text>
+                    <Text size="sm" color="secondary">{requestType}</Text>
+                  </div>
+                  <div>
+                    <Text size="sm" weight="semibold">Description</Text>
+                    <Text size="sm" color="secondary">{request.description}</Text>
+                  </div>
+                </Stack>
+              </Stack>
+            </Card>
+            <RequestInfoCard request={request} />
+          </div>
+        </Stack>
+      )}
+
+      {activeTab === 'documents' && (
+        <Stack gap="medium">
+          <Heading level={2} style={{ fontSize: 24, fontWeight: 400, margin: 0 }}>Documents</Heading>
+          <DetailEmptyState
+            icon="document"
+            title="No documents found"
+            subtitle="There are currently no documents in this request"
+            action={<Button kind="primary" menuTrigger>Add Documents</Button>}
+          />
+        </Stack>
+      )}
+
+      {activeTab === 'approvals' && (
+        <Stack gap="medium">
+          <Heading level={2} style={{ fontSize: 24, fontWeight: 400, margin: 0 }}>Approvals</Heading>
+          <DetailEmptyState
+            icon="stamp"
+            title="No approvals found"
+            subtitle="There are currently no approvals in this request"
+            action={<Button kind="primary">Add Approval</Button>}
+          />
+        </Stack>
+      )}
+
+      {activeTab === 'envelopes' && (
+        <Stack gap="medium">
+          <Heading level={2} style={{ fontSize: 24, fontWeight: 400, margin: 0 }}>Envelopes</Heading>
+          <DetailEmptyState
+            icon="envelope"
+            title="No envelopes found"
+            subtitle="There are currently no envelopes in this request"
+            action={<Button kind="primary">Send for signature</Button>}
+          />
+        </Stack>
+      )}
+    </DetailPageShell>
+  );
+}
+
+/* ═══════════════════════════════════════
    Completed → My Insights panel
    Mirrors the production Navigator insights band
    ═══════════════════════════════════════ */
@@ -1574,6 +2085,8 @@ export default function App() {
   const [insightsSidebarView, setInsightsSidebarView] = useState<InsightsSidebarView>('overview');
   const [search, setSearch] = useState('');
   const [showAgreementDetail, setShowAgreementDetail] = useState(false);
+  const [activeWorkspace, setActiveWorkspace] = useState<Workspace | null>(null);
+  const [activeRequest, setActiveRequest] = useState<RequestItem | null>(null);
 
   /* ── Sync hash ↔ state ── */
   useEffect(() => {
@@ -1643,7 +2156,7 @@ export default function App() {
           { id: 'parties', label: 'Parties', icon: 'building-person' as const, badge: 'New', onClick: () => setSidebarView('parties') },
           { id: 'requests', label: 'Requests', icon: 'ticket' as const, badge: 'New', onClick: () => setSidebarView('requests') },
           { id: 'maestro', label: 'Maestro Workflows', icon: 'workflow' as const, badge: 'New' },
-          { id: 'workspaces', label: 'Workspaces', icon: 'transaction' as const },
+          { id: 'workspaces', label: 'Workspaces', icon: 'transaction' as const, badge: 'New', onClick: () => setSidebarView('workspaces') },
           { id: 'powerforms', label: 'PowerForms', icon: 'flash' as const },
           { id: 'bulk-send', label: 'Bulk Send', icon: 'document-stack' as const },
         ],
@@ -1769,11 +2282,13 @@ export default function App() {
   const VIEW_LABELS: Record<SidebarView, string> = {
     'all-agreements': 'All Agreements', drafts: 'Drafts', 'in-progress': 'In Progress',
     completed: 'Completed', deleted: 'Deleted', parties: 'Parties', requests: 'Requests',
+    workspaces: 'Workspaces',
   };
 
   const isPartiesView = sidebarView === 'parties';
   const isNavigatorView = sidebarView === 'completed';
   const isRequestsView = sidebarView === 'requests';
+  const isWorkspacesView = sidebarView === 'workspaces';
 
   /* ── Navigator filtered data ── */
   const filteredNavigator = useMemo(() => {
@@ -1787,6 +2302,13 @@ export default function App() {
     if (!search) return REQUESTS_DATA;
     const q = search.toLowerCase();
     return REQUESTS_DATA.filter(r => r.title.toLowerCase().includes(q) || r.requestId.toLowerCase().includes(q));
+  }, [search]);
+
+  /* ── Workspaces filtered data ── */
+  const filteredWorkspaces = useMemo(() => {
+    if (!search) return WORKSPACES_DATA;
+    const q = search.toLowerCase();
+    return WORKSPACES_DATA.filter(w => w.name.toLowerCase().includes(q) || w.owner.toLowerCase().includes(q));
   }, [search]);
 
   /* ── Templates filtered data ── */
@@ -1962,6 +2484,8 @@ export default function App() {
               </>)
             : isRequestsView
             ? <Button kind="secondary">Create Request</Button>
+            : isWorkspacesView
+            ? <Button kind="primary">Create Workspace</Button>
             : <Button kind="secondary" menuTrigger>Shared Access</Button>
           }
         />
@@ -1979,9 +2503,10 @@ export default function App() {
               ? "Try 'which agreements expire in 90 days'"
               : isPartiesView ? 'Search parties...'
               : isRequestsView ? 'Search Request Titles or IDs...'
+              : isWorkspacesView ? 'Search Workspaces'
               : 'Search Envelopes',
           }}
-          showSearchIndicator={!isPartiesView && !isRequestsView}
+          showSearchIndicator={!isPartiesView && !isRequestsView && !isWorkspacesView}
           rightAlignFilters={isNavigatorView}
           quickActions={isNavigatorView ? [
             <IconButton key="bm" icon="bookmark" variant="secondary" size="small" aria-label="Saved searches" />,
@@ -2002,6 +2527,13 @@ export default function App() {
               <Button kind="secondary" size="small" menuTrigger>Last Activity At</Button>
               <Button kind="secondary" size="small" menuTrigger>Owner</Button>
               <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>All Filters</Button>
+            </Inline>
+          ) : isWorkspacesView ? (
+            <Inline gap="small" align="center" style={{ flexWrap: 'nowrap' }}>
+              <Button kind="secondary" size="small" menuTrigger>Created</Button>
+              <Button kind="secondary" size="small" menuTrigger>Owned by</Button>
+              <Button kind="secondary" size="small" menuTrigger>Active</Button>
+              <Button kind="tertiary" size="small" onClick={() => setSearch('')}>Clear</Button>
             </Inline>
           ) : isNavigatorView ? (
             <Inline gap="small" align="center" style={{ flexWrap: 'nowrap' }}>
@@ -2032,10 +2564,12 @@ export default function App() {
         />
       }
     >
-      {isPartiesView ? (
+      {isWorkspacesView ? (
+        <DataTable columns={workspaceColumns} data={filteredWorkspaces} getRowKey={(row) => row.id} selectable stickyHeader showColumnControl emptyMessage="No workspaces found" onRowClick={(row) => setActiveWorkspace(row)} pagination={{ page: 1, pageSize: 25, totalItems: filteredWorkspaces.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
+      ) : isPartiesView ? (
         <DataTable columns={partyColumns} data={filteredParties} getRowKey={(row) => row.id} stickyHeader showColumnControl emptyMessage="No parties match your search" pagination={{ page: 1, pageSize: 25, totalItems: 1334, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : isRequestsView ? (
-        <DataTable columns={requestColumns} data={filteredRequests} getRowKey={(row) => row.id} stickyHeader showColumnControl rowHeight="tall" emptyMessage="No requests found" pagination={{ page: 1, pageSize: 10, totalItems: filteredRequests.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
+        <DataTable columns={requestColumns} data={filteredRequests} getRowKey={(row) => row.id} stickyHeader showColumnControl rowHeight="tall" emptyMessage="No requests found" onRowClick={(row) => setActiveRequest(row)} pagination={{ page: 1, pageSize: 10, totalItems: filteredRequests.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : isNavigatorView ? (
         <DataTable bordered columns={navigatorColumns} data={filteredNavigator} getRowKey={(row) => row.id} selectable stickyHeader stickyFooter showColumnControl rowHeight="tall" emptyMessage="No completed documents" onRowClick={() => setShowAgreementDetail(true)} pagination={{ page: 1, pageSize: 25, totalItems: 1659, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : (
@@ -2085,6 +2619,12 @@ export default function App() {
     </DocuSignShell>
     {showAgreementDetail && (
       <AgreementDetailView onClose={() => setShowAgreementDetail(false)} />
+    )}
+    {activeWorkspace && (
+      <WorkspaceDetailView workspace={activeWorkspace} onClose={() => setActiveWorkspace(null)} />
+    )}
+    {activeRequest && (
+      <RequestDetailView request={activeRequest} onClose={() => setActiveRequest(null)} />
     )}
     </>
   );
