@@ -894,112 +894,335 @@ function HomePage() {
    Insights — Overview sub-view
    ═══════════════════════════════════════ */
 
+/* Donut chart — inline SVG, matches the Insights report donuts */
+function InsightsDonut({
+  total,
+  totalLabel = 'Total',
+  segments,
+  size = 150,
+  thickness = 22,
+}: {
+  total: string;
+  totalLabel?: string;
+  segments: { value: number; color: string }[];
+  size?: number;
+  thickness?: number;
+}) {
+  const r = (size - thickness) / 2;
+  const circ = 2 * Math.PI * r;
+  const sum = segments.reduce((a, s) => a + s.value, 0) || 1;
+  let acc = 0;
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-label="Donut chart">
+      <g transform={`rotate(-90 ${size / 2} ${size / 2})`}>
+        {segments.map((s, i) => {
+          const dash = (s.value / sum) * circ;
+          const el = (
+            <circle
+              key={i}
+              cx={size / 2}
+              cy={size / 2}
+              r={r}
+              fill="none"
+              stroke={s.color}
+              strokeWidth={thickness}
+              strokeDasharray={`${dash} ${circ - dash}`}
+              strokeDashoffset={-acc}
+            />
+          );
+          acc += dash;
+          return el;
+        })}
+      </g>
+      <text x="50%" y="48%" textAnchor="middle" style={{ fontSize: 20, fontWeight: 700, fill: 'var(--ink-font-color, rgba(19,0,50,0.9))' }}>{total}</text>
+      <text x="50%" y="60%" textAnchor="middle" style={{ fontSize: 11, fill: 'var(--ink-font-secondary)' }}>{totalLabel}</text>
+    </svg>
+  );
+}
+
+/* Bordered card used across the Insights Overview (square corners, hairline border) */
+function OvCard({ children, style }: { children: React.ReactNode; style?: CSSProperties }) {
+  return (
+    <div style={{ border: '1px solid var(--ink-border-subtle)', borderRadius: 'var(--ink-radius-md)', background: 'var(--ink-surface, #fff)', ...style }}>
+      {children}
+    </div>
+  );
+}
+
+function OvSectionHeading({ children }: { children: React.ReactNode }) {
+  return <Heading level={2} style={{ fontSize: 20, fontWeight: 500, color: 'var(--ink-font-color, rgba(19,0,50,0.9))', margin: 0 }}>{children}</Heading>;
+}
+
+const OV_TEAL = '#009EB3';
+const OV_PURPLE = '#4200CA';
+
 function InsightsOverview() {
-  const getStaggerProps = useStaggerEntrance(4, { baseDelay: 50, staggerInterval: 80, duration: 400, distance: 10 });
+  const getStaggerProps = useStaggerEntrance(9, { baseDelay: 40, staggerInterval: 70, duration: 400, distance: 10 });
 
   const recents = [
-    { name: 'Expiring agreements', time: 'viewed 5 days ago' },
-    { name: 'Upcoming renewals', time: 'viewed 13 days ago' },
-    { name: 'All agreements', time: 'viewed 32 days ago' },
-    { name: 'Agreements with renewal notice date', time: 'viewed 34 days ago' },
-    { name: 'Obligations by type', time: 'viewed 34 days ago' },
+    { name: 'All agreements', time: 'viewed today' },
+    { name: 'Agreement types', time: 'viewed today' },
+    { name: 'Top parties by contract value', time: 'viewed today' },
+    { name: 'Envelope Report', time: 'viewed today' },
+    { name: 'Envelope Status Report', time: 'viewed 4 days ago' },
   ];
 
+  // Populated as if the user starred a few reports/dashboards
   const favorites = [
-    'Envelope Velocity Report',
-    'Agreement Trends',
-    'Renewals Dashboard',
+    { name: 'All agreements', type: 'Report' },
+    { name: 'Agreement types', type: 'Report' },
+    { name: 'Renewals Dashboard', type: 'Dashboard' },
   ];
+
+  const suggested = [
+    { name: 'Average Liability Cap Amount by Payment Terms', meta: 'Aggregation: Average  •  Measure: Liability Cap Amount  •  Group by: Payment Type', kind: 'bar' as const },
+    { name: 'Count of Agreements by Assignment Termination Rights', meta: 'Aggregation: Count  •  Measure: Agreements  •  Group by: Assignment (Termination Rights)', kind: 'donut' as const },
+    { name: 'Total Mission Insurance Premium', meta: 'Sum', kind: 'number' as const },
+  ];
+
+  const weekly = [
+    { title: 'All agreements', sub: 'Count', value: '1,746', unit: 'Agreements' },
+    { title: 'New agreements ingested', sub: 'Count', value: '26', unit: 'Agreements' },
+    { title: 'Expiring agreements', sub: 'Count', value: '54', unit: 'Agreements' },
+  ];
+
+  const explore = [
+    { title: 'Review Upcoming Renewal', desc: 'Discover key metrics on your agreements', cta: 'Review', img: 'insights-explore-renewal.svg' },
+    { title: 'Review Envelope Dashboard', desc: 'Discover key metrics on your envelopes', cta: 'Review', img: 'insights-explore-envelope.svg' },
+    { title: 'Create custom dashboards', desc: 'Customize your dashboard to fit your needs', cta: 'Create', img: 'insights-explore-dashboards.svg' },
+    { title: 'Create custom reports', desc: 'Customize your reports to fit your needs', cta: 'Create', img: 'insights-explore-reports.svg' },
+  ];
+
+  const resources = [
+    { label: 'Suggest a feature', icon: 'flash' as const },
+    { label: 'eSignature Report Help Docs', icon: 'document' as const },
+    { label: 'Agreement dashboard Help Docs', icon: 'bar-chart-2' as const },
+  ];
+
+  const saveBtnStyle: CSSProperties = { background: '#260559', color: '#fff', border: 'none', borderRadius: 'var(--ink-radius-sm)', padding: '4px 12px', fontSize: 14, fontWeight: 500, fontFamily: 'inherit', cursor: 'pointer' };
 
   return (
-    <div style={{ padding: 'var(--ink-spacing-300)' }}>
+    <div style={{ padding: 'var(--ink-spacing-300)', maxWidth: 1400, margin: '0 auto' }}>
+      <style>{`.ov-link{color:var(--ink-font-color, rgba(19,0,50,0.9));text-decoration:none;cursor:pointer;}.ov-link:hover{text-decoration:underline;}`}</style>
+      {/* Announcement banner */}
       <div {...getStaggerProps(0)}>
-        <PageHeader title="Overview" />
-      </div>
-
-      <div {...getStaggerProps(1)} style={{ ...getStaggerProps(1).style, marginTop: 'var(--ink-spacing-200)', marginBottom: 'var(--ink-spacing-300)' }}>
         <div style={{
-          display: 'flex', alignItems: 'center',
-          border: '1px solid var(--ink-border-subtle)', borderRadius: 'var(--ink-radius-md)',
-          padding: 'var(--ink-spacing-100) var(--ink-spacing-150)', gap: 'var(--ink-spacing-100)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--ink-spacing-150)',
+          background: '#ECEAFB', borderRadius: 'var(--ink-radius-md)',
+          padding: 'var(--ink-spacing-150) var(--ink-spacing-200)', marginBottom: 'var(--ink-spacing-250)',
+          color: 'var(--ink-font-color, rgba(19,0,50,0.9))',
         }}>
-          <Icon name="search" size={16} />
-          <span style={{ fontSize: 14, color: 'var(--ink-font-secondary)' }}>Find reports or dashboards</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+            <path d="M4 10v4a1 1 0 0 0 1 1h2l4 4V5L7 9H5a1 1 0 0 0-1 1Z" fill="#4200CA" />
+            <path d="M15 8.5a4 4 0 0 1 0 7M17.5 6a7 7 0 0 1 0 12" stroke="#4200CA" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+          <Text size="sm">We&apos;ve updated the Reports page with new dashboards and reports</Text>
+          <button style={{ background: 'transparent', color: 'var(--ink-font-color, rgba(19,0,50,0.9))', border: '1px solid rgba(19,0,50,0.5)', borderRadius: 'var(--ink-radius-sm)', padding: '4px 8px', fontSize: 14, fontWeight: 500, fontFamily: 'inherit', cursor: 'pointer', whiteSpace: 'nowrap', marginLeft: 'var(--ink-spacing-100)' }}>See what&apos;s new</button>
         </div>
       </div>
 
-      <div {...getStaggerProps(2)}>
+      {/* Title */}
+      <div {...getStaggerProps(1)}>
+        <Heading level={1} style={{ fontSize: 32, fontWeight: 400, color: 'var(--ink-font-color, rgba(19,0,50,0.9))', margin: '0 0 var(--ink-spacing-200)' }}>Overview</Heading>
+      </div>
+
+      {/* Search */}
+      <div {...getStaggerProps(2)} style={{ ...getStaggerProps(2).style, marginBottom: 'var(--ink-spacing-300)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', height: 40, border: '1px solid rgba(19,0,50,0.35)', borderRadius: 'var(--ink-radius-sm)', padding: '0 var(--ink-spacing-150)', gap: 'var(--ink-spacing-125)', background: 'var(--ink-surface, #fff)' }}>
+          <Icon name="search" size={18} color="var(--ink-font-secondary)" />
+          <span style={{ flex: 1, fontSize: 15, color: 'var(--ink-font-secondary)' }}>Find reports or dashboards</span>
+          <Icon name="chevron-down" size={18} color="var(--ink-font-secondary)" />
+        </div>
+      </div>
+
+      {/* Recents + Favorites */}
+      <div {...getStaggerProps(3)}>
       <Grid columns={2} gap="medium">
-        <Card radius="large">
+        <OvCard>
           <div style={{ padding: 'var(--ink-spacing-200)' }}>
-            <Text size="sm" weight="semibold">Your Recents</Text>
+            <Text size="md" weight="semibold">Your Recents</Text>
             <Stack gap="none" style={{ marginTop: 'var(--ink-spacing-150)' }}>
               {recents.map((r, i) => (
-                <Inline key={i} justify="between" align="center" style={{
-                  padding: 'var(--ink-spacing-100) 0',
-                  borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none',
-                }}>
+                <Inline key={i} justify="between" align="center" style={{ padding: 'var(--ink-spacing-125) 0', borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none' }}>
                   <Inline gap="small" align="center">
-                    <Icon name="bar-chart-2" size={16} />
-                    <Text size="sm">{r.name}</Text>
+                    <Icon name="bar-chart-2" size={16} color="var(--ink-font-secondary)" />
+                    <Text size="sm"><a href="#" className="ov-link">{r.name}</a></Text>
                   </Inline>
                   <Text size="xs" color="secondary">{r.time}</Text>
                 </Inline>
               ))}
             </Stack>
-            <div style={{ textAlign: 'center', marginTop: 'var(--ink-spacing-150)', borderTop: '1px solid var(--ink-border-subtle)', paddingTop: 'var(--ink-spacing-100)' }}>
-              <Link href="#">View all</Link>
+            <div style={{ marginTop: 'var(--ink-spacing-150)' }}>
+              <button style={{ width: '100%', background: 'rgba(19,0,50,0.05)', color: 'var(--ink-font-color, rgba(19,0,50,0.9))', border: 'none', borderRadius: 'var(--ink-radius-sm)', padding: '8px 12px', fontSize: 15, fontWeight: 500, fontFamily: 'inherit', cursor: 'pointer' }}>View all</button>
             </div>
           </div>
-        </Card>
+        </OvCard>
 
-        <Card radius="large">
+        <OvCard>
           <div style={{ padding: 'var(--ink-spacing-200)' }}>
-            <Text size="sm" weight="semibold">Your Favorites</Text>
+            <Text size="md" weight="semibold">Your Favorites</Text>
             <Stack gap="none" style={{ marginTop: 'var(--ink-spacing-150)' }}>
               {favorites.map((f, i) => (
-                <Inline key={i} gap="small" align="center" style={{
-                  padding: 'var(--ink-spacing-100) 0',
-                  borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none',
-                }}>
-                  <Icon name="star" size={16} color="var(--ink-yellow-80)" />
-                  <Text size="sm">{f}</Text>
+                <Inline key={i} justify="between" align="center" style={{ padding: 'var(--ink-spacing-125) 0', borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none' }}>
+                  <Inline gap="small" align="center">
+                    <Icon name="star" size={16} color="var(--ink-yellow-80)" />
+                    <Text size="sm"><a href="#" className="ov-link">{f.name}</a></Text>
+                  </Inline>
+                  <Badge kind={f.type === 'Dashboard' ? 'info' : 'neutral'} size="small">{f.type}</Badge>
                 </Inline>
               ))}
             </Stack>
           </div>
-        </Card>
+        </OvCard>
       </Grid>
       </div>
 
-      <div {...getStaggerProps(3)} style={{ ...getStaggerProps(3).style, marginTop: 'var(--ink-spacing-300)' }}>
-        <Text size="md" weight="semibold">Weekly Insights</Text>
+      {/* Suggested Reports */}
+      <div {...getStaggerProps(4)} style={{ ...getStaggerProps(4).style, marginTop: 'var(--ink-spacing-400)' }}>
+        <Inline gap="small" align="center">
+          <OvSectionHeading>Suggested Reports</OvSectionHeading>
+          <Badge kind="info" size="small" style={{ background: OV_PURPLE, color: '#fff' }}>Beta</Badge>
+        </Inline>
+        <Text size="sm" color="secondary" style={{ display: 'block', marginTop: 'var(--ink-spacing-75)' }}>AI Generated Recommendations</Text>
         <Grid columns={3} gap="medium" style={{ marginTop: 'var(--ink-spacing-200)' }}>
-          <Card radius="large">
-            <div style={{ padding: 'var(--ink-spacing-200)', textAlign: 'center' }}>
-              <Text size="sm" weight="medium">All agreements</Text>
-              <Text size="xs" color="secondary" style={{ marginTop: 'var(--ink-spacing-100)' }}>Count</Text>
-              <div style={{ fontSize: 36, fontWeight: 600, margin: 'var(--ink-spacing-100) 0', color: 'var(--ink-cobalt-90)' }}>42,357</div>
-              <Text size="sm">Agreements</Text>
-            </div>
-          </Card>
-          <Card radius="large">
-            <div style={{ padding: 'var(--ink-spacing-200)', textAlign: 'center' }}>
-              <Text size="sm" weight="medium">New agreements ingested</Text>
-              <Text size="xs" color="secondary" style={{ marginTop: 'var(--ink-spacing-100)' }}>Count</Text>
-              <div style={{ fontSize: 36, fontWeight: 600, margin: 'var(--ink-spacing-100) 0', color: 'var(--ink-cobalt-90)' }}>25</div>
-              <Text size="sm">Agreements</Text>
-            </div>
-          </Card>
-          <Card radius="large">
-            <div style={{ padding: 'var(--ink-spacing-200)', textAlign: 'center' }}>
-              <Text size="sm" weight="medium">Expiring soon</Text>
-              <Text size="xs" color="secondary" style={{ marginTop: 'var(--ink-spacing-100)' }}>Next 90 days</Text>
-              <div style={{ fontSize: 36, fontWeight: 600, margin: 'var(--ink-spacing-100) 0', color: 'var(--ink-yellow-80)' }}>138</div>
-              <Text size="sm">Agreements</Text>
-            </div>
-          </Card>
+          {suggested.map((s, i) => (
+            <OvCard key={i}>
+              <div style={{ padding: 'var(--ink-spacing-200)' }}>
+                <Inline justify="between" align="start" style={{ gap: 'var(--ink-spacing-100)' }}>
+                  <Text size="sm" weight="semibold" style={{ lineHeight: 1.3 }}>{s.name}</Text>
+                  <button style={{ ...saveBtnStyle, flexShrink: 0 }}>Save</button>
+                </Inline>
+                <Text size="xs" color="secondary" style={{ display: 'block', margin: 'var(--ink-spacing-150) 0' }}>{s.meta}</Text>
+                <div style={{ minHeight: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {s.kind === 'bar' && (
+                    <BarChart
+                      data={[50, 2, 0.334, 0.291, 0.05, 0.02]}
+                      color={OV_TEAL}
+                      showValues={false}
+                      height={180}
+                      xLabels={[{ index: 0, text: '30 days' }, { index: 2, text: '45 days' }, { index: 5, text: '45 days' }]}
+                      xAxisTitle="Payment Type"
+                      aria-label="Average liability cap by payment terms"
+                    />
+                  )}
+                  {s.kind === 'donut' && (
+                    <Inline gap="medium" align="center" justify="center" style={{ width: '100%' }}>
+                      <InsightsDonut total="1,746" segments={[{ value: 1731, color: OV_TEAL }, { value: 15, color: OV_PURPLE }]} />
+                      <Stack gap="none" style={{ gap: 'var(--ink-spacing-100)' }}>
+                        <Inline gap="small" align="center" justify="between" style={{ minWidth: 120 }}>
+                          <Inline gap="small" align="center"><span style={{ width: 10, height: 10, borderRadius: 2, background: OV_TEAL }} /><Text size="xs">Empty</Text></Inline>
+                          <Text size="xs" weight="medium">1.7K</Text>
+                        </Inline>
+                        <Inline gap="small" align="center" justify="between" style={{ minWidth: 120 }}>
+                          <Inline gap="small" align="center"><span style={{ width: 10, height: 10, borderRadius: 2, background: OV_PURPLE }} /><Text size="xs">Yes</Text></Inline>
+                          <Text size="xs" weight="medium">15</Text>
+                        </Inline>
+                      </Stack>
+                    </Inline>
+                  )}
+                  {s.kind === 'number' && (
+                    <div style={{ textAlign: 'center' }}>
+                      <div style={{ fontSize: 40, fontWeight: 700, color: 'var(--ink-font-color, rgba(19,0,50,0.9))' }}>321,518,500</div>
+                      <Text size="sm" color="secondary">Mission Insurance Premium</Text>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </OvCard>
+          ))}
         </Grid>
+      </div>
+
+      {/* Weekly Insights */}
+      <div {...getStaggerProps(5)} style={{ ...getStaggerProps(5).style, marginTop: 'var(--ink-spacing-400)' }}>
+        <OvSectionHeading>Weekly Insights</OvSectionHeading>
+        <Grid columns={2} gap="medium" style={{ marginTop: 'var(--ink-spacing-200)' }}>
+          {weekly.map((w, i) => (
+            <OvCard key={i}>
+              <div style={{ padding: 'var(--ink-spacing-200)' }}>
+                <Text size="md" weight="medium">{w.title}</Text>
+                <div style={{ textAlign: 'center', padding: 'var(--ink-spacing-400) 0' }}>
+                  <Text size="sm" color="secondary">{w.sub}</Text>
+                  <div style={{ fontSize: 44, fontWeight: 700, color: 'var(--ink-font-color, rgba(19,0,50,0.9))', margin: 'var(--ink-spacing-75) 0' }}>{w.value}</div>
+                  <Text size="md">{w.unit}</Text>
+                </div>
+              </div>
+            </OvCard>
+          ))}
+          <OvCard>
+            <div style={{ padding: 'var(--ink-spacing-200)' }}>
+              <Text size="md" weight="medium">Upcoming renewals</Text>
+              <Text size="xs" color="secondary" style={{ display: 'block', margin: 'var(--ink-spacing-125) 0' }}>Aggregation: Count  •  Measure: Agreements  •  Group by: Renewal Notice Date  •  Segment by: Agreement Type</Text>
+              <BarChart
+                data={[3, 0, 6, 5, 4, 13, 10, 5, 7, 2, 5, 7]}
+                color={OV_PURPLE}
+                showValues={false}
+                height={200}
+                yMax={16}
+                yTicks={[0, 4, 8, 12, 16]}
+                xLabels={[{ index: 0, text: 'Jul 26' }, { index: 5, text: 'Dec 26' }, { index: 11, text: 'Jun 27' }]}
+                xAxisTitle="Renewal Notice Date"
+                aria-label="Upcoming renewals by month"
+              />
+            </div>
+          </OvCard>
+        </Grid>
+      </div>
+
+      {/* Review your agreements */}
+      <div {...getStaggerProps(6)} style={{ ...getStaggerProps(6).style, marginTop: 'var(--ink-spacing-400)' }}>
+        <Inline justify="between" align="center">
+          <OvSectionHeading>Review your agreements</OvSectionHeading>
+          <Button kind="secondary" endElement={<Icon name="chevron-right" size={16} />}>View Agreements Dashboard</Button>
+        </Inline>
+        <Grid columns={2} gap="medium" style={{ marginTop: 'var(--ink-spacing-200)' }}>
+          <OvCard>
+            <div style={{ padding: 'var(--ink-spacing-200)' }}>
+              <Text size="md" weight="medium">Upcoming renewals</Text>
+              <Text size="xs" color="secondary" style={{ display: 'block', margin: 'var(--ink-spacing-125) 0' }}>Renewal Notice Date: Next 12 Months; Renewal Type: Auto Renew +2</Text>
+              <BarChart data={[4, 4, 7, 6, 5, 13, 10, 5, 7, 2, 5, 7]} color={OV_PURPLE} showValues={false} height={200} xLabels={[{ index: 0, text: 'Jul 26' }, { index: 5, text: 'Dec 26' }, { index: 11, text: 'Jun 27' }]} xAxisTitle="Renewal Notice Date" aria-label="Upcoming renewals" />
+            </div>
+          </OvCard>
+          <OvCard>
+            <div style={{ padding: 'var(--ink-spacing-200)' }}>
+              <Text size="md" weight="medium">Agreement types</Text>
+              <Text size="xs" color="secondary" style={{ display: 'block', margin: 'var(--ink-spacing-125) 0' }}>Aggregation: Count  •  Measure: Agreements  •  Group by: Agreement Type</Text>
+              <BarChart data={[420, 310, 240, 180, 120, 90, 60]} color={OV_TEAL} showValues={false} height={200} xLabels={[{ index: 0, text: 'MSA' }, { index: 3, text: 'Order Form' }, { index: 6, text: 'Other' }]} xAxisTitle="Agreement Type" aria-label="Agreement types" />
+            </div>
+          </OvCard>
+        </Grid>
+      </div>
+
+      {/* Explore Docusign Insights */}
+      <div {...getStaggerProps(7)} style={{ ...getStaggerProps(7).style, marginTop: 'var(--ink-spacing-400)' }}>
+        <OvSectionHeading>Explore Docusign Insights</OvSectionHeading>
+        <Grid columns={4} gap="medium" style={{ marginTop: 'var(--ink-spacing-200)' }}>
+          {explore.map((e, i) => (
+            <OvCard key={i}>
+              <Stack gap="none" style={{ padding: 'var(--ink-spacing-200)', height: '100%', alignItems: 'center', textAlign: 'center' }}>
+                <div style={{ height: 100, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <img src={`${import.meta.env.BASE_URL}${e.img}`} alt="" style={{ maxHeight: 96, maxWidth: '100%' }} />
+                </div>
+                <Text size="sm" weight="semibold" style={{ marginTop: 'var(--ink-spacing-150)' }}>{e.title}</Text>
+                <Text size="xs" color="secondary" style={{ marginTop: 'var(--ink-spacing-75)', flex: 1 }}>{e.desc}</Text>
+                <Button kind="secondary" size="small" style={{ marginTop: 'var(--ink-spacing-175)' }}>{e.cta}</Button>
+              </Stack>
+            </OvCard>
+          ))}
+        </Grid>
+      </div>
+
+      {/* Resources */}
+      <div {...getStaggerProps(8)} style={{ ...getStaggerProps(8).style, marginTop: 'var(--ink-spacing-400)' }}>
+        <OvSectionHeading>Resources</OvSectionHeading>
+        <Stack gap="none" style={{ marginTop: 'var(--ink-spacing-150)' }}>
+          {resources.map((r, i) => (
+            <Inline key={i} gap="small" align="center" style={{ padding: 'var(--ink-spacing-125) 0', borderTop: i > 0 ? '1px solid var(--ink-border-subtle)' : 'none' }}>
+              <Icon name={r.icon} size={16} color="var(--ink-font-secondary)" />
+              <a href="#" className="ov-link" style={{ fontSize: 14 }}>{r.label}</a>
+            </Inline>
+          ))}
+        </Stack>
       </div>
     </div>
   );
