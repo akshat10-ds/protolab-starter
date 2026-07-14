@@ -104,7 +104,7 @@ export const BarChart: React.FC<BarChartProps> = ({
       })}
 
       {xLabels.map((l) => (
-        <text key={l.text} x={padL + l.index * slot + slot / 2} y={baseline + 18} textAnchor="middle" fontSize="11" fill={tickColor}>{l.text}</text>
+        <text key={l.index} x={padL + l.index * slot + slot / 2} y={baseline + 18} textAnchor="middle" fontSize="11" fill={tickColor}>{l.text}</text>
       ))}
 
       {xAxisTitle && (

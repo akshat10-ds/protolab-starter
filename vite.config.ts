@@ -6,5 +6,5 @@ import path from 'node:path';
 export default defineConfig({
   plugins: [react(), inkManifest()],
   resolve: { alias: { '@': path.resolve(__dirname, './src') } },
-  server: { port: 3000, open: true },
+  server: { port: process.env.PORT ? Number(process.env.PORT) : 3000, open: true },
 });
