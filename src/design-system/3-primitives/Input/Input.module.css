@@ -125,7 +125,7 @@
 
 /* Placeholder */
 .input::placeholder {
-  color: var(--ink-font-color-placeholder);
+  color: var(--ink-font-color-neutral-subtle); /* Figma fontColorSubtle = fade-70 */
   opacity: 1;
 }
 

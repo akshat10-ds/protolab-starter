@@ -3,7 +3,19 @@
 .wrapper {
   display: inline-flex;
   align-items: center;
-  gap: var(--ink-spacing-100); /* 8px for small */
+}
+
+/* Label gap is size-dependent per Figma: 8/12/16 for small/medium/large */
+.wrapper.small {
+  gap: var(--ink-spacing-100); /* 8px */
+}
+
+.wrapper.medium {
+  gap: var(--ink-spacing-150); /* 12px */
+}
+
+.wrapper.large {
+  gap: var(--ink-spacing-200); /* 16px */
 }
 
 .spinner {
@@ -29,17 +41,17 @@
 
 /* Background circle - static, lighter color */
 .circleBackground {
-  stroke: var(--ink-neutral-30); /* Light gray background #e5e4e5 */
+  stroke: var(--ink-bar-track-default); /* track — neutral-fade-10 */
   stroke-linecap: round;
 }
 
 /* Kind variants - From Figma */
 .spinner.default .circle {
-  stroke: var(--ink-cobalt-100); /* Default cobalt/purple color #4c00fb */
+  stroke: var(--ink-bar-fill-default); /* #735aff — matches ProgressBar fill */
 }
 
 .spinner.subtle .circle {
-  stroke: var(--ink-neutral-90); /* Subtle dark gray color #565361 */
+  stroke: var(--ink-bar-fill-color-subtle); /* neutral-fade-70 */
 }
 
 /* Animated foreground circle */

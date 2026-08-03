@@ -6,7 +6,8 @@
   align-items: center;
   justify-content: center; /* Figma: items centered */
   gap: var(--ink-spacing-100); /* 8px */
-  padding: var(--ink-spacing-100) var(--ink-spacing-100) var(--ink-spacing-100) 48px; /* 8px 8px 8px 48px - Figma spec */
+  padding: var(--ink-spacing-100) var(--ink-spacing-100) var(--ink-spacing-100)
+    var(--ink-spacing-200); /* 8px 8px 8px 16px - Figma gap200 */
   min-height: 52px; /* Figma spec */
   min-width: 480px; /* Figma spec */
   width: 100%;
@@ -130,11 +131,11 @@
 /* Danger - Figma: messageBgColorError (#fee8ea), fontColorErrorEmphasis (#a6003f) */
 .kind-danger {
   background-color: var(--ink-message-bg-color-error); /* #fee8ea */
-  color: var(--ink-font-color-error); /* #a6003f */
+  color: var(--ink-font-color-error-emphasis); /* red-100 #a6003f */
 }
 
 .kind-danger .iconWrapper {
-  color: var(--ink-font-color-error);
+  color: var(--ink-icon-color-error); /* red-80 #ec004c */
 }
 
 .kind-danger.bottomBorder {
@@ -148,7 +149,7 @@
 }
 
 .kind-success .iconWrapper {
-  color: var(--ink-font-color-success);
+  color: var(--ink-icon-color-success); /* green-80 */
 }
 
 .kind-success.bottomBorder {
@@ -162,17 +163,18 @@
 }
 
 .kind-warning .iconWrapper {
-  color: var(--ink-font-color-warning);
+  color: var(--ink-icon-color-warning); /* orange-80 */
 }
 
 .kind-warning.bottomBorder {
   border-bottom-color: var(--ink-border-warning);
 }
 
-/* Promo - Light purple background with dark text */
+/* Promo - Figma fontColorAccentEmphasis (#4200ca) on promo bg (#e9e6fd).
+   WCAG AA verified: 8.25:1 contrast, passes — accent applied over old dark override. */
 .kind-promo {
   background-color: var(--ink-message-bg-color-promo); /* #e9e6fd - cobalt-20 */
-  color: var(--ink-font-color-default); /* Dark text for readability */
+  color: var(--ink-font-color-accent-emphasis); /* cobalt-110 #4200ca */
 }
 
 .kind-promo .iconWrapper {
@@ -183,9 +185,9 @@
   border-bottom-color: var(--ink-cobalt-100);
 }
 
-/* Promo action link - dark text to match banner text */
+/* Promo action link - accent to match banner text */
 .kind-promo .actionButton a {
-  color: var(--ink-font-color-default);
+  color: var(--ink-font-color-accent-emphasis);
 }
 
 /* Subtle - Figma: messageBgColorSubtle, fontColorDefault */

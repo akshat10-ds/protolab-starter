@@ -70,7 +70,7 @@
     var(--ink-spacing-200); /* DocuSign: 48px right padding for icon space */
   transition: border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   width: 100%;
-  line-height: 1.5; /* Exact Figma spec */
+  line-height: 1.2; /* fits the value inside the fixed 32/40px control (border-box); was 1.5 */
   appearance: none;
   cursor: pointer;
   outline: none;
@@ -83,8 +83,8 @@
 
 .select.small {
   height: 32px;
-  padding: var(--ink-spacing-50) var(--ink-spacing-600) var(--ink-spacing-50) var(--ink-spacing-200); /* DocuSign: 48px right padding */
-  font-size: var(--ink-font-size-sm); /* 14px for small variant */
+  padding: var(--ink-spacing-50) var(--ink-spacing-600) var(--ink-spacing-50) var(--ink-spacing-200); /* 4px vertical so the 16px value fits the 32px control; 48px right for icon */
+  font-size: var(--ink-font-body-m-size); /* 16px - Figma fontBodyM, same as medium */
 }
 
 /* Hover state */
@@ -153,7 +153,7 @@
   font-family: var(--ink-font-family);
   font-size: var(--ink-font-size-xs); /* 12px */
   font-weight: var(--ink-font-weight-medium); /* 500 */
-  color: var(--ink-red-90);
+  color: var(--ink-font-color-error);
   line-height: 1.5; /* Exact Figma spec */
   display: flex;
   align-items: flex-start;

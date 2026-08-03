@@ -4,14 +4,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: var(--ink-form-border-width-s) solid var(--ink-border-emphasis-inverse);
+  border: var(--ink-border-width-s) solid var(--ink-border-emphasis-inverse);
   border-radius: var(--ink-radius-full);
   box-sizing: border-box;
   font-family: var(--ink-font-family);
   font-size: var(--ink-font-badge-size);
   font-weight: var(--ink-font-weight-medium);
-  line-height: 1.5;
-  letter-spacing: 0.16px;
+  line-height: var(--ink-font-badge-line-height); /* 1.5 */
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px */
   color: var(--ink-font-color-inverse);
   text-align: center;
   white-space: nowrap;
@@ -31,7 +31,7 @@
   min-height: 20px;
   max-height: 20px;
   min-width: 16px;
-  padding: 0 4px;
+  padding: 0 var(--ink-spacing-50); /* 4px */
 }
 
 .multipleDigits {

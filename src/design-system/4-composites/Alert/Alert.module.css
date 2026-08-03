@@ -2,10 +2,11 @@
 .alert {
   display: flex;
   align-items: center;
-  gap: var(--ink-spacing-150); /* 12px gap between icon, content, button, close */
-  padding: var(--ink-spacing-200) var(--ink-spacing-300); /* 16px 24px */
+  gap: var(--ink-spacing-100); /* 8px gap between icon, content, button, close */
+  padding: var(--ink-spacing-100) var(--ink-spacing-100) var(--ink-spacing-100)
+    var(--ink-spacing-200); /* 8px 8px 8px 16px */
   font-family: var(--ink-font-family);
-  font-size: var(--ink-font-body-m-size); /* 16px */
+  font-size: var(--ink-font-body-s-size); /* 14px */
   font-weight: var(--ink-font-weight-regular); /* 400 */
   line-height: var(--ink-font-body-m-line-height); /* 1.5 */
   min-height: 52px;
@@ -27,10 +28,27 @@
   border-bottom: 4px solid;
 }
 
-/* Kind: information */
+/* Kind: information — Figma: messageBgColorSubtle + fontColorDefault */
 .alert.information {
-  background-color: var(--ink-cobalt-10); /* Light blue */
-  color: var(--ink-cobalt-110); /* Dark blue text */
+  background-color: var(--ink-message-bg-color-subtle); /* neutral-fade-5 */
+  color: var(--ink-font-color-default); /* neutral-fade-90 */
+}
+
+/* Per-kind icon tints (icon otherwise inherits text color) */
+.alert.information .icon {
+  color: var(--ink-icon-color-accent); /* cobalt-100 */
+}
+
+.alert.danger .icon {
+  color: var(--ink-icon-color-error); /* red-80 */
+}
+
+.alert.success .icon {
+  color: var(--ink-icon-color-success); /* green-80 */
+}
+
+.alert.warning .icon {
+  color: var(--ink-icon-color-warning); /* orange-80 */
 }
 
 .alert.information.bottomBorder {
@@ -40,7 +58,7 @@
 /* Kind: danger */
 .alert.danger {
   background-color: var(--ink-red-20);
-  color: var(--ink-red-100); /* Error emphasis color */
+  color: var(--ink-font-color-error-emphasis); /* red-100 #a6003f */
 }
 
 .alert.danger.bottomBorder {
@@ -134,13 +152,13 @@
 
 .title {
   font-weight: var(--ink-font-weight-semibold); /* 600 */
-  font-size: var(--ink-font-body-m-size); /* 16px */
+  font-size: var(--ink-font-body-s-size); /* 14px */
   line-height: var(--ink-font-body-m-line-height); /* 1.5 */
 }
 
 .message {
   font-weight: var(--ink-font-weight-regular); /* 400 */
-  font-size: var(--ink-font-body-m-size); /* 16px */
+  font-size: var(--ink-font-body-s-size); /* 14px */
   line-height: var(--ink-font-body-m-line-height); /* 1.5 */
 }
 

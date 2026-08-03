@@ -18,7 +18,7 @@
 
 .labelText {
   font-family: var(--ink-font-family-default);
-  font-size: var(--ink-font-size-14);
+  font-size: var(--ink-font-element-label-size); /* 14px, medium */
   font-weight: var(--ink-font-weight-medium);
   line-height: 1.4;
   color: var(--ink-font-color-default);
@@ -27,7 +27,7 @@
 
 .percentageText {
   font-family: var(--ink-font-family-default);
-  font-size: var(--ink-font-size-14);
+  font-size: var(--ink-font-body-s-size); /* 14px, regular */
   font-weight: var(--ink-font-weight-regular);
   line-height: 1.4;
   color: var(--ink-font-color-default);

@@ -30,28 +30,25 @@
 .callout {
   width: 100%;
   background: var(--ink-bg-color-default);
-  border: var(--ink-form-border-width) solid var(--ink-form-border-subtle);
+  border: var(--ink-form-border-width) solid var(--ink-border-color-subtle);
   border-radius: var(--ink-radius-size-s); /* 8px */
   box-shadow: var(--ink-elevation-medium);
   overflow: hidden;
 }
 
 /* Glass Effects */
+/* Figma bgColorGlassFrost = white@90% + dark text (was inverted to dark) */
 .glass-frost {
   backdrop-filter: blur(20px);
-  background: var(--ink-purple-130);
-  border-color: var(--ink-purple-110);
+  background: var(--ink-bg-glass-frost);
+  border-color: var(--ink-border-color-subtle);
 }
 
-.glass-frost .heading,
-.glass-frost .text {
-  color: var(--ink-white-100);
-}
-
+/* Figma bgColorGlassTint = near-black@90% + white text */
 .glass-tint {
   backdrop-filter: blur(12px);
-  background: var(--ink-purple-120);
-  border-color: var(--ink-purple-100);
+  background: var(--ink-bg-glass-tint);
+  border-color: var(--ink-border-color-subtle);
 }
 
 .glass-tint .heading,
@@ -59,40 +56,43 @@
   color: var(--ink-white-100);
 }
 
-/* Glass Mode - Close Button Icon (white) */
-.closeButtonGlass {
+/* Glass Mode chrome is white — correct only on the dark tint surface.
+   Frost is now light, so it uses the default dark-on-light chrome. */
+
+/* Glass Tint - Close Button Icon (white) */
+.glass-tint .closeButtonGlass {
   color: var(--ink-white-100);
 }
 
-.closeButtonGlass:hover {
+.glass-tint .closeButtonGlass:hover {
   background: var(--ink-white-fade-10);
 }
 
-/* Glass Mode - Footer */
-.footerGlass {
+/* Glass Tint - Footer */
+.glass-tint .footerGlass {
   border-top-color: var(--ink-white-fade-20);
 }
 
-/* Glass Mode - Secondary Button */
-.buttonGlassSecondary {
+/* Glass Tint - Secondary Button */
+.glass-tint .buttonGlassSecondary {
   background: transparent;
   border-color: var(--ink-white-fade-50);
   color: var(--ink-white-100);
 }
 
-.buttonGlassSecondary:hover {
+.glass-tint .buttonGlassSecondary:hover {
   background: var(--ink-white-fade-10);
   border-color: var(--ink-white-fade-70);
 }
 
-/* Glass Mode - Primary Button */
-.buttonGlassPrimary {
+/* Glass Tint - Primary Button */
+.glass-tint .buttonGlassPrimary {
   background: var(--ink-neutral-20);
   border-color: var(--ink-neutral-20);
   color: var(--ink-font-color-default);
 }
 
-.buttonGlassPrimary:hover {
+.glass-tint .buttonGlassPrimary:hover {
   background: var(--ink-neutral-30);
   border-color: var(--ink-neutral-30);
 }
@@ -140,7 +140,7 @@
 /* Body Text */
 .text {
   font-family: var(--ink-font-family);
-  font-size: var(--ink-font-size-md); /* 14px */
+  font-size: var(--ink-font-body-s-size); /* 14px */
   font-weight: var(--ink-font-weight-regular); /* 400 */
   line-height: 1.4;
   color: var(--ink-font-color-default);
@@ -233,7 +233,7 @@
   left: 50%;
   transform: translateX(-50%);
   border-width: 10px 8px 0 8px;
-  border-color: var(--ink-form-border-subtle) transparent transparent transparent;
+  border-color: var(--ink-border-color-subtle) transparent transparent transparent;
 }
 
 .location-above .caret::after {
@@ -254,7 +254,7 @@
   bottom: 0;
   transform: translateX(-50%);
   border-width: 0 8px 10px 8px;
-  border-color: transparent transparent var(--ink-form-border-subtle) transparent;
+  border-color: transparent transparent var(--ink-border-color-subtle) transparent;
 }
 
 .location-below .caret::after {
@@ -289,7 +289,7 @@
   top: 50%;
   transform: translateY(-50%);
   border-width: 8px 10px 8px 0;
-  border-color: transparent var(--ink-form-border-subtle) transparent transparent;
+  border-color: transparent var(--ink-border-color-subtle) transparent transparent;
 }
 
 .caretBefore::after {
@@ -304,7 +304,7 @@
   top: 50%;
   transform: translateY(-50%);
   border-width: 8px 0 8px 10px;
-  border-color: transparent transparent transparent var(--ink-form-border-subtle);
+  border-color: transparent transparent transparent var(--ink-border-color-subtle);
 }
 
 .caretAfter::after {
@@ -319,52 +319,52 @@
 .container-glassfrost .caret::before,
 .container-glassfrost .caretBefore::before,
 .container-glassfrost .caretAfter::before {
-  border-color: var(--ink-purple-110) transparent transparent transparent;
+  border-color: var(--ink-border-color-subtle) transparent transparent transparent;
 }
 
 .container-glassfrost .caret::after {
-  border-color: var(--ink-purple-130) transparent transparent transparent;
+  border-color: var(--ink-bg-glass-frost) transparent transparent transparent;
 }
 
 .container-glassfrost .caretBefore::after {
-  border-color: transparent var(--ink-purple-130) transparent transparent;
+  border-color: transparent var(--ink-bg-glass-frost) transparent transparent;
 }
 
 .container-glassfrost .caretAfter::after {
-  border-color: transparent transparent transparent var(--ink-purple-130);
+  border-color: transparent transparent transparent var(--ink-bg-glass-frost);
 }
 
 /* Below location needs different border positions */
 .container-glassfrost.location-below .caret::before {
-  border-color: transparent transparent var(--ink-purple-110) transparent;
+  border-color: transparent transparent var(--ink-border-color-subtle) transparent;
 }
 
 .container-glassfrost.location-below .caret::after {
-  border-color: transparent transparent var(--ink-purple-130) transparent;
+  border-color: transparent transparent var(--ink-bg-glass-frost) transparent;
 }
 
 .container-glasstint .caret::before,
 .container-glasstint .caretBefore::before,
 .container-glasstint .caretAfter::before {
-  border-color: var(--ink-purple-100) transparent transparent transparent;
+  border-color: var(--ink-border-color-subtle) transparent transparent transparent;
 }
 
 .container-glasstint .caret::after {
-  border-color: var(--ink-purple-120) transparent transparent transparent;
+  border-color: var(--ink-bg-glass-tint) transparent transparent transparent;
 }
 
 .container-glasstint .caretBefore::after {
-  border-color: transparent var(--ink-purple-120) transparent transparent;
+  border-color: transparent var(--ink-bg-glass-tint) transparent transparent;
 }
 
 .container-glasstint .caretAfter::after {
-  border-color: transparent transparent transparent var(--ink-purple-120);
+  border-color: transparent transparent transparent var(--ink-bg-glass-tint);
 }
 
 .container-glasstint.location-below .caret::before {
-  border-color: transparent transparent var(--ink-purple-100) transparent;
+  border-color: transparent transparent var(--ink-border-color-subtle) transparent;
 }
 
 .container-glasstint.location-below .caret::after {
-  border-color: transparent transparent var(--ink-purple-120) transparent;
+  border-color: transparent transparent var(--ink-bg-glass-tint) transparent;
 }

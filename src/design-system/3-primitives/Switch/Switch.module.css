@@ -145,3 +145,12 @@
   background-color: var(--ink-form-control-bg-color-selected-active);
   border-color: var(--ink-form-control-bg-color-selected-active);
 }
+
+/* Pressed-off - unchecked track border + thumb darken per Figma */
+.container:not(.disabled):active .track:not(.checked) {
+  border-color: var(--ink-form-control-border-color-active); /* #37039e */
+}
+
+.container:not(.disabled):active .track:not(.checked) .thumb {
+  background-color: var(--ink-form-control-thumb-bg-active); /* #37039e */
+}

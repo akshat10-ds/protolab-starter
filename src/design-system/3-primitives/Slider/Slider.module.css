@@ -7,7 +7,7 @@
   flex-direction: column;
   gap: var(--ink-spacing-50); /* 4px gap per Figma */
   width: 256px; /* Default width per Figma */
-  border-radius: var(--ink-radius-xs);
+  border-radius: var(--ink-radius-size-xs);
 }
 
 /* Label */
@@ -42,7 +42,7 @@
 .description {
   font-family: var(--ink-font-family);
   font-size: var(--ink-font-size-xs); /* 12px per Figma */
-  color: var(--ink-font-color-subtle);
+  color: var(--ink-font-color-neutral-subtle);
   line-height: 1.5;
   letter-spacing: 0.16px; /* wide per Figma */
 }
@@ -237,7 +237,7 @@
   font-weight: var(--ink-font-weight-regular); /* 400 per Figma */
   line-height: 1.4;
   padding: var(--ink-spacing-100); /* 8px per Figma */
-  border-radius: var(--ink-radius-xs); /* 4px per Figma */
+  border-radius: var(--ink-radius-size-xs); /* 4px per Figma */
   border: 1px solid var(--ink-border-emphasis-inverse); /* white border */
   white-space: nowrap;
   pointer-events: none;

@@ -14,8 +14,15 @@
   border-radius: var(--ink-radius-size-full);
 }
 
-.square {
-  border-radius: var(--ink-radius-size-m); /* 12px for square avatars */
+/* Square radius is size-dependent per Figma: L/M = radiusSizeS (8), S/XS = radiusSizeXS (4) */
+.square.large,
+.square.medium {
+  border-radius: var(--ink-radius-size-s);
+}
+
+.square.small,
+.square.xsmall {
+  border-radius: var(--ink-radius-size-xs);
 }
 
 /* Size variants - exact Figma specs */
@@ -24,7 +31,7 @@
   height: var(--ink-spacing-300);
   font-size: var(--ink-font-detail-xs-size); /* 10px */
   line-height: var(--ink-font-detail-xs-line-height); /* 1.4 */
-  letter-spacing: 0.32px; /* open tracking from Figma */
+  letter-spacing: var(--ink-letter-spacing-open); /* 0.32px open tracking from Figma */
 }
 
 .small {
@@ -32,15 +39,15 @@
   height: var(--ink-spacing-400);
   font-size: var(--ink-font-detail-s-size); /* 12px */
   line-height: var(--ink-font-detail-s-line-height); /* 1.5 */
-  letter-spacing: 0.16px; /* wide tracking from Figma */
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px wide tracking from Figma */
 }
 
 .medium {
   width: var(--ink-spacing-500);
   height: var(--ink-spacing-500);
   font-size: var(--ink-font-size-md); /* 16px - DocuSign standard */
-  line-height: 1.4;
-  letter-spacing: 0;
+  line-height: var(--ink-font-heading-xxs-line-height); /* 1.25 fontHeadingXXS from Figma */
+  letter-spacing: var(--ink-letter-spacing-cozy); /* -0.16px cozy from Figma */
 }
 
 .large {
@@ -48,7 +55,7 @@
   height: var(--ink-spacing-600);
   font-size: var(--ink-font-size-xl); /* 20px from Figma */
   line-height: var(--ink-line-height-tight); /* 1.25 - exact Figma spec */
-  letter-spacing: -0.16px; /* cozy from Figma */
+  letter-spacing: var(--ink-letter-spacing-cozy); /* -0.16px cozy from Figma */
 }
 
 .image {
@@ -66,64 +73,70 @@
   font-family: inherit;
 }
 
+/* Placeholder (no image, no initials): Figma initials=False = fallback bg + emphasis icon */
+.placeholderBg {
+  background-color: var(--ink-recipient-bg-color-fallback); /* #f0eff0 */
+}
+
 .placeholder {
   width: 60%;
   height: 60%;
-  color: var(--ink-neutral-50);
+  color: var(--ink-icon-color-emphasis); /* #130032 */
 }
 
-/* Color variations - Based on Figma recipient colors and design system */
+/* Color variations - recipient lane, keyed to Figma colorIndex → recipient key */
 .color0 {
-  background-color: var(--ink-cyan-20); /* #caf4fc - recipientBgColor100 */
-  color: var(--ink-cyan-100); /* #035a6c - recipientFontColor100 */
+  background-color: var(--ink-recipient-bg-color-100);
+  color: var(--ink-recipient-font-color-100);
 }
 
 .color1 {
-  background-color: var(--ink-purple-20);
-  color: var(--ink-purple-100);
+  background-color: var(--ink-recipient-bg-color-200);
+  color: var(--ink-recipient-font-color-200);
 }
 
 .color2 {
-  background-color: var(--ink-fuchsia-20);
-  color: var(--ink-fuchsia-100);
+  background-color: var(--ink-recipient-bg-color-300);
+  color: var(--ink-recipient-font-color-300);
 }
 
 .color3 {
-  background-color: var(--ink-cobalt-20);
-  color: var(--ink-cobalt-110);
+  background-color: var(--ink-recipient-bg-color-400);
+  color: var(--ink-recipient-font-color-400);
 }
 
 .color4 {
-  background-color: var(--ink-green-20);
-  color: var(--ink-green-100);
+  background-color: var(--ink-recipient-bg-color-500);
+  color: var(--ink-recipient-font-color-500);
 }
 
 .color5 {
-  background-color: var(--ink-cyan-10); /* #dbf9fd - recipientBgColor150 */
-  color: var(--ink-cyan-100); /* #035a6c - recipientFontColor150 */
+  background-color: var(--ink-recipient-bg-color-150);
+  color: var(--ink-recipient-font-color-150);
 }
 
 .color6 {
-  background-color: var(--ink-orange-20);
-  color: var(--ink-orange-100);
+  background-color: var(--ink-recipient-bg-color-250);
+  color: var(--ink-recipient-font-color-250);
 }
 
 .color7 {
-  background-color: var(--ink-red-20);
-  color: var(--ink-red-100);
+  background-color: var(--ink-recipient-bg-color-350);
+  color: var(--ink-recipient-font-color-350);
 }
 
 .color8 {
-  background-color: var(--ink-purple-30);
-  color: var(--ink-purple-110);
+  background-color: var(--ink-recipient-bg-color-450);
+  color: var(--ink-recipient-font-color-450);
 }
 
 .color9 {
-  background-color: var(--ink-green-30);
-  color: var(--ink-green-110);
+  background-color: var(--ink-recipient-bg-color-550);
+  color: var(--ink-recipient-font-color-550);
 }
 
+/* sign: Figma pale — pale cobalt bg + #4c00fb font (was solid cobalt/white) */
 .colorsign {
-  background-color: var(--ink-cobalt-100);
-  color: var(--ink-white-100);
+  background-color: var(--ink-recipient-bg-color-sign);
+  color: var(--ink-recipient-font-color-sign);
 }

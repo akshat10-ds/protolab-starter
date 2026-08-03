@@ -19,23 +19,23 @@
 
 /* List Size Modifiers */
 .list.small .item {
-  padding: var(--ink-spacing-sm) var(--ink-spacing-md);
+  padding: var(--ink-spacing-25) var(--ink-spacing-150); /* 2px 12px */
   min-height: 40px;
 }
 
 .list.medium .item {
-  padding: var(--ink-spacing-md) var(--ink-spacing-lg);
+  padding: var(--ink-spacing-50) var(--ink-spacing-200); /* 4px 16px — Figma default */
   min-height: 56px;
 }
 
 .list.large .item {
-  padding: var(--ink-spacing-lg) var(--ink-spacing-xl);
+  padding: var(--ink-spacing-100) var(--ink-spacing-250); /* 8px 20px */
   min-height: 72px;
 }
 
 /* Hoverable List */
 .list.hoverable .item.clickable:hover:not(.disabled) {
-  background: var(--ink-neutral-10);
+  background: var(--ink-item-bg-color-hover-subtle);
 }
 
 /* List Item Wrapper */
@@ -56,7 +56,7 @@ ol.list .listItemWrapper {
 
 ol.list .item::before {
   content: counter(list-counter) '.';
-  margin-right: var(--ink-spacing-md);
+  margin-right: var(--ink-spacing-100); /* 8px */
   color: var(--ink-neutral-60);
   font-weight: var(--ink-font-weight-medium);
 }
@@ -66,12 +66,12 @@ ol.list .item::before {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: var(--ink-spacing-md) var(--ink-spacing-lg);
+  padding: var(--ink-spacing-50) var(--ink-spacing-200); /* 4px 16px — Figma default */
   background: transparent;
   border: none;
   text-align: left;
   font-family: inherit;
-  font-size: var(--ink-font-size-md);
+  font-size: var(--ink-font-size-sm); /* 14px */
   color: var(--ink-neutral-100);
   transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
   position: relative;
@@ -97,11 +97,11 @@ ol.list .item::before {
 }
 
 .item.clickable:hover:not(.disabled) {
-  background: var(--ink-neutral-10);
+  background: var(--ink-item-bg-color-hover-subtle);
 }
 
 .item.clickable:active:not(.disabled) {
-  background: var(--ink-neutral-20);
+  background: var(--ink-item-bg-color-active-subtle);
 }
 
 .item.clickable:focus {
@@ -109,24 +109,9 @@ ol.list .item::before {
   outline-offset: -2px;
 }
 
-/* Selected Item */
-.item.selected {
-  background: var(--ink-cobalt-10);
-  color: var(--ink-cobalt-100);
-}
-
-.item.selected:hover:not(.disabled) {
-  background: var(--ink-cobalt-20);
-}
-
-.item.selected::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--ink-cobalt-60);
+/* Selected Item — Figma selected only bolds the label (no bg, no accent bar) */
+.item.selected .primary {
+  font-weight: var(--ink-font-weight-semibold);
 }
 
 /* Disabled Item */
@@ -141,7 +126,7 @@ ol.list .item::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: var(--ink-spacing-md);
+  margin-right: var(--ink-spacing-100); /* 8px */
   flex-shrink: 0;
   color: var(--ink-neutral-70);
 }
@@ -150,7 +135,7 @@ ol.list .item::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: var(--ink-spacing-md);
+  margin-left: var(--ink-spacing-100); /* 8px */
   flex-shrink: 0;
   color: var(--ink-neutral-70);
 }
@@ -161,11 +146,11 @@ ol.list .item::before {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--ink-spacing-xs);
+  gap: var(--ink-spacing-25); /* 2px */
 }
 
 .primary {
-  font-size: var(--ink-font-size-md);
+  font-size: var(--ink-font-size-sm); /* 14px */
   font-weight: var(--ink-font-weight-regular);
   line-height: var(--ink-line-height-normal);
   color: inherit;
@@ -173,7 +158,7 @@ ol.list .item::before {
 }
 
 .description {
-  font-size: var(--ink-font-size-sm);
+  font-size: var(--ink-font-size-xs); /* 12px */
   font-weight: var(--ink-font-weight-regular);
   line-height: var(--ink-line-height-normal);
   color: var(--ink-neutral-60);
@@ -183,7 +168,7 @@ ol.list .item::before {
 /* Meta */
 .meta {
   margin-left: auto;
-  padding-left: var(--ink-spacing-md);
+  padding-left: var(--ink-spacing-100); /* 8px */
   flex-shrink: 0;
   font-size: var(--ink-font-size-sm);
   color: var(--ink-neutral-60);
@@ -233,11 +218,11 @@ ol.list .item::before {
 /* Responsive */
 @media (max-width: 640px) {
   .item {
-    padding: var(--ink-spacing-sm) var(--ink-spacing-md);
+    padding: var(--ink-spacing-25) var(--ink-spacing-150); /* 2px 12px */
   }
 
   .list.large .item {
-    padding: var(--ink-spacing-md) var(--ink-spacing-lg);
+    padding: var(--ink-spacing-50) var(--ink-spacing-200); /* 4px 16px */
   }
 
   .meta {

@@ -4,7 +4,7 @@
 
 .taskCard {
   background: var(--ink-bg-color-default);
-  border: var(--ink-border-width-xs) solid var(--ink-neutral-fade-10);
+  border: var(--ink-border-width-xs) solid var(--ink-border-color-subtle); /* neutral-fade-10 - Figma */
   border-radius: var(--ink-radius-size-s); /* 8px - radiusSizeS */
   overflow: hidden;
   display: flex;
@@ -27,7 +27,7 @@
 
 .heading {
   flex: 1;
-  font-size: var(--ink-font-size-lg); /* 20px - fontHeadingXS */
+  font-size: var(--ink-font-heading-xs-size); /* 20px - fontHeadingXS */
   font-weight: var(--ink-font-weight-medium); /* 500 */
   line-height: 1.25;
   color: var(--ink-font-color-default);
@@ -37,7 +37,7 @@
 /* Body */
 .body {
   width: 100%;
-  font-size: var(--ink-font-size-md); /* 14px - fontBodyS */
+  font-size: var(--ink-font-body-s-size); /* 14px - fontBodyS */
   font-weight: var(--ink-font-weight-regular); /* 400 */
   line-height: 1.4;
   color: var(--ink-font-color-default);
@@ -58,5 +58,5 @@
   font-weight: var(--ink-font-weight-medium); /* 500 */
   line-height: 1.5;
   letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px */
-  color: var(--ink-font-color-subtle);
+  color: var(--ink-font-color-neutral-subtle);
 }

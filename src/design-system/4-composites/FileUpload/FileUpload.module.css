@@ -24,26 +24,23 @@
   justify-content: center;
   min-height: 200px;
   padding: var(--ink-spacing-8);
-  border: 2px dashed var(--ink-neutral-30);
-  border-radius: var(--ink-radius-lg);
-  background-color: var(--ink-neutral-10);
+  border: 1px solid transparent; /* Figma default has no visible border; reserves space for drag state */
+  border-radius: var(--ink-radius-size-s); /* 8px */
+  background-color: var(--ink-cta-bg-color-tertiary-default);
   cursor: pointer;
   transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .dropzone:hover:not(.disabled) {
-  border-color: var(--ink-cobalt-60);
-  background-color: var(--ink-cobalt-10);
+  background-color: var(--ink-item-bg-color-hover);
 }
 
 .dropzone.dragging {
-  border-color: var(--ink-cobalt-60);
-  background-color: var(--ink-cobalt-10);
-  border-style: solid;
+  border-color: var(--ink-border-color-emphasis);
+  background-color: var(--ink-item-bg-color-hover);
 }
 
 .dropzone.disabled {
-  opacity: 0.5;
   cursor: not-allowed;
   background-color: var(--ink-neutral-20);
 }
@@ -70,11 +67,6 @@
 .uploadIcon {
   color: var(--ink-neutral-60);
   transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
-}
-
-.dropzone:hover:not(.disabled) .uploadIcon,
-.dropzone.dragging .uploadIcon {
-  color: var(--ink-cobalt-60);
 }
 
 .dropzoneText {

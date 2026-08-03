@@ -401,6 +401,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
               ...(variant === 'solid'
                 ? { background: '#fff', backdropFilter: 'none', WebkitBackdropFilter: 'none', overflow: 'visible' }
                 : {}),
+              // Glass surface scrolls (overflow-y:auto) which clips a submenu fly-out;
+              // let it overflow while a submenu is open so the fly-out is visible.
+              ...(variant !== 'solid' && submenuOpenIndex >= 0 ? { overflow: 'visible' } : {}),
             }}
             role="menu"
             onKeyDown={handleKeyDown}

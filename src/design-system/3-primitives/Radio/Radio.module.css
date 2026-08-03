@@ -42,7 +42,7 @@
 
 .radioWrapper:not(.disabled):hover .control::before {
   background: var(
-    --ink-neutral-fade-10
+    --ink-form-control-bg-color-highlight
   ); /* rgba(19,0,50,0.1) - Figma formHighlightBgColorDefault */
 }
 
@@ -67,7 +67,7 @@
 
 /* Active/pressed state per Figma */
 .input:active:not(:disabled) {
-  border-color: var(--ink-cobalt-100); /* Figma formBorderColorActive */
+  border-color: var(--ink-form-control-border-color-active); /* #37039e - Figma formBorderColorActive */
 }
 
 .input:focus {
@@ -77,7 +77,7 @@
 }
 
 .input:checked {
-  border-color: var(--ink-cobalt-100);
+  border-color: var(--ink-form-control-border-color-selected); /* #37039e - Figma formBorderColorSelected */
 }
 
 .input:checked::after {
@@ -88,7 +88,17 @@
   width: 8px;
   height: 8px;
   border-radius: var(--ink-radius-full);
-  background: var(--ink-cobalt-100);
+  background: var(--ink-form-control-bg-color-selected); /* #37039e - Figma formBgColorSelected */
+}
+
+/* Checked + hover - border and dot darken per Figma formBorderColorSelectedHover.
+   Out-specifies the wrapper hover rule so a hovered checked radio no longer renders grey. */
+.radioWrapper:not(.disabled):hover .input:checked {
+  border-color: var(--ink-form-control-border-color-selected-hover); /* #2b047f */
+}
+
+.radioWrapper:not(.disabled):hover .input:checked::after {
+  background: var(--ink-form-control-bg-color-selected-hover); /* #2b047f */
 }
 
 /* Disabled uses wrapper opacity, but keep cursor style */
@@ -110,8 +120,18 @@
   cursor: not-allowed;
 }
 
-.label.error {
-  color: var(--ink-red-60);
+/* Error styles the CONTROL, not the label text (per Figma).
+   Placed after the checked rules so the error color wins on both unchecked and checked. */
+.input[aria-invalid='true'] {
+  border-color: var(--ink-form-control-border-color-error); /* #c70547 - Figma formBorderColorError */
+}
+
+.input[aria-invalid='true']:checked {
+  border-color: var(--ink-form-control-border-color-error);
+}
+
+.input[aria-invalid='true']:checked::after {
+  background: var(--ink-form-control-border-color-error); /* error dot when checked */
 }
 
 .visuallyHidden {

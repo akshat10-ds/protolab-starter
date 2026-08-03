@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from '../Icon';
 import styles from './Avatar.module.css';
 
 export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -22,11 +23,16 @@ export const Avatar: React.FC<AvatarProps> = ({
 }) => {
   const [imgError, setImgError] = React.useState(false);
 
+  const showImage = src && !imgError;
+  const showInitials = !showImage && !!initials;
+  const showPlaceholder = !showImage && !showInitials;
+
   const avatarClasses = [
     styles.avatar,
     styles[size],
     styles[shape],
-    (!src || imgError) && styles[`color${colorIndex}`],
+    showInitials && styles[`color${colorIndex}`],
+    showPlaceholder && styles.placeholderBg,
     className,
   ]
     .filter(Boolean)
@@ -46,12 +52,7 @@ export const Avatar: React.FC<AvatarProps> = ({
       ) : initials ? (
         <span className={styles.initials}>{getInitials()}</span>
       ) : (
-        <svg className={styles.placeholder} viewBox="0 0 24 24" fill="none">
-          <path
-            d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"
-            fill="currentColor"
-          />
-        </svg>
+        <Icon name="person" className={styles.placeholder} aria-hidden />
       )}
     </div>
   );

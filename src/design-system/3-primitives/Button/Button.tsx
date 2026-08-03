@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
+import { Icon } from '../Icon';
 import styles from './Button.module.css';
 
 // Simplified Button types for prototyping
@@ -115,9 +116,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         {endElement && <span className={styles.endElement}>{endElement}</span>}
         {menuTrigger && (
           <span className={styles.menuTrigger}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-              <path d="M6 8.5L2 4.5h8L6 8.5z" />
-            </svg>
+            <Icon name="chevron-down" size={12} />
           </span>
         )}
       </>

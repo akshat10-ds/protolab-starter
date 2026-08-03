@@ -80,10 +80,10 @@
   z-index: 3; /* Above checkbox box */
 }
 
-/* Check and Minus icons - white color on selected background */
+/* Check and Minus icons - inverse color on selected background */
 .checkIcon,
 .minusIcon {
-  color: var(--ink-white-100);
+  color: var(--ink-font-color-inverse); /* Figma iconColorInverse */
 }
 
 /* Label content wrapper - contains startElement, labelText, endElement */
@@ -168,6 +168,18 @@
   background-color: transparent;
 }
 
+/* Pressed (active) - unchecked box border darkens per Figma formBorderColorActive */
+.input:active:not(:checked):not(:indeterminate) + .label::before {
+  border-color: var(--ink-form-control-border-color-active); /* #37039e */
+}
+
+/* Pressed (active) - checked/indeterminate box darkens per Figma formBgColorSelectedActive */
+.input:active:checked + .label::before,
+.input:active:indeterminate + .label::before {
+  background-color: var(--ink-form-control-bg-color-selected-active); /* #4200ca */
+  border-color: var(--ink-form-control-bg-color-selected-active);
+}
+
 .input:checked + .label:hover::before,
 .input:indeterminate + .label:hover::before {
   background-color: var(--ink-form-control-bg-color-selected-hover);
@@ -197,7 +209,7 @@
 
 .input[aria-invalid='true']:checked + .label::before,
 .input[aria-invalid='true']:indeterminate + .label::before {
-  background-color: var(--ink-form-control-border-color-error);
+  background-color: var(--ink-form-control-bg-color-error); /* #c70547 - Figma formBgColorError */
 }
 
 .input[aria-invalid='true'] + .label:hover::before {
@@ -232,29 +244,23 @@
   cursor: not-allowed;
 }
 
+/* Disabled = dim only per Figma (opacity from the rule above); keep resting/checked
+   colors so a disabled-checked box reads as faded purple, not grey. */
 .input:disabled + .label::before {
-  background-color: var(--ink-neutral-10);
-  border-color: var(--ink-neutral-30);
   cursor: not-allowed;
 }
 
-/* Prevent hover effect on disabled */
+/* Prevent hover feedback on disabled - hold the resting default border, no grey */
 .input:disabled + .label:hover > .labelContent::before {
   background-color: transparent;
 }
 
 .input:disabled + .label:hover::before {
-  border-color: var(--ink-neutral-30);
+  border-color: var(--ink-form-control-border-color-default);
 }
 
 .input:disabled:active + .label::before {
-  border-color: var(--ink-neutral-30);
-}
-
-.input:checked:disabled + .label::before,
-.input:indeterminate:disabled + .label::before {
-  background-color: var(--ink-neutral-50);
-  border-color: var(--ink-neutral-50);
+  border-color: var(--ink-form-control-border-color-default);
 }
 
 .label.disabled {

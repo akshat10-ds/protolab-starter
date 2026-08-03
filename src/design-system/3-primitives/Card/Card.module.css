@@ -1,9 +1,9 @@
 .card {
-  background: var(--ink-white-100);
+  background: var(--ink-bg-color-default); /* bgColorDefault - white */
   border-radius: var(--ink-radius-size-s); /* 8px - radiusSizeS from Figma */
   overflow: hidden;
   font-family: var(--ink-font-family);
-  border: var(--ink-border-width-xs) solid var(--ink-neutral-fade-10); /* borderWidthXS, borderColorSubtle from Figma */
+  border: var(--ink-border-width-xs) solid var(--ink-border-color-subtle); /* borderWidthXS, borderColorSubtle from Figma */
   display: flex;
   flex-direction: column;
 }
@@ -11,7 +11,7 @@
 /* Background variants from Figma */
 .card.light {
   background: var(--ink-bg-color-default); /* bgColorDefault - white */
-  border-color: var(--ink-neutral-fade-10);
+  border-color: var(--ink-border-color-subtle);
 }
 
 .card.dark {
@@ -22,7 +22,7 @@
 
 .card.secondary {
   background: var(--ink-bg-color-canvas-page); /* bgColorCanvasPage - #f7f6f7 */
-  border-color: var(--ink-neutral-fade-10);
+  border-color: var(--ink-border-color-subtle);
 }
 
 /* Disabled state */
@@ -33,7 +33,7 @@
 
 .header {
   padding: var(--ink-spacing-150); /* 12px - gap150 from Figma */
-  border-bottom: var(--ink-border-width-xs) solid var(--ink-neutral-fade-10);
+  border-bottom: var(--ink-border-width-xs) solid var(--ink-border-color-subtle);
   font-weight: var(--ink-font-weight-semibold);
   font-size: var(--ink-font-size-lg);
   color: var(--ink-font-color-default);
@@ -48,7 +48,7 @@
 
 .footer {
   padding: var(--ink-spacing-150); /* 12px - gap150 from Figma */
-  border-top: var(--ink-border-width-xs) solid var(--ink-neutral-fade-10);
+  border-top: var(--ink-border-width-xs) solid var(--ink-border-color-subtle);
   background: var(--ink-neutral-10);
   display: flex;
   align-items: center;
@@ -80,11 +80,11 @@
 }
 
 .card.radius-medium {
-  border-radius: var(--ink-radius-size-md);
+  border-radius: var(--ink-radius-size-m); /* 12px */
 }
 
 .card.radius-large {
-  border-radius: var(--ink-radius-size-lg);
+  border-radius: var(--ink-radius-size-l); /* 16px */
 }
 
 /* Image position variants from Figma */

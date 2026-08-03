@@ -177,18 +177,13 @@ export const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
       }
     };
 
-    const getFileIcon = (file: File): 'document' | 'image' | 'file-text' => {
+    const getFileIcon = (file: File): 'document' | 'image' => {
       if (file.type.startsWith('image/')) {
         return 'image';
       }
-      if (
-        file.type.includes('pdf') ||
-        file.type.includes('word') ||
-        file.type.includes('document')
-      ) {
-        return 'document';
-      }
-      return 'file-text';
+      // Everything non-image falls back to the generic document icon.
+      // ('file-text' is not in the icon set — using it rendered no icon.)
+      return 'document';
     };
 
     const ariaDescribedBy = [error ? errorId : null, description ? descriptionId : null]

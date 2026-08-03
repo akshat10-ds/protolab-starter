@@ -30,7 +30,7 @@
 .badge {
   margin-left: auto;
   padding: 3px 6px;
-  background: var(--ink-iris-70, #4c00b0);
+  background: var(--ink-cobalt-110);
   color: #fff;
   font-size: 11px;
   font-weight: 600;
@@ -56,6 +56,7 @@
   -webkit-backdrop-filter: none;
   animation: none;
   transform: none;
+  border-width: var(--ink-form-border-width); /* 1px — Figma solid variant is sw1 (glass is sw2) */
 }
 
 /* Alignment transforms (applied via JS-calculated left position) */

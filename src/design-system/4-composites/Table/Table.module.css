@@ -44,9 +44,9 @@
 /* Table Sizes - Exact Figma Specs */
 /* Header cells - DocuSign uses 49px height, 4px vertical padding */
 .th {
-  min-height: 49px;
-  height: 49px;
-  padding: var(--ink-spacing-50) var(--ink-spacing-200); /* 4px vertical, 16px horizontal - matches DocuSign */
+  min-height: 44px;
+  height: 44px;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200); /* 12px vertical, 16px horizontal - Figma */
 }
 
 /* Compact: 48px row height */
@@ -57,7 +57,7 @@
 
 /* Default/Medium: 65px row height - matches DocuSign production */
 .table.medium .td {
-  height: 65px;
+  height: 56px;
   padding: var(--ink-spacing-50) var(--ink-spacing-200); /* 4px vertical, 16px horizontal */
 }
 
@@ -78,7 +78,7 @@
   font-size: var(--ink-font-size-xs); /* 12px */
   font-weight: var(--ink-font-weight-semibold); /* 600 */
   line-height: 1.5;
-  letter-spacing: 0.12px; /* Matches DocuSign */
+  letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px - Figma */
   color: var(--ink-font-color-default); /* rgba(19,0,50,0.9) */
   white-space: nowrap;
   position: relative;
@@ -137,7 +137,7 @@
 }
 
 .tr {
-  border-bottom: 1px solid var(--ink-neutral-fade-5); /* More subtle border - matches production */
+  border-bottom: 1px solid var(--ink-border-color-subtle); /* neutral-fade-10 (10%) - Figma */
   transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
@@ -444,7 +444,7 @@
 }
 
 .statusDot.active {
-  background: var(--ink-status-success);
+  background: var(--ink-status-bg-color-success); /* green-20 #b9f6dd */
 }
 
 .statusDot.inactive {
@@ -452,11 +452,11 @@
 }
 
 .statusDot.warning {
-  background: var(--ink-status-warning);
+  background: var(--ink-status-bg-color-warning); /* orange-20 #fce1c2 */
 }
 
 .statusDot.error {
-  background: var(--ink-status-error);
+  background: var(--ink-status-bg-color-alert); /* red-20 #fee8ea */
 }
 
 .statusText {

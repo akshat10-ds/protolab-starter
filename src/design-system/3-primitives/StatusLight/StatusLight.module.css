@@ -30,7 +30,7 @@
 
 /* Text styling - matches Figma badge font spec */
 .text {
-  font-size: var(--ink-font-size-xs); /* 12px */
+  font-size: var(--ink-font-badge-size); /* 12px */
   font-weight: var(--ink-font-weight-medium); /* 500 */
   line-height: 1.5;
   letter-spacing: var(--ink-letter-spacing-wide); /* 0.16px */
@@ -41,7 +41,7 @@
    Neutral variant
    ================================= */
 .statusLight.neutral .dot {
-  background-color: var(--ink-neutral-70);
+  background-color: var(--ink-status-bg-color-neutral); /* neutral-fade-70 ≈#5a4d70 */
 }
 
 .statusLight.neutral .text {
@@ -62,7 +62,7 @@
    Success variant
    ================================= */
 .statusLight.success .dot {
-  background-color: var(--ink-green-80);
+  background-color: var(--ink-icon-color-success); /* green-80 */
 }
 
 .statusLight.success .text {
@@ -77,7 +77,7 @@
    Warning variant
    ================================= */
 .statusLight.warning .dot {
-  background-color: var(--ink-orange-80);
+  background-color: var(--ink-icon-color-warning); /* orange-80 */
 }
 
 .statusLight.warning .text {
@@ -92,11 +92,11 @@
    Alert variant
    ================================= */
 .statusLight.alert .dot {
-  background-color: var(--ink-red-80);
+  background-color: var(--ink-icon-color-error); /* red-80 #ec004c */
 }
 
 .statusLight.alert .text {
-  color: var(--ink-font-color-error); /* #a6003f */
+  color: var(--ink-font-color-error); /* #c70547 */
 }
 
 .statusLight.alert.filled {

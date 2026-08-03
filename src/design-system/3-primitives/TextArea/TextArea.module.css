@@ -16,12 +16,8 @@
   line-height: 1.4; /* Exact Figma spec */
 }
 
-.label.disabled {
-  opacity: var(--ink-opacity-disabled);
-}
-
 .required {
-  color: var(--ink-red-60);
+  color: var(--ink-form-text-required);
 }
 
 .visuallyHidden {
@@ -47,7 +43,7 @@
 .textarea {
   width: 100%;
   min-height: 64px;
-  padding: var(--ink-spacing-100) var(--ink-spacing-100);
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
   font-family: var(--ink-font-family);
   font-size: var(--ink-font-size-md);
   line-height: 1.5;
@@ -67,7 +63,7 @@
 
 .textarea:focus {
   border: 2px solid var(--ink-form-control-border-color-active);
-  padding: calc(var(--ink-spacing-100) - 1px) calc(var(--ink-spacing-100) - 1px);
+  padding: calc(var(--ink-spacing-100) - 1px) calc(var(--ink-spacing-200) - 1px);
   box-shadow: var(--ink-focus-ring-accent-subtle);
 }
 
@@ -77,7 +73,7 @@
 
 .textarea.error:focus {
   border: 2px solid var(--ink-form-control-border-color-error);
-  padding: calc(var(--ink-spacing-100) - 1px) calc(var(--ink-spacing-100) - 1px);
+  padding: calc(var(--ink-spacing-100) - 1px) calc(var(--ink-spacing-200) - 1px);
   box-shadow: var(--ink-focus-ring-error);
 }
 
@@ -129,7 +125,7 @@
 }
 
 .countError {
-  color: var(--ink-red-60);
+  color: var(--ink-font-color-error);
 }
 
 .countOverMessage {
@@ -141,9 +137,9 @@
   display: flex;
   align-items: flex-start;
   gap: var(--ink-spacing-1);
-  font-size: var(--ink-font-size-sm);
+  font-size: var(--ink-font-detail-s-size); /* 12px - Figma fontDetailS */
   font-weight: var(--ink-font-weight-medium);
-  color: var(--ink-red-60);
+  color: var(--ink-font-color-error);
   line-height: var(--ink-line-height-normal);
 }
 
@@ -152,5 +148,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-red-60);
+  color: var(--ink-font-color-error);
 }

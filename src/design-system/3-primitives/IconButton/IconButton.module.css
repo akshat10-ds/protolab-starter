@@ -98,7 +98,7 @@
 /* Danger variant - Figma spec: transparent bg with red icon by default */
 .danger {
   background-color: transparent;
-  color: var(--ink-cta-bg-color-danger-default); /* Red icon color */
+  color: var(--ink-icon-color-error); /* #ec004c - Figma iconColorError */
 }
 
 .danger:hover:not(:disabled) {

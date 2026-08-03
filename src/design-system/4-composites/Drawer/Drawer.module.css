@@ -108,7 +108,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--ink-spacing-lg) var(--ink-spacing-xl);
+  padding: var(--ink-spacing-300) var(--ink-spacing-400);
   border-bottom: 1px solid var(--ink-neutral-30);
   flex-shrink: 0;
 }
@@ -132,8 +132,8 @@
 .headerActions {
   display: flex;
   align-items: center;
-  gap: var(--ink-spacing-md);
-  margin-left: var(--ink-spacing-lg);
+  gap: var(--ink-spacing-200);
+  margin-left: var(--ink-spacing-300);
   flex-shrink: 0;
 }
 
@@ -167,7 +167,7 @@
 /* Body */
 .body {
   flex: 1;
-  padding: var(--ink-spacing-xl);
+  padding: var(--ink-spacing-400);
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior: contain;
@@ -194,7 +194,7 @@
 
 /* Footer */
 .footer {
-  padding: var(--ink-spacing-lg) var(--ink-spacing-xl);
+  padding: var(--ink-spacing-300) var(--ink-spacing-400);
   border-top: 1px solid var(--ink-neutral-30);
   background: var(--ink-neutral-10);
   flex-shrink: 0;
@@ -266,14 +266,14 @@
   }
 
   .header {
-    padding: var(--ink-spacing-md) var(--ink-spacing-lg);
+    padding: var(--ink-spacing-200) var(--ink-spacing-300);
   }
 
   .body {
-    padding: var(--ink-spacing-lg);
+    padding: var(--ink-spacing-300);
   }
 
   .footer {
-    padding: var(--ink-spacing-md) var(--ink-spacing-lg);
+    padding: var(--ink-spacing-200) var(--ink-spacing-300);
   }
 }

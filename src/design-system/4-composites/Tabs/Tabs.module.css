@@ -10,9 +10,9 @@
 .tab {
   background: transparent;
   border: none;
-  padding: var(--ink-spacing-3) var(--ink-spacing-5); /* Horizontal padding: 20px */
+  padding: var(--ink-spacing-3) 0; /* Figma: 0 horizontal, min-width + centered */
   font-family: var(--ink-font-family);
-  font-size: var(--ink-font-size-md);
+  font-size: var(--ink-font-body-s-size); /* 14px - Figma */
   font-weight: var(--ink-font-weight-regular); /* 400 - Unselected tabs use regular weight */
   color: var(--ink-font-color-neutral); /* Unselected tab text color */
   cursor: pointer;
@@ -25,7 +25,11 @@
 
 .tab:hover:not(:disabled) {
   color: var(--ink-font-color-default);
-  background: var(--ink-neutral-fade-5);
+  background: var(--ink-item-bg-color-hover-subtle); /* neutral-fade-5 - Figma */
+}
+
+.tab:active:not(:disabled) {
+  background: var(--ink-item-bg-color-active-subtle); /* neutral-fade-10 - Figma pressed */
 }
 
 .tab:focus {

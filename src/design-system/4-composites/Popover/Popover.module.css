@@ -39,7 +39,7 @@
 
 /* Top position */
 .top .arrow {
-  bottom: -16px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
   border-top-color: var(--ink-white-100);
@@ -55,7 +55,7 @@
 
 /* Bottom position */
 .bottom .arrow {
-  top: -16px;
+  top: -8px;
   left: 50%;
   transform: translateX(-50%);
   border-bottom-color: var(--ink-white-100);
@@ -71,7 +71,7 @@
 
 /* Left position */
 .left .arrow {
-  right: -16px;
+  right: -8px;
   top: 50%;
   transform: translateY(-50%);
   border-left-color: var(--ink-white-100);
@@ -87,7 +87,7 @@
 
 /* Right position */
 .right .arrow {
-  left: -16px;
+  left: -8px;
   top: 50%;
   transform: translateY(-50%);
   border-right-color: var(--ink-white-100);

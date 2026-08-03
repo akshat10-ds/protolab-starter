@@ -8,7 +8,7 @@
   height: var(--ink-spacing-400); /* 32px */
   padding: 0 var(--ink-spacing-100); /* 0 8px - gap100 from Figma */
   background-color: var(
-    --ink-neutral-fade-5
+    --ink-cta-bg-color-tertiary-default
   ); /* rgba(19,0,50,0.05) - Figma ctaBgColorTertiaryDefault */
   border-radius: var(--ink-radius-size-xs); /* 4px - radiusSizeXS from Figma */
   font-family: var(--ink-font-family);
@@ -29,13 +29,13 @@
 
 .chip.clickable:hover {
   background-color: var(
-    --ink-neutral-fade-10
+    --ink-cta-bg-color-tertiary-hover
   ); /* rgba(19,0,50,0.1) - Figma ctaBgColorTertiaryHover */
 }
 
 .chip.clickable:active {
   background-color: var(
-    --ink-neutral-fade-15
+    --ink-cta-bg-color-tertiary-active
   ); /* rgba(19,0,50,0.15) - Figma ctaBgColorTertiaryActive */
 }
 

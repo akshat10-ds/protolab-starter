@@ -29,8 +29,11 @@ export const Spinner: React.FC<SpinnerProps> = ({
     .filter(Boolean)
     .join(' ');
 
+  // strokeWidth scales in the 50-unit viewBox so rendered stroke = 2/4/8px at 16/40/80
+  const strokeWidth = size === 'small' ? 6.25 : 5;
+
   return (
-    <div data-ink-component="Spinner" data-ink-prop-size={size} className={styles.wrapper} role="status" {...props}>
+    <div data-ink-component="Spinner" data-ink-prop-size={size} className={`${styles.wrapper} ${styles[size]}`} role="status" {...props}>
       <svg className={spinnerClasses} viewBox="0 0 50 50">
         {/* Background circle */}
         <circle
@@ -39,7 +42,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
           cy="25"
           r="20"
           fill="none"
-          strokeWidth="4"
+          strokeWidth={strokeWidth}
         />
         {/* Animated foreground circle */}
         <circle
@@ -48,7 +51,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
           cy="25"
           r="20"
           fill="none"
-          strokeWidth="4"
+          strokeWidth={strokeWidth}
         />
       </svg>
       <span className={showLabel ? styles.labelVisible : styles.label}>{label}</span>

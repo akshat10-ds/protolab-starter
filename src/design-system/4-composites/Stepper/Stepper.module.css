@@ -37,16 +37,18 @@
   display: block;
   height: 2px;
   position: absolute;
-  right: -50%;
-  margin-right: var(--ink-spacing-3);
-  top: 16px;
-  width: calc(100% - 48px);
-  background-color: var(--ink-neutral-30);
+  /* Span continuously from this step's circle right edge (50% + 16px radius)
+     to the next step's circle left edge (100% + 50% - 16px). */
+  left: calc(50% + 16px);
+  right: auto;
+  width: calc(100% - 32px);
+  top: 16px; /* vertical center of the 32px circle */
+  background-color: var(--ink-bar-track-default); /* neutral-fade-10 - Figma */
   transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .horizontal .completed:not(:last-child)::after {
-  background-color: var(--ink-cobalt-20);
+  background-color: var(--ink-bar-track-color-visited); /* cobalt-140 #260559 - Figma */
 }
 
 .vertical .step {
@@ -90,8 +92,8 @@
   background-color: var(--ink-neutral-20);
   color: var(--ink-neutral-fade-70);
   font-family: var(--ink-font-family);
-  font-size: var(--ink-font-body-s-size); /* 14px from Figma */
-  font-weight: var(--ink-font-weight-regular); /* 400 */
+  font-size: var(--ink-font-body-m-size); /* 16px from Figma */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
   line-height: 1;
   transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
   border: 2px solid transparent;
@@ -106,16 +108,16 @@
 }
 
 .active .stepIconWrapper {
-  background-color: var(--ink-cobalt-100); /* #4c00fb - filled purple */
+  background-color: var(--ink-icon-color-accent-emphasis); /* cobalt-110 #4200ca - Figma */
   color: var(--ink-white-100); /* White text/number */
-  border-color: var(--ink-cobalt-100);
-  box-shadow: 0 0 0 4px var(--ink-cobalt-10); /* #f3f2fe - light purple glow */
+  border-color: var(--ink-icon-color-accent-emphasis);
+  box-shadow: 0 0 0 4px var(--ink-cobalt-10); /* #f3f2fe - light purple glow (code-only) */
 }
 
 .upcoming .stepIconWrapper {
   background-color: transparent; /* No background for incomplete steps */
   color: var(--ink-neutral-fade-90);
-  border-color: var(--ink-neutral-30); /* borderColorSubtle */
+  border-color: var(--ink-border-color-subtle); /* neutral-fade-10 - Figma */
 }
 
 .error .stepIconWrapper {
@@ -145,7 +147,7 @@
 /* Connector Line - Vertical (div-based for vertical orientation) */
 .connector {
   position: absolute;
-  background-color: var(--ink-neutral-30);
+  background-color: var(--ink-bar-track-default); /* neutral-fade-10 - Figma */
   transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
@@ -161,7 +163,7 @@
 }
 
 .completed .connector {
-  background-color: var(--ink-cobalt-20); /* Light purple for completed connectors */
+  background-color: var(--ink-bar-track-color-visited); /* cobalt-140 #260559 - Figma */
 }
 
 .step:last-child .connector {
@@ -196,8 +198,8 @@
 }
 
 .active .stepTitle {
-  color: var(--ink-neutral-fade-90);
-  font-weight: var(--ink-font-weight-regular); /* Keep regular weight */
+  color: var(--ink-font-color-accent-emphasis); /* cobalt-110 #4200ca - Figma */
+  font-weight: var(--ink-font-weight-semibold); /* 600 - Figma */
 }
 
 .completed .stepTitle {

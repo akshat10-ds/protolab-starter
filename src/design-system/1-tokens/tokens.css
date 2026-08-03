@@ -341,8 +341,9 @@
   --ink-font-color-accent: var(--ink-cobalt-100);
   --ink-font-color-accent-emphasis: var(--ink-cobalt-110);
   --ink-font-color-accent-subtle: var(--ink-cobalt-30);
-  --ink-font-color-disabled: var(--ink-neutral-fade-30);
-  --ink-font-color-error: var(--ink-red-100);
+  --ink-font-color-disabled: var(--ink-neutral-fade-20); /* Figma fontColorDisabled = #130032 @20% */
+  --ink-font-color-error: var(--ink-red-90); /* Figma fontColorError = #c70547 */
+  --ink-font-color-error-emphasis: var(--ink-red-100); /* Figma fontColorErrorEmphasis = #a6003f — Banner/Alert danger body text */
   --ink-font-color-inverse: var(--ink-white-100);
   --ink-font-color-neutral: var(--ink-neutral-fade-70);
   --ink-font-color-neutral-emphasis: var(--ink-neutral-100);
@@ -357,11 +358,11 @@
   --ink-font-color-link-default: var(--ink-cobalt-100);
   --ink-font-color-link-hover: var(--ink-cobalt-110);
   --ink-font-color-link-active: var(--ink-cobalt-120);
-  --ink-font-color-link-visited: var(--ink-cobalt-110);
-  --ink-font-color-link-subtle-default: var(--ink-neutral-fade-90);
-  --ink-font-color-link-subtle-hover: var(--ink-cobalt-100);
-  --ink-font-color-link-subtle-active: var(--ink-cobalt-110);
-  --ink-font-color-link-subtle-visited: var(--ink-neutral-fade-90);
+  --ink-font-color-link-visited: var(--ink-cobalt-140); /* Figma fontColorLinkVisited = #260559 */
+  --ink-font-color-link-subtle-default: var(--ink-neutral-fade-90); /* Figma fontColorLinkSubtle default 90% */
+  --ink-font-color-link-subtle-hover: var(--ink-neutral-fade-80); /* Figma hover 80% (DARKER, not cobalt) */
+  --ink-font-color-link-subtle-active: var(--ink-neutral-140); /* Figma active 100% = #130032 */
+  --ink-font-color-link-subtle-visited: var(--ink-neutral-fade-70); /* Figma visited 70% */
 
   /* Font Link Color Inverse */
   --ink-font-color-link-inverse-default: var(--ink-cobalt-40);
@@ -686,72 +687,72 @@
   /* inkRecipientTokens                         */
   /* ========================================== */
 
-  /* Recipient Background - Variant 100 (Cyan) */
+  /* Recipient Background - Variant 100 (Cyan) — resynced to Figma recipientBgColor100 */
   --ink-recipient-bg-color-100: var(--ink-cyan-20);
   --ink-recipient-bg-color-100-rest: var(--ink-cyan-30);
   --ink-recipient-bg-color-100-hover: var(--ink-cyan-40);
-  --ink-recipient-bg-color-100-active: var(--ink-cyan-50);
+  --ink-recipient-bg-color-100-active: var(--ink-cyan-40);
 
-  /* Recipient Background - Variant 150 (Teal) */
-  --ink-recipient-bg-color-150: #b6e9e7;
-  --ink-recipient-bg-color-150-rest: #a8dfdd;
-  --ink-recipient-bg-color-150-hover: #a2d5d3;
-  --ink-recipient-bg-color-150-active: #96d3d0;
+  /* Recipient Background - Variant 150 (Cyan light) — resynced to Figma recipientBgColor150 */
+  --ink-recipient-bg-color-150: var(--ink-cyan-10);
+  --ink-recipient-bg-color-150-rest: var(--ink-cyan-40);
+  --ink-recipient-bg-color-150-hover: var(--ink-cyan-50);
+  --ink-recipient-bg-color-150-active: var(--ink-cyan-50);
 
-  /* Recipient Background - Variant 200 (Green) */
-  --ink-recipient-bg-color-200: var(--ink-green-20);
-  --ink-recipient-bg-color-200-rest: var(--ink-green-30);
-  --ink-recipient-bg-color-200-hover: var(--ink-green-40);
-  --ink-recipient-bg-color-200-active: var(--ink-green-50);
+  /* Recipient Background - Variant 200 (Fuchsia) — resynced to Figma recipientBgColor200 */
+  --ink-recipient-bg-color-200: var(--ink-fuchsia-20);
+  --ink-recipient-bg-color-200-rest: var(--ink-fuchsia-30);
+  --ink-recipient-bg-color-200-hover: var(--ink-fuchsia-40);
+  --ink-recipient-bg-color-200-active: var(--ink-fuchsia-40);
 
-  /* Recipient Background - Variant 250 (Purple) */
-  --ink-recipient-bg-color-250: var(--ink-purple-20);
-  --ink-recipient-bg-color-250-rest: var(--ink-purple-30);
-  --ink-recipient-bg-color-250-hover: var(--ink-purple-40);
-  --ink-recipient-bg-color-250-active: var(--ink-purple-50);
+  /* Recipient Background - Variant 250 (Orange light) — resynced to Figma recipientBgColor250 */
+  --ink-recipient-bg-color-250: var(--ink-orange-10);
+  --ink-recipient-bg-color-250-rest: var(--ink-orange-20);
+  --ink-recipient-bg-color-250-hover: var(--ink-orange-30);
+  --ink-recipient-bg-color-250-active: var(--ink-orange-30);
 
-  /* Recipient Background - Variant 300 (Light Purple) */
-  --ink-recipient-bg-color-300: #e6e2ff;
-  --ink-recipient-bg-color-300-rest: #d8d3f3;
-  --ink-recipient-bg-color-300-hover: #d5cdfd;
-  --ink-recipient-bg-color-300-active: #d1c8ff;
+  /* Recipient Background - Variant 300 (Green) — resynced to Figma recipientBgColor300 */
+  --ink-recipient-bg-color-300: var(--ink-green-20);
+  --ink-recipient-bg-color-300-rest: var(--ink-green-30);
+  --ink-recipient-bg-color-300-hover: var(--ink-green-40);
+  --ink-recipient-bg-color-300-active: var(--ink-green-40);
 
-  /* Recipient Background - Variant 350 (Pink/Red) */
-  --ink-recipient-bg-color-350: #ffd8d6;
-  --ink-recipient-bg-color-350-rest: #ffc2c4;
-  --ink-recipient-bg-color-350-hover: #f6adb0;
-  --ink-recipient-bg-color-350-active: #ff9da0;
+  /* Recipient Background - Variant 350 (Purple light) — resynced to Figma recipientBgColor350 */
+  --ink-recipient-bg-color-350: var(--ink-purple-10);
+  --ink-recipient-bg-color-350-rest: var(--ink-purple-40);
+  --ink-recipient-bg-color-350-hover: var(--ink-purple-50);
+  --ink-recipient-bg-color-350-active: var(--ink-purple-50);
 
-  /* Recipient Background - Variant 400 (Orange) */
-  --ink-recipient-bg-color-400: var(--ink-orange-10);
-  --ink-recipient-bg-color-400-rest: var(--ink-orange-20);
-  --ink-recipient-bg-color-400-hover: var(--ink-orange-30);
+  /* Recipient Background - Variant 400 (Orange) — resynced to Figma recipientBgColor400 */
+  --ink-recipient-bg-color-400: var(--ink-orange-20);
+  --ink-recipient-bg-color-400-rest: var(--ink-orange-30);
+  --ink-recipient-bg-color-400-hover: var(--ink-orange-40);
   --ink-recipient-bg-color-400-active: var(--ink-orange-40);
 
-  /* Recipient Background - Variant 450 (Yellow) */
-  --ink-recipient-bg-color-450: #fff0b2;
-  --ink-recipient-bg-color-450-rest: #ffe98f;
-  --ink-recipient-bg-color-450-hover: #fbe27b;
-  --ink-recipient-bg-color-450-active: #f9e17c;
+  /* Recipient Background - Variant 450 (Red) — resynced to Figma recipientBgColor450 */
+  --ink-recipient-bg-color-450: var(--ink-red-10);
+  --ink-recipient-bg-color-450-rest: var(--ink-red-40);
+  --ink-recipient-bg-color-450-hover: var(--ink-red-50);
+  --ink-recipient-bg-color-450-active: var(--ink-red-50);
 
-  /* Recipient Background - Variant 500 (Blue) */
-  --ink-recipient-bg-color-500: #d9e3ff;
-  --ink-recipient-bg-color-500-rest: #beceff;
-  --ink-recipient-bg-color-500-hover: #b4c7ff;
-  --ink-recipient-bg-color-500-active: #94b0ff;
+  /* Recipient Background - Variant 500 (Purple) — resynced to Figma recipientBgColor500 */
+  --ink-recipient-bg-color-500: var(--ink-purple-20);
+  --ink-recipient-bg-color-500-rest: var(--ink-purple-30);
+  --ink-recipient-bg-color-500-hover: var(--ink-purple-40);
+  --ink-recipient-bg-color-500-active: var(--ink-purple-40);
 
-  /* Recipient Background - Variant 550 (Fuchsia) */
-  --ink-recipient-bg-color-550: #ffc6e3;
-  --ink-recipient-bg-color-550-rest: #ffb2d9;
-  --ink-recipient-bg-color-550-hover: #ffaad5;
-  --ink-recipient-bg-color-550-active: #ff9fcf;
+  /* Recipient Background - Variant 550 (Green light) — resynced to Figma recipientBgColor550 */
+  --ink-recipient-bg-color-550: var(--ink-green-10);
+  --ink-recipient-bg-color-550-rest: var(--ink-green-20);
+  --ink-recipient-bg-color-550-hover: var(--ink-green-30);
+  --ink-recipient-bg-color-550-active: var(--ink-green-30);
 
-  /* Recipient Background - Special */
+  /* Recipient Background - Special — resynced to Figma recipientBgColor{Fallback,Sign} */
   --ink-recipient-bg-color-fallback: var(--ink-neutral-20);
   --ink-recipient-bg-color-sign: var(--ink-cobalt-20);
   --ink-recipient-bg-color-sign-rest: var(--ink-cobalt-30);
   --ink-recipient-bg-color-sign-hover: var(--ink-cobalt-40);
-  --ink-recipient-bg-color-sign-active: var(--ink-cobalt-50);
+  --ink-recipient-bg-color-sign-active: var(--ink-cobalt-40);
 
   /* Recipient Border */
   --ink-recipient-border-color-100: #009dbd;
@@ -769,17 +770,17 @@
   --ink-recipient-border-color-selected-emphasis: var(--ink-cobalt-110);
   --ink-recipient-border-color-selected-subtle: var(--ink-cobalt-50);
 
-  /* Recipient Font */
+  /* Recipient Font — resynced to Figma recipientFontColor{key} */
   --ink-recipient-font-color-100: var(--ink-cyan-100);
-  --ink-recipient-font-color-150: #02504d;
-  --ink-recipient-font-color-200: var(--ink-green-100);
-  --ink-recipient-font-color-250: var(--ink-fuchsia-100);
-  --ink-recipient-font-color-300: #4b12ce;
-  --ink-recipient-font-color-350: var(--ink-red-90);
+  --ink-recipient-font-color-150: var(--ink-cyan-100);
+  --ink-recipient-font-color-200: var(--ink-fuchsia-100);
+  --ink-recipient-font-color-250: var(--ink-orange-100);
+  --ink-recipient-font-color-300: var(--ink-green-100);
+  --ink-recipient-font-color-350: var(--ink-purple-100);
   --ink-recipient-font-color-400: var(--ink-orange-100);
-  --ink-recipient-font-color-450: #6f3b0d;
-  --ink-recipient-font-color-500: #002965;
-  --ink-recipient-font-color-550: #7c1089;
+  --ink-recipient-font-color-450: var(--ink-red-100);
+  --ink-recipient-font-color-500: var(--ink-purple-100);
+  --ink-recipient-font-color-550: var(--ink-green-100);
   --ink-recipient-font-color-sign: var(--ink-cobalt-100);
 
   /* ========================================== */
@@ -875,6 +876,7 @@
   --ink-letter-spacing-wide: 0.16px;
   --ink-letter-spacing-normal: 0;
   --ink-letter-spacing-tight: -0.02em;
+  --ink-letter-spacing-cozy: -0.16px; /* Figma cozy tracking (Avatar M/L initials) */
 
   /* Detail Text Styles */
   --ink-font-detail-xs-size: 10px;

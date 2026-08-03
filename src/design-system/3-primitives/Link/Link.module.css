@@ -56,38 +56,39 @@
   align-items: center;
 }
 
-/* Kind: Default - Cobalt Colors */
+/* Kind: Default - Cobalt Colors (semantic link tokens, value-equal to primitives) */
 .kind-default {
-  color: var(--ink-cobalt-100); /* #4c00fb */
+  color: var(--ink-font-color-link-default); /* cobalt-100 #4c00fb */
 }
 
 .kind-default:hover {
-  color: var(--ink-cobalt-110); /* #4200ca */
+  color: var(--ink-font-color-link-hover); /* cobalt-110 #4200ca */
 }
 
 .kind-default:active {
-  color: var(--ink-cobalt-120); /* #37039e */
+  color: var(--ink-font-color-link-active); /* cobalt-120 #37039e */
 }
 
 .kind-default:visited {
-  color: var(--ink-cobalt-140); /* #260559 */
+  color: var(--ink-font-color-link-visited); /* cobalt-140 #260559 */
 }
 
-/* Kind: Subtle - Production: fontColorSubtle */
+/* Kind: Subtle - Figma fontColorLinkSubtle: default 90%, hover 80% (DARKER), active 100%, visited 70%.
+   Semantic tokens now carry the correct Figma values (was raw neutral-fade workaround). */
 .kind-subtle {
-  color: var(--ink-neutral-fade-70); /* Production: fontColorSubtle = rgba(19,0,50,0.7) */
+  color: var(--ink-font-color-link-subtle-default); /* neutral-fade-90 */
 }
 
 .kind-subtle:hover {
-  color: var(--ink-neutral-fade-60); /* rgba(19,0,50,0.6) */
+  color: var(--ink-font-color-link-subtle-hover); /* neutral-fade-80 - darkens per Figma */
 }
 
 .kind-subtle:active {
-  color: var(--ink-neutral-fade-90); /* rgba(19,0,50,0.9) */
+  color: var(--ink-font-color-link-subtle-active); /* neutral-140 #130032 = 100% per Figma */
 }
 
 .kind-subtle:visited {
-  color: var(--ink-neutral-fade-60); /* rgba(19,0,50,0.6) */
+  color: var(--ink-font-color-link-subtle-visited); /* neutral-fade-70 */
 }
 
 /* Disabled State */

@@ -40,10 +40,11 @@
   border: 0;
 }
 
-/* Description */
+/* Description — Figma: fontDetailS (12px) Medium */
 .description {
   font-family: var(--ink-font-family);
-  font-size: var(--ink-font-size-sm);
+  font-size: var(--ink-font-size-xs); /* 12px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
   color: var(--ink-font-color-neutral);
   line-height: var(--ink-line-height-normal);
 }

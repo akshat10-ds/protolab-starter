@@ -32,7 +32,7 @@
 
 .modal {
   background: var(--ink-white-100); /* #ffffff */
-  border-radius: var(--ink-radius-size-l); /* 16px - radiusSizeL from Figma */
+  border-radius: var(--ink-radius-size-m); /* 12px - radiusSizeM from Figma */
   box-shadow: var(--ink-shadow-xl);
   display: flex;
   flex-direction: column;
