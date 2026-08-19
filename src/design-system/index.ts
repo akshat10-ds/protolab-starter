@@ -5,3 +5,9 @@ export { AIChat, AgentPanel, DataTable, dataTableStyles, FilterBar, GlobalNav, L
 export { AgreementTableView, DocuSignShell } from './6-layouts';
 export { motionCurves, motionDurations, createTransition, staggerDelay, motionPresets } from './motion';
 export type { MotionCurve, MotionTier } from './motion';
+
+/* Types `ai-system` imports from `@ink`. Surfaced through the barrel so a
+   released ai-system resolves them; nothing is vendored or forked. */
+export type { DataTableColumn } from './5-patterns/DataTable/types';
+export type { LocalNavProps } from './5-patterns/LocalNav/LocalNav';
+export type { DropdownItemProps } from './4-composites/Dropdown/Dropdown';

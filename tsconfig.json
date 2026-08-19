@@ -10,6 +10,18 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@ink": [
+        "./src/design-system"
+      ],
+      "@ink/*": [
+        "./src/design-system/*"
+      ],
+      "@ai": [
+        "./src/ai-system"
+      ],
+      "@ai/*": [
+        "./src/ai-system/*"
       ]
     },
     "baseUrl": "."
