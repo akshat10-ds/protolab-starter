@@ -22,3 +22,5 @@ export { Stepper } from './Stepper';
 export { Table } from './Table';
 export { Tabs } from './Tabs';
 export { TaskCard } from './TaskCard';
+export { Timeline } from './Timeline';
+export type { TimelineItem, TimelineProps, TimelineStatus } from './Timeline';

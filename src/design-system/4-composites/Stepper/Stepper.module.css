@@ -1,4 +1,5 @@
 /* Ink Design System - Stepper Component Styles */
+/* Ported from [ds-ui] [INK] Progress Stepper (851:8080) + ProgressStepper.Item (523:25136). */
 @import '../../1-tokens/tokens.css';
 
 .stepper {
@@ -14,7 +15,7 @@
 
 .stepper.vertical {
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 /* Step Container */
@@ -29,95 +30,72 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-content: center;
-}
-
-.horizontal .step:not(:last-child)::after {
-  content: '';
-  display: block;
-  height: 2px;
-  position: absolute;
-  /* Span continuously from this step's circle right edge (50% + 16px radius)
-     to the next step's circle left edge (100% + 50% - 16px). */
-  left: calc(50% + 16px);
-  right: auto;
-  width: calc(100% - 32px);
-  top: 16px; /* vertical center of the 32px circle */
-  background-color: var(--ink-bar-track-default); /* neutral-fade-10 - Figma */
-  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
-}
-
-.horizontal .completed:not(:last-child)::after {
-  background-color: var(--ink-bar-track-color-visited); /* cobalt-140 #260559 - Figma */
+  justify-content: flex-start;
 }
 
 .vertical .step {
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center; /* master: column item counter-axis CENTER */
   text-align: left;
-  margin-bottom: var(--ink-spacing-6);
+  gap: var(--ink-spacing-100); /* 8px */
 }
 
-.vertical .step:last-child {
-  margin-bottom: 0;
-}
-
-/* Step Indicator */
+/* Step Indicator — connector, circle, connector */
 .stepIndicator {
   display: flex;
-  position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 .horizontal .stepIndicator {
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   width: 100%;
-  margin-bottom: var(--ink-spacing-100); /* 8px from Figma */
+  height: 32px;
+  gap: var(--ink-spacing-200); /* 16px */
+  margin-bottom: var(--ink-spacing-100); /* 8px */
 }
 
 .vertical .stepIndicator {
   flex-direction: column;
-  align-items: center;
-  margin-right: var(--ink-spacing-150); /* 12px from Figma */
+  align-self: stretch;
+  width: 32px;
+  flex-shrink: 0;
+  gap: var(--ink-spacing-100); /* 8px */
 }
 
-/* Step Icon Wrapper */
+/* Step Icon Wrapper — 32px circle */
 .stepIconWrapper {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px; /* Smaller circle from Figma */
+  width: 32px;
   height: 32px;
   border-radius: var(--ink-radius-full);
-  background-color: var(--ink-neutral-20);
-  color: var(--ink-neutral-fade-70);
+  border: var(--ink-border-width-xs) solid transparent;
+  background-color: transparent;
   font-family: var(--ink-font-family);
-  font-size: var(--ink-font-body-m-size); /* 16px from Figma */
+  font-size: var(--ink-font-heading-xxs-size); /* 16px */
   font-weight: var(--ink-font-weight-medium); /* 500 */
-  line-height: 1;
-  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), box-shadow var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
-  border: 2px solid transparent;
+  line-height: var(--ink-font-heading-xxs-line-height);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), border-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity), transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
   flex-shrink: 0;
 }
 
 /* Status Styles */
 .completed .stepIconWrapper {
-  background-color: var(--ink-cobalt-20); /* #e9e6fd - Light purple from Figma */
-  color: var(--ink-neutral-140); /* #130032 - Dark text for checkmark */
-  border-color: var(--ink-cobalt-20);
+  background-color: var(--ink-status-bg-color-past); /* #e9e6fd */
+  color: var(--ink-icon-color-emphasis); /* #130032 */
 }
 
 .active .stepIconWrapper {
-  background-color: var(--ink-icon-color-accent-emphasis); /* cobalt-110 #4200ca - Figma */
-  color: var(--ink-white-100); /* White text/number */
-  border-color: var(--ink-icon-color-accent-emphasis);
-  box-shadow: 0 0 0 4px var(--ink-cobalt-10); /* #f3f2fe - light purple glow (code-only) */
+  background-color: var(--ink-status-bg-color-current); /* #4200ca */
+  color: var(--ink-font-color-inverse);
 }
 
 .upcoming .stepIconWrapper {
-  background-color: transparent; /* No background for incomplete steps */
-  color: var(--ink-neutral-fade-90);
-  border-color: var(--ink-border-color-subtle); /* neutral-fade-10 - Figma */
+  border-color: var(--ink-border-color-subtle); /* #130032 @ 0.10 */
+  color: var(--ink-font-color-primary); /* #130032 @ 0.90 */
 }
 
 .error .stepIconWrapper {
@@ -144,30 +122,41 @@
   justify-content: center;
 }
 
-/* Connector Line - Vertical (div-based for vertical orientation) */
+/*
+  Connectors. Each step owns the half above/before it and the half below/after
+  it, exactly as the master does — so a step's own status paints its two
+  halves. Traveled halves: both of a completed step, and the leading half of
+  the active one. The end halves stay in the layout when suppressed so every
+  circle keeps its centre.
+*/
 .connector {
-  position: absolute;
-  background-color: var(--ink-bar-track-default); /* neutral-fade-10 - Figma */
+  background-color: var(--ink-bar-track-color-default); /* #130032 @ 0.10 */
   transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .horizontal .connector {
-  display: none; /* Using ::after pseudo-element for horizontal */
+  flex: 1;
+  height: 2px;
+  min-width: 0;
 }
 
 .vertical .connector {
-  top: 32px; /* Adjusted for 32px circle */
-  left: 15px; /* Center of 32px circle minus 1px (half of 2px width) */
+  flex: 1;
   width: 2px;
-  height: calc(100% + var(--ink-spacing-6));
+  min-height: var(--ink-spacing-100);
 }
 
-.completed .connector {
-  background-color: var(--ink-bar-track-color-visited); /* cobalt-140 #260559 - Figma */
+.completed .connector,
+.active .connector {
+  background-color: var(--ink-bar-track-color-visited); /* #260559 */
 }
 
-.step:last-child .connector {
-  display: none;
+.active .connectorEnd {
+  background-color: var(--ink-bar-track-color-default);
+}
+
+.connectorHidden {
+  visibility: hidden;
 }
 
 /* Step Content */
@@ -185,29 +174,20 @@
 
 .vertical .stepContent {
   flex: 1;
-  padding-top: var(--ink-spacing-1);
 }
 
 .stepTitle {
   font-family: var(--ink-font-family);
-  font-size: var(--ink-font-body-s-size); /* 14px from Figma */
-  font-weight: var(--ink-font-weight-regular); /* 400 */
-  line-height: var(--ink-font-body-s-line-height); /* 1.4 */
-  color: var(--ink-neutral-fade-90);
+  font-size: var(--ink-font-element-label-size); /* 14px */
+  font-weight: var(--ink-font-weight-medium); /* 500 */
+  line-height: var(--ink-font-element-label-line-height); /* 1.4 */
+  color: var(--ink-font-color-secondary); /* #130032 @ 0.70 */
   transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
 .active .stepTitle {
-  color: var(--ink-font-color-accent-emphasis); /* cobalt-110 #4200ca - Figma */
-  font-weight: var(--ink-font-weight-semibold); /* 600 - Figma */
-}
-
-.completed .stepTitle {
-  color: var(--ink-neutral-fade-70); /* fontColorSubtle */
-}
-
-.upcoming .stepTitle {
-  color: var(--ink-neutral-fade-70);
+  color: var(--ink-font-color-accent-emphasis); /* #4200ca */
+  font-weight: var(--ink-font-weight-semibold); /* 600 */
 }
 
 .error .stepTitle {
@@ -216,19 +196,15 @@
 
 .stepDescription {
   font-family: var(--ink-font-family);
-  font-size: var(--ink-font-detail-s-size); /* 12px from Figma */
-  font-weight: var(--ink-font-weight-regular); /* 400 */
+  font-size: var(--ink-font-detail-s-size); /* 12px */
+  font-weight: var(--ink-font-weight-regular);
   line-height: var(--ink-font-detail-s-line-height); /* 1.5 */
-  color: var(--ink-neutral-fade-70);
+  color: var(--ink-font-color-secondary);
   transition: color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
 }
 
-.active .stepDescription {
-  color: var(--ink-neutral-70);
-}
-
 .upcoming .stepDescription {
-  color: var(--ink-neutral-40);
+  color: var(--ink-font-color-tertiary);
 }
 
 .error .stepDescription {
@@ -243,11 +219,10 @@
 
 .clickable:hover .stepIconWrapper {
   transform: scale(1.05);
-  box-shadow: var(--ink-shadow-md);
 }
 
 .clickable:focus-visible {
-  outline: 2px solid var(--ink-cobalt-100); /* #4c00fb */
+  outline: 2px solid var(--ink-cobalt-100);
   outline-offset: 2px;
   border-radius: var(--ink-radius-md);
 }
@@ -263,36 +238,4 @@
 
 .disabled:hover .stepIconWrapper {
   transform: none;
-  box-shadow: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .horizontal {
-    flex-direction: column;
-  }
-
-  .horizontal .step {
-    flex-direction: row;
-    align-items: flex-start;
-    text-align: left;
-    margin-bottom: var(--ink-spacing-6);
-  }
-
-  .horizontal .stepIndicator {
-    flex-direction: column;
-    margin-right: var(--ink-spacing-4);
-    margin-bottom: 0;
-  }
-
-  .horizontal .stepContent {
-    padding: var(--ink-spacing-1) 0 0 0;
-  }
-
-  .horizontal .connector {
-    top: 32px; /* Adjusted for 32px circle */
-    left: 15px; /* Center of 32px circle minus 1px */
-    width: 2px;
-    height: calc(100% + var(--ink-spacing-6));
-  }
 }

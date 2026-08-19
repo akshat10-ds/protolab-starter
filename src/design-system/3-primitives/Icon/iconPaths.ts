@@ -60,6 +60,22 @@ export const iconPaths: Record<string, IconPath> = {
   'arrow-nested': {
     path: 'M18.77 11.43L14.35 7L13 8.35L15.66 11H9C8.45 11 8 10.55 8 10V3H6V10C6 11.66 7.34 13 9 13H15.66L13 15.65L14.35 17L18.77 12.57C18.93 12.41 19 12.2 19 12C19 11.8 18.93 11.59 18.77 11.43Z',
   },
+  /**
+   * `arrowNestedSmall`, from Akshat's frame 381:51512 — the icon for
+   * suggestions and recommendations everywhere (Akshat, 2026-08-19: "use that
+   * icon always for recommendations/suggestions").
+   *
+   * The vector is 11x13 and Ink's `Icon` has no transform, so the path is
+   * TRANSLATED by (+2.5, +1.5) into a 16x16 box — the glyph centred at its
+   * native size, which is what the frame draws (11x13 inside the row's 24px
+   * icon box). Translation only. Nothing is rescaled: rescaling path data by
+   * hand is how glyphs drift, and every number below is the original plus a
+   * constant.
+   */
+  'arrow-nested-small': {
+    path: 'M13.27 8.93L8.85 4.5L7.5 5.85L10.16 8.5H5.5C4.95 8.5 4.5 8.05 4.5 7.5V1.5H2.5V7.5C2.5 9.16 3.84 10.5 5.5 10.5H10.16L7.5 13.15L8.85 14.5L13.27 10.07C13.43 9.91 13.5 9.7 13.5 9.5C13.5 9.3 13.43 9.09 13.27 8.93Z',
+    viewBox: '0 0 16 16',
+  },
   'arrow-right': {
     path: 'M21.77 11.43 14.35 4 13 5.35 18.66 11H2v2h16.66L13 18.65 14.35 20l7.42-7.43c.16-.16.23-.37.23-.57s-.07-.41-.23-.57',
   },

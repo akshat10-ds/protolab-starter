@@ -1,0 +1,181 @@
+/* Ink Design System - Timeline Component Styles */
+/* Ported from [ds-ui] Child/[INK] Timeline.Step (node 907:9961). */
+@import '../../1-tokens/tokens.css';
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--ink-font-family);
+}
+
+/* Row: rail column + content column, gap300 (24px) */
+.row {
+  display: flex;
+  align-items: stretch;
+  gap: var(--ink-spacing-300);
+}
+
+/* ── Rail ──────────────────────────────────────────────────────────────── */
+
+/*
+  The rail is a 2px column; the dot overhangs it. `Padding` in the master is a
+  white-filled frame that masks the rail behind the dot — a Figma artifact. The
+  same break is made here with layout, so it works on any background.
+*/
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 2px;
+}
+
+.segment {
+  width: 2px;
+  height: 6px; /* master: beforeConnector 6px above a 4px dot */
+  flex-shrink: 0;
+}
+
+.end {
+  flex: 1;
+  height: auto;
+}
+
+.suppressed {
+  visibility: hidden; /* keeps the row's rhythm; only the paint goes */
+}
+
+.dotSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 12px; /* master: Padding frame, 4px dot centred */
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--ink-radius-full);
+}
+
+/* The current event's dot is 12px; its slot and lead-in absorb the difference
+   so every dot centre stays on the same 12px rhythm. */
+.current .segment {
+  height: 2px;
+}
+
+.current .dotSlot {
+  height: 20px;
+}
+
+.current .dot {
+  width: 12px;
+  height: 12px;
+}
+
+/* Rail colour follows the row's own status */
+.complete .segment,
+.current .segment {
+  background-color: var(--ink-bar-track-color-visited); /* #260559 */
+}
+
+.incomplete .segment {
+  background-color: var(--ink-bar-track-color-default); /* #130032 @ 0.10 */
+}
+
+.complete .dot {
+  background-color: var(--ink-icon-color-accent-emphasis); /* #4200ca */
+}
+
+.current .dot {
+  background-color: var(--ink-status-bg-color-current); /* #4200ca */
+}
+
+.incomplete .dot {
+  background-color: var(--ink-status-bg-color-future); /* #130032 @ 0.10 */
+}
+
+/* ── Content ───────────────────────────────────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  flex: 1;
+  min-width: 0;
+  padding-bottom: var(--ink-spacing-150);
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  min-width: 0;
+}
+
+.timestamp {
+  padding-top: 3px; /* master: timestamp.position pad-top, no token at 3px */
+  font-size: var(--ink-font-timestamp-size); /* 12px */
+  line-height: var(--ink-font-timestamp-line-height); /* 1.5 */
+  font-weight: var(--ink-font-weight-semibold);
+  letter-spacing: var(--ink-letter-spacing-wide);
+  color: var(--ink-font-color-secondary); /* #130032 @ 0.70 */
+}
+
+.labelRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-50);
+  min-width: 0;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--ink-icon-color-default);
+}
+
+.label {
+  font-size: var(--ink-font-element-label-size); /* 14px */
+  line-height: var(--ink-font-element-label-line-height); /* 1.4 */
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-secondary);
+}
+
+.current .label {
+  color: var(--ink-font-color-primary); /* #130032 @ 0.90 */
+}
+
+.disclosure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--ink-icon-color-default);
+}
+
+.disclosure:focus-visible {
+  outline: 2px solid var(--ink-cobalt-100);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-sm);
+}
+
+.description {
+  font-size: var(--ink-font-body-s-size); /* 14px */
+  line-height: var(--ink-font-body-s-line-height); /* 1.4 */
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-secondary);
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-150);
+}
