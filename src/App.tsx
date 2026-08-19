@@ -2365,6 +2365,14 @@ export default function App() {
   const [previewAgreement, setPreviewAgreement] = useState<PreviewAgreement | null>(null);
   /** A nav page the host is holding open. IrisAgent's own pages win over this. */
   const [navSlot, setNavSlot] = useState<ScenarioId | null>(null);
+  /** The left nav gives up its width to Iris: opening the panel unlocks the
+      nav so it collapses to its icon rail, closing it locks it back open.
+      The lock button still works — this only sets the state, it does not own it. */
+  const [navLocked, setNavLocked] = useState(true);
+  useEffect(() => {
+    setNavLocked(panel.mode === 'closed');
+  }, [panel.mode]);
+
   /** Bumped per scenario run — the cold state is in-memory, so a remount replays it. */
   const [runKey, setRunKey] = useState(0);
 
@@ -3049,7 +3057,11 @@ export default function App() {
     <style>{tableRowStaggerStyles}</style>
     <DocuSignShell
       globalNav={globalNavConfig}
-      localNav={sidebarMap[activeTab]}
+      localNav={
+        sidebarMap[activeTab]
+          ? { ...sidebarMap[activeTab], isLocked: navLocked, onLockChange: setNavLocked }
+          : undefined
+      }
     >
       <FadeIn keyProp={transitionKey} key={transitionKey}>
         <div className="page-transition" style={{ flex: 1 }}>
