@@ -167,9 +167,9 @@ export interface AgentOption {
    * A lockup that replaces glyph *and* name in the header — e.g. the `iris`
    * wordmark, whose letterforms already spell the name.
    *
-   * Host-supplied, because it is brand. `icon` still drives the picker rows;
-   * this only changes the resting header. Omit and the header renders
-   * `icon` + `name` as before.
+   * The agent with id `iris` gets the Iris lockup that ships with the pattern,
+   * so a host names no art. Any other agent renders `icon` + `name` until it
+   * supplies one here. `icon` still drives the picker rows either way.
    */
   wordmark?: ReactNode;
 }

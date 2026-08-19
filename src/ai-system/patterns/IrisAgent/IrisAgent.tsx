@@ -86,6 +86,22 @@ import type {
   SuggestionCategory,
 } from './types';
 
+/*
+ * Iris's own brand art, three files for three jobs. It ships WITH the pattern
+ * rather than being handed in: a composed surface has to look like itself with
+ * no art props at all, or every host re-supplies the same three images and the
+ * one that forgets falls back to a glyph.
+ *
+ * `iris-bloom` is the wide crop the cold-state frame uses — it only works large,
+ * because it is a fragment of a bigger pattern. `iris-mark` is the complete
+ * 576-square figure, which is the one that survives being shrunk to 88px for the
+ * thinking state. Scaling the crop down produced an illegible tangle.
+ * `iris-wordmark` is the horizontal lockup the header rests on.
+ */
+import irisBloom from './art/iris-bloom.svg';
+import irisMark from './art/iris-mark.svg';
+import irisWordmark from './art/iris-wordmark.svg';
+
 import styles from './IrisAgent.module.css';
 
 // =============================================================================
@@ -503,15 +519,17 @@ export interface IrisAgentProps {
   coldStateFooterSlot?: React.ReactNode;
   /**
    * Art behind the cold state, filling the space the greeting is anchored under.
-   * `compact` only. The host owns it because it is brand — the Iris bloom on a
-   * Docusign surface, something else anywhere else.
+   * `compact` only.
+   *
+   * Defaults to the Iris bloom, which ships with the pattern. Pass a node to put
+   * another surface's brand there; pass `null` for no art at all.
    */
   coldBackdrop?: React.ReactNode;
   /**
    * The mark shown while Iris is working, in place of the loading skeleton.
    *
-   * Same asset as `coldBackdrop` in the Docusign panel — the bloom is the
-   * shipping product's thinking state. Omit it and the skeleton stands.
+   * Defaults to the Iris mark — the complete figure, not the cold state's crop,
+   * because this one is drawn at 88px. Pass `null` and the grey skeleton stands.
    */
   thinkingMark?: React.ReactNode;
 
@@ -811,8 +829,8 @@ export function IrisAgent({
   coldStateHeaderSlot,
   coldStateSlot,
   coldStateFooterSlot,
-  coldBackdrop,
-  thinkingMark,
+  coldBackdrop = <img src={irisBloom} alt="" />,
+  thinkingMark = <img src={irisMark} alt="" />,
 
   pageContext,
   agreements = [],
@@ -1608,8 +1626,8 @@ export function IrisAgent({
       {/*
         The bloom is the thinking state in the shipping product, so the system
         should not be showing a generic grey skeleton here. The mark is the
-        host's, same as `coldBackdrop` — a surface that supplies no mark still
-        gets the skeleton.
+        pattern's default now, same as `coldBackdrop` — the skeleton is reached
+        only by a surface that passes `thinkingMark={null}` to refuse the art.
 
         This is a different appearance from the cold state's, not a violation of
         "the art goes the moment you send a message". Arrival ends on send;
@@ -2229,15 +2247,20 @@ export function IrisAgent({
    * contains the name as letterforms, so drawing a glyph and a text label
    * beside it would say the name twice. Everything else keeps glyph + name.
    *
-   * The mark belongs to the host: `iris` is Docusign's, and another surface
-   * brings its own. Frame 101:17846.
+   * Iris's own lockup ships with the pattern, so the header reads right with no
+   * art props at all; any agent supplies its own through `wordmark`. Frame
+   * 101:17846.
    */
-  const agentIdentity = activeAgent.wordmark ?? (
-    <>
-      <IrisIcon />
-      <span className={styles.panelIdentityName}>{activeAgent.name}</span>
-    </>
-  );
+  const agentIdentity =
+    activeAgent.wordmark ??
+    (activeAgent.id === 'iris' ? (
+      <img src={irisWordmark} alt="Iris" />
+    ) : (
+      <>
+        <IrisIcon />
+        <span className={styles.panelIdentityName}>{activeAgent.name}</span>
+      </>
+    ));
 
   const agentMenuItems = useMemo<DropdownItemProps[] | null>(() => {
     if (!agents?.length) return null;

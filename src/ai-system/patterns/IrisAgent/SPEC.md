@@ -168,8 +168,11 @@ The strip above the composer, offering the agreement the host page has open.
 
 Content, and only content: every suggestion string, the greeting subtitle, the
 placeholder list, the checklist's steps and their copy, the artifact fixtures,
-and the host page's own chrome. Brand nodes stay host-side too — `coldBackdrop`,
-`railBrand`, `thinkingMark`, the agent `wordmark`.
+and the host page's own chrome. The host's OWN brand stays host-side — `railBrand`
+is Docusign's logo, not Iris's. Iris's own art does not: the bloom, the mark and
+the wordmark ship in `IrisAgent/art/` and are the defaults for `coldBackdrop`,
+`thinkingMark` and the `iris` agent's `wordmark`, so a surface that passes no art
+still looks like Iris. The props remain, as overrides.
 
 ## Do / don't
 
