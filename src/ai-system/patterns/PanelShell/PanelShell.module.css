@@ -1,0 +1,179 @@
+@import '@ink/1-tokens/tokens.css';
+@import '../../tokens/motion.css';
+
+/* ============================================
+   Shell — a sibling of the host page, never its parent.
+   Provenance: iris-panel/index.module.css `.panelWrapper` (:7-22)
+   ============================================ */
+
+.shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 100%;
+  /* Visible, so the drag handle can straddle the border instead of sitting
+     wholly inside the panel. `.content` does the clipping the shell used to. */
+  overflow: visible;
+  background: var(--ink-bg-color-default);
+  transition: width var(--ai-motion-duration-panel) var(--ai-motion-easing-standard);
+}
+
+/*
+ * At rest the divider stays the hairline it always was. Akshat tried it heavier
+ * and put it back: the weight belongs to hover, not to the resting page.
+ */
+.shellRight {
+  border-left: 1px solid var(--ink-border-color-subtle);
+}
+
+.shellLeft {
+  border-right: 1px solid var(--ink-border-color-subtle);
+}
+
+/* While dragging, the width is driven frame-by-frame by the pointer.
+   A transition here would lag the cursor. Provenance: `.panelWrapperResizing` (:20-22). */
+.shellResizing {
+  transition: none !important;
+}
+
+/* A closed shell keeps its DOM — content state survives a close/reopen — but must
+   not be reachable by pointer or by the sequential focus order. `inert` handles
+   focus; this handles the pointer for browsers mid-transition. */
+.shellClosed {
+  pointer-events: none;
+  /* Zero-width and unclipped would spill the whole panel across the host. */
+  overflow: hidden;
+}
+
+/* Inner row: panel content sits beside any artifact surface it opens.
+   Provenance: `.panelInnerRow` (:25-31). */
+.content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ============================================
+   Drag handle — 16px hit area, 4px × 48px bar
+   Provenance: iris-panel/index.module.css (:135-171)
+   ============================================ */
+
+/*
+ * THE WHOLE DIVIDER IS THE TARGET, and it straddles the border.
+ *
+ * Akshat, 2026-08-18: *"the handle inside doesn't work well sometimes and we
+ * also need to have the entire divider be draggable."* It was already full
+ * height, but the 16px sat entirely INSIDE the panel — so coming at it from the
+ * host page, the natural direction, you crossed the border into dead space
+ * before reaching anything grabbable, and the first 16px of panel content was
+ * under a strip that ate its clicks.
+ *
+ * Centred on the border instead: 8px of host, 8px of panel. Half the intrusion
+ * into content, and the edge is grabbable from either side.
+ *
+ * `touch-action: none` so a touch drag resizes rather than scrolling the page.
+ */
+.handle {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 100%;
+  cursor: ew-resize;
+  touch-action: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shellRight .handle {
+  left: -8px;
+}
+
+.shellLeft .handle {
+  right: -8px;
+}
+
+/*
+ * The stroke does not answer the pointer — the bar does.
+ *
+ * Three hover strokes were tried and all three were put back: indigo 10 (lighter
+ * than the border it replaced), neutral 70%, and solid #130032 (too dark — a
+ * structural edge should not appear because the pointer is near it). Akshat:
+ * *"border subtle only with 1px and just highlight the dragger like we're doing
+ * it."*
+ *
+ * The bar below is the whole affordance. It fades in when the panel is hovered
+ * and firms up on the handle itself, which is a mark arriving rather than the
+ * page's structure changing weight. The divider stays a hairline in every state.
+ */
+
+.handleBar {
+  width: 4px;
+  height: 48px;
+  border-radius: var(--ink-radius-full);
+  background: var(--ink-neutral-40);
+  opacity: 0;
+  transition:
+    opacity var(--ai-motion-duration-handle) ease,
+    background var(--ai-motion-duration-handle) ease;
+}
+
+/* Hovering the panel hints that the edge is grabbable; hovering the edge confirms it. */
+.shell:hover .handleBar {
+  opacity: 0.6;
+}
+
+.handle:hover .handleBar,
+.handle:active .handleBar {
+  background: var(--ink-neutral-80);
+  opacity: 1;
+}
+
+/* The handle is keyboard-operable (arrows resize, Home/End jump), so it needs a
+   visible focus ring. The prototype's handle was pointer-only. */
+/* The ring belongs on the bar, not on the invisible 16px hit area. */
+.handle:focus-visible {
+  outline: none;
+}
+
+.handle:focus-visible .handleBar {
+  background: var(--ink-focus-color);
+  opacity: 1;
+  outline: var(--ink-focus-outer);
+  outline-offset: var(--ink-focus-outer-offset);
+}
+
+/*
+ * While a drag is live the pointer spends all its time off the handle, so the
+ * cursor has to be pinned globally or it reverts to whatever it is over — an
+ * I-beam, usually, which reads as the drag having dropped. Selection is killed
+ * for the same reason: dragging across the host page would otherwise paint a
+ * selection behind the panel.
+ *
+ * `usePanelResize` sets and clears the attribute, including on `pointercancel`.
+ */
+:global(body[data-panel-resizing]) {
+  cursor: ew-resize !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ============================================
+   Reduced motion
+
+   `tokens/motion.css` already collapses the durations above, so this block is
+   redundant when that file is loaded. It is here so that a consumer who imports
+   `PanelShell` without the token sheet still gets correct behavior — a motion
+   preference should never depend on an import succeeding.
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .shell,
+  .handleBar {
+    transition: none;
+  }
+}

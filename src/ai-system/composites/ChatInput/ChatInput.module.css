@@ -1,0 +1,626 @@
+@import '@ink/1-tokens/tokens.css';
+@import '../../tokens/color.css';
+
+/* ============================================
+   Chat Input — Decided Spec (2026-03-19)
+   ContentEditable, single→multi transition,
+   animated placeholder, slash coloring,
+   CommandMenu + flat filtered dropdown.
+   ============================================ */
+
+/* Outer positioning wrapper — holds shell + slash dropdown */
+.shellWithMenu {
+  position: relative;
+  max-width: 720px;
+}
+
+/* Shell — single-line: horizontal row */
+.shell {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-m);
+  background: var(--ink-bg-color-default);
+  box-shadow: 0 4px 8px var(--ink-neutral-fade-10);
+  max-width: 720px;
+  padding: 12px;
+  transition:
+    border-radius 200ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 200ms cubic-bezier(0.23, 1, 0.32, 1),
+    padding 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Multi-line: column layout */
+.shellMulti {
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: var(--ink-radius-size-m);
+  padding: 12px;
+}
+
+/* Collapsing animation state */
+.shellCollapsing {
+  /* marker class only — used to target .actions below */
+}
+
+/*
+ * Something is flush on the top edge — a strip that carries the radius for the
+ * pair. Declared after `.shellMulti` so it wins on source order at equal
+ * specificity, in both the single-line and the multi-line form.
+ */
+.shellFlushTop {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* ============================================
+   TEXTAREA WRAPPER — contentEditable + placeholder
+   ============================================ */
+
+.textareaWrapper {
+  position: relative;
+  flex: 1;
+  order: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.shellMulti .textareaWrapper {
+  order: 0;
+  width: 100%;
+}
+
+/* ContentEditable input — replaces textarea for inline color styling */
+.input {
+  grid-row: 1;
+  grid-column: 1;
+  width: 100%;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+  min-height: 20px;
+  max-height: 200px;
+  padding: 0 8px;
+  outline: none;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.shellMulti .input {
+  padding: 0 4px;
+}
+
+.input:empty:focus {
+  /* keep cursor visible even when empty */
+}
+
+.inputDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   SLASH COMMAND COLORING — applied via innerHTML
+   ============================================ */
+
+.commandSlash {
+  color: var(--ink-cobalt-100);
+}
+
+.commandDesc {
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* ============================================
+   ANIMATED PLACEHOLDER — cycles hints
+   ============================================ */
+
+/*
+ * `right` is not optional. Without it the placeholder is a nowrap line anchored
+ * only on the left, so anything longer than the box runs past the edge and is
+ * clipped by the panel rather than by the input. The cycling hints are short
+ * enough never to hit it; a previewed suggestion query is not.
+ */
+.animatedPlaceholder {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ink-font-color-neutral-subtle);
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    opacity 280ms ease,
+    transform 280ms ease;
+}
+
+.animatedPlaceholder[data-phase='visible'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animatedPlaceholder[data-phase='exiting'] {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.animatedPlaceholder[data-phase='entering'] {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/*
+ * The agent's slash token — Claude's inline skill token, in our colour.
+ *
+ * Claude draws it blue; this one is ecru, because the panel's accent language
+ * is ecru/neutral and there is no purple or cobalt in the chat. `ecru-20` is
+ * the same fill the header menu's rows use, so a soft-filled token reads as
+ * part of the surface rather than as a state.
+ *
+ * `line-height: 18px` inside a 20px input row is the whole trick: the
+ * placeholder layer is `overflow: hidden`, so a taller token would be shaved
+ * flat top and bottom. It sits in the placeholder, which is absolutely
+ * positioned over the input, so it cannot move the composer's height.
+ */
+.placeholderToken {
+  flex: none;
+  display: inline-block;
+  margin-right: 6px;
+  padding: 0 6px;
+  border-radius: var(--ink-radius-size-xs);
+  background: var(--ink-ecru-20);
+  color: var(--ink-font-color-default);
+  font-size: var(--ink-font-size-sm);
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.animatedPlaceholderText {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Focused: freeze current hint, dim to placeholder color */
+.animatedPlaceholder[data-dimmed='true'] {
+  color: var(--ink-font-color-placeholder);
+  transition: color 200ms ease;
+}
+
+/* Command description hint — ghost text after /command-name */
+.commandHint {
+  grid-row: 1;
+  grid-column: 1;
+  padding: 0 8px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--ink-font-color-placeholder);
+  pointer-events: none;
+  animation: commandHintIn 200ms ease forwards;
+}
+
+@keyframes commandHintIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   ACTIONS — display:contents single-line, flex multi-line
+   ============================================ */
+
+/* Single-line: dissolve wrapper, children inline via order */
+.actions {
+  display: contents;
+}
+
+/* + button: before textarea */
+.actions > :first-child {
+  order: 0;
+}
+
+/* Spacer: hidden in single-line */
+.actionsSpacer {
+  display: none;
+}
+
+/* Send button: after textarea */
+.actions > :last-child {
+  order: 2;
+}
+
+/* Multi-line: real flex row below text */
+.shellMulti .actions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding-top: var(--ink-spacing-200);
+  animation: actionsExpand 250ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.shellMulti.shellCollapsing .actions {
+  animation: actionsCollapse 120ms ease forwards;
+}
+
+.shellMulti .actions > :first-child {
+  order: 0;
+}
+
+.shellMulti .actions > :last-child {
+  order: 0;
+}
+
+.shellMulti .actionsSpacer {
+  display: block;
+  flex: 1;
+}
+
+@keyframes actionsExpand {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes actionsCollapse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   CONTEXT ROW — FilterTag / ContextPill
+   ============================================ */
+
+/*
+ * The pill arrives with the context, and there is no step in between — no
+ * spinner, no progress bar, no wait. So it has to arrive *visibly*: a short
+ * plain entry, one token long, is what tells the eye that something was added.
+ * `--ink-motion-duration-200` and the default curve; nothing bespoke.
+ */
+@keyframes contextIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contextRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-50) 0;
+  width: 100%;
+  animation: contextIn var(--ink-motion-duration-200) var(--ink-motion-curve-default) both;
+}
+
+/* Context tag inline in actions row (multi-line expanded) */
+.contextInline {
+  display: flex;
+  align-items: center;
+  animation: contextIn var(--ink-motion-duration-200) var(--ink-motion-curve-default) both;
+}
+
+.contextAttention {
+  animation: ripple 600ms ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.97);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   ADD SOURCE — dashed button (legacy fallback)
+   ============================================ */
+
+.addSource {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  padding: var(--ink-spacing-50) var(--ink-spacing-100);
+  background: transparent;
+  border: 1px dashed var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-full);
+  color: var(--ink-font-color-neutral-subtle);
+  font-family: inherit;
+  font-size: var(--ink-font-size-xs);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.addSource:hover {
+  border-color: var(--ink-cobalt-60);
+  color: var(--ink-cobalt-100);
+}
+
+/* ============================================
+   ATTACHMENTS slot
+   ============================================ */
+
+.attachments {
+  padding: 0 var(--ink-spacing-100);
+  margin-bottom: var(--ink-spacing-50);
+}
+
+/* ============================================
+   SLASH FILTERED DROPDOWN — glass frost flat list
+   ============================================ */
+
+.slashDropdown {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 6px;
+  min-width: 240px;
+  max-width: 340px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--ink-bg-color-default);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--ink-neutral-15);
+  border-radius: var(--ink-radius-size-m);
+  box-shadow: 0 4px 8px var(--ink-neutral-fade-10);
+  padding: var(--ink-spacing-100);
+  z-index: 20;
+  animation: slashDropdownIn 150ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes slashDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slashDropdownItem {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+  padding: 8px 8px 8px 16px;
+  background: none;
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  font-family: inherit;
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-default);
+  text-align: left;
+  cursor: pointer;
+  transition: background 100ms ease;
+}
+
+.slashDropdownItem:hover,
+.slashDropdownItemFocused {
+  background: var(--ink-neutral-fade-5);
+}
+
+.slashDropdownLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.slashDropdownDesc {
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-font-color-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+/* ============================================
+   @ MENTION DROPDOWN — two-line item layout
+   ============================================ */
+
+.mentionDropdown {
+  left: 0 !important;
+  right: 0;
+  min-width: unset;
+  max-width: none;
+  width: 100%;
+}
+
+.mentionHeader {
+  padding: 8px 12px 4px;
+  font-size: var(--ink-font-size-xs);
+  font-weight: 500;
+  color: var(--ink-font-color-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mentionDropdownItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+  padding: 6px 12px;
+  background: none;
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  font-family: inherit;
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-default);
+  text-align: left;
+  cursor: pointer;
+  transition: background 100ms ease;
+}
+
+.mentionDropdownItem:hover,
+.mentionDropdownItem.slashDropdownItemFocused {
+  background: var(--ink-neutral-fade-5);
+}
+
+.mentionIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.mentionContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mentionLabel {
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mentionSecondary {
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-font-color-neutral-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.mentionTimestamp {
+  flex-shrink: 0;
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-font-color-tertiary);
+  white-space: nowrap;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+/* ============================================
+   DISCLAIMER
+   ============================================ */
+
+.disclaimer {
+  padding: 0 var(--ink-spacing-100);
+  margin-top: var(--ink-spacing-50);
+  font-size: var(--ink-font-size-xxs);
+  color: var(--ink-font-color-neutral-subtle);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* ============================================
+   WRAPPER — outer flex column
+   ============================================ */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+}
+
+/* ============================================
+   LEADING slot
+   ============================================ */
+
+.leading {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .shell {
+    transition: none;
+  }
+  .shellMulti .actions {
+    animation: none;
+  }
+  .shellMulti.shellCollapsing .actions {
+    animation: none;
+  }
+  .animatedPlaceholder {
+    transition: none;
+  }
+  .slashDropdown {
+    animation: none;
+  }
+  /* The pill is simply there — no entry, no attention ripple. */
+  .contextRow,
+  .contextInline,
+  .contextAttention {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/*
+ * The agreement chip is indigo 10. Akshat, 2026-08-18: "let's make the chip
+ * which shows you the agreement chip the indigo10 which is F4F3FF."
+ *
+ * Scoped to the composer's own context wrappers, not to Ink. `FilterTag` is
+ * Ink's, it is used all over the product, and its `active` fill is not ours to
+ * change — this says "in THIS row, the tag is Iris's".
+ *
+ * `data-ink-component` is Ink's own stable hook; its class names are hashed and
+ * cannot be targeted. `:first-child` takes the tag body and leaves the dismiss
+ * IconButton beside it alone.
+ *
+ * The tint is what marks the chip as the agent's rather than the page's. Small
+ * touch, doing one job: colour marks state, it does not decorate.
+ */
+.contextRow [data-ink-component='FilterTag'] > button:first-child,
+.contextInline [data-ink-component='FilterTag'] > button:first-child {
+  background: var(--ai-indigo-10);
+}

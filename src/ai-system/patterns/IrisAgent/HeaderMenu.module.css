@@ -1,0 +1,156 @@
+/**
+ * HeaderMenu — Figma frame 101:17656, the `[INK] Menu` popover.
+ *
+ * Metrics from the frame: 272 wide, radius 12, 8px padding, 8px between
+ * sections; items 36px tall at radius 4 with 16px of left padding; the section
+ * title 12px semibold, the items 14px regular.
+ */
+
+.wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+/*
+ * The gap between the button and the menu is a hole you fall through.
+ *
+ * The wrapper is only as big as the 32px button, and the menu hangs 4px below
+ * it. Those 4px belong to neither, so crossing them fires `mouseleave` and the
+ * menu closes before the pointer arrives — and because the menu is 272 wide
+ * against a 32px button, any diagonal approach crosses them.
+ *
+ * `::before` fills the gap. A pseudo-element hit-tests as part of the menu, so
+ * the pointer never leaves the wrapper's subtree on the way down.
+ */
+.menu::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--ink-spacing-50) * -1);
+  left: 0;
+  right: 0;
+  height: var(--ink-spacing-50);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + var(--ink-spacing-50));
+  left: 0;
+  z-index: 40;
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-100);
+  border-radius: var(--ink-radius-size-m);
+  background: var(--ink-white-100);
+  box-shadow: var(--ink-shadow-lg, 0 8px 24px rgba(19, 0, 50, 0.12));
+  animation: headerMenuIn 120ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes headerMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  margin: 0;
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+  font-size: var(--ink-font-detail-s-size);
+  line-height: var(--ink-font-detail-s-line-height);
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-font-color-secondary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--ink-neutral-fade-10);
+}
+
+/* ---------------------------------------------------------------------------
+   Items
+   --------------------------------------------------------------------------- */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+  min-height: 36px;
+  padding: var(--ink-spacing-100) var(--ink-spacing-100) var(--ink-spacing-100)
+    var(--ink-spacing-200);
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--ink-font-family-default);
+  transition: background-color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.item:hover,
+.item:focus-visible {
+  background: var(--ink-ecru-20);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: -2px;
+}
+
+/*
+ * "New chat" carries a resting fill in the frame — it is the one item that
+ * makes something rather than going somewhere.
+ */
+.itemHighlighted {
+  background: var(--ink-neutral-fade-10);
+}
+
+/*
+ * 16px in a 20px box, matching the frame's `startElement`.
+ *
+ * Colour is the standing icon-subtle default. Note frame 101:17656 fills these
+ * particular vectors at fade-90, not fade-70 — the menu is the one place his
+ * frames and the default disagree. Following the default; worth a look.
+ */
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--ink-icon-color-subtle);
+}
+
+.itemLabel {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--ink-font-body-s-size);
+  line-height: var(--ink-font-body-s-line-height);
+  color: var(--ink-font-color-default);
+  /* Conversation titles are arbitrary length; the menu is not. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu {
+    animation: none;
+  }
+
+  .item {
+    transition: none;
+  }
+}

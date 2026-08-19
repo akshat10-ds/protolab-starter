@@ -1,0 +1,92 @@
+/**
+ * NavPage
+ *
+ * Bottom-anchored, like the cold state. Frame 94:13551's `Actions` container is
+ * `primaryAxisAlignItems: MAX`, gap 24, padding `0/16/24/16`, stacked against a
+ * composer that stays on screen — so the column grows up from the input rather
+ * than down from the header, and a short list sits where the greeting would.
+ *
+ * One left edge, not two. The cold state has the greeting at 24px and the
+ * composer card at 8px, and its rows bleed 16px to bridge them. Here the rows
+ * are cards with a fill of their own, so nothing is bridged: the title, the
+ * search box and the row's edge all start together.
+ */
+
+.page {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  /* 32px sides: the frame's 16px column inset plus its 16px padding. */
+  padding: 0 var(--ink-spacing-400) var(--ink-spacing-300);
+}
+
+/*
+ * `margin-top: auto` is the bottom anchor, and the same one `.panelWelcomeContent`
+ * uses. It collapses to zero once the list is taller than the space, so a long
+ * library scrolls from the top instead of losing its head.
+ */
+.column {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-300);
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Heading
+   --------------------------------------------------------------------------- */
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ink-spacing-50);
+}
+
+/*
+ * Bold 24 per the frame. The frame fills it #000000, which is unbound raw hex;
+ * `cobalt-140` is the darkest ink this system writes in and every other title on
+ * the surface uses it.
+ */
+.title {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: 24px;
+  font-weight: var(--ink-font-weight-bold);
+  line-height: 1.25;
+  letter-spacing: -0.16px;
+  color: var(--ink-cobalt-140);
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-body-m-size);
+  line-height: var(--ink-font-body-m-line-height);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* ---------------------------------------------------------------------------
+   Search + rows
+   --------------------------------------------------------------------------- */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-200);
+}
+
+.empty {
+  margin: 0;
+  padding: var(--ink-spacing-200) 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-body-s-size);
+  line-height: var(--ink-font-body-s-line-height);
+  color: var(--ink-font-color-neutral-subtle);
+}

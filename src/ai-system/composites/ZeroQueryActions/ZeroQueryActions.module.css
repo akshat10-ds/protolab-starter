@@ -1,0 +1,179 @@
+/**
+ * ZeroQueryActions
+ *
+ * The row does not grow and carries no badge. Hovering it gives a light tint;
+ * the query itself is previewed in the composer, which the host wires via
+ * `onPreview`. Akshat: "instead of expanding I just want a light hover on the
+ * item and show the preview of text in the input".
+ *
+ * That trade is why the list is calm. An expanding row reflows everything below
+ * it as the pointer crosses, and it explains the query in a place the query
+ * will never appear. The composer is where the text would actually be typed, so
+ * a preview there teaches the real thing and costs no layout.
+ *
+ * Figma `ZeroQuery/Actions` (node 1:952) is superseded here: it fills the row,
+ * grows it to 78/96px on hover, and badges it PROMPT or AGENT. Frame 79:8822
+ * dropped the fill; Akshat dropped the growth, then the badge.
+ */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Row — 40px, always
+   --------------------------------------------------------------------------- */
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  /*
+   * The tint reaches the composer card's edge; the icon and label do not.
+   *
+   * The row is pulled 16px out on both sides — the difference between the
+   * content column's 24px inset and the card's 8px — and given 16px of padding
+   * back, so the box lines up with the card below while the icon stays on the
+   * greeting's left edge. Two alignments at once, which is the point: the tint
+   * belongs to the composer, the text belongs to the column.
+   *
+   * `--zq-row-bleed` is that difference in one place. Change either inset and
+   * this is the only other number to move.
+   *
+   * A surface with only *one* left edge sets `--zq-bleed: 0px` on any ancestor.
+   * The padding is a separate knob (`--zq-pad`) because zeroing the bleed alone
+   * would also zero the padding and put the icon flush against the tint. The
+   * `card` appearance below skips both — it sets its own box.
+   */
+  --zq-row-bleed: var(--zq-bleed, var(--ink-spacing-200));
+
+  width: calc(100% + var(--zq-row-bleed) * 2);
+  margin-inline: calc(var(--zq-row-bleed) * -1);
+  padding: var(--ink-spacing-100) var(--zq-pad, var(--zq-row-bleed));
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--ink-font-family-default);
+  transition: background-color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+/*
+ * "A light hover" — ecru-10, the lightest warm step Ink has. The set used this
+ * as the *resting* fill; here it only ever marks the pointer.
+ */
+.row:hover,
+.row:focus-visible {
+  background: var(--ink-ecru-10);
+}
+
+.row:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+}
+
+/* Carried over from the cards this replaced — the cold state staggers its rows in. */
+.animateIn {
+  opacity: 0;
+  animation: zeroQueryRowIn 350ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes zeroQueryRowIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+ * A 16px glyph centred in a 24px box, at icon-subtle.
+ *
+ * The box is fixed so the label does not shift when the glyph changes cut, and
+ * `icon-color-subtle` resolves to the same `fade-70` the frames fill these
+ * vectors with — the standing default for icons on this surface.
+ */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--ink-icon-color-subtle);
+}
+
+/* ---------------------------------------------------------------------------
+   Label
+   --------------------------------------------------------------------------- */
+
+.label {
+  flex: 1;
+  min-width: 0;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  font-size: var(--ink-font-body-s-size);
+  line-height: var(--ink-font-body-s-line-height);
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-font-color-default);
+}
+
+/* ---------------------------------------------------------------------------
+   Card — `appearance="card"`, the nav pages
+   --------------------------------------------------------------------------- */
+
+/*
+ * Frame 94:13551 paints the row on these pages: `#ffffff` at rest, `#f0eff0`
+ * under the pointer, radius 4, padding 8/16/8/8, 4px between rows, label Medium
+ * 14 at `#130032@0.7`. Every one of those is a token here.
+ *
+ * It differs from the cold state on purpose. There the list is a tail on a page
+ * that has a greeting and a composer, so the rows stay transparent and let the
+ * surface through; here the list *is* the page, and the cards are what give it
+ * a floor. The row still previews into the composer — that has not changed, and
+ * it is why the composer stays on screen.
+ *
+ * The variant owns its whole geometry (width, margin, padding), so `--zq-bleed`
+ * and `--zq-pad` do not apply and a page using it sets neither.
+ */
+.listCard {
+  gap: var(--ink-spacing-50);
+}
+
+.listCard .row {
+  width: 100%;
+  margin-inline: 0;
+  padding: var(--ink-spacing-100) var(--ink-spacing-200) var(--ink-spacing-100)
+    var(--ink-spacing-100);
+  background: var(--ink-bg-color-default);
+}
+
+.listCard .row:hover,
+.listCard .row:focus-visible {
+  background: var(--ink-neutral-20);
+}
+
+.listCard .label {
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row {
+    transition: none;
+  }
+
+  .animateIn {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

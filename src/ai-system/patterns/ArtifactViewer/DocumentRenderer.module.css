@@ -1,0 +1,127 @@
+@import '@ink/1-tokens/tokens.css';
+
+/* ---------------------------------------------------------------------------
+   Toolbar contents — the dock supplies the 48px band itself
+   --------------------------------------------------------------------------- */
+
+/*
+ * The frame puts page nav and zoom together on the right, and search flush
+ * right of them. `margin-left: auto` pushes this group over; search then sits
+ * after it with the toolbar's own gap.
+ */
+.toolbarEnd {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  margin-left: auto;
+}
+
+.pageField {
+  display: flex;
+  align-items: center;
+}
+
+.pageInput {
+  width: 40px;
+  height: 28px;
+  padding: 0 var(--ink-spacing-50);
+  border: 1px solid var(--ink-form-control-border-color-default);
+  border-radius: var(--ink-radius-size-xs);
+  background: var(--ink-form-control-bg-color-default);
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-detail-s-size);
+  color: var(--ink-font-color-default);
+  text-align: center;
+}
+
+.pageInput:focus-visible {
+  outline: 2px solid var(--ink-border-color-focus);
+  outline-offset: 1px;
+}
+
+.pageCount,
+.zoomValue {
+  font-size: var(--ink-font-detail-s-size);
+  color: var(--ink-font-color-secondary);
+  white-space: nowrap;
+}
+
+.zoomValue {
+  min-width: 40px;
+  text-align: center;
+}
+
+/* The frame's 1px rule between the page controls and the zoom control. */
+.divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 var(--ink-spacing-50);
+  background: var(--ink-border-color-subtle);
+}
+
+/* ---------------------------------------------------------------------------
+   The page — 783 wide, centred in the well's canvas ground
+   ---------------------------------------------------------------------------
+
+   DOCUMENT TYPE IS UNBOUND IN FIGMA. The frame's page body carries no Ink type
+   style, so none is applied: this is a serif stack and raw sizes, on purpose.
+   A page of an agreement is not chrome, and inventing an Ink scale for it would
+   be a decision the frame did not make.
+
+   The frame's own metrics: page 783 wide, ~101.5 gutters, 82.2 page margins,
+   618.6 text column. `max-width: 100%` keeps the page inside a narrow dock,
+   where the gutters go to zero before the page does.
+   --------------------------------------------------------------------------- */
+
+.page {
+  box-sizing: border-box;
+  width: 783px;
+  max-width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 82px;
+  background: var(--ink-bg-color-default);
+  border: 1px solid var(--ink-border-color-subtle);
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * The cited passage, kept from the build. Frame 158:18134 draws no highlighted
+ * passage at all, which is silence rather than opposition — the citation link
+ * has to land somewhere visible.
+ */
+.section[data-highlighted] {
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  margin-inline: calc(var(--ink-spacing-200) * -1);
+  background: var(--ink-ecru-10);
+  border-left: 2px solid var(--ink-font-color-default);
+}
+
+.heading {
+  margin: 0 0 8px;
+  font-family: Georgia, 'Times New Roman', 'Noto Serif', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink-font-color-default);
+}
+
+.body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', 'Noto Serif', serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-font-color-default);
+  white-space: pre-wrap;
+}
+
+/*
+ * Nothing in this renderer moves. Paging replaces the page, and zoom changes a
+ * layout box — there is no transition to turn off for `prefers-reduced-motion`.
+ */

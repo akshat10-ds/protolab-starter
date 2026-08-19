@@ -1,0 +1,316 @@
+@import '@ink/1-tokens/tokens.css';
+
+/* ---------------------------------------------------------------------------
+   The grid — frame 163:21261
+   ---------------------------------------------------------------------------
+
+   Every colour here is an Ink token. The frame's hexes map exactly:
+   bgColorCanvasPage #f7f6f7 = --ink-bg-color-canvas-page,
+   borderColorSubtle #1300321a = --ink-border-color-subtle,
+   the row and column rule #13003226 = --ink-neutral-fade-15 (a ramp step; Ink
+   publishes no semantic border token at that weight).
+
+   `border-collapse: separate` with zero spacing, because the rules are drawn as
+   one edge per cell — a collapsed table would fold the header's bottom hairline
+   into the first row's rule and lose the frame's two weights.
+   --------------------------------------------------------------------------- */
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--ink-font-family-default);
+  text-align: left;
+  /*
+    Air above the table, and only above it. Akshat, 2026-08-19. The dock's well
+    runs this renderer flush so the columns reach both pane edges, which is
+    right — but flush at the TOP put the header row hard against the tab strip
+    with nothing between them.
+  */
+  margin-top: var(--ink-spacing-200);
+}
+
+/* ---------------------------------------------------------------------------
+   Header row — 50 tall, on the lightest grey there is
+   ---------------------------------------------------------------------------
+
+   `bgColorCanvasPage`, which is `neutral-10`, #f7f6f7 — a 3% step off the white
+   rows beneath it, and what the frame gave this row to begin with.
+
+   It went white with the rest of the pane on 2026-08-19 and came back the same
+   day: Akshat, "can we add a super light gray table header color". The pane
+   around it stays white — the sweep was about the GROUND, and a header is not
+   ground. A hairline alone can separate two regions; it cannot make one of them
+   read as a header.
+   --------------------------------------------------------------------------- */
+
+.table thead th {
+  height: 50px;
+  padding: 0 var(--ink-spacing-150);
+  background: var(--ink-bg-color-canvas-page);
+  border-bottom: 1px solid var(--ink-border-color-subtle);
+  border-right: 1px solid var(--ink-neutral-fade-15);
+  font-size: var(--ink-font-detail-s-size);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.table thead th:last-child {
+  border-right: none;
+}
+
+/* The sort target is a button, so it is reachable from the keyboard. The `th`
+   carries `aria-sort`; this carries the label and the indicator. */
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sortButton:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Body rows — white, ~60 tall, ruled on every boundary, no zebra
+   --------------------------------------------------------------------------- */
+
+.table tbody td {
+  height: 60px;
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  background: var(--ink-bg-color-default);
+  border-bottom: 1px solid var(--ink-neutral-fade-15);
+  border-right: 1px solid var(--ink-neutral-fade-15);
+  font-size: var(--ink-font-body-s-size);
+  color: var(--ink-font-color-default);
+  vertical-align: middle;
+}
+
+.table tbody td:last-child {
+  border-right: none;
+}
+
+/*
+ * Hover and selection are kept from the build. Frame 163:21261 draws one rest
+ * state and no others, which is silence, not opposition — a table you cannot
+ * see your cursor in is worse than one the frame did not draw.
+ */
+/* A row opens the agreement it names — Akshat, 2026-08-18: "clicking on any of
+   these should open the agreement". Only when the host is listening: without an
+   `onAction` the row does nothing, and a pointer there would be a lie. */
+.table tbody tr[data-clickable] {
+  cursor: pointer;
+}
+
+.table tbody tr:hover td {
+  background: var(--ink-neutral-10);
+}
+
+.table tbody tr[data-selected] td {
+  background: var(--ink-ecru-10);
+}
+
+/* ---------------------------------------------------------------------------
+   Fixed columns — the gutter, the tick, and the trailing controls
+   --------------------------------------------------------------------------- */
+
+/* Two class names, so this beats the `.table thead th` / `.table tbody td` rules
+   above on specificity rather than on `!important`. */
+.table th.gutter,
+.table td.gutter {
+  width: 25px;
+  padding: 0;
+  border-right: none;
+}
+
+.tick {
+  width: 48px;
+  text-align: center;
+}
+
+.fields {
+  width: 64px;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Alignment — a column's own edge
+   ---------------------------------------------------------------------------
+
+   A column with `align: 'end'` pulls to the trailing edge and takes tabular
+   figures. A column of dates then stacks its digits and reads as a ranking,
+   which a left-aligned column of the same dates does not.
+
+   A DEPARTURE FROM THE FRAME. Frame 163:21261 draws every column left-aligned,
+   Expiration Date with them. Akshat, 2026-08-14, on the critique that a column
+   of 8 dates scans better against its own edge: "sure." Do not port the frame
+   back over this.
+
+   The class goes on the `th` and the `td`, so the label sits over its own
+   column. `text-align` is inherited by the flex children inside a cell
+   (`.text`, `.textMain`), and the header's `.sortButton` is inline-flex, so
+   both follow the cell with no rule of their own. */
+
+.alignEnd {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   Cells
+   --------------------------------------------------------------------------- */
+
+/* File Name — the filename, then a 16px glyph and a quiet second line. */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.textMain {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--ink-font-body-s-size);
+  color: var(--ink-font-color-default);
+}
+
+.textSub {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  font-size: var(--ink-font-detail-s-size);
+  color: var(--ink-font-color-secondary);
+}
+
+/* Parties and Sets. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}
+
+/*
+ * Hand-drawn, not Ink's `Chip`. Six lines against a component whose own module
+ * CSS sets a different ground, height and radius that cannot be reached from
+ * here — the same hashed-class wall the table itself hit.
+ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--ink-spacing-100);
+  /* White too, per the header note above — the hairline is what makes it a
+     chip, not the fill. */
+  background: var(--ink-bg-color-default);
+  border: 1px solid var(--ink-neutral-fade-15);
+  border-radius: var(--ink-radius-size-xs);
+  font-size: var(--ink-font-body-s-size);
+  color: var(--ink-font-color-default);
+  white-space: nowrap;
+}
+
+/* The frame puts "+N More" on the second line of the Sets cell, below the
+   chips. `flex-basis: 100%` is what puts it there. */
+.chipMore {
+  flex-basis: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: var(--ink-font-detail-s-size);
+  color: var(--ink-font-color-secondary);
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* An underline, not a ground. The box is the whole line, so a fill would paint
+   a band across the cell. */
+.chipMore:hover {
+  text-decoration: underline;
+}
+
+.chipMore:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 1px;
+}
+
+/* ---------------------------------------------------------------------------
+   Status — a dot, a label, and a second line on two of the four states
+   ---------------------------------------------------------------------------
+
+   These are SEMANTIC colours: the state of an agreement, not decoration. The
+   Ink warning and success tokens carry that meaning and match the frame's
+   hexes exactly — icon warning #dc4e00, font warning #a52608, icon success
+   #00875c, font success #005f43. Nothing is painted to look like an error;
+   "expiring soon" is a fact about the agreement, and Ink's error red is used
+   for none of the four.
+   --------------------------------------------------------------------------- */
+
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statusLine {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+}
+
+.statusDot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--ink-radius-size-full);
+  background: currentColor;
+}
+
+.statusLabel {
+  font-size: var(--ink-font-body-s-size);
+  white-space: nowrap;
+}
+
+.statusSub {
+  font-size: var(--ink-font-detail-s-size);
+  color: var(--ink-font-color-secondary);
+  white-space: nowrap;
+}
+
+/* The dot takes the icon token, the label the font token — they differ. */
+.statusExpiring .statusDot {
+  color: var(--ink-icon-color-warning);
+}
+
+.statusExpiring .statusLabel {
+  color: var(--ink-font-color-warning);
+}
+
+.statusRenewing .statusDot,
+.statusActive .statusDot {
+  color: var(--ink-icon-color-success);
+}
+
+.statusRenewing .statusLabel,
+.statusActive .statusLabel {
+  color: var(--ink-font-color-success);
+}
+
+/* Stopped, not wrong — both parts drop to the quiet neutral. */
+.statusInactive .statusDot,
+.statusInactive .statusLabel {
+  color: var(--ink-font-color-secondary);
+}

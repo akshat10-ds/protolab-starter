@@ -1,0 +1,479 @@
+@import '@ink/1-tokens/tokens.css';
+
+/* =============================================================================
+   Response Typography Hierarchy — uses Ink Design System type tokens
+   =============================================================================
+
+   ## Section Header    — heading-xs   (20px / 600 / 1.25)
+   ### Sub-header       — heading-xxs  (16px / 600 / 1.25)
+   Body text            — body-s       (14px / 400 / 1.4)
+   **Bold**             — body-s       (14px / 500 medium)
+   *Italic*             — body-s       (14px / 400 italic)
+   Table headers        — xs           (12px / 600 / 1.5)
+   Metadata             — xs           (12px / 400 italic)
+   Inline code          — ~13px / monospace (0.9em relative)
+
+   All sizes and weights map to Ink tokens. Heading scale follows the
+   design system: heading-xs (20) → heading-xxs (16) → body-s (14).
+   ============================================================================= */
+
+/* Container — body-s baseline */
+.markdownRenderer {
+  font-size: var(--ink-font-body-s-size);
+  line-height: var(--ink-font-body-s-line-height);
+  color: var(--ink-font-color-default);
+}
+
+/* ## Section Header — heading-xs */
+.h2 {
+  font-size: var(--ink-font-heading-xs-size);
+  font-weight: var(--ink-font-weight-semibold);
+  line-height: var(--ink-font-heading-xs-line-height);
+  color: var(--ink-font-color-default);
+  margin: var(--ink-spacing-300) 0 var(--ink-spacing-150) 0;
+  letter-spacing: -0.01em;
+}
+
+/* First heading in a response — no top margin */
+.markdownRenderer > .h2:first-child,
+.markdownRenderer > h3:first-child {
+  margin-top: 0;
+}
+
+/* ### Sub-header — heading-xxs */
+.h3 {
+  font-size: var(--ink-font-heading-xxs-size);
+  font-weight: var(--ink-font-weight-semibold);
+  line-height: var(--ink-font-heading-xxs-line-height);
+  color: var(--ink-font-color-default);
+  margin: var(--ink-spacing-250) 0 var(--ink-spacing-100) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  letter-spacing: -0.01em;
+}
+
+/* Warning emoji */
+.warningEmoji {
+  font-size: 1em;
+}
+
+/* Paragraphs — comfortable reading spacing */
+.p {
+  margin: 0 0 var(--ink-spacing-150) 0;
+}
+
+.p:last-child {
+  margin-bottom: 0;
+}
+
+/* Metadata (italic lines) */
+.metadata {
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-font-color-secondary);
+  margin: 0 0 var(--ink-spacing-150) 0;
+  font-style: italic;
+}
+
+/* Horizontal rule */
+.hr {
+  border: none;
+  border-top: 1px solid var(--ink-border-color-subtle);
+  margin: var(--ink-spacing-200) 0;
+}
+
+/* Lists */
+.ul {
+  margin: 0 0 var(--ink-spacing-150) 0;
+  padding-left: var(--ink-spacing-200);
+  list-style-type: disc;
+}
+
+.ol {
+  margin: 0 0 var(--ink-spacing-150) 0;
+  padding-left: var(--ink-spacing-200);
+  list-style-type: decimal;
+}
+
+.li {
+  margin-bottom: var(--ink-spacing-100);
+  line-height: var(--ink-font-body-s-line-height);
+}
+
+.li:last-child {
+  margin-bottom: 0;
+}
+
+/* Blockquotes — body-s, same as surrounding text */
+.blockquote {
+  margin: var(--ink-spacing-100) 0;
+  padding: var(--ink-spacing-150);
+  background: var(--ink-ecru-10);
+  border-left: 5px solid var(--ink-ecru-40);
+  border-radius: 0 var(--ink-radius-size-xs) var(--ink-radius-size-xs) 0;
+  font-size: var(--ink-font-body-s-size);
+  color: var(--ink-font-color-default);
+  line-height: var(--ink-font-body-s-line-height);
+}
+
+.blockquoteSpacer {
+  height: 1em;
+}
+
+/* ============================================================================
+   Plan Card
+   ============================================================================ */
+
+.planCard {
+  margin: var(--ink-spacing-200) 0 var(--ink-spacing-100) 0;
+  padding: var(--ink-spacing-200);
+  background: linear-gradient(174deg, var(--ink-ecru-10) 1.68%, var(--ink-white-100) 98.49%);
+  border-radius: var(--ink-radius-size-m);
+  border: 1px solid var(--ink-ecru-40);
+}
+
+.planCard .h3,
+.planCard h4 {
+  margin-top: 0;
+  margin-bottom: var(--ink-spacing-100);
+}
+
+.planCard .ol {
+  margin-bottom: 0;
+}
+
+.planCard .p:last-child {
+  margin-bottom: 0;
+}
+
+.planCardActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  margin-top: var(--ink-spacing-150);
+  padding-top: var(--ink-spacing-150);
+  border-top: 1px solid var(--ink-ecru-30);
+}
+
+/* ============================================================================
+   Expandable Section
+   ============================================================================ */
+
+.expandableSection {
+  margin: var(--ink-spacing-200) 0;
+}
+
+.expandHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-150);
+  margin-bottom: var(--ink-spacing-100);
+}
+
+.expandHeader .h3 {
+  margin: 0;
+}
+
+/* ============================================================================
+   Tables — aligned with Ink Design System Table component
+   ============================================================================ */
+
+.tableContainer {
+  margin: var(--ink-spacing-150) 0;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--ink-radius-size-s);
+  border: 1px solid var(--ink-ecru-30);
+}
+
+.tableFooter {
+  display: flex;
+  justify-content: flex-start;
+  padding: var(--ink-spacing-50) 0 0 0;
+}
+
+/* Copy button wrapper — matches FeedbackActions tooltip pattern */
+.tableCopyWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tableCopyTooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: var(--ink-neutral-130);
+  color: var(--ink-white-100);
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  border-radius: var(--ink-radius-size-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.tableCopyWrap:hover .tableCopyTooltip {
+  opacity: 1;
+}
+
+.tableCopyTooltipActive {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: var(--ink-neutral-130);
+  color: var(--ink-white-100);
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  border-radius: var(--ink-radius-size-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--ink-white-100);
+  font-family: var(--ink-font-family);
+}
+
+.table th {
+  min-height: 49px;
+  height: 49px;
+  padding: var(--ink-spacing-50) var(--ink-spacing-200);
+  text-align: left;
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-semibold);
+  line-height: 1.5;
+  letter-spacing: 0.12px;
+  color: var(--ink-font-color-default);
+  background: var(--ink-ecru-10);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.table td {
+  height: 48px;
+  padding: var(--ink-spacing-50) var(--ink-spacing-200);
+  text-align: left;
+  font-size: var(--ink-font-body-s-size);
+  font-weight: var(--ink-font-weight-regular);
+  line-height: var(--ink-font-body-s-line-height);
+  color: var(--ink-font-color-default);
+  vertical-align: middle;
+  border-bottom: 1px solid var(--ink-neutral-fade-5);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover td {
+  background: var(--ink-ecru-10);
+}
+
+/* ============================================================================
+   Fenced Code Blocks
+   ============================================================================ */
+
+.codeBlock {
+  position: relative;
+  margin: var(--ink-spacing-150) 0;
+  border-radius: var(--ink-radius-size-s);
+  overflow: hidden;
+}
+
+.codeBlockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  background: var(--ink-neutral-140);
+  border-bottom: 1px solid var(--ink-neutral-110);
+}
+
+.codeBlockLanguage {
+  font-size: var(--ink-font-size-xs);
+  font-weight: 500;
+  color: var(--ink-neutral-60);
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Consolas', monospace;
+}
+
+.codeBlockCopyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-50) var(--ink-spacing-100);
+  background: transparent;
+  border: 1px solid var(--ink-neutral-100);
+  border-radius: var(--ink-radius-size-xs);
+  color: var(--ink-neutral-50);
+  font-size: var(--ink-font-size-xs);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.codeBlockCopyBtn:hover {
+  background: var(--ink-neutral-110);
+  color: var(--ink-neutral-30);
+  border-color: var(--ink-neutral-80);
+}
+
+.codeBlockCopyBtnCopied {
+  composes: codeBlockCopyBtn;
+  color: var(--ink-green-60);
+  border-color: var(--ink-green-80);
+}
+
+.codeBlockBody {
+  display: flex;
+  background: var(--ink-neutral-130);
+  overflow-x: auto;
+}
+
+.codeBlockGutter {
+  flex-shrink: 0;
+  padding: var(--ink-spacing-150) 0;
+  padding-left: var(--ink-spacing-150);
+  padding-right: var(--ink-spacing-100);
+  text-align: right;
+  user-select: none;
+  border-right: 1px solid var(--ink-neutral-110);
+}
+
+.codeBlockLineNumber {
+  display: block;
+  font-size: var(--ink-font-size-xs);
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Consolas', monospace;
+  line-height: 1.6;
+  color: var(--ink-neutral-80);
+  min-width: 1.5em;
+}
+
+.codeBlockContent {
+  flex: 1;
+  padding: var(--ink-spacing-150);
+  overflow-x: auto;
+}
+
+.codeBlockContent pre {
+  margin: 0;
+  font-size: var(--ink-font-size-xs);
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Consolas', monospace;
+  line-height: 1.6;
+  color: var(--ink-neutral-20);
+  white-space: pre;
+}
+
+/* Syntax highlighting classes (CSS-based) */
+.codeKeyword {
+  color: var(--ink-cobalt-50);
+}
+
+.codeString {
+  color: var(--ink-green-50);
+}
+
+.codeComment {
+  color: var(--ink-neutral-70);
+  font-style: italic;
+}
+
+.codeNumber {
+  color: var(--ink-orange-50);
+}
+
+.codeFunction {
+  color: var(--ink-ecru-60);
+}
+
+.codePunctuation {
+  color: var(--ink-neutral-50);
+}
+
+/* ============================================================================
+   Inline Styles
+   ============================================================================ */
+
+.strong {
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+}
+
+.em {
+  font-style: italic;
+  color: var(--ink-font-color-secondary);
+}
+
+/* Inline code */
+.inlineCode {
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', 'Consolas', monospace;
+  font-size: 0.9em;
+  padding: 1px var(--ink-spacing-50);
+  background: var(--ink-neutral-10);
+  border: 1px solid var(--ink-neutral-30);
+  border-radius: var(--ink-radius-size-xs);
+  color: var(--ink-font-color-default);
+}
+
+/* Links — matches Ink Link component (underlined by default) */
+.link {
+  color: var(--ink-font-color-link-default);
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+  transition: color 150ms ease;
+}
+
+.link:hover {
+  color: var(--ink-font-color-link-hover);
+}
+
+.link:active {
+  color: var(--ink-font-color-link-active);
+}
+
+.link:visited {
+  color: var(--ink-font-color-link-visited);
+}
+
+/* Citation fallback (when citation data is missing) */
+.citationFallback {
+  display: inline;
+}
+
+.citationFallbackChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  margin-left: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink-font-color-secondary);
+  background: var(--ink-bg-color-subtle);
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: 4px;
+  vertical-align: middle;
+  transform: translateY(-2px);
+}

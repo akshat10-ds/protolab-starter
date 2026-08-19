@@ -1,0 +1,101 @@
+@import '@ink/1-tokens/tokens.css';
+
+/**
+ * ConversationLayout — Conversation turn composition
+ *
+ * Decided spec (MessageBlock exploration, 2026-03-18, updated 2026-03-19):
+ *
+ *   Column widths:
+ *     Content column   720px max-width, centered
+ *     User bubble      540px max-width, right-aligned
+ *     Assistant block   full column width (no cap)
+ *
+ *   Intra-block spacing:
+ *     Default gap       8px
+ *     Feedback → Suggestions  16px (8px gap + 8px margin)
+ *
+ *   Inter-block spacing (asymmetric):
+ *     User → Response   4px  (anchors bubble to answer)
+ *     Response → User   24px (signals new turn)
+ *
+ *   Padding:
+ *     Chat surface      32px (--ink-spacing-400)
+ */
+
+/* =============================================================================
+   Surface — the conversation container
+   ============================================================================= */
+
+.surface {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 720px;
+  padding: var(--ink-spacing-400);
+}
+
+/* =============================================================================
+   User Turn — right-aligned, constrained width
+   ============================================================================= */
+
+.userTurn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 540px;
+  align-self: flex-end;
+  margin-top: 24px;
+}
+
+/* First child has no top margin */
+.surface > .userTurn:first-child {
+  margin-top: 0;
+}
+
+/* =============================================================================
+   Assistant Turn — left-aligned, fills column width
+   ============================================================================= */
+
+.assistantTurn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: stretch;
+  margin-top: 4px;
+}
+
+/* First child has no top margin */
+.assistantTurn[data-first] {
+  margin-top: 0;
+}
+
+/* First child in surface also has no top margin */
+.surface > .assistantTurn:first-child {
+  margin-top: 0;
+}
+
+/* =============================================================================
+   Suggestions — extra top spacing, ephemeral follow-up prompts
+   ============================================================================= */
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  margin-top: 8px; /* 8px gap + 8px margin = 16px total */
+}
+
+.suggestionsLabel {
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+}
+
+.suggestionsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100);
+}
