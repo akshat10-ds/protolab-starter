@@ -34,6 +34,51 @@ import {
   dataTableStyles,
 } from '@/design-system';
 
+/*
+ * Iris — Tier 1, and nothing below it.
+ *
+ * `IrisAgent` + `PanelShell` + `usePanelMode` are the whole chat app, not a
+ * shell you finish: the cold-state sequence, the onboarding checklist, the
+ * agreement snapshot, the nav pages and the artifact dock all run inside these
+ * three. This file supplies content and fixtures; it supplies no behaviour.
+ *
+ * The panel is a SIBLING of the host page, never its parent — that inversion is
+ * what lets the page reflow instead of being overlapped.
+ */
+import { IrisAgent, NavPage, PanelShell, usePanelMode } from '@ai';
+import type { ChatMessage, NavPageEntry } from '@ai';
+import {
+  AGENTS,
+  AGREEMENT_PLACEHOLDER,
+  AGREEMENT_STEPS,
+  AGREEMENT_SUGGESTIONS,
+  ALL_ARTIFACTS,
+  COLD_SUGGESTIONS,
+  CONTEXT_AGREEMENTS,
+  CONTEXT_GREETING,
+  CONVERSATIONS,
+  FRAME_PLACEHOLDER,
+  GET_STARTED_STEPS,
+  LIBRARY_PROMPTS,
+  NAV_SHORTCUTS,
+  PREVIEW_AGREEMENT,
+  SCENARIOS,
+  SCRIPTED_EXCHANGES,
+  FALLBACK_EXCHANGE,
+  GENERATED_DOCUMENTS,
+  AUTONOMOUS_SEED,
+  PARTY_PROACTIVE,
+  SEARCH_PREVIEW_COLUMNS,
+  SEARCH_RESULTS,
+  ScenariosPage,
+  WalkthroughCard,
+} from './iris/scenarios';
+import type { PreviewAgreement, ScenarioId } from './iris/scenarios';
+
+/** Read once at init — the app hash-routes, so the query lives before the #. */
+const SHOW_WALKTHROUGH =
+  new URLSearchParams(window.location.search).get('walkthrough') === 'true';
+
 /* ═══════════════════════════════════════
    DataTable Row Stagger Animation (CSS)
    ═══════════════════════════════════════ */
@@ -143,7 +188,7 @@ function FadeIn({ children, keyProp: _keyProp }: { children: React.ReactNode; ke
    Types
    ═══════════════════════════════════════ */
 
-type TabId = 'home' | 'agreements' | 'templates' | 'insights' | 'admin';
+type TabId = 'home' | 'agreements' | 'templates' | 'insights' | 'admin' | 'scenarios';
 type SidebarView = 'all-agreements' | 'drafts' | 'in-progress' | 'completed' | 'deleted' | 'parties' | 'requests' | 'workspaces';
 type TemplatesSidebarView = 'my-templates' | 'shared-with-me' | 'favorites' | 'all-templates';
 type InsightsSidebarView = 'overview' | 'dashboards' | 'reports';
@@ -1285,7 +1330,9 @@ function Footer() {
    App
    ═══════════════════════════════════════ */
 
-const VALID_TABS: TabId[] = ['home', 'agreements', 'templates', 'insights', 'admin'];
+/* `scenarios` is a bare `#scenarios` route, deliberately absent from GlobalNav:
+   that nav mirrors production Docusign and the trigger page is a jig. */
+const VALID_TABS: TabId[] = ['home', 'agreements', 'templates', 'insights', 'admin', 'scenarios'];
 
 /* ═══════════════════════════════════════
    Agreement Detail View (Navigator Viewer)
@@ -2298,18 +2345,243 @@ function CompletedInsightsPanel() {
 
 function getTabFromHash(): TabId {
   const hash = window.location.hash.replace('#', '');
-  return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'home';
+  return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'agreements';
 }
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>(getTabFromHash);
-  const [sidebarView, setSidebarView] = useState<SidebarView>('all-agreements');
+  const [sidebarView, setSidebarView] = useState<SidebarView>('completed');
   const [templatesSidebarView, setTemplatesSidebarView] = useState<TemplatesSidebarView>('my-templates');
   const [insightsSidebarView, setInsightsSidebarView] = useState<InsightsSidebarView>('overview');
   const [search, setSearch] = useState('');
   const [showAgreementDetail, setShowAgreementDetail] = useState(false);
   const [activeWorkspace, setActiveWorkspace] = useState<Workspace | null>(null);
   const [activeRequest, setActiveRequest] = useState<RequestItem | null>(null);
+
+  /* ══ Iris ══════════════════════════════════════════════════════════════════
+     The mode machine. `panel.hostStyle` reflows the page; `panel.artifact` is
+     the dock's machine, and it lives on the hook because opening an artifact
+     has to reach `setMode` — a 420px dock does not fit beside the chat in a
+     sidebar, so it goes fullscreen first. */
+  const panel = usePanelMode({ sidebarWidth: 480, minWidth: 360 });
+
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [isThinking, setIsThinking] = useState(false);
+  const [agentId, setAgentId] = useState('iris');
+  /** Sources arrive by choice: a new chat starts unscoped, the Add pill offers them. */
+  const [contextIds, setContextIds] = useState<string[]>([]);
+  /** The agreement the host page has open. Drives the snapshot and the cold state. */
+  const [previewAgreement, setPreviewAgreement] = useState<PreviewAgreement | null>(null);
+  /** A nav page the host is holding open. IrisAgent's own pages win over this. */
+  const [navSlot, setNavSlot] = useState<ScenarioId | null>(null);
+  /** The left nav gives up its width to Iris: opening the panel unlocks the
+      nav so it collapses to its icon rail, closing it locks it back open.
+      The lock button still works — this only sets the state, it does not own it. */
+  const [navLocked, setNavLocked] = useState(true);
+  useEffect(() => {
+    setNavLocked(panel.mode === 'closed');
+  }, [panel.mode]);
+
+  /** Bumped per scenario run — the cold state is in-memory, so a remount replays it. */
+  const [runKey, setRunKey] = useState(0);
+
+  /** Presence of an agreement is the one switch: snapshot in, corpus insights out. */
+  const onAgreement = previewAgreement !== null;
+  const attachedAgreements = CONTEXT_AGREEMENTS.filter((a) => contextIds.includes(a.id));
+  const openSources = useCallback(() => panel.artifact.open('search-acme-fontara'), [panel]);
+
+  /**
+   * The host page has an agreement open and it is not already loaded — offer it,
+   * and offer Replace beside Add when the conversation already holds others.
+   * Iris does not guess which the user meant.
+   */
+  const suggestedContext =
+    previewAgreement && !contextIds.includes(previewAgreement.id)
+      ? {
+          label: previewAgreement.fileName,
+          onAdd: () => setContextIds((ids) => [...ids, previewAgreement.id]),
+          onReplace:
+            contextIds.length > 0 ? () => setContextIds([previewAgreement.id]) : undefined,
+        }
+      : contextIds.length === 0
+        ? {
+            label: `${CONTEXT_AGREEMENTS.length} agreements`,
+            onAdd: () => setContextIds(CONTEXT_AGREEMENTS.map((a) => a.id)),
+          }
+        : undefined;
+
+  /**
+   * The starter has no backend. A search question returns its answer line plus a
+   * five-row preview carrying an `artifactId` — the table itself is not shown
+   * until "See all" asks for it. Anything else shows the thinking state, which
+   * is the honest state for a question with no answer behind it.
+   */
+  const handleSend = useCallback((text: string, meta?: { displayLabel?: string }) => {
+    setMessages((prev) => [
+      ...prev,
+      { id: crypto.randomUUID(), role: 'user', content: meta?.displayLabel ?? text },
+    ]);
+    setIsThinking(true);
+    const search = SEARCH_RESULTS.find((r) => r.match.test(text));
+    const scripted = search
+      ? undefined
+      : (SCRIPTED_EXCHANGES.find((x) => x.match.test(text)) ?? FALLBACK_EXCHANGE);
+    setTimeout(() => {
+      setIsThinking(false);
+      if (search) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: crypto.randomUUID(),
+            role: 'assistant',
+            content: search.answer,
+            inlineResults: {
+              rows: search.rows,
+              totalCount: search.totalCount,
+              artifactId: search.artifactId,
+            },
+          },
+        ]);
+        return;
+      }
+      if (!scripted) return;
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: 'assistant',
+          content: scripted.content,
+          markdownContent: scripted.markdown,
+          thinkingSteps: scripted.thinking,
+          inlineResults: scripted.inlineResults,
+          taskCompletion: scripted.followUps
+            ? { status: 'completed', followUps: scripted.followUps }
+            : undefined,
+        },
+      ]);
+      if (scripted.openArtifactId) panel.artifact.open(scripted.openArtifactId);
+    }, search ? 1200 : scripted.thinking ? 2400 : 1200);
+  }, [panel]);
+
+  /** The pages behind the peek menu. Each `id` is the shortcut that opens it. */
+  const navPages: NavPageEntry[] = [
+    {
+      id: 'prompt-library',
+      title: 'Prompt Library',
+      menuSection: 'prompts',
+      render: ({ onPreview, send }) => (
+        <NavPage
+          title="Prompt Library"
+          subtitle="Save suggested prompts"
+          items={LIBRARY_PROMPTS}
+          onSend={send}
+          onPreview={onPreview}
+        />
+      ),
+    },
+    {
+      id: 'agents',
+      title: 'Agents',
+      menuSection: 'agents',
+      render: ({ onPreview, send, close }) => (
+        <NavPage
+          title="Agents"
+          subtitle="Switch to another agent"
+          items={AGENTS.map((agent) => ({
+            label: agent.name,
+            description: agent.description,
+            kind: 'agent' as const,
+            icon: 'flash',
+            onClick: () => {
+              setAgentId(agent.id);
+              close();
+            },
+          }))}
+          onSend={send}
+          onPreview={onPreview}
+        />
+      ),
+    },
+  ];
+
+  /**
+   * Every scenario starts from the same clean slate and then sets the one thing
+   * that distinguishes it. `runKey` remounts IrisAgent so the cold-state
+   * sequence — which is in-memory state, not persisted — replays every time.
+   */
+  const runScenario = useCallback((id: ScenarioId) => {
+    setMessages([]);
+    setIsThinking(false);
+    setNavSlot(null);
+    setPreviewAgreement(null);
+    setContextIds(CONTEXT_AGREEMENTS.map((a) => a.id));
+    panel.artifact.close();
+    setRunKey((k) => k + 1);
+    /*
+      Open the panel BEFORE the scenario runs, never after: `artifact.open`
+      goes fullscreen first — a 420px dock does not fit beside the chat in a
+      sidebar — and a trailing `panel.open()` would drop it back to sidebar and
+      clip the dock.
+    */
+    panel.open();
+
+    if (id === 'agreement') setPreviewAgreement(PREVIEW_AGREEMENT);
+    if (id === 'assist') {
+      setMessages([
+        { id: 'p1', role: 'assistant', content: PARTY_PROACTIVE.content,
+          taskCompletion: { status: 'completed', followUps: PARTY_PROACTIVE.followUps } },
+      ]);
+    }
+    if (id === 'autonomous') {
+      setMessages([
+        { id: 'auto1', role: 'assistant', content: AUTONOMOUS_SEED.content,
+          inlineResults: AUTONOMOUS_SEED.inlineResults,
+          taskCompletion: { status: 'completed', followUps: AUTONOMOUS_SEED.followUps } },
+      ]);
+    }
+    if (id === 'agents' || id === 'prompt-library') setNavSlot(id);
+    if (id === 'search') {
+      const [first] = SEARCH_RESULTS;
+      setMessages([
+        { id: 'q1', role: 'user', content: first.question },
+        {
+          id: 'a1',
+          role: 'assistant',
+          content: first.answer,
+          inlineResults: {
+            rows: first.rows,
+            totalCount: first.totalCount,
+            artifactId: first.artifactId,
+          },
+        },
+      ]);
+      panel.artifact.open(first.artifactId);
+    }
+  }, [panel]);
+
+  /** Ask Iris opens the chat, never whatever page a scenario left standing. */
+  const partyProactiveSeeded = useRef(false);
+  const openIris = useCallback(() => {
+    setNavSlot(null);
+    if (sidebarView === 'parties' && !partyProactiveSeeded.current) {
+      partyProactiveSeeded.current = true;
+      setMessages((prev) =>
+        prev.length
+          ? prev
+          : [
+              { id: 'party-proactive', role: 'assistant', content: PARTY_PROACTIVE.content,
+                taskCompletion: { status: 'completed', followUps: PARTY_PROACTIVE.followUps } },
+            ],
+      );
+    }
+    panel.open();
+  }, [panel, sidebarView]);
+
+  /** The host-held nav page. `navPageSlot` is the form a consumer holding state passes. */
+  const navSlotPage =
+    navSlot === 'agents' || navSlot === 'prompt-library'
+      ? navPages.find((p) => p.id === navSlot)
+      : undefined;
 
   /* ── Sync hash ↔ state ── */
   useEffect(() => {
@@ -2704,6 +2976,20 @@ export default function App() {
             ? (<>
                 <IconButton icon="bar-chart-2" variant="tertiary" size="small" aria-label="Analytics" />
                 <Button kind="secondary" startElement={<Icon name="settings" size={16} />}>Manage Parties</Button>
+                <button
+                  aria-label="Ask Iris"
+                  onClick={openIris}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                    background: 'linear-gradient(174.22deg, #4C00FB 1.48%, #260559 97.92%)',
+                    color: '#fff', border: 'none', borderRadius: 4,
+                    padding: '7px 12px', fontSize: 14, fontWeight: 500,
+                    fontFamily: 'inherit', cursor: 'pointer', lineHeight: 1, whiteSpace: 'nowrap',
+                  }}
+                >
+                  <IrisIconInverse size={18} />
+                  Ask Iris
+                </button>
               </>)
             : isRequestsView
             ? <Button kind="secondary">Create Request</Button>
@@ -2763,6 +3049,7 @@ export default function App() {
               <Button kind="secondary" size="small" menuTrigger startElement={<Icon name="layout-grid" size={14} />}>Worksheets</Button>
               <button
                 aria-label="Ask Iris"
+                onClick={openIris}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 6,
                   background: 'linear-gradient(174.22deg, #4C00FB 1.48%, #260559 97.92%)',
@@ -2813,6 +3100,7 @@ export default function App() {
     templates: templatesSidebar,
     insights: insightsSidebar,
     admin: undefined,
+    scenarios: undefined,
   };
 
   const contentMap: Record<TabId, JSX.Element> = {
@@ -2821,17 +3109,28 @@ export default function App() {
     templates: templatesContent,
     insights: insightsContent,
     admin: <AdminPage />,
+    scenarios: <ScenariosPage onRun={runScenario} />,
   };
 
   /* ── Transition key — changes on tab OR sidebar view to trigger animation ── */
   const transitionKey = `${activeTab}-${sidebarView}-${templatesSidebarView}-${insightsSidebarView}`;
 
   return (
-    <>
+    <div style={{ display: 'flex', height: '100vh' }}>
+    {/*
+      The host page. `zIndex: 0` makes it its own stacking context, so the
+      detail overlays stay local instead of competing with the panel, and the
+      panel's drag handle paints over host content rather than under it.
+    */}
+    <main style={{ ...panel.hostStyle, overflow: 'auto', position: 'relative', zIndex: 0 }}>
     <style>{tableRowStaggerStyles}</style>
     <DocuSignShell
       globalNav={globalNavConfig}
-      localNav={sidebarMap[activeTab]}
+      localNav={
+        sidebarMap[activeTab]
+          ? { ...sidebarMap[activeTab], isLocked: navLocked, onLockChange: setNavLocked }
+          : undefined
+      }
     >
       <FadeIn keyProp={transitionKey} key={transitionKey}>
         <div className="page-transition" style={{ flex: 1 }}>
@@ -2849,6 +3148,88 @@ export default function App() {
     {activeRequest && (
       <RequestDetailView request={activeRequest} onClose={() => setActiveRequest(null)} />
     )}
-    </>
+    </main>
+
+    {/* The panel — a sibling of the page, which is what lets the page reflow. */}
+    <PanelShell {...panel.shellProps} label="Iris">
+      <IrisAgent
+        key={runKey}
+        layout="compact"
+        /* The panel owns the mode; IrisAgent is told about it. The rail and the
+           lifted chrome are the fullscreen grammar and must not appear while
+           the host page is still visible beside the panel. */
+        isFullscreen={panel.mode === 'fullscreen'}
+        messages={messages}
+        onSendMessage={handleSend}
+        isLoading={isThinking}
+        greeting="Jump back in"
+        greetingSubtitle={
+          onAgreement
+            ? 'Ask about the terms, dates, or obligations in this agreement.'
+            : CONTEXT_GREETING
+        }
+        customSuggestions={onAgreement ? AGREEMENT_SUGGESTIONS : COLD_SUGGESTIONS}
+        placeholderHints={onAgreement ? AGREEMENT_PLACEHOLDER : FRAME_PLACEHOLDER}
+        /* The snapshot, above everything, and the switch that stands the corpus
+           insights down. */
+        agreementContext={
+          previewAgreement
+            ? {
+                fileName: previewAgreement.fileName,
+                agreementType: previewAgreement.agreementType,
+                expiration: previewAgreement.expiration,
+                extractionCount: previewAgreement.fields,
+              }
+            : undefined
+        }
+        /* ONE THING AT A TIME on a first open: the checklist alone, and the
+           zero-query rows only once it is dismissed. `sequence` is that rule. */
+        getStarted={{
+          steps: (onAgreement ? AGREEMENT_STEPS : GET_STARTED_STEPS).map((step) => ({
+            id: step.id,
+            label: step.label,
+            icon: step.icon,
+            query:
+              step.id === 'ask-a-question' && previewAgreement
+                ? `What are the key terms and dates in ${previewAgreement.fileName}?`
+                : step.query,
+            opens: step.id === 'explore-different-agents' ? 'agents' : undefined,
+            onOpen: step.id === 'add-a-source' ? openSources : undefined,
+          })),
+          sequence: true,
+        }}
+        navShortcuts={NAV_SHORTCUTS}
+        navPages={navPages}
+        navPageSlot={navSlotPage?.render}
+        navPageTitle={navSlotPage?.title}
+        onNavBack={() => setNavSlot(null)}
+        conversations={CONVERSATIONS}
+        agents={AGENTS}
+        selectedAgentId={agentId}
+        onSelectAgent={setAgentId}
+        agreements={attachedAgreements}
+        onClearAgreements={() => setContextIds([])}
+        suggestedContext={suggestedContext}
+        inlineResultColumns={SEARCH_PREVIEW_COLUMNS}
+        onOpenSources={openSources}
+        /* The dock, and everything this starter can put in it. */
+        artifact={panel.artifact}
+        artifacts={[...ALL_ARTIFACTS, ...GENERATED_DOCUMENTS]}
+        onArtifactAction={(action, item, detail) =>
+          console.info('artifact action', action, item.id, detail)
+        }
+        railBrand={
+          <img src={`${import.meta.env.BASE_URL}docusign-logo.svg`} height={24} alt="DocuSign" />
+        }
+        disclaimer="Responses use AI. Not legal advice."
+        onNewConversation={() => setMessages([])}
+        onFullscreen={panel.toggleFullscreen}
+        onClose={panel.close}
+      />
+    </PanelShell>
+
+    {/* The story rides along, fixed bottom-left, only when asked for. */}
+    {SHOW_WALKTHROUGH && <WalkthroughCard />}
+    </div>
   );
 }

@@ -1,0 +1,193 @@
+@import '@ink/1-tokens/tokens.css';
+
+/* =============================================================================
+   SourceListView — File selection list with checkboxes
+   ============================================================================= */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Select all row */
+.selectAll {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-125) var(--ink-spacing-150);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 100ms ease;
+}
+
+.selectAll:hover {
+  background: var(--ink-neutral-fade-5);
+}
+
+.selectAllText {
+  flex: 1;
+  font-size: var(--ink-font-size-sm);
+  font-weight: 500;
+  color: var(--ink-font-color-default);
+  text-align: left;
+}
+
+.divider {
+  height: 1px;
+  background: var(--ink-border-color-subtle);
+  flex-shrink: 0;
+}
+
+/* Checkbox wrapper — 20×20 compact reset (mirrors agreement-studio pattern).
+   The Checkbox component renders 32px padding + transforms even with showLabel={false}.
+   We reset everything to render the raw 20×20 checkbox box at origin. */
+.checkboxWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+/* Reset wrapper children to exact size */
+.checkboxWrap > div {
+  min-height: unset;
+  min-width: unset;
+  width: 20px;
+  height: 20px;
+}
+
+.checkboxWrap > div > div {
+  width: 20px;
+  height: 20px;
+}
+
+/* Reset label to remove default 32px padding */
+.checkboxWrap label {
+  padding: 0 !important;
+  padding-inline-start: 0 !important;
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+}
+
+/* Position checkbox box at origin */
+.checkboxWrap label::before {
+  left: 0 !important;
+  top: 0 !important;
+  transform: none !important;
+}
+
+/* Position checkmark icon at origin */
+.checkboxWrap label > span:first-child {
+  left: 0 !important;
+  top: 0 !important;
+  transform: none !important;
+}
+
+/* Hide label text completely */
+.checkboxWrap label > span:last-child {
+  display: none !important;
+}
+
+/* Source list */
+.list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--ink-spacing-50) 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: var(--ink-neutral-20);
+  border-radius: 3px;
+}
+
+/* Source card — single row, vertically centered */
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  transition: background 100ms ease;
+}
+
+.card:hover {
+  background: var(--ink-neutral-fade-5);
+}
+
+.card[data-active] {
+  background: var(--ink-cobalt-10);
+}
+
+/* Click area — document icon + title */
+.cardClickArea {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  padding: 0;
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.cardTitle {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--ink-font-size-sm);
+  font-weight: 450;
+  color: var(--ink-font-color-default);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Footer */
+.footer {
+  flex-shrink: 0;
+  padding: var(--ink-spacing-150);
+  padding-bottom: var(--ink-spacing-200);
+  border-top: 1px solid var(--ink-border-color-subtle);
+}
+
+/* Empty state */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-400);
+  color: var(--ink-font-color-tertiary);
+  font-size: var(--ink-font-size-sm);
+}

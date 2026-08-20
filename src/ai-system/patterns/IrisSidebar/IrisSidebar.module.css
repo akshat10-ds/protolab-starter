@@ -1,0 +1,312 @@
+@import '@ink/1-tokens/tokens.css';
+
+/* =============================================================================
+   IrisSidebar — wraps LocalNav with brand CTA, conversation history
+   280px expanded, 72px collapsed, ecru-10 surface
+   Collapse/expand, hover-to-expand, and lock toggle inherited from LocalNav.
+   ============================================================================= */
+
+/* Outer wrapper — drives width based on LocalNav's collapsed state */
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Rail surface — consumers (e.g. a darker tier-1 product rail) can override
+     via --iris-rail-surface without redefining design-system tokens. */
+  background: var(--iris-rail-surface, var(--ink-ecru-10));
+  flex-shrink: 0;
+  width: 72px;
+  overflow: hidden;
+  transition: width 150ms cubic-bezier(0.33, 0, 0.67, 1);
+}
+
+/* When LocalNav is NOT collapsed, expand to 280px */
+.wrapper:not(:has([class*='navCollapsed'])) {
+  width: 280px;
+}
+
+/* =============================================================================
+   Logo Area — 56px, crossfade between mark and wordmark
+   ============================================================================= */
+
+.logoArea {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 23px;
+  flex-shrink: 0;
+  overflow: hidden;
+  height: 56px;
+}
+
+.logoMark,
+.logoWordmark {
+  flex-shrink: 0;
+  transition: opacity 150ms cubic-bezier(0.33, 0, 0.67, 1);
+}
+
+.logoMark {
+  width: 20px;
+  height: 20px;
+  margin: 0 2px;
+}
+
+.logoWordmark {
+  position: absolute;
+  left: 23px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logoWordmark img {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+
+/* Collapsed: show mark, hide wordmark, center the mark */
+.wrapper:has([class*='navCollapsed']) .logoArea {
+  justify-content: center;
+  padding: 0;
+}
+
+.wrapper:has([class*='navCollapsed']) .logoMark {
+  opacity: 1;
+}
+
+.wrapper:has([class*='navCollapsed']) .logoWordmark {
+  opacity: 0;
+}
+
+.wrapper:not(:has([class*='navCollapsed'])) .logoMark {
+  opacity: 0;
+}
+
+.wrapper:not(:has([class*='navCollapsed'])) .logoWordmark {
+  opacity: 1;
+}
+
+/* =============================================================================
+   Header CTA suppression + footer slot
+   ============================================================================= */
+
+/* Hide the top header CTA when the action lives in the footer instead */
+.headerCtaHidden [class*='headerWrapper'] {
+  display: none;
+}
+
+/* With the header CTA hidden, the LocalNav no longer needs its reserved top
+   padding — pull the nav list up flush under the section header (e.g. the
+   "Chat History" wordmark). */
+.headerCtaHidden .nav {
+  padding-top: 0;
+}
+
+/* Hide LocalNav's bottom collapse/lock toggle (but not our own footer slot) */
+.collapseToggleHidden [class*='footer']:not([class*='footerSlot']) {
+  display: none;
+}
+
+/* Footer slot — pinned below the nav list */
+.footerSlot {
+  flex-shrink: 0;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200) var(--ink-spacing-200);
+}
+
+/* When collapsed, tighten the footer padding so icon content stays centered in the rail */
+.wrapper:has([class*='navCollapsed']) .footerSlot {
+  padding: var(--ink-spacing-150) 0 var(--ink-spacing-200);
+}
+
+/* =============================================================================
+   LocalNav overrides — brand CTA, divider inset, collapsed icon alignment
+   ============================================================================= */
+
+/* Hover/focus target that mirrors LocalNav's own — must be the nav's exact box,
+   so no padding, margin, or border here. */
+.navArea {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.nav {
+  background-color: var(--iris-rail-surface, var(--ink-ecru-10));
+  flex: 1;
+}
+
+/* Collapsed icons — align with logo mark */
+.nav [class*='itemCollapsed'] {
+  justify-content: flex-start;
+  padding-left: 23px;
+}
+
+/* Brand color on header CTA */
+.nav [class*='headerButtonExpanded'] button,
+.nav [class*='headerButtonCollapsed'] {
+  background-color: var(--ink-button-brand-bg);
+}
+
+.nav [class*='headerButtonExpanded'] button:hover,
+.nav [class*='headerButtonCollapsed']:hover {
+  background-color: var(--ink-button-brand-bg-hover);
+}
+
+.nav [class*='headerButtonExpanded'] button:active,
+.nav [class*='headerButtonCollapsed']:active {
+  background-color: var(--ink-button-brand-bg-active);
+}
+
+/* Collapsed CTA — border radius */
+.nav [class*='headerButtonCollapsed'] {
+  border-radius: var(--ink-radius-size-xs);
+}
+
+/* Divider — inset matching conversation item padding */
+.nav [class*='sectionWithDivider']::before {
+  left: var(--ink-spacing-200);
+  right: var(--ink-spacing-200);
+}
+
+/* Active state — ecru-30 bg, no height change from default */
+.nav button[class*='item'][class*='active'],
+.nav div[role='button'][class*='item'][class*='active'] {
+  background-color: var(--ink-ecru-30);
+  height: 42px;
+  min-height: 42px;
+}
+
+.nav button[class*='item'][class*='active']:hover,
+.nav div[role='button'][class*='item'][class*='active']:hover {
+  background-color: var(--ink-ecru-30);
+}
+
+/* Hide the default active indicator bar */
+.nav [class*='activeIndicator'] {
+  display: none;
+}
+
+/* Hover state — ecru-20, only on clickable items */
+.nav button[class*='item']:hover,
+.nav div[role='button'][class*='item']:hover {
+  background-color: var(--ink-ecru-20);
+}
+
+/* Collapsed active — same ecru treatment */
+.nav button[class*='itemCollapsed'][class*='active'] {
+  background-color: var(--ink-ecru-30);
+}
+
+/* Section label headers — subtle color for Starred/Recent */
+.nav [class*='sectionLabel'] {
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* =============================================================================
+   Organize dropdown — custom menu styled to match Ink Dropdown
+   ============================================================================= */
+
+.organizeBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+}
+
+/* top/left are set inline from the Organize button's measured position */
+.organizeMenu {
+  position: fixed;
+  z-index: var(--ink-z-dropdown, 100);
+  background-color: var(--ink-bg-glass-frost);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: var(--ink-form-border-width-active) solid var(--ink-neutral-fade-10);
+  border-radius: var(--ink-radius-size-m);
+  box-shadow: var(--ink-shadow-elevated);
+  padding: var(--ink-spacing-100);
+  min-width: 200px;
+  animation: organizeDropdownIn var(--ink-transition-fast) forwards;
+}
+
+@keyframes organizeDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.organizeGroupLabel {
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-semibold);
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+  margin-bottom: var(--ink-spacing-50);
+}
+
+.organizeDivider {
+  height: 1px;
+  background-color: var(--ink-neutral-fade-10);
+  margin: var(--ink-spacing-100) 0;
+}
+
+.organizeItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-100) var(--ink-spacing-100) var(--ink-spacing-100)
+    var(--ink-spacing-200);
+  border: none;
+  background: none;
+  border-radius: var(--ink-radius-size-xs);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--ink-transition-fast);
+  font-family: var(--ink-font-family);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+}
+
+.organizeItem:hover {
+  background-color: var(--ink-neutral-fade-5);
+}
+
+.organizeItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--ink-icon-size-s);
+  height: var(--ink-icon-size-s);
+  color: var(--ink-icon-color-default);
+}
+
+.organizeItemLabel {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.organizeItemCheck {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--ink-font-color-default);
+  margin-left: auto;
+}
+
+/* Hide when sidebar is collapsed */
+.wrapper:has([class*='navCollapsed']) .organizeMenu {
+  display: none;
+}

@@ -1,0 +1,92 @@
+/*
+ * The same card the panel's other cold-state blocks use — `InsightList`'s
+ * `.card` and `GetStarted`'s, value for value: white fill, a subtle hairline,
+ * radius `s`. Nothing new is invented for this one.
+ */
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--ink-radius-size-s);
+  background: var(--ink-bg-color-default);
+  border: 1px solid var(--ink-border-color-subtle);
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  gap: var(--ink-spacing-100);
+}
+
+.fileName {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * Two fields side by side rather than stacked. Two rows of one fact each reads
+ * as a list that got cut short; a pair reads as a pair, which is what it is.
+ */
+.fields {
+  display: flex;
+  gap: var(--ink-spacing-300);
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fieldLabel {
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.fieldValue {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  color: var(--ink-font-color-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * A label, not a button — the same register `InsightList` gives its action, so
+ * the two cards do not disagree about what a way-in looks like.
+ */
+.seeAll {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-default);
+}
+
+.seeAll:hover {
+  text-decoration: underline;
+}
+
+.seeAll:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs);
+}

@@ -83,7 +83,7 @@ const Stepper = React.forwardRef<HTMLDivElement, StepperProps>((props, ref) => {
     if (status === 'completed') {
       return (
         <span className={styles.checkIcon}>
-          <Icon name="check" size="small" />
+          <Icon name="check" size={20} />
         </span>
       );
     }
@@ -91,7 +91,7 @@ const Stepper = React.forwardRef<HTMLDivElement, StepperProps>((props, ref) => {
     if (status === 'error') {
       return (
         <span className={styles.errorIcon}>
-          <Icon name="status-error" size="small" />
+          <Icon name="status-error" size={20} />
         </span>
       );
     }
@@ -127,8 +127,20 @@ const Stepper = React.forwardRef<HTMLDivElement, StepperProps>((props, ref) => {
         }}
       >
         <div className={styles.stepIndicator}>
+          <span
+            className={cn(
+              styles.connector,
+              (!showConnector || index === 0) && styles.connectorHidden
+            )}
+          />
           <div className={styles.stepIconWrapper}>{renderStepIcon(index, step, status)}</div>
-          {showConnector && index < steps.length - 1 && <div className={styles.connector} />}
+          <span
+            className={cn(
+              styles.connector,
+              styles.connectorEnd,
+              (!showConnector || index === steps.length - 1) && styles.connectorHidden
+            )}
+          />
         </div>
         <div className={styles.stepContent}>
           <div className={styles.stepTitle}>{step.title}</div>

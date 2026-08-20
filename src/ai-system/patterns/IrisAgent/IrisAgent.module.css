@@ -1,0 +1,2364 @@
+@import '@ink/1-tokens/tokens.css';
+@import '../../tokens/color.css';
+
+/* =============================================================================
+   Page container
+
+   Fills its container, never the viewport. `100vh`/`100vw` here would be
+   IrisAgent claiming a relationship to the host page it explicitly does not
+   own (see README, "Two things IrisAgent does not own") — and it would make
+   `sidebar` and `single-column` un-mountable inside a `PanelShell`, whose width
+   is an arbitrary px value. The host decides whether this surface is the
+   viewport; it says so by giving this element a sized parent.
+   ============================================================================= */
+
+.page {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+
+/* =============================================================================
+   SINGLE-COLUMN LAYOUT
+   ============================================================================= */
+
+.pageSingleColumn {
+  flex-direction: column;
+}
+
+.sidebarOverlayBackdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--ink-neutral-fade-20);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebarOverlayBackdropOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/*
+ * A closed drawer is parked one width to the left, which puts it OUTSIDE the
+ * panel. It was invisible only because `PanelShell` clipped it; the moment the
+ * shell went `overflow: visible` — so the drag handle could straddle the border
+ * — the closed drawer appeared over the host page, reading as a nav that was
+ * expanded by default. Akshat caught it: "I'm seeing the left nav expanded by
+ * default which we don't need."
+ *
+ * A closed thing should be closed on its own terms, never by an ancestor's
+ * clip. `visibility` also takes it out of hit-testing, which is what was
+ * swallowing the outer half of the drag handle.
+ *
+ * `visibility` is transitioned with a delay so it flips only after the slide
+ * out finishes; going the other way it flips immediately.
+ */
+.sidebarOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 101;
+  width: 280px;
+  transform: translateX(-100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s linear 250ms;
+  box-shadow: 4px 0 24px var(--ink-neutral-fade-10);
+}
+
+.sidebarOverlayOpen {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0s;
+}
+
+/* No ecru layer in single-column — white edge to edge */
+.pageSingleColumn .rightArea {
+  background: var(--ink-white-100);
+}
+
+.pageSingleColumn .contentSurface {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+  border-left: none;
+}
+
+.pageSingleColumn .welcomeContent {
+  max-width: 560px;
+}
+
+/* The page is white edge to edge; an ecru header band would break it. */
+.pageSingleColumn .contentHeader {
+  background: none;
+}
+
+.pageSingleColumn .chatMessages {
+  max-width: 620px;
+}
+
+.pageSingleColumn .chatInput {
+  max-width: 620px;
+}
+
+/* =============================================================================
+   COMPACT LAYOUT — fills its container, not the viewport
+   ============================================================================= */
+
+.pageCompact {
+  height: 100%;
+  width: 100%;
+  /*
+   * The ground under the chat surface — frame 153:19655, `bgColorCanvasPage`.
+   *
+   * It is visible in one place only: the two 8px corner notches the surface
+   * cuts at fullscreen, where the rail stands beside it. Outside fullscreen
+   * there is no radius and `.pageCompact .rightArea` is opaque white across the
+   * full width, so this layer never shows.
+   *
+   * It must stay in step with `.menuOuterRail` — the notch shows the rail's
+   * ground, so the two are one colour or the corner reads as a third surface.
+   *
+   * Warm, not gray. The frame drew `bgColorCanvasPage` (neutral gray); Akshat,
+   * 2026-08-13: "don't love the gray."
+   *
+   * THE VALUE BELOW IS NOT THE ONE THAT PAINTS. The notches exist only at
+   * fullscreen, and `.pageCompact[data-fullscreen]` overrides this with
+   * `--iris-rail-ground` — read that rule, in the fullscreen block, for the
+   * current colour and its history. The in-step invariant is enforced there
+   * too: one variable feeds this ground and the rail, so the two cannot drift.
+   * Change the colour there, never here.
+   */
+  /* ecru-10 — try-white 2026-08-13 — superseded at fullscreen */
+  background: var(--ink-bg-color-default);
+}
+
+/* Overlay is scoped to the container, not the viewport */
+.pageCompact .sidebarOverlayBackdrop {
+  position: absolute;
+}
+
+.pageCompact .sidebarOverlay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+}
+
+.pageCompact .sidebarOverlay > * {
+  flex: 1;
+  min-height: 0;
+}
+
+/*
+ * White edge to edge, exactly as `pageSingleColumn` already is.
+ *
+ * This used to be `ecru-10`. In the cold state the wash covered it, so nothing
+ * showed; the moment a conversation started the wash went and the 64px header
+ * strip became a flat ecru band with the white content card butting up under it
+ * — a fill, a seam and two corner curves that appear on send. That band is what
+ * read as "the older header". Akshat: "everything should just use the new
+ * styling and not feel like two apps."
+ */
+.pageCompact .rightArea {
+  background: var(--ink-white-100);
+}
+
+/*
+ * The header remnant — what is left of the wash once the cold state ends.
+ *
+ * The wash used to leave completely. Akshat: "I like the fade away but we still
+ * need some place for the gradient... maybe we only keep it till the header?"
+ * Dose, his: "till the header only".
+ *
+ * MECHANISM. This layer never changes state. It sits under `.panelColdBackdrop`
+ * — a `::before` comes first in the box's child list, both are positioned at
+ * `z-index: auto`, so the tall wash paints over it — and in the cold state the
+ * wash is opaque ecru here and hides it completely. The retreat is therefore
+ * the wash's own fade and nothing else: `--ink-motion-duration-400` uncovers
+ * this layer, the 200ms return covers it again. Nothing is added that could be
+ * left half-transitioned, and `prefers-reduced-motion` (which kills the wash's
+ * transition) gets an instant swap between the two states for free.
+ *
+ * Only the gradient survives. The bloom is a child of `.panelColdBackdrop` and
+ * goes with it — this layer holds no art.
+ *
+ * A fade, not a band. The earlier flat ecru strip under the header read as "the
+ * old app"; this is the wash's own gradient, dissolving into the white of
+ * `.rightArea` by roughly the header's bottom edge. `height` is the knob — it
+ * is the header's 64px — and the middle stop is how much of the strip is
+ * covered before the dissolve starts, the same kind of knob as the tall wash's
+ * 55%.
+ *
+ * The remnant takes the same dawn edge as the wash, because it is the one layer
+ * that stays in every state — the parent brand keeps a faint presence there
+ * when the wash has gone. It also gains one step of presence: the middle stop
+ * goes from 55% to 70% ecru, so the strip survives a bright room. One knob, and
+ * the dissolve starts in approximately the same place as before.
+ */
+.pageCompact .rightArea::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  pointer-events: none;
+  /* Ecru only — Akshat 2026-08-12: "no purple at all in the chat". */
+  background: linear-gradient(
+    180deg,
+    var(--ink-ecru-10) 0%,
+    color-mix(in srgb, var(--ink-ecru-10) 70%, transparent) 48%,
+    transparent 100%
+  );
+}
+
+.pageCompact .greetingBold,
+.pageCompact .greetingSubtitle {
+  font-size: 20px;
+}
+
+/* =============================================================================
+   RIGHT AREA
+   ============================================================================= */
+
+.rightArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--ink-ecru-10);
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* =============================================================================
+   CONTENT SURFACE
+   ============================================================================= */
+
+.contentSurface {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink-white-100);
+  border-top-left-radius: var(--ink-radius-size-m);
+  border-top-right-radius: var(--ink-radius-size-m);
+  border-top: var(--iris-content-border, none);
+  border-left: var(--iris-content-border, none);
+}
+
+/*
+ * Compact surface is a row: chat column + artifact slot.
+ *
+ * No fill and no radius: the card is what drew the seam under the header. One
+ * surface from the header down, in every state.
+ */
+.pageCompact .contentSurface {
+  background: none;
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.contentLayout {
+  display: flex;
+  height: 100%;
+  gap: 0;
+  padding: 0;
+}
+
+.contentMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    flex-basis 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms ease,
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+}
+
+/* =============================================================================
+   WELCOME STATE
+   ============================================================================= */
+
+.welcomeArea {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 20vh;
+  padding-bottom: var(--ink-spacing-600);
+}
+
+.welcomeContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  width: 100%;
+  max-width: 720px;
+  padding: 0 var(--ink-spacing-400);
+}
+
+/* ---- Greeting — one text block, weight carries the hierarchy ---- */
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  animation: revealUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 50ms both;
+}
+
+.greetingBold {
+  font-family: var(--ink-font-family);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink-cobalt-140);
+  margin: 0;
+  letter-spacing: -0.16px;
+  line-height: 1.25;
+}
+
+.greetingSubtitle {
+  font-family: var(--ink-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--ink-font-color-default);
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.16px;
+  animation: subtitleIn 600ms cubic-bezier(0.16, 1, 0.3, 1) 250ms both;
+}
+
+@keyframes subtitleIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Input hero — aurora glow border ---- */
+
+.inputHero {
+  position: relative;
+  width: 100%;
+  isolation: isolate;
+  animation: revealUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+}
+
+.inputHero::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: -12px;
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--ink-cobalt-100) 30%, transparent) 20%,
+    color-mix(in srgb, var(--ink-cobalt-140) 20%, transparent) 40%,
+    color-mix(in srgb, var(--ink-cobalt-100) 25%, transparent) 60%,
+    color-mix(in srgb, var(--ink-cobalt-140) 15%, transparent) 80%,
+    transparent 100%
+  );
+  background-size: 100% 300%;
+  filter: blur(14px);
+  opacity: 0;
+  transition:
+    opacity 350ms ease,
+    filter 350ms ease,
+    inset 350ms ease;
+  animation:
+    auroraFadeIn 800ms cubic-bezier(0.16, 1, 0.3, 1) 600ms both,
+    auroraShift 8s ease-in-out 600ms infinite;
+}
+
+/* Focus collapses the glow into a crisp gradient border */
+.inputHero:focus-within::before {
+  inset: -1.5px;
+  filter: blur(0px);
+  border-radius: 14px;
+  background-size: 100% 100%;
+  opacity: 0.5;
+  animation-play-state: paused;
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inputHero > * {
+  position: relative;
+}
+
+@keyframes auroraFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes auroraShift {
+  0%,
+  100% {
+    background-position: 50% 0%;
+    opacity: 0.8;
+  }
+  50% {
+    background-position: 50% 100%;
+    opacity: 1;
+  }
+}
+
+/* ---- Inline results — DataTable inside a turn ---- */
+
+.inlineResultsWrap {
+  border: 1px solid var(--ink-neutral-15);
+  border-radius: var(--ink-radius-size-s);
+  overflow: hidden;
+  margin: var(--ink-spacing-100) 0;
+}
+
+/*
+ * The card's own header, above the preview. Frame 196:17576: glyph + count on
+ * the left, "See all" on the right, one 44px row, hairline under it.
+ */
+.inlineResultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-200);
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  border-bottom: 1px solid var(--ink-neutral-15);
+}
+
+/*
+ * ACTIVE — this card's set is the one filling the right pane.
+ *
+ * The preview is gone, so the card is a header and nothing else: no hairline to
+ * separate it from, and the fill runs the whole box. Indigo 10 is the tint that
+ * already means "this belongs to Iris" on the context chip; here it means the
+ * same thing about a place rather than a thing — you are looking at this one.
+ *
+ * Shape does the work before colour does. A card that has collapsed to one line
+ * beside four that have not is legible without reading the label at all, which
+ * is why the collapse and the state are one change and not two.
+ */
+.inlineResultsWrap[data-active] {
+  border-color: var(--ai-indigo-10);
+  background: var(--ai-indigo-10);
+}
+
+.inlineResultsWrap[data-active] .inlineResultsHeader {
+  border-bottom: none;
+}
+
+.inlineResultsWrap[data-active] .inlineResultsLabel {
+  color: var(--ink-font-color-default);
+}
+
+/*
+ * Collapsed, the whole row is the control that closes the pane — the card says
+ * "you are looking at this", so pressing it stops. It needs to look pressable:
+ * a cursor and a hover a shade deeper than its own fill, which is the same
+ * "hover tints the whole card" grammar `InsightList` uses.
+ */
+.inlineResultsWrap[data-active] .inlineResultsHeader[role='button'] {
+  cursor: pointer;
+  border-radius: inherit;
+  transition: background var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.inlineResultsWrap[data-active] .inlineResultsHeader[role='button']:hover {
+  background: var(--ink-ecru-20);
+}
+
+.inlineResultsWrap[data-active] .inlineResultsHeader[role='button']:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: -2px;
+}
+
+/*
+ * "Close", in the slot "See all" occupies on an expanded card. Hidden at rest
+ * so the collapsed row stays one quiet line; the row is already saying where
+ * you are, and a standing second label would make it say two things.
+ *
+ * `opacity`, not `display`, so the row does not change width when it appears.
+ */
+.inlineResultsClose {
+  flex-shrink: 0;
+  opacity: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-default);
+  transition: opacity var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.inlineResultsHeader[role='button']:hover .inlineResultsClose,
+.inlineResultsHeader[role='button']:focus-visible .inlineResultsClose {
+  opacity: 1;
+}
+
+.inlineResultsLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  min-width: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * A label with a chevron, the same register the Suggested Context strip and
+ * InsightList give their actions — the card is not a form, and this is a way
+ * through rather than a thing to press.
+ */
+.inlineResultsSeeAll {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-default);
+}
+
+.inlineResultsSeeAll:hover {
+  text-decoration: underline;
+}
+
+.inlineResultsSeeAll:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+.inlineResultsTable {
+  --dt-bg-header: var(--ink-neutral-10);
+}
+
+.inlineResultsActions {
+  display: flex;
+  padding: var(--ink-spacing-100) 0 var(--ink-spacing-200);
+}
+
+/* ---- Discovery section — category tabs + suggestions ---- */
+
+.discoverySection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  animation: revealUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 350ms both;
+}
+
+.categoryTabs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.categoryTab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  height: 32px;
+  padding: 2px 8px 0 8px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-default);
+  cursor: pointer;
+  transition: background 120ms ease;
+  white-space: nowrap;
+  font-family: var(--ink-font-family-default);
+  line-height: 1.4;
+}
+
+.categoryTab:hover {
+  background: var(--ink-ecru-20);
+}
+
+.categoryTab:active {
+  background: var(--ink-ecru-30);
+}
+
+.categoryTabActive {
+  background: var(--ink-ecru-10);
+  color: var(--ink-font-color-default);
+  font-weight: var(--ink-font-weight-regular);
+}
+
+.suggestionItems {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: 100%;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-neutral-70);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  line-height: 1.4;
+  transition:
+    color 180ms ease,
+    background 180ms ease;
+  border-radius: 8px;
+  letter-spacing: -0.01em;
+  animation: suggestionSlideIn 350ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.suggestionItem:hover {
+  background: var(--ink-ecru-10);
+  color: var(--ink-neutral-140);
+}
+
+@keyframes suggestionSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+   CHAT STATE
+   ============================================================================= */
+
+.chatArea {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: chatEnter 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: var(--ink-spacing-300) var(--ink-spacing-400);
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.chatMessages::-webkit-scrollbar {
+  width: 5px;
+}
+.chatMessages::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chatMessages::-webkit-scrollbar-thumb {
+  background: var(--ink-neutral-20);
+  border-radius: 3px;
+}
+.chatMessages::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-neutral-30);
+}
+
+/* Height is set by useSmartScroll so that scrolled-to-bottom pins the last
+   user turn to the top of the viewport. */
+.chatBottomSpacer {
+  flex-shrink: 0;
+}
+
+.chatInput {
+  flex-shrink: 0;
+  padding: var(--ink-spacing-100) var(--ink-spacing-300) var(--ink-spacing-200);
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Inline slot after the last turn — left-aligned with assistant content */
+.chatSuffixSlot {
+  padding: var(--ink-spacing-100) 0 var(--ink-spacing-200);
+  max-width: 620px;
+}
+
+/* =============================================================================
+   LOADING SKELETON
+   ============================================================================= */
+
+/*
+ * The thinking mark — the bloom, working.
+ *
+ * It turns rather than pulses. The figure is radially symmetric, so rotation is
+ * the one motion it can carry without deforming, and a slow turn reads as
+ * sustained work where a pulse reads as a heartbeat. 12s is deliberately slower
+ * than a spinner: this is "she is thinking", not "the page is stuck".
+ */
+.thinkingMark {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--ink-spacing-250) 0;
+}
+
+.thinkingMark > * {
+  width: 88px;
+  height: auto;
+  opacity: 0.55;
+  animation:
+    thinkingTurn 12s linear infinite,
+    thinkingBreathe 2.8s ease-in-out infinite;
+}
+
+@keyframes thinkingTurn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes thinkingBreathe {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.loadingSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--ink-spacing-250) 0;
+}
+
+.skeletonLine {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--ink-neutral-15);
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.skeletonLine:nth-child(1) {
+  width: 85%;
+}
+.skeletonLine:nth-child(2) {
+  width: 65%;
+  animation-delay: 100ms;
+}
+.skeletonLine:nth-child(3) {
+  width: 45%;
+  animation-delay: 200ms;
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+/* =============================================================================
+   SHARED ANIMATIONS
+   ============================================================================= */
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes chatEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================================================
+   COMPACT — header + chat column
+   ============================================================================= */
+
+.contentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  height: 64px;
+  flex-shrink: 0;
+  background: var(--ink-ecru-10);
+  position: relative;
+}
+
+.contentHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  z-index: 1;
+  /* The identity slot can now carry a title. It must shrink, not push the
+     controls on the right off the header. */
+  min-width: 0;
+}
+
+.contentHeaderCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The agent's identity in the compact header — always present, never the
+   conversation's title. A `<button>` when there are agents to pick between,
+   a `<span>` when there are not; both share this rule. */
+/*
+ * Frame 101:17846: the switcher carries a resting fill of its own — the mark
+ * sits on a tint rather than on bare header. That tint is what says "this is a
+ * control" once the chevron is gone.
+ *
+ * Padding follows the frame: 4 top/bottom, 8 left, 0 right, because the chevron
+ * supplies the right-hand space when it appears.
+ */
+/*
+ * No fill at rest — the mark sits directly on the wash, and the tint arrives
+ * with the pointer, alongside the chevron.
+ *
+ * Note the trade: at rest nothing but the mark itself says "control". The
+ * 2026-08-10 beat hid the chevron on the grounds that "the chip carries the
+ * affordance at rest"; with the fill gone too, the resting state carries none.
+ * Akshat's call, and reversible in one line.
+ */
+.panelIdentity {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  margin-left: var(--ink-spacing-50);
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  border: none;
+  border-radius: var(--ink-radius-size-s);
+  background: transparent;
+  font-family: var(--ink-font-family-default);
+  color: inherit;
+  transition: background 150ms cubic-bezier(0.33, 0, 0.67, 1);
+}
+
+/*
+ * The chevron holds its space at rest and only becomes visible on approach, so
+ * the mark beside it never shifts. `visibility` rather than `display` for that
+ * reason, and rather than `opacity` so it leaves the accessibility tree too.
+ */
+.panelIdentityChevron {
+  display: inline-flex;
+  align-items: center;
+  visibility: hidden;
+  color: var(--ink-font-color-secondary);
+  transition: visibility 150ms;
+}
+
+button.panelIdentity:hover .panelIdentityChevron,
+button.panelIdentity:focus-visible .panelIdentityChevron {
+  visibility: visible;
+}
+
+/* The mark is artwork, not type — it must not inherit the header's colour. */
+.panelIdentity img {
+  display: block;
+  height: 16px;
+  width: auto;
+}
+
+button.panelIdentity {
+  cursor: pointer;
+}
+
+/*
+ * Open is a state, not a hover.
+ *
+ * With the resting fill gone, a switcher whose picker was open looked
+ * untouched — the pointer moves off the button and onto the menu, and the
+ * control it came from goes blank. `aria-expanded` is already on the button,
+ * so the open state can hold the hover treatment for as long as the menu is up.
+ */
+button.panelIdentity[aria-expanded='true'] {
+  background: var(--ink-ecru-30);
+}
+
+button.panelIdentity[aria-expanded='true'] .panelIdentityChevron {
+  visibility: visible;
+}
+
+button.panelIdentity:hover,
+button.panelIdentity:focus-visible {
+  /* One step below the resting fill, so hover still reads as a change. */
+  background: var(--ink-ecru-30);
+  outline: none;
+}
+
+.panelIdentityName {
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * The conversation's name, beside the wordmark: `iris / {title}`.
+ *
+ * The header names the surface. The wordmark stays because it is the agent
+ * switcher, so the name never replaces it. The title sits in the header's own
+ * centre slot instead — Akshat, 2026-08-13: "can we center align the title and
+ * remove the / from the text." The separator that used to hold the two apart is
+ * deleted; the centre slot separates them with space.
+ *
+ * It is text, not a control — no rename, no menu.
+ *
+ * `--ink-font-color-secondary` because Ink has no `font-color-subtle`; it is the
+ * quiet colour this header already uses on the chevron.
+ */
+.headerConversationTitle {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink-font-color-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contentHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  z-index: 1;
+}
+
+.panelChatColumn {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    flex-basis 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms ease,
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Compact welcome ---- */
+
+.panelWelcome {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: none;
+}
+
+/*
+ * The wash — the panel's background in the cold state, and only there. A
+ * conversation, a nav page, and the open menu all draw the plain surface. It
+ * holds the backdrop art as a child, when the host has any.
+ *
+ * Frame 79:8822 fills everything above the greeting with the Iris bloom and
+ * anchors the words to the bottom. The art is the host's, not the system's —
+ * it is brand, and a different surface would bring its own. The wash is not:
+ * it is this system's background, so it draws with or without a child.
+ *
+ * The wash resolves by the middle of the panel, not at the bottom. Running it
+ * the full height leaves warmth sitting under the greeting and the composer,
+ * where it competes with them; `--ink-gradient-pearl` does exactly that, which
+ * is why this is an explicit gradient and not the token. The stop is the knob —
+ * lower it to raise the horizon.
+ *
+ * The node stays mounted in every state; the class below fades it out. This
+ * base rule therefore carries the *return* transition — 200ms, because
+ * arriving delight can be quicker than departing.
+ *
+ * The dawn edge (a violet top stop) was tried on 2026-08-12 and rejected the
+ * same day — Akshat: "no purple at all in the chat - I really wanted an
+ * ecru/neutral direction." The wash stays pure ecru.
+ */
+.panelColdBackdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    var(--ink-ecru-10) 0%,
+    var(--ink-white-100) 55%
+  );
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    visibility 0s;
+}
+
+/*
+ * The exit. The wash used to unmount on the frame the cold state ended, which
+ * read as a cut — Akshat: "when I remove it it feels jarring."
+ *
+ * `--ink-motion-duration-400` leaving against `--ink-motion-duration-200`
+ * returning: the departure is the one the eye has to be let down from.
+ *
+ * `visibility` is stepped at the end of the fade rather than transitioned, so
+ * the layer is inert the instant it is invisible. The wash is already
+ * `pointer-events: none`, and its children inherit the hidden visibility, so
+ * nothing interactive survives here. The gradient dissolves into the white of
+ * `.pageCompact .rightArea` directly beneath it — no third colour flashes.
+ */
+.panelColdBackdropOut {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--ink-motion-duration-400) var(--ink-motion-curve-opacity),
+    visibility 0s linear var(--ink-motion-duration-400);
+}
+
+/*
+ * The art lives in the top third and fades out at every edge.
+ *
+ * It used to reach two thirds down, which put it behind the greeting where it
+ * competed with the words. Pulling the figure up (`top: -18%`) keeps it at full
+ * scale — a shrunk copy reads as a stray graphic — and the mask dissolves it by
+ * roughly a third of the panel height.
+ *
+ * A radial mask, because the figure is radially symmetric; a rectangular
+ * vignette would fight its geometry. The ellipse is centred on the figure's own
+ * centre, not the box's, so the falloff is even all the way round.
+ *
+ * Three knobs: `top` sets how high the figure sits, the ellipse's second value
+ * sets how far down it survives, and the first colour stop sets how hard the
+ * edge is.
+ */
+/*
+ * Natural size, centred, pinned to the top — not stretched to the panel.
+ *
+ * `width: 100%` scaled the art with the sidebar, so dragging it wider grew the
+ * figure and pushed its centre down: the wider you pulled, the lower it sat.
+ * Intrinsic width with `margin-inline: auto` centres it without scaling, so the
+ * panel now widens *around* the art instead of stretching it.
+ *
+ * Centred by margin rather than `translateX`, because the entrance animation
+ * owns `transform` and the two would fight.
+ */
+.panelColdBackdrop > * {
+  position: absolute;
+  top: -18%;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: auto;
+  max-width: none;
+  height: auto;
+  -webkit-mask-image: radial-gradient(
+    ellipse 68% 30% at 50% 45%,
+    #000 25%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(ellipse 68% 30% at 50% 45%, #000 25%, transparent 100%);
+  animation: coldBackdropIn 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/*
+ * The delight, and its whole budget.
+ *
+ * It plays once, on open, while the panel itself is still animating in — so it
+ * lands during a transition the user is already watching rather than pulling
+ * focus afterwards. It never loops. Nothing about it moves once the panel has
+ * settled, because by then the user is reading.
+ */
+@keyframes coldBackdropIn {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* The header floats on the wash; a solid fill would band the top of it. */
+.pageCompact .contentHeader {
+  background: none;
+}
+
+/* `.contentSurfaceOnBackdrop` is gone — `.pageCompact .contentSurface` now
+   stands down in every state, so the cold-state exception has nothing to do. */
+
+/*
+ * `margin-top: auto` is what bottom-anchors the greeting and the actions.
+ * The frame stacks them against the composer, with the bloom holding the space
+ * above — not a column that starts at the top and runs down.
+ */
+/*
+ * Same measure as the composer, so their left edges line up.
+ *
+ * This column was 480 while `.panelChatInput` was 620, which is invisible at
+ * panel width — both are full-bleed there — and obvious the moment the sidebar
+ * is dragged wider: the input reached 140px further left than the greeting
+ * sitting above it. One measure, one column, at every width.
+ *
+ * 620 rather than 480 because it is already this file's content measure
+ * (`.pageSingleColumn .chatMessages`), and because a wider composer truncates
+ * the hovered-query preview less.
+ */
+.panelWelcomeContent {
+  /*
+   * 24px, not 16 — the cold state sits further off the panel edge than the
+   * chat does. `.panelChatInput` carries the same inset, and it has to: the
+   * greeting, the rows and the composer share one left edge, so moving one
+   * without the others is what breaks the alignment.
+   */
+  padding: 0 var(--ink-spacing-300) var(--ink-spacing-300);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-300);
+  max-width: var(--iris-chat-measure);
+  margin: auto auto 0;
+  width: 100%;
+  position: relative;
+}
+
+.panelSuggestionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-150);
+}
+
+/* ---- Compact chat + input ---- */
+
+/*
+ * The measure, as one variable. `.panelWelcomeContent`, `.panelChatMessages`
+ * and `.panelChatInput` all draw from it, because the greeting, the rows and
+ * the composer share one left edge — a number changed in one of the three and
+ * not the other two is exactly what breaks that alignment. The fullscreen
+ * block raises it; nothing else may set it.
+ */
+.pageCompact {
+  --iris-chat-measure: 620px;
+}
+
+/*
+ * THE SCROLL CONTAINER IS THE COLUMN NOW; THE MEASURE IS PADDING.
+ *
+ * This box used to be both — `overflow-y: auto` on a 620px-capped, centred
+ * box. A scrollbar is drawn on the scroll container's own right edge, so it sat
+ * at the CAP's edge: at fullscreen with the pane closed the chat column is
+ * 1599px, the cap put the bar at x=1111, and it read as a bar floating in the
+ * gutter. Akshat: "can we hide this scrollbar? or have it be at the right edge
+ * of the screen?"
+ *
+ * Hiding it was the other answer and it is the worse one: the stream is the
+ * only region of this surface that scrolls, and at fullscreen it is most of the
+ * page. So the container goes full width and the measure moves into
+ * `padding-inline` — the bar returns to the column's right edge, which is the
+ * screen's, and the text keeps its column.
+ *
+ * The `100%` in the calc is the CHAT COLUMN's width, not this box's: padding
+ * percentages resolve against the containing block. `max()` is what makes a
+ * column narrower than the measure resolve to exactly the 16px it had before,
+ * so the sidebar renders unchanged to the pixel. The trailing `+ spacing-200`
+ * keeps the 16px inset the measure always carried inside it — drop it and the
+ * text gains 16px either side and falls out of step with the composer.
+ */
+.panelChatMessages {
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: var(--ink-spacing-200);
+  padding-inline: max(
+    var(--ink-spacing-200),
+    calc((100% - var(--iris-chat-measure)) / 2 + var(--ink-spacing-200))
+  );
+  width: 100%;
+}
+
+.panelChatInput {
+  flex-shrink: 0;
+  /*
+   * 8px, against the cold-state content's 24. The composer is a *card* — it
+   * carries its own border and fill, and its own 16px of internal padding
+   * brings the placeholder back onto the same left edge as the greeting above.
+   * So the box is wider while the text still lines up.
+   *
+   * This supersedes the earlier "make the rows match the input width": the rows
+   * match the content column, and the card reaches past both. Frame in hand
+   * 2026-08-12 shows exactly that relationship.
+   */
+  padding: 0 var(--ink-spacing-100) 0;
+  max-width: var(--iris-chat-measure);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*
+ * Suggested Context — frame 86:11249.
+ *
+ * A full-bleed strip the width of the composer card, directly above it:
+ * `neutral-10`, "Suggested Context" Bold 12 and the rest Medium 12 at fade-70,
+ * an Add on the right at fade-90. Letter-spacing 0.16 on 12px text, which Ink
+ * has no token for.
+ *
+ * The frame draws this as an Accordion.item at `itemHeight=compact` — 56 tall
+ * with 8/16/24/16 padding, so the text sits 11px from the top and leaves ~27px
+ * of dead space below it. That was ported as drawn and Akshat overruled it:
+ * "it feels too far away from the input? like there's too much gap between
+ * input and the suggested context section?" So the padding is symmetric 8/16
+ * and the height follows the content — the strip reads as attached to the
+ * composer, not as a box floating above it. The Accordion.item metrics are
+ * deliberately not matched here.
+ *
+ * One object, not two. The strip takes the composer's own border and radius
+ * tokens — `--ink-border-color-subtle` and `--ink-radius-size-m`, read from
+ * `ChatInput.module.css` `.shell` — on its top two corners only. The bottom
+ * corners are square and the bottom border is absent, so the composer's own top
+ * border is the single line where the two meet. `ChatInput` gets `flushTop` at
+ * the same time, which squares its top corners; without it the strip's square
+ * corners stand 12px outside the composer's curve.
+ */
+/*
+ * The composer sits above the strip in the paint order. Positioned, where the
+ * strip is not, so it wins the stack without anyone naming a z-index.
+ */
+.panelComposer {
+  position: relative;
+}
+
+/*
+ * Above the composer, tucked behind it. Akshat, 2026-08-18: "remove the border
+ * from around the suggestion… it's almost like it's peeking out."
+ *
+ * No border of its own, and only the two corners that clear the composer's
+ * ceiling are rounded — the bottom edge is hidden behind the composer, so
+ * rounding it would round nothing. The negative pull is one radius, so exactly
+ * the curve of the composer's top corners is what the strip fills in behind.
+ */
+.suggestedContext {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-200);
+  margin-bottom: calc(var(--ink-radius-size-m) * -1);
+  padding: var(--ink-spacing-100) var(--ink-spacing-200)
+    calc(var(--ink-spacing-100) + var(--ink-radius-size-m));
+  background: var(--ink-neutral-10);
+  border: none;
+  border-radius: var(--ink-radius-size-m) var(--ink-radius-size-m) 0 0;
+}
+
+.suggestedContextLabel {
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suggestedContextLabel strong {
+  font-weight: var(--ink-font-weight-bold);
+}
+
+.suggestedContextAdd {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-default);
+}
+
+.suggestedContextAdd:hover {
+  text-decoration: underline;
+}
+
+/* Add and the dismiss sit together at the trailing edge, closer to each other
+   than to the label. The strip keeps its own 16px space-between. */
+.suggestedContextActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  flex-shrink: 0;
+}
+
+/*
+ * The dismiss keeps IconButton's 32px hit area but does not drive the strip's
+ * height. Without the negative block margin the strip grows from 34px to 48px,
+ * which is the gap Akshat already cut: "there's too much gap between input and
+ * the suggested context section". The button overflows into the strip's own
+ * padding, which is empty. The right pull puts the glyph on the same 16px line
+ * as the Add text, not 8px inside it.
+ */
+.suggestedContextDismiss {
+  margin-block: -7px;
+  margin-right: -8px;
+}
+
+/*
+ * Replace and Dismiss live behind the strip's overflow. Add is the only visible
+ * action, so the strip carries two targets instead of three, and the one that
+ * destroys a set the user assembled costs a deliberate second click.
+ *
+ * Hand-positioned rather than Ink's `Dropdown position="top"`: that case adds a
+ * 4px gap to the trigger's own top instead of subtracting the menu height, so
+ * the menu opens over its trigger. See
+ * `projects/iris-system/notes/2026-08-10-ink-dropdown-position-bug.md`. The
+ * strip sits at the floor of the panel, so upward is the only direction.
+ */
+.suggestedContextMenuWrap {
+  position: relative;
+  display: flex;
+}
+
+.suggestedContextMenu {
+  position: absolute;
+  bottom: calc(100% + var(--ink-spacing-50));
+  right: 0;
+  z-index: 5;
+  min-width: 148px;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ink-spacing-50);
+  border-radius: var(--ink-radius-size-m);
+  background: var(--ink-white-100);
+  box-shadow: var(--ink-shadow-lg, 0 8px 24px rgba(19, 0, 50, 0.12));
+}
+
+.suggestedContextMenuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 32px;
+  padding: 0 var(--ink-spacing-100);
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-default);
+}
+
+.suggestedContextMenuItem:hover,
+.suggestedContextMenuItem:focus-visible {
+  background: var(--ink-ecru-20);
+}
+
+.suggestedContextMenuItem:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: -2px;
+}
+
+.panelDisclaimer {
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-neutral-subtle);
+  text-align: center;
+  margin: var(--ink-spacing-150) 0 0;
+  padding: 0 var(--ink-spacing-200) var(--ink-spacing-200);
+}
+
+/* =============================================================================
+   HAMBURGER MENU — the full-page menu, or the outer rail
+   Frame 123:24563. One `menuOpen` state, TWO presentations, and the host's
+   `isFullscreen` decides: outside fullscreen the menu is the page, at every
+   width; at fullscreen it is the rail beside the chat.
+
+   Akshat, 2026-08-13: "as long as we're not in fullscreen I think we shouldn't
+   do this nav otherwise it's confusing." A wide panel stands beside the host
+   app, and a rail there put two identical rails side by side — two apps. Width
+   cannot tell the two situations apart; only the host can, so the gate is the
+   prop.
+
+   The docked card (338px, bordered, between 640 and 900) is deleted with the
+   width gate that drew it.
+   ============================================================================= */
+
+/*
+ * Not for a query — every query in this file is gone. `container-type` applies
+ * layout containment, which makes this element the containing block for
+ * `.pageCompact .sidebarOverlay` and its backdrop. Delete it and the drawer
+ * positions against the viewport instead of the panel.
+ */
+.pageCompact {
+  container-type: inline-size;
+}
+
+/* Keeps the header's flex gap working across the conditional chrome. */
+.menuChrome {
+  display: contents;
+}
+
+/* Full-page menu only. At fullscreen the hamburger itself toggles the menu. */
+.menuBack {
+  display: none;
+}
+
+/*
+ * The outer rail — the second render site, shown at fullscreen only.
+ *
+ * It is a sibling of `.rightArea` in the `.page` flex row, so it is outside the
+ * chat's chrome: outside the header, outside the cold wash, outside the 64px
+ * remnant. Every light layer sits on `.rightArea` and therefore stops at this
+ * rail's right edge with no rule of its own.
+ *
+ * Declared hidden here and shown only inside the fullscreen gate, the same
+ * pattern `.menuPage` uses. Outside fullscreen it is `display: none`, which
+ * also keeps its copy of the rows out of the tab order.
+ */
+.menuOuterRail {
+  display: none;
+}
+
+.menuPage {
+  display: none;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  flex-direction: column;
+  gap: var(--ink-spacing-300);
+  padding: var(--ink-spacing-300) var(--ink-spacing-300) var(--ink-spacing-200);
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.menuSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-150);
+}
+
+/* The frame separates sections with a hairline. */
+.menuSection + .menuSection {
+  border-top: 1px solid var(--ink-neutral-fade-10);
+  padding-top: var(--ink-spacing-300);
+}
+
+.menuSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuSectionTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  margin: 0;
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  line-height: 1.3;
+}
+
+/*
+ * The title is the disclosure control. It takes the `<h3>`'s type rather than
+ * setting its own, so the rail's 14px override still lands on it — and
+ * it stays content-width, so the space between it and "View all" belongs to
+ * neither and a click there does nothing.
+ */
+.menuSectionToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+.menuSectionToggle:hover span:first-child,
+.menuSectionToggle:focus-visible span:first-child {
+  text-decoration: underline;
+}
+
+.menuSectionChevron {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink-icon-color-default);
+  transition: transform var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
+}
+
+/*
+ * Shut: the glyph points at the row it would open. `chevron-down` turned a
+ * quarter, not a second icon — one glyph, one meaning, and the turn is the
+ * only thing that moves when a section folds.
+ */
+.menuSectionChevronClosed {
+  transform: rotate(-90deg);
+}
+
+.menuViewAll {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-secondary);
+}
+
+.menuViewAll:hover {
+  text-decoration: underline;
+}
+
+/*
+ * Accordion variant (`menuStyle='accordion'`) — the section header IS the
+ * link. Same type as `.menuSectionTitle`; the chevron says it navigates.
+ * A `<div>` when there is nowhere to go, a `<button>` when there is.
+ */
+.menuAccordionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  line-height: 1.3;
+}
+
+button.menuAccordionHeader {
+  cursor: pointer;
+}
+
+button.menuAccordionHeader:hover span:first-child {
+  text-decoration: underline;
+}
+
+.menuAccordionChevron {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink-font-color-secondary);
+}
+
+/*
+ * OUTSIDE FULLSCREEN — the menu is the page, at every width.
+ *
+ * This block was a `@container (max-width: 639.98px)` query. The rules did not
+ * change; the gate did. A panel beside the host app draws this presentation
+ * however wide the user drags it.
+ */
+.pageCompact:not([data-fullscreen]) .menuBack {
+  display: inline-flex;
+}
+
+.pageCompact:not([data-fullscreen]) .menuChromeHiddenNarrow {
+  display: none;
+}
+
+.pageCompact:not([data-fullscreen]) .menuPage {
+  display: flex;
+}
+
+/* The menu replaces the page content; the composer stays below it. */
+.pageCompact:not([data-fullscreen]).pageMenuOpen
+  .panelChatColumn
+  > :not(.menuPage):not(.panelChatInput) {
+  display: none;
+}
+
+/* =============================================================================
+   FULLSCREEN GRAMMAR — frame · stage · pane
+   =============================================================================
+
+   Outside fullscreen the host app is beside the panel, so the panel must not
+   draw a rail: the host has one already, and two of them read as two apps.
+   Akshat, 2026-08-13: "as long as we're not in fullscreen I think we shouldn't
+   do this nav otherwise it's confusing." At fullscreen there is no host app
+   beside it, so the menu leaves the chrome altogether: the rail is the frame,
+   the chat is the stage, the artifact is the pane.
+
+   THE GATE IS THE HOST'S TRUTH, NOT A WIDTH. This block was
+   `@container (min-width: 900px)`, which approximated fullscreen and got it
+   wrong for a wide sidebar. `IrisAgent` now takes `isFullscreen` and stamps
+   `data-fullscreen` on this root; `usePanelMode` derives `mode: 'fullscreen'`,
+   so the host reads the value it already owns. The old ponytail note is
+   resolved.
+
+   THE RAIL IS OUTSIDE THE LIGHT, NOT UNDER IT.
+
+   The gradient is light, and the light belongs to the chat surface. Both light
+   layers sit on `.rightArea` — `.pageCompact .rightArea::before` (the 64px
+   working remnant) and `.panelColdBackdrop` (the tall cold wash) — and both run
+   `left: 0; right: 0`. The rail used to sit inside `.rightArea` too, under both
+   of them, which is what Akshat saw: "the gradient going to white and then
+   goign dark again in the left nav is weird." The wash dissolved to white over
+   the rail's top 64px and the rail's own warm ground resumed below it.
+
+   The fix is structural, and the light needed no rule. At fullscreen the menu
+   renders in `.menuOuterRail`, a sibling of `.rightArea` in the `.page` flex
+   row. `.rightArea` now starts at the rail's right edge, so both light layers
+   stop there on their own. The header goes with them, which is correct —
+   it names the chat surface, and the rail is not part of that surface.
+
+   The rail is therefore plain: the page's own canvas grey, no hairline,
+   nothing of the light — the chat chrome is the surface above it. The pane is
+   untouched and stays inside the chrome; it drops its fill
+   (ArtifactDock.module.css) so the wash still reaches it.
+
+   Both light layers keep `pointer-events: none` and still paint below
+   `.contentSurface` — all three are at `z-index: auto`, so they paint in DOM
+   order and the surface, last in the DOM, paints over them. */
+
+/*
+ * The rail — the ground, not a panel. 338px wide, no margin, no radius, no
+ * hairline; full height falls out of being a flex item in `.page`.
+ *
+ * `--ink-spacing-300` of top padding, so the first row sits high with no header
+ * row above it (frame: content starts near the top). The rail has no header —
+ * the chrome's header is next door.
+ *
+ * ELEVATION, NOT A BORDER. Akshat: "should we try this sort of a treatment on
+ * the edge? so instead of a border it's like eleveated and a surfgace?" Frame
+ * 153:19655 answers with a tonal step and a curve, and no shadow at all: the
+ * rail takes the page's own canvas grey (`bgColorCanvasPage`, #F7F6F7 — the
+ * frame binds the same variable to its own fill), the chat chrome stays pure
+ * white, and the chrome curves its two left corners away. Ground, then surface.
+ * The `border-right` hairline is therefore deleted — a line and a step together
+ * would read as two boundaries.
+ *
+ * The frame draws NO drop shadow on the chrome. Its one effect is the DS
+ * `elevationGlass` style — a 16px BACKGROUND_BLUR — which paints nothing over
+ * an opaque white fill, so nothing is ported for it.
+ *
+ * THE GROUND. Colour history: ecru-10 → canvas grey ("don't love the gray") →
+ * white ("I want to try out white -- just to see ecru10 is too saturated") →
+ * this. Akshat, 2026-08-13, on three swatches he drew himself at 6:1741:
+ * "these are three interesting colors - wonder how we can combine and use
+ * these to create enough visual distinction even if it's subtle."
+ *
+ * The three are `#fcfcfc` (unbound), `bgColorGlassFrost` #ffffffe5 and
+ * `bgColorDefault` #ffffff. Frame 153:19655 spends them on exactly the three
+ * regions: the rail takes `bgColorPopoverClose` (white at 70%) over
+ * `bgColorCanvasPage`, the chat body takes `bgColorGlassFrost` (white at 90%)
+ * over the same, and the pane takes no fill at all — a hairline and nothing
+ * else. Ground, ground, edge.
+ *
+ * So the rail is the darkest step, and it is the only one that carries visible
+ * distinction: `#fcfcfc` is three values below white, which with the curve and
+ * the shadow is the whole "subtle" Akshat asked for. White at 70% over the
+ * canvas grey composites into this same family; the flat `color-mix` says it
+ * in tokens and survives a ground that is not grey.
+ *
+ * `--iris-rail-ground` exists so the rail and `.pageCompact` cannot drift. The
+ * notch shows the rail's ground, so the two must be one colour or the corner
+ * reads as a third surface — an invariant this file used to hold by comment
+ * alone. Scoped to fullscreen: the rail exists nowhere else, and below
+ * fullscreen `.pageCompact` keeps its white.
+ *
+ * The curve and the shadow below are untouched. This chooses grounds only.
+ */
+.pageCompact[data-fullscreen] {
+  --iris-rail-ground: color-mix(
+    in srgb,
+    var(--ink-bg-color-canvas-page) 35%,
+    var(--ink-white-100)
+  );
+  background: var(--iris-rail-ground);
+}
+
+/* ---------------------------------------------------------------------------
+   THE GROUND EXPERIMENT — `sandwich`
+   ---------------------------------------------------------------------------
+
+   The finding: at fullscreen the composition holds four surfaces within ~3% of
+   each other — the rail #fcfcfc, the chat's frost compositing to white, the
+   pane on the page's own ground, and the table's #f7f6f7 header. With the light
+   hidden, one hairline and a 16px corner carry the whole region hierarchy.
+
+   Akshat, 2026-08-14: "i'm kinda stuck on this one -- we can experiment but I
+   want text to stay legible." So this is a switch, not a decision. `flat` is
+   still the default and still exactly what this file drew before.
+
+   `sandwich` moves the ONE variable. `--iris-rail-ground` exists so the rail
+   and `.pageCompact` cannot drift, and the pane takes no fill of its own, so
+   this single override moves the rail, the page, the notch corner and the pane
+   together — ground, stage, ground, which is frame 153:19655's own reading. It
+   needs no rule in `ArtifactDock.module.css`.
+
+   The chat is unmoved. `.pageCompact .rightArea` is opaque white with the menu
+   shut, and with the rail up the frost (white at 90%) over #f7f6f7 composites
+   to #fefefe — a tenth of the move, which is the behaviour the frost was
+   written for.
+
+   Specificity (0,3,0) over the base rule's (0,2,0), and `[data-fullscreen]` is
+   in the selector, so no panel-width surface can reach it.
+   --------------------------------------------------------------------------- */
+
+.pageCompact[data-fullscreen][data-ground='sandwich'] {
+  --iris-rail-ground: var(--ink-bg-color-canvas-page);
+}
+
+/* ---------------------------------------------------------------------------
+   THE GROUND EXPERIMENT — `warm`
+   ---------------------------------------------------------------------------
+
+   One hue, ecru, across every structural surface. From the 2026-08-14 proposal
+   (`projects/iris-system/notes/2026-08-14-panel-color-proposal.md`), which
+   answers the same finding the two schemes above answer, with two numbers the
+   others do not use:
+
+   1. `#F5` is as light as a ground can go and stay perceptible against white.
+      `flat` (#fcfcfc) and `sandwich` (#f7f6f7) both sit at or above it. Ecru-20
+      `#f2edea` is inside it, so the step is one the eye registers.
+   2. One hue. Ink's opaque neutrals are `rgba(19,0,50,α)` — hue ~283°, violet —
+      against ecru's ~24°. Two families in one composition read as two apps.
+
+   Same single-variable mechanism as `sandwich`: `--iris-rail-ground` feeds the
+   rail, `.pageCompact`, the notch corner and — through
+   `ArtifactDock.module.css`'s `background: none` at fullscreen — the pane. One
+   line moves all four, so no rule is needed there for the ground.
+
+   Body text `rgba(19,0,50,0.9)` on `#f2edea` computes to 13.8:1 and secondary
+   text at 0.7 to 7.2:1. Akshat's floor is legibility; this clears AA by 3x.
+   --------------------------------------------------------------------------- */
+
+.pageCompact[data-fullscreen][data-ground='warm'] {
+  --iris-rail-ground: var(--ink-ecru-20);
+}
+
+/*
+ * The stage — `white-100`, NOT the frost the other schemes take.
+ *
+ * `--ink-bg-glass-frost` is white at 90%. Over `flat`'s #fcfcfc it composites
+ * to white, which is why it is written as glass there. Over #f2edea it
+ * composites to a tinted near-white and eats most of the step this scheme
+ * exists to create. So the stage states the value it wants.
+ *
+ * (0,5,0) against the frost rule's (0,4,0), so order does not matter, and
+ * `.menuOuterRail +` still means "only while the rail is rendered".
+ */
+.pageCompact[data-fullscreen][data-ground='warm'] .menuOuterRail + .rightArea {
+  background: var(--ink-white-100);
+}
+
+/*
+ * The opaque-neutral sweep, `warm` only.
+ *
+ * Opaque neutrals put a violet surface on a warm ground with nothing bleeding
+ * through. The `--ink-neutral-fade-*` rules and the text ink carry alpha, so
+ * the ecru shows through and they compose warm — they stay, and so do the
+ * focus rings and the semantic status colours.
+ *
+ * Two sites in this file. `.skeletonLine` (`neutral-15`) paints at fullscreen
+ * and is deliberately unmoved: Ink has no `ecru-15`, so there is no equivalent
+ * to swap to. The scrollbar rules on `.chatMessages` are the sidebar layout's,
+ * not compact's, so they never paint here.
+ */
+.pageCompact[data-fullscreen][data-ground='warm'] .suggestedContext {
+  background: var(--ink-ecru-10);
+}
+
+.pageCompact[data-fullscreen][data-ground='warm'] .inlineResultsTable {
+  --dt-bg-header: var(--ink-ecru-10);
+}
+
+.pageCompact[data-fullscreen] .menuOuterRail {
+  display: flex;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: var(--ink-spacing-300);
+  width: 338px;
+  padding: var(--ink-spacing-300) var(--ink-spacing-200);
+  background: var(--iris-rail-ground);
+}
+
+/*
+ * The rail's three bands. `overflow-y` moved off the rail and onto the middle
+ * one, so the brand and the footer are outside the scroll and stay put.
+ *
+ * These need no fullscreen gate: they exist only inside `.menuOuterRail`, and
+ * that is `display: none` everywhere else.
+ */
+.menuRailBrand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  /*
+   * Frame 163:21258 puts the mark at x 32 / y 24. The y is the rail's own top
+   * padding; the x is that padding (16) plus this. The rows are not on this
+   * line — their icons sit at 24 — because the frame does not put them there.
+   */
+  padding-inline-start: var(--ink-spacing-200);
+}
+
+.menuRailScroll {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  /* The 24px the frame leaves between the shortcut group and "History". */
+  gap: var(--ink-spacing-300);
+  overflow-y: auto;
+}
+
+.menuRailFooter {
+  flex-shrink: 0;
+}
+
+/*
+ * The chat chrome, lifted off that ground: 8px on the left corners only
+ * (frame: topLeft 8, bottomLeft 8, topRight 0, bottomRight 0), and no gap —
+ * the rail's right edge and the surface's left edge are the same line at x=338.
+ *
+ * Scoped to the rail's presence with the adjacent-sibling combinator, because
+ * the rail is rendered only while the menu is open. With the menu shut there is
+ * no ground beside the surface, so a notched left edge would cut into the host
+ * page instead. The frame does not draw that state.
+ *
+ * MECHANISM, and the clipping check. Nothing here casts a shadow, so there is
+ * no shadow for `.page`'s or `.rightArea`'s `overflow: hidden` to clip into a
+ * hard line. The radius sits on `.rightArea`, which is the element that already
+ * clips — so the header, the 64px remnant and the cold wash all take the curve
+ * for free. No new layer, no pointer-events change.
+ */
+.pageCompact[data-fullscreen] .menuOuterRail + .rightArea {
+  /*
+   * 16px, up from the frame's 8 — Akshat, 2026-08-13 page feedback: "make the
+   * top, bottom left more rounded right now it's a bit too harsh."
+   */
+  border-radius: var(--ink-radius-size-l) 0 0 var(--ink-radius-size-l);
+  /*
+   * The stage — the frame's own fill for this region. Frame 153:19655 binds
+   * `bgColorGlassFrost` (white at 90%) to the chat body, and Ink already has
+   * it as `--ink-bg-glass-frost` (`--ink-white-fade-90`) — an exact match.
+   *
+   * Over the rail's `#fcfcfc` ground it composites to white, so this renders
+   * as it does today. It is written as the frost rather than `white-100` for
+   * two reasons: it is what the frame says, and it is glass — move the ground
+   * and the stage takes a tenth of the move with it, which is the behaviour
+   * every earlier ground trial (ecru, grey, white) had to be hand-tuned for.
+   *
+   * Beats `.pageCompact .rightArea` on specificity (0,4,0 against 0,2,0), and
+   * matches only while the rail is rendered, so nothing below fullscreen and
+   * nothing with the menu shut is touched.
+   */
+  background: var(--ink-bg-glass-frost);
+  /*
+   * The lift — OFF as of 2026-08-13. Akshat: "lets get rid of the shadow on
+   * left of the main container." The analysis below is the record of the dose
+   * that was tried, not of what paints; the live value is at the foot of it.
+   *
+   * It was taken from the DS — Akshat, earlier the same day: "can we use
+   * elevation lowest from figma but only on left edge?"
+   *
+   * THE FIGMA VALUE. Frame 153:19386 carries the published effect style
+   * `elevationLowest`, and it is the only elevation step this node or any of
+   * its ancestors references:
+   *
+   *   elevationLowest = DROP_SHADOW, offset (0, 0), radius 20, spread 0,
+   *                     color Internal/color/semantic/neutral/fade/15 #13003226
+   *
+   * Colour maps to `--ink-neutral-fade-15` — the token is `rgba(19,0,50,0.15)`
+   * and the frame is 0x26/255 = 0.1490, a delta of 0.001. Same name, same
+   * ladder step, no `color-mix` needed.
+   *
+   * THE LEFT-EDGE CONVERSION, AND ITS REINTERPRETATION. The Figma offset is
+   * (0, 0): an omnidirectional glow, with no direction to keep. A left-edge
+   * shadow therefore cannot be a straight port — an x offset has to be chosen.
+   * It is set to the blur, x = -20, because that is the value that preserves
+   * the original on the edge Akshat asked for. FLAGGED FOR HIS REVIEW.
+   *
+   *   box-shadow: -20px 0 20px -20px  (offset-x, offset-y, blur, spread)
+   *
+   * Arithmetic, against the element box [L, T, R, B]:
+   *   spread -20  insets the shadow rect 20px on all four sides
+   *   offset -20  moves it 20px left
+   *   -> rect = [L+20-20, T+20, R-20-20, B-20] = [L, T+20, R-40, B-20]
+   *   blur 20 makes the paint visible up to 20px outside that rect:
+   *     top    T+20-20 = T     — stops at the element edge, no spill
+   *     bottom B-20+20 = B     — stops at the element edge, no spill
+   *     right  R-40+20 = R-20  — 20px inside, covered by the frost fill
+   *     left   L-20            — 20px out, the one edge that paints
+   *
+   * The left profile is identical to the Figma original: both put the shadow
+   * rect's left edge on L, so alpha is half of fade-15 at the edge and falls to
+   * zero 20px out. The only loss is within ~20px of the top and bottom corners,
+   * where the vertical inset fades the shadow earlier than an omnidirectional
+   * one would. Not visible at panel height.
+   *
+   * The dose ladder, appended, not replaced:
+   *   half   -2px 0 12px var(--ink-neutral-fade-5)    <- 2026-08-13, "too harsh" at full
+   *   full   -4px 0 24px var(--ink-neutral-fade-10)   <- the `.sidebarOverlay` precedent
+   *   none                                            <- 2026-08-13, "try no shadow once too?"
+   *   figma  -20px 0 20px -20px fade-15                <- elevationLowest, left-only
+   *   off    the rule below                            <- 2026-08-13, DECIDED. Akshat:
+   *                                                       "lets get rid of the shadow on
+   *                                                       left of the main container."
+   *
+   * The frame-ported dose is off too, so the whole ladder is now spent: every
+   * step from half to the Figma port was tried and none of them stayed. The
+   * tonal step between the rail's ground and the chrome's frost, plus the 16px
+   * curve, is the entire edge. Keep the arithmetic above — it is the record of
+   * how `elevationLowest` maps to a left edge, and it is what a future dose
+   * would start from.
+   *
+   * When it painted it did so OUTSIDE .rightArea onto the rail; .page clips at
+   * the panel edge only, and `container-type: inline-size` is layout
+   * containment, not paint, so it did not clip either.
+   */
+  box-shadow: none;
+}
+
+/*
+ * WHICH REGION FLEXES. Frame 163:21261, measured: 1807 total = 338 rail + 482
+ * chat + 987 pane. The chat holds a panel's measure and the pane takes every
+ * pixel left over — the inverse of what this file did, where the chat flexed
+ * and the pane was pinned at 520 (frame 153:19655, which draws no pane).
+ *
+ * The frame is right about the job. The chat's content is capped at 620 and
+ * centred, so a flexing chat at 1807 spends its surplus on empty gutters either
+ * side of a 620px column, while the pane — a table, an agreement — is the one
+ * region that can use the room. Ground, conversation, the thing you opened.
+ *
+ * FLAGGED FOR HIS REVIEW: the frame gives one width, so the *relationship* is
+ * inferred, not the pixels. 480 is the panel's own `sidebarWidth`, not the
+ * frame's 482 (drawing noise), and both regions keep `flex-shrink: 1` so a
+ * fullscreen narrower than 1338 shrinks them together rather than overflowing.
+ * At 1807 that arithmetic returns the frame: chat 480, pane 989.
+ *
+ * IT SITS ON `.rightArea`, NOT ON `.panelChatColumn`. At fullscreen the pane is
+ * a sibling of the chat chrome rather than a column inside it, so the chrome is
+ * the flex item the pane divides the row with. `.panelChatColumn` goes back to
+ * its base `flex: 1` and simply fills the chrome. Below fullscreen this rule
+ * does not match and the pane is inside `.contentSurface`, exactly as before.
+ *
+ * `:not(.chatColumnCollapsed)` because this rule outranks the ARTIFACT EXPANDED
+ * block on specificity and would otherwise pin the chrome open. The class moves
+ * onto `.rightArea` at fullscreen for the same reason the 480 does. The pane's
+ * own `[data-expanded]` rule is unaffected — see ArtifactDock.module.css.
+ *
+ * `[data-pane-open]` is stamped by IrisAgent when the host passes an
+ * `artifactSlot`. Without it a fullscreen chat with nothing beside it would sit
+ * at 480 with the surplus abandoned to its right.
+ */
+.pageCompact[data-fullscreen][data-pane-open] .rightArea:not(.chatColumnCollapsed) {
+  /*
+    Only `flex-grow` changes here. The 480 basis lives on the base rule below,
+    so opening the pane interpolates one value.
+
+    It used to be the `flex` shorthand, which set basis 0% → 480px alongside a
+    grow flip of 1 → 0. Basis was in the transition list and grow was not, so
+    the first open ran them against each other: measured, the pane entered at
+    149% of its final width and shrank while the chat vanished and grew back.
+    Every open after that was a hard cut, because the basis was already 480.
+  */
+  flex-grow: 0;
+}
+
+/*
+ * The chrome folds with the same 320ms as the column it replaces, so expanding
+ * the pane at fullscreen slides rather than cuts. Scoped to fullscreen: below
+ * it `.rightArea` never collapses and needs no transition.
+ */
+.pageCompact[data-fullscreen] .rightArea {
+  /* The chat column's width when a pane is beside it. Held here, not on the
+     `[data-pane-open]` rule, so opening the pane changes `flex-grow` alone. */
+  flex-basis: 480px;
+  transition:
+    flex-grow 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    flex-basis 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 320ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms ease,
+    transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+ * THE LIGHT DOES NOT RUN AT FULLSCREEN — "for now", not a deletion.
+ *
+ * Akshat, 2026-08-13, on frame 158:18134: "maybe let's hide the gradient from
+ * fullscreen for now to fix the UX." Both light layers sit on `.rightArea` and
+ * run its full width. With the pane promoted to a sibling, `.rightArea` is the
+ * chat column and nothing more, so the wash and the 64px remnant lit a 480px
+ * strip beside a full-height pane and read as a band rather than as light.
+ *
+ * BELOW FULLSCREEN NOTHING CHANGES. That is the state real users are in: the
+ * cold wash fades in and out as before, and the remnant holds the header.
+ *
+ * `display: none` on the wash, not `opacity`: it beats `.panelColdBackdropOut`
+ * on specificity (0,3,0 against 0,1,0) and there is no state to transition
+ * between here — the layer is simply not part of the fullscreen grammar.
+ */
+.pageCompact[data-fullscreen] .panelColdBackdrop,
+.pageCompact[data-fullscreen] .rightArea::before {
+  display: none;
+}
+
+/*
+ * The rail's two content overrides. Whitespace separates the sections; the
+ * hairline is the full-page menu's rule, where the sections run the width of
+ * the page and need the line.
+ */
+.pageCompact[data-fullscreen] .menuOuterRail .menuSection + .menuSection {
+  border-top: none;
+  padding-top: 0;
+}
+
+/*
+ * The rail's section label is a label, not a heading. Frame 163:21261 binds
+ * `fontDetailS` and `fontColorSubtle` to it — 12px Medium, line-height 1.5,
+ * letter-spacing 0.16 at `#130032b2` — which is the same recipe
+ * `.suggestedContextLabel` already draws, and `--ink-font-color-neutral-subtle`
+ * is `fontColorSubtle` exactly (see the token's own comment). It was 14px at
+ * `font-color-default`, one step below the row labels' size and the same
+ * colour, so the label and the rows it titles read as one weight of thing.
+ *
+ * The fold survives. The frame draws one static state with no chevron on it,
+ * which cannot veto a behaviour — and a fold with no glyph on it is a fold
+ * nobody finds. Reported for his call, not applied.
+ */
+.pageCompact[data-fullscreen] .menuOuterRail .menuSectionTitle {
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/*
+ * The label is inset 12px from the column edge (frame 163:21258), against the
+ * rows' 8px. On the header rather than the title, so the fold's hit area moves
+ * with the text it labels.
+ */
+.pageCompact[data-fullscreen] .menuOuterRail .menuSectionHeader {
+  padding-inline-start: var(--ink-spacing-150);
+}
+
+/* 8px from the label to the first row (frame: label ends 18, rows start 26),
+   against the full-page menu's 12. The rail is tighter because its rows are
+   the page's content, not a section of one. */
+.pageCompact[data-fullscreen] .menuOuterRail .menuSection {
+  gap: var(--ink-spacing-100);
+}
+
+/*
+ * Quiet rows. A rail full of white boxes on a white ground makes the chrome
+ * louder than the content. Akshat, on the first pass: "visually this looks
+ * jarring."
+ *
+ * `button[data-kind]` is every `ZeroQueryActions` row and nothing else in this
+ * rail — the section toggles, "View all" and the accordion headers carry no
+ * such attribute. The rows already set it, so no attribute is added. CSS
+ * modules rewrites classes and ids only, so the element and the attribute pass
+ * through as written; `.menuOuterRail` still scopes it.
+ *
+ * Specificity does the rest: (0,4,1) beats `.listCard .row` at rest, (0,5,1)
+ * beats `.listCard .row:hover`. Bundle order cannot change the result. Outside
+ * fullscreen this rule does not match, so the rows keep their card appearance
+ * in the full-page menu.
+ *
+ * The label, the icon, the radius and the padding are untouched — only the
+ * paint changes. `.row:focus-visible` keeps its outline, because this rule sets
+ * a background and nothing else.
+ */
+.pageCompact[data-fullscreen] .menuOuterRail button[data-kind] {
+  background: none;
+}
+
+.pageCompact[data-fullscreen] .menuOuterRail button[data-kind]:hover,
+.pageCompact[data-fullscreen] .menuOuterRail button[data-kind]:focus-visible {
+  background: var(--ink-ecru-20);
+}
+
+/* -----------------------------------------------------------------------------
+   THE RAIL'S TWO ROW TREATMENTS — frame 163:21258
+   -----------------------------------------------------------------------------
+
+   HISTORY IS ALREADY RIGHT, so nothing below touches it. The frame measures its
+   rows at 40 tall with a 4px gap, Medium 14, subtle label and subtle icon, a
+   24px icon inset 8px and the label at x 40 — which is `appearance="card"`
+   exactly (8 + 24 + 8 = 40; `.listCard` gap is `spacing-50`). The rail asks for
+   no change to the list it already draws.
+
+   THE SHORTCUTS ARE THE OTHER TREATMENT: 36 tall, no gap between rows, Regular
+   14, full-ink label and icon. Louder and tighter, because they are doors rather
+   than a list of things you have already said.
+
+   SCOPE. `.menuRailShortcuts` sits on the shortcut group and on the footer, so
+   Settings takes the shortcut treatment for free — the frame draws it as one of
+   them, pinned to the floor. Both are containers the History section is not in,
+   so no rule here can reach a history row and none needs a per-row flag.
+
+   SELECTORS. `ZeroQueryActions` is a separate CSS module, so its class names are
+   hashed and unreachable from here. Reachable from here: the element and the
+   attribute the rows already carry (`button[data-kind]`, the existing precedent
+   above), the list's root `> div`, and the row's two spans in order — the icon
+   box first, the label last. Nothing new is asked of that component. */
+
+/* No gap: the three rows read as one block. */
+.pageCompact[data-fullscreen] .menuOuterRail .menuRailShortcuts > div {
+  gap: 0;
+}
+
+/*
+ * 36 tall. `--ink-spacing-350` IS 36px — the scale is misordered around it
+ * (350 = 36, 400 = 32) in every prototype's snapshot, so it looks like a typo
+ * and is not one. Do not "fix" it to `spacing-400`.
+ *
+ * `min-height` + `padding-block: 0` rather than a 6px padding, because 6px has
+ * no token and the row's contents (a 24px icon box, a 24px label box) are
+ * already centred by the row's own `align-items`.
+ */
+.pageCompact[data-fullscreen] .menuOuterRail .menuRailShortcuts button[data-kind] {
+  min-height: var(--ink-spacing-350);
+  padding-block: 0;
+}
+
+/* Full ink, both marks. `.listCard` paints the label subtle and the icon box is
+   subtle at every appearance; a shortcut is neither. */
+.pageCompact[data-fullscreen]
+  .menuOuterRail
+  .menuRailShortcuts
+  button[data-kind]
+  span:first-child {
+  color: var(--ink-icon-color-default);
+}
+
+.pageCompact[data-fullscreen]
+  .menuOuterRail
+  .menuRailShortcuts
+  button[data-kind]
+  span:last-child {
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-default);
+}
+
+/*
+ * The cold state's two lines, at fullscreen.
+ *
+ * Frame 163:21261 binds `fontHeadingS` to the greeting (24px, line-height 1.25)
+ * and `fontBodyM` to the line under it (16px, line-height 1.5) at
+ * `fontColorSubtle`. The rendered heights confirm both: 24 × 1.25 = 30 and
+ * 16 × 1.5 = 24, which is what the frame measures, and the 4px between them is
+ * the difference between the first block's bottom (30) and the second's top
+ * (34).
+ *
+ * `.pageCompact` flattens both to 20px, which is right in a 360px sidebar and
+ * wrong here — at fullscreen the panel is the screen, so the greeting takes the
+ * heading scale back and the subtitle steps down under it. Two sizes carry the
+ * hierarchy that one size was asking weight alone to carry.
+ *
+ * Gated to fullscreen, because that is the only cold state this frame draws.
+ * Below fullscreen the 20/20 pair is untouched.
+ *
+ * The greeting's COLOUR is not changed. `.greetingBold` paints
+ * `--ink-cobalt-140` (#260559) and the frame's heading fill is unbound — there
+ * is no variable to read and the two are indistinguishable at screenshot
+ * resolution. Reported rather than guessed.
+ */
+.pageCompact[data-fullscreen] .greetingBold {
+  font-size: var(--ink-font-size-2xl);
+  line-height: 1.25;
+}
+
+.pageCompact[data-fullscreen] .greetingSubtitle {
+  font-size: var(--ink-font-size-md);
+  line-height: 1.5;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.pageCompact[data-fullscreen] .greeting {
+  gap: var(--ink-spacing-50);
+}
+
+/*
+ * THE MEASURE AT FULLSCREEN. Akshat, 2026-08-18: "what's the max width of the
+ * chat content column? that feels a bit low?"
+ *
+ * 620 is the panel's measure and it is right in a 480px sidebar. At fullscreen
+ * with the pane closed the chat column is the whole screen — 1599px on a 1600
+ * viewport — and 620 of it left 490px of empty gutter on either side.
+ *
+ * 720 rather than a new number: it is already this file's answer to "what
+ * measure does chat content take when the surface IS the page" —
+ * `.welcomeContent`, `.chatMessages` and `.chatInput` all take it in the
+ * sidebar layout. Akshat named no dose, so the precedent is the value and this
+ * variable is the knob if he wants more.
+ *
+ * It does nothing while the pane is open, and that is correct rather than a
+ * gap: the chat chrome is pinned at 480 there (see `[data-pane-open]` above),
+ * so no measure above 480 can bite.
+ */
+.pageCompact[data-fullscreen] {
+  --iris-chat-measure: 720px;
+}
+
+/* =============================================================================
+   ARTIFACT EXPANDED — collapse the chat column
+   Declared last so it beats `.contentMain` / `.panelChatColumn` on source
+   order at equal specificity. No `!important` needed.
+   ============================================================================= */
+
+.chatColumnCollapsed {
+  flex: 0 0 0;
+  max-width: 0;
+  min-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-12px);
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   The prototype shipped 9 keyframes with no `prefers-reduced-motion` block.
+   Entrances collapse to their end state; the ambient aurora loop stops.
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .greeting,
+  .greetingSubtitle,
+  .inputHero,
+  .inputHero::before,
+  .discoverySection,
+  .suggestionItem,
+  .chatArea,
+  .skeletonLine,
+  .panelColdBackdrop > *,
+  .thinkingMark > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* `.panelColdBackdrop` — the wash swaps instantly instead of fading.
+     `visibility: hidden` on `.panelColdBackdropOut` still applies, so the
+     layer is inert the moment it is invisible. */
+  /* The header remnant is a static layer, so the swap between the tall wash
+     and it is instant here for free — nothing to disable. */
+  .contentMain,
+  .panelChatColumn,
+  .sidebarOverlay,
+  .sidebarOverlayBackdrop,
+  .panelColdBackdrop,
+  .menuSectionChevron {
+    transition: none;
+  }
+
+  /*
+   * The chat chrome folds instead of the column at fullscreen — same gesture,
+   * so the same exemption. It needs the full selector, not a bare `.rightArea`
+   * in the list above: the rule it has to beat is
+   * `.pageCompact[data-fullscreen] .rightArea` (0,3,0), and a media query adds
+   * no specificity of its own.
+   */
+  .pageCompact[data-fullscreen] .rightArea {
+    transition: none;
+  }
+}

@@ -1,0 +1,75 @@
+@import '@ink/1-tokens/tokens.css';
+
+/*
+ * The column is a sibling of the chat column inside IrisAgent's
+ * `.contentSurface` flex row. Fixed width closed; `flex: 1` when expanded.
+ */
+.column {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  padding: var(--ink-spacing-150);
+  border-left: 1px solid var(--ink-border-color-subtle);
+  background: var(--ink-bg-color-subtle);
+  gap: var(--ink-spacing-100);
+}
+
+.column[data-expanded] {
+  flex: 1;
+}
+
+.tabStrip {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  padding: var(--ink-spacing-50) var(--ink-spacing-100);
+  border: 1px solid transparent;
+  border-radius: var(--ink-radius-size-s);
+  background: transparent;
+  color: var(--ink-font-color-secondary);
+  font-size: var(--ink-font-detail-xs-size);
+  font-family: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Tokens note: no --ink-bg-color-hover exists; `muted` / `active-subtle`
+   are the designed choices, not near-token substitutes. */
+.tab:hover {
+  background: var(--ink-bg-color-muted);
+}
+
+.tab[data-active] {
+  background: var(--ink-bg-color-active-subtle);
+  border-color: var(--ink-border-color-subtle);
+  color: var(--ink-font-color-default);
+}
+
+.tabLabel {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.viewerWrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ArtifactViewer's .viewer is height: 100%; give it a bounded box. */
+.viewerWrap > * {
+  flex: 1;
+  min-height: 0;
+}

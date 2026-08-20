@@ -1,0 +1,107 @@
+@import '@ink/1-tokens/tokens.css';
+
+/* Wrapper — inline so it flows with text */
+.wrapper {
+  position: relative;
+  display: inline;
+}
+
+/* Chip — the small numbered badge */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  margin-left: 3px;
+  font-size: 11px;
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1;
+  color: var(--ink-cobalt-100);
+  background: var(--ink-cobalt-10);
+  border: 1px solid var(--ink-cobalt-30);
+  border-radius: 4px;
+  vertical-align: middle;
+  transform: translateY(-2px);
+  transition: all 120ms ease;
+}
+
+/* Button resets */
+.button {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+
+.button:hover .chip {
+  background: var(--ink-cobalt-100);
+  border-color: var(--ink-cobalt-100);
+  color: var(--ink-white-100);
+}
+
+/* ============================================================================
+   Tooltip — fixed positioning via portal
+   ============================================================================ */
+
+.tooltip {
+  position: fixed;
+  max-width: calc(100vw - 32px);
+  padding: var(--ink-spacing-200);
+  background: var(--ink-bg-color-default);
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-s);
+  box-shadow:
+    0 8px 24px var(--ink-neutral-fade-20),
+    0 2px 8px var(--ink-neutral-fade-10);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 150ms ease,
+    visibility 150ms ease,
+    transform 150ms ease;
+  transform: translateY(-4px);
+  pointer-events: none;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+}
+
+.tooltipVisible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tooltipLabel {
+  display: block;
+  font-size: var(--ink-font-detail-xs-size);
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-font-color-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--ink-letter-spacing-open);
+  line-height: var(--ink-font-detail-xs-line-height);
+}
+
+.tooltipTitle {
+  display: block;
+  font-size: var(--ink-font-body-s-size);
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-font-color-default);
+  line-height: var(--ink-font-body-s-line-height);
+  letter-spacing: var(--ink-letter-spacing-tight);
+}
+
+.tooltipExcerpt {
+  display: block;
+  font-size: var(--ink-font-detail-s-size);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-secondary);
+  line-height: var(--ink-font-detail-s-line-height);
+  margin-top: var(--ink-spacing-50);
+}

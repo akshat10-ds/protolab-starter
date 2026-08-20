@@ -1,0 +1,558 @@
+@import '@ink/1-tokens/tokens.css';
+
+/* ---------------------------------------------------------------------------
+   The box — the left dock's treatment, mirrored to the right edge
+   --------------------------------------------------------------------------- */
+
+/*
+ * IrisAgent's docked menu card was the reference: white fill, a subtle hairline,
+ * radius s, 8px clear top and bottom, 16px in from the panel edge. (That card is
+ * deleted — 2026-08-13, the menu is the page outside fullscreen — but this box
+ * keeps its metrics.) This docks right, so the 16px sits on the right and the
+ * inner (left) edge is 0 — the chat column's own padding holds that side.
+ *
+ * 420 wide, not 338. The left dock holds a menu; this one holds tables and
+ * agreements, and they need the extra room. Same box language, different job.
+ */
+.dock {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-width: 0;
+  width: 420px;
+  overflow: hidden;
+  margin: var(--ink-spacing-100) var(--ink-spacing-200) var(--ink-spacing-100) 0;
+  background: var(--ink-bg-color-default);
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-s);
+  animation: dockIn var(--ai-motion-duration-artifact, 300ms)
+    var(--ai-motion-easing-standard, cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+/*
+ * THE DOCK ARRIVES; IT DOES NOT APPEAR.
+ *
+ * Measured 2026-08-18, before this rule existed: opening the dock fired zero
+ * transition and zero animation events anywhere in the panel. The dock mounted
+ * at its final 420, and the chat column beside it went 479 -> 43 in the same
+ * frame. Both halves of one movement were cuts.
+ *
+ * `@keyframes`, not `transition`: the host mounts the dock (`artifactSlot` is
+ * `openArtifactId ? <ArtifactDock/> : undefined`), and a transition does not
+ * fire on insertion.
+ *
+ * ONE keyframe covers the card and the pane, because the box's own flex tells
+ * `width` whether it is the lever:
+ *
+ *   card  — `flex-shrink: 0` with `width: 420px`, so flex-basis is `auto` and
+ *           resolves to `width`. The frame sweeps 0 -> 420, and the chat column
+ *           (`flex: 1`) gives the room back at exactly the same rate, because
+ *           it is the same layout pass. That agreement is the whole point.
+ *   pane  — `flex: 1 1 520px` (the fullscreen rule below). A definite
+ *           flex-basis outranks `width`, so the sweep is inert there and what
+ *           is left is the fade. Deliberate: at fullscreen the pane's width is
+ *           the *chat chrome's* to give up, and that lever is `.rightArea` in
+ *           IrisAgent.module.css, not this file.
+ *
+ * `margin-right: 0` for the same reason a card starts at width 0 — a 16px gutter
+ * standing to the right of nothing is the pop this rule removes.
+ *
+ * `--ai-motion-duration-artifact` is named for exactly this ("artifact reveal
+ * inside a panel"), and had no caller until now.
+ *
+ * `standard`, not `decelerate`, even though this is an entrance. The token file
+ * gives `standard` to "width changes, reflow — anything that starts and stops
+ * on screen", and that is what this is: the dock is not arriving from off the
+ * surface, it is a width the chat column gives up. It is also the curve the
+ * panel's own sweep uses, so the two now agree instead of disagreeing by
+ * accident. Measured on `decelerate` first: 83% of the 420 was spent in the
+ * first 75ms, which threw the chat from 477 to 119 before the eye caught it.
+ *
+ * NO EXIT. The host unmounts the dock, so CSS has nothing left to animate on
+ * the way out; closing is still a cut. Fixing that needs the slot held mounted
+ * through a transition, which is IrisAgent's call, not the dock's.
+ */
+@keyframes dockIn {
+  from {
+    width: 0;
+    margin-right: 0;
+    opacity: 0;
+  }
+}
+
+/* Expanded, the host collapses the chat column and the dock takes the room. */
+.dock[data-expanded] {
+  flex: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   Pane — the same dock once the panel is the whole screen
+   --------------------------------------------------------------------------- */
+
+/*
+ * At panel widths the dock is a card floating inside the panel, so the panel
+ * cannot be mistaken for the host app's own chrome. At fullscreen there is no
+ * host app beside it, and the card becomes the third region of the panel: the
+ * rail is the frame, the chat is the stage, this is the pane.
+ *
+ * MECHANISM. The gate is the host's own truth, not a width. `IrisAgent` takes
+ * `isFullscreen` from the host's panel-mode machine and stamps
+ * `data-fullscreen` on its compact root, which is an ancestor of this dock.
+ * `:global()` is what lets a CSS module read that attribute — the attribute
+ * selector stays global, `.dock` stays hashed — so the rule still reaches the
+ * dock and nothing else.
+ *
+ * This block was a `@container (min-width: 900px)` query, which approximated
+ * fullscreen and got a wide sidebar wrong: the pane appeared beside a visible
+ * host app. The safety property survives the change. Only IrisAgent's compact
+ * root stamps the attribute, so a dock rendered anywhere else keeps the card,
+ * and the *other* thing hosts put in that slot — FinsPanel's own
+ * `LoanArtifact` — is not `.dock` and is untouched either way.
+ *
+ * No fill. One hairline, on the left edge, and nothing else of the frame
+ * survives.
+ *
+ * WHAT IS UNDERNEATH CHANGED ON 2026-08-13. The pane used to sit inside
+ * `.contentSurface`, over the chat's own light; it is now a sibling of the chat
+ * chrome (`IrisAgent.tsx`, the `isFullscreen && artifactSlot` site), so it
+ * stands directly on `.pageCompact`'s ground — `--iris-rail-ground`, the same
+ * step the rail takes. Rail and pane are therefore one ground with the chat's
+ * frost between them, which is frame 153:19655's own reading: ground, stage,
+ * ground.
+ *
+ * THE PANE TAKES AN EDGE, NOT A GROUND — and the frame agrees. 2026-08-13,
+ * asked to give the three fullscreen regions their own colours: frame
+ * 153:19655 fills the rail (`bgColorPopoverClose`) and the chat body
+ * (`bgColorGlassFrost`), and gives this region — node 153:19745 — no fill at
+ * all, only `borderColorSubtle`. That is the rule already written above, so
+ * nothing changed here.
+ *
+ * The old "transparency is load-bearing" argument is retired with the move.
+ * It said the 64px header remnant and the cold wash ran behind this pane, so a
+ * fill would cut them at this left edge; neither reaches the pane any more, and
+ * both are hidden at fullscreen in any case (IrisAgent.module.css, "THE LIGHT
+ * DOES NOT RUN AT FULLSCREEN"). What stands is the frame, plus the fact that
+ * the one colour that looks like a candidate cannot do the job —
+ * `--ink-bg-glass-frost` is white at 90%, which over a near-white ground
+ * composites to white, so it is neither a visible ground nor a visible line
+ * here. Swapping this hairline for it would delete the pane's only boundary.
+ *
+ * NO `padding-top`. It used to hold the header row 8px down, matching where the
+ * card sat under the panel's 64px header line. The pane starts at the top of
+ * the panel now — Akshat, 2026-08-13, frame 158:18134: "it goes all the way to
+ * the top" — and the frame puts this 73px header at the same y as the chat's
+ * own. Padding here would drop it 8px below that line.
+ *
+ * THE GROUND HALF OF THIS IS SUPERSEDED IN `flat` — see the rule directly
+ * below. The edge stands in every scheme; what changed is that `flat` now
+ * paints a ground of its own.
+ */
+:global([data-fullscreen]) .dock {
+  margin: 0;
+  background: none;
+  border: none;
+  border-left: 1px solid var(--ink-border-color-subtle);
+  border-radius: 0;
+}
+
+/*
+ * FLAT — THE PANE IS WHITE. Akshat, 2026-08-18: "when you open the search
+ * results panel can we just use the white color for all bg there."
+ *
+ * The rule above leaves the pane transparent, so it showed `.pageCompact`'s
+ * ground — measured #fcfcfc at fullscreen, a hair under white and grey enough
+ * to read as one.
+ *
+ * `:not([data-ground])` is what makes this safe, and it is why the fill is not
+ * written into the rule above instead. `warm` and `sandwich` RIDE that
+ * transparency — they move `.pageCompact` and reach this pane for free — so a
+ * ground on the shared rule would delete both. `flat` stamps no attribute and
+ * is the only scheme this matches; `step` stamps one, so it falls through to
+ * its own rule below.
+ *
+ * The hairline is untouched: white on white with no rule would lose the pane's
+ * only boundary.
+ */
+:global([data-fullscreen]:not([data-ground])) .dock {
+  background: var(--ink-bg-color-default);
+}
+
+/*
+ * THE GROUND EXPERIMENT — `step`, and only `step`.
+ *
+ * The finding: at fullscreen four surfaces sit within ~3% of each other, and
+ * with the light hidden one hairline and a 16px corner carry the whole region
+ * hierarchy. Akshat, 2026-08-14: "i'm kinda stuck on this one -- we can
+ * experiment but I want text to stay legible."
+ *
+ * `step` gives this pane a real ground one clear step below the chat's white:
+ * `bgColorCanvasPage` #f7f6f7, the token the frame itself binds for canvas.
+ * The chat is then the light stage and this is the darker work surface. It is
+ * the one scheme that needs a rule here, because it is the one that moves this
+ * region alone. `sandwich` moves `--iris-rail-ground` instead
+ * (IrisAgent.module.css) and reaches this pane for free — the rule above keeps
+ * `background: none`, so the pane shows whatever `.pageCompact` is. `flat`
+ * stamps no attribute and matches nothing.
+ *
+ * The hairline stays in all three. It is what the frame draws for this region,
+ * and a ground that is 3% off its neighbour is not a boundary on its own.
+ *
+ * Same mechanism as the rule above — `IrisAgent`'s compact root stamps both
+ * attributes, `:global()` lets this module read them, and `[data-fullscreen]`
+ * in the selector keeps every scheme out of the 420px card. (0,3,0) beats the
+ * (0,2,0) above.
+ */
+:global([data-fullscreen][data-ground='step']) .dock {
+  background: var(--ink-bg-color-canvas-page);
+}
+
+/*
+ * `warm` NEEDS NO GROUND RULE HERE, and that is the point of it.
+ *
+ * It moves `--iris-rail-ground` to `--ink-ecru-20` (IrisAgent.module.css), and
+ * the fullscreen rule above already keeps this pane at `background: none`, so
+ * the pane shows `.pageCompact`'s ground through and lands on #f2edea for
+ * free — the same ride `sandwich` takes. The hairline stays, in every scheme.
+ *
+ * What `warm` does need here is the opaque-neutral sweep. Ink's neutrals are
+ * `rgba(19,0,50,α)` — hue ~283°, violet — against ecru's ~24°, and an opaque
+ * one lets nothing bleed through. Two sites, both mapped 1:1 by value:
+ *
+ *   `.sourceRow` hover      `neutral-20` -> `ecru-20`
+ *   `.well[data-ground]`    `bg-color-canvas-page` -> `ecru-10`
+ *
+ * The second is the same paint through a semantic alias — `bg-color-canvas-page`
+ * IS `neutral-10` — so it is swept with the raw tokens rather than left because
+ * of its name. `--ink-border-color-subtle` and the focus rings are fade tokens
+ * and do not move.
+ */
+:global([data-fullscreen][data-ground='warm']) .sourceRow:hover,
+:global([data-fullscreen][data-ground='warm']) .sourceRow:focus-visible {
+  background: var(--ink-ecru-20);
+}
+
+:global([data-fullscreen][data-ground='warm']) .well[data-ground='canvas'] {
+  background: var(--ink-ecru-10);
+}
+
+/*
+ * The pane takes the room, rather than being given a fixed slice of it.
+ *
+ * Frame 163:21261 measures 338 rail + 482 chat + 987 pane out of 1807: the chat
+ * holds a panel's measure and this region absorbs the rest. It was pinned at
+ * 520 — a number from frame 153:19655, which draws no pane at all — and the
+ * chat flexed instead, so the widest screens spent their surplus on gutters
+ * beside a 620px conversation column instead of on the table you opened.
+ *
+ * `flex: 1 1 520px` keeps 520 as the basis, so this is the same width the
+ * moment there is no surplus, and it degrades by shrinking with the chat rather
+ * than overflowing. `flex-shrink` is reset from the card's 0 deliberately.
+ * IrisAgent's side of this pairing is `.panelChatColumn` under
+ * `[data-fullscreen][data-pane-open]`.
+ *
+ * `[data-expanded]` is untouched: it does not match this selector, so
+ * `.dock[data-expanded] { flex: 1 }` above still governs the expanded pane.
+ */
+:global([data-fullscreen]) .dock:not([data-expanded]) {
+  flex: 1 1 520px;
+}
+
+/*
+ * The seam is two rows, not three: the header and the 32px tab strip, each
+ * with one hairline below it. A permanent scrollbar (macOS "always show") drew a
+ * third band across the strip, directly above the well.
+ *
+ * The bar goes; the scroll stays — the arrow keys already move between tabs, and
+ * a dragged bar in a 32px strip was never the way to reach them.
+ *
+ * Gated to the pane. Outside fullscreen the dock is a 420px card, where the same
+ * bar *is* visible today; hiding it there is a change this task does not ask
+ * for.
+ */
+:global([data-fullscreen]) .tabStrip {
+  scrollbar-width: none;
+}
+
+:global([data-fullscreen]) .tabStrip::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Header — 73px, universal, one row
+   ---------------------------------------------------------------------------
+
+   Frames 158:18134 and 163:21261 give both kinds the same header: the title,
+   then whatever the renderer contributes, then download · expand · close flush
+   right. 73 tall, not 48.
+
+   Two things it used to draw are gone, because the frames draw neither: the
+   kind icon in front of the title, and the subtitle under it. `subtitle` stays
+   on the model — hosts set it — it is only no longer painted here.
+   --------------------------------------------------------------------------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  flex-shrink: 0;
+  height: 73px;
+  padding: 0 var(--ink-spacing-100) 0 var(--ink-spacing-200);
+  border-bottom: 1px solid var(--ink-border-color-subtle);
+}
+
+/* A back arrow pulls the title inward; give it the same left inset as the row. */
+.header > button:first-child {
+  margin-left: calc(var(--ink-spacing-100) * -1);
+}
+
+/* 16px Medium — `fontHeadingXXS` at the frame's weight. It takes the row, so
+   everything after it is pushed flush right. */
+.title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--ink-font-heading-xxs-size);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: var(--ink-font-heading-xxs-line-height);
+  color: var(--ink-font-color-default);
+}
+
+/* ---------------------------------------------------------------------------
+   Toolbar — 48px, RENDERER-OWNED
+   ---------------------------------------------------------------------------
+
+   The dock supplies the band; the renderer decides whether to draw one. The
+   agreement (158:18134) has a toolbar, the table (163:21261) has none. It sits
+   outside the well on purpose, so it does not scroll with the content.
+   --------------------------------------------------------------------------- */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  flex-shrink: 0;
+  height: 48px;
+  padding: 0 var(--ink-spacing-200);
+  border-bottom: 1px solid var(--ink-border-color-subtle);
+}
+
+/* A label that only a screen reader reads — the page-number field's name. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------------
+   Tab strip — navigation, not content. 32px, quiet at rest.
+   --------------------------------------------------------------------------- */
+
+.tabStrip {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 var(--ink-spacing-100);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--ink-border-color-subtle);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  flex-shrink: 0;
+  padding: var(--ink-spacing-25) var(--ink-spacing-100);
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  background: transparent;
+  color: var(--ink-font-color-secondary);
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-detail-xs-size);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+/* ecru-10 — the same light warm step the left dock's rows use for hover. */
+.tab:hover {
+  background: var(--ink-ecru-10);
+}
+
+.tab[data-active] {
+  background: var(--ink-ecru-10);
+  color: var(--ink-font-color-default);
+  font-weight: var(--ink-font-weight-medium);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: -2px;
+}
+
+.tabLabel {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------------------------------------------------------------------------
+   Content well
+   --------------------------------------------------------------------------- */
+
+/*
+ * The well is the dock's, but every renderer draws its own. Two modifiers cover
+ * what the frames ask for and nothing else:
+ *
+ *   `data-flush`  — no padding. The table runs its header row and its column
+ *                   rules to both edges of the pane.
+ *   `data-ground` — the page canvas under the agreement's white page.
+ */
+.well {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: var(--ink-spacing-200);
+}
+
+.well[data-flush] {
+  padding: 0;
+}
+
+.well[data-ground='canvas'] {
+  background: var(--ink-bg-color-canvas-page);
+}
+
+/* A markdown table scrolls inside its own wrapper — MarkdownRenderer gives
+   every table `.tableWrapper { overflow-x: auto }` — so the dock never follows
+   it sideways. */
+.markdownFallback {
+  padding: var(--ink-spacing-200);
+}
+
+/* ---------------------------------------------------------------------------
+   Sources — the ZeroQueryActions `card` row, so the two docks agree
+   --------------------------------------------------------------------------- */
+
+.sourceList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+}
+
+.sourceRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+  min-height: 40px;
+  padding: var(--ink-spacing-100) var(--ink-spacing-200) var(--ink-spacing-100)
+    var(--ink-spacing-100);
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  background: var(--ink-bg-color-default);
+  font-family: var(--ink-font-family-default);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.sourceRow:hover,
+.sourceRow:focus-visible {
+  background: var(--ink-neutral-20);
+}
+
+.sourceRow:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+}
+
+.sourceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--ink-icon-color-subtle);
+}
+
+.sourceText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.sourceTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--ink-font-body-s-size);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.sourceExcerpt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-secondary);
+}
+
+.sourceMeta {
+  flex-shrink: 0;
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-secondary);
+}
+
+/* ---------------------------------------------------------------------------
+   Visualization — a declared placeholder, not a chart
+   --------------------------------------------------------------------------- */
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ink-spacing-100);
+  height: 100%;
+  min-height: 180px;
+  color: var(--ink-icon-color-subtle);
+}
+
+.placeholderTitle {
+  font-size: var(--ink-font-body-s-size);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-secondary);
+}
+
+.placeholderMeta {
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .sourceRow {
+    transition: none;
+  }
+
+  /* The token collapses to 0.01ms on its own, but tokens/motion.css says a
+     component carries its own block anyway — a consumer that forgets to import
+     the token file still gets this right. */
+  .dock {
+    animation: none;
+  }
+}

@@ -1,0 +1,85 @@
+@import '@ink/1-tokens/tokens.css';
+
+.viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-m);
+  overflow: hidden;
+  background: var(--ink-bg-color-default);
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+  border-bottom: 1px solid var(--ink-border-color-subtle);
+  background: var(--ink-bg-color-subtle);
+  min-height: 40px;
+}
+
+.typeIcon {
+  color: var(--ink-font-color-secondary);
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  font-size: var(--ink-font-body-s-size);
+  font-weight: 500;
+  color: var(--ink-font-color-default);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.language {
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-secondary);
+  padding: 2px var(--ink-spacing-100);
+  background: var(--ink-bg-color-default);
+  border-radius: var(--ink-radius-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.toolbarActions {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  flex-shrink: 0;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: var(--ink-spacing-200);
+}
+
+.content[data-type='code'] {
+  padding: 0;
+}
+
+/* Code */
+.codeBlock {
+  margin: 0;
+  padding: var(--ink-spacing-200);
+  font-family: var(--ink-font-family-mono, monospace);
+  font-size: var(--ink-font-detail-s-size);
+  line-height: 1.6;
+  color: var(--ink-font-color-default);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* Document */
+.documentContent {
+  font-size: var(--ink-font-body-s-size);
+  line-height: 1.7;
+  color: var(--ink-font-color-default);
+  white-space: pre-wrap;
+}

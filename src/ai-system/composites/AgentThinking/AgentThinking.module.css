@@ -1,0 +1,270 @@
+@import '@ink/1-tokens/tokens.css';
+
+/* =============================================================================
+   AgentThinking — Agent reasoning accordion
+   Synced with decided ThinkingReasoningExploration spec
+   ============================================================================= */
+
+/* Root — no outer chrome */
+.agentThinking {
+  /* The accordion header IS the component */
+}
+
+/* -----------------------------------------------------------------------------
+   Header: inline, subtle hover bg
+   ----------------------------------------------------------------------------- */
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 4px 10px;
+  margin: -4px -10px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  max-width: 100%;
+  transition: background 200ms ease;
+}
+
+.header:hover {
+  background: var(--ink-ecru-10);
+}
+
+/* Header text — single line, truncated */
+.headerText {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-tertiary);
+  line-height: 1.5;
+  transition: color 200ms ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header:hover .headerText {
+  color: var(--ink-font-color-secondary);
+}
+
+/* Chevron — 8px gap from text, subtle */
+.headerChevron {
+  color: var(--ink-font-color-tertiary);
+  flex-shrink: 0;
+  opacity: 0.4;
+  margin-left: 8px;
+  transition: opacity 200ms ease;
+}
+
+.header:hover .headerChevron {
+  opacity: 0.7;
+}
+
+/* -----------------------------------------------------------------------------
+   Expanded body
+   ----------------------------------------------------------------------------- */
+
+.stepsList {
+  padding: var(--ink-spacing-150) 0 var(--ink-spacing-200);
+  padding-left: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   Single step
+   ----------------------------------------------------------------------------- */
+
+.step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-200) 0;
+  padding-left: 32px;
+  opacity: 0;
+  animation: stepAppear 350ms ease-out forwards;
+}
+
+/* Connector line between steps */
+.connectorLine {
+  position: absolute;
+  left: 7px;
+  top: 40px;
+  bottom: calc(-1 * var(--ink-spacing-200));
+  width: 1px;
+  background: var(--ink-neutral-20);
+}
+
+/* Step icon — center-aligned with title (20px line-height) */
+.stepIcon {
+  position: absolute;
+  left: 0;
+  top: var(--ink-spacing-200);
+  width: 16px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ink-font-color-secondary);
+}
+
+/* Brand logo in step icon slot */
+.brandLogo {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+/* Step content wrapper */
+.stepContent {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Step title */
+.stepTitle {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-secondary);
+  line-height: 20px;
+}
+
+/* Reasoning block */
+.reasoning {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.reasoningText {
+  font-size: var(--ink-font-size-sm);
+  line-height: var(--ink-font-body-s-line-height);
+  color: var(--ink-font-color-default);
+  margin: 0;
+}
+
+/* Tool row — name + result badge */
+.toolRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  flex-wrap: wrap;
+  min-height: 20px;
+}
+
+.toolLabel {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-secondary);
+  line-height: 20px;
+}
+
+/* Done circle — muted, not colorful */
+.doneCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--ink-radius-size-full);
+  background: var(--ink-neutral-15);
+  color: var(--ink-neutral-60);
+}
+
+.doneText {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-tertiary);
+}
+
+/* Spinner dot for loading state */
+.spinnerDot {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--ink-radius-size-full);
+  background: var(--ink-neutral-20);
+  animation: dotPulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Skeleton line for upcoming step */
+.skeletonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.skeletonLine {
+  height: 11px;
+  border-radius: 6px;
+  background: linear-gradient(110deg, var(--ink-neutral-15) 30%, var(--ink-neutral-10) 48%, var(--ink-neutral-5) 50%, var(--ink-neutral-10) 52%, var(--ink-neutral-15) 70%);
+  background-size: 250% 100%;
+  animation: shimmerSweep 1.8s ease-in-out infinite, skeletonFadeIn 300ms ease-out forwards;
+}
+
+/* -----------------------------------------------------------------------------
+   Shimmer effect — pseudo-element overlay on text
+   ----------------------------------------------------------------------------- */
+
+.shimmerText {
+  color: var(--ink-font-color-secondary);
+  position: relative;
+  display: inline-block;
+}
+
+.shimmerText::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--ink-white-fade-60) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSweep 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* -----------------------------------------------------------------------------
+   Animations
+   ----------------------------------------------------------------------------- */
+
+@keyframes stepAppear {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmerSweep {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes skeletonFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

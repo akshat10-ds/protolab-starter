@@ -1,0 +1,320 @@
+/**
+ * GetStarted
+ *
+ * The card, the header, the caret and the collapse are Ink `Accordion`'s card
+ * variant, value for value. The rows are `ZeroQueryActions`' plain grammar,
+ * value for value: 40px, `--ink-spacing-100` gap, `ecru-10` under the pointer,
+ * radius `xs`, body-s Semibold at `font-color-default`, 180ms. The checklist
+ * rows and the suggestion rows read as one list.
+ *
+ * Progress is one encoding: the header count. There is no bar. The check mark
+ * is Ink's `check` glyph — present in every vendored snapshot — never a drawn
+ * circle.
+ *
+ * The `inline` variant reuses `--zq-bleed` / `--zq-pad`, ZeroQueryActions' own
+ * knobs, so a surface that tunes the suggestion rows tunes this row with them.
+ */
+
+/* ---------------------------------------------------------------------------
+   Row — ZeroQueryActions' grammar, shared by every variant
+   --------------------------------------------------------------------------- */
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+  min-height: 40px;
+  padding: var(--ink-spacing-100);
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  background: none;
+  text-align: left;
+  font-family: var(--ink-font-family-default);
+  transition: background-color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+/* A not-done row is a button and a target. */
+button.row {
+  cursor: pointer;
+}
+
+button.row:hover,
+button.row:focus-visible {
+  background: var(--ink-ecru-10);
+}
+
+button.row:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+}
+
+/* A done row is a record: no tint, no cursor, dimmed label. */
+.rowDone {
+  cursor: default;
+}
+
+.rowLabel {
+  flex: 1;
+  min-width: 0;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  font-size: var(--ink-font-body-s-size);
+  line-height: var(--ink-font-body-s-line-height);
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-font-color-default);
+}
+
+.rowLabelDone {
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* The count — "1 of 4" — wherever it appears. Subtle, never bold. */
+.count {
+  flex-shrink: 0;
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* ---------------------------------------------------------------------------
+   Lead — the 24px box: icon, check glyph, or numeral
+   --------------------------------------------------------------------------- */
+
+.lead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--ink-icon-color-subtle);
+}
+
+/* `marker="number"`: a plain text numeral, 11px, subtle, fixed width. */
+.numeral {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-neutral-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   Rows list
+   --------------------------------------------------------------------------- */
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+ * The inline variant's rows take ZeroQueryActions' padding: the tint reaches
+ * the composer card's edge, the content stays on the column's. The bleed
+ * itself sits on `.inline`, once — per-row negative margins would be clipped
+ * by the panel's `overflow: hidden` collapse. Same vars, same default, so the
+ * two lists move together.
+ */
+.rowsBleed .row,
+.inlineToggle {
+  padding: var(--ink-spacing-100) var(--zq-pad, var(--zq-bleed, var(--ink-spacing-200)));
+}
+
+/* ---------------------------------------------------------------------------
+   Card — `variant="rows"`, Accordion's card variant
+   --------------------------------------------------------------------------- */
+
+.card {
+  width: 100%;
+  border-radius: var(--ink-radius-size-s);
+  background: var(--ink-bg-color-default);
+  border: 1px solid var(--ink-border-color-subtle);
+  overflow: hidden;
+  font-family: var(--ink-font-family-default);
+}
+
+/*
+ * Accordion's header is a single button and cannot hold a dismiss control, so
+ * the row is a flex container: the toggle takes the space, the dismiss sits at
+ * the trailing edge. Padding is Accordion's `compact` header: 8px vertical,
+ * 16px horizontal.
+ */
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-200);
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
+}
+
+.toggle:hover {
+  background-color: var(--ink-item-bg-color-hover);
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  font-size: var(--ink-font-body-s-size);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.25;
+  letter-spacing: -0.16px;
+  color: var(--ink-font-color-default);
+}
+
+/* Accordion's chevron: 20px box, rotates on open. */
+.chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-icon-color-subtle);
+  transition: transform var(--ink-motion-duration-200) var(--ink-motion-curve-default);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dismiss {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: var(--ink-spacing-100);
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  background: none;
+  cursor: pointer;
+  color: var(--ink-icon-color-subtle);
+  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
+}
+
+.dismiss:hover {
+  background-color: var(--ink-item-bg-color-hover);
+}
+
+.toggle:focus-visible,
+.dismiss:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: -2px;
+}
+
+/*
+ * The body's horizontal inset is 8px, and the rows carry 8px of their own, so
+ * row content lands on the header title's 16px line and the hover tint keeps
+ * 8px of air from the card's edge — ZeroQueryActions' card boxing.
+ */
+.body {
+  padding: 0 var(--ink-spacing-100) var(--ink-spacing-100);
+}
+
+/* ---------------------------------------------------------------------------
+   Panel — Accordion's collapse, plus visibility
+
+   `max-height` is Accordion's mechanism. `visibility` is added: without it the
+   collapsed rows stay in the accessibility tree and stay tabbable. 480px
+   clears four rows with room to spare. Shared by `rows` and `inline`.
+   --------------------------------------------------------------------------- */
+
+.panel {
+  max-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: max-height var(--ink-motion-duration-200) var(--ink-motion-curve-default),
+    visibility var(--ink-motion-duration-200) var(--ink-motion-curve-default);
+}
+
+.panelOpen {
+  max-height: 480px;
+  visibility: visible;
+}
+
+/* ---------------------------------------------------------------------------
+   Inline — `variant="inline"`, a suggestion row that unfolds
+   --------------------------------------------------------------------------- */
+
+/* The bleed, applied once. The rows inside stay `width: 100%` and never
+   overflow the collapse panel. */
+.inline {
+  margin-inline: calc(var(--zq-bleed, var(--ink-spacing-200)) * -1);
+  font-family: var(--ink-font-family-default);
+}
+
+.inlineHeader {
+  display: flex;
+  align-items: center;
+}
+
+/* The open state's dismiss sits outside the bleed, at the row's own edge. */
+.inlineHeader .dismiss {
+  margin-right: 0;
+  margin-left: var(--ink-spacing-50);
+}
+
+/* ---------------------------------------------------------------------------
+   Next — `variant="next"`, one row, nothing expands
+   --------------------------------------------------------------------------- */
+
+.nextWrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-family: var(--ink-font-family-default);
+}
+
+.nextWrap .dismiss {
+  margin-right: 0;
+  margin-left: var(--ink-spacing-50);
+}
+
+/* ---------------------------------------------------------------------------
+   Utility
+   --------------------------------------------------------------------------- */
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .toggle,
+  .dismiss,
+  .chevron,
+  .panel {
+    transition: none;
+  }
+}

@@ -1,0 +1,30 @@
+/**
+ * ai-system colour tokens — the gaps Ink does not fill
+ *
+ * Ink has no indigo ramp. Docusign's does, and Akshat names values from it
+ * directly ("indigo10 which is F4F3FF"). This file is where such a value lands
+ * ONCE, named, so a component never carries a raw hex and a later Ink release
+ * can be adopted by editing one line.
+ *
+ * The rule this preserves: `system/ai-system/CLAUDE.md` §3, no hardcoded colours
+ * in components. A token Ink is missing is still a token — it just lives here
+ * until Ink ships it.
+ *
+ * If Ink gains `--ink-indigo-*`, delete the entry and point every use at Ink's.
+ * Do not keep both.
+ */
+
+:root {
+  /**
+   * Indigo 10 — #F4F3FF.
+   *
+   * The lightest tint on the ramp. It reads as "this belongs to the agent"
+   * without being a colour block: Akshat, 2026-08-18, put it on the agreement
+   * context chip; it also fills the active inline-results card. (A divider
+   * hover stroke in this tint was tried and rejected the same day — the divider
+   * stays 1px subtle in every state.) Small surfaces marking that Iris is
+   * involved, which is the dose the taste file allows — colour marks state,
+   * it does not decorate.
+   */
+  --ai-indigo-10: #f4f3ff;
+}

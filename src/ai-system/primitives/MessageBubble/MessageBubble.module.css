@@ -1,0 +1,324 @@
+@import '@ink/1-tokens/tokens.css';
+
+/**
+ * MessageBubble — Spec locked in Messages exploration (2026-03-18).
+ *
+ * Bubble:    neutral-10, 16px radius, 12/16px padding, 14px/400/1.4, max 540px
+ * Command:   cobalt-100 text, cobalt-20 hover highlight, 6px radius, nowrap + ellipsis
+ * Popover:   ecru-10 outer, white inner, 200px wide, 8px bridged gap
+ * Selected:  green-100 check icon + "Selected" label
+ * Hover meta: timestamp (xs) + copy IconButton, 150ms fade, CSS-only tooltips
+ */
+
+/* ============================================
+   OUTER WRAP — holds bubble + hover meta
+   ============================================ */
+
+.messageWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--ink-spacing-50);
+}
+
+/* Show meta on hover */
+.messageWrap .messageMeta {
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.messageWrap:hover .messageMeta {
+  opacity: 1;
+}
+
+/* ============================================
+   MESSAGE — bubble + label container
+   ============================================ */
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--ink-spacing-50);
+}
+
+/* ============================================
+   BUBBLE — shared shape for all variants
+   ============================================ */
+
+.bubble {
+  background: var(--ink-neutral-10);
+  color: var(--ink-font-color-default);
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  border-radius: 16px;
+  max-width: 540px;
+}
+
+/* ============================================
+   LABELS
+   ============================================ */
+
+.label {
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-tertiary);
+  letter-spacing: 0.32px;
+}
+
+.selectedLabel {
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-tertiary);
+  letter-spacing: 0.32px;
+}
+
+/* ============================================
+   SELECTED BUBBLE
+   ============================================ */
+
+.selectedBubble {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  background: var(--ink-ecru-20);
+  color: var(--ink-font-color-default);
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  border-radius: 16px;
+  max-width: 540px;
+}
+
+.bubbleMultiline {
+  white-space: pre-line;
+}
+
+/* Q/A plain-text variant — matches regular bubble color for visual consistency */
+.selectedBubbleText {
+  background: var(--ink-neutral-10);
+  color: var(--ink-font-color-default);
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  border-radius: 16px;
+  max-width: 540px;
+  white-space: pre-line;
+}
+
+/* Variant with embedded Q/A — stacked layout */
+.selectedBubbleWithQuestion {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100);
+  background: var(--ink-ecru-20);
+  color: var(--ink-font-color-default);
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+  padding: var(--ink-spacing-200) var(--ink-spacing-200);
+  border-radius: 16px;
+  max-width: 540px;
+}
+
+.selectedQuestion {
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-default);
+  line-height: 1.4;
+}
+
+.selectedAnswerRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+.selectedIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-green-100);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   COMMAND — cobalt text with hover highlight
+   ============================================ */
+
+.commandBubbleWrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 540px;
+}
+
+.commandText {
+  color: var(--ink-cobalt-100);
+  margin: -4px -6px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% + 12px);
+  transition: background-color 150ms ease;
+}
+
+.commandBubbleWrap:hover .commandText {
+  background: var(--ink-cobalt-20);
+}
+
+/* ============================================
+   COMMAND POPOVER — ecru hover card
+   ============================================ */
+
+.commandPopover {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  width: 200px;
+  padding-bottom: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+  z-index: 10;
+}
+
+.commandBubbleWrap:hover .commandPopover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.commandPopoverCard {
+  background: var(--ink-ecru-10);
+  border-radius: var(--ink-radius-size-s);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.commandPopoverDescWrap {
+  background: var(--ink-white-100);
+  border-radius: var(--ink-radius-size-s);
+  padding: 10px;
+}
+
+.commandPopoverDesc {
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-tertiary);
+  line-height: 1.4;
+  letter-spacing: 0.32px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.commandPopoverFooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.commandPopoverType {
+  flex: 1;
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-tertiary);
+  letter-spacing: 0.32px;
+  line-height: 1.4;
+}
+
+.commandPopoverView {
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-cobalt-100);
+  letter-spacing: 0.32px;
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ============================================
+   HOVER METADATA — timestamp + copy
+   ============================================ */
+
+.messageMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  padding-right: var(--ink-spacing-50);
+}
+
+.messageMetaTime {
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-regular);
+  color: var(--ink-font-color-tertiary);
+  letter-spacing: 0.01em;
+  cursor: default;
+}
+
+.metaItemWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* CSS-only hover tooltip — matches feedback action tooltip style */
+.hoverTooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-white-100);
+  background: var(--ink-neutral-130);
+  padding: 3px 8px;
+  border-radius: var(--ink-radius-size-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.metaItemWrap:hover .hoverTooltip {
+  opacity: 1;
+}
+
+/* Active tooltip — always visible after click (e.g. "Copied!") */
+.activeTooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-white-100);
+  background: var(--ink-neutral-130);
+  padding: 3px 8px;
+  border-radius: var(--ink-radius-size-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  animation: metaTooltipIn 150ms ease;
+}
+
+@keyframes metaTooltipIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

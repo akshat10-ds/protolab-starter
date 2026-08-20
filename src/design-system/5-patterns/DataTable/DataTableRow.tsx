@@ -23,11 +23,6 @@ export function DataTableRow<T = any>({
   showColumnControl = false,
   rowActions,
 }: DataTableRowProps<T>) {
-  // Handle checkbox click (stop propagation to prevent row click)
-  const handleCheckboxClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   // Handle row click
   const handleRowClick = () => {
     onClick?.();
@@ -72,13 +67,19 @@ export function DataTableRow<T = any>({
     <tr className={rowClasses} onClick={handleRowClick}>
       {/* Selection checkbox */}
       {selectable && (
-        <td className={`${styles.td} ${styles.checkboxCell}`}>
+        /* Stop the click at the cell, not at the Checkbox: the input is
+           visually hidden, so what the user actually clicks is its <label>,
+           and that label's own click bubbles to the row regardless of any
+           handler on the input. */
+        <td
+          className={`${styles.td} ${styles.checkboxCell}`}
+          onClick={(e) => e.stopPropagation()}
+        >
           <Checkbox
             label={`Select row ${rowIndex + 1}`}
             hideLabel
             checked={isSelected}
             onChange={() => onSelect?.()}
-            onClick={handleCheckboxClick}
           />
         </td>
       )}
