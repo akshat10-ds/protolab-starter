@@ -18,6 +18,8 @@ import type {
   CustomSuggestion,
   InlineResultRow,
 } from '@ai';
+import type { AgentStep } from '@ai/composites/AgentThinking/AgentThinking';
+import type { FollowUp } from '@ai/patterns/IrisAgent/types';
 import { Button, Heading, Stack, Text } from '@/design-system';
 
 /** The glyph a prompt row draws, and the one an agent row draws. */
@@ -135,7 +137,7 @@ export const GET_STARTED_STEPS: {
     id: 'ask-a-question',
     label: 'Ask a question',
     icon: PROMPT_ICON,
-    query: 'Help me understand the web of agreements I have with SAP',
+    query: 'Summarize these agreements',
   },
   {
     id: 'visualize-the-hierarchy',
@@ -427,7 +429,9 @@ export type ScenarioId =
   | 'agreement'
   | 'search'
   | 'agents'
-  | 'prompt-library';
+  | 'prompt-library'
+  | 'assist'
+  | 'autonomous';
 
 export const SCENARIOS: { id: ScenarioId; label: string; note: string }[] = [
   {
@@ -450,6 +454,16 @@ export const SCENARIOS: { id: ScenarioId; label: string; note: string }[] = [
     id: 'prompt-library',
     label: 'Prompt Library page',
     note: 'Eight saved prompts; hovering one previews it in the composer.',
+  },
+  {
+    id: 'assist',
+    label: 'Assist — counterparty brief',
+    note: 'The Acme relationship brief, chaining to comparison, document, and email.',
+  },
+  {
+    id: 'autonomous',
+    label: 'Autonomous — agent ran while away',
+    note: 'The Conflicting Terms agent reports 3 flagged agreements.',
   },
 ];
 
@@ -496,3 +510,241 @@ export function ScenariosPage({ onRun }: { onRun: (id: ScenarioId) => void }) {
     </div>
   );
 }
+
+/* ═══════════════════════════════════════
+   The David story — scripted exchanges
+   ═══════════════════════════════════════
+
+   One table drives every conversational beat of the e2e story: education,
+   assist, and the autonomous follow-up. `handleSend` in App.tsx tries
+   SEARCH_RESULTS first (it opens the dock), then this table, then the
+   fallback. Follow-up chip `id`s are full sentences on purpose — a chip
+   sends its id as the message text, so each id is written to hit the next
+   exchange's regex. That is how the acts chain.
+*/
+
+export type ScriptedExchange = {
+  id: string;
+  match: RegExp;
+  /** Plain-text answer line. */
+  content: string;
+  /** Streamed markdown body (tables render). */
+  markdown?: string;
+  thinking?: AgentStep[];
+  inlineResults?: { rows: InlineResultRow[]; totalCount?: number; artifactId?: string };
+  followUps?: FollowUp[];
+  /** Dock item to open once the reply lands. */
+  openArtifactId?: string;
+};
+
+const UNCAPPED_ROWS: InlineResultRow[] = [
+  { id: 'u1', name: 'Acme Corp MSA v2.pdf', type: 'MSA', status: 'Active', date: '14-03-27' },
+  { id: 'u2', name: 'Fontara Master Subscription Agreement.pdf', type: 'MSA', status: 'Active', date: '02-11-26' },
+  { id: 'u3', name: 'Globex SOW — Q1.pdf', type: 'SOW', status: 'Expiring', date: '30-09-26' },
+  { id: 'u4', name: 'Maze Services Agreement 2024.pdf', type: 'Services', status: 'Active', date: '18-01-27' },
+];
+
+const CONFLICT_ROWS: InlineResultRow[] = [
+  { id: 'cf1', name: 'Acme Corp MSA v2.pdf', type: 'MSA', status: 'Active', date: '14-03-27' },
+  { id: 'cf2', name: 'Acme Order Form 2026-114.pdf', type: 'Order Form', status: 'Active', date: '01-06-27' },
+  { id: 'cf3', name: 'Acme DPA Amendment 3.pdf', type: 'Amendment', status: 'Active', date: '—' },
+];
+
+export const SCRIPTED_EXCHANGES: ScriptedExchange[] = [
+  {
+    id: 'summarize',
+    match: /summarize (these|key)|executive summary|high level/i,
+    content: '',
+    markdown: [
+      'Across the 2 agreements in context:',
+      '',
+      '- **Acme Corp MSA v2** — master terms for identity-verification services. Auto-renews 14 Mar 2027; 60-day notice to terminate. Liability is **uncapped** for data-breach events.',
+      '- **Globex SOW — Q1** — fixed-fee statement of work under the Globex MSA, $84K over two quarters. Expires 30 Sep 2026 with no renewal clause.',
+      '',
+      'The one term worth attention: Acme’s uncapped liability carve-out is broader than your standard position.',
+    ].join('\n'),
+    followUps: [
+      { id: 'Do I have any agreements with uncapped liability?', label: 'Find uncapped liability' },
+      { id: 'Research and summarize the counterparty', label: 'Counterparty brief' },
+    ],
+  },
+  {
+    id: 'hierarchy',
+    match: /hierarch|parent or child|related to (one another|each other)/i,
+    content:
+      'I don’t see any related agreements in this set — nothing here is linked as parent or child. Agreements are grouped into a hierarchy from the party page; once they’re linked, I can show you how they connect and where each relationship comes from.',
+  },
+  {
+    id: 'uncapped-liability',
+    match: /uncapped liability/i,
+    content:
+      'Yes — 4 agreements have no liability cap. Here are the most recent. To run this check across your whole repository on a schedule, a worksheet is the right tool.',
+    inlineResults: { rows: UNCAPPED_ROWS, totalCount: 4 },
+    followUps: [
+      { id: 'Research and summarize the counterparty', label: 'Counterparty brief' },
+    ],
+  },
+  {
+    id: 'counterparty-brief',
+    match: /research and summarize the counterparty|relationship with acme|counterparty brief/i,
+    content: '',
+    thinking: [
+      { kind: 'searching', title: 'Finding agreements with Acme Corp' },
+      { kind: 'reading', title: 'Reading terms across 3 active agreements' },
+      { kind: 'processing', title: 'Building the relationship brief' },
+    ],
+    markdown: [
+      '## Acme Corp — relationship brief',
+      '',
+      'Acme provides **identity-verification services** under 3 active agreements: an MSA, one order form, and a DPA amendment. Combined annual spend is **$212K**.',
+      '',
+      '**Relationship**: the MSA is the master; the order form and DPA hang off it. All three renew independently — the order form auto-renews 1 Jun 2027.',
+      '',
+      '**Risk**:',
+      '- Liability is **uncapped** for data-breach events in the MSA — broader than your standard position.',
+      '- The DPA amendment names a subprocessor list that hasn’t been refreshed since 2024.',
+      '',
+      '**Posture**: terms conflict in 5 places across the three documents; the order form’s payment terms (net-60) contradict the MSA (net-30).',
+    ].join('\n'),
+    followUps: [
+      { id: 'Are there other parties that provide similar services?', label: 'Find similar vendors' },
+      { id: 'Generate a document that captures this summary', label: 'Create a summary document' },
+    ],
+  },
+  {
+    id: 'similar-vendors',
+    match: /similar (parties|vendors|services?)/i,
+    content:
+      'Yes — Fontara and Maze also provide identity-verification services, both under active agreements. Want me to compare them on price?',
+    followUps: [
+      {
+        id: 'Show me services provided, dates, pricing, and geographic span for Acme, Fontara, and Maze',
+        label: 'Compare all three',
+      },
+    ],
+  },
+  {
+    id: 'vendor-comparison',
+    match: /services provided.*(pricing|geographic)|compare (them|all three)/i,
+    content: '',
+    markdown: [
+      '| Vendor | Service | Term | Annual pricing | Geographic span |',
+      '|---|---|---|---|---|',
+      '| Acme Corp | Identity verification (API + docs) | To 14 Mar 2027, auto-renews | $212K | US, EU |',
+      '| Fontara | Identity verification (API) | To 2 Nov 2026 | $148K | US only |',
+      '| Maze | Identity + fraud screening | To 18 Jan 2027 | $176K | US, EU, APAC |',
+      '',
+      'Acme is the most expensive for the narrowest service tier. Fontara is cheapest but US-only; Maze covers the widest span for $36K less than Acme.',
+    ].join('\n'),
+    followUps: [
+      { id: 'Generate a document that captures this summary', label: 'Create a summary document' },
+    ],
+  },
+  {
+    id: 'generate-document',
+    match: /generate a document|document that captures|create a summary document/i,
+    content:
+      'Done — I’ve drafted the vendor summary. It’s open on the right; edit it directly or ask me to change it.',
+    openArtifactId: 'acme-vendor-brief',
+    followUps: [
+      { id: 'Send this document to john@acme.com', label: 'Email to john@acme.com' },
+    ],
+  },
+  {
+    id: 'send-email',
+    match: /send (this document|it) to|email to john/i,
+    content:
+      'Ready to send: "Acme vendor summary" to john@acme.com, with the document attached. Send it?',
+    followUps: [{ id: 'Yes, send the email', label: 'Send the email' }],
+  },
+  {
+    id: 'email-sent',
+    match: /yes, send the email/i,
+    content: 'Sent to john@acme.com. The document stays in this conversation if you need it again.',
+  },
+  {
+    id: 'show-conflicts',
+    match: /show (me )?the conflicts|conflicting terms/i,
+    content: '',
+    markdown: [
+      'Across Acme’s 3 agreements, 5 terms conflict:',
+      '',
+      '| Term | MSA v2 | Order Form 2026-114 | DPA Amendment 3 |',
+      '|---|---|---|---|',
+      '| Payment terms | Net-30 | **Net-60** | — |',
+      '| Liability cap | **Uncapped** (breach) | 12 months fees | 12 months fees |',
+      '| Governing law | Delaware | **California** | Delaware |',
+      '| Notice period | 60 days | **30 days** | 60 days |',
+      '| Data retention | 90 days | — | **180 days** |',
+      '',
+      'The order form is the outlier on three of five. Its terms were negotiated separately in 2026 and never reconciled with the master.',
+    ].join('\n'),
+    followUps: [
+      { id: 'Research and summarize the counterparty', label: 'Counterparty brief' },
+    ],
+  },
+];
+
+/** No match — say what the demo can do instead of thinking forever. */
+export const FALLBACK_EXCHANGE: ScriptedExchange = {
+  id: 'fallback',
+  match: /$^/,
+  content:
+    'In this demo I can summarize the agreements in context, brief you on a counterparty, compare vendors, and draft documents. Try one of these:',
+  followUps: [
+    { id: 'Provide a high level executive summary of key terms in agreement(s)', label: 'Summarize key terms' },
+    { id: 'Research and summarize the counterparty', label: 'Counterparty brief' },
+  ],
+};
+
+/** The generated document the assist act ends on. */
+export const GENERATED_DOCUMENTS: ArtifactItem[] = [
+  {
+    id: 'acme-vendor-brief',
+    title: 'Acme vendor summary',
+    kind: 'document',
+    subtitle: 'Drafted by Iris',
+    sections: [
+      {
+        heading: '1. Relationship',
+        body: 'Acme Corp provides identity-verification services under 3 active agreements — an MSA, one order form, and a DPA amendment. Combined annual spend is $212K. The MSA is the master; both other documents hang off it.',
+      },
+      {
+        heading: '2. Risk',
+        body: 'Liability is uncapped for data-breach events in the MSA, broader than our standard position. Terms conflict in 5 places across the three documents, most notably payment terms (net-30 vs net-60).',
+      },
+      {
+        heading: '3. Alternatives',
+        body: 'Fontara ($148K, US only) and Maze ($176K, US/EU/APAC) provide comparable identity-verification services. Maze covers the widest geographic span at $36K below Acme’s current spend.',
+      },
+      {
+        heading: '4. Recommendation',
+        body: 'Consolidate identity-verification spend at the next Acme renewal window (60-day notice, before 14 Mar 2027). Reconcile the order form’s terms with the master before any renegotiation.',
+      },
+    ],
+  },
+];
+
+/* ═══════════════════════════════════════
+   Autonomous act — the agent that ran while you were away
+   ═══════════════════════════════════════ */
+
+export const AUTONOMOUS_SEED = {
+  content:
+    'While you were away, your Conflicting Terms agent ran on 12 newly added agreements. 3 with total contract value over $10K carry terms that conflict with your standard positions — all three are with Acme Corp.',
+  inlineResults: { rows: CONFLICT_ROWS, totalCount: 3 },
+  followUps: [
+    { id: 'Show me the conflicts', label: 'Show the conflicts' },
+    { id: 'Research and summarize the counterparty', label: 'Counterparty brief' },
+  ] as FollowUp[],
+};
+
+/** Seeded when Iris opens on the Parties page — the proactive beat. */
+export const PARTY_PROACTIVE = {
+  content:
+    'Acme Corp has 5 conflicting terms across its 3 active agreements. Want the full relationship brief?',
+  followUps: [
+    { id: 'Research and summarize the counterparty', label: 'Counterparty brief' },
+    { id: 'Show me the conflicts', label: 'Show the conflicts' },
+  ] as FollowUp[],
+};

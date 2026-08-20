@@ -63,6 +63,11 @@ import {
   NAV_SHORTCUTS,
   PREVIEW_AGREEMENT,
   SCENARIOS,
+  SCRIPTED_EXCHANGES,
+  FALLBACK_EXCHANGE,
+  GENERATED_DOCUMENTS,
+  AUTONOMOUS_SEED,
+  PARTY_PROACTIVE,
   SEARCH_PREVIEW_COLUMNS,
   SEARCH_RESULTS,
   ScenariosPage,
@@ -2335,12 +2340,12 @@ function CompletedInsightsPanel() {
 
 function getTabFromHash(): TabId {
   const hash = window.location.hash.replace('#', '');
-  return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'home';
+  return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'agreements';
 }
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>(getTabFromHash);
-  const [sidebarView, setSidebarView] = useState<SidebarView>('all-agreements');
+  const [sidebarView, setSidebarView] = useState<SidebarView>('completed');
   const [templatesSidebarView, setTemplatesSidebarView] = useState<TemplatesSidebarView>('my-templates');
   const [insightsSidebarView, setInsightsSidebarView] = useState<InsightsSidebarView>('overview');
   const [search, setSearch] = useState('');
@@ -2414,24 +2419,45 @@ export default function App() {
     ]);
     setIsThinking(true);
     const search = SEARCH_RESULTS.find((r) => r.match.test(text));
+    const scripted = search
+      ? undefined
+      : (SCRIPTED_EXCHANGES.find((x) => x.match.test(text)) ?? FALLBACK_EXCHANGE);
     setTimeout(() => {
       setIsThinking(false);
-      if (!search) return;
+      if (search) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: crypto.randomUUID(),
+            role: 'assistant',
+            content: search.answer,
+            inlineResults: {
+              rows: search.rows,
+              totalCount: search.totalCount,
+              artifactId: search.artifactId,
+            },
+          },
+        ]);
+        return;
+      }
+      if (!scripted) return;
       setMessages((prev) => [
         ...prev,
         {
           id: crypto.randomUUID(),
           role: 'assistant',
-          content: search.answer,
-          inlineResults: {
-            rows: search.rows,
-            totalCount: search.totalCount,
-            artifactId: search.artifactId,
-          },
+          content: scripted.content,
+          markdownContent: scripted.markdown,
+          thinkingSteps: scripted.thinking,
+          inlineResults: scripted.inlineResults,
+          taskCompletion: scripted.followUps
+            ? { status: 'completed', followUps: scripted.followUps }
+            : undefined,
         },
       ]);
-    }, search ? 1200 : 8000);
-  }, []);
+      if (scripted.openArtifactId) panel.artifact.open(scripted.openArtifactId);
+    }, search ? 1200 : scripted.thinking ? 2400 : 1200);
+  }, [panel]);
 
   /** The pages behind the peek menu. Each `id` is the shortcut that opens it. */
   const navPages: NavPageEntry[] = [
@@ -2496,6 +2522,19 @@ export default function App() {
     panel.open();
 
     if (id === 'agreement') setPreviewAgreement(PREVIEW_AGREEMENT);
+    if (id === 'assist') {
+      setMessages([
+        { id: 'p1', role: 'assistant', content: PARTY_PROACTIVE.content,
+          taskCompletion: { status: 'completed', followUps: PARTY_PROACTIVE.followUps } },
+      ]);
+    }
+    if (id === 'autonomous') {
+      setMessages([
+        { id: 'auto1', role: 'assistant', content: AUTONOMOUS_SEED.content,
+          inlineResults: AUTONOMOUS_SEED.inlineResults,
+          taskCompletion: { status: 'completed', followUps: AUTONOMOUS_SEED.followUps } },
+      ]);
+    }
     if (id === 'agents' || id === 'prompt-library') setNavSlot(id);
     if (id === 'search') {
       const [first] = SEARCH_RESULTS;
@@ -2517,10 +2556,22 @@ export default function App() {
   }, [panel]);
 
   /** Ask Iris opens the chat, never whatever page a scenario left standing. */
+  const partyProactiveSeeded = useRef(false);
   const openIris = useCallback(() => {
     setNavSlot(null);
+    if (sidebarView === 'parties' && !partyProactiveSeeded.current) {
+      partyProactiveSeeded.current = true;
+      setMessages((prev) =>
+        prev.length
+          ? prev
+          : [
+              { id: 'party-proactive', role: 'assistant', content: PARTY_PROACTIVE.content,
+                taskCompletion: { status: 'completed', followUps: PARTY_PROACTIVE.followUps } },
+            ],
+      );
+    }
     panel.open();
-  }, [panel]);
+  }, [panel, sidebarView]);
 
   /** The host-held nav page. `navPageSlot` is the form a consumer holding state passes. */
   const navSlotPage =
@@ -2921,6 +2972,20 @@ export default function App() {
             ? (<>
                 <IconButton icon="bar-chart-2" variant="tertiary" size="small" aria-label="Analytics" />
                 <Button kind="secondary" startElement={<Icon name="settings" size={16} />}>Manage Parties</Button>
+                <button
+                  aria-label="Ask Iris"
+                  onClick={openIris}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                    background: 'linear-gradient(174.22deg, #4C00FB 1.48%, #260559 97.92%)',
+                    color: '#fff', border: 'none', borderRadius: 4,
+                    padding: '7px 12px', fontSize: 14, fontWeight: 500,
+                    fontFamily: 'inherit', cursor: 'pointer', lineHeight: 1, whiteSpace: 'nowrap',
+                  }}
+                >
+                  <IrisIconInverse size={18} />
+                  Ask Iris
+                </button>
               </>)
             : isRequestsView
             ? <Button kind="secondary">Create Request</Button>
@@ -3145,7 +3210,7 @@ export default function App() {
         onOpenSources={openSources}
         /* The dock, and everything this starter can put in it. */
         artifact={panel.artifact}
-        artifacts={ALL_ARTIFACTS}
+        artifacts={[...ALL_ARTIFACTS, ...GENERATED_DOCUMENTS]}
         onArtifactAction={(action, item, detail) =>
           console.info('artifact action', action, item.id, detail)
         }
