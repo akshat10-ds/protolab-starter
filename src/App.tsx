@@ -71,8 +71,13 @@ import {
   SEARCH_PREVIEW_COLUMNS,
   SEARCH_RESULTS,
   ScenariosPage,
+  WalkthroughCard,
 } from './iris/scenarios';
 import type { PreviewAgreement, ScenarioId } from './iris/scenarios';
+
+/** Read once at init — the app hash-routes, so the query lives before the #. */
+const SHOW_WALKTHROUGH =
+  new URLSearchParams(window.location.search).get('walkthrough') === 'true';
 
 /* ═══════════════════════════════════════
    DataTable Row Stagger Animation (CSS)
@@ -2363,9 +2368,8 @@ export default function App() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isThinking, setIsThinking] = useState(false);
   const [agentId, setAgentId] = useState('iris');
-  const [contextIds, setContextIds] = useState<string[]>(
-    CONTEXT_AGREEMENTS.map((a) => a.id),
-  );
+  /** Sources arrive by choice: a new chat starts unscoped, the Add pill offers them. */
+  const [contextIds, setContextIds] = useState<string[]>([]);
   /** The agreement the host page has open. Drives the snapshot and the cold state. */
   const [previewAgreement, setPreviewAgreement] = useState<PreviewAgreement | null>(null);
   /** A nav page the host is holding open. IrisAgent's own pages win over this. */
@@ -3223,6 +3227,9 @@ export default function App() {
         onClose={panel.close}
       />
     </PanelShell>
+
+    {/* The story rides along, fixed bottom-left, only when asked for. */}
+    {SHOW_WALKTHROUGH && <WalkthroughCard />}
     </div>
   );
 }

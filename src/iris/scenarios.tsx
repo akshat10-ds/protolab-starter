@@ -20,7 +20,8 @@ import type {
 } from '@ai';
 import type { AgentStep } from '@ai/composites/AgentThinking/AgentThinking';
 import type { FollowUp } from '@ai/patterns/IrisAgent/types';
-import { Button, Heading, Stack, Text } from '@/design-system';
+import { useState } from 'react';
+import { Button, Heading, IconButton, Stack, Text } from '@/design-system';
 
 /** The glyph a prompt row draws, and the one an agent row draws. */
 const PROMPT_ICON = 'comment';
@@ -748,3 +749,120 @@ export const PARTY_PROACTIVE = {
     { id: 'Show me the conflicts', label: 'Show the conflicts' },
   ] as FollowUp[],
 };
+
+/* ═══════════════════════════════════════
+   Walkthrough — the story, step by step
+   ═══════════════════════════════════════
+
+   A floating card gated on `?walkthrough=true`. It does not drive the app —
+   it tells the reader what to click while they drive the demo themselves.
+*/
+
+const WALKTHROUGH_STEPS: { title: string; body: string }[] = [
+  {
+    title: 'Meet David',
+    body: 'David runs legal ops at the Parks & Rec department. He manages most contracts, he is not an admin, and he has never used Iris. This walkthrough follows his first session.',
+  },
+  {
+    title: 'Open Iris',
+    body: 'You are on Agreements → Completed. Click Ask Iris, top right of the table. The panel opens beside the page — the page reflows, nothing is covered.',
+  },
+  {
+    title: 'Get started',
+    body: 'A new user sees a welcome line and a Get started checklist: add a source, ask a question, visualize the hierarchy, explore agents. Sources are not attached by default — click + or the suggested pill to scope the chat.',
+  },
+  {
+    title: 'Ask a question',
+    body: 'Click Ask a question in the checklist. It sends a real query — summarize these agreements — and Iris answers with key terms and the one risk worth attention.',
+  },
+  {
+    title: 'Follow the rails',
+    body: 'Click Find uncapped liability. Iris answers with matching agreements inline, and points at worksheets for running this across the whole repository.',
+  },
+  {
+    title: 'Counterparty brief',
+    body: 'Click Counterparty brief. Iris researches, then delivers the Acme relationship: spend, how the three agreements relate, risk, and five conflicting terms.',
+  },
+  {
+    title: 'Compare vendors',
+    body: 'Click Find similar vendors, then Compare all three. A table lines up service, term, pricing, and geographic span across Acme, Fontara, and Maze.',
+  },
+  {
+    title: 'Create the document',
+    body: 'Click Create a summary document. The drafted vendor brief opens beside the chat, ready to review.',
+  },
+  {
+    title: 'Send it',
+    body: 'Click Email to john@acme.com, then Send the email. The action completes without leaving the system.',
+  },
+  {
+    title: 'Iris speaks first',
+    body: 'Reload the page, open Parties in the left nav, and click Ask Iris. Iris opens with what it already knows: five conflicting terms with Acme.',
+  },
+  {
+    title: 'While you were away',
+    body: 'Add #scenarios to the URL and run Autonomous. The Conflicting Terms agent has already flagged three agreements over $10K — the results are waiting.',
+  },
+];
+
+export function WalkthroughCard() {
+  const [step, setStep] = useState(0);
+  const [open, setOpen] = useState(true);
+  if (!open) return null;
+
+  const last = step === WALKTHROUGH_STEPS.length - 1;
+  const { title, body } = WALKTHROUGH_STEPS[step];
+
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        bottom: 16,
+        left: 16,
+        zIndex: 50,
+        maxWidth: 340,
+        background: 'var(--ink-bg, #fff)',
+        border: '1px solid var(--ink-border-subtle)',
+        borderRadius: 8,
+        padding: 16,
+        boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+      }}
+    >
+      <div style={{ position: 'absolute', top: 8, right: 8 }}>
+        <IconButton
+          icon="close"
+          variant="tertiary"
+          size="small"
+          aria-label="Dismiss walkthrough"
+          onClick={() => setOpen(false)}
+        />
+      </div>
+      <Stack gap="small">
+        <Text size="xs" color="secondary">
+          Walkthrough · step {step + 1} of {WALKTHROUGH_STEPS.length}
+        </Text>
+        <Text weight="semibold">{title}</Text>
+        <Text size="sm" color="secondary">
+          {body}
+        </Text>
+        <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
+          <Button
+            kind="tertiary"
+            size="small"
+            disabled={step === 0}
+            onClick={() => setStep((s) => s - 1)}
+          >
+            Back
+          </Button>
+          <Button
+            kind="primary"
+            size="small"
+            onClick={() => (last ? setOpen(false) : setStep((s) => s + 1))}
+          >
+            {last ? 'Done' : 'Next'}
+          </Button>
+        </div>
+      </Stack>
+    </div>
+  );
+}
