@@ -1,0 +1,219 @@
+{
+  "$comment": "Page manifest for the protolab sync agent (sync-agent/). Keyed on the view-ID unions in src/App.tsx, NOT sidebar item IDs. See specs/README.md for field docs. TODO(akshat): fill in every demoUrl and reviewers list before the first run.",
+  "defaults": {
+    "reviewers": ["akshat10-ds"]
+  },
+  "pages": [
+    {
+      "id": "home",
+      "tab": "home",
+      "view": null,
+      "label": "Home",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Activity list, overview counters (Open requests / Waiting for others / Expiring soon / Completed / Upcoming renewals), favorite templates."
+    },
+    {
+      "id": "all-agreements",
+      "tab": "agreements",
+      "view": "all-agreements",
+      "label": "All Agreements",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "DataTable with Date/Status/Sender filters and Shared Access action."
+    },
+    {
+      "id": "drafts",
+      "tab": "agreements",
+      "view": "drafts",
+      "label": "Drafts",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)"
+    },
+    {
+      "id": "in-progress",
+      "tab": "agreements",
+      "view": "in-progress",
+      "label": "In Progress",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Rows carry statusSub lines like 'Waiting for others', '1 of 2 signed'."
+    },
+    {
+      "id": "completed",
+      "tab": "agreements",
+      "view": "completed",
+      "label": "Completed",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Navigator mirror: insights band, Documents/Envelopes dropdown, AIBadge, Ask Iris, Worksheets, navigatorColumns table. Highest-traffic page in the prototype."
+    },
+    {
+      "id": "deleted",
+      "tab": "agreements",
+      "view": "deleted",
+      "label": "Deleted",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)"
+    },
+    {
+      "id": "parties",
+      "tab": "agreements",
+      "view": "parties",
+      "label": "Parties",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Navigator Parties: AI-Assisted badge, Manage Parties, Role/Party Side filters."
+    },
+    {
+      "id": "requests",
+      "tab": "agreements",
+      "view": "requests",
+      "label": "Requests",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Navigator Requests: tall rows, 'Status Type: Open' chip. Row click opens request-detail overlay."
+    },
+    {
+      "id": "workspaces",
+      "tab": "agreements",
+      "view": "workspaces",
+      "label": "Workspaces",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Row click opens workspace-detail overlay."
+    },
+    {
+      "id": "my-templates",
+      "tab": "templates",
+      "view": "my-templates",
+      "label": "My Templates",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Upload / New Template actions."
+    },
+    {
+      "id": "shared-with-me",
+      "tab": "templates",
+      "view": "shared-with-me",
+      "label": "Shared with Me",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)"
+    },
+    {
+      "id": "favorites",
+      "tab": "templates",
+      "view": "favorites",
+      "label": "Favorites",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)"
+    },
+    {
+      "id": "all-templates",
+      "tab": "templates",
+      "view": "all-templates",
+      "label": "All Templates",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Reached via the 'All Web Forms' sidebar item in the prototype — label/ID mismatch is intentional."
+    },
+    {
+      "id": "insights-overview",
+      "tab": "insights",
+      "view": "overview",
+      "label": "Overview",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Recents and Favorites lists of reports/dashboards."
+    },
+    {
+      "id": "insights-dashboards",
+      "tab": "insights",
+      "view": "dashboards",
+      "label": "Dashboards",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Six sidebar nav items alias to this one view — capture once."
+    },
+    {
+      "id": "insights-reports",
+      "tab": "insights",
+      "view": "reports",
+      "label": "Reports",
+      "demoUrl": "TODO(akshat)",
+      "sync": true,
+      "reviewers": "TODO(akshat)"
+    },
+    {
+      "id": "agreement-detail",
+      "tab": "agreements",
+      "view": "completed",
+      "label": "Agreement detail (Navigator Viewer)",
+      "demoUrl": "TODO(akshat)",
+      "entry": "From Completed, click any document row to open the full-screen viewer overlay.",
+      "sync": true,
+      "overlay": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "PDF viewer + detail sidebar + tabs. Phase 2: capture requires row-click navigation, not just a URL."
+    },
+    {
+      "id": "request-detail",
+      "tab": "agreements",
+      "view": "requests",
+      "label": "Request detail",
+      "demoUrl": "TODO(akshat)",
+      "entry": "From Requests, click any row.",
+      "sync": true,
+      "overlay": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Phase 2."
+    },
+    {
+      "id": "workspace-detail",
+      "tab": "agreements",
+      "view": "workspaces",
+      "label": "Workspace detail",
+      "demoUrl": "TODO(akshat)",
+      "entry": "From Workspaces, click any row.",
+      "sync": true,
+      "overlay": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Tabs: overview, details, documents, approvals, envelopes. Phase 2."
+    },
+    {
+      "id": "admin",
+      "tab": "admin",
+      "view": null,
+      "label": "Admin",
+      "demoUrl": null,
+      "sync": false,
+      "reviewers": null,
+      "notes": "Prototype content is a stub (Account Settings placeholder); nothing to sync against yet."
+    },
+    {
+      "id": "scenarios",
+      "tab": "scenarios",
+      "view": null,
+      "label": "Scenarios (Iris jig)",
+      "demoUrl": null,
+      "sync": false,
+      "reviewers": null,
+      "notes": "Invented prototype surface — hidden #scenarios route that boots the Iris panel into preset states. Never sync."
+    }
+  ]
+}

@@ -13,3 +13,8 @@ dist/
 .env
 .env.*
 !.env.example
+
+# sync-agent build artifacts (eve)
+sync-agent/.eve/
+sync-agent/.output/
+sync-agent/.vercel/
