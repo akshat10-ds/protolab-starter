@@ -24,11 +24,24 @@ URL (skip `TODO` placeholders and report them at the end):
 2. **Diff** — call `diff_page` with the page id. It computes a structural
    fingerprint from the accessibility snapshot (headings, buttons, filters,
    column headers — data rows and counts excluded) and compares it against
-   `specs/baselines/<id>.skeleton.json`. `unchanged` → move to the next page
-   immediately; spend nothing further. `changed` or `no-baseline` → continue;
-   the response includes the added/removed structure and the baseline spec.
+   `specs/baselines/<id>.skeleton.json`. Three outcomes:
+
+   - `unchanged` → move to the next page immediately; spend nothing further.
+   - `changed` → continue; the response carries the added/removed structure
+     and the baseline spec.
+   - **`seed-baseline` → the page has no approved reference yet. Write the
+     baseline triple and open a BASELINES-ONLY pull request. Do NOT edit
+     `src/` for this page on this run, and do not attempt to "regenerate" the
+     view.** There is no diff to work from, so any edit would be a blind
+     wholesale rewrite of a page that may contain deliberate design work. A
+     human approves the reference first; the next run diffs against it.
+
    `visualDrift: true` on an unchanged page → note it in the run summary as a
    design-system concern; never open a page PR for it.
+
+   `changed: true` with BOTH `added` and `removed` empty means only ordering
+   or duplicate counts moved. That is not a design change — report it in the
+   summary and treat the page as unchanged.
 
    `shellChanged: true` means the GLOBAL CHROME moved — the top bar, left
    sidebar, or footer, which are identical on every page. It will be reported
@@ -52,7 +65,8 @@ URL (skip `TODO` placeholders and report them at the end):
    say so in the summary. Structure changed (columns, actions, filters,
    labels, badges, banners, new sections) → this is what you exist for.
    Proceed to Update.
-4. **Update** — edit the working copy at `/workspace/repo` yourself using the
+4. **Update** — only ever reached on `changed`, never on `seed-baseline`.
+   Edit the working copy at `/workspace/repo` yourself using the
    sandbox tools (`read_file`, `write_file`, `bash`): change the view in
    `src/App.tsx` per the repo's `AGENTS.md`, then write the new baseline
    triple — `specs/baselines/<id>.spec.json`, copy

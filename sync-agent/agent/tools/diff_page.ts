@@ -34,7 +34,7 @@ console.log(JSON.stringify({ diffRatio: diff / (current.width * current.height) 
 
 export default defineTool({
   description:
-    "Compare a fresh capture against the approved baseline. The decider is a structural fingerprint from the accessibility snapshot (headings, buttons, filters, column headers — data rows and counts excluded). Returns 'unchanged' (stop working on this page), 'changed' (proceed; includes added/removed structure and the baseline spec), or 'no-baseline' (first run — treat as changed). Also writes the fresh skeleton to /workspace/captures/<pageId>.skeleton.json for the baseline update, and flags visualDrift when pixels moved but structure did not (report as a design-system concern; never a page PR).",
+    "Compare a fresh capture against the approved baseline. The decider is a structural fingerprint from the accessibility snapshot (headings, buttons, filters, column headers — data rows and counts excluded). Returns 'unchanged' (stop working on this page), 'changed' (proceed; includes added/removed structure and the baseline spec), or 'seed-baseline' (no approved reference yet — write the baseline and open a baselines-only PR; never edit src/ on this status). Also writes the fresh skeleton to /workspace/captures/<pageId>.skeleton.json for the baseline update, and flags visualDrift when pixels moved but structure did not (report as a design-system concern; never a page PR).",
   inputSchema: z.object({
     pageId: z.string().describe("Page id from specs/pages.json"),
   }),
@@ -48,6 +48,19 @@ export default defineTool({
       capture = JSON.parse(String(await sandbox.readTextFile({ path: capturePath })));
     } catch {
       return { status: "error", pageId: input.pageId, error: `no capture found at ${capturePath} — run capture_page first` };
+    }
+
+    // The capture computes an explicit "a dialog survived dismissal" signal.
+    // Honour it before falling back to the heuristic: a stubborn overlay on a
+    // content-rich page passes looksLikeModalCapture (which needs <40 nodes)
+    // and would otherwise fingerprint as a structural change.
+    if (capture.modalStillOpen) {
+      return {
+        status: "error",
+        pageId: input.pageId,
+        error:
+          "a dialog was still open when the page was snapshotted, so the capture does not describe the page. Do not treat this as a change; report the page as needs-human.",
+      };
     }
 
     // A modal-dominated capture describes the popup, not the page. Diffing it
@@ -96,12 +109,20 @@ export default defineTool({
       .catch(() => null);
 
     if (!baselineSkeleton) {
+      // SEED, DO NOT EDIT. With no baseline there is nothing to diff against,
+      // so "changed" would mean regenerating an entire view blind — the exact
+      // failure this system exists to avoid. Instead the agent writes the
+      // baseline and opens a baselines-only PR, so a human approves the
+      // REFERENCE first. Code changes only ever happen against an approved
+      // baseline. This is what makes specs/README.md's "first supervised run"
+      // true in code rather than in prose.
       return {
-        status: "no-baseline",
+        status: "seed-baseline",
         pageId: input.pageId,
         skeletonSize: fresh.length,
         shellSize: freshShell.length,
-        baselineSpec,
+        instruction:
+          "No approved baseline exists for this page. Write specs/baselines/<id>.{spec,skeleton}.json and the screenshot, and open a BASELINES-ONLY pull request. Do NOT edit src/ for this page on this run. Say plainly in the PR that this establishes the reference and changes no prototype code.",
       };
     }
 
