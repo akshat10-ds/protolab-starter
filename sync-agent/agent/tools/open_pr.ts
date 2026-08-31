@@ -1,4 +1,5 @@
 import { defineTool } from "eve/tools";
+import { always } from "eve/tools/approval";
 import { getToken } from "@vercel/connect";
 import { z } from "zod";
 import { CONNECT_ID, DEFAULT_BRANCH, REPO, REPO_PATH } from "./setup_workspace.js";
@@ -39,22 +40,53 @@ export default defineTool({
       .describe("PR body: what changed on the demo site, the spec diff, reviewer checklist"),
     reviewers: z.array(z.string()).describe("GitHub handles from the page's manifest entry"),
   }),
-  // Runs unattended: the PR itself is the human gate (CODEOWNERS blocks any
-  // merge without review). To pause the agent for a yes before each PR is
-  // filed, add `approval: always()` from "eve/tools/approval".
+  // Gated while the system is young. The PR is meant to be the human gate,
+  // but two of its assumptions are not yet proven: the automated login has
+  // never executed, and `vite build` transpiles without type-checking, so a
+  // wrong-props edit can reach a preview. Until one supervised run has
+  // round-tripped, a human says yes before anything is filed.
+  // Relax to `once()` or delete once the loop has earned it.
+  approval: always(),
   async execute(input, ctx) {
     const sandbox = await ctx.getSandbox();
     const token = await getToken(CONNECT_ID, { subject: { type: "app" } });
 
     // 1. What changed in the working copy?
+    // -uall expands untracked DIRECTORIES into their individual files. Without
+    // it a new folder arrives as a single `?? dir/` entry and readTextFile on a
+    // directory throws — which is exactly what happens the first time the agent
+    // adds an asset folder.
     const status = (await sandbox.run({
-      command: `git -C ${REPO_PATH} status --porcelain`,
+      command: `git -C ${REPO_PATH} status --porcelain -uall`,
     })) as { stdout?: string };
     const entries = (status.stdout ?? "")
       .split("\n")
       .map((l) => l.trimEnd())
       .filter(Boolean)
-      .map((l) => ({ flag: l.slice(0, 2).trim(), path: l.slice(3).trim() }));
+      .map((l) => {
+        const flag = l.slice(0, 2).trim();
+        let path = l.slice(3).trim();
+        // Renames and copies read `R  old -> new`; the new path is the one to
+        // commit. Paths containing spaces or non-ASCII come back quoted.
+        const arrow = path.indexOf(" -> ");
+        if (arrow !== -1) path = path.slice(arrow + 4);
+        if (path.startsWith('"') && path.endsWith('"')) {
+          try {
+            path = JSON.parse(path) as string;
+          } catch {
+            path = path.slice(1, -1);
+          }
+        }
+        return { flag, path };
+      })
+      // A trailing slash means git still handed back a directory; committing it
+      // would throw on read. Surface it rather than silently dropping content.
+      .filter((e) => {
+        if (e.path.endsWith("/")) {
+          throw new Error(`git returned a directory entry (${e.path}); expected files with -uall`);
+        }
+        return true;
+      });
     if (entries.length === 0) {
       return { ok: false, error: "working copy is clean — nothing to commit" };
     }
