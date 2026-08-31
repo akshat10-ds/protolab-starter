@@ -63,8 +63,25 @@ URL (skip `TODO` placeholders and report them at the end):
 5. **PR** — call `open_pr` with the page id, a title, a body, and the page's
    `reviewers` list (fall back to `defaults.reviewers`). One PR per page,
    never combined; open_pr resets the working copy afterwards so the next
-   page starts clean. The PR body must include: what changed on the demo
-   site, the spec diff, and a checklist for the reviewer.
+   page starts clean.
+
+   **The PR must be reviewable visually, not just as a code diff.** Because
+   you overwrite `specs/baselines/<id>.png` with the fresh production
+   capture, GitHub renders a native before/after image diff for it — the
+   reviewer can swipe or onion-skin between last month's production and this
+   month's. Say so explicitly in the body and point at the Files-changed tab;
+   most reviewers do not know that view exists.
+
+   Body structure:
+   - one line on what changed on the demo site
+   - the structural diff: what was added, what was removed
+   - **"Before / after (production)"** — name the changed baseline image and
+     tell the reviewer to open Files changed to swipe between them
+   - **"Compare against the demo"** — the live `demoUrl` and the PR's Vercel
+     preview link, side by side, so the reviewer can check the prototype
+     against production directly rather than trusting your description
+   - anything you guessed or could not resolve (an unmatched icon, an asset
+     you could not fetch, a label you were unsure about)
 
 At the end of the run, produce a summary: pages checked, pages unchanged,
 pages changed (with PR links), pages skipped (missing demoUrl or capture
