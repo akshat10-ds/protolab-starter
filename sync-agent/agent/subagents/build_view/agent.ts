@@ -11,7 +11,7 @@ import { defineAgent } from "eve";
 // attached to the cron — the isolation is enforced by the framework, not by
 // convention.
 export default defineAgent({
-  model: "anthropic/claude-opus-4.8",
+  model: "openai/gpt-5.6-sol",
   reasoning: "high",
   description:
     "Builds a brand-new prototype view from a captured production page that protolab-starter does not have yet. Delegate ONLY when a human explicitly asks to build a new surface, never during a scheduled sync run.",
