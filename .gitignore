@@ -13,3 +13,12 @@ dist/
 .env
 .env.*
 !.env.example
+
+# sync-agent build artifacts (eve)
+sync-agent/.eve/
+sync-agent/.output/
+sync-agent/.vercel/
+
+# Local tier-1 capture harness — session cookies and capture artifacts
+sync-agent/.auth/
+sync-agent/.captures/

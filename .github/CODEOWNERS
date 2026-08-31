@@ -2,3 +2,10 @@
 # Enforced by the "protect-main" ruleset (require_code_owner_review).
 # CODEOWNERS only takes effect on the default branch.
 * @akshat10-ds
+
+# Sync-agent surfaces. Note: per-AREA design review can't be routed here —
+# every prototype view lives in src/App.tsx, and CODEOWNERS routes by path.
+# Area reviewers are instead assigned per page by the sync agent when it opens
+# a PR, from the `reviewers` field in specs/pages.json.
+/specs/      @akshat10-ds
+/sync-agent/ @akshat10-ds
