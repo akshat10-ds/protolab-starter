@@ -1,82 +1,40 @@
 import { defineTool } from "eve/tools";
 import { z } from "zod";
+import { CAPTURE_SCRIPT } from "../lib/capture-script.js";
 
-// Playwright capture script, run inside the sandbox from /workspace/toolbox so
-// module resolution finds the bootstrap-installed packages. Parameters arrive
-// via env vars. Login state persists in /workspace/captures/state.json so the
-// demo login happens once per sandbox session, not once per page.
+// Runs the shared capture routine (capture-script.ts) inside the sandbox from
+// /workspace/toolbox, so module resolution finds the bootstrap-installed
+// playwright. The session in /workspace/captures/state.json is established once
+// and reused for every page in the run.
 //
-// TODO(first-run): the login selectors below are a best-effort guess at the
-// Docusign demo login form. Validate on the first supervised run and pin the
-// real selectors. If SSO or bot detection blocks headless login entirely, the
-// fallbacks are a pre-seeded storageState file or a remote browser service.
-const CAPTURE_SCRIPT = `
-import { chromium } from "playwright";
-import fs from "node:fs";
-
-const outDir = "/workspace/captures";
-const statePath = outDir + "/state.json";
-// Params come via a JSON file, not the command line — credentials with shell
-// metacharacters must never touch a shell string.
-const { pageId, demoUrl, email, password } = JSON.parse(
-  fs.readFileSync(outDir + "/params.json", "utf8"),
-);
-
-const browser = await chromium.launch({ headless: true });
-const context = await browser.newContext({
-  viewport: { width: 1440, height: 900 },
-  storageState: fs.existsSync(statePath) ? statePath : undefined,
-});
-const page = await context.newPage();
-await page.goto(demoUrl, { waitUntil: "networkidle", timeout: 60000 });
-
-// Redirected to the login screen? Do the two-step Docusign login.
-const emailInput = page.locator('input[type="email"], input[name="email"]').first();
-if (await emailInput.isVisible().catch(() => false)) {
-  if (!email || !password) throw new Error("login required but DEMO_EMAIL/DEMO_PASSWORD not set");
-  await emailInput.fill(email);
-  await page.getByRole("button", { name: /next|continue/i }).first().click();
-  const pwInput = page.locator('input[type="password"]').first();
-  await pwInput.waitFor({ timeout: 15000 });
-  await pwInput.fill(password);
-  await page.getByRole("button", { name: /log ?in|sign ?in|submit/i }).first().click();
-  await page.waitForURL((u) => !/account|login|auth/.test(u.href), { timeout: 30000 });
-  await page.goto(demoUrl, { waitUntil: "networkidle", timeout: 60000 });
-  await context.storageState({ path: statePath });
-}
-
-await page.waitForTimeout(2000);
-await page.screenshot({ path: outDir + "/" + pageId + ".png", fullPage: false });
-
-const a11y = await page.accessibility.snapshot();
-
-// Icon extraction — first 80 chars of each button-borne SVG path, matched
-// later against the repo's iconPaths.ts (see instructions).
-const icons = await page.evaluate(() => {
-  const btns = Array.from(document.querySelectorAll("button"));
-  return btns
-    .filter((b) => b.querySelector("svg"))
-    .map((btn) => ({
-      label: (btn.textContent || "").replace(/New/g, "").trim(),
-      pathPrefix: btn.querySelector("svg path")?.getAttribute("d")?.substring(0, 80) ?? null,
-    }))
-    .filter((r) => r.label && r.label.length < 40 && r.pathPrefix);
-});
-
-fs.writeFileSync(
-  outDir + "/" + pageId + ".capture.json",
-  JSON.stringify({ pageId, demoUrl, capturedAt: new Date().toISOString(), a11y, icons }),
-);
-await browser.close();
-console.log("CAPTURE_OK");
-`;
+// TODO(first-run): the login selectors in capture-script.ts are a best-effort
+// guess at the Docusign demo login form. Validate them and pin the real ones.
+// If SSO or bot detection blocks headless login, seed state.json instead (the
+// local harness in test/live-capture.mjs produces exactly that file).
 
 export default defineTool({
   description:
-    "Capture a Docusign demo page in the sandbox's headless browser: screenshot to /workspace/captures/<pageId>.png plus an accessibility snapshot and extracted icon SVG path prefixes. Logs into the demo account automatically when redirected to login.",
+    "Capture a Docusign demo page in the sandbox's headless browser: screenshot to /workspace/captures/<pageId>.png plus an accessibility snapshot and extracted icon SVG path prefixes. Reuses a stored session when present, and logs in automatically when it lands on a login screen.",
   inputSchema: z.object({
     pageId: z.string().describe("Page id from specs/pages.json"),
     demoUrl: z.string().url(),
+    steps: z
+      .array(
+        z.object({
+          type: z.enum(["click", "clickRow", "press", "wait"]),
+          role: z.string().optional().describe("ARIA role for a click step"),
+          name: z.string().optional().describe("Accessible name (regex) for a click step"),
+          selector: z.string().optional().describe("CSS selector, alternative to role+name"),
+          index: z.number().optional().describe("Row index for clickRow; 0 is the first data row"),
+          key: z.string().optional().describe("Key for a press step, e.g. Escape"),
+          ms: z.number().optional().describe("Duration for a wait step"),
+          settleMs: z.number().optional().describe("Pause after the action"),
+        }),
+      )
+      .optional()
+      .describe(
+        "Navigation steps run after modals are dismissed, to reach surfaces that are not URL-addressable — e.g. [{type:'clickRow',index:0}] to open a detail overlay from a table. Use the manifest entry's `entry` note to decide these.",
+      ),
   }),
   async execute(input, ctx) {
     const sandbox = await ctx.getSandbox();
@@ -96,19 +54,24 @@ export default defineTool({
       content: JSON.stringify({
         pageId: input.pageId,
         demoUrl: input.demoUrl,
+        steps: input.steps ?? [],
         email: process.env.DEMO_EMAIL ?? "",
         password: process.env.DEMO_PASSWORD ?? "",
       }),
     });
+
     const result = (await sandbox.run({
       command: "cd /workspace/toolbox && node capture.mjs",
     })) as { exitCode?: number; stdout?: string; stderr?: string };
 
     if (!(result.stdout ?? "").includes("CAPTURE_OK")) {
+      const err = (result.stderr ?? result.stdout ?? "").slice(0, 2000);
       return {
         ok: false,
         pageId: input.pageId,
-        error: `capture failed: ${(result.stderr ?? result.stdout ?? "").slice(0, 2000)}`,
+        error: err.includes("LOGIN_REQUIRED")
+          ? "login required — no stored session and DEMO_EMAIL/DEMO_PASSWORD are unset or rejected"
+          : `capture failed: ${err}`,
       };
     }
 

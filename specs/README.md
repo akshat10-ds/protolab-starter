@@ -14,12 +14,18 @@ specs/
   pages.json                  ← the page manifest (see below)
   baselines/
     <page-id>.spec.json       ← structural spec of the demo page (schema below)
-    <page-id>.skeleton.json   ← structural fingerprint: ordered role:name lines
-                                from the a11y snapshot (headings, buttons,
-                                filters, column headers). Data rows are
-                                excluded and digits masked ("# items"), so
-                                live-data churn never triggers a sync. This is
-                                the change gate.
+    <page-id>.skeleton.json   ← structural fingerprint of THIS PAGE'S CONTENT:
+                                ordered role:name lines from the aria snapshot
+                                (headings, buttons, filters, column headers).
+                                Data rows are excluded and digits masked
+                                ("# items"), so live-data churn never triggers
+                                a sync. This is the change gate.
+    _shell.skeleton.json      ← the global chrome (top bar, left sidebar,
+                                footer), shared by every page and tracked ONCE.
+                                Measured at 38 nodes vs ~14-23 of page content,
+                                so folding it into each page would make a single
+                                nav change trip all 16 pages at once. A shell
+                                change gets one dedicated PR, never 16.
     <page-id>.png             ← reference screenshot. NOT a gate — used for
                                 reviewer before/afters, and to flag visual
                                 drift on structurally-identical pages (a

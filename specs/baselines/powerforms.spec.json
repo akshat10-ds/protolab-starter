@@ -1,0 +1,112 @@
+{
+  "pageId": "powerforms",
+  "capturedAt": "2026-08-24T23:13:05.095Z",
+  "demoUrl": "https://apps-d.docusign.com/send/documents?view=powerforms",
+  "pageHeader": {
+    "title": "PowerForms",
+    "showAIBadge": false,
+    "actions": [
+      {
+        "component": "Button",
+        "kind": "secondary",
+        "menuTrigger": true,
+        "label": "Shared Access"
+      }
+    ]
+  },
+  "banner": {
+    "kind": "promo",
+    "closable": true,
+    "text": "Increase envelope completion rates by converting your PowerForms to Web Forms.",
+    "action": {
+      "label": "Learn More"
+    }
+  },
+  "filterBar": {
+    "searchPlaceholder": "Search All PowerForms",
+    "quickActions": [],
+    "filters": [
+      {
+        "component": "Button",
+        "kind": "secondary",
+        "menuTrigger": true,
+        "label": "Date: Last 6 months"
+      },
+      {
+        "component": "Button",
+        "kind": "secondary",
+        "menuTrigger": true,
+        "label": "Status"
+      },
+      {
+        "component": "Button",
+        "kind": "secondary",
+        "menuTrigger": true,
+        "label": "Sender"
+      },
+      {
+        "component": "Button",
+        "kind": "secondary",
+        "menuTrigger": true,
+        "label": "PowerForm Name"
+      },
+      {
+        "component": "Button",
+        "kind": "tertiary",
+        "label": "Clear"
+      }
+    ]
+  },
+  "dataTable": null,
+  "emptyState": {
+    "icon": "flash",
+    "heading": "You haven't created any PowerForms",
+    "body": "Create self-service documents and collect signatures easily with PowerForms.",
+    "actions": [
+      {
+        "kind": "primary",
+        "label": "Create a PowerForm"
+      },
+      {
+        "kind": "secondary",
+        "label": "Watch how",
+        "icon": "play"
+      }
+    ]
+  },
+  "notes": "The demo account has no PowerForms, so production renders its empty state. If the account is ever seeded, this page gains a DataTable and the skeleton will change.",
+  "icons": [
+    {
+      "label": "Apps Menu",
+      "pathPrefix": "M7 7H3V3h4zm7-4h-4v4h4zm7 0h-4v4h4zM7 10H3v4h4zm7 0h-4v4h4zm7 0h-4v4h4zM7 17H3v4"
+    },
+    {
+      "label": "tasks",
+      "pathPrefix": "M4.43 10.77 2 8.34 3.34 7 5 8.66 8.66 5 10 6.34l-4.43 4.43c-.16.16-.37.23-.57.23"
+    },
+    {
+      "label": "help,  help messages",
+      "pathPrefix": "M10 3.9c3.36 0 6.1 2.74 6.1 6.1s-2.74 6.1-6.1 6.1-6.1-2.74-6.1-6.1S6.64 3.9 10 3"
+    },
+    {
+      "label": "Start",
+      "pathPrefix": "m15 8.32-4.43 4.45c-.16.16-.37.23-.57.23s-.41-.07-.57-.23L5 8.32 6.32 7 10 10.66"
+    },
+    {
+      "label": "All Agreements",
+      "pathPrefix": "M20 6v12H4V6zm2-2H2v16h20zm-10 6.86L6 7.53v2.29l6 3.33 6-3.33V7.53z"
+    },
+    {
+      "label": "Folders",
+      "pathPrefix": "m8.93 5 2 3H20v10H4V5zM10 3H2v17h20V6H12z"
+    },
+    {
+      "label": "Parties",
+      "pathPrefix": "M10 14H8v-2h2zm0 2H8v2h2zm0-8H8v2h2zm0 12H6V6.49l6-1.8V9l2-1V2L4 5v15H3v2h7zm7-1"
+    },
+    {
+      "label": "Requests",
+      "pathPrefix": "M19.17 7.66c-.39.39-.9.59-1.41.59s-1.02-.2-1.41-.59c-.78-.78-.78-2.05 0-2.83L13."
+    }
+  ]
+}

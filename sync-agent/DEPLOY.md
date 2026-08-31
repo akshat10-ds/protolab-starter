@@ -129,22 +129,37 @@ filling only those `demoUrl`s, or by naming the pages in the invoke prompt).
 Watch the run in the Vercel dashboard under Agent Runs (sessions, tool calls,
 token usage).
 
-## Known unknowns — expect one of these to bite
+## What is now validated (tested live 2026-08-24)
 
-1. **Playwright inside Vercel Sandbox is undocumented.** `sandbox.ts` bootstraps
-   `npx playwright install --with-deps chromium`. Sandboxes are root-access
-   Firecracker microVMs so this should work; if it doesn't, fall back to a
-   custom OCI image with Chromium baked in (the documented path) or a remote
-   browser service.
-2. **The demo login selectors in `capture_page.ts` are a best-effort guess.**
-   Watch the first capture and pin the real selectors. If SSO or bot detection
-   blocks headless login, pre-seed a Playwright `storageState` file instead.
-3. **eve's default production route policy rejects browser traffic**, which may
-   block the manual invoke. If so, set `VERCEL_AUTOMATION_BYPASS_SECRET` or add
-   a route policy — see https://eve.dev/docs.
-4. **eve is beta (installed: 0.44.3).** APIs drift from the docs — the docs say
-   `needsApproval` on tools, but the shipped package uses `approval`. Trust the
-   installed type definitions over the docs.
+- **Capture works end to end.** Real pages captured from `apps-d.docusign.com`,
+  structural fingerprints extracted, purpose-matching verified. 13 unit tests.
+- **Clicking works.** Declarative `steps` reach surfaces that have no URL.
+- **Modal handling works.** The site stacks promo dialogs behind a permanently
+  present, undismissable "Quick Access Palette" — handled.
+- **`build_view` works.** It built the PowerForms view: 13/13 production
+  affordances covered, `vite build` green.
+
+## Known unknowns — read before the first run
+
+1. **The automated login has NEVER run.** Every capture so far used a session
+   established by hand (`test/login.mjs`). The selectors in
+   `agent/lib/capture-script.ts` are a best-effort guess and are now on the
+   critical path — see below.
+2. **A demo session expires in under 3 hours** (measured: alive 16:02, dead by
+   18:47). This kills the "pre-seed a storageState file" fallback for a monthly
+   job: the agent MUST log in with credentials on every run. `DEMO_EMAIL` and
+   `DEMO_PASSWORD` are mandatory, not optional.
+3. **Playwright inside Vercel Sandbox is still unproven.** It works locally.
+   The sandbox bootstrap apt-installs Chromium; if that fails, bake it into a
+   custom OCI image or use a remote browser service.
+4. **Target the PUBLIC demo env.** eve runs on Vercel, outside Docusign's
+   network, so internal hosts like `apps.dev.docusign.net` are unreachable.
+   Use `apps-d.docusign.com` — which is what `specs/pages.json` already has.
+5. **15 of 17 pages still have `TODO(akshat)` demoUrls.** Only `completed` and
+   `powerforms` are filled in. The agent skips and reports TODOs.
+6. **eve is beta (0.44.3).** APIs drift from the docs — the docs say
+   `needsApproval` on tools, the shipped package uses `approval`. Trust the
+   installed types.
 
 ## Guardrails
 

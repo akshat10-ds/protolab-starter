@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback, useEffect, useRef, type CSSProperties } from 'react';
+import powerFormsEmptyArt from '@/assets/powerforms-empty.svg';
 import {
   DocuSignShell,
   AgreementTableView,
@@ -7,6 +8,7 @@ import {
   FilterBar,
   Button,
   Badge,
+  Banner,
   BarChart,
   ComboButton,
   AIIcon,
@@ -189,7 +191,7 @@ function FadeIn({ children, keyProp: _keyProp }: { children: React.ReactNode; ke
    ═══════════════════════════════════════ */
 
 type TabId = 'home' | 'agreements' | 'templates' | 'insights' | 'admin' | 'scenarios';
-type SidebarView = 'all-agreements' | 'drafts' | 'in-progress' | 'completed' | 'deleted' | 'parties' | 'requests' | 'workspaces';
+type SidebarView = 'all-agreements' | 'drafts' | 'in-progress' | 'completed' | 'deleted' | 'parties' | 'requests' | 'workspaces' | 'powerforms';
 type TemplatesSidebarView = 'my-templates' | 'shared-with-me' | 'favorites' | 'all-templates';
 type InsightsSidebarView = 'overview' | 'dashboards' | 'reports';
 
@@ -2652,7 +2654,7 @@ export default function App() {
           { id: 'requests', label: 'Requests', icon: 'ticket' as const, badge: 'New', onClick: () => setSidebarView('requests') },
           { id: 'maestro', label: 'Maestro Workflows', icon: 'workflow' as const, badge: 'New' },
           { id: 'workspaces', label: 'Workspaces', icon: 'transaction' as const, badge: 'New', onClick: () => setSidebarView('workspaces') },
-          { id: 'powerforms', label: 'PowerForms', icon: 'flash' as const },
+          { id: 'powerforms', label: 'PowerForms', icon: 'flash' as const, onClick: () => setSidebarView('powerforms') },
           { id: 'bulk-send', label: 'Bulk Send', icon: 'document-stack' as const },
         ],
       },
@@ -2777,13 +2779,14 @@ export default function App() {
   const VIEW_LABELS: Record<SidebarView, string> = {
     'all-agreements': 'All Agreements', drafts: 'Drafts', 'in-progress': 'In Progress',
     completed: 'Completed', deleted: 'Deleted', parties: 'Parties', requests: 'Requests',
-    workspaces: 'Workspaces',
+    workspaces: 'Workspaces', powerforms: 'PowerForms',
   };
 
   const isPartiesView = sidebarView === 'parties';
   const isNavigatorView = sidebarView === 'completed';
   const isRequestsView = sidebarView === 'requests';
   const isWorkspacesView = sidebarView === 'workspaces';
+  const isPowerFormsView = sidebarView === 'powerforms';
 
   /* ── Navigator filtered data ── */
   const filteredNavigator = useMemo(() => {
@@ -2936,7 +2939,11 @@ export default function App() {
   /* ── Agreements content ── */
   const agreementsContent = (
     <AgreementTableView
-      banner={isNavigatorView ? <CompletedInsightsPanel /> : undefined}
+      banner={isNavigatorView ? <CompletedInsightsPanel /> : isPowerFormsView ? (
+        <Banner kind="promo" closable onClose={() => {}} action={{ label: 'Learn More', onClick: () => {} }}>
+          <strong>Increase envelope completion rates</strong> by converting your PowerForms to Web Forms.
+        </Banner>
+      ) : undefined}
       pageHeader={
         isNavigatorView ? (
           <Inline align="center" style={{ justifyContent: 'space-between', width: '100%' }}>
@@ -3013,9 +3020,10 @@ export default function App() {
               : isPartiesView ? 'Search parties...'
               : isRequestsView ? 'Search Request Titles or IDs...'
               : isWorkspacesView ? 'Search Workspaces'
+              : isPowerFormsView ? 'Search All PowerForms'
               : 'Search Envelopes',
           }}
-          showSearchIndicator={!isPartiesView && !isRequestsView && !isWorkspacesView}
+          showSearchIndicator={!isPartiesView && !isRequestsView && !isWorkspacesView && !isPowerFormsView}
           rightAlignFilters={isNavigatorView}
           quickActions={isNavigatorView ? [
             <IconButton key="bm" icon="bookmark" variant="secondary" size="small" aria-label="Saved searches" />,
@@ -3036,6 +3044,14 @@ export default function App() {
               <Button kind="secondary" size="small" menuTrigger>Last Activity At</Button>
               <Button kind="secondary" size="small" menuTrigger>Owner</Button>
               <Button kind="secondary" size="small" startElement={<Icon name="filter" size={14} />}>All Filters</Button>
+            </Inline>
+          ) : isPowerFormsView ? (
+            <Inline gap="small" align="center" style={{ flexWrap: 'nowrap' }}>
+              <Button kind="secondary" size="small" menuTrigger>Date: Last 6 months</Button>
+              <Button kind="secondary" size="small" menuTrigger>Status</Button>
+              <Button kind="secondary" size="small" menuTrigger>Sender</Button>
+              <Button kind="secondary" size="small" menuTrigger>PowerForm Name</Button>
+              <Button kind="tertiary" size="small" onClick={() => setSearch('')}>Clear</Button>
             </Inline>
           ) : isWorkspacesView ? (
             <Inline gap="small" align="center" style={{ flexWrap: 'nowrap' }}>
@@ -3080,6 +3096,25 @@ export default function App() {
         <DataTable columns={partyColumns} data={filteredParties} getRowKey={(row) => row.id} stickyHeader showColumnControl emptyMessage="No parties match your search" pagination={{ page: 1, pageSize: 25, totalItems: 1334, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : isRequestsView ? (
         <DataTable columns={requestColumns} data={filteredRequests} getRowKey={(row) => row.id} stickyHeader showColumnControl rowHeight="tall" emptyMessage="No requests found" onRowClick={(row) => setActiveRequest(row)} pagination={{ page: 1, pageSize: 10, totalItems: filteredRequests.length, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
+      ) : isPowerFormsView ? (
+        /* Production lays this out as art-left / copy-right, left-aligned —
+           not a centered stack. The illustration is decorative, so it carries
+           no accessible name. */
+        <Inline gap="large" align="center" justify="center" style={{ padding: 'var(--ink-spacing-600) var(--ink-spacing-300)', flexWrap: 'wrap' }}>
+          <img
+            src={powerFormsEmptyArt}
+            alt=""
+            aria-hidden="true"
+            width={280}
+            style={{ flexShrink: 0 }}
+          />
+          <Stack gap="medium" align="start" style={{ maxWidth: 420 }}>
+            <Heading level={2} size="lg">You haven't created any PowerForms</Heading>
+            <Text color="secondary">Create self-service documents and collect signatures easily with PowerForms.</Text>
+            <Button kind="primary">Create a PowerForm</Button>
+            <Link href="#">Watch how</Link>
+          </Stack>
+        </Inline>
       ) : isNavigatorView ? (
         <DataTable bordered columns={navigatorColumns} data={filteredNavigator} getRowKey={(row) => row.id} selectable stickyHeader stickyFooter showColumnControl rowHeight="tall" emptyMessage="No completed documents" onRowClick={() => setShowAgreementDetail(true)} pagination={{ page: 1, pageSize: 25, totalItems: 1659, onPageChange: () => {}, onPageSizeChange: () => {}, showInfo: true }} />
       ) : (

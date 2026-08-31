@@ -1,7 +1,9 @@
 {
   "$comment": "Page manifest for the protolab sync agent (sync-agent/). Keyed on the view-ID unions in src/App.tsx, NOT sidebar item IDs. See specs/README.md for field docs. TODO(akshat): fill in every demoUrl and reviewers list before the first run.",
   "defaults": {
-    "reviewers": ["akshat10-ds"]
+    "reviewers": [
+      "akshat10-ds"
+    ]
   },
   "pages": [
     {
@@ -48,7 +50,7 @@
       "tab": "agreements",
       "view": "completed",
       "label": "Completed",
-      "demoUrl": "TODO(akshat)",
+      "demoUrl": "https://apps-d.docusign.com/send/navigator",
       "sync": true,
       "reviewers": "TODO(akshat)",
       "notes": "Navigator mirror: insights band, Documents/Envelopes dropdown, AIBadge, Ask Iris, Worksheets, navigatorColumns table. Highest-traffic page in the prototype."
@@ -93,6 +95,16 @@
       "notes": "Row click opens workspace-detail overlay."
     },
     {
+      "id": "powerforms",
+      "tab": "agreements",
+      "view": "powerforms",
+      "label": "PowerForms",
+      "demoUrl": "https://apps-d.docusign.com/send/documents?view=powerforms",
+      "sync": true,
+      "reviewers": "TODO(akshat)",
+      "notes": "Built by build_view 2026-08-24. Demo account has no PowerForms, so production shows its empty state; the prototype mirrors that. If the account is seeded this page gains a DataTable and the skeleton changes."
+    },
+    {
       "id": "my-templates",
       "tab": "templates",
       "view": "my-templates",
@@ -128,7 +140,7 @@
       "demoUrl": "TODO(akshat)",
       "sync": true,
       "reviewers": "TODO(akshat)",
-      "notes": "Reached via the 'All Web Forms' sidebar item in the prototype — label/ID mismatch is intentional."
+      "notes": "Reached via the 'All Web Forms' sidebar item in the prototype \u2014 label/ID mismatch is intentional."
     },
     {
       "id": "insights-overview",
@@ -148,7 +160,7 @@
       "demoUrl": "TODO(akshat)",
       "sync": true,
       "reviewers": "TODO(akshat)",
-      "notes": "Six sidebar nav items alias to this one view — capture once."
+      "notes": "Six sidebar nav items alias to this one view \u2014 capture once."
     },
     {
       "id": "insights-reports",
@@ -213,7 +225,7 @@
       "demoUrl": null,
       "sync": false,
       "reviewers": null,
-      "notes": "Invented prototype surface — hidden #scenarios route that boots the Iris panel into preset states. Never sync."
+      "notes": "Invented prototype surface \u2014 hidden #scenarios route that boots the Iris panel into preset states. Never sync."
     }
   ]
 }
