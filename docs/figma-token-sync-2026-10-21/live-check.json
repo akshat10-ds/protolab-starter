@@ -1,0 +1,21 @@
+{
+  "capturedDate": "2026-10-21",
+  "live": {
+    "variables": 855,
+    "values": 3380,
+    "variableFingerprint": "c4c15b8b",
+    "styleFingerprint": "ef496d43",
+    "styles": {
+      "paintStyles": 4,
+      "textStyles": 28,
+      "effectStyles": 10,
+      "gridStyles": 7
+    }
+  },
+  "local": {
+    "variableFingerprint": "c4c15b8b",
+    "styleFingerprint": "ef496d43"
+  },
+  "match": true,
+  "readOnly": true
+}

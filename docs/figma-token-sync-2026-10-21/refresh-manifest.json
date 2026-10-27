@@ -1,0 +1,332 @@
+{
+  "backup": "/private/tmp/protolab-token-sync-2026-10-21-before",
+  "previousVersion": {
+    "version": "1.0.0",
+    "buildTimestamp": "2026-10-20T21:47:23.749Z",
+    "componentCount": 85,
+    "bundleHash": "16c70f74eb3e3ee2"
+  },
+  "newVersion": {
+    "version": "1.0.0",
+    "buildTimestamp": "2026-10-21T17:22:26.303Z",
+    "componentCount": 85,
+    "bundleHash": "7428ea7b76fb3f5d"
+  },
+  "files": [
+    {
+      "path": "1-tokens/figma-token-map.json",
+      "before": "a018637f64c44978bc91ad210e6a675f01755cf20f15764ea960f5cc3ee84706",
+      "after": "7bc82fe9fee118c617f3f1fa0a1983d6c2cc2b111aa726450de19fb66b05a1db"
+    },
+    {
+      "path": "1-tokens/tokens.css",
+      "before": "c0154b0ae081ef8cc3b09aae272fc893c7ab9e561a3511509585ada94cfd0588",
+      "after": "7431cf549a674eff41688837f6efb3126cfdda11a4fc566ac088fd0fdc20544d"
+    },
+    {
+      "path": "2-utilities/Container/Container.module.css",
+      "before": "3a75ce3e55ce4f75f37f832d6adbfe744c4f231a3fdf0649041a79740ae305fa",
+      "after": "3c8d4ea8dba20bab1a7aa680b17edcb022608659d67c8de9095a510a0a432bfd"
+    },
+    {
+      "path": "2-utilities/Grid/Grid.module.css",
+      "before": "3c5eeb01adf1eeed2eac6ca62ec8b52c9a581c35d4192a287226f62446c9daac",
+      "after": "0cb3942c319a5d02b3dab7e1cc79d8b66812efba7bd0c250887aa6399dee73d4"
+    },
+    {
+      "path": "2-utilities/Inline/Inline.module.css",
+      "before": "0e7aa966c69ad277cdc6d866e055e8425efb341c8ad6623603982e9e82f24c03",
+      "after": "e07d5e5fb52e0571cbd9dcdf28e48d64119751b3dccb51b1a93288bedf574338"
+    },
+    {
+      "path": "2-utilities/Spacer/Spacer.module.css",
+      "before": "0a335d58142558de94a4db83ce6fb5d19202946d4dbbaa1af97a33ad13b7b91a",
+      "after": "f71e191de36531944e08322f4b99e1b4594ee74db884aeae5eeeae9c95fa6133"
+    },
+    {
+      "path": "2-utilities/Stack/Stack.module.css",
+      "before": "af4294be9f29a2ea9ea1047fd99dc1284c689f85c7c52d07e5a50a9c6500db32",
+      "after": "3f0680c9e8885905ab832932e5c6845d69064c02f8bf66e5d6a72bb5613b21df"
+    },
+    {
+      "path": "3-primitives/AlertBadge/AlertBadge.module.css",
+      "before": "a87b37139788926ae0a342294154fa2eb8ddf7404b95388d299abc78fd784e15",
+      "after": "009ab215a9d9a54258dabe8bea4ece0ff2e5ae56d5090b6dc050602e16463f70"
+    },
+    {
+      "path": "3-primitives/Button/Button.module.css",
+      "before": "0a0b6b8a362c907d07078ce88b0dabc0feb7542c08b92738edf4020c1b6e3247",
+      "after": "e121022973c6e435fa2efdd20d2125080d70fdde3055e0eab35c4f48162b4f18"
+    },
+    {
+      "path": "3-primitives/Hotspot/Hotspot.module.css",
+      "before": "8f639cb622f0d644e5722519cad353cebcd4d9d3a4b623c89b9bd34a3963eb4c",
+      "after": "62142ca00626f43267090d40f6d9037d84a4c2a583fa141d3e432ffa37aca390"
+    },
+    {
+      "path": "3-primitives/Icon/Icon.module.css",
+      "before": "fe5e57a61d0703b373e0a8ad871bb231445e191db69f726b9b09a575540bf49b",
+      "after": "5011d53eec77d04023fccd02dee7b36f4845b775820c12d3c8e97252febffb7e"
+    },
+    {
+      "path": "3-primitives/Input/Input.module.css",
+      "before": "b787d7cc1d2f644a851352a7f5383a776272fdb4c8da3c40f8673917808418ba",
+      "after": "c8d36225309f8935beb52d24d67d73bbddae605137b26f42ef2e2e35257b6ed6"
+    },
+    {
+      "path": "3-primitives/Meter/Meter.module.css",
+      "before": "7ba39a1baf9b96f07205af9980091500a637bdea0f38ca081b2a4fe87721a629",
+      "after": "147cebcf67114d147ddd8df829157997d8036788f89f4c1ba950b14084ddf147"
+    },
+    {
+      "path": "3-primitives/ProgressBar/ProgressBar.module.css",
+      "before": "077bd110f4f40087dfd69d945726e3838e710ea37b61bce7d232017f7e1be426",
+      "after": "8a762e6db918c52662cffe15a885061a2290cbe5d59d98b4f8495d371a3cc1d9"
+    },
+    {
+      "path": "3-primitives/Radio/Radio.module.css",
+      "before": "02924aae7a2cf8b4c19d939a688318183ff78a2db8201125b3c663438edae3ec",
+      "after": "3a8ef4f1a7d40ab5df0755287ecbbc1d886771c24873c024b041debd2be3a1f1"
+    },
+    {
+      "path": "3-primitives/Select/Select.module.css",
+      "before": "83c1c3264141f6a1672ffc58fb6dde7c8b99f4f86259f5c9c65af04b43196ff4",
+      "after": "443b9199d84d7a5dbe0449ee252a927e91f0686fa54bdafdf40c6d6a7b507429"
+    },
+    {
+      "path": "3-primitives/Skeleton/Skeleton.module.css",
+      "before": "3e27a48ebb55b7b54b26a743f214be59e25a720026b88e1579b33b50aafb6b04",
+      "after": "53ddf143a6bf5286f8daa1df5991098ff029b97e65607e071e7cfe01f7f35815"
+    },
+    {
+      "path": "3-primitives/Slider/Slider.module.css",
+      "before": "2d239c65182cd3bd080de513cf5eed1f687e4d1d3fd13a2f90f121df845de010",
+      "after": "2a220aa415ecc483b0b3131c457c0f01195f8b2fcd8a692527c9427c99973fc7"
+    },
+    {
+      "path": "3-primitives/Spinner/Spinner.module.css",
+      "before": "5540c91e39196eb5ab35b2a452b70898b44e3521a0c78f2204a90b8eb4b0da68",
+      "after": "c8138ebaa9f98fc49a31c2796ce6e26dda6b6c4433143944d05b6a63fe8fd815"
+    },
+    {
+      "path": "3-primitives/Tag/Tag.module.css",
+      "before": "4aaeb197cafa6805a214f1a0a783ee17f8b5d2257c9a237bf78ed0570af1f870",
+      "after": "2186bae091f427c201076582207a95daf51db365dde206f7dbacbcc71a887ece"
+    },
+    {
+      "path": "3-primitives/ToggleButton/ToggleButton.module.css",
+      "before": "2bbfdf22cb882bf0dc78baf20642520136f2a9ab1e116f040ca9f4ebda5c6b03",
+      "after": "e828cb1c0d0709876c8ddae77669199f1f599efa250e284a1390d00e37e05b87"
+    },
+    {
+      "path": "3-primitives/Tooltip/Tooltip.module.css",
+      "before": "23d330e0244359f023bd6e27acd2232885a25b9ec64f75fbb91a6634e87654fe",
+      "after": "f0fd0a5bbf4ef9f9fc14a51f4f4f77eef2dddeb66963a7cb8669571b1c2c64ca"
+    },
+    {
+      "path": "4-composites/AIBadge/AIBadge.module.css",
+      "before": "8bb07ed6b168d1f66cfa036670dbaf9ecc40e1f6bba2b8226ff03fe905f3d6f9",
+      "after": "64e20c97de562c774bdf433224a523f4c6e0ab167cd476931c34025fc3f76770"
+    },
+    {
+      "path": "4-composites/Accordion/Accordion.module.css",
+      "before": "6d44cccaffeaeb01e5c18f4f1750f9f3b2c3cceaad68b939bfc3826ec3b9a15c",
+      "after": "9bb452f5bcfa58ec9fc1c9e9e92fa583f73edee16e20772198dd1b25102e3bf2"
+    },
+    {
+      "path": "4-composites/Breadcrumb/Breadcrumb.module.css",
+      "before": "7cdf518ef99c3dbca2b57dce5e55170705258c75f018d449be7f913b13b0c56a",
+      "after": "f75e7e65b9b07302ca3d011aab477755ac03a35808fc28eaf2b6e8d7a1e0b4e8"
+    },
+    {
+      "path": "4-composites/Chip/Chip.module.css",
+      "before": "82f3c72339b00bd09fa19bdd1f5544aa5cbf23aa34992f578b4161dff01ee0a6",
+      "after": "d2b397ce2092849e368abd6f04f36c56044188268987123127c10e4dd779285d"
+    },
+    {
+      "path": "4-composites/ColorPicker/ColorPicker.module.css",
+      "before": "8fb9469481e579c1aff3bf3ea43e31dbfd39a62972bb974a259b740e572d3c89",
+      "after": "4fed36bbd38d069cfef4e107e177226711aaeedb2f408a85c6acc11a9c882cfa"
+    },
+    {
+      "path": "4-composites/ComboBox/ComboBox.module.css",
+      "before": "68ad43ccb4669638f438377b50e2b6c44381fb13190b8ed0f5c1550961d2f715",
+      "after": "1ce09694ed582bbcbbb0223dbf95f6f0728369257e694e48f3433680144ee80f"
+    },
+    {
+      "path": "4-composites/ComboButton/ComboButton.module.css",
+      "before": "12447819cd961ef43c962ee20ac9389a9268ae0b9a80e60b20b2b86a20113cd8",
+      "after": "0b2eb7af04806cc2fed05f6594e2960de3ea1860c857af79034cb550359c96c4"
+    },
+    {
+      "path": "4-composites/DatePicker/DatePicker.module.css",
+      "before": "987fe88e1f0730b33e4797e9603dec4a23ff6d8d153535e58bcd18f13e004c41",
+      "after": "cd7347b8cb52fa43d889cde7f2693370855b1cb2e0e1c6d958ee71545330b95f"
+    },
+    {
+      "path": "4-composites/EmptyState/EmptyState.module.css",
+      "before": "cfea69d16e2bbb68f9aa6db354dfa8336b2dad9a3e8535a31970f6aa68c9f9a1",
+      "after": "c4254b58f30561fa4b3c3abdc290c559118c4b9690d5fba3c8ba0aeb3fe953c4"
+    },
+    {
+      "path": "4-composites/FileInput/FileInput.module.css",
+      "before": "b749a60ed9df15a4d039db3208ef768254b06a30bd187f64863eb1eef5fe9aad",
+      "after": "97749002b905005e4fe95888ef2c14cef27534bc4629e0efce7985ef84107375"
+    },
+    {
+      "path": "4-composites/FileUpload/FileUpload.module.css",
+      "before": "a4c8afc7a986616fc9758d1f6236cb3b45d2431dac7abcb96333413329f4ebd3",
+      "after": "9523209b065bdd1408015237a6ce3ae4ca21184800346bbac1b103e5a87924af"
+    },
+    {
+      "path": "4-composites/PreviewCard/PreviewCard.module.css",
+      "before": "878d721d2286afa3b93f86dc852de4505354da953fbf1aa5ac156acb5178dcc8",
+      "after": "ee4367dbf87b11f6a5548dd27ca6df524ae31ce4ae27fed678c8b0d864e3c409"
+    },
+    {
+      "path": "4-composites/SegmentedControl/SegmentedControl.module.css",
+      "before": "bcbf36383ca2933c21485e1c87053193c473595e5c57fc9589638f7a5d711f3c",
+      "after": "bcb56dc06929139d2fd40c6064ba1b3079b623916db176cd79c49919b21a6f11"
+    },
+    {
+      "path": "4-composites/SelectTile/SelectTile.module.css",
+      "before": "323dd2708fd2f6b1dadde0045bcbdd3a55533a6f66aadc1e5dc67ef18a7f31e6",
+      "after": "5139cc638965b27f13564ca4a21d1328672dd6b67464259ad30b7e1cf00da0d8"
+    },
+    {
+      "path": "4-composites/StarRating/StarRating.module.css",
+      "before": "8c73bc1c85abfa6b0ff742b07749c7dfafa31d95417791eeaea163092fb17df7",
+      "after": "478777f9f4f6a0cc0e9ad336f4a1649b15f2cb477e5dcaefe679b047f99499b3"
+    },
+    {
+      "path": "4-composites/Stepper/Stepper.module.css",
+      "before": "d6b9b8c23b90743dae2827ee6a3960f9b9ed348a16aa05bd79ceb91dfafd6e18",
+      "after": "5a27ac8dc167e8ab1bbc4bb557369637250737c46b2c88fc0c3b78277a55d4cb"
+    },
+    {
+      "path": "4-composites/Table/Table.module.css",
+      "before": "0387427390bab7611babf5f1d5a0960749a41a68009f683bfadfed1e80d9370f",
+      "after": "b1558021c2c8700b59f76840b1623eebee2c9e4281093749dea71d1a2fc8e020"
+    },
+    {
+      "path": "4-composites/Table/TableColumnControl.module.css",
+      "before": "09ba743754964d77fbfabf6da3f5f22baa55276fec996bb5951e3e9d6aed379f",
+      "after": "066295ab555515b4e2c60d8bda4e2b74095abae9614e32b1165a101ff4a9c66f"
+    },
+    {
+      "path": "4-composites/TaskCard/TaskCard.module.css",
+      "before": "051dadefc5680c0639a1ce52caedc59e5f9d6b782975c2cf3df807dcea36fa9d",
+      "after": "4896c3942b70f750fea093e0d629fa014d0739628dbb4af9f0a25e0408970199"
+    },
+    {
+      "path": "4-composites/Timeline/Timeline.module.css",
+      "before": "2f45544068667d1102e56dbe474340759c0c2f2ec6793931b4464cfd4545286f",
+      "after": "428bf1c997cb2bd5170622f7acc0f9adecbb69fa5b174865d188c45fd23d3fc1"
+    },
+    {
+      "path": "4-composites/Toast/Toast.module.css",
+      "before": "a5f5c5bcc069677896722f17259bdc6f16b63576c68e577106260f5f384450bf",
+      "after": "8d6d580abf63a470e1bbe8634b3ef3a851832618221a4e1910c17dded74946a7"
+    },
+    {
+      "path": "4-composites/Tree/Tree.module.css",
+      "before": "ccdffb0b960affe2ead56695e918f4aa9168a2eec6a4f473dc5f0ad10d7c1280",
+      "after": "95480aed4e6884753b5fe74d810bfec3af475cd31e6bcf65fc3e555f06f8114f"
+    },
+    {
+      "path": "4-composites/WorkflowStepper/WorkflowStepper.module.css",
+      "before": "0b577782371329c18bf0f2227baca644a321037e6fd9fda958e2e9a0e688799c",
+      "after": "446b22f0b966103e7819078db255dfbb4bbd350ae8ad196bd582dcd846bbd9ef"
+    },
+    {
+      "path": "4-composites/ZoomControl/ZoomControl.module.css",
+      "before": "78f37a2a225406e30f5d8bf77276046e47ffed25664c930c21de7c7c1f4356ee",
+      "after": "c6621e189228f833559a400f4fa571e98236122621f550cd36b25ac78ed3ccb1"
+    },
+    {
+      "path": "5-patterns/AIChat/AIChat.module.css",
+      "before": "d9adce1a36647aacde5e5cc09c390156e1ba10f5905ace7b6003b64c524c7cf5",
+      "after": "f209a4d2532b713aa7ba6c1fc54da3b720665ec9f759a0016e74de0967dc5de4"
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentActionCard.module.css",
+      "before": "2109b0415fb0faa705b2e2a65a48a67d5bca9793d0dd1fabe926254715bdc2d7",
+      "after": "cb494d194f2ec1b4461600d0abe13cab346e9fee32b079337f3b28d08ab07358"
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentCanvas.module.css",
+      "before": "ca4529eebb769bb7e748ff68adba8b72f9f42d4d7b2fd893073000a0758091ef",
+      "after": "8614c4cc2b1ccb930257d1a9406c5d5ec03781501893617fe39b8e0c08e26689"
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentPanel.module.css",
+      "before": "992e3416f4dc31d5b28848e90debd536f0482c0d885c7451255ef66917c050d9",
+      "after": "e692ba01949c656dace8efe67be43fa7d9cd0b63042aadd642f73d7dcff65238"
+    },
+    {
+      "path": "5-patterns/AgentPanel/ThinkingSteps.module.css",
+      "before": "e9638e1b86ef9b8ce301fc3bb4d0231ca522aa0c774f688557a672a926ed73ca",
+      "after": "6be11c7622b0e2c295e6304acadcf93cc29fdca294c09031620f195a52222171"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTable.module.css",
+      "before": "8470a6fd9777038d94ffc94b293cd2cc82926154d9ba755b7db5f6167fdf8628",
+      "after": "712ae1b4c68963bde7b946c81b6d0705fe7185748720fd6649e5060d741ddfe0"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableActionBar.module.css",
+      "before": "941490d26945b7fdf5fa04ad5e643b7fd7a5e41153ef680e725fcd672214b761",
+      "after": "0883e9483a13acf027d44135d4749bfe147676e358431e4ba15b7102d0c21c53"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableColumnControl.module.css",
+      "before": "4308ed6966fce3aa16523f95d44a9963a1b626a029bce3ea09493a6a2701cd1f",
+      "after": "6fb3cf56bc0d8b0e0191f54662840605d57c089e9ad9d7da247ee12b24df9493"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableFooter.module.css",
+      "before": "be6c55cc5cc1d517223fbb62894c1252965a23cea048beec7032fa8b8e966a98",
+      "after": "53fd21e664ce63e0a323d4cfac96d262dd9cbb972c2aeefbacba328e6e1ea140"
+    },
+    {
+      "path": "5-patterns/FilterBar/FilterBar.module.css",
+      "before": "5c82bca546f3c907ff255ee790b15f9c46410944318d2846a381c9ae50112f1e",
+      "after": "2b1f0eef8fc8888f0f1cb166328f20ace75f0d4d251b92e107448ccaede36cf3"
+    },
+    {
+      "path": "5-patterns/LocalNav/LocalNav.module.css",
+      "before": "e9b85fc78d912fa01e7021575c7a2928f95e2c86a42a483f8afbe60b9bfe6ac5",
+      "after": "32be2496459e09449578ae7469c46eca17d7514100eb5fe51b31cd76eaff5a15"
+    },
+    {
+      "path": "5-patterns/PageHeader/PageHeader.module.css",
+      "before": "800a737526608e0f3bf74fe30c27c8478a514b1b163ef063149d5a632243a002",
+      "after": "c63aa19c6b3edf50d3c027a1c3d7c86c34b8b97847c51c4ddd56eb343d623de3"
+    },
+    {
+      "path": "6-layouts/AgreementTableView/AgreementTableView.module.css",
+      "before": "c60de38852f41b46596779fd3fd3284666884b4b308515caffe2bdf767ed5870",
+      "after": "993d4e3c6a740ba5634931e6e58078617661fbabf8f3f3f9c186bc7e2c9bd079"
+    },
+    {
+      "path": "6-layouts/DocuSignShell/DocuSignShell.module.css",
+      "before": "68ace54f0a2deb344fdc8be2df919e242bbe8db963ebcd8ee914c6ffce967ac7",
+      "after": "cce5eb7f1239c68cb68dfd217d4a37f29f2c058c0e1dfb2975cd212de5e9b1b9"
+    },
+    {
+      "path": "index.ts",
+      "before": "5a3a9af5dcc1a0657cfe1a02a8bc9863e07c37cac00ab684ba9b55a223185daa",
+      "after": "1eabc3eefcf0c809404ddb460270f1124df7aae14b31bf5de1eb0788dd3d5bc5"
+    },
+    {
+      "path": "styles/tokens.css",
+      "before": "5c69ed0afcae7ae1dcb556d727fe18f0c44888e6d14043962b7230540b1e6cd5",
+      "after": "e7ce857d2464555f62ae84cf32443cbd1515aad075c49e3ca2f4eaf946b02d54"
+    },
+    {
+      "path": "3-primitives/Badge/Badge.module.css",
+      "before": "7933d4901a743625e63f4a2a30339253efbb471fb105b0c7eed5d106977dd383",
+      "after": "af52e70fec04213cb61cc4c179fd525e97068967dddab0be70e0c85b19ff6272"
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import styles from './Switch.module.css';
 
-export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
   /** Whether the switch is checked */
   checked?: boolean;
   /** Default checked state for uncontrolled component */
@@ -35,6 +35,8 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
       className,
       name,
       id,
+      'aria-labelledby': labelledBy,
+      'aria-describedby': describedBy,
       ...props
     },
     ref
@@ -53,13 +55,15 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
       onChange?.(newChecked);
     };
 
-    const switchId = id || `switch-${React.useId()}`;
+    const generatedId = React.useId();
+    const switchId = id || `switch-${generatedId}`;
+    const labelId = `${switchId}-label`;
+    const descriptionId = `${switchId}-description`;
 
     const switchElement = (
-      <label
+      <span
         data-ink-component="Switch"
-        className={cn(styles.container, disabled && styles.disabled, className)}
-        htmlFor={switchId}
+        className={cn(styles.container, disabled && styles.disabled)}
       >
         <input
           ref={ref}
@@ -72,28 +76,26 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
           onChange={handleChange}
           role="switch"
           aria-checked={isChecked}
+          aria-labelledby={labelledBy || (label ? labelId : description && !props['aria-label'] ? descriptionId : undefined)}
+          aria-describedby={[describedBy, description && (label || props['aria-label']) ? descriptionId : undefined].filter(Boolean).join(' ') || undefined}
           {...props}
         />
         <span className={cn(styles.track, isChecked && styles.checked)}>
           <span className={styles.thumb} />
         </span>
-      </label>
+      </span>
     );
 
-    if (!label && !description) {
-      return switchElement;
-    }
-
     return (
-      <div className={styles.wrapper}>
+      <label htmlFor={switchId} className={cn(styles.wrapper, disabled && styles.wrapperDisabled, className)}>
         {switchElement}
-        {label && (
-          <div className={styles.labelContainer}>
-            <span className={styles.label}>{label}</span>
-            {description && <span className={styles.description}>{description}</span>}
-          </div>
+        {(label || description) && (
+          <span className={styles.labelContainer}>
+            {label && <span id={labelId} className={styles.label}>{label}</span>}
+            {description && <span id={descriptionId} className={styles.description}>{description}</span>}
+          </span>
         )}
-      </div>
+      </label>
     );
   }
 );

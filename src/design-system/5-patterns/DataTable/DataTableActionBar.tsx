@@ -22,7 +22,7 @@ export function DataTableActionBar({
     .join(' ');
 
   return (
-    <div className={barClasses} role="toolbar" aria-label="Selection actions">
+    <div className={barClasses} role="toolbar" aria-label="Selection actions" aria-hidden={!visible} inert={!visible}>
       {/* Selection count */}
       <span className={styles.count}>
         {selectedCount} Selected

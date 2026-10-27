@@ -1,0 +1,26 @@
+{
+  "counts": {
+    "equal": 367,
+    "excluded_deprecated_or_nonsemantic": 22,
+    "no_explicit_name_mapping": 78,
+    "different": 1
+  },
+  "cssDeclarationCount": 1094,
+  "different": [
+    {
+      "figmaId": "VariableID:6240:15965",
+      "figmaName": "Published/Focus/focusInset",
+      "cssToken": "--ink-focus-inset",
+      "mode": "Standard",
+      "figmaValue": 0,
+      "cssValue": "-4px",
+      "status": "different"
+    }
+  ],
+  "glass": {
+    "figmaEffectStyleId": "S:829576424874ffa74678b675ff6da792fcaf78db,",
+    "figmaBlur": 16,
+    "cssToken": "--ink-elevation-glass",
+    "cssValue": "16px"
+  }
+}

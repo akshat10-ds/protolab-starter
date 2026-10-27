@@ -90,3 +90,78 @@
   line-height: var(--ink-font-body-s-line-height);
   color: var(--ink-font-color-neutral-subtle);
 }
+
+/* ---------------------------------------------------------------------------
+   Header action — `headerAction`
+   --------------------------------------------------------------------------- */
+
+/*
+ * The title's own row, so a control can sit at its right edge without pushing
+ * the subtitle. With no control the row holds one child and lands exactly where
+ * the bare `h2` did.
+ */
+.headingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-200);
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Row action — `rowAction`
+   --------------------------------------------------------------------------- */
+
+/*
+ * The gap `.listCard` used to keep between rows. With `rowAction` set every row
+ * is its own stack of one, so the spacing belongs to the wrapper — same 4px,
+ * one level up.
+ */
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  width: 100%;
+}
+
+.rowWrap {
+  position: relative;
+}
+
+/*
+ * LAID OVER THE ROW, NEVER BESIDE IT.
+ *
+ * A row that grows a control reflows the list under the pointer — the same
+ * thing `ZeroQueryActions` refused when it stopped expanding on hover. Out of
+ * flow, the row is 40px whether the control is showing or not, so the list
+ * holds still and nothing under the cursor moves out from under it.
+ *
+ * `pointer-events: none` at rest is what keeps it from stealing the row's own
+ * click: the hover that reveals it is the same hover that arms it, so it can
+ * never be hit while invisible. Focus does not need the same guard — an unseen
+ * control cannot be clicked, and `:focus-within` shows it the moment the
+ * keyboard arrives at the row.
+ */
+.rowAction {
+  position: absolute;
+  right: var(--ink-spacing-100);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.rowWrap:hover .rowAction,
+.rowWrap:focus-within .rowAction {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rowAction {
+    transition: none;
+  }
+}

@@ -1,13 +1,91 @@
-export { Container, Grid, Inline, Portal, Spacer, Stack } from './2-utilities';
-export { AIIcon, AlertBadge, Avatar, Badge, BarChart, Button, Card, Checkbox, Divider, Heading, Icon, IconButton, Input, Link, ProgressBar, Radio, Select, Skeleton, Slider, Spinner, StatusLight, Switch, Text, TextArea, Tooltip } from './3-primitives';
-export { AIBadge, IrisIcon, IrisIconInverse, Accordion, Alert, Banner, Breadcrumb, Callout, Chip, ComboBox, ComboButton, DatePicker, Drawer, Dropdown, FileInput, FileUpload, FilterTag, List, Modal, Pagination, Popover, SearchInput, Stepper, Table, Tabs, TaskCard, Timeline } from './4-composites';
-export { AIChat, AgentPanel, DataTable, dataTableStyles, FilterBar, GlobalNav, LocalNav, PageHeader } from './5-patterns';
-export { AgreementTableView, DocuSignShell } from './6-layouts';
-export { motionCurves, motionDurations, createTransition, staggerDelay, motionPresets } from './motion';
-export type { MotionCurve, MotionTier } from './motion';
+import './1-tokens/tokens.css';
+/** ProtoLab public API. Generated consumers receive this source verbatim. */
+export * from './1-tokens';
+export * from './2-utilities';
+export * from './3-primitives';
+export * from './4-composites';
+export * from './5-patterns';
+export * from './6-layouts';
+export * from './motion';
 
-/* Types `ai-system` imports from `@ink`. Surfaced through the barrel so a
-   released ai-system resolves them; nothing is vendored or forked. */
-export type { DataTableColumn } from './5-patterns/DataTable/types';
-export type { LocalNavProps } from './5-patterns/LocalNav/LocalNav';
-export type { DropdownItemProps } from './4-composites/Dropdown/Dropdown';
+// Compatibility constants from the established public source API.
+// Icon names for easy reference
+export const ICON_NAMES = [
+  'arrow-left',
+  'arrow-right',
+  'arrow-up',
+  'arrow-down',
+  'chevron-left',
+  'chevron-right',
+  'chevron-up',
+  'chevron-down',
+  'chevrons-up-down',
+  'menu',
+  'close',
+  'x',
+  'add',
+  'plus',
+  'edit',
+  'delete',
+  'trash',
+  'trash-2',
+  'save',
+  'search',
+  'filter',
+  'refresh',
+  'download',
+  'upload',
+  'share',
+  'check',
+  'check-circle',
+  'error',
+  'warning',
+  'info',
+  'help',
+  'star',
+  'star-filled',
+  'heart',
+  'heart-filled',
+  'user',
+  'users',
+  'settings',
+  'home',
+  'document',
+  'file',
+  'file-text',
+  'folder',
+  'calendar',
+  'clock',
+  'bell',
+  'mail',
+  'more-horizontal',
+  'more-vertical',
+  'expand',
+  'collapse',
+  'external-link',
+  'copy',
+  'paste',
+  'eye',
+  'eye-off',
+  'lock',
+  'minus',
+  'image',
+  'video',
+  'music',
+  'presentation',
+  'table',
+  'database',
+] as const;
+
+// Typography constants
+export const TEXT_SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export const TEXT_WEIGHTS = ['light', 'regular', 'medium', 'semibold', 'bold'] as const;
+export const TEXT_COLORS = [
+  'primary',
+  'secondary',
+  'tertiary',
+  'success',
+  'error',
+  'inherit',
+] as const;
+export const HEADING_LEVELS = [1, 2, 3, 4, 5, 6] as const;

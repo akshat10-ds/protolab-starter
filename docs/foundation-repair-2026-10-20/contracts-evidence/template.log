@@ -1,0 +1,14 @@
+Generating template project...
+  Loaded 85 components from bundle
+  Wrote boilerplate files
+  Wrote 945 component source files
+  Generated barrel exports
+  Copied 12 font files
+  Template ready at template/ink-starter/
+  Generated zip: public/downloads/ink-starter-kit.zip (1.2MB)
+
+Template generation complete:
+  85 registered components (including host and virtual entries)
+  945 source files
+  12 font files
+  Bundle hash: 16c70f74eb3e3ee2

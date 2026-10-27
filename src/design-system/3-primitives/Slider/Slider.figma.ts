@@ -13,7 +13,7 @@ const labelNode = instance.findText('Label string', { traverseInstances: true })
 const label = labelNode && labelNode.type === 'TEXT' ? labelNode.textContent : 'Label'
 
 const showLabel = instance.getBoolean('showLabel')
-const hasDescription = instance.getBoolean('❖ Description')
+const hasDescription = instance.getBoolean('❖  Description')
 const hasStart = instance.getBoolean('startElement')
 const hasEnd = instance.getBoolean('endElement')
 const disabled = instance.getEnum('disabled', { True: true, False: false })

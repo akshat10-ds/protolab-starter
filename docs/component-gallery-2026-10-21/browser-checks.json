@@ -1,0 +1,134 @@
+{
+  "geometry": {
+    "brokenImages": [],
+    "examples": 34,
+    "horizontalOverflow": false,
+    "overflowingExamples": [],
+    "path": "/components",
+    "shellCount": 0,
+    "title": "Component gallery · ProtoLab",
+    "viewport": {
+      "height": 1187,
+      "width": 1558
+    }
+  },
+  "modes": [
+    {
+      "mode": "standard",
+      "sizes": [
+        {
+          "height": 32,
+          "size": "small"
+        },
+        {
+          "height": 40,
+          "size": "medium"
+        },
+        {
+          "height": 48,
+          "size": "large"
+        },
+        {
+          "height": 56,
+          "size": "xlarge"
+        }
+      ]
+    },
+    {
+      "mode": "inverse",
+      "sizes": [
+        {
+          "height": 32,
+          "size": "small"
+        },
+        {
+          "height": 40,
+          "size": "medium"
+        },
+        {
+          "height": 48,
+          "size": "large"
+        },
+        {
+          "height": 56,
+          "size": "xlarge"
+        }
+      ]
+    },
+    {
+      "mode": "standard-touch",
+      "sizes": [
+        {
+          "height": 48,
+          "size": "small"
+        },
+        {
+          "height": 48,
+          "size": "medium"
+        },
+        {
+          "height": 48,
+          "size": "large"
+        },
+        {
+          "height": 56,
+          "size": "xlarge"
+        }
+      ]
+    },
+    {
+      "mode": "inverse-touch",
+      "sizes": [
+        {
+          "height": 48,
+          "size": "small"
+        },
+        {
+          "height": 48,
+          "size": "medium"
+        },
+        {
+          "height": 48,
+          "size": "large"
+        },
+        {
+          "height": 56,
+          "size": "xlarge"
+        }
+      ]
+    }
+  ],
+  "tableDensity": [
+    {
+      "density": "compact",
+      "rowHeight": 48
+    },
+    {
+      "density": "default",
+      "rowHeight": 56
+    },
+    {
+      "density": "tall",
+      "rowHeight": 96
+    }
+  ],
+  "verifiedInteractions": [
+    "token preview medium pairs, all 10,844 token checks still pass",
+    "direct /components load and reload",
+    "component search, empty results and clear filters",
+    "category filtering, including shared pattern/layout example",
+    "modal Escape dismissal and restored opener focus",
+    "drawer Escape dismissal and restored opener focus",
+    "split button main action leaves menu closed",
+    "split button dropdown opens, selects Duplicate and closes",
+    "popover opens",
+    "table search narrows to one matching record",
+    "agent action executes and shows result",
+    "agent panel opens and closes"
+  ],
+  "limitations": [
+    "Representative states, not all prop combinations.",
+    "Product shell and GlobalNav link to the real prototype context.",
+    "Mobile viewport not explicitly tested."
+  ]
+}

@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 
 /* ---------------------------------------------------------------------------
    The box — the left dock's treatment, mirrored to the right edge
@@ -237,25 +236,52 @@
 }
 
 /*
- * The pane takes the room, rather than being given a fixed slice of it.
+ * THE PANE IS GIVEN A WIDTH; THE CHAT TAKES THE ROOM. The inverse of what this
+ * rule said until 2026-08-19, and the inverse of frame 163:21261, which pinned
+ * the chat at 482 and let this region absorb the other 987 of its 1807.
  *
- * Frame 163:21261 measures 338 rail + 482 chat + 987 pane out of 1807: the chat
- * holds a panel's measure and this region absorbs the rest. It was pinned at
- * 520 — a number from frame 153:19655, which draws no pane at all — and the
- * chat flexed instead, so the widest screens spent their surplus on gutters
- * beside a 620px conversation column instead of on the table you opened.
+ * Akshat, reviewing exactly that: *"when you open the sidebar the width should
+ * be like 1/3 and not 2/3"*, then: *"the pane width is dependent on what you
+ * see… if it's agreement it should be 2/3 but for sources, progress 1/3 is
+ * good. we probably want it to be resizable too!"*
  *
- * `flex: 1 1 520px` keeps 520 as the basis, so this is the same width the
- * moment there is no surplus, and it degrades by shrinking with the chat rather
- * than overflowing. `flex-shrink` is reset from the card's 0 deliberately.
- * IrisAgent's side of this pairing is `.panelChatColumn` under
- * `[data-fullscreen][data-pane-open]`.
+ * So `flex-grow: 0`, and the basis is the host's. `IrisAgent` passes a
+ * `width` — `PANE_SIZE[kind]` through `paneWidthFor`, or whatever the divider
+ * was dragged to — and the dock puts it on `flex-basis` inline. The 520 here is
+ * what is left when no host supplies one, which is the case where a consumer
+ * mounts this dock in an `artifactSlot` of its own.
+ *
+ * `flex-shrink: 1` survives from the old rule: a fullscreen too narrow for the
+ * pair shrinks them together rather than overflowing.
  *
  * `[data-expanded]` is untouched: it does not match this selector, so
- * `.dock[data-expanded] { flex: 1 }` above still governs the expanded pane.
+ * `.dock[data-expanded] { flex: 1 }` above still governs the expanded pane —
+ * and `ArtifactDock` drops the inline width there for the same reason.
  */
 :global([data-fullscreen]) .dock:not([data-expanded]) {
-  flex: 1 1 520px;
+  flex: 0 1 520px;
+  /*
+    The pane's own entrance. `dockIn` sweeps `width`, which a definite
+    flex-basis outranks — inert here, which was fine while the CHAT carried the
+    movement (its `flex-grow` flipped 1 → 0 over 320ms and the pane appeared in
+    the space that opened). The chat no longer flips anything, so the movement
+    had to come back to the pane: same duration, same easing, one property
+    swapped. Only the name is overridden; the shorthand on `.dock` still sets
+    the rest.
+  */
+  animation-name: paneIn;
+}
+
+/*
+ * Basis 0 → whatever the host set, so the chat gives the room back at exactly
+ * the rate the pane takes it. Separate from `dockIn` because the card animates
+ * `width` and interpolating a basis of `auto` is not a thing.
+ */
+@keyframes paneIn {
+  from {
+    flex-basis: 0;
+    opacity: 0;
+  }
 }
 
 /*
@@ -301,8 +327,10 @@
   border-bottom: 1px solid var(--ink-border-color-subtle);
 }
 
-/* A back arrow pulls the title inward; give it the same left inset as the row. */
-.header > button:first-child {
+/* A back arrow pulls the title inward; give it the same left inset as the row.
+   Named, not positional: the breadcrumb sits ahead of it in the DOM even in the
+   card, where the trail is hidden and the arrow is what draws. */
+.back {
   margin-left: calc(var(--ink-spacing-100) * -1);
 }
 
@@ -318,6 +346,43 @@
   font-weight: var(--ink-font-weight-medium);
   line-height: var(--ink-font-heading-xxs-line-height);
   color: var(--ink-font-color-default);
+}
+
+/* The breadcrumb stands in for the title on a routed artifact, so it takes the
+   row the same way the title does and everything after it stays flush right.
+   Ink owns the crumbs themselves — type, separator, the current page's weight. */
+/* ---------------------------------------------------------------------------
+   The trail — the title of a routed artifact, in the pane only
+   ---------------------------------------------------------------------------
+
+   Hidden by default, because the card cannot hold it: measured, the two crumbs
+   get 111px between "Open in Navigator" and three icon buttons, which Ink wraps
+   to 92px inside a 73px header. The pane is where every frame draws it, and the
+   pane is what this gate names — the same `data-fullscreen` the block above
+   uses to turn the card into the pane in the first place.
+
+   Ink wraps its crumbs, which is right on a page and wrong in a 73px header, so
+   the list is held to one line and Ink's own ellipsis does the shortening.
+   --------------------------------------------------------------------------- */
+
+.crumbs {
+  display: none;
+}
+
+.crumbs ol {
+  flex-wrap: nowrap;
+}
+
+:global([data-fullscreen]) .crumbs {
+  display: block;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Where the trail draws, it IS the title — and the arrow is the trail's job. */
+:global([data-fullscreen]) .header[data-crumbed] .back,
+:global([data-fullscreen]) .header[data-crumbed] .title {
+  display: none;
 }
 
 /* ---------------------------------------------------------------------------
@@ -364,6 +429,18 @@
   padding: 0 var(--ink-spacing-100);
   overflow-x: auto;
   border-bottom: 1px solid var(--ink-border-color-subtle);
+}
+
+/* One trail, one idiom. Where the header draws the breadcrumb AND the only two
+   artifacts open are that breadcrumb's own two crumbs, the strip below it is
+   the same two labels in a second navigation grammar — the Figma pane frames
+   draw the trail and no strip. `data-crumbed='trail'` is the dock's existing
+   crumb signal carrying the count; the `[data-fullscreen]` gate is the same one
+   that makes the trail draw at all, so the 420 card — where the header keeps
+   its arrow and title — keeps its tabs. A third, untrailed artifact reverts to
+   the strip: it is then the only way back to the one the trail does not name. */
+:global([data-fullscreen]) .header[data-crumbed='trail'] + .tabStrip {
+  display: none;
 }
 
 .tab {
@@ -472,9 +549,99 @@
   background: var(--ink-neutral-20);
 }
 
-.sourceRow:focus-visible {
+.sourceRow:focus-visible,
+.sourceRow:focus-within {
   outline: 2px solid var(--ink-border-color-accent);
   outline-offset: 2px;
+}
+
+/* The drill-in. A sibling of the row's ✕, never its parent — see the renderer. */
+.sourceClickArea {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* The rich card — status, type and parties stack, so the glyph rides the top. */
+.sourceRow[data-rich] {
+  align-items: flex-start;
+  padding-top: var(--ink-spacing-150);
+  padding-bottom: var(--ink-spacing-150);
+}
+
+.sourceRow[data-rich] .sourceClickArea {
+  align-items: flex-start;
+}
+
+.sourceRow[data-rich] .sourceText {
+  gap: var(--ink-spacing-25);
+}
+
+.sourceStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-secondary);
+}
+
+.sourceDot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink-icon-color-subtle);
+}
+
+.sourceDot[data-status='active'] {
+  background: var(--ink-green-60, #1a8754);
+}
+
+.sourceDot[data-status='inactive'],
+.sourceDot[data-status='expired'] {
+  background: var(--ink-neutral-50, #8a8a99);
+}
+
+.sourceStatusLabel {
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+}
+
+.sourceStatusDate::before {
+  content: '·';
+  margin-right: var(--ink-spacing-50);
+}
+
+/* The agreement type, as the chip the picker's table draws it as. */
+.sourceType {
+  align-self: flex-start;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: var(--ink-spacing-25);
+  padding: 1px var(--ink-spacing-100);
+  border-radius: var(--ink-radius-size-xs);
+  background: var(--ink-ecru-20, rgba(19, 0, 50, 0.06));
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-default);
+}
+
+.sourceParties {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-secondary);
 }
 
 .sourceIcon {
@@ -555,4 +722,26 @@
   .dock {
     animation: none;
   }
+}
+
+/*
+ * SCROLLBAR: ABSENT AT REST.
+ *
+ * These containers never styled their bar, so with macOS "always show
+ * scrollbars" they paint a permanent classic bar down the reading edge. Only
+ * the colour changes here: `scrollbar-width` stays `auto`, so the gutter keeps
+ * the exact width it reserves today and nothing moves between the two states.
+ * `auto` restores the platform's own thumb, so the bar looks the same as it
+ * always did when it is wanted.
+ *
+ * CSS cannot observe scrolling: wheel scrolling implies the pointer is over the
+ * box, which `:hover` covers; keyboard scrolling is `:focus-within`.
+ */
+.well {
+  scrollbar-color: transparent transparent;
+}
+
+.well:hover,
+.well:focus-within {
+  scrollbar-color: auto;
 }

@@ -1,0 +1,377 @@
+import { IconButton } from '@ds/ui'
+import { ChevronUpSmall } from '@ds/icons'
+import { ChevronDownSmall } from '@ds/icons'
+
+const imgIcon = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+const imgIcon1 = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+const imgIcon2 = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+const imgOverflowHorizontalSmall = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+const imgGripperBarSmall = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+
+type DisclosureProps = {
+  className?: string;
+  open?: boolean;
+};
+
+function Disclosure({ className, open = true }: DisclosureProps) {
+  const isNotOpen = !open;
+  return (
+    <div className={className || "overflow-clip relative size-[var(--ctaSizeSm,32px)]"} id={isNotOpen ? "node-403_13115" : "node-403_13114"}>
+      <div className="absolute bg-[var(--ctaBgColorTertiaryIconDefault,rgba(204,255,0,0))] content-stretch flex flex-col items-center justify-center left-0 rounded-[var(--radiusSizeXS,4px)] size-[var(--ctaSizeSm,32px)] top-0" id={isNotOpen ? "node-26387_3466" : "node-26387_3454"} data-name="Button Trigger">
+        <div className="flex-[1_0_0] min-h-px relative w-full" id={isNotOpen ? "node-I26387_3466-8894_26908" : "node-I26387_3454-8894_26908"} data-name="Icon">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={isNotOpen ? imgIcon1 : imgIcon} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type ChildInkTreeItemProps = {
+  className?: string;
+  actionButton?: boolean;
+  children?: boolean;
+  disabled?: "False";
+  disclosure?: boolean;
+  draggable?: boolean;
+  icon?: boolean;
+  isParentSelected?: "True";
+  selected?: boolean;
+  shape?: "round" | "square";
+  state?: "Default";
+  text?: string;
+};
+
+function ChildInkTreeItem({ className, actionButton = false, children = true, disabled = "False", disclosure = false, draggable = false, icon = false, isParentSelected = "True", selected = false, shape = "round", state = "Default", text = "Tree Item" }: ChildInkTreeItemProps) {
+  const isDefaultAndTrueAndFalseAndFalseAndTrueAndSquare = state === "Default" && isParentSelected === "True" && !selected && !disclosure && children && shape === "square";
+  return (
+    <div className={className || `bg-[var(--itemBgColorSelectedSubtle,rgba(19,0,50,0.05))] content-stretch flex gap-[var(--gap100,8px)] h-[var(--ctaSizeSm,32px)] items-center pl-[var(--gap200,16px)] relative w-[312px] ${isDefaultAndTrueAndFalseAndFalseAndTrueAndSquare ? "" : "rounded-[var(--radiusSizeXS,4px)]"}`} id={isDefaultAndTrueAndFalseAndFalseAndTrueAndSquare ? "node-32477_1240" : "node-14692_7898"}>
+      <div className="content-stretch flex flex-[1_0_0] items-center min-w-px relative" id={isDefaultAndTrueAndFalseAndFalseAndTrueAndSquare ? "node-32477_1241" : "node-25637_7366"} data-name="Disclosure+Content">
+        <div className="relative shrink-0 size-[32px]" id={isDefaultAndTrueAndFalseAndFalseAndTrueAndSquare ? "node-32477_1242" : "node-25637_39663"} data-name="Disclosure Placeholder" />
+        <div className="content-stretch flex flex-[1_0_0] gap-[var(--gap100,8px)] items-center min-w-px relative" id={isDefaultAndTrueAndFalseAndFalseAndTrueAndSquare ? "node-32477_1243" : "node-14692_7899"} data-name="Content">
+          {icon && (
+            <div className="relative shrink-0 size-[20px]" data-node-id="15274:14942" data-name="Icon">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon2} />
+            </div>
+          )}
+          <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] leading-[1.4] min-w-px overflow-hidden relative text-[14px] text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))] text-ellipsis whitespace-nowrap" data-node-id="14692:7902">
+            {text}
+          </p>
+        </div>
+      </div>
+      {actionButton && (
+        <div className="bg-[var(--ctaBgColorTertiaryIconDefault,rgba(204,255,0,0))] content-stretch flex flex-col items-center justify-center relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[32px]" data-node-id="15124:86654" data-name="Action button">
+          <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I15124:86654;8894:26908" data-name="Icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgOverflowHorizontalSmall} />
+          </div>
+        </div>
+      )}
+      {draggable && (
+        <div className="bg-[var(--ctaBgColorTertiaryIconDefault,rgba(204,255,0,0))] content-stretch flex flex-col items-center justify-center relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[32px]" data-node-id="15124:85671" data-name="Draggable">
+          <div className="flex-[1_0_0] min-h-px relative w-full" data-node-id="I15124:85671;8894:26908" data-name="Icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGripperBarSmall} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+type InkTreeNestedParentSelectionProps = {
+  className?: string;
+  children?: React.ReactNode | null;
+  title?: boolean;
+};
+
+export default function InkTreeNestedParentSelection({ className, children = null, title = false }: InkTreeNestedParentSelectionProps) {
+  return (
+    <div className={className || "content-stretch flex flex-col items-start relative"} data-node-id="15930:6102" data-name="[INK] Tree (Nested - Parent Selection)">
+      <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="37741:1807" data-name="children">
+        {children || (
+          <>
+            {title && (
+              <div className="content-stretch flex gap-[var(--gap100,8px)] h-[32px] items-center pl-[var(--gap100,8px)] relative shrink-0 w-[312px]" data-node-id="15930:6098" data-name="Child/[INK] Section Header">
+                <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:SemiBold')] font-[var(--font.fontWeight.600,normal)] leading-[1.5] min-w-px relative text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))] text-[length:var(--font.fontSize.12,12px)] tracking-[var(--font.letterSpacing.wide,0.16px)]" data-node-id="I15930:6098;14692:7987">
+                  Tree section header
+                </p>
+              </div>
+            )}
+            <div className="bg-[var(--itemBgColorSelected,rgba(19,0,50,0.1))] content-stretch flex gap-[var(--gap100,8px)] h-[32px] items-center relative rounded-tl-[var(--radiusSizeXS,4px)] rounded-tr-[var(--radiusSizeXS,4px)] shrink-0 w-[312px]" data-node-id="15737:5363" data-name="Child/[INK] Tree Item">
+              <div className="content-stretch flex flex-[1_0_0] items-center min-w-px relative" data-node-id="I15737:5363;25637:7373" data-name="Disclosure+Content">
+                <div className="overflow-clip relative shrink-0 size-[32px]" data-node-id="I15737:5363;25637:3771" data-name="Disclosure">
+                  <CodeConnectSnippet data-node-id="I15737:5363;25637:3771;26387:3454" data-name="Button Trigger" data-snippet-language="React">
+                    <IconButton accessibilityText="Fill in..." kind="tertiary" size="small" />
+                  </CodeConnectSnippet>
+                </div>
+                <div className="content-stretch flex flex-[1_0_0] gap-[var(--gap100,8px)] items-center min-w-px relative" data-node-id="I15737:5363;14692:7892" data-name="Content">
+                  <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:SemiBold')] font-[var(--font.fontWeight.600,normal)] leading-[1.4] min-w-px overflow-hidden relative text-[14px] text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))] text-ellipsis whitespace-nowrap" data-node-id="I15737:5363;14692:7895">
+                    Tree Item
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-[var(--itemBgColorSelectedSubtle,rgba(19,0,50,0.05))] content-stretch flex gap-[var(--gap100,8px)] h-[32px] items-center pl-[var(--gap200,16px)] relative shrink-0 w-[312px]" data-node-id="32480:2061" data-name="Child/[INK] Tree Item">
+              <div className="content-stretch flex flex-[1_0_0] items-center min-w-px relative" data-node-id="I32480:2061;32477:1249" data-name="Disclosure+Content">
+                <div className="overflow-clip relative shrink-0 size-[32px]" data-node-id="I32480:2061;32477:1250" data-name="Disclosure">
+                  <CodeConnectSnippet data-node-id="I32480:2061;32477:1250;26387:3466" data-name="Button Trigger" data-snippet-language="React">
+                    <IconButton accessibilityText="Fill in..." kind="tertiary" size="small" />
+                  </CodeConnectSnippet>
+                </div>
+                <div className="content-stretch flex flex-[1_0_0] gap-[var(--gap100,8px)] items-center min-w-px relative" data-node-id="I32480:2061;32477:1251" data-name="Content">
+                  <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] leading-[1.4] min-w-px overflow-hidden relative text-[14px] text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))] text-ellipsis whitespace-nowrap" data-node-id="I32480:2061;32477:1253">
+                    Tree Item
+                  </p>
+                </div>
+              </div>
+            </div>
+            <ChildInkTreeItem className="bg-[var(--itemBgColorSelectedSubtle,rgba(19,0,50,0.05))] content-stretch flex gap-[var(--gap100,8px)] h-[32px] items-center pl-[var(--gap200,16px)] relative shrink-0 w-[312px]" shape="square" />
+            <div className="bg-[var(--itemBgColorSelectedSubtle,rgba(19,0,50,0.05))] content-stretch flex gap-[var(--gap100,8px)] h-[32px] items-center pl-[var(--gap200,16px)] relative rounded-bl-[var(--radiusSizeXS,4px)] rounded-br-[var(--radiusSizeXS,4px)] shrink-0 w-[312px]" data-node-id="32480:8050" data-name="Child/[INK] Tree Item">
+              <div className="content-stretch flex flex-[1_0_0] items-center min-w-px relative" data-node-id="I32480:8050;25637:7366" data-name="Disclosure+Content">
+                <div className="relative shrink-0 size-[32px]" data-node-id="I32480:8050;25637:39663" data-name="Disclosure Placeholder" />
+                <div className="content-stretch flex flex-[1_0_0] gap-[var(--gap100,8px)] items-center min-w-px relative" data-node-id="I32480:8050;14692:7899" data-name="Content">
+                  <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] leading-[1.4] min-w-px overflow-hidden relative text-[14px] text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))] text-ellipsis whitespace-nowrap" data-node-id="I32480:8050;14692:7902">
+                    Tree Item
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex gap-[var(--gap100,8px)] h-[32px] items-center relative shrink-0 w-[312px]" data-node-id="15737:5489" data-name="Child/[INK] Tree Item">
+              <div className="content-stretch flex flex-[1_0_0] items-center min-w-px relative" data-node-id="I15737:5489;25637:7368" data-name="Disclosure+Content">
+                <div className="overflow-clip relative shrink-0 size-[32px]" data-node-id="I15737:5489;25637:3768" data-name="Disclosure">
+                  <CodeConnectSnippet data-node-id="I15737:5489;25637:3768;26387:3466" data-name="Button Trigger" data-snippet-language="React">
+                    <IconButton accessibilityText="Fill in..." kind="tertiary" size="small" />
+                  </CodeConnectSnippet>
+                </div>
+                <div className="content-stretch flex flex-[1_0_0] gap-[var(--gap100,8px)] items-center min-w-px relative" data-node-id="I15737:5489;14692:7822" data-name="Content">
+                  <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] leading-[1.4] min-w-px overflow-hidden relative text-[14px] text-[color:var(--fontColorSubtle,rgba(19,0,50,0.7))] text-ellipsis whitespace-nowrap" data-node-id="I15737:5489;14692:7825">
+                    Tree Item
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex gap-[var(--gap100,8px)] h-[32px] items-center relative shrink-0 w-[312px]" data-node-id="15737:5463" data-name="Child/[INK] Tree Item">
+              <div className="content-stretch flex flex-[1_0_0] items-center min-w-px relative" data-node-id="I15737:5463;25637:7368" data-name="Disclosure+Content">
+                <div className="overflow-clip relative shrink-0 size-[32px]" data-node-id="I15737:5463;25637:3768" data-name="Disclosure">
+                  <CodeConnectSnippet data-node-id="I15737:5463;25637:3768;26387:3466" data-name="Button Trigger" data-snippet-language="React">
+                    <IconButton accessibilityText="Fill in..." kind="tertiary" size="small" />
+                  </CodeConnectSnippet>
+                </div>
+                <div className="content-stretch flex flex-[1_0_0] gap-[var(--gap100,8px)] items-center min-w-px relative" data-node-id="I15737:5463;14692:7822" data-name="Content">
+                  <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] leading-[1.4] min-w-px overflow-hidden relative text-[14px] text-[color:var(--fontColorSubtle,rgba(19,0,50,0.7))] text-ellipsis whitespace-nowrap" data-node-id="I15737:5463;14692:7825">
+                    Tree Item
+                  </p>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontItemSelected: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.600, size: font.fontSize.14, weight: 600, lineHeight: 1.399999976158142, letterSpacing: 0), fontBodyS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.14, weight: 400, lineHeight: 1.399999976158142, letterSpacing: 0).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Tree (Nested - Parent Selection)
+**Node ID:** 15930:6102
+
+Trees allow users to navigate complex or deeply-nested hierarchical information.
+
+  
+
+This is a nested version with a parent tree item selected.
+
+  
+
+Props
+-----
+
+`**_title_**`: The text to display in the Tree header. Tree headers create sections adding additional hierarchy for tree items.
+
+  
+
+---
+
+Rules
+-----
+
+*   Add increments of 16px to the left padding for nested `Tree` items (ex. 32px for 2nd layer, 48px for 3rd layer, etc)
+*   Parent `Tree` items should have `Disclosure = True` when nested child `Tree` items exist
+*   Set `_Disclosure = Open` when a parent `Tree` item displays their child items
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/5982be-tree](https://ink.docusign.com/94bc5d135/p/5982be-tree)
+
+## ❖ State=Default, ❖ Is Parent Selected?=n/a, selected=True, disclosure=True, children=False, disabled=False, shape=round
+**Node ID:** 14692:7891
+
+The default state of a selected parent Tree item.
+
+  
+
+Rules
+=====
+
+1.  Update the corner radii of the item to display rounded corners at the top and bottom corners of the selected tree. Items in the middle should have no rounded corners.
+
+## Child/[INK] Tree Item
+**Node ID:** 14692:7813
+
+Trees items are individual elements in a `Tree`, each representing its own item.
+
+  
+
+Props
+-----
+
+_`**❖ State:**`_ The state of the Tree Item
+
+  
+
+_`**❖ Is Parent Selected?**`_: Changes the UI of child items under selected parent Tree Items when the parent is selected
+
+  
+
+_`**selected**`_: Indicates that the Tree Item is selected
+
+  
+
+_`**disclosure**`_: Indicates that the Tree Item has children
+
+  
+
+_`**children**`_: Identifies whether child-specific visual styling should be applied
+
+  
+
+_`**disabled:**`_ Applies the 'disabled' attribute.
+
+  
+
+_`**text***`_: The text to be displayed inside the Tree Item
+
+  
+
+_`**icon**`_: The icon to show inside the Tree Item
+
+  
+
+_`**actionButton**`_: The `button` to display at the end of the Tree Item text
+
+  
+
+_`**draggable**`_: Indicates that the Tree Item can be dragged
+
+  
+Rules
+========
+
+1.  Update corner radii of individual selected tree items to 0px if in middle of tree. Update the bottom corner radii of the parent tree item to 0px, and the the top corner radii of the last item in the selected tree to 0px.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/5982be-tree](https://ink.docusign.com/94bc5d135/p/5982be-tree)
+
+## kind=tertiary, size=small, ❖ State=default, disabled=false
+**Node ID:** 8894:26907
+
+When additional clarity is required, an icon can be added alongside text to reinforce an action. If the icon is well-suited to conveying an action on its own, it can appear by itself
+
+## [INK] Icon Button
+**Node ID:** 14:953
+
+If the icon is well-suited to conveying an action on its own, it can appear by itself.
+
+  
+
+Props
+-----
+
+  
+
+_`**kind:**`_ The kind of the `Button`.
+
+  
+
+_`**❖ State:**`_ The state of the `Button`.
+
+  
+
+_`**disabled:**`_ Applies the 'disabled' attribute.
+
+  
+
+_`**❖ Icon:**`_ The icon to be displayed.
+
+  
+
+_`**badge:**`_ The AlertBadge to be displayed.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/241afc-button/t/45206c](https://ink.docusign.com/94bc5d135/p/241afc-button/t/45206c)
+- [Icon Button - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-button--with-icon)
+
+## chevronUpSmall
+**Node ID:** 41751:5210
+
+trigger, down, expand less, chevron
+
+## ❖ State=Default, ❖ Is Parent Selected?=True, selected=False, disclosure=True, children=True, disabled=False, shape=square
+**Node ID:** 32477:1248
+
+The default state of a child Tree item.
+
+  
+
+Rules
+=====
+
+1.  Update the corner radii of the item to display rounded corners at the top and bottom corners of the selected tree. Items in the middle should have no rounded corners.
+
+## chevronDownSmall
+**Node ID:** 41751:4627
+
+trigger, down, expand more, chevron
+
+## ❖ State=Default, ❖ Is Parent Selected?=True, selected=False, disclosure=False, children=True, disabled=False, shape=square
+**Node ID:** 32477:1240
+
+The default state of a child Tree item.
+
+  
+
+Rules
+=====
+
+1.  Update the corner radii of the item to display rounded corners at the top and bottom corners of the selected tree. Items in the middle should have no rounded corners.
+
+## ❖ State=Default, ❖ Is Parent Selected?=True, selected=False, disclosure=False, children=True, disabled=False, shape=round
+**Node ID:** 14692:7898
+
+The default state of a child Tree item.
+
+  
+
+Rules
+=====
+
+1.  Update the corner radii of the item to display rounded corners at the top and bottom corners of the selected tree. Items in the middle should have no rounded corners.
+
+## ❖ State=Default, ❖ Is Parent Selected?=n/a, selected=False, disclosure=True, children=False, disabled=False, shape=round
+**Node ID:** 14692:7821
+
+The default state of a Tree item.
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

@@ -1,0 +1,254 @@
+import StarRating from "https://github.docusignhq.com/front-end-systems/ds-ui/blob/next/src/components/StarRating/StarRating.tsx"
+
+const imgStar = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+const imgStarFilled = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+
+type InkStarProps = {
+  className?: string;
+  selected?: boolean;
+  state?: "Default";
+};
+
+function InkStar({ className, selected = false, state = "Default" }: InkStarProps) {
+  const isDefaultAndSelected = state === "Default" && selected;
+  return (
+    <div className={className || "overflow-clip relative rounded-[var(--radiusSizeS,8px)] size-[var(--ctaSizeMd,40px)]"} id={isDefaultAndSelected ? "node-293_3439" : "node-293_3435"}>
+      {state === "Default" && !selected && (
+        <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[32px] top-1/2" data-node-id="293:3085" data-name="star">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStar} />
+        </div>
+      )}
+      {isDefaultAndSelected && (
+        <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[32px] top-1/2" data-node-id="293:3415" data-name="starFilled">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStarFilled} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+type LabelProps = {
+  className?: string;
+  kind?: "Subtle";
+  label?: string;
+  required?: boolean;
+};
+
+function Label({ className, kind = "Subtle", label = "Label", required = false }: LabelProps) {
+  return (
+    <div className={className || "content-stretch flex flex-col items-start relative"} data-node-id="22242:4985">
+      <div className="[word-break:break-word] content-stretch flex gap-[var(--gap50,4px)] items-center leading-[1.4] relative shrink-0 text-[length:var(--font.fontSize.14,14px)] w-full whitespace-nowrap" data-node-id="22242:4986" data-name="Label">
+        <p className="font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] relative shrink-0 text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))]" data-node-id="22242:4987">
+          {label}
+        </p>
+        {required && (
+          <p className="font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Medium')] font-[var(--font.fontWeight.500,normal)] relative shrink-0 text-[color:var(--fontTextColorRequired,#c70547)]" data-node-id="22242:4988">
+            *
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+type InkStarRatingProps = {
+  className?: string;
+  disabled?: boolean;
+  rating?: "0" | "1" | "2" | "3" | "4" | "5";
+};
+
+export default function InkStarRating({ className, disabled = false, rating = "0" }: InkStarRatingProps) {
+  if (!disabled && rating === "1") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3353" data-name="disabled=False, ❖ Rating=1" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (!disabled && rating === "2") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3412" data-name="disabled=False, ❖ Rating=2" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (!disabled && rating === "3") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3444" data-name="disabled=False, ❖ Rating=3" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (!disabled && rating === "4") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3482" data-name="disabled=False, ❖ Rating=4" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (!disabled && rating === "5") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3539" data-name="disabled=False, ❖ Rating=5" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (disabled && rating === "0") {
+    return (
+      <CodeConnectSnippet data-node-id="313:2634" data-name="disabled=True, ❖ Rating=0" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (disabled && rating === "1") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3798" data-name="disabled=True, ❖ Rating=1" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (disabled && rating === "2") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3810" data-name="disabled=True, ❖ Rating=2" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (disabled && rating === "3") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3822" data-name="disabled=True, ❖ Rating=3" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (disabled && rating === "4") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3834" data-name="disabled=True, ❖ Rating=4" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  if (disabled && rating === "5") {
+    return (
+      <CodeConnectSnippet data-node-id="6342:3846" data-name="disabled=True, ❖ Rating=5" data-snippet-language="React">
+        <StarRating />
+      </CodeConnectSnippet>
+    );
+  }
+  return (
+    <CodeConnectSnippet data-node-id="293:3554" data-name="disabled=False, ❖ Rating=0" data-snippet-language="React">
+      <StarRating />
+    </CodeConnectSnippet>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontBodyS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.14, weight: 400, lineHeight: 1.399999976158142, letterSpacing: 0), fontDetailS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.12, weight: 500, lineHeight: 1.5, letterSpacing: font.letterSpacing.wide).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Star Rating
+**Node ID:** 313:2635
+
+Star Ratings function as a way to collect user feedback on new or existing features and flows
+
+  
+
+Props
+-----
+
+`**_disabled_**`: Disables the Star Rating
+
+  
+
+`**_~showLegend_**`: Show/hide the legend (label)
+
+  
+
+`**_~showRatingLabels_**`: Show/hide the text corresponding to the 1-5 star ratings
+
+  
+
+`**_error_**`: Applies an 'error' treatment, displaying the provided text
+
+  
+
+Rules
+-----
+
+1.  The label description is not available in Star Rating
+2.  Default `**_ratingLabels_**` are: Poor, Below average, Neutral, Above average, and Excellent. **These can be replaced based on context.**
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/67d328-star-rating](https://ink.docusign.com/94bc5d135/p/67d328-star-rating)
+- [Star Rating - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-form-starrating--default)
+
+## ❖ Kind=Subtle
+**Node ID:** 22242:4985
+
+This component drives the required text field label with additional help text and allows for auto layout
+
+  
+
+Props
+-----
+
+`**_label*:_**` The text label
+
+  
+
+`**_required:_**` Adds a visual treatment indicating that the associated control requires a value.
+
+## _[INK] Star
+**Node ID:** 293:3444
+
+Star is used in Star Rating to select a rating value, each Star representing a different value.
+
+  
+
+Props
+-----
+
+`**_❖ State:_**` The state of the Star
+
+  
+
+`**_❖ Selected:_**` Indicates that a star is selected
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/67d328-star-rating](https://ink.docusign.com/94bc5d135/p/67d328-star-rating)
+
+## star
+**Node ID:** 44927:51187
+
+favorite, star, favorited, rate, rating
+
+## starFilled
+**Node ID:** 41751:4264
+
+active favorite, active star, active favorited, rate level, rating level
+
+## disabled=True, ❖ Rating=0
+**Node ID:** 313:2634
+
+Disabled Star Ratings are used to show when a Star Rating component exists, but does not support interaction.
+
+  
+
+Rules
+-----
+
+*   The `State ❖` props for individual `Stars` should not be changed when disabled
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

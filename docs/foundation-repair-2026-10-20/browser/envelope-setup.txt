@@ -1,0 +1,59 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#home".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
++		807 container Upload a Document and Add Envelope Recipients
++			808 container
++				809 heading Upload a Document and Add Envelope Recipients, Value: 2
++					810 text Upload a Document and Add Envelope Recipients
++				811 button Close modal
++			812 container
++				813 button (disabled) Help
++				814 button (disabled) Advanced Options
++				815 button (expanded) Add documents, Secondary Actions: Collapse
++				816 container Add documents
++					817 container Upload files
++						818 text Drop your files here or
++						819 container
++							820 text Max file size:  10 MB
++						821 pop up button Upload
++				822 button (expanded) Add recipients, Secondary Actions: Collapse
++				823 container Add recipients
++					824 container
++						825 checkbox (settable, integer) Description: Set signing order, Value: 0
++						826 text Set signing order
++					827 button (disabled) View
++					828 button (disabled) Bulk send
++					829 pop up button (collapsed) Needs to Sign, Secondary Actions: Expand
++					830 pop up button (disabled) Customize
++					831 button (disabled) Remove recipient 1
++					832 container
++						833 text Name *
++					834 text field (settable) Name *
++					835 text Delivery *
++					836 container
++						837 checkbox (settable, integer) Description: Email, Value: 1
++						838 text Email
++					839 container
++						840 checkbox (disabled, settable, integer) Description: SMS (Text), Value: 0
++						841 text SMS (Text)
++					842 container
++						843 checkbox (disabled, settable, integer) Description: WhatsApp, Value: 0
++						844 text WhatsApp
++					845 container
++						846 text Email *
++					847 text field (settable) Email *
++					848 container
++						849 button Add Recipient
++						850 pop up button Show options
++					851 button (disabled) Add Delay
++				852 button (collapsed) Add envelope custom fields, Secondary Actions: Expand
++				853 button (expanded) Add message, Secondary Actions: Collapse
++				854 container Add message
++					855 container
++						856 text Subject *
++					857 text field (settable) Subject *
++					858 text Message
++					859 text entry area (settable) Message
++			860 button Save draft
++			861 pop up button (disabled) Send Now
++			862 button Next
+The focused UI element is 807 container Upload a Document and Add Envelope Recipients

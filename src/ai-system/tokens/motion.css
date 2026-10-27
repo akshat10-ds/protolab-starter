@@ -36,6 +36,32 @@
   /** Drag-handle reveal on hover. Fast enough to feel like a pointer response. */
   --ai-motion-duration-handle: 180ms;
 
+  /**
+   * One revolution of an indeterminate ring. Added 2026-08-19 for
+   * `ProgressReceipt`'s working state — Akshat: "right after you upload we're
+   * showing a random thinking process — that looks weird, maybe we just use the
+   * progress bar box to show we're processing." A second per turn is slow
+   * enough to read as patience rather than urgency.
+   *
+   * Deliberately NOT collapsed under reduced motion: a near-zero duration on a
+   * loop is a strobe, not a stillness. A component that spins must carry its own
+   * `prefers-reduced-motion` block and stop the animation outright.
+   */
+  --ai-motion-duration-spin: 1000ms;
+
+  /**
+   * One pass of the live-work shimmer. Added 2026-08-19 — Akshat, on the
+   * receipt while the agent is running: *"when there is work we can show a
+   * shimmer over the loan progress — literally the same thing"* (the research
+   * card in Claude's chat). Slower than the ring, because a sweep that crosses
+   * a whole box at ring speed reads as a loading bar.
+   *
+   * Deliberately NOT collapsed under reduced motion, for the same reason as
+   * the ring: a component that sweeps carries its own
+   * `prefers-reduced-motion` block and stops outright.
+   */
+  --ai-motion-duration-shimmer: 1800ms;
+
   /* ---------------------------------------------------------------------
      Easings
      --------------------------------------------------------------------- */

@@ -6,7 +6,7 @@
 }
 
 .wrapperDisabled {
-  opacity: 0.2;
+  opacity: var(--ink-opacity-disabled);
 }
 
 .label {
@@ -150,3 +150,9 @@
   justify-content: center;
   color: var(--ink-font-color-error);
 }
+
+.fieldRow { display: flex; align-items: flex-start; gap: var(--ink-spacing-100); }
+.field { position: relative; width: 100%; min-width: 0; }
+.startElement { position: absolute; top: var(--ink-spacing-100); left: var(--ink-spacing-200); display: inline-flex; color: var(--ink-icon-color-default); }
+.textarea.hasStartElement { padding-left: calc(var(--ink-spacing-200) + var(--ink-spacing-300) + var(--ink-spacing-100)); }
+.inputHelp { display: inline-flex; flex-shrink: 0; }

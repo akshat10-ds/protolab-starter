@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 @import '../../tokens/color.css';
 
 /* ============================================
@@ -113,6 +112,125 @@
 }
 
 .commandDesc {
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* ============================================
+   AGENT CHIP — the active agent, as one object
+   ============================================ */
+
+/*
+ * An active agent is not characters the user typed. It is the accent — Ink's
+ * own, `cobalt-100` behind `--ink-font-color-accent` — set against the plain
+ * body text that follows it, so the eye reads a thing and then a sentence.
+ *
+ * `padding-inline` only. A chip that padded its block edges would push the
+ * composer's line box taller the moment an agent was picked, and the box would
+ * jump on the way in; the negative inline margin keeps the token starting on
+ * the same pixel it would have without the chip.
+ *
+ * The fill arrives on hover, not at rest. At rest the accent alone carries it —
+ * the mock's own weighting — and the fill is the answer to "is this pressable",
+ * asked by a pointer.
+ */
+.agentChip {
+  border-radius: var(--ink-radius-size-xs);
+  padding: 0 4px;
+  margin-inline: -4px 0;
+  color: var(--ink-font-color-accent);
+  font-weight: var(--ink-font-weight-medium);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.agentChip:hover,
+.agentChip:focus-visible {
+  background: var(--ink-cobalt-10);
+}
+
+.agentChip:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 1px;
+}
+
+/*
+ * The popover's anchor — the chip's own top-left corner, at zero size.
+ *
+ * The chip is always the head of the value, so the text area's corner is the
+ * chip's corner and nothing has to be measured. `8px` is `.input`'s inline
+ * padding; the multi-line shell narrows it to `4px` and this follows.
+ */
+.agentChipAnchor {
+  position: absolute;
+  left: 8px;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+.shellMulti .agentChipAnchor {
+  left: 4px;
+}
+
+.agentChipTarget {
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.agentPopover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100);
+  min-width: 220px;
+  max-width: 300px;
+}
+
+/*
+ * THE BRIDGE.
+ *
+ * The callout opens on hover, and Ink parks it 8px above the chip. Eight pixels
+ * of nothing is enough to lose the pointer on its way up to "Switch to Iris" —
+ * the button would be visible and unreachable. This pane spans the gap, so chip
+ * and callout are one continuous hover region. It reaches past Ink's own padding
+ * on the popover box, which is why it is taller than the gap.
+ */
+.agentPopover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 24px;
+}
+
+.agentPopoverHead {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+}
+
+.agentPopoverName {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-bold);
+  color: var(--ink-font-color-default);
+}
+
+/* Keeps the 32px hit area from setting the header's height. See `.suggestedContextDismiss`. */
+.agentPopoverHead button {
+  margin-block: -6px;
+  margin-right: -6px;
+}
+
+.agentPopoverDesc {
+  margin: 0;
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
   color: var(--ink-font-color-neutral-subtle);
 }
 
@@ -270,6 +388,36 @@
 .shellMulti .actionsSpacer {
   display: block;
   flex: 1;
+}
+
+/* The workspace composer retains the same input, menus, focus and send controls. */
+.shellFlat {
+  box-shadow: none;
+}
+
+.shellFlat.shellMulti {
+  min-height: 96px;
+}
+
+.shellFlat.shellMulti .textareaWrapper {
+  flex: none;
+}
+
+.shellFlat.shellMulti .input {
+  padding-inline: var(--ink-spacing-100);
+}
+
+.shellFlat.shellMulti .agentChipAnchor {
+  left: var(--ink-spacing-100);
+}
+
+.shellFlat.shellMulti .actions {
+  margin-top: auto;
+  padding-top: var(--ink-spacing-150);
+}
+
+.shellFlat .animatedPlaceholder {
+  color: var(--ink-font-color-placeholder);
 }
 
 @keyframes actionsExpand {
@@ -619,8 +767,24 @@
  *
  * The tint is what marks the chip as the agent's rather than the page's. Small
  * touch, doing one job: colour marks state, it does not decorate.
+ *
+ * TWO SELECTORS, BECAUSE `FilterTag` HAS TWO SHAPES. Dismissible, it is a `div`
+ * wrapping a body button and a close IconButton — the descendant rule above.
+ * NOT dismissible, the tag IS the button and carries the hook itself, so a
+ * `> button` rule never matched it and the chip stayed Ink neutral. Measured
+ * 2026-08-19 in the FINS prototype, whose `pageContext` passes no `onClose` and
+ * therefore draws the chevron form. Both shapes are the same chip and take the
+ * same tint.
+ *
+ * `button[data-ink-component]` rather than the bare attribute: Ink's own
+ * `.filterTag.active` fill is (0,2,0), and the element-qualified selector is
+ * (0,2,1), so it wins wherever the two stylesheets land in the cascade. Hover
+ * still reverts to Ink's neutral, which is what the dismissible form has always
+ * done — one behaviour, not two.
  */
 .contextRow [data-ink-component='FilterTag'] > button:first-child,
-.contextInline [data-ink-component='FilterTag'] > button:first-child {
+.contextInline [data-ink-component='FilterTag'] > button:first-child,
+.contextRow button[data-ink-component='FilterTag'],
+.contextInline button[data-ink-component='FilterTag'] {
   background: var(--ai-indigo-10);
 }

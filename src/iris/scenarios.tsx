@@ -21,7 +21,7 @@ import type {
 import type { AgentStep } from '@ai/composites/AgentThinking/AgentThinking';
 import type { FollowUp } from '@ai/patterns/IrisAgent/types';
 import { useState } from 'react';
-import { Button, Heading, IconButton, Stack, Text } from '@/design-system';
+import { Button, Heading, IconButton, Inline, Stack, Text, Card } from '@/design-system';
 
 /** The glyph a prompt row draws, and the one an agent row draws. */
 const PROMPT_ICON = 'comment';
@@ -474,7 +474,7 @@ export const SCENARIOS: { id: ScenarioId; label: string; note: string }[] = [
  */
 export function ScenariosPage({ onRun }: { onRun: (id: ScenarioId) => void }) {
   return (
-    <div style={{ padding: 32, maxWidth: 640 }}>
+    <div style={{ padding: "var(--ink-spacing-400)", maxWidth: 640 }}>
       <Stack gap="small">
         <Heading level={2}>Iris scenarios</Heading>
         <Text color="secondary">
@@ -483,18 +483,11 @@ export function ScenariosPage({ onRun }: { onRun: (id: ScenarioId) => void }) {
         </Text>
       </Stack>
 
-      <Stack gap="small" style={{ marginTop: 24 }}>
+      <Stack gap="small" style={{ marginTop: "var(--ink-spacing-300)" }}>
         {SCENARIOS.map((s) => (
-          <div
+          <Inline gap="large" align="center" justify="between"
             key={s.id}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: 16,
-              padding: '12px 0',
-              borderBottom: '1px solid var(--ink-border-subtle)',
-            }}
+            style={{ padding: "var(--ink-spacing-150) 0", borderBottom: '1px solid var(--ink-border-subtle)' }}
           >
             <div>
               <Text weight="semibold">{s.label}</Text>
@@ -505,7 +498,7 @@ export function ScenariosPage({ onRun }: { onRun: (id: ScenarioId) => void }) {
             <Button kind="secondary" size="small" onClick={() => onRun(s.id)}>
               Run
             </Button>
-          </div>
+          </Inline>
         ))}
       </Stack>
     </div>
@@ -814,18 +807,18 @@ export function WalkthroughCard() {
   const { title, body } = WALKTHROUGH_STEPS[step];
 
   return (
-    <div
+    <Card noPadding radius="medium"
       style={{
         position: 'fixed',
         bottom: 16,
         left: 16,
         zIndex: 50,
         maxWidth: 340,
-        background: 'var(--ink-bg, #fff)',
+        background: 'var(--ink-bg-color-default)',
         border: '1px solid var(--ink-border-subtle)',
-        borderRadius: 8,
-        padding: 16,
-        boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+        borderRadius: "var(--ink-radius-size-s)",
+        padding: "var(--ink-spacing-200)",
+        boxShadow: "var(--ink-shadow-elevated)",
       }}
     >
       <div style={{ position: 'absolute', top: 8, right: 8 }}>
@@ -845,7 +838,7 @@ export function WalkthroughCard() {
         <Text size="sm" color="secondary">
           {body}
         </Text>
-        <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
+        <Inline gap="small" align="stretch" style={{ marginTop: "var(--ink-spacing-50)" }}>
           <Button
             kind="tertiary"
             size="small"
@@ -861,8 +854,8 @@ export function WalkthroughCard() {
           >
             {last ? 'Done' : 'Next'}
           </Button>
-        </div>
+        </Inline>
       </Stack>
-    </div>
+    </Card>
   );
 }

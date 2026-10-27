@@ -1,0 +1,94 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#home".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 431-482, 540
++				542 container
++					543 heading Tasks (1), Value: 2
++						544 text Tasks  (1)
++					545 button View all
++					546 heading Needs To Sign, Value: 3
++						547 text Needs To Sign
++					548 button More actions for Consulting Agreement
++					549 link Description: Consulting Agreement — Acme Technologies, Value: localhost:5173/#agreements
++					550 text From: Akshat Mishra
++					551 button Open signing task
++				552 container
++					553 heading Agreement activity, Value: 2
++						554 text Agreement activity
++					555 button View agreement activity
++					556 button View all
++					557 link Description: Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf, Value: localhost:5173/#agreements
++					558 text 6 days ago Voided
++					559 button View Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf
++					560 link Description: Consulting Agreement — Acme Technologies, Value: localhost:5173/#agreements
++					561 text 2 weeks ago
++					562 progress indicator Description: Envelope progress, Value: 3
++					563 text Need to Sign
++					564 button View Consulting Agreement — Acme Technologies
++					565 link Description: Complete with Docusign: Sample_Service_Agreement.pdf, Value: localhost:5173/#agreements
++					566 text 2 weeks ago Completed
++					567 button View Complete with Docusign: Sample_Service_Agreement.pdf
++					568 link Description: Change Order.docx, Value: localhost:5173/#agreements
++					569 text Expiring on 10/23/2026 Expiring Soon
++					570 button View Change Order.docx
++					571 link Description: SOW(2).docx, Value: localhost:5173/#agreements
++					572 text Expiring on 10/23/2026 Expiring Soon
++					573 button View SOW(2).docx
++					574 link Description: SOW(1).docx, Value: localhost:5173/#agreements
++					575 text Expiring on 10/31/2026 Expiring Soon
++					576 button View SOW(1).docx
++				577 container
++					578 heading Templates, Value: 2
++						579 text Templates
++					580 button View all
++					581 text Favorite
++					582 link Description: quick send, Value: localhost:5173/#templates
++					583 container
++						584 text Last used on  03/13/2026
++					585 text Favorite
++					586 link Description: shared template info, Value: localhost:5173/#templates
++					587 container
++						588 text Last used on  08/12/2025
++					589 text Add favorite template Send future documents faster with favorited templates.
++					590 button Browse templates
+~				492 splitter Description: Resize panel, Value: 1576
+~					498 button Exit fullscreen
+~						539 text Copy Done — I’ve drafted the vendor summary. It’s open on the right; edit it directly or ask me to change it.
++						591 button Copy
++						592 text Copy
++						593 button Good response
++						594 text Good response
++						595 button Bad response
++						596 text Bad response Suggestions
++						597 button Email to john@acme.com
++				598 splitter Description: Resize artifact pane, Value: 1051
++				599 container
++					600 text Acme vendor summary
++					601 button Open in Navigator
++					602 button Download Acme vendor summary
++					603 button Expand artifact
++					604 button Close artifact
++				605 toolbar Document controls
++					606 container
++						607 text Page number
++						608 text field (settable) Page number, Value: 1
++					609 text of  2
++					610 button (disabled) Previous page
++					611 button Next page
++					612 button Zoom out
++					613 text 100 %
++					614 button Zoom in
++					615 button Search in document
++				616 container Acme vendor summary, page 1 of 2
++					617 container
++						618 heading 1. Relationship, Value: 3
++							619 text 1. Relationship
++						620 text Acme Corp provides identity-verification services under 3 active agreements — an MSA, one order form, and a DPA amendment. Combined annual spend is $212K. The MSA is the master; both other documents hang off it.
++					621 container
++						622 heading 2. Risk, Value: 3
++							623 text 2. Risk
++						624 text Liability is uncapped for data-breach events in the MSA, broader than our standard position. Terms conflict in 5 places across the three documents, most notably payment terms (net-30 vs net-60).
++					625 container
++						626 heading 3. Alternatives, Value: 3
++							627 text 3. Alternatives
++						628 text Fontara ($148K, US only) and Maze ($176K, US/EU/APAC) provide comparable identity-verification services. Maze covers the widest geographic span at $36K below Acme’s current spend.
+The focused UI element is 520 text entry area (settable) Ask a question...

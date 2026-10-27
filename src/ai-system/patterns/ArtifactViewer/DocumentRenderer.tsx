@@ -17,6 +17,16 @@
  * NOT DRAWN. The frame's toolbar has a Select on its left whose label is
  * unreadable in the file. No control is drawn for it, and no meaning is
  * invented for it. Ask Akshat what it selects.
+ *
+ * A PAGE IS NOT ALWAYS PROSE, AND A CITATION IS NOT ALWAYS A CLAUSE. Two opt-in
+ * additions, both silent until a host asks for them:
+ *
+ *   `section.content`   a rendered block in place of `body`, so a 1003 or a
+ *                       bank statement can be a component and still wear this
+ *                       page, these margins and this well.
+ *   `item.highlights`   percentage boxes over the page — the field-scale mark
+ *                       `section.highlighted` cannot make, because that one
+ *                       cannot be smaller than a section.
  */
 
 import React, { useState } from 'react';
@@ -51,6 +61,13 @@ const Body: React.FC<ArtifactRenderContext> = ({ item, onAction }) => {
   };
 
   const shown = sections.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  /*
+   * Field-level citation. `section.highlighted` is the clause-scale mark and
+   * cannot be smaller than a section; these are boxes over the page, in
+   * percentages of its CONTENT box — see `ArtifactItem.highlights`.
+   */
+  const highlights = item.highlights ?? [];
 
   return (
     <>
@@ -90,23 +107,33 @@ const Body: React.FC<ArtifactRenderContext> = ({ item, onAction }) => {
 
           <span className={styles.divider} aria-hidden="true" />
 
-          <IconButton
-            icon="zoom-out"
-            size="small"
-            variant="tertiary"
-            disabled={zoom === ZOOM_STEPS[0]}
-            onClick={() => step(-1)}
-            aria-label="Zoom out"
-          />
-          <span className={styles.zoomValue}>{zoom}%</span>
-          <IconButton
-            icon="zoom-in"
-            size="small"
-            variant="tertiary"
-            disabled={zoom === ZOOM_STEPS[ZOOM_STEPS.length - 1]}
-            onClick={() => step(1)}
-            aria-label="Zoom in"
-          />
+          {/*
+            The zoom controls are a PILL, not three loose children in the
+            toolbar flow — frame 206:27620 wraps them in one bordered container
+            so the two buttons and the value read as one control. The frame
+            binds its border to `borderColorSubtleInverse`, white at 10% on a
+            white pill: a wrong-theme binding, so the light-theme token is used
+            instead and the border is actually visible.
+          */}
+          <div className={styles.zoomPill}>
+            <IconButton
+              icon="zoom-out"
+              size="small"
+              variant="tertiary"
+              disabled={zoom === ZOOM_STEPS[0]}
+              onClick={() => step(-1)}
+              aria-label="Zoom out"
+            />
+            <span className={styles.zoomValue}>{zoom}%</span>
+            <IconButton
+              icon="zoom-in"
+              size="small"
+              variant="tertiary"
+              disabled={zoom === ZOOM_STEPS[ZOOM_STEPS.length - 1]}
+              onClick={() => step(1)}
+              aria-label="Zoom in"
+            />
+          </div>
         </div>
 
         <IconButton
@@ -127,6 +154,7 @@ const Body: React.FC<ArtifactRenderContext> = ({ item, onAction }) => {
         <article
           className={styles.page}
           style={{ zoom: `${zoom}%` }}
+          data-highlights={highlights.length ? '' : undefined}
           aria-label={`${item.title}, page ${page} of ${pages}`}
         >
           {shown.map((section, i) => (
@@ -137,9 +165,38 @@ const Body: React.FC<ArtifactRenderContext> = ({ item, onAction }) => {
               data-highlighted={section.highlighted || undefined}
             >
               {section.heading && <h3 className={styles.heading}>{section.heading}</h3>}
-              <p className={styles.body}>{section.body}</p>
+              {/* A rendered block wins; prose is what the section is otherwise. */}
+              {section.content ?? <p className={styles.body}>{section.body}</p>}
             </section>
           ))}
+
+          {highlights.length > 0 && (
+            <div className={styles.highlightLayer}>
+              {highlights.map((h) => (
+                <div
+                  key={h.id}
+                  className={styles.highlight}
+                  data-interactive={onAction ? '' : undefined}
+                  style={{
+                    top: `${h.top}%`,
+                    left: `${h.left}%`,
+                    width: `${h.width}%`,
+                    height: `${h.height}%`,
+                    background: h.color ?? 'var(--ink-orange-30)',
+                  }}
+                  title={h.label}
+                  /*
+                    Inert unless the dock can hear it. A mark with nothing behind
+                    it is a mark, not a control, so it takes no cursor, no
+                    pointer events and no place in the accessibility tree — the
+                    row it points at is readable on its own.
+                  */
+                  aria-hidden={onAction ? undefined : true}
+                  onClick={onAction ? () => onAction('highlight', item, h.id) : undefined}
+                />
+              ))}
+            </div>
+          )}
         </article>
       </div>
     </>

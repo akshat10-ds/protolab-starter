@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "non-disclosure-agreement",
+    "title": "Partner Preview NDA",
+    "pageCount": 2,
+    "pdf": "/template-previews/non-disclosure-agreement.pdf",
+    "pages": [
+      "/template-previews/non-disclosure-agreement-1.png",
+      "/template-previews/non-disclosure-agreement-2.png"
+    ]
+  },
+  {
+    "slug": "service-agreement",
+    "title": "Design & Build Agreement",
+    "pageCount": 3,
+    "pdf": "/template-previews/service-agreement.pdf",
+    "pages": [
+      "/template-previews/service-agreement-1.png",
+      "/template-previews/service-agreement-2.png",
+      "/template-previews/service-agreement-3.png"
+    ]
+  },
+  {
+    "slug": "offer-letter",
+    "title": "Design Team Offer Letter",
+    "pageCount": 1,
+    "pdf": "/template-previews/offer-letter.pdf",
+    "pages": [
+      "/template-previews/offer-letter-1.png"
+    ]
+  }
+]

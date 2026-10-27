@@ -5,7 +5,6 @@
  * Uses Ink Design System tokens for consistent theming.
  */
 
-@import '../../../design-system/1-tokens/tokens.css';
 
 /* =============================================================================
    Container
@@ -118,7 +117,7 @@
 
 .headerTitle {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-s);
+  font-size: var(--ink-font-body-s-size);
   font-weight: var(--ink-font-weight-semibold);
   color: var(--ink-neutral-110);
   letter-spacing: -0.01em;
@@ -126,7 +125,7 @@
 
 .headerProgress {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-neutral-70);
   padding: 3px var(--ink-spacing-100);
@@ -315,7 +314,7 @@
 
 .stepTitle {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-s);
+  font-size: var(--ink-font-body-s-size);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-neutral-100);
   line-height: 1.4;
@@ -337,7 +336,7 @@
 
 .stepDuration {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-neutral-60);
   padding: 2px var(--ink-spacing-50);
@@ -354,14 +353,14 @@
 
 .stepDescription {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   color: var(--ink-neutral-70);
   line-height: 1.5;
 }
 
 .stepError {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   color: var(--ink-red-90);
   background: var(--ink-red-10);
   padding: var(--ink-spacing-50) var(--ink-spacing-125);
@@ -375,7 +374,7 @@
 
 .streamingText {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   color: var(--ink-neutral-80);
   background: var(--ink-neutral-10);
   padding: var(--ink-spacing-100) var(--ink-spacing-150);
@@ -410,7 +409,7 @@
 
 .toolCall {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   background: var(--ink-neutral-110);
   color: var(--ink-neutral-15);
   padding: var(--ink-spacing-125) var(--ink-spacing-150);

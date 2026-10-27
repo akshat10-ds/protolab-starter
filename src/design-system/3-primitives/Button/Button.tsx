@@ -101,7 +101,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
           </span>
         )}
         {startElement && <span className={styles.startElement}>{startElement}</span>}
-        {children && (
+        {(children || accessibilityText) && (
           <span className={styles.text}>
             {accessibilityText ? (
               <>

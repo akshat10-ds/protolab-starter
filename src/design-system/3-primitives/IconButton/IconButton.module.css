@@ -130,3 +130,11 @@
   width: 16px; /* Smaller than icon-size-s for small buttons */
   height: 16px;
 }
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  pointer-events: none;
+}

@@ -1,0 +1,324 @@
+{
+  "checkedAt": "2026-10-22T19:33:00.056Z",
+  "checks": [
+    {
+      "area": "Admin",
+      "page": "Plan and Billing",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Account Profile",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "System Status Beta",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Security Settings",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Regional Settings",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Brands",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Updates",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Sandbox",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Value Calculator",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Sound Settings",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "AI Control Settings",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Users",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Permission Profiles",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Groups",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Signing Groups",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Signing Settings",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Sending Settings",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Workspaces Settings",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Identity Verification",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Email Preferences",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Email Archive Configuration",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Custody Transfer",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Document Retention",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Legal Disclosure",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Reminders and Expiration",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Comments",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Document Custom Fields",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Envelope Custom Fields",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "App Center",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "MCP Connections",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Connect",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Apps and Keys",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "API Usage Center",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "CORS",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Payments",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Rules",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Connections",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Audit Logs",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "page": "Bulk Actions",
+      "rendered": true
+    },
+    {
+      "area": "Insights reports",
+      "page": "All Envelope (16)",
+      "rows": 16
+    },
+    {
+      "area": "Insights reports",
+      "page": "Envelope (6)",
+      "rows": 6
+    },
+    {
+      "area": "Insights reports",
+      "page": "Recipient (5)",
+      "rows": 5
+    },
+    {
+      "area": "Insights reports",
+      "page": "Usage (5)",
+      "rows": 5
+    },
+    {
+      "area": "Insights reports",
+      "page": "Custom (7)",
+      "rows": 7
+    },
+    {
+      "area": "Insights reports",
+      "page": "Downloads (5)",
+      "rows": 5
+    },
+    {
+      "area": "Insights reports",
+      "page": "Web forms",
+      "rows": 5
+    },
+    {
+      "area": "Insights reports",
+      "page": "Recents (21)",
+      "rows": 21
+    },
+    {
+      "area": "Insights",
+      "page": "Custom dashboard creation",
+      "rendered": true,
+      "initialSemanticSelectorMatched": false,
+      "observedTitle": "Quarterly contract review",
+      "verification": "Visible DOM text and nonzero bounds confirmed after returning to Custom dashboard"
+    },
+    {
+      "area": "Insights dashboards",
+      "page": "Procurement Hub",
+      "rows": 5
+    },
+    {
+      "area": "Insights dashboards",
+      "page": "Administrator dashboard",
+      "rows": 5
+    },
+    {
+      "area": "Insights dashboards",
+      "page": "Agreements",
+      "rows": 5
+    },
+    {
+      "area": "Insights dashboards",
+      "page": "Obligations",
+      "rows": 5
+    },
+    {
+      "area": "Insights dashboards",
+      "page": "Renewals",
+      "rows": 5
+    },
+    {
+      "area": "Insights dashboards",
+      "page": "Requests",
+      "rows": 5
+    },
+    {
+      "area": "Insights dashboards",
+      "page": "AI Assistant and Agent Usage",
+      "rows": 5
+    },
+    {
+      "area": "Product tabs",
+      "page": "Home",
+      "rendered": true
+    },
+    {
+      "area": "Product tabs",
+      "page": "Agreements",
+      "rendered": true
+    },
+    {
+      "area": "Product tabs",
+      "page": "Templates",
+      "rendered": true
+    },
+    {
+      "area": "Product tabs",
+      "page": "Automations",
+      "rendered": true
+    },
+    {
+      "area": "Product tabs",
+      "page": "Insights",
+      "rendered": true
+    },
+    {
+      "area": "Product tabs",
+      "page": "Admin",
+      "rendered": true
+    }
+  ],
+  "interactions": [
+    "Shared-only template filter reduces My Templates to 1 row; Clear restores 4",
+    "Created a local draft agent",
+    "Created an enabled local rule from a template",
+    "Saved a suggested report and retained it after sidebar navigation",
+    "Selected reporting period, scheduled report Monthly, confirmed one open dialog and persisted schedule",
+    "Created custom dashboard and confirmed its title persisted after navigation",
+    "Advanced template Status select contains All statuses, Published, Draft"
+  ],
+  "runtimeErrors": [],
+  "iconWarnings": []
+}

@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-20",
+  "isolatedWorkspace": "/private/tmp/protolab-upstream-20261020-f5ims2pv",
+  "externalCheckoutsModified": false,
+  "generatedStarterSourceModified": false,
+  "packagesInstalled": false,
+  "published": false,
+  "patchApplication": {
+    "protolab-mcp": "dry-run and exact postimage hashes pass",
+    "akshat-lab": "dry-run and exact postimage hashes pass"
+  },
+  "generatedTemplate": {
+    "typeDiagnostics": 0,
+    "publicApiContractProbe": "pass",
+    "productionBuild": "pass",
+    "serverRenderedSemanticAssertions": 9
+  },
+  "currentSnapshotCompatibilityOverlay": {
+    "originalGeneratedDiagnostics": 61,
+    "remainingTypeDiagnostics": 0,
+    "productionBuild": "pass",
+    "validationOnlyAppChange": "sidebarMap: Record<TabId, React.ComponentProps<typeof DocuSignShell>['localNav']>",
+    "undefinedTokensBefore": {
+      "names": 14,
+      "references": 38
+    },
+    "undefinedTokensAfter": {
+      "names": 9,
+      "references": 26
+    }
+  },
+  "authoritativeInk": {
+    "undefinedTokensBefore": {
+      "names": 28,
+      "references": 80
+    },
+    "undefinedTokensAfter": {
+      "names": 23,
+      "references": 70
+    }
+  },
+  "fullCanonicalAiWithCurrentInk": {
+    "typeDiagnostics": 16,
+    "result": "not release-ready; independent issues beyond current starter used-set scope"
+  },
+  "notVerified": [
+    "interactive browser behavior",
+    "current production/Figma parity",
+    "Lab HQ release regression surface",
+    "live MCP publication",
+    "starter sync automation"
+  ],
+  "reproducibleValidationWorkspace": "/var/folders/0t/x51h61nj2hjgnvrjvr3wmxq00000gp/T/protolab-upstream-check-6t12wvoz",
+  "wholesaleRefreshAgainstCurrentApp": {
+    "typeDiagnostics": 6,
+    "result": "incompatible older APIs; source drift must be reconciled before release"
+  },
+  "validationUsesPrivateDependencyCacheDirectories": true
+}

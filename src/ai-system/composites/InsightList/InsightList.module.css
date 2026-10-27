@@ -147,10 +147,21 @@
    Dismiss — `GetStarted`'s control, at the frame's top-right corner
    --------------------------------------------------------------------------- */
 
+/*
+ * REVEALED, never resting. Akshat, 2026-09-04: a grey caret sitting at rest is
+ * a thing he has cut six times, and three grey crosses down a column is the
+ * same thing. `chat.module.css`'s `.trailMenu` is the pattern already written
+ * here: hidden to the eye until the card is hovered or holds focus, but always
+ * in the tab order, so `opacity` and never `display` or `visibility`. Its box is
+ * absolute and `.mainDismissable` already keeps 44px clear for it, so nothing
+ * moves or resizes when it appears. `:focus-within` joins hover so a keyboard
+ * user sees the control on the card before tabbing to it.
+ */
 .dismiss {
   position: absolute;
   top: var(--ink-spacing-100);
   right: var(--ink-spacing-100);
+  opacity: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,7 +172,15 @@
   background: none;
   cursor: pointer;
   color: var(--ink-icon-color-subtle);
-  transition: background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
+  transition:
+    background-color var(--ink-motion-duration-200) var(--ink-motion-curve-opacity),
+    opacity var(--ink-motion-duration-200) var(--ink-motion-curve-opacity);
+}
+
+.card:hover .dismiss,
+.card:focus-within .dismiss,
+.dismiss:focus-visible {
+  opacity: 1;
 }
 
 .dismiss:hover {

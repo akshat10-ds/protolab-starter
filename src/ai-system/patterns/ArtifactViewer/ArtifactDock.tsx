@@ -36,7 +36,7 @@
  */
 
 import React from 'react';
-import { Icon, IconButton } from '@ink';
+import { Breadcrumb, Icon, IconButton } from '@ink';
 import { ARTIFACT_RENDERERS } from './artifactRenderers';
 import styles from './ArtifactDock.module.css';
 import type { ArtifactActionHandler, ArtifactItem, ArtifactKind } from './types';
@@ -48,6 +48,9 @@ export type {
   ArtifactActionHandler,
   ArtifactItem,
   ArtifactKind,
+  ArtifactProcess,
+  ArtifactProcessStep,
+  ArtifactRecommendation,
   ArtifactRenderContext,
   ArtifactRenderer,
   ArtifactSection,
@@ -84,8 +87,13 @@ export interface ArtifactDockProps {
   onAction?: ArtifactActionHandler;
   /**
    * Dock width in px when not expanded. Omit it and the CSS owns the width —
-   * 420 as a card, one step wider as a pane at fullscreen. Supply it and the
-   * host wins at every width, because an inline style beats a container query.
+   * 420 as a card, a 520 basis as a pane. Supply it and the host wins in both
+   * states, because an inline style beats the stylesheet.
+   *
+   * `IrisAgent` supplies it for the pane, from the open artifact's kind
+   * (`PANE_SIZE`) and from the divider between the chat and this pane. It is
+   * applied to `flex-basis` as well as `width`: as a pane the dock has a
+   * definite basis from the CSS, and a definite basis outranks `width`.
    */
   width?: number;
 }
@@ -105,6 +113,7 @@ const KIND_ICON: Record<ArtifactKind, string> = {
   document: 'document',
   sources: 'folder',
   visualization: 'chart-bar',
+  process: 'check',
 };
 
 // =============================================================================
@@ -138,9 +147,28 @@ export const ArtifactDock: React.FC<ArtifactDockProps> = ({
     where no route was recorded — a document reached from a sources list, with
     that list's presence in `items` as the only signal.
   */
+  const parentItem = items.find((i) => i.id === active.parentId);
   const backItem =
-    items.find((i) => i.id === active.parentId) ??
+    parentItem ??
     (active.kind === 'document' ? items.find((i) => i.kind === 'sources') : undefined);
+
+  /*
+    IS THE TAB STRIP JUST THE BREADCRUMB AGAIN?
+
+    Where a trail is drawn and the only two things this conversation opened ARE
+    that trail, the strip under the header repeats the header's own two labels
+    in a second navigation idiom. `parentItem` and `active` are both in `items`
+    and are not each other, so `items.length === 2` proves the pair is exactly
+    the trail — and `data-crumbed='trail'` says so to the CSS, which is what
+    gates the strip (the pane/card split is a `[data-fullscreen]` ancestor the
+    dock cannot see from here).
+
+    NOT a blanket suppression. A conversation can open unrelated artifacts —
+    attached sources, then a search table, then a document out of it — and the
+    breadcrumb only names one route. With a third tab in the strip, the strip
+    is the only way back to the artifact that is not on the trail, so it stays.
+  */
+  const crumbState = parentItem ? (items.length === 2 ? 'trail' : '') : undefined;
 
   return (
     <div
@@ -151,12 +179,49 @@ export const ArtifactDock: React.FC<ArtifactDockProps> = ({
        * pane's wider CSS width unreachable — an inline style beats a container
        * query. The default lives in the CSS now; this is the host's override.
        */
-      style={expanded || width === undefined ? undefined : { width }}
+      style={expanded || width === undefined ? undefined : { width, flexBasis: width }}
       data-expanded={expanded || undefined}
     >
-      <header className={styles.header}>
+      {/*
+        Akshat, 2026-08-19: "we do need breadcrumb before the agreement name to
+        go back to the search results." The route the host recorded IS the
+        trail, so where one exists the breadcrumb is the title — no arrow, no
+        separate title string.
+
+        TWO CONDITIONS, AND BOTH ARE THE FRAME'S.
+
+        `parentId` — the host naming the route it opened this through. The
+        sources fallback below is a guess, and a guess is not a trail, so an
+        artifact reached without a named parent keeps the arrow-and-title header
+        it has today rather than wearing a one-crumb breadcrumb.
+
+        Fullscreen — every frame that draws the trail draws it in the PANE
+        (206:27620 is 987 wide). Measured in the 420 card the two crumbs get
+        111px between "Open in Navigator" and three icon buttons: Ink wraps them
+        to 92px inside a 73px header, and forced onto one line they ellipsise to
+        "Sear… › Acti…". Neither is a route anyone can read. The card keeps the
+        arrow, which is the same journey in the room there is. Whether the card
+        should ever carry a trail is Akshat's to settle; until he does, this
+        draws only where the frame does.
+      */}
+      <header className={styles.header} data-crumbed={crumbState}>
+        {parentItem && (
+          <Breadcrumb
+            className={styles.crumbs}
+            items={[
+              // Ink only makes a crumb clickable when it has an href; the click
+              // is intercepted and routed through `onItemClick`, so the hash is
+              // never followed.
+              { label: parentItem.title, href: `#${parentItem.id}` },
+              { label: active.title, current: true },
+            ]}
+            onItemClick={() => onOpenChange(parentItem.id)}
+          />
+        )}
+
         {backItem && (
           <IconButton
+            className={styles.back}
             icon="arrow-left"
             size="small"
             variant="tertiary"

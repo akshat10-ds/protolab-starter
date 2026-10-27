@@ -1,0 +1,115 @@
+{
+  "method": "cua_repl native in-app browser; isolated authoring source at 127.0.0.1:5190",
+  "sourceFrozenForChecks": true,
+  "checks": [
+    {
+      "name": "Toggle, Hotspot, Tag",
+      "result": "passed",
+      "observed": "Pressed state changed, the hotspot count incremented, and the tag was removed."
+    },
+    {
+      "name": "SegmentedControl",
+      "result": "passed",
+      "observed": "ArrowRight skipped the disabled choice and selected Grid."
+    },
+    {
+      "name": "Zoom",
+      "result": "passed",
+      "observed": "The 125% upper bound disabled zoom-in."
+    },
+    {
+      "name": "StarRating and SelectTile",
+      "result": "passed",
+      "observed": "The UI reflected four stars and the SMS selection."
+    },
+    {
+      "name": "Tree",
+      "result": "passed",
+      "observed": "Parent AltDown skips descendants and emits legal after sales. Selection excludes the disabled branch, which stays collapsed on Right."
+    },
+    {
+      "name": "WorkflowStepper",
+      "result": "passed",
+      "observed": "The controlled disclosure exposes the Review note field."
+    },
+    {
+      "name": "ColorPicker",
+      "result": "passed",
+      "observed": "A green hex value updates channels and saved colors. A controlled red value rejects a green request while retaining a red field, hue 0, red selected and green unselected."
+    },
+    {
+      "name": "Switch, Input and TextArea",
+      "result": "passed",
+      "observed": "The label toggles the Switch; entered text updates character counters."
+    },
+    {
+      "name": "ComboBox",
+      "result": "passed",
+      "observed": "Keyboard navigation skips the disabled party to Beacon; nested Department choices select Legal."
+    },
+    {
+      "name": "DatePicker",
+      "result": "passed",
+      "observed": "Invalid 02/30 is rejected; valid 10/22 is accepted. Keyboard range selection chooses 10/22\u201310/25 and restores input focus."
+    },
+    {
+      "name": "Tooltip",
+      "result": "passed",
+      "observed": "The focused trigger exposes Saved changes are local; Escape dismisses it."
+    },
+    {
+      "name": "AIBadge",
+      "result": "passed",
+      "observed": "The dialog heading and link are visible; Escape restores the trigger."
+    },
+    {
+      "name": "Modal",
+      "result": "passed",
+      "observed": "Tab, reverse Tab and Escape preserve focus and restore the opener."
+    },
+    {
+      "name": "System and AI icons",
+      "result": "passed",
+      "observed": "Representative 20/24 System masters, missing names, currentColor and distinct AI glyphs visibly render."
+    },
+    {
+      "name": "Toast",
+      "result": "passed",
+      "observed": "Controlled reject/accept, focus-safe dismissal and capacity eviction, background expiry and timer reopening passed CUA; see toast-cua-states.txt."
+    },
+    {
+      "name": "Native file upload",
+      "result": "host-limited",
+      "observed": "The Browse control activates. The native picker cannot be driven through the available IAB surface; no upload-success claim is made."
+    },
+    {
+      "name": "Iris integration",
+      "result": "passed",
+      "observed": "Two attached sources, local scripted response, keyboard panel resize 480\u2192504, artifact pagination 1\u21922, zoom 100\u2192125%, and artifact resize 1051\u21921075."
+    },
+    {
+      "name": "Open in Navigator",
+      "result": "prototype callback only",
+      "observed": "The existing app callback logs the action; full navigation is outside the key-screen scope. No success claim."
+    },
+    {
+      "name": "Record focus lifecycle",
+      "result": "passed",
+      "observed": "Agreement, Request and Workspace views focus Close/Back, hide the covered shell from AX, and restore invoking links on Escape."
+    }
+  ],
+  "refreshedStarter": "passed key screens and record focus; final bundle 16c70f74eb3e3ee2",
+  "screens": [
+    "Home",
+    "Agreements",
+    "Completed documents",
+    "Agreement detail",
+    "Templates",
+    "Insights",
+    "Envelope setup",
+    "Requests",
+    "Request detail",
+    "Workspace detail",
+    "Iris context/chat/artifact"
+  ]
+}

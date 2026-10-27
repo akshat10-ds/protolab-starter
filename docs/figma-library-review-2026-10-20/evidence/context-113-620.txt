@@ -1,0 +1,332 @@
+import { EmptyState } from '@ds/ui'
+import { Link } from '@ds/ui'
+import { Button } from '@ds/ui'
+
+type ChildInkEmptyStateBodyProps = {
+  className?: string;
+  body?: string;
+};
+
+function ChildInkEmptyStateBody({ className, body = "An Ink is a liquid containing various pigments or dyes used for coloring a surface to render an image or text." }: ChildInkEmptyStateBodyProps) {
+  return (
+    <div className={className || "content-stretch flex items-start relative w-[576px]"} data-node-id="113:597" data-name="Child/[INK] EmptyState.Body">
+      <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] leading-[1.4] min-w-px relative text-[color:var(--fontColorSubtle,rgba(19,0,50,0.7))] text-[length:var(--font.fontSize.14,14px)]" data-node-id="113:561">
+        {body}
+      </p>
+    </div>
+  );
+}
+
+function ChildInkEmptyStateHeader({ className }: { className?: string }) {
+  return (
+    <div className={className || "content-stretch flex items-center relative w-[576px]"} data-node-id="113:598" data-name="Child/[INK] EmptyState.Header">
+      <div className="content-stretch flex flex-[1_0_0] items-center min-w-px relative" data-node-id="6246:20085" data-name="heading">
+        <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] leading-[1.25] min-w-px relative text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))] text-[length:var(--font.fontSize.32,24px)] tracking-[var(--font.letterSpacing.cozy,-0.16px)]" data-node-id="I6246:20085;6246:18113">
+          Empty state heading
+        </p>
+      </div>
+    </div>
+  );
+}
+
+type InkEmptyStateProps = {
+  className?: string;
+  alignment?: "start" | "center" | "end";
+  direction?: "row" | "column";
+  size?: "medium" | "small";
+};
+
+export default function InkEmptyState({ className, alignment = "start", direction = "row", size = "medium" }: InkEmptyStateProps) {
+  if (size === "small" && direction === "row" && alignment === "start") {
+    return (
+      <CodeConnectSnippet data-node-id="43375:159" data-name="size=small, direction=row, alignment=start" data-snippet-language="React">
+        <EmptyState callToAction={} direction="row" footer={{/* Code Connect Logic Instance */}} header={{/* Code Connect Logic Instance */}} image={} size="small" />
+      </CodeConnectSnippet>
+    );
+  }
+  if (size === "medium" && direction === "column" && alignment === "start") {
+    return (
+      <CodeConnectSnippet data-node-id="6913:114" data-name="size=medium, direction=column, alignment=start" data-snippet-language="React">
+        <EmptyState callToAction={} direction="column" footer={{/* Code Connect Logic Instance */}} header={{/* Code Connect Logic Instance */}} image={} size="medium" />
+      </CodeConnectSnippet>
+    );
+  }
+  if (size === "medium" && direction === "column" && alignment === "center") {
+    return (
+      <CodeConnectSnippet data-node-id="43375:247" data-name="size=medium, direction=column, alignment=center" data-snippet-language="React">
+        <EmptyState callToAction={} direction="column" footer={{/* Code Connect Logic Instance */}} header={{/* Code Connect Logic Instance */}} image={} size="medium" />
+      </CodeConnectSnippet>
+    );
+  }
+  if (size === "medium" && direction === "column" && alignment === "end") {
+    return (
+      <CodeConnectSnippet data-node-id="43375:287" data-name="size=medium, direction=column, alignment=end" data-snippet-language="React">
+        <EmptyState callToAction={} direction="column" footer={{/* Code Connect Logic Instance */}} header={{/* Code Connect Logic Instance */}} image={} size="medium" />
+      </CodeConnectSnippet>
+    );
+  }
+  if (size === "small" && direction === "column" && alignment === "start") {
+    return (
+      <CodeConnectSnippet data-node-id="113:658" data-name="size=small, direction=column, alignment=start" data-snippet-language="React">
+        <EmptyState callToAction={} direction="column" footer={{/* Code Connect Logic Instance */}} header={{/* Code Connect Logic Instance */}} image={} size="small" />
+      </CodeConnectSnippet>
+    );
+  }
+  if (size === "small" && direction === "column" && alignment === "center") {
+    return (
+      <CodeConnectSnippet data-node-id="43304:49305" data-name="size=small, direction=column, alignment=center" data-snippet-language="React">
+        <EmptyState callToAction={} direction="column" footer={{/* Code Connect Logic Instance */}} header={{/* Code Connect Logic Instance */}} image={} size="small" />
+      </CodeConnectSnippet>
+    );
+  }
+  if (size === "small" && direction === "column" && alignment === "end") {
+    return (
+      <CodeConnectSnippet data-node-id="43304:49328" data-name="size=small, direction=column, alignment=end" data-snippet-language="React">
+        <EmptyState callToAction={} direction="column" footer={{/* Code Connect Logic Instance */}} header={{/* Code Connect Logic Instance */}} image={} size="small" />
+      </CodeConnectSnippet>
+    );
+  }
+  return (
+    <CodeConnectSnippet data-node-id="113:612" data-name="size=medium, direction=row, alignment=start" data-snippet-language="React">
+      <EmptyState callToAction={} direction="row" footer={{/* Code Connect Logic Instance */}} header={{/* Code Connect Logic Instance */}} image={} size="medium" />
+    </CodeConnectSnippet>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontHeadingS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.24, weight: 400, lineHeight: 1.25, letterSpacing: font.letterSpacing.cozy), fontBodyS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.14, weight: 400, lineHeight: 1.399999976158142, letterSpacing: 0), fontButton: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.16, weight: 500, lineHeight: 1.5, letterSpacing: 0), fontHeadingXS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.20, weight: 500, lineHeight: 1.25, letterSpacing: font.letterSpacing.cozy), fontButtonS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.14, weight: 500, lineHeight: 1.399999976158142, letterSpacing: 0).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Empty State
+**Node ID:** 113:620
+
+EmptyState communicates to a user the expected content is not available.
+
+  
+
+Props
+-----
+
+_`**❖ Small:**`_ Changes the direction of EmptyState children to column and uses a small image size.
+
+  
+
+_`**direction:**`_ The layout direction of the EmptyState children. Accepts the value of row or column.
+
+  
+
+_`**alignment:**`_ `The alignment of the EmptyState. Accepts the value of start, center and end`
+
+  
+
+_`**image:**`_ The image element to display.
+
+  
+
+_`**footer:**`_ The content to display in the footer of the EmptyState.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/643f63-empty-state/b/65a4ce](https://ink.docusign.com/94bc5d135/p/643f63-empty-state/b/65a4ce)
+- [Empty State - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-emptystate--default)
+
+## Child/[INK] EmptyState.Header
+**Node ID:** 113:598
+
+Pass `EmptyState.Header` to provide a title to the Empty State.
+
+  
+
+---
+
+Props
+-----
+
+`**header:**` The content to use as the header of the Empty State
+
+## displayLevel=heading-m
+**Node ID:** 6246:18112
+
+Heading styles make up the middle portion of the type scale and most often pairs with the body styling to create a strong parent-child relationship. Headings are useful for short, impactful sentences or to emphasize sections of content on a page.
+
+## _Heading
+**Node ID:** 6246:18107
+
+Heading allows components to render a more robust set of styles on top of the semantic H1-H6 levels.
+
+  
+
+`**_displayLevel:_**` An optional display level (i.e. importance indicated by size / style / casing) that may differ from the semantic HTML section heading level
+
+  
+
+`**_text:_**` The text to be displayed
+
+**Documentation:**
+- [https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-heading--default](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-heading--default)
+
+## Child/[INK] EmptyState.Body
+**Node ID:** 113:597
+
+Pass `EmptyState.Body` to provide the main content to the Empty State.
+
+  
+
+---
+
+Props
+-----
+
+`**body:**` The content to display in the body of the Empty State
+
+## Child/[INK] EmptyState.Footer
+**Node ID:** 113:589
+
+Pass EmptyState.Footer to provide a actions in the footer of the Empty State
+
+  
+
+Props
+-----
+
+`**❖ Show Button:**` Displays a primary CTA
+
+  
+
+`**❖ Show Link:**` Displays a link below the CTA to direct users to related content
+
+## kind=brand, size=medium, ❖ State=default, disabled=false
+**Node ID:** 8894:21299
+
+The primary button styling is reserved for the most important call to action on the page. It should be applied sparingly to maximize effectiveness.
+
+## [INK] Button
+**Node ID:** 10:557
+
+`Buttons` give users a simple and direct way to take an action.
+
+  
+
+Props
+-----
+
+  
+
+`**_kind:_**` The kind of the `Button`.
+
+  
+
+`**_❖ State:_**` The state of the `Button`.
+
+  
+
+`**_disabled:_**` Applies the 'disabled' attribute.
+
+  
+
+`**_text:_**` The text to be displayed inside of the `Button`.
+
+  
+
+`**_startElement:_**` The provided icon will display at the start of the `Button`.
+
+  
+
+`**_menuTrigger:_**` Displays a caret icon at the end of the `Button`. When pressed, the `Button` will display a menu beneath it.
+
+  
+
+`**_loading:_**` Display a loading indicator in the `Button`. Cannot be used with an icon.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/241afc-button/b/32e1a2](https://ink.docusign.com/94bc5d135/p/241afc-button/b/32e1a2)
+- [Button - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-button--default)
+
+## kind=default, discrete=True, size=small, ❖ State=default, disabled=False
+**Node ID:** 8983:20654
+
+Discrete links have no underline and are typically used when links must stand on their own, such as a list.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/5770aa-link/t/86d21a](https://ink.docusign.com/94bc5d135/p/5770aa-link/t/86d21a)
+
+## [INK] Link
+**Node ID:** 55:2626
+
+Links allow users to navigate to other locations.
+
+  
+
+Props
+-----
+
+  
+
+`**_kind:_**` Whether the Link displays as default or subtle.
+
+  
+
+`**_discrete:_**` The discrete styled link. For standalone Links outside of text copy. Removes the text-decoration underline and increases the tap target.
+
+  
+
+`**_❖ State:_**` The state of the Link
+
+  
+
+`**_text*:_**` The text label for the Link.
+
+  
+
+`**_showIconForNewWindow:_**` Whether or not to display an icon when link opens in a new window.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/5770aa-link/b/17f1a3](https://ink.docusign.com/94bc5d135/p/5770aa-link/b/17f1a3)
+- [Link - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-link--customize)
+
+## displayLevel=heading-xs
+**Node ID:** 6246:18108
+
+Heading styles make up the middle portion of the type scale and most often pairs with the body styling to create a strong parent-child relationship. Headings are useful for short, impactful sentences or to emphasize sections of content on a page.
+
+## size=small, direction=column, alignment=start
+**Node ID:** 113:658
+
+Figma Config
+------------
+
+*   Use this variant in containers less than 27.5rem / 440px
+
+## kind=brand, size=small, ❖ State=default, disabled=false
+**Node ID:** 8894:24211
+
+The primary button styling is reserved for the most important call to action on the page. It should be applied sparingly to maximize effectiveness.
+
+## size=small, direction=column, alignment=center
+**Node ID:** 43304:49305
+
+Figma Config
+------------
+
+*   Use this variant in containers less than 27.5rem / 440px
+
+## size=small, direction=column, alignment=end
+**Node ID:** 43304:49328
+
+Figma Config
+------------
+
+*   Use this variant in containers less than 27.5rem / 440px
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

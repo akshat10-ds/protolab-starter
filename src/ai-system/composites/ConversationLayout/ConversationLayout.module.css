@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 
 /**
  * ConversationLayout — Conversation turn composition
@@ -16,6 +15,7 @@
  *
  *   Inter-block spacing (asymmetric):
  *     User → Response   4px  (anchors bubble to answer)
+ *     Receipt → Response 24px (2026-08-20 — see below)
  *     Response → User   24px (signals new turn)
  *
  *   Padding:
@@ -26,12 +26,28 @@
    Surface — the conversation container
    ============================================================================= */
 
+/*
+ * NO HORIZONTAL PADDING. Akshat, 2026-08-24: *"keep content width the same as
+ * the loan progress bar at top (so content should stretch) wider."*
+ *
+ * The 32px sides here were the ENTIRE difference between a turn and the
+ * progress card above it — 64px across, invariant at every panel width, and
+ * the reason the thread read as narrower than the surface it belongs to. The
+ * scroll container already owns the stream's inset; this was a second one
+ * stacked inside it.
+ *
+ * The vertical padding stays: that is the stream's own breathing room, not an
+ * inset, and nothing else supplies it.
+ *
+ * `max-width: 720px` still caps fullscreen, so dropping the sides widens the
+ * turns to the card and no further — there is no sprawl to guard against.
+ */
 .surface {
   display: flex;
   flex-direction: column;
   gap: 0;
   max-width: 720px;
-  padding: var(--ink-spacing-400);
+  padding: var(--ink-spacing-400) 0;
 }
 
 /* =============================================================================
@@ -63,6 +79,41 @@
   align-self: stretch;
   margin-top: 4px;
 }
+
+/*
+ * A RECEIPT IS NOT A QUESTION, so nothing is anchored to it. Akshat,
+ * 2026-08-20: *"add space after the message so it's clear you're getting a
+ * response back."* The 4px above glues an answer to the question that asked
+ * for it; an "You approved: …" chip asked nothing, and the agent's reply to it
+ * is a new turn. It takes the same 24px the thread already spends on a turn
+ * change, so the pair reads as press-then-response rather than one block.
+ */
+.userTurn[data-receipt] + .assistantTurn {
+  margin-top: 24px;
+}
+
+/*
+ * A TURN ENDS IN ITS FEEDBACK ROW, AND THE NEXT SECTION STARTS AFTER IT.
+ *
+ * The row is visible on every finished answer now (2026-08-25 — see
+ * `.feedbackRow` in IrisAgent.module.css for why it stopped hiding), so this is
+ * spacing between two things you can see rather than a hole to be tuned.
+ *
+ * 4px would glue the next block to the icons. 24 is what this file already
+ * spends on a turn change, so the row belongs to the answer above it and what
+ * follows reads as new. Composed: 8 of flex gap above the row, 32 of row, 24
+ * below — every part on the 8 scale, per CLAUDE.md.
+ *
+ * `:has` reaches IrisAgent's class by substring, which is the coupling to
+ * watch: rename `.feedbackRow` there and the gap here silently reverts to 4px.
+ * The alternative was a prop threaded through this component to say "this turn
+ * is rateable", which is more machinery than the gap is worth. Flagged rather
+ * than hidden.
+ */
+.assistantTurn:has(> [class*='feedbackRow']) + .assistantTurn {
+  margin-top: 24px;
+}
+
 
 /* First child has no top margin */
 .assistantTurn[data-first] {
@@ -98,4 +149,71 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--ink-spacing-100);
+}
+
+/* =============================================================================
+   Turn entrance — 2026-08-24
+
+   Akshat: *"we need some like animations to show when the message scrolls to
+   top etc."*
+
+   THE PIN ITSELF STAYS INSTANT. He settled that separately — *"it should be
+   pinned immediately"* — so nothing here animates scroll position. What was
+   missing is that the pinned moment ARRIVED without being legible: the turn was
+   simply already at the top, with no beat saying it had just landed. This is
+   that beat, and it is the only thing moving.
+
+   ── STORYBOARD ──
+        0ms   the user turn fades up 6px into place        (220ms)
+       60ms   the answer beneath it follows                (220ms)
+
+   Fast, small, no bounce — the same `cubic-bezier(0.16, 1, 0.3, 1)` the cold
+   state's rows already enter on, so a turn arriving and a suggestion arriving
+   are one gesture. 6px, because the distance only has to say "this is new";
+   any further and it reads as the thing sliding in from somewhere else.
+
+   ONLY WHAT JUST ARRIVED CARRIES `data-enter`. History never replays: a thread
+   switch, a reopen, or a conversation loaded whole renders without the
+   attribute, so scrolling back through the loan does not set it off.
+   ============================================================================= */
+
+@keyframes turnEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.userTurn[data-enter],
+.assistantTurn[data-enter] {
+  animation: turnEnter 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* The answer lands just after the turn that asked for it — one beat, in order. */
+.assistantTurn[data-enter] {
+  animation-delay: 60ms;
+}
+
+/*
+ * Fade only, and quicker. The beat is worth keeping — it is what says the turn
+ * is new — but nothing travels.
+ */
+@media (prefers-reduced-motion: reduce) {
+  @keyframes turnEnter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .userTurn[data-enter],
+  .assistantTurn[data-enter] {
+    animation-duration: 120ms;
+  }
 }

@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 
 /* ---------------------------------------------------------------------------
    The grid — frame 163:21261
@@ -15,8 +14,34 @@
    into the first row's rule and lose the frame's two weights.
    --------------------------------------------------------------------------- */
 
+/*
+ * THE TABLE SHRINKS TO THE DOCK; THE DOCK DOES NOT GROW TO THE TABLE.
+ *
+ * `width: 100%` was already here and was already being ignored: every header
+ * cell is `white-space: nowrap`, so the table's min-content width is the sum of
+ * its labels — measured 519 to 642 against a 420px card. The well then scrolled
+ * sideways and the last columns sat off the edge, which is "you open See all
+ * and see less".
+ *
+ * `table-layout: fixed` is what makes the 100% bind: the column widths come
+ * from the header row, the declared ones below (`.gutter` 25, `.tick` 48,
+ * `.fields` 64) are honoured exactly, and what is left is split between the
+ * rest. Nothing is hidden any more; a long value ellipsises instead, which is
+ * a fact you can see rather than one you have to scroll for.
+ *
+ * WHY NOT WIDEN THE DOCK. Below fullscreen the card is 420 and the surface
+ * holding it guarantees the chat 480 beside it (`THREE_COLUMN_MIN_WIDTH`, and
+ * the `width` comment in `IrisAgent`'s `resolvedArtifactSlot`). A 640 dock
+ * takes 220 of that 480 and breaks the floor. The pane is the place a wide
+ * table gets its room, and the expand control is how you reach it.
+ *
+ * THE PANE IS UNTOUCHED — the rule below hands `auto` back at fullscreen, so
+ * every frame drawn there keeps content-sized columns. No other artifact kind
+ * has a rule in this file.
+ */
 .table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
   font-family: var(--ink-font-family-default);
@@ -28,6 +53,18 @@
     with nothing between them.
   */
   margin-top: var(--ink-spacing-200);
+}
+
+/*
+ * At fullscreen the dock is the pane, not the card, and the pane is already
+ * sized to the kind (`PANE_SIZE.table`, then the divider). Content-sized
+ * columns are what every table frame draws there, so the pane keeps them —
+ * this is the rule that makes the fix card-only. Same mechanism the dock's own
+ * pane rules use: `IrisAgent`'s compact root stamps `data-fullscreen`, and
+ * `:global()` is what lets a module read it.
+ */
+:global([data-fullscreen]) .table {
+  table-layout: auto;
 }
 
 /* ---------------------------------------------------------------------------
@@ -164,6 +201,35 @@
 .alignEnd {
   text-align: right;
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   A narrow column keeps its own edge
+   ---------------------------------------------------------------------------
+
+   The companion to `table-layout: fixed`. Every label and value in this grid is
+   `white-space: nowrap`, and a fixed column narrower than its content lets that
+   content paint over the column rule to its right. So the cell clips at its own
+   edge, and the two single-run values ellipsise inside it — a cut word says
+   "there is more here", a value lying across the next column says nothing.
+
+   Inert in the pane: with `table-layout: auto` the columns are content-sized,
+   so no cell ever overflows and no rule here has anything to do. The focus
+   rings clear it too — both sit inside their cell's padding, which is where
+   `overflow` clips.
+   --------------------------------------------------------------------------- */
+
+.table thead th,
+.table tbody td {
+  overflow: hidden;
+}
+
+/* `min-width: 0` is what lets a flex child shrink far enough to ellipsise. */
+.statusLabel,
+.statusSub {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ---------------------------------------------------------------------------

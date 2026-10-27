@@ -1,0 +1,302 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#agreements".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 398-410, 482-665
+~		396 container General Legal Request by DocuSign User Rename
+~			397 button Back
++			398 button Follow
++			399 button Share
++			400 heading General Legal Request by DocuSign User Rename, Value: 1
++				401 text General Legal Request by DocuSign User Rename
++			402 text New
++			403 tab group Tabs
++				404 tab (selected, settable, boolean) Overview, Value: 1
++				405 tab (selectable, settable, boolean) Details, Value: 0
++				406 tab (selectable, settable, boolean) Documents, Value: 0
++				407 tab (selectable, settable, boolean) Approvals, Value: 0
++				408 tab (selectable, settable, boolean) Envelopes, Value: 0
++			409 container Overview
++				410 heading Activity Feed, Value: 2
++					411 text Activity Feed
++				412 pop up button All activity
++				413 button Send Message
++				414 text 6/3/2026
++				415 text DU
++				416 container
++					417 text DocuSign User  created this request
++				418 text 07:16
++				419 button Chat with request
++				420 text Information
++				421 button Edit request information
++				422 text Request ID
++				423 text REQ-0006
++				424 text Status
++				425 text New
++				426 text Request type
++				427 text General Request
++				428 text Submitter
++				429 text DU
++				430 text DocuSign User
++				431 text Owner
++				432 text —
++				433 text Created
++				434 text 6/3/2026
++				435 button Delete Request
+The focused UI element is 397 button Back
+
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#agreements".
+1 AXWebArea Protolab, URL: localhost:5173/#agreements
+	2 container
+		396 container
+			397 container
+				398 button App switcher
+				399 image DocuSign
+				400 link Description: Home, Value: localhost:5173/#
+				401 link Description: Agreements, Value: localhost:5173/#
+				402 link Description: Templates, Value: localhost:5173/#
+				403 link Description: Automations, Value: localhost:5173/#
+				404 link Description: Insights, Value: localhost:5173/#
+				405 link Description: Admin, Value: localhost:5173/#
+				406 button Search
+				407 button Notifications
+				408 button Tasks
+				409 button Help
+				410 button User menu
+			411 container
+				412 pop up button (collapsed) Start, Secondary Actions: Expand
+				413 content list
+					414 button All Agreements
+					415 button Drafts
+					416 button In Progress
+					417 button Completed
+					418 button Deleted
+				419 content list
+					420 container
+						421 button Folders
+						422 button More options for Folders
+				423 content list
+					424 button Parties
+					425 button Requests
+						426 text Requests
+					427 button Signatories
+					428 button Workflows New
+						429 text Workflows
+						430 text New
+					431 button Workspaces
+					432 button PowerForms
+					433 button Bulk Send
+				434 button Unlock navigation sidebar
+			435 container
+				436 heading Requests, Value: 1
+					437 text Requests
+				438 button Create Request
+			439 combo box (collapsed, settable) Secondary Actions: Expand
+			440 button Bookmarks
+			441 text Status Type: Open
+			442 button Remove Status Type: Open
+			443 pop up button Created At
+			444 pop up button Due Date
+			445 pop up button Last Activity At
+			446 pop up button Owner
+			447 button All Filters
+			448 table
+				449 row
+					450 cell
+						451 text Title
+					452 cell
+						453 text Status
+					454 cell
+						455 text Last Activity At
+					456 cell
+						457 text Due Date
+					458 cell
+						459 text Submitter
+					460 cell
+						461 text Owner
+					462 cell
+						463 button Customize columns
+				464 row
+					465 cell
+						466 link Description: [Example] General Legal Request by DocuSign User Rename, Value: localhost:5173/#
+						467 text REQ-0006
+					468 cell
+						469 text New
+					470 cell
+						471 text 6/3/2026 07:16
+					472 cell
+						473 text —
+					474 cell
+						475 text DU
+						476 text DocuSign User
+						477 text navigator_test_admin@dsxtr.com
+					478 cell
+						479 text Unassigned
+				480 row
+					481 cell
+						482 link Description: [Example] General Legal Request by DocuSign User JR, Value: localhost:5173/#
+						483 text REQ-0007
+					484 cell
+						485 text New
+					486 cell
+						487 text 26/2/2026 21:31
+					488 cell
+						489 text —
+					490 cell
+						491 text DU
+						492 text DocuSign User
+						493 text navigator_test_admin@dsxtr.com
+					494 cell
+						495 text Unassigned
+				496 row
+					497 cell
+						498 link Description: [Example] General Legal Request by DocuSign User, Value: localhost:5173/#
+						499 text REQ-0005
+					500 cell
+						501 text New
+					502 cell
+						503 text 9/2/2026 19:19
+					504 cell
+						505 text —
+					506 cell
+						507 text DU
+						508 text DocuSign User
+						509 text navigator_test_admin@dsxtr.com
+					510 cell
+						511 text Unassigned
+				512 row
+					513 cell
+						514 link Description: [Example] NDA Request by DocuSign User, Value: localhost:5173/#
+						515 text REQ-0004
+					516 cell
+						517 text New
+					518 cell
+						519 text 18/12/2025 23:10
+					520 cell
+						521 text —
+					522 cell
+						523 text DU
+						524 text DocuSign User
+						525 text navigator_test_admin@dsxtr.com
+					526 cell
+						527 text Unassigned
+				528 row
+					529 cell
+						530 link Description: [Example] General Legal Request by DocuSign User, Value: localhost:5173/#
+						531 text REQ-0003
+					532 cell
+						533 text New
+					534 cell
+						535 text 18/12/2025 21:55
+					536 cell
+						537 text —
+					538 cell
+						539 text DU
+						540 text DocuSign User
+						541 text navigator_test_admin@dsxtr.com
+					542 cell
+						543 text Unassigned
+				544 row
+					545 cell
+						546 link Description: [Example] NDA Request by DocuSign User, Value: localhost:5173/#
+						547 text REQ-0002
+					548 cell
+						549 text New
+					550 cell
+						551 text 15/11/2025 21:25
+					552 cell
+						553 text —
+					554 cell
+						555 text DU
+						556 text DocuSign User
+						557 text navigator_test_admin@dsxtr.com
+					558 cell
+						559 text Unassigned
+				560 row
+					561 cell
+						562 link Description: [Example] NDA Request by DocuSign User, Value: localhost:5173/#
+						563 text REQ-0001
+					564 cell
+						565 text New
+					566 cell
+						567 text 23/10/2025 18:35
+					568 cell
+						569 text —
+					570 cell
+						571 text DU
+						572 text DocuSign User
+						573 text navigator_test_admin@dsxtr.com
+					574 cell
+						575 text Unassigned
+			576 text Items per page
+			577 container
+				578 pop up button (collapsed, settable) Items per page, Value: 10 / Page, Secondary Actions: Expand
+					579 menu
+						580 5 / Page
+						581 (selected) 10 / Page
+						582 25 / Page
+						583 50 / Page
+			584 text 1 - 7  of  7
+			585 button (disabled) Previous page
+			586 button (disabled) Next page
+			587 container
+				588 text English (US) |
+				589 link Description: Contact Us, Value: support.docusign.com/contactSupport
+				590 link Description: Terms of Use, Value: docusign.com/legal/terms-and-conditions
+				591 link Description: Privacy, Value: docusign.com/privacy
+				592 link Description: Intellectual Property, Value: docusign.com/ip
+				593 link Description: Trust, Value: docusign.com/trust
+				594 text Version: 1.13043 · Copyright © 2026 Docusign, Inc. All rights reserved.
+		343 button Help: Start feedback mode, v3.0.2 Switch to light mode Output Detail Standard React Components Hide Until Restart Marker Color Indigo Blue Cyan Green Yellow Orange Red Clear on copy/send Block page interactions
+			344 button
+				345 image
+			346 button
+				347 image
+			348 button
+				349 image
+			350 button
+				351 image
+			352 container
+				353 link agentation.com/
+				354 text v 3.0.2
+				355 button Switch to light mode
+					356 image
+				357 text Output Detail
+				358 image
+				359 button Standard
+				360 text React Components
+				361 image
+				362 checkbox (settable, integer) 1
+				363 text Hide Until Restart
+				364 image
+				365 checkbox (settable, integer) 0
+				366 text Marker Color
+				367 button Indigo
+				368 button Blue
+				369 button Cyan
+				370 button Green
+				371 button Yellow
+				372 button Orange
+				373 button Red
+				374 checkbox (settable, integer) Description: Clear on copy/send, Value: 0
+				375 image
+				376 image
+				377 checkbox (settable, integer) Description: Block page interactions, Value: 1
+				378 image
+				379 button Manage MCP & Webhooks
+					380 text Manage MCP & Webhooks
+					381 image
+				382 button Manage MCP & Webhooks
+					383 image
+					384 text Manage MCP & Webhooks
+				385 text MCP Connection
+				386 image
+				387 container
+					388 text MCP connection allows agents to receive and act on annotations.
+					389 link Description: Learn more, Value: agentation.dev/mcp
+				390 text Webhooks
+				391 image
+				392 checkbox (disabled, settable, integer) Description: Auto-Send, Value: 1, ID: agentation-auto-send
+				393 text The webhook URL will receive live annotation changes and annotation data.
+				394 text entry area (settable)
+		395 image
+
+The focused UI element is 466 link Description: [Example] General Legal Request by DocuSign User Rename, URL: localhost:5173/#

@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "scope": "Every source archive member matches the recorded SHA256; AI subset members match provenance output hashes; generated ZIP runtime source matches the final bundle and version.",
+  "counts": {
+    "ink": 1083,
+    "ai": 158,
+    "aiUsedSet": 96,
+    "generatedRuntimeFiles": 957
+  }
+}

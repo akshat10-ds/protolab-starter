@@ -1,0 +1,370 @@
+{
+  "scope": "Runtime .tsx/.css only; excludes generated barrels, docs, and Code Connect templates",
+  "differentSharedFiles": [
+    {
+      "path": "1-tokens/tokens.css",
+      "starterSha256": "c1baea8680955728e96cf7fb075f1562dbad49e7ca9e5a1becb644bfee82375a",
+      "upstreamSha256": "25f094630934bca9dbc889455f23ef359596faaf3ade5bde7c36ac1876ba0da8"
+    },
+    {
+      "path": "4-composites/TaskCard/TaskCard.module.css",
+      "starterSha256": "051dadefc5680c0639a1ce52caedc59e5f9d6b782975c2cf3df807dcea36fa9d",
+      "upstreamSha256": "80a2b2d2788e1711fb63986892e82f96ceafa5f9437d63ee9822c97b3a9e58e4"
+    },
+    {
+      "path": "4-composites/Tabs/Tabs.module.css",
+      "starterSha256": "1bb037f29d0a47a09ea0e52c574363335d90e413fb57788ce9c2035879a02794",
+      "upstreamSha256": "08729fa903a8533d8add52577b9006d105badabbca56edcec774762718279921"
+    },
+    {
+      "path": "4-composites/FileUpload/FileUpload.module.css",
+      "starterSha256": "b680b0e3e7af4e6eab47b595443989efb82d0a47298b03dd5e21d2a2a57455cf",
+      "upstreamSha256": "e312681e63e6c5336314d760cc152bd1759f4ac90ad7765613f6b10cf07d6fc0"
+    },
+    {
+      "path": "4-composites/Dropdown/Dropdown.module.css",
+      "starterSha256": "c24cf79bb9a65ace78e272685baa1bab3ffa05004048d6ebd8117a17eef85e86",
+      "upstreamSha256": "70d8bbb669ac69a072c56b41b2eb3f33e8d4daee31ec4bfb50a1085edb6deaa4"
+    },
+    {
+      "path": "4-composites/Dropdown/Dropdown.tsx",
+      "starterSha256": "ea519f53577a2954761674c74f2750233cac3fbce6e5c4a1b78d969ec9115faa",
+      "upstreamSha256": "ee0209d8da75ec2a9a2ad5a2e25fe53500fe4176bb5ca173c5c311651f0e8b9b"
+    },
+    {
+      "path": "4-composites/Drawer/Drawer.module.css",
+      "starterSha256": "49538147afe1094bd32576de7eb61e1337a104384f89c2fbe9e179ee1cc0cbad",
+      "upstreamSha256": "ba798f5f08bd6d0ea10c4400dca36f58fdc596457b67ab65638591282630e0c9"
+    },
+    {
+      "path": "4-composites/Pagination/Pagination.module.css",
+      "starterSha256": "65028fcfda9fb88520735a531682190a8ff67a3c1a50d98ff79ee26fe8fc6ffd",
+      "upstreamSha256": "e872d7d991df8d81a8071bd13b4aefe9f0daa005ad295acd2b3c9f53469314f1"
+    },
+    {
+      "path": "4-composites/AIBadge/AIBadge.tsx",
+      "starterSha256": "6b6172192aa28ea8bb8910370e12cc8a6ae974cb76956ef271cb2321ffd8dc93",
+      "upstreamSha256": "91fa84f25325e36d7fe347da82e1939fecae89c8eecda2bb77c455a5b23e1a2e"
+    },
+    {
+      "path": "4-composites/AIBadge/AIBadge.module.css",
+      "starterSha256": "db523e3e049090bd61bbadb8e5b8ea6fd9002204aeb2f576f80a803436cfc2b3",
+      "upstreamSha256": "c72d8b7a4a44fbf2a0b61cff52d5af607e304da70d8316cdff24d4bb22f6dd47"
+    },
+    {
+      "path": "4-composites/FilterTag/FilterTag.module.css",
+      "starterSha256": "14409e7063313cf0f11984e713ae6d614ff7f8d9ec87d3593fcbc58b35ebf42e",
+      "upstreamSha256": "aacceddfd716ca369f54ebc178a06b0b05a90168afdf5f9ab4266f41d1cabb39"
+    },
+    {
+      "path": "4-composites/Alert/Alert.module.css",
+      "starterSha256": "fa73785bc5cbf1ebb3214a29d16629ed92e20e8643df412919dd43e46000acd9",
+      "upstreamSha256": "160fa385569533177db042f6aaf011df3cd9c26d3442862a1f406bb73339ab6b"
+    },
+    {
+      "path": "4-composites/Accordion/Accordion.module.css",
+      "starterSha256": "9839a1c174cde4f3bc3e09ef417b7d5a0d1c9468e96105d8ef278ed163d5dc47",
+      "upstreamSha256": "7ee51ece11b782ebeb8df64e9a83a74ff12a6108cb1f78eaf289350dfe95be71"
+    },
+    {
+      "path": "4-composites/DatePicker/DatePicker.module.css",
+      "starterSha256": "b0754d582ed059ebe40b2b8d26a5542df58ef6a26a05491f312e97f29be59322",
+      "upstreamSha256": "ac95c778d236fa7dc14c8f8a44bd556e6b034f384bc50ec172ddddf02f6c2158"
+    },
+    {
+      "path": "4-composites/Chip/Chip.module.css",
+      "starterSha256": "1e259583d1ea236ee8280ff6fea6506820c93ecf774e4a11cab0ea0b8163d683",
+      "upstreamSha256": "8a7bec1de72496555a80df16b942ea5e3aede8ed2e008f90c1364766b80d43db"
+    },
+    {
+      "path": "4-composites/Stepper/Stepper.module.css",
+      "starterSha256": "a43fa3b354c7d1f9749598a5b05e8b02204b0c2eb8a29458ee78b7aeb7d3a38c",
+      "upstreamSha256": "7867d9eff6af660d9113f262cfb6c4d88b8a295520cd79efaaf6469a8d482f19"
+    },
+    {
+      "path": "4-composites/Stepper/Stepper.tsx",
+      "starterSha256": "54065c98a6d81fcf79e23c8913ff2bfa97d011baf13b026015cb5f9d0fd74c1c",
+      "upstreamSha256": "980f8d8f54ec156e30a14d191f757905445a402670cef5826e2471d717f8b0c9"
+    },
+    {
+      "path": "4-composites/ComboBox/ComboBox.module.css",
+      "starterSha256": "dcf3d22272d6a245045ab1244ff7acf1e04faa76a943dab432de69159b48bea7",
+      "upstreamSha256": "729e131b3ee4e0e577fa83d8f041768a4b1a4893f709d8fbaa4fa91541f5fb13"
+    },
+    {
+      "path": "4-composites/Callout/Callout.module.css",
+      "starterSha256": "73a45e9c2bb6151d8464e5b3da3684f6aec710601835788f3728f7e39c239f84",
+      "upstreamSha256": "db442b366c231afc242d328c7e659c03e12fcdb62a256e9d9f7bad034389906f"
+    },
+    {
+      "path": "4-composites/Popover/Popover.module.css",
+      "starterSha256": "d3a7a5ce6ab2d22e3bc5ce622d8827440e710ec0c102f802430ff252c3d3e617",
+      "upstreamSha256": "ae5c0529d89ed62bd5cee61d775b63273386006c93792c5007ae42d7bef7acfb"
+    },
+    {
+      "path": "4-composites/SearchInput/SearchInput.module.css",
+      "starterSha256": "1b01de4d764aa1421ab838fe783f4b58ce8fd483ca77d5ea1cc4077fd63937df",
+      "upstreamSha256": "f2c378381d3c2436e2b8243624641a8a0c99301ebca9ed60ac927e31962a81b2"
+    },
+    {
+      "path": "4-composites/ComboButton/ComboButton.module.css",
+      "starterSha256": "6698610a1bbaa33ae8a87af84b229b4dfa11b4baf2fdff405efff72284778ee9",
+      "upstreamSha256": "f85d15294c80ffdd42f2ad01e0269933ec4652ad15b9ccfc185e7b899cb86ecc"
+    },
+    {
+      "path": "4-composites/Table/TableColumnControl.module.css",
+      "starterSha256": "09ba743754964d77fbfabf6da3f5f22baa55276fec996bb5951e3e9d6aed379f",
+      "upstreamSha256": "e02764be0e422f4d47ab2201508a7d997da1ef54d51db5535386decef7700da5"
+    },
+    {
+      "path": "4-composites/Table/Table.module.css",
+      "starterSha256": "b84f0bd24a3ee22023592244596f8307fc2bca9e903ff07fb07bf649229c8264",
+      "upstreamSha256": "20b26b4e10cd21e9122554df4e2026997bd30d54faa0dc8aa77832d81f8a50c1"
+    },
+    {
+      "path": "4-composites/List/List.module.css",
+      "starterSha256": "d1487ecd7f70ee996cbe29bebdbf0dd25ad0f2a5cd1b37766bd638fe36dc3652",
+      "upstreamSha256": "fe3872d7bba9c3e0425e3f5317c32f01f83bd8bff6ac2cac2c1c42ee5eb1ee86"
+    },
+    {
+      "path": "4-composites/Breadcrumb/Breadcrumb.module.css",
+      "starterSha256": "7cdf518ef99c3dbca2b57dce5e55170705258c75f018d449be7f913b13b0c56a",
+      "upstreamSha256": "273b4cd52bafe8def2de31d1699afea06b3e3037bf5fd435aac3e73167186011"
+    },
+    {
+      "path": "4-composites/Modal/Modal.module.css",
+      "starterSha256": "f3072e8caf43c099fd9f8b2f705fd27ebfcf825b76f0e14a19adf16a02ce34f4",
+      "upstreamSha256": "711057bd09ea2f23f9a27039d17f3d0ddc642a617e49584c0fef98d36b9623a8"
+    },
+    {
+      "path": "4-composites/FileInput/FileInput.tsx",
+      "starterSha256": "b9dbe6e71bd0c1bb3946c007c0d9a230edaef3a132358b278aea17f8a069b6b7",
+      "upstreamSha256": "1aa8feb539fef4e086cb01f00ccc55262fa6538c1a24fd960dd04fb8fbfad192"
+    },
+    {
+      "path": "4-composites/FileInput/FileInput.module.css",
+      "starterSha256": "b749a60ed9df15a4d039db3208ef768254b06a30bd187f64863eb1eef5fe9aad",
+      "upstreamSha256": "2a6d2706898f09ed48eb8373fb55fdc9b822d8d2ea6409d5b4b2dc2c6adaf1cd"
+    },
+    {
+      "path": "4-composites/Banner/Banner.module.css",
+      "starterSha256": "e09044c57fca9ba09976def8a4d5117334a2b261707a0b69d9f6738b3e377577",
+      "upstreamSha256": "5156c0244437fb4b5589afdf92154419206604bb6334d91efd7ea53aa4edc66f"
+    },
+    {
+      "path": "6-layouts/DocuSignShell/DocuSignShell.module.css",
+      "starterSha256": "6b761f4c318e8943dcc4475ce74306f229718b8ac0721d4f02922bcbf9b02d12",
+      "upstreamSha256": "d08bad85d43c584f6f43ba9787d6acf70f04e90880f4b5c842f1b337156f4081"
+    },
+    {
+      "path": "5-patterns/FilterBar/FilterBar.module.css",
+      "starterSha256": "5c82bca546f3c907ff255ee790b15f9c46410944318d2846a381c9ae50112f1e",
+      "upstreamSha256": "34274a2781b13e82d67328b3381f6da25239cbf82ab8478e213d4323bb5e5b8b"
+    },
+    {
+      "path": "5-patterns/FilterBar/FilterBar.tsx",
+      "starterSha256": "7630339f2c3023a5cc7ba7fb4069c67e812d76838ac575bb6ef2c6cb4974f071",
+      "upstreamSha256": "66cbe26654e62eeff0dd06246ae60fd8e8833b5a5ed9b26b2fa19fb9be4a6fba"
+    },
+    {
+      "path": "5-patterns/AIChat/AIChat.module.css",
+      "starterSha256": "c38a68d201e34bae027fd3a12a6246883325836b8fa439ced296e1e00a84f301",
+      "upstreamSha256": "30ac2c871f7b4cec78390a3a16c8deef880752c804916d025670fe520dc198c1"
+    },
+    {
+      "path": "5-patterns/GlobalNav/GlobalNav.tsx",
+      "starterSha256": "d84397cb76df3d46378c8f621f61bae671408d4a68f0608021d900d813acc300",
+      "upstreamSha256": "ea4bfdadf43268fcde781ccd21081f501ba6a72b85ca71e82e775b1ba94e53fb"
+    },
+    {
+      "path": "5-patterns/GlobalNav/GlobalNav.module.css",
+      "starterSha256": "27ee7ba578a6da5d9a880db2b40817599f6d546058f6ed8a1deb93cf94aa3975",
+      "upstreamSha256": "4595b2a9591d969fdb2f85cb858277b12f5bd8687960a5cb39d83660893557ac"
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentCanvas.module.css",
+      "starterSha256": "134d27053ebed0576a955f2350d65ab85270b6764002f5f4a8888ba1ed65acf3",
+      "upstreamSha256": "210f99de167d2144bcfff693640566c72584586620a33f846c705dcbe1f8b1f2"
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentActionCard.module.css",
+      "starterSha256": "3b78b5d0c9aec52e7abead7f797244f99f2a84a069d53fc97d6214dbd645532c",
+      "upstreamSha256": "f7a87e761402792b4eeb500762104635dc58fe1751bb8f8042ba0ddad642fefa"
+    },
+    {
+      "path": "5-patterns/AgentPanel/ThinkingSteps.module.css",
+      "starterSha256": "65b66503fc58696aa2dfebb0d351a2316eda40ba84283050b6f465ea77c377f2",
+      "upstreamSha256": "5c18f51107e0601fa38176bd67ae5071a649901039e812784233863493aa7180"
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentPanel.module.css",
+      "starterSha256": "992e3416f4dc31d5b28848e90debd536f0482c0d885c7451255ef66917c050d9",
+      "upstreamSha256": "2083d94e57e5306e9a2f4344d0a0a5f6aeb45a108307afc65f0348ecc74658fe"
+    },
+    {
+      "path": "5-patterns/LocalNav/LocalNav.module.css",
+      "starterSha256": "e0b95cef2a3ca0264e27a7388b1f954d2172044bda8a3fcfe946a9b15481c04d",
+      "upstreamSha256": "a8479f4bf956469245ea920522cd9a8b71903faf0c62eb22908e9b2f8804a535"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableActionBar.module.css",
+      "starterSha256": "941490d26945b7fdf5fa04ad5e643b7fd7a5e41153ef680e725fcd672214b761",
+      "upstreamSha256": "89687e4bfa9ec59a27ba8a521020756a7e0ce07208cb6c1cb06f377ca2ea14d9"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTable.tsx",
+      "starterSha256": "4f40a6d6fcae33009d2c0d19ccd1c6db418530b736906049dda758888dda3c60",
+      "upstreamSha256": "a71cef45b9eb55ae657ad490f23f4ebc600ee4b350ff2a7eda54f940a57929a5"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableColumnControl.module.css",
+      "starterSha256": "4308ed6966fce3aa16523f95d44a9963a1b626a029bce3ea09493a6a2701cd1f",
+      "upstreamSha256": "d1d6ae3c60dd031902b862f5ea0726ce41bbb55ccadddbb4554eed5d4d6c1aba"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableRow.tsx",
+      "starterSha256": "daadfeae99a7c12f013e6ad696841ae3943dd6a9331ea7bc7d44e854f47cd6dc",
+      "upstreamSha256": "841ef90a0f25a0b195a2ea1b01188a90b6e3d2090e6fdf1f7da099b03e6259ed"
+    },
+    {
+      "path": "5-patterns/DataTable/DataTable.module.css",
+      "starterSha256": "c26df874847d13efa36f0e7e2b18603dd380bfb7d63f59df000319fb5d27dc47",
+      "upstreamSha256": "4085db9ca66ed807be48a712e1e274a2a6c469f53f1c5aa1a624164f10b07028"
+    },
+    {
+      "path": "3-primitives/Tooltip/Tooltip.module.css",
+      "starterSha256": "23d330e0244359f023bd6e27acd2232885a25b9ec64f75fbb91a6634e87654fe",
+      "upstreamSha256": "bc9ce2db17e7c1bcda89b6f2ddeeff616ed020d2c5a1ef0a5635a8bb18f3b676"
+    },
+    {
+      "path": "3-primitives/Radio/Radio.module.css",
+      "starterSha256": "02924aae7a2cf8b4c19d939a688318183ff78a2db8201125b3c663438edae3ec",
+      "upstreamSha256": "63e8a0d540e0871853dc83d5b9e57898cf36fd4b3e883801ad5d1db2fb1c568e"
+    },
+    {
+      "path": "3-primitives/Card/Card.module.css",
+      "starterSha256": "3bdf680c0d74860a88e7b34611f2cefff426dd7e2ea75f7d925355348815cbd7",
+      "upstreamSha256": "49c8ab1ccf29a7c1eba57761c6bb2827a99d39ff3fe26af7a84e934792ba4421"
+    },
+    {
+      "path": "3-primitives/Input/Input.module.css",
+      "starterSha256": "01afe38219060805669a9606f9b551543b11d34725cad491630072d095113a72",
+      "upstreamSha256": "fa43d4bcf7d440ce371475d0919b31ad228ef50a64313bc9ed641acfe6ed1fb0"
+    },
+    {
+      "path": "3-primitives/Skeleton/Skeleton.module.css",
+      "starterSha256": "3e27a48ebb55b7b54b26a743f214be59e25a720026b88e1579b33b50aafb6b04",
+      "upstreamSha256": "cea97536126d8bdb60fb81bd3a9f585f1da746bc8476ece6a0ff97b0fc0803d8"
+    },
+    {
+      "path": "3-primitives/Checkbox/Checkbox.module.css",
+      "starterSha256": "1d6cdcb80465dbbcf7a59b652150e34929b70f2412b6166b9613a6f540c747e2",
+      "upstreamSha256": "d4e1adf30ebf69a99b611dbe442b743ebde60c35db82b2061bf1186c40f9de5e"
+    },
+    {
+      "path": "3-primitives/AlertBadge/AlertBadge.module.css",
+      "starterSha256": "a87b37139788926ae0a342294154fa2eb8ddf7404b95388d299abc78fd784e15",
+      "upstreamSha256": "ec0bd14640b762b3c6e2cea089344d70e80f96a8015c6d8b96ace7eb344ec17c"
+    },
+    {
+      "path": "3-primitives/Slider/Slider.module.css",
+      "starterSha256": "2d239c65182cd3bd080de513cf5eed1f687e4d1d3fd13a2f90f121df845de010",
+      "upstreamSha256": "9ca025dce458af4854102d122c6fb61d59ce479cd6ba48fa168fdfac6d0b0bff"
+    },
+    {
+      "path": "3-primitives/Spinner/Spinner.module.css",
+      "starterSha256": "1ba9fc819fb0041fff7f38996f8a78830f2afec74840ff496fa79d85cad4584b",
+      "upstreamSha256": "a8e6017191ac5dfcc35e7bf11c34e165815a6cfdc86f041b112736f7ba973f1d"
+    },
+    {
+      "path": "3-primitives/Spinner/Spinner.tsx",
+      "starterSha256": "7aec97193a31728a3d8c845de1efacbef108237691f8448f3b2d1396f59e4981",
+      "upstreamSha256": "60c589053d734ba18e8aaf4889719c14d4a4cf90cfb9ba6f620c43a69a2ceff3"
+    },
+    {
+      "path": "3-primitives/ProgressBar/ProgressBar.module.css",
+      "starterSha256": "077bd110f4f40087dfd69d945726e3838e710ea37b61bce7d232017f7e1be426",
+      "upstreamSha256": "7c63c97daa2612b139343254c87bc6a1d16512ac1b03373d97f92bc6ff52adcb"
+    },
+    {
+      "path": "3-primitives/TextArea/TextArea.module.css",
+      "starterSha256": "db04a23f047bf77868a9ca166511a194ec99c5e93289eb0785ba0a46fe630f17",
+      "upstreamSha256": "b8eb5f03e356d17618e9729ee95281366ba2f12760f342f0bda9ec31b23bb8b1"
+    },
+    {
+      "path": "3-primitives/Button/Button.module.css",
+      "starterSha256": "802d5a0337439f34b2b60b69d34f83bd017feb7a52f2337503b5dbcc6ec92d5d",
+      "upstreamSha256": "6b7fafe46822cebca1ab2ce1d4a5537faec5ed2a9f4483f7e93a550c4481ea23"
+    },
+    {
+      "path": "3-primitives/Button/Button.tsx",
+      "starterSha256": "6bd03cad6795a7c26548a421c38a7843e6134dce6560b8918d21ab967b2b351d",
+      "upstreamSha256": "525377af7190e9227d87a5a37e941aedf20e2951e065539f0ee2716fb8a0743b"
+    },
+    {
+      "path": "3-primitives/Link/Link.module.css",
+      "starterSha256": "14ce01ae01cc672090fb3272570c3fb7630f0d3e73f58c8e21eeb96031a95f8d",
+      "upstreamSha256": "2bb81c5a327b1ad5cd1402b276496c7c7f96b01842ce46a880114b50847977fc"
+    },
+    {
+      "path": "3-primitives/Avatar/Avatar.module.css",
+      "starterSha256": "7fdd785b992b21a015a7a8184ffe3415c8badb63968ad19cea7c7fe0262b992f",
+      "upstreamSha256": "aa960784916d280750c7d08bba0fdedb2cc87bcb345b049cbf7069c049676047"
+    },
+    {
+      "path": "3-primitives/Avatar/AvatarGroup.module.css",
+      "starterSha256": "02be0e45fe172846a63bf4b3aac87a8dab426d817ce274bcf7d62fc362dd1d8f",
+      "upstreamSha256": "42d2c9b0df74e86017cba6c3f51d22e83221ad0fd9d37ba79433bdd373e04529"
+    },
+    {
+      "path": "3-primitives/Avatar/Avatar.tsx",
+      "starterSha256": "1b47e257ebb79a8706512f977f847c8fa4137eb4fa67cdb53f438c467b0ad5c6",
+      "upstreamSha256": "61ecfeeff61b5bda6ca3fb4808a9e34684adeae09f003cfe5d63e41978563773"
+    },
+    {
+      "path": "3-primitives/Typography/Typography.module.css",
+      "starterSha256": "e610183bc8062fb8af5afc8d1d4adf52d3d16f1257390892a8c1815af3065c14",
+      "upstreamSha256": "60019e509124588a1b0a686517c879bac5669df5b8acc73b09db5612b4f3d288"
+    },
+    {
+      "path": "3-primitives/Switch/Switch.module.css",
+      "starterSha256": "faee2c836282257397ab4b1fdd22e6fbb65609255181b4f44960424d7d956505",
+      "upstreamSha256": "3c6ae3f694eaa94c764b0311f19daa24db6aba5507909bd9b38e961e45e40a50"
+    },
+    {
+      "path": "3-primitives/IconButton/IconButton.module.css",
+      "starterSha256": "da6d0ef56c93f0302e649a1fea6d64c1bc6ed953f746fafd167b90b2edc9389c",
+      "upstreamSha256": "915d712307bedc8806312b3751d3ece8185837e933f1081602ff3f6af848d7fc"
+    },
+    {
+      "path": "3-primitives/Select/Select.module.css",
+      "starterSha256": "83c1c3264141f6a1672ffc58fb6dde7c8b99f4f86259f5c9c65af04b43196ff4",
+      "upstreamSha256": "ea0f008505a7ba15c66d70f85778f50e23cc2550035ab64f2775c29dfd4fd27e"
+    },
+    {
+      "path": "3-primitives/Icon/Icon.tsx",
+      "starterSha256": "83f19735f33f46a359f74554b1cac6d3c77dc76d95f5a252dc05a3267fe06a71",
+      "upstreamSha256": "eb44a1ee1e72ed0883cfaccf1dd6d26f3fdebb49df523bb802fb036cdb7a1899"
+    },
+    {
+      "path": "3-primitives/StatusLight/StatusLight.module.css",
+      "starterSha256": "18e86ec782696f5eeec3f006eee3c55a16bc31b2a65dafb2fd45d5fd0c11855b",
+      "upstreamSha256": "f6b24be06e59b83ce4b79f9a327e54aeca62f09fe589575e9daebc767bff2c3c"
+    },
+    {
+      "path": "3-primitives/Badge/Badge.module.css",
+      "starterSha256": "c6b882283e8523b98a0ab5bdbd7aeb4b5cba168eff966da4656c7a679849eecf",
+      "upstreamSha256": "9c28a9d0b249aedf105150022a42916360a7256b0cabb37cc6da8af8cf4b2ac9"
+    },
+    {
+      "path": "3-primitives/Badge/Badge.tsx",
+      "starterSha256": "064e8f21cabd90bbf8488c62702e2f7adc368e1186988cdaa972d65bda132e4c",
+      "upstreamSha256": "1e2f9943b95a37ad3725c9b87c935ae928edfb7a5286c1e8f4b81eddaa561d1b"
+    }
+  ],
+  "onlyInStarter": [
+    "4-composites/Timeline/Timeline.module.css",
+    "4-composites/Timeline/Timeline.tsx",
+    "3-primitives/BarChart/BarChart.tsx"
+  ]
+}

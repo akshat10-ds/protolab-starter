@@ -1,6 +1,5 @@
 /* Ink Design System - Timeline Component Styles */
 /* Ported from [ds-ui] Child/[INK] Timeline.Step (node 907:9961). */
-@import '../../1-tokens/tokens.css';
 
 .timeline {
   display: flex;
@@ -179,3 +178,14 @@
   align-items: flex-start;
   gap: var(--ink-spacing-150);
 }
+
+.subtleRail .segment { background-color: var(--ink-border-color-subtle); }
+.error .dot { background: var(--ink-icon-color-error); }
+.success .dot { background: var(--ink-icon-color-success); }
+.warning .dot { background: var(--ink-icon-color-warning); }
+
+.error .dotSlot, .success .dotSlot, .warning .dotSlot { height: var(--ink-spacing-300); }
+.error .segment, .success .segment, .warning .segment { background: var(--ink-bar-track-color-visited); }
+.error .statusIcon { color: var(--ink-icon-color-error); }
+.success .statusIcon { color: var(--ink-icon-color-success); }
+.warning .statusIcon { color: var(--ink-icon-color-warning); }

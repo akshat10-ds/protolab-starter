@@ -1,0 +1,14 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#home".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 528
+~				492 splitter Description: Resize panel, Value: 504
+~						527 text Copy In this demo I can summarize the agreements in context, brief you on a counterparty, compare vendors, and draft documents. Try one of these:
++						532 button Copy
++						533 text Copy
++						534 button Good response
++						535 text Good response
++						536 button Bad response
++						537 text Bad response Suggestions
++						538 button Summarize key terms
++						539 button Counterparty brief
+The focused UI element is 492 splitter Description: Resize panel, Value: 504

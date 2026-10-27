@@ -1,0 +1,1559 @@
+[
+  {
+    "component": "TaskCard",
+    "path": "src/design-system/4-composites/TaskCard/TaskCard.figma.ts",
+    "nodeId": "582:3894",
+    "targetStatus": "current-owner",
+    "propertyReads": []
+  },
+  {
+    "component": "Tabs",
+    "path": "src/design-system/4-composites/Tabs/Tabs.figma.ts",
+    "nodeId": "875:21503",
+    "targetStatus": "current-owner",
+    "propertyReads": []
+  },
+  {
+    "component": "FileUpload",
+    "path": "src/design-system/4-composites/FileUpload/FileUpload.figma.ts",
+    "nodeId": "846:7730",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 10,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasFormats?",
+        "line": 14,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getString",
+        "property": "formats",
+        "line": 15,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasMaxFileSize?",
+        "line": 16,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getString",
+        "property": "maxFileSize",
+        "line": 17,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Dropdown",
+    "path": "src/design-system/4-composites/Dropdown/Dropdown.figma.ts",
+    "nodeId": "11096:31227",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "glass",
+        "line": 10,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Pagination",
+    "path": "src/design-system/4-composites/Pagination/Pagination.figma.ts",
+    "nodeId": "512:17528",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "variant",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "hasPerPageControl",
+        "line": 12,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 13,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "FilterTag",
+    "path": "src/design-system/4-composites/FilterTag/FilterTag.figma.ts",
+    "nodeId": "1674:3949",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "label",
+        "line": 10,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "isActive",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "dismissible",
+        "line": 12,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "isDisabled",
+        "line": 13,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "\u2756 Show Trigger",
+        "line": 14,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Alert",
+    "path": "src/design-system/4-composites/Alert/Alert.figma.ts",
+    "nodeId": "123:919",
+    "targetStatus": "unresolved-target",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 12,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": null,
+        "status": "unresolved-target"
+      },
+      {
+        "method": "getString",
+        "property": "children",
+        "line": 20,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": null,
+        "status": "unresolved-target"
+      },
+      {
+        "method": "getBoolean",
+        "property": "action",
+        "line": 21,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": null,
+        "status": "unresolved-target"
+      },
+      {
+        "method": "getBoolean",
+        "property": "closeButton",
+        "line": 22,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": null,
+        "status": "unresolved-target"
+      }
+    ]
+  },
+  {
+    "component": "Accordion",
+    "path": "src/design-system/4-composites/Accordion/Accordion.figma.ts",
+    "nodeId": "9238:26557",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "border",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "DatePicker",
+    "path": "src/design-system/4-composites/DatePicker/DatePicker.figma.ts",
+    "nodeId": "28226:6401",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "error",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showFormattingInstructions",
+        "line": 15,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getString",
+        "property": "\u2756 Formatting Instructions",
+        "line": 16,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Chip",
+    "path": "src/design-system/4-composites/Chip/Chip.figma.ts",
+    "nodeId": "16004:4399",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 9,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 10,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "closeButton",
+        "line": 11,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "startElement",
+        "line": 14,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "SLOT",
+        "status": "type-mismatch"
+      }
+    ]
+  },
+  {
+    "component": "Stepper",
+    "path": "src/design-system/4-composites/Stepper/Stepper.figma.ts",
+    "nodeId": "851:8080",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "direction",
+        "line": 13,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "ComboBox",
+    "path": "src/design-system/4-composites/ComboBox/ComboBox.figma.ts",
+    "nodeId": "5517:2448",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "value",
+        "line": 14,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getString",
+        "property": "placeholder",
+        "line": 15,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showLabel",
+        "line": 16,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "inputHelp",
+        "line": 17,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 18,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "\u2756 Error",
+        "line": 19,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Callout",
+    "path": "src/design-system/4-composites/Callout/Callout.figma.ts",
+    "nodeId": "23:1062",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "width",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "alignment",
+        "line": 17,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "location",
+        "line": 22,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "glass",
+        "line": 28,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "closeButton",
+        "line": 33,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "enableArrow",
+        "line": 34,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "Image",
+        "line": 35,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "imagePosition",
+        "line": 36,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Popover",
+    "path": "src/design-system/4-composites/Popover/Popover.figma.ts",
+    "nodeId": null,
+    "targetStatus": "no-target",
+    "propertyReads": []
+  },
+  {
+    "component": "Table",
+    "path": "src/design-system/4-composites/Table/Table.figma.ts",
+    "nodeId": "33703:4948",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getBoolean",
+        "property": "\u2756 Show Selection Col",
+        "line": 11,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": null,
+        "status": "missing-property"
+      },
+      {
+        "method": "getEnum",
+        "property": "borderRule",
+        "line": 12,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "List",
+    "path": "src/design-system/4-composites/List/List.figma.ts",
+    "nodeId": "15330:36710",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 12,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasDescription?",
+        "line": 13,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getString",
+        "property": "description",
+        "line": 14,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "selected",
+        "line": 15,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 16,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "startElement",
+        "line": 19,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "SLOT",
+        "status": "type-mismatch"
+      },
+      {
+        "method": "getBoolean",
+        "property": "endElement",
+        "line": 27,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "SLOT",
+        "status": "type-mismatch"
+      }
+    ]
+  },
+  {
+    "component": "Breadcrumb",
+    "path": "src/design-system/4-composites/Breadcrumb/Breadcrumb.figma.ts",
+    "nodeId": "180:2159",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getBoolean",
+        "property": "\u2756 Root Icon",
+        "line": 12,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": null,
+        "status": "missing-property"
+      },
+      {
+        "method": "getBoolean",
+        "property": "\u2756 Show Current Page",
+        "line": 13,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": null,
+        "status": "missing-property"
+      },
+      {
+        "method": "getEnum",
+        "property": "\u2756 Overflow Menu",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Modal",
+    "path": "src/design-system/4-composites/Modal/Modal.figma.ts",
+    "nodeId": "589:2910",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "width",
+        "line": 8,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Banner",
+    "path": "src/design-system/4-composites/Banner/Banner.figma.ts",
+    "nodeId": "1070:8230",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "shape",
+        "line": 20,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "LineWrap?",
+        "line": 21,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "border",
+        "line": 22,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getString",
+        "property": "children",
+        "line": 23,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "action",
+        "line": 24,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "closeButton",
+        "line": 25,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "hasStartElement",
+        "line": 27,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Tooltip",
+    "path": "src/design-system/3-primitives/Tooltip/Tooltip.figma.ts",
+    "nodeId": "196:1439",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 9,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "location",
+        "line": 10,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "alignment",
+        "line": 16,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Radio",
+    "path": "src/design-system/3-primitives/Radio/Radio.figma.ts",
+    "nodeId": "274:4817",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "checked",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "HasError?",
+        "line": 15,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 16,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "ShowLabel?",
+        "line": 17,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasDescription?",
+        "line": 18,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Card",
+    "path": "src/design-system/3-primitives/Card/Card.figma.ts",
+    "nodeId": "12985:36285",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "backgroundFill",
+        "line": 8,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 13,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "noPadding",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "imagePosition",
+        "line": 15,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showImage",
+        "line": 21,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Input",
+    "path": "src/design-system/3-primitives/Input/Input.figma.ts",
+    "nodeId": "144:17002",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "value",
+        "line": 13,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "placeholder",
+        "line": 15,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "size",
+        "line": 17,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 18,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "readOnly",
+        "line": 19,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "HasError?",
+        "line": 20,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showLabel",
+        "line": 21,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasDescription?",
+        "line": 22,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Checkbox",
+    "path": "src/design-system/3-primitives/Checkbox/Checkbox.figma.ts",
+    "nodeId": "377:23064",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "checked",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "indeterminate",
+        "line": 12,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "\u2756 Error",
+        "line": 13,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showLabel",
+        "line": 15,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "\u2756 Show Error Message",
+        "line": 16,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "\u2756 Description",
+        "line": 17,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "startElement",
+        "line": 32,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "endElement",
+        "line": 40,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "AlertBadge",
+    "path": "src/design-system/3-primitives/AlertBadge/AlertBadge.figma.ts",
+    "nodeId": "4:409",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "value",
+        "line": 9,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 10,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "BadgeWidth",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Slider",
+    "path": "src/design-system/3-primitives/Slider/Slider.figma.ts",
+    "nodeId": "1108:6861",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getBoolean",
+        "property": "showLabel",
+        "line": 15,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "\u2756 Description",
+        "line": 16,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": null,
+        "status": "missing-property"
+      },
+      {
+        "method": "getBoolean",
+        "property": "startElement",
+        "line": 17,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "endElement",
+        "line": 18,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 19,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Spinner",
+    "path": "src/design-system/3-primitives/Spinner/Spinner.figma.ts",
+    "nodeId": "474:12179",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 10,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasText?",
+        "line": 11,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "size",
+        "line": 12,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 17,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "ProgressBar",
+    "path": "src/design-system/3-primitives/ProgressBar/ProgressBar.figma.ts",
+    "nodeId": "471:9459",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "label",
+        "line": 10,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getString",
+        "property": "content",
+        "line": 11,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasLabel?",
+        "line": 12,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasContent?",
+        "line": 13,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "\u2756 Variant",
+        "line": 15,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "TextArea",
+    "path": "src/design-system/3-primitives/TextArea/TextArea.figma.ts",
+    "nodeId": "261:2190",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "value",
+        "line": 14,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "placeholder",
+        "line": 15,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 16,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "readOnly",
+        "line": 17,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "HasError?",
+        "line": 18,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showLabel",
+        "line": 19,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasDescription?",
+        "line": 20,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "characterCount",
+        "line": 21,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Button",
+    "path": "src/design-system/3-primitives/Button/Button.figma.ts",
+    "nodeId": "10:557",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 7,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 8,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "size",
+        "line": 15,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 19,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "loading",
+        "line": 20,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "menuTrigger",
+        "line": 21,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "startElement",
+        "line": 24,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Link",
+    "path": "src/design-system/3-primitives/Link/Link.figma.ts",
+    "nodeId": "55:2626",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 9,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 10,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "size",
+        "line": 12,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "discrete",
+        "line": 13,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showIconForNewWindow",
+        "line": 15,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Avatar",
+    "path": "src/design-system/3-primitives/Avatar/Avatar.figma.ts",
+    "nodeId": "871:18543",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "size",
+        "line": 8,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "shape",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "colorIndex",
+        "line": 16,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "image",
+        "line": 29,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "initials",
+        "line": 30,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Switch",
+    "path": "src/design-system/3-primitives/Switch/Switch.figma.ts",
+    "nodeId": "171:3566",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "on",
+        "line": 9,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 10,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showLabel",
+        "line": 11,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasDescription?",
+        "line": 12,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "IconButton",
+    "path": "src/design-system/3-primitives/IconButton/IconButton.figma.ts",
+    "nodeId": "14:953",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "size",
+        "line": 18,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 19,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Select",
+    "path": "src/design-system/3-primitives/Select/Select.figma.ts",
+    "nodeId": "259:5197",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "value",
+        "line": 12,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "size",
+        "line": 14,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "disabled",
+        "line": 15,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "\u2756 Error",
+        "line": 16,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "showLabel",
+        "line": 17,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "\u2756 Description",
+        "line": 18,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "StatusLight",
+    "path": "src/design-system/3-primitives/StatusLight/StatusLight.figma.ts",
+    "nodeId": "166:2875",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 9,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "HasText?",
+        "line": 10,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "noFill",
+        "line": 17,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "opaque",
+        "line": 18,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  },
+  {
+    "component": "Badge",
+    "path": "src/design-system/3-primitives/Badge/Badge.figma.ts",
+    "nodeId": "83:2801",
+    "targetStatus": "current-owner",
+    "propertyReads": [
+      {
+        "method": "getString",
+        "property": "text",
+        "line": 9,
+        "expectedFigmaType": "TEXT",
+        "currentFigmaType": "TEXT",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getBoolean",
+        "property": "startElement",
+        "line": 10,
+        "expectedFigmaType": "BOOLEAN",
+        "currentFigmaType": "BOOLEAN",
+        "status": "type-aligned"
+      },
+      {
+        "method": "getEnum",
+        "property": "kind",
+        "line": 11,
+        "expectedFigmaType": "VARIANT",
+        "currentFigmaType": "VARIANT",
+        "status": "type-aligned"
+      }
+    ]
+  }
+]

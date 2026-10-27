@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import { Icon } from '../Icon';
+import { AlertBadge } from '../AlertBadge';
 import styles from './IconButton.module.css';
 
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,6 +10,8 @@ export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   variant?: 'primary' | 'brand' | 'secondary' | 'tertiary' | 'danger';
   /** Button size */
   size?: 'small' | 'medium';
+  /** Optional alert dot, or a numeric alert count. */
+  badge?: boolean | number;
   /** Disabled state */
   disabled?: boolean;
   /** Accessible label for the button */
@@ -22,6 +25,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       variant = 'tertiary',
       size = 'medium',
       disabled = false,
+      badge = false,
       className,
       ...props
     },
@@ -47,7 +51,8 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         disabled={disabled}
         {...props}
       >
-        <Icon name={icon} size={size === 'small' ? 'small' : 'medium'} />
+        <Icon name={icon} size={size === 'small' ? 20 : 24} />
+        {badge !== false && <span className={styles.badge}><AlertBadge dot={badge === true} value={typeof badge === 'number' ? badge : undefined} /></span>}
       </button>
     );
   }

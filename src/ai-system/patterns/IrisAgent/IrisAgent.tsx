@@ -2,7 +2,7 @@
  * IrisAgent — the full agent chat surface.
  *
  * Composes the decided pieces (ConversationLayout, MessageBubble, AgentThinking,
- * MarkdownRenderer, StreamingMarkdown, FeedbackActions, SuggestionChip,
+ * MarkdownRenderer, StreamingMarkdown, FeedbackActions, ZeroQueryActions,
  * ChatInput, IrisSidebar) into a complete conversational experience: cold state,
  * live turn, history rail, and a host-owned artifact surface.
  *
@@ -21,7 +21,7 @@
  * frozen). See README.md for what was dropped and why.
  */
 
-import React, { useState, useCallback, useRef, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useRef, useMemo, useEffect, useLayoutEffect } from 'react';
 import {
   Icon,
   IconButton,
@@ -34,8 +34,9 @@ import {
 } from '@ink';
 import type { DataTableColumn, DropdownItemProps } from '@ink';
 
-import { ChatInput } from '@ai/composites/ChatInput/ChatInput';
+import { ChatInput, isAgentCommandItem } from '@ai/composites/ChatInput/ChatInput';
 import type {
+  ChatInputAgentChip,
   ChatInputContextSource,
   ChatInputMentionItem,
 } from '@ai/composites/ChatInput/ChatInput';
@@ -47,8 +48,9 @@ import type {
 import { MarkdownRenderer } from '@ai/composites/MarkdownRenderer/MarkdownRenderer';
 import { StreamingMarkdown } from '@ai/composites/StreamingMarkdown/StreamingMarkdown';
 import { AgentThinking } from '@ai/composites/AgentThinking/AgentThinking';
+import { RunChip } from '@ai/composites/RunChip/RunChip';
 import { ConversationLayout } from '@ai/composites/ConversationLayout/ConversationLayout';
-import { ZeroQueryActions } from '@ai/composites/ZeroQueryActions/ZeroQueryActions';
+import { SUGGESTION_ICON, ZeroQueryActions } from '@ai/composites/ZeroQueryActions/ZeroQueryActions';
 import type {
   ZeroQueryActionItem,
   ZeroQueryPreview,
@@ -56,18 +58,21 @@ import type {
 import { HeaderMenu } from './HeaderMenu';
 import { MessageBubble } from '@ai/primitives/MessageBubble/MessageBubble';
 import { FeedbackActions } from '@ai/primitives/FeedbackActions/FeedbackActions';
-import { SuggestionChip } from '@ai/primitives/SuggestionChip/SuggestionChip';
 import type { Citation } from '@ai/primitives/CitationBadge/CitationBadge';
 import { IrisSidebar } from '@ai/patterns/IrisSidebar/IrisSidebar';
 import type { ConversationGroup, NavShortcut } from '@ai/patterns/IrisSidebar/IrisSidebar';
 import { useSmartScroll } from '@ai/hooks/useSmartScroll';
-import type { PanelArtifactState } from '@ai/hooks/usePanelMode';
+import type { PanelArtifactState, PanelHandleProps } from '@ai/hooks/usePanelMode';
 import { GetStarted } from '@ai/composites/GetStarted/GetStarted';
 import { InsightList } from '@ai/composites/InsightList/InsightList';
 import type { Insight } from '@ai/composites/InsightList/InsightList';
+import { CollapsedHandoff } from '@ai/composites/CollapsedHandoff/CollapsedHandoff';
 import { AgreementSnapshot } from '@ai/composites/AgreementSnapshot/AgreementSnapshot';
 import type { AgreementSnapshotProps } from '@ai/composites/AgreementSnapshot/AgreementSnapshot';
 import { ArtifactDock } from '@ai/patterns/ArtifactViewer/ArtifactDock';
+import { PANE_SIZE, paneWidthFor } from '@ai/patterns/ArtifactViewer/artifactRenderers';
+import { ResizeHandle } from '@ai/patterns/PanelShell/ResizeHandle';
+import { usePanelResize } from '@ai/hooks/usePanelResize';
 import type {
   ArtifactActionHandler,
   ArtifactItem,
@@ -85,6 +90,7 @@ import type {
   SendMeta,
   SuggestionCategory,
 } from './types';
+import { dividerLabels } from './dateDividers';
 
 /*
  * Iris's own brand art, three files for three jobs. It ships WITH the pattern
@@ -133,6 +139,10 @@ const DEFAULT_PLACEHOLDER_HINTS = [
 ];
 
 const DEFAULT_DISCLAIMER = 'Responses are generated with AI and are not legal advice.';
+const DEFAULT_ACCEPT_FILES = '.pdf,application/pdf';
+
+/** Marks the header's agent menu so its own dismissal can tell inside from outside. */
+const AGENT_MENU_QA = 'iris-agent-menu';
 
 /**
  * The canonical `+` command menu (host-contract rule 6b). Ships as IrisAgent's
@@ -237,12 +247,23 @@ function CompleteOnMount({ onComplete }: { onComplete: () => void }) {
 // content and fixtures; it no longer supplies behaviour.
 // =============================================================================
 
-/** A step in the onboarding checklist. IrisAgent owns whether it is complete. */
+/**
+ * A step in the onboarding checklist. IrisAgent owns whether it is complete —
+ * except where only the host can know, which is what `complete` is for.
+ */
 export interface GetStartedStep {
   id: string;
   label: string;
   /** Glyph from the host's Ink snapshot. Without one the row loses its lead box. */
   icon?: string;
+  /**
+   * The step is already done, and the host knows it rather than the agent.
+   *
+   * "Add a source" is finished by having sources, not by pressing the row, and
+   * only the host can see that. Optional, and undefined leaves the agent's own
+   * record of what was pressed in charge — every existing host is unchanged.
+   */
+  complete?: boolean;
   /** The step asks something: IrisAgent sends this and marks the step done. */
   query?: string;
   /** The step opens a surface instead. Runs in place of a send. */
@@ -276,6 +297,31 @@ export interface IrisGetStarted {
    * only.
    */
   sequence?: boolean;
+  /**
+   * THE CHECKLIST SURVIVES ITS OWN USE. Akshat, 2026-09-01, on pressing a row
+   * and watching the whole list vanish with the cold state: *"I would have
+   * expected that it crossed out and then I can try something new or next
+   * after that?"* — his ruling: stay, with the used row struck.
+   *
+   * With `persist` the same card is drawn again under the last finished answer
+   * — the `chatSuffix` position, "where to go next" — with the used row done,
+   * the count advanced, and the remaining rows still pressable. Not the top of
+   * the thread: `send` pins each new turn to the top of the viewport, so a
+   * header would scroll out of view on the very press that marks it.
+   *
+   * Default false — every existing host keeps the checklist as cold state only.
+   */
+  persist?: boolean;
+  /**
+   * Reports the checklist's progress to the host: which steps are done, whether
+   * it was dismissed, and whether it is finished.
+   *
+   * The agent owns this state, so a host that wants to react to it — showing
+   * something only once a person has stopped being taught, for instance — has
+   * no other way to see it. Optional; a host that does not pass it is
+   * unchanged.
+   */
+  onProgress?: (state: { done: string[]; dismissed: boolean; complete: boolean }) => void;
   tryLabel?: string;
   dismissLabel?: string;
 }
@@ -328,6 +374,15 @@ export interface NavPageContext {
    * it — Agents, once you have switched — closes itself with this.
    */
   close: () => void;
+  /**
+   * Commit an agent row's slash token into the composer — the same channel the
+   * cold state's `agent` rows use, so a page and the cold state cannot disagree
+   * about what picking an agent does. Pass it to `NavPage.onAttach`.
+   *
+   * Shipping Iris invokes an agent per message: the token lands in the box and
+   * the user finishes the sentence. Nothing is sent and no identity changes.
+   */
+  attach: (preview: ZeroQueryPreview) => void;
 }
 
 export interface IrisAgentProps {
@@ -378,6 +433,16 @@ export interface IrisAgentProps {
   groundScheme?: 'flat' | 'step' | 'sandwich' | 'warm';
   /** Start with the history rail locked open. Defaults to true when `layout='sidebar'`. */
   initialSidebarLocked?: boolean;
+  /**
+   * Drop the content header band — the menu button, the identity and the header
+   * actions. Default false, so every surface draws it as it does today.
+   *
+   * For a host that already has a header of its own. In `single-column` the
+   * band sits directly under the host's, so two header rows stack and neither
+   * says who is speaking. With the band gone the history drawer loses its only
+   * trigger, and that is the point: the host lists the conversations itself.
+   */
+  hideContentHeader?: boolean;
 
   // ── Conversation (controlled) ───────────────────────────────────────────
   /** The turns to render. The consumer owns this array. */
@@ -390,8 +455,114 @@ export interface IrisAgentProps {
   isStreaming?: boolean;
   /** The streaming turn finished animating. Flip `isStreaming` off here. */
   onStreamingComplete?: (messageId: string) => void;
+  /**
+   * Which turns wear the Copy / Good / Bad row. Default undefined — every turn
+   * that qualifies today still wears it.
+   *
+   * Return false for a turn that is not an answer to rate: a scheduled agent's
+   * status post ("Ran the weekly three-way match. 214 invoices, 212 clean.")
+   * reports, it does not reply, and thumbs on it ask for a judgement nobody has.
+   */
+  showMessageActions?: (message: ChatMessage) => boolean;
+  /** Reveal message feedback on hover/focus; touch keeps it visible. Default always. */
+  feedbackVisibility?: 'always' | 'hover';
+  /** Follow incoming controlled messages while near the bottom. Default false. */
+  followLatestMessages?: boolean;
+  /**
+   * The reader's own turns wear a filled brand bubble, the way a messaging app
+   * marks your side of a thread.
+   *
+   * Akshat, 2026-09-03: *"for the imessage type things - can we maybe change
+   * the chat color to a blue so its more obvious?"* — a conversation shaped
+   * like a text thread with a colleague should not look like the same neutral
+   * grey as every other surface.
+   *
+   * It is the WHOLE CONVERSATION's setting, not a per-message one: a host turns
+   * it on for the threads that are text-thread-shaped and leaves Iris's own
+   * chats neutral, which is what makes the difference legible. Undefined is
+   * today's bubble, unchanged.
+   */
+  userBubbleTone?: 'brand';
+  /**
+   * A day boundary between two turns draws a centred date, the way a text
+   * thread says where yesterday ended.
+   *
+   * Akshat, 2026-09-03: *"let's add date dividers in the imessage style
+   * chat?"* — an agent conversation that runs for three weeks is twenty turns
+   * in one column, with nothing saying which of them happened the same
+   * afternoon.
+   *
+   * It reads `ChatMessage.timestamp`, which is optional and mostly unfilled: a
+   * turn without one joins the group above it rather than forcing a break, so
+   * a thread with no times drawn draws no dividers even with this on.
+   *
+   * The WHOLE CONVERSATION's setting, like `userBubbleTone` — a host turns it
+   * on for the threads that span days. Undefined is today's transcript,
+   * unchanged.
+   */
+  showDateDividers?: boolean;
+  /**
+   * EVERY NEW USER TURN TAKES THE TOP, not just the ones typed into the box.
+   *
+   * Akshat, 2026-08-24: *"every new message should be pinned to the top of the
+   * chat (think that's consistent behavior)."* The composer has pinned its own
+   * sends since `useSmartScroll` landed; what it could not see was a user turn
+   * the HOST appends — an action receipt, an accepted recommendation, anything
+   * that starts a thread without anyone typing. Those scrolled like ordinary
+   * content, so the same act looked like two different behaviours depending on
+   * where it came from. That inconsistency is the thing he named.
+   *
+   * **THE LAW.** Akshat, 2026-08-24: *"only on new threads / messages /
+   * accepting tasks should it jump to top — otherwise it keeps adding to same
+   * turn."* A pin marks a new moment; growth inside the turn she is already
+   * reading never moves the viewport.
+   *
+   * On: an appended user turn is scrolled so its top sits at the top of the
+   * stream's viewport, with the room below it for the answer to arrive into.
+   * **The `threadHeaderSlot` scrolls up out of view, and that is the point** —
+   * the new moment owns the viewport.
+   *
+   * Assistant turns never re-anchor: the answer streams in below the turn that
+   * asked for it, and only the next user turn moves the anchor again. Thread
+   * switches are untouched and still land at the bottom.
+   *
+   * Default false — off, every existing surface scrolls exactly as it did.
+   */
+  anchorNewMessageTop?: boolean;
+  /**
+   * CONTROLLED ANCHOR — the host names the turn, and no heuristic is consulted.
+   *
+   * The same law governs it — Akshat, 2026-08-24: *"only on new threads /
+   * messages / accepting tasks should it jump to top — otherwise it keeps
+   * adding to same turn."* This is how the host names one of those three
+   * moments when the array cannot.
+   *
+   * Set it to the id of a user turn present in `messages` and that turn is
+   * scrolled to the top of the stream's viewport. Set it again to a new id to
+   * move the anchor; setting the same id twice does nothing.
+   *
+   * **This exists because the heuristic could not know.** `anchorNewMessageTop`
+   * decides "is this an append or a thread switch" by asking whether the last
+   * anchor is still in `messages`. A FRESH THREAD's first user turn answers
+   * exactly like a thread switch — the previous anchor is gone in both cases —
+   * so the upload turn that opens a new thread sat mid-viewport with the card
+   * above it (Akshat, 2026-08-24, live). No test on the array can separate those
+   * two, because they are the same array shape; only the host knows which act it
+   * just performed. So it says so.
+   *
+   * The two are independent and compose: leave `anchorNewMessageTop` on for
+   * ordinary appends and set this for the moments the heuristic gets wrong. A
+   * host that drives every anchor explicitly can leave the flag off entirely.
+   */
+  anchorMessageId?: string;
 
   // ── Input ───────────────────────────────────────────────────────────────
+  /** Disable text entry and every send path while another input mode owns the conversation. */
+  composerDisabled?: boolean;
+  /** Hide the text composer when a host-owned input mode supplies its own controls. */
+  composerHidden?: boolean;
+  /** Host-owned voice entry in the empty composer. Omit for text-only behavior. */
+  onVoiceCall?: () => void;
   /** Controlled input text. Omit to let IrisAgent own it. */
   inputValue?: string;
   onInputChange?: (value: string) => void;
@@ -406,6 +577,22 @@ export interface IrisAgentProps {
    * also sent as a slash command automatically.
    */
   onCommandSelect?: (item: CommandContextItem | CommandToolChild) => void;
+  /**
+   * OPEN THE SOURCE PICKER. Pass it and `+ → Add from Navigator` stops being a
+   * `/add-from-navigator` token in the composer and opens the host's picker
+   * instead — the surface shipping Iris opens from the same menu item.
+   *
+   * The host owns the picker's open state, so this and the get-started
+   * checklist's "Add a source" row reach the same surface. Omit it and the
+   * item behaves exactly as it did: a slash token, nothing else.
+   */
+  onAddSources?: () => void;
+  /** Enable native file selection and file drop. The host validates and owns the attachments. */
+  onAttachFiles?: (files: File[]) => void;
+  /** Native picker filter. File drops are passed to the host for validation. Default PDF. */
+  acceptFiles?: string;
+  /** Host-owned attachment previews, forwarded to ChatInput in every layout. */
+  composerAttachments?: React.ReactNode;
   /** Items in the `@` mention picker. */
   mentionItems?: ChatInputMentionItem[];
   /** A mention was picked. Defaults to attaching it as the context pill. */
@@ -453,7 +640,20 @@ export interface IrisAgentProps {
   onFullscreen?: () => void;
 
   // ── Cold state ──────────────────────────────────────────────────────────
+  /**
+   * The cold state's first line. Pass an EMPTY STRING to render no greeting at
+   * all — for a surface that introduces itself. Omit it for the default.
+   */
   greeting?: string;
+  /**
+   * The line under the greeting. Pass an EMPTY STRING to render no subtitle,
+   * the same escape `greeting` has — for a surface whose composer already asks
+   * the question. Omit it for the default.
+   *
+   * Akshat, 2026-09-04: the procurement Chat cold state asked "What would you
+   * like to know?" 40px above a composer reading "Ask anything". Every element
+   * has one legible job, so the host drops the subtitle and keeps the greeting.
+   */
   greetingSubtitle?: string;
   /** Category tabs and the prompts underneath each. Omit to hide the tabs. */
   categories?: SuggestionCategory[];
@@ -504,6 +704,44 @@ export interface IrisAgentProps {
    */
   getStarted?: IrisGetStarted;
   coldStateHeaderSlot?: React.ReactNode;
+  /**
+   * The same place as {@link coldStateHeaderSlot}, but handed the chat's own
+   * `send`. A cold-state surface that RUNS something — a suggestion, an idea —
+   * needs the send the slot form cannot reach. Both render; the slot first.
+   *
+   * Additive and optional: a host that passes neither is unchanged.
+   */
+  coldStateHeaderRender?: (ctx: {
+    send: (text: string) => void;
+    /**
+     * The composer's current text, and a setter for it.
+     *
+     * Added so a cold-state surface can SHOW a question in the input before
+     * anybody commits to asking it (Akshat, 2026-09-01: *"when I hover over the
+     * spark next to the extraction, populate a prompt in the input"*). A
+     * suggestion you can read in the place it will be sent from is a different
+     * offer from one you have to press to find out.
+     *
+     * `draft` is here so the host can put back what a person had typed. A
+     * preview that eats a half-written message is worse than no preview.
+     */
+    draft: string;
+    setDraft: (text: string) => void;
+  }) => React.ReactNode;
+  /**
+   * ABOVE THE CONVERSATION, INSIDE ITS SCROLL — a node the host puts at the top
+   * of the message stream and keeps there.
+   *
+   * `coldStateHeaderSlot` is the cold state's; this is the thread's, and the two
+   * exist because a surface that stands over BOTH has to be mounted in both
+   * places. It renders as the first child of the scroll container, so a host
+   * that wants it pinned says `position: sticky` in its own CSS — this slot
+   * holds no opinion about stickiness, only about position in the stream.
+   *
+   * Added 2026-08-20 for the FINS loan progress card, which is the loan's
+   * header at the top of the thread and scrolls away with the history.
+   */
+  threadHeaderSlot?: React.ReactNode;
   coldStateSlot?: React.ReactNode;
   /**
    * Rendered at the foot of the cold-state content column — **below the
@@ -525,6 +763,38 @@ export interface IrisAgentProps {
    * another surface's brand there; pass `null` for no art at all.
    */
   coldBackdrop?: React.ReactNode;
+  /**
+   * Where the cold state sits in its region: `hero` parks it a fifth of the way
+   * down, `top` starts it at the top. Single-column / fullscreen only — that is
+   * the only layout with the 20vh rule.
+   *
+   * A cold state whose `coldStateSlot` carries a board of its own is a page, not
+   * a hero, and 20vh of air above the composer puts that board below the fold.
+   * Akshat, 2026-09-04: "have the chat at the top and then interesting insights
+   * etc below".
+   *
+   * Defaults to `hero`, so every host that says nothing keeps what it has.
+   */
+  coldStateAnchor?: 'hero' | 'top';
+  /**
+   * `workspace` centers the cold state with a flat composer and quiet discovery
+   * controls. Sidebar / single-column only; compact and conversations retain
+   * their normal presentation. `coldStateAnchor="top"` still takes precedence.
+   */
+  coldStatePresentation?: 'default' | 'workspace';
+  /**
+   * The measure of the cold state's content column. A number is px; a string is
+   * passed through. Single-column / fullscreen only, exactly like
+   * `coldStateAnchor`.
+   *
+   * A cold state that carries a two-column board needs more measure than one
+   * that carries a greeting and an input, and the layout's cap is set for the
+   * second. Akshat, 2026-09-04: "you can use a nicer two column layout".
+   *
+   * Defaults to the layout's own cap, so every host that says nothing keeps
+   * what it has.
+   */
+  coldStateWidth?: number | string;
   /**
    * The mark shown while Iris is working, in place of the loading skeleton.
    *
@@ -684,12 +954,14 @@ export interface IrisAgentProps {
    * The open nav page's name. `compact` only.
    *
    * The header names the surface: give it a title and the compact header becomes
-   * back arrow + that title, in the slot the wordmark sits in and at its type
-   * scale. The hamburger and the wordmark stand down, because the back arrow is
-   * the only way out a page needs.
+   * back arrow + hamburger + that title, the title in the slot the wordmark sits
+   * in and at its type scale. The wordmark stands down; the hamburger does not.
    *
    * Akshat, 2026-08-12: "we could just update the title in the hamburger to the
    * page so then we wouldn't need the hamburger and just keep the back buttons."
+   * Reversed 2026-08-24: "if you're in prompt library can we bring the hamburger
+   * between back button and the title?" — a page reached from the menu had no
+   * way back into it, so history was unreachable without leaving the page.
    *
    * The host owns it, the same way it owns `navPageSlot` — IrisAgent is handed a
    * node and cannot read a name out of it. Omit it and the header is unchanged.
@@ -717,6 +989,47 @@ export interface IrisAgentProps {
     onReplace?: () => void;
     replaceLabel?: string;
   };
+  /**
+   * THE STRIP SLOT ABOVE THE COMPOSER. There is exactly one, and
+   * `suggestedContext` borrows it with priority — when a suggestion is showing,
+   * this node is not drawn, and it comes back the moment the suggestion is added
+   * or dismissed. Two tucked strips would stack, and the tuck (one strip peeking
+   * out from behind one composer) is the whole grammar.
+   *
+   * Suggested Context wins because it expires with the message being typed. What
+   * goes here is standing — Akshat, 2026-08-19: once a chat is going, progress
+   * and recommendations persist as a lightweight stickied link above the
+   * composer, *"same as how we show suggested sources"*. It can wait a turn.
+   *
+   * `ComposerStrip` is the component that fits this slot.
+   */
+  composerStrip?: React.ReactNode;
+  /**
+   * THE COMPOSER ITSELF, WHILE THE AGENT IS ASKING. Akshat's HITL spec,
+   * 2026-08-19: the approval surface docks *into* the composer area rather than
+   * arriving as a thread bubble, because a pending decision must not scroll
+   * away and the user's hands are already there.
+   *
+   * What it displaces, exactly:
+   * - **The input.** While `ask` is non-null the ChatInput is not rendered. The
+   *   spec puts the surface inside the ChatInput region, and a live composer
+   *   beside a blocking question would offer two ways to answer it.
+   * - **The strip slot.** Both `suggestedContext` and `composerStrip` are
+   *   suppressed for the duration. My call, not the spec's: a standing strip
+   *   (progress, a recommendation) tucked behind a question the agent is
+   *   waiting on is noise against the one thing it wants. Both come back
+   *   untouched the moment `ask` goes away — neither is consumed.
+   * - **Nothing else.** The disclaimer stays pinned below, in every state.
+   *
+   * The consumer controls it end to end: it passes the questions in, gets the
+   * answers out of the component's own `onComplete`, and decides when to stop
+   * passing `ask`. `ComposerAsk` renders its submitted transcript in this same
+   * slot and keeps rendering it, so a host that wants the transcript to persist
+   * simply keeps the node mounted.
+   *
+   * Compact layout only — the same place `composerStrip` lives.
+   */
+  ask?: React.ReactNode;
   /**
    * "View all" on a section of the hamburger's full-page menu (frame
    * 123:24563). The targets are host pages (Prompt Library, Agents, a full
@@ -785,24 +1098,49 @@ export interface IrisAgentProps {
 // IrisAgent
 // =============================================================================
 
+/**
+ * `ChatMessage.timestamp`, as the short clock both meta rows draw.
+ *
+ * `new Date` because a host that seeds fixtures from JSON hands over a string,
+ * and a string has no `toLocaleTimeString`. `undefined` when the host set no
+ * time, which is every host today — both rows then draw what they draw now.
+ */
+const formatMessageTime = (t: ChatMessage['timestamp']) =>
+  t ? new Date(t).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) : undefined;
+
 export function IrisAgent({
   layout = 'sidebar',
   isFullscreen = false,
   groundScheme = 'flat',
   initialSidebarLocked,
+  hideContentHeader = false,
 
   messages,
+  anchorNewMessageTop = false,
+  anchorMessageId,
   onSendMessage,
   isLoading = false,
   isStreaming = false,
   onStreamingComplete,
+  showMessageActions,
+  feedbackVisibility = 'always',
+  followLatestMessages = false,
+  userBubbleTone,
+  showDateDividers = false,
 
+  composerDisabled = false,
+  composerHidden = false,
+  onVoiceCall,
   inputValue,
   onInputChange,
   placeholderHints = DEFAULT_PLACEHOLDER_HINTS,
   commandContextItems = DEFAULT_COMMAND_CONTEXT_ITEMS,
   commandToolCategories = DEFAULT_COMMAND_TOOL_CATEGORIES,
   onCommandSelect,
+  onAddSources,
+  onAttachFiles,
+  acceptFiles = DEFAULT_ACCEPT_FILES,
+  composerAttachments,
   mentionItems = [],
   onMentionSelect,
   disclaimer = DEFAULT_DISCLAIMER,
@@ -827,9 +1165,14 @@ export function IrisAgent({
   insightsHeading,
   getStarted,
   coldStateHeaderSlot,
+  coldStateHeaderRender,
+  threadHeaderSlot,
   coldStateSlot,
   coldStateFooterSlot,
   coldBackdrop = <img src={irisBloom} alt="" />,
+  coldStateAnchor = 'hero',
+  coldStatePresentation = 'default',
+  coldStateWidth,
   thinkingMark = <img src={irisMark} alt="" />,
 
   pageContext,
@@ -862,6 +1205,8 @@ export function IrisAgent({
   onNavBack,
   navPageTitle,
   suggestedContext,
+  composerStrip,
+  ask,
   onMenuViewAll,
   menuStyle = 'sections',
   railBrand,
@@ -873,6 +1218,7 @@ export function IrisAgent({
   renderMessageExtra,
 }: IrisAgentProps) {
   const isCompact = layout === 'compact';
+  const isWorkspaceColdState = !isCompact && coldStatePresentation === 'workspace';
   const isSingleColumn = layout === 'single-column' || isCompact;
 
   // ── Presentation state (IrisAgent owns this; the consumer owns `messages`) ──
@@ -886,6 +1232,86 @@ export function IrisAgent({
     },
     [inputValue, onInputChange]
   );
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileDragDepth = useRef(0);
+  const [isFileDragOver, setIsFileDragOver] = useState(false);
+  const canAttachFiles = !!onAttachFiles && !composerDisabled && !composerHidden && !isLoading;
+  const clearFileDrag = useCallback(() => {
+    fileDragDepth.current = 0;
+    setIsFileDragOver(false);
+  }, []);
+
+  useEffect(() => {
+    clearFileDrag();
+  }, [canAttachFiles, layout, clearFileDrag]);
+
+  const isFileDrag = (event: React.DragEvent<HTMLDivElement>) =>
+    Array.from(event.dataTransfer.types).includes('Files');
+
+  const fileDropHandlers = onAttachFiles ? {
+    onDragEnter: (event: React.DragEvent<HTMLDivElement>) => {
+      if (!isFileDrag(event)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (!canAttachFiles) return;
+      fileDragDepth.current += 1;
+      setIsFileDragOver(true);
+    },
+    onDragOver: (event: React.DragEvent<HTMLDivElement>) => {
+      if (!isFileDrag(event)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      event.dataTransfer.dropEffect = canAttachFiles ? 'copy' : 'none';
+    },
+    onDragLeave: (event: React.DragEvent<HTMLDivElement>) => {
+      if (fileDragDepth.current === 0) return;
+      event.stopPropagation();
+      fileDragDepth.current = Math.max(0, fileDragDepth.current - 1);
+      if (fileDragDepth.current === 0) setIsFileDragOver(false);
+    },
+    onDrop: (event: React.DragEvent<HTMLDivElement>) => {
+      const hasFiles = isFileDrag(event) || event.dataTransfer.files.length > 0;
+      clearFileDrag();
+      if (!hasFiles) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (!canAttachFiles) return;
+      const files = Array.from(event.dataTransfer.files);
+      if (files.length > 0) onAttachFiles(files);
+    },
+    onDragEnd: clearFileDrag,
+  } : {};
+
+  const fileAttachmentSurface = onAttachFiles ? (
+    <>
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept={acceptFiles}
+        multiple
+        hidden
+        disabled={!canAttachFiles}
+        aria-label="Choose agreement files"
+        onChange={(event) => {
+          const files = Array.from(event.currentTarget.files ?? []);
+          event.currentTarget.value = '';
+          if (canAttachFiles && files.length > 0) onAttachFiles(files);
+        }}
+      />
+      {isFileDragOver && canAttachFiles && (
+        <div className={styles.fileDropOverlay} role="status">
+          <div className={styles.fileDropPrompt}>
+            <Icon name="paperclip" size={24} />
+            <span className={styles.fileDropTitle}>Drop an agreement here</span>
+            <span className={styles.fileDropHint}>
+              {acceptFiles === DEFAULT_ACCEPT_FILES ? 'PDF files' : 'Agreement files'}
+            </span>
+          </div>
+        </div>
+      )}
+    </>
+  ) : null;
 
   /** Turns whose entrance animation has finished during this mount. */
   const [completedIds, setCompletedIds] = useState<Set<string>>(new Set());
@@ -939,18 +1365,74 @@ export function IrisAgent({
    * Clicking an agent row commits its token and hands over the caret. It sends
    * nothing — the token is the start of a message, not a message.
    *
-   * It *prepends*, because anything already typed is the user's. The trailing
-   * space is load-bearing twice: it keeps the next keystroke out of the slash
-   * filter, and it is where the caret lands.
+   * IT REPLACES. Akshat, 2026-08-25: picking an agent always replaces whatever
+   * is in the composer. This reverses what stood here — *"it prepends, because
+   * anything already typed is the user's"* — and the reversal is the point:
+   * the two doors disagreed. The `+` menu replaced, the cold state and the
+   * Agents page prepended, so the same act left two different sentences in the
+   * box depending on which row you clicked. One rule, three doors.
+   *
+   * The trailing space is load-bearing twice: it keeps the next keystroke out
+   * of the slash filter, and it is where the caret lands.
    */
   const handleAttachAgent = useCallback(
     (p: ZeroQueryPreview) => {
       if (!p.token) return;
-      setInputText(inputText ? `${p.token} ${inputText}` : `${p.token} `);
+      setInputText(`${p.token} `);
       setInputFocusKey((k) => k + 1);
     },
-    [inputText, setInputText]
+    [setInputText]
   );
+
+  /**
+   * THE ACTIVE AGENT, AS THE COMPOSER SEES IT.
+   *
+   * A token at the head of the box is an agent; `ChatInput` draws it as a chip
+   * and IrisAgent is what knows whose name it is. Both doors into the composer
+   * feed the same match, so the chip looks the same however the agent got there:
+   * the `agents` roster (a cold-state row, an Agents nav page — these carry the
+   * description) and the `+` menu's Agents branch (a host may list agents there
+   * and nowhere else). The roster is listed first, so it wins a tie and brings
+   * its description with it.
+   *
+   * `iris` is excluded: a chip offering to switch to Iris while being Iris says
+   * nothing. The default assistant is the absence of a chip.
+   *
+   * Removing the chip drops the token and the one space behind it — the rest of
+   * the sentence is the user's and is not touched — and it does NOT move
+   * `selectedAgentId`. The header is the other door (SPEC: two mechanisms, two
+   * doors); a per-message token leaving is not a change of identity.
+   */
+  const composerAgent = useMemo(() => {
+    const slash = (label: string) => `/${label.toLowerCase().replace(/\s+/g, '-')}`;
+    const roster = (agents ?? [])
+      .filter((a) => a.id !== 'iris')
+      .map((a) => ({ token: slash(a.name), name: a.name, description: a.description }));
+    const branch = (
+      commandToolCategories.find((c) => c.id === 'agents' || c.label === 'Agents')?.children ?? []
+    ).map((c) => ({ token: slash(c.label), name: c.label, description: c.description }));
+
+    return (
+      [...roster, ...branch]
+        .filter((a) => inputText === a.token || inputText.startsWith(`${a.token} `))
+        /* Longest wins, so one agent's name being another's prefix is harmless. */
+        .sort((a, b) => b.token.length - a.token.length)[0] ?? null
+    );
+  }, [agents, commandToolCategories, inputText]);
+
+  const defaultAgentName =
+    agents?.find((a) => a.id === 'iris')?.name ?? agents?.[0]?.name ?? 'Iris';
+
+  const agentChip: ChatInputAgentChip | undefined = composerAgent
+    ? {
+        token: composerAgent.token,
+        name: composerAgent.name,
+        description: composerAgent.description,
+        leaveLabel: `Switch to ${defaultAgentName}`,
+        onRemove: () =>
+          setInputText(inputText.slice(composerAgent.token.length).replace(/^ /, '')),
+      }
+    : undefined;
 
   /**
    * The Suggested Context strip the user dismissed, held by its label.
@@ -1010,7 +1492,10 @@ export function IrisAgent({
     scrollRef,
     spacerRef,
     handleScroll,
+    isNearBottom,
+    scrollToBottom,
     pinToTop,
+    pinToTopNow,
     prepareEnforcement,
     stopEnforcement,
     spacerHeight,
@@ -1022,6 +1507,18 @@ export function IrisAgent({
    * cold state and no skeleton. Append the turn first — see README, "States".
    */
   const hasMessages = messages.length > 0;
+  const followedContainer = useRef<HTMLDivElement | null>(null);
+  useLayoutEffect(() => {
+    const container = scrollRef.current;
+    const entering = followLatestMessages && container !== followedContainer.current;
+    followedContainer.current = followLatestMessages ? container : null;
+    if (!followLatestMessages || !container) return;
+    if (entering) {
+      if (spacerRef.current) spacerRef.current.style.minHeight = '0px';
+      stopEnforcement();
+    }
+    if (entering || isNearBottom) scrollToBottom('auto');
+  }, [followLatestMessages, messages, layout, isNearBottom, scrollRef, spacerRef, stopEnforcement, scrollToBottom]);
   const lastAssistantIdx = useMemo(
     () => messages.reduce((last, m, i) => (m.role === 'assistant' ? i : last), -1),
     [messages]
@@ -1076,7 +1573,7 @@ export function IrisAgent({
 
   const send = useCallback(
     (text: string, meta?: SendMeta) => {
-      if (!text.trim() || isLoading || isStreaming) return;
+      if (!text.trim() || composerDisabled || isLoading || isStreaming) return;
       setMenuOpen(false);
       // Anything that puts a conversation back on screen clears the nav page,
       // or the page outlives the thing that replaced it.
@@ -1084,14 +1581,38 @@ export function IrisAgent({
       onSendMessage(text.trim(), { ...meta, contextSource: contextSource ?? null });
       setInputText('');
 
-      // Pin the new user turn to the top of the viewport — rAF so the ref is
-      // available after the consumer's re-render commits.
-      requestAnimationFrame(() => {
-        prepareEnforcement();
-        pinToTop('[data-role="user"]');
-      });
+      /*
+        Pin the new user turn to the top of the viewport — rAF so the ref is
+        available after the consumer's re-render commits.
+
+        SKIPPED WHEN `anchorNewMessageTop` IS ON. That flag's layout effect
+        pins the same turn instantly the moment it commits; running this as
+        well would start a smooth scroll to the place the turn is already in.
+        One send, one pin. Surfaces without the flag keep this path exactly as
+        it was.
+      */
+      if (followLatestMessages) {
+        scrollToBottom('auto');
+      } else if (!anchorNewMessageTop) {
+        requestAnimationFrame(() => {
+          prepareEnforcement();
+          pinToTop('[data-role="user"]');
+        });
+      }
     },
-    [isLoading, isStreaming, onSendMessage, contextSource, setInputText, prepareEnforcement, pinToTop]
+    [
+      composerDisabled,
+      isLoading,
+      isStreaming,
+      onSendMessage,
+      contextSource,
+      setInputText,
+      prepareEnforcement,
+      pinToTop,
+      anchorNewMessageTop,
+      followLatestMessages,
+      scrollToBottom,
+    ]
   );
 
   const handleStreamingComplete = useCallback(
@@ -1102,6 +1623,148 @@ export function IrisAgent({
     },
     [stopEnforcement, onStreamingComplete]
   );
+
+  /*
+    EVERY NEW USER TURN TAKES THE TOP — `anchorNewMessageTop`.
+
+    `send` above pins the turns typed into the composer, and has since
+    `useSmartScroll` landed. This watches the ARRAY instead, so a user turn the
+    host appends on its own — an action receipt, an accepted recommendation —
+    anchors the same way. Same two calls, same selector: there is one pin
+    mechanism and this is a second doorway into it, not a second implementation.
+
+    ONLY A NEW USER TURN MOVES THE ANCHOR. Assistant appends change the last
+    ASSISTANT id and leave `latest` alone, so a streaming answer never yanks the
+    scroll out from under the turn that asked for it.
+
+    THREAD SWITCHES ARE NOT APPENDS, and the test for that is the array itself:
+    if the previous anchor is still somewhere in `messages`, this is a turn
+    added to the thread we were already reading. If it is gone, the whole thread
+    was replaced — reseed and move nothing, which leaves the switch scrolling to
+    the bottom exactly as it does today. Deriving it from the array rather than
+    from `activeConversationId` means it also holds for hosts that never pass
+    one.
+  */
+  const anchoredUserId = useRef<string | null>(null);
+  useLayoutEffect(() => {
+    let latest: ChatMessage | null = null;
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].role === 'user') {
+        latest = messages[i];
+        break;
+      }
+    }
+    const latestId = latest?.id ?? null;
+
+    const previous = anchoredUserId.current;
+    anchoredUserId.current = latestId;
+
+    if (!anchorNewMessageTop || latest === null || latestId === previous) return;
+    /*
+      A REOPENED THREAD OPENS AT ITS END.
+
+      Akshat, 2026-08-25: *"if I'm going back to a thread, it should open at the
+      end, because that's the last thing that was discussed in it… I don't think
+      we should move you to the top of the first turn, because you could have had
+      10 turns and now you'll have to scroll back to the 10."*
+
+      This branch used to say "seed, do not move", and the comment claimed that
+      left the switch "scrolling to the bottom exactly as it does today." It did
+      not. The scroll container is the same DOM node for every conversation and
+      nothing reset it, so a switch inherited the previous thread's `scrollTop` —
+      measured 319px into a long thread and 32px into a short one. Arbitrary,
+      never chosen, and it read as a position because it was a number.
+
+      `auto`, not smooth: she asked for a thread and this is where that thread
+      starts for her. A journey down it would be animating a place she has never
+      been away from.
+    */
+    if (previous === null || !messages.some((m) => m.id === previous)) {
+      scrollToBottom('auto');
+      return;
+    }
+    /*
+      A RECEIPT IS NOT A MESSAGE SHE SENT, SO THE HOST SAYS WHETHER IT PINS.
+
+      Akshat's law, 2026-08-25: *"every new message from [her] — whether they
+      type or accept — gets pinned to the top if it's a new turn. The only
+      exception is HITL, as it's in the same turn."*
+
+      Most receipts pin under that law, so this is not a rule about pinning less.
+      It is about WHO DECIDES. This heuristic can only see "a user turn arrived",
+      which is true of every act she takes, and he sorts those by what they do:
+      an acceptance opens a turn and pins, while a dismissal *"does nothing"*, an
+      undo *"happens within the little card itself"*, and Send *"happens in the
+      mini widget"*. Nothing in the message distinguishes them — only the call
+      site knows, and it is in the host.
+
+      So the heuristic keeps what it can genuinely tell apart: a turn SHE SPOKE,
+      which nothing else in the app appends. `actionReceipt` marks the rest —
+      nobody said a receipt, the host wrote it because she pressed something —
+      and those wait to be named by `anchorMessageId`.
+
+      That prop used to be able only to ADD to what the heuristic already did,
+      which is why a dismissal pinned for a year against the intent written at
+      its own call site. It is the control it always claimed to be now.
+    */
+    if (latest.actionReceipt) return;
+
+    /*
+      NO rAF. A layout effect runs after React has committed the turn to the DOM
+      and before the browser paints, so the measurement is valid here and the
+      pin lands in the frame the turn first appears in. Waiting a frame is what
+      produced the visible travel Akshat saw.
+    */
+    prepareEnforcement();
+    pinToTopNow('[data-role="user"]');
+  }, [messages, anchorNewMessageTop, prepareEnforcement, pinToTopNow, scrollToBottom]);
+
+  /*
+    THE CONTROLLED ANCHOR — `anchorMessageId`.
+
+    The heuristic above cannot tell a fresh thread's first user turn from a
+    thread switch: in both, the previous anchor is gone from `messages`. It
+    bails, and the turn that opened the thread sits mid-viewport. This is the
+    host saying which act it just performed, which is the only place that fact
+    exists.
+
+    Targeted by id rather than by `[data-role="user"]`, because "the last user
+    turn" is precisely the thing that is right for a send and wrong here.
+    `pinToTop` takes a selector and uses the last match; a message-id selector
+    has exactly one, so the same mechanism serves both without a second path.
+
+    ponytail: `prepareEnforcement`'s observer re-measures against the LAST
+    `[data-role="user"]` while the answer streams. That is the same element
+    whenever the host anchors the turn it just appended, which is the case this
+    was built for. Anchoring an OLDER turn would let the observer drag the
+    anchor forward — give the observer a selector too if that case ever arrives.
+  */
+  const pinnedAnchorId = useRef<string | undefined>(undefined);
+  useLayoutEffect(() => {
+    if (!anchorMessageId || anchorMessageId === pinnedAnchorId.current) return;
+    if (!messages.some((m) => m.id === anchorMessageId)) return;
+    pinnedAnchorId.current = anchorMessageId;
+
+    /* The id is data, and it lands in a selector. */
+    const escaped =
+      typeof CSS !== 'undefined' && typeof CSS.escape === 'function'
+        ? CSS.escape(anchorMessageId)
+        : anchorMessageId.replace(/["\\]/g, '\\$&');
+
+    /*
+      Synchronous and pre-paint. `pinToTopNow` writes the spacer and reads
+      `scrollHeight` back in one pass — the read forces the layout the write
+      needed — so there is nothing to wait a frame for, and the turn is at the
+      top in its first painted frame rather than travelling there.
+
+      ponytail: a card above the turn that changes height AFTER this commit (a
+      late-loading image, a font swap) would leave the anchor a few pixels off.
+      Everything the loan workspace puts up there is text and boxes, measured at
+      commit. Observe the card with a ResizeObserver and re-pin if that changes.
+    */
+    prepareEnforcement();
+    pinToTopNow(`[data-message-id="${escaped}"]`);
+  }, [anchorMessageId, messages, prepareEnforcement, pinToTopNow]);
 
   const handleFollowUp = useCallback(
     (id: string, label: string) => send(id, { displayLabel: label }),
@@ -1162,14 +1825,56 @@ export function IrisAgent({
   const resolvedCloseResults = artifact || onCloseResults ? handleCloseResults : undefined;
 
   /**
-   * Tool commands (those carrying a description) are sent as a slash command.
-   * The prototype tried to read the parent category from a second argument that
-   * `ChatInput.onCommandSelect` never passes — so `commandType` was always
-   * undefined. We look the parent up instead.
+   * Tool commands — skills, playbooks — are sent as a slash command the moment
+   * they are picked. AGENTS ARE NOT. The prototype tried to read the parent
+   * category from a second argument that `ChatInput.onCommandSelect` never
+   * passes — so `commandType` was always undefined. We look the parent up
+   * instead, and that lookup now answers both questions.
    */
   const handleCommandSelect = useCallback(
     (item: CommandContextItem | CommandToolChild) => {
       const description = (item as CommandToolChild).description;
+      /*
+       * "Add from Navigator" opens a surface; it does not name a command. So it
+       * takes the composer back — `ChatInput` has already written
+       * `/add-from-navigator` into `inputValue`, and emptying it in the same
+       * batch is what makes ChatInput's own rAF skip the DOM write. The same
+       * escape the tool branch below uses when `send` clears the input.
+       *
+       * Upload follows the same path when the host enables native attachments.
+       */
+      if (item.id === 'navigator' && onAddSources) {
+        setInputText('');
+        onAddSources();
+        onCommandSelect?.(item);
+        return;
+      }
+      if (item.id === 'upload' && onAttachFiles) {
+        setInputText('');
+        if (!canAttachFiles) return;
+        fileInputRef.current?.click();
+        onCommandSelect?.(item);
+        return;
+      }
+      /*
+       * PICKING AN AGENT NEVER SENDS. Akshat, 2026-08-25: it commits the chip
+       * and waits for the user to press send.
+       *
+       * This used to be an accident of the fixtures. The branch below sends
+       * anything carrying a `description`, so the same `+ → Agents` menu fired
+       * a message in `panel` (whose agents have one line of copy) and committed
+       * a chip in `navigator-e2e` (whose agents deliberately have none). One
+       * component, opposite behaviour, decided by a field that was only ever
+       * meant to be the row's subtitle.
+       *
+       * `ChatInput` has already written `/agent-name ` into the box and put the
+       * caret after it, which IS the commit — so there is nothing to do here
+       * but stay out of the way. Skills and playbooks still send on pick.
+       */
+      if (isAgentCommandItem(item, commandToolCategories)) {
+        onCommandSelect?.(item);
+        return;
+      }
       if (description) {
         const parent = commandToolCategories.find((cat) =>
           cat.children.some((child) => child.id === item.id)
@@ -1185,7 +1890,7 @@ export function IrisAgent({
       }
       onCommandSelect?.(item);
     },
-    [commandToolCategories, send, onCommandSelect]
+    [commandToolCategories, send, onCommandSelect, onAddSources, onAttachFiles, canAttachFiles, setInputText]
   );
 
   const handleMentionSelect = useCallback(
@@ -1254,9 +1959,15 @@ export function IrisAgent({
      */
     if (agreements.length > 0) {
       return {
-        label: `${agreements.length} agreement${agreements.length !== 1 ? 's' : ''}`,
+        /*
+         * "1 source" / "N sources" — shipping's word, observed 2026-08-24. The
+         * pill counts what is ATTACHED, and a single attached agreement is still
+         * a source you can open, so the click is no longer gated on there being
+         * more than one of them.
+         */
+        label: `${agreements.length} source${agreements.length !== 1 ? 's' : ''}`,
         icon: 'document-stack',
-        onClick: agreements.length > 1 ? onOpenSources : undefined,
+        onClick: onOpenSources,
         /*
          * Dismissible only when the host can actually drop the context.
          * `agreements` is the host's prop, so nothing here can clear it — and a
@@ -1409,29 +2120,191 @@ export function IrisAgent({
     </>
   );
 
+  /*
+    WHICH TURNS JUST ARRIVED — the entrance's whole scope.
+
+    Same test the anchor uses, and for the same reason: if any id from the
+    previous render is still in `messages`, this is an APPEND to the thread we
+    were already reading, and whatever is new in it is genuinely new. If none
+    of them survive, the thread was replaced — a switch, a reopen, a history
+    load — and nothing animates, because history replaying its own entrances
+    every time she scrolls back would be the surface lying about what is new.
+
+    A ref, not state: this only decides what to put on the turns we are already
+    rendering, so it must not schedule a render of its own.
+  */
+  const seenIds = useRef<string[] | null>(null);
+  const enteringIds = useMemo(() => {
+    const previous = seenIds.current;
+    const ids = messages.map((m) => m.id);
+    seenIds.current = ids;
+    if (!previous || previous.length === 0) return new Set<string>();
+    const sameThread = previous.some((id) => ids.includes(id));
+    if (!sameThread) return new Set<string>();
+    const before = new Set(previous);
+    return new Set(ids.filter((id) => !before.has(id)));
+  }, [messages]);
+
+  /*
+    A FRESH THREAD'S FIRST TURN IS NEW TOO, and the array cannot say so — its
+    shape is identical to a thread switch, which is the same blind spot that
+    made `anchorMessageId` necessary in the first place. So the same signal
+    answers it: a turn the host just named as the anchor is, by definition, the
+    thing that just happened. One grammar — an anchored send and an ordinary
+    append enter identically.
+  */
+  const entering = useMemo(() => {
+    if (!anchorMessageId || enteringIds.has(anchorMessageId)) return enteringIds;
+    if (!messages.some((m) => m.id === anchorMessageId)) return enteringIds;
+    return new Set([...enteringIds, anchorMessageId]);
+  }, [enteringIds, anchorMessageId, messages]);
+
+  const getStartedItems = (getStarted?.steps ?? []).map((step) => ({
+    id: step.id,
+    label: step.label,
+    icon: step.icon,
+    complete: step.complete || getStartedDone.includes(step.id),
+    onTry: () => {
+      /*
+        A step that asks something sends it directly rather than typing into the
+        composer and pressing send — sending clears the box, so the two are the
+        same result by a longer road.
+      */
+      if (step.query) send(step.query);
+      else if (step.opens) setNavPageId(step.opens);
+      else step.onOpen?.();
+      setGetStartedDone((prev) => (prev.includes(step.id) ? prev : [...prev, step.id]));
+    },
+  }));
+
+  /**
+   * The card, built once. It is the cold state's footer, and with
+   * `getStarted.persist` it is also drawn under the last finished answer — one
+   * element, one done-state, two places.
+   */
+  /* Every step done. Akshat, 2026-09-01: *"when everything is done - collapse
+     the get started thing."* A checklist with nothing left to do has stopped
+     earning its height, but it is not nothing — the count is the receipt that
+     you finished it, so the header stays and the rows fold away. */
+  const getStartedComplete =
+    getStartedItems.length > 0 && getStartedItems.every((item) => item.complete);
+
+  /* Report progress to the host, once per real change. */
+  const onGetStartedProgress = getStarted?.onProgress;
+  useEffect(() => {
+    onGetStartedProgress?.({
+      done: getStartedDone,
+      dismissed: getStartedDismissed,
+      complete: getStartedComplete,
+    });
+  }, [onGetStartedProgress, getStartedDone, getStartedDismissed, getStartedComplete]);
+
+  const getStartedCard = getStarted && !getStartedDismissed && (
+    <GetStarted
+      /* The epoch is the key: bumping it re-mounts the card, and every mount
+         after the first opens. Completion joins it, so finishing the last step
+         re-mounts the card closed rather than leaving it open on four ticks. */
+      key={`${getStartedEpoch}:${getStartedComplete}`}
+      items={getStartedItems}
+      title={getStarted.title}
+      variant={getStarted.variant}
+      marker={getStarted.marker}
+      tryLabel={getStarted.tryLabel}
+      dismissLabel={getStarted.dismissLabel}
+      /* Sequencing means the card IS the cold state, so it stands open.
+         Without it the first mount is closed and only a reopen opens. */
+      defaultOpen={!getStartedComplete && (getStarted.sequence !== false || getStartedEpoch > 0)}
+      onDismiss={() => setGetStartedDismissed(true)}
+    />
+  );
+
   // ── Conversation stream ─────────────────────────────────────────────────
   //
   // The prototype rendered this block twice, near-identically, once per layout
   // branch. It is rendered once here; the layouts differ only in their wrapper.
 
+  /*
+    Computed once for the whole array rather than per message, because "is this
+    a new day" is a question about the turn BEFORE this one, and an untimed turn
+    in between must not answer it. Off by default: `undefined` here means every
+    turn below is returned exactly as it was returned before this prop existed.
+  */
+  const dayLabels = showDateDividers ? dividerLabels(messages) : undefined;
+
   const conversationStream = (
     <ConversationLayout>
       {messages.map((msg, idx) => {
+        /*
+          THE DAY BOUNDARY IS NOT A TURN, SO IT IS DRAWN OUTSIDE ONE.
+
+          A user turn goes through `MessageBubble` and an assistant turn renders
+          its markdown directly — two branches that share no element. The date
+          belongs to neither: put it in one and half the transcript loses it,
+          put it in both and it is two things that must be kept in step.
+
+          So it is written ONCE, here, and each branch hands its finished
+          element to `withDay` on the way out. The user branch returns early,
+          which is the only reason this is a wrapper the branches call rather
+          than a wrap around a single exit — and a wrapper leaves the turns
+          themselves untouched, which `git blame` on this file's rulings needs.
+
+          Off, `label` is undefined and `withDay` returns its argument, so the
+          tree is identical to the one this map built before.
+        */
+        const label = dayLabels?.[idx];
+        const withDay = (turn: React.ReactNode) =>
+          label ? (
+            <React.Fragment key={msg.id}>
+              {/*
+                `role="separator"` keeps a screen reader from reading the date
+                as a turn. ARIA makes a separator's contents presentational, so
+                the visible text alone would drop out of the accessibility tree
+                — `aria-label` is what carries the date back in.
+              */}
+              <div className={styles.dateDivider} role="separator" aria-label={label}>
+                {label}
+              </div>
+              {turn}
+            </React.Fragment>
+          ) : (
+            turn
+          );
+
         if (msg.role === 'user') {
-          return (
-            <ConversationLayout.UserTurn key={msg.id}>
+          return withDay(
+            <ConversationLayout.UserTurn
+              key={msg.id}
+              /* The scroll anchor's handle on THIS turn — see `anchorMessageId`. */
+              messageId={msg.id}
+              entering={entering.has(msg.id)}
+              /* A receipt asked nothing, so the reply to it is a new turn and
+                 takes the full turn gap — see `UserTurnProps.receipt`. */
+              receipt={Boolean(msg.actionReceipt || msg.answerRecord?.length)}
+            >
               <MessageBubble
                 text={msg.content}
+                tone={userBubbleTone}
                 variant={
-                  msg.commandMeta
-                    ? 'slash-command'
-                    : msg.elicitationQuestion
-                      ? 'suggestion-selected'
-                      : 'plain-text'
+                  msg.answerRecord?.length
+                    ? 'answer-record'
+                    : msg.actionReceipt
+                      ? 'action-receipt'
+                      : msg.commandMeta
+                        ? 'slash-command'
+                        : msg.elicitationQuestion
+                          ? 'suggestion-selected'
+                          : 'plain-text'
                 }
-                label={msg.commandMeta?.label ?? msg.elicitationQuestion}
+                label={msg.commandMeta?.label ?? msg.elicitationQuestion ?? msg.receiptLabel}
+                receiptGlyph={msg.receiptGlyph}
+                answers={msg.answerRecord}
                 commandDescription={msg.commandMeta?.description}
                 commandType={msg.commandMeta?.commandType}
+                /* `ChatMessage.timestamp` had no drawing anywhere until now.
+                   `MessageBubble` already owns the hover meta row and takes a
+                   preformatted string, so the field only had to be handed to
+                   it. */
+                timestamp={formatMessageTime(msg.timestamp)}
               />
             </ConversationLayout.UserTurn>
           );
@@ -1443,13 +2316,59 @@ export function IrisAgent({
         const isLiveTurn = isStreaming && idx === lastAssistantIdx;
         const isCompleted = completedIds.has(msg.id) || !isLiveTurn;
         const hasThinking = !!msg.thinkingSteps?.length;
-        const showContent = !hasThinking || isCompleted || thinkingDoneIds.has(msg.id);
+        /*
+          A RUN HOLDS ITS TURN BACK UNTIL IT LANDS. Akshat, 2026-08-20: the chip
+          runs, and then the answer arrives — which is the order the work
+          actually happens in, and the order Claude's research pattern draws.
+          `isCompleted` cannot carry this: a consumer that never sets
+          `isStreaming` has every turn completed at append time, and the answer
+          would sit beside a chip that is still working.
+        */
+        const runChip = msg.runChip;
+        const showContent =
+          (!hasThinking || isCompleted || thinkingDoneIds.has(msg.id)) &&
+          (!runChip || Boolean(runChip.done));
+        /*
+          THE ROW IS THE TURN'S META ROW, NOT ONLY ITS RATING ROW. A host can
+          take the rating off a turn (`showMessageActions`) and still want the
+          clock on it — a scheduled agent's status post is exactly that: nothing
+          to rate, and "when did this run" is the one thing it must say. So the
+          row stands when EITHER part has something to draw.
+        */
+        const showActions = showMessageActions?.(msg) ?? true;
+        const messageTime = formatMessageTime(msg.timestamp);
         const isLastMessage = idx === messages.length - 1;
         const isLastAssistantMessage = idx === lastAssistantIdx;
 
-        return (
-          <ConversationLayout.AssistantTurn key={msg.id} isFirst={idx === 0}>
-            {hasThinking && (
+        return withDay(
+          <ConversationLayout.AssistantTurn
+            key={msg.id}
+            isFirst={idx === 0}
+            entering={entering.has(msg.id)}
+          >
+            {/*
+              THE RUN, AS A ROW THAT STAYS. It takes the slot `AgentThinking`
+              held because it is the same position in the turn — the work,
+              above what the work produced — and it is the same gate on the
+              content below it. What differs is that it does not go away.
+            */}
+            {/*
+              AND THE CHIP KNOWS WHETHER ITS THING IS OPEN. Same comparison the
+              result card makes two branches down — the chip's `artifactId`
+              against the dock's `openId`, which this component already derived.
+              Nothing new on `IrisAgentProps`: the fact is already in the room.
+
+              The `Boolean(...)` guard is what keeps it inert — without it a chip
+              with no id and a dock with nothing open would match on `undefined`.
+            */}
+            {runChip && (
+              <RunChip
+                {...runChip}
+                selected={Boolean(runChip.artifactId) && runChip.artifactId === openArtifactId}
+              />
+            )}
+
+            {!runChip && hasThinking && (
               <AgentThinking
                 steps={msg.thinkingSteps!}
                 outcomeSummary={msg.taskCompletion?.summary || 'Analysis complete'}
@@ -1484,69 +2403,57 @@ export function IrisAgent({
                 */
                 const results = msg.inlineResults;
                 const isActive = Boolean(results.artifactId) && results.artifactId === openArtifactId;
+                /*
+                  The same glyph in both states. It says what the card IS — a
+                  result set — and the state is carried by the collapse, the
+                  tint and the label. Swapping it would give one element two
+                  jobs, and no prototype's `iconPaths` has a right-panel glyph
+                  to swap to.
+                */
+                const glyph = <Icon name="search" size={16} />;
                 return (
                   <>
-                    <div className={styles.inlineResultsWrap} data-active={isActive || undefined}>
-                      {/*
-                        Collapsed, the whole card is one button. The row already
-                        reads "you are looking at this"; pressing it stops, and
-                        the preview comes back with it. Expanded it is a plain
-                        container — "See all" is the target there, and making the
-                        whole card clickable would put two targets on top of
-                        each other.
-                      */}
-                      <div
-                        className={styles.inlineResultsHeader}
-                        role={isActive && resolvedCloseResults ? 'button' : undefined}
-                        tabIndex={isActive && resolvedCloseResults ? 0 : undefined}
-                        aria-label={isActive && resolvedCloseResults ? 'Close the results panel' : undefined}
-                        onClick={isActive && resolvedCloseResults ? resolvedCloseResults : undefined}
-                        onKeyDown={
-                          isActive && resolvedCloseResults
-                            ? (e) => {
-                                if (e.key === 'Enter' || e.key === ' ') {
-                                  e.preventDefault();
-                                  resolvedCloseResults();
-                                }
-                              }
-                            : undefined
-                        }
+                    {/*
+                      Collapsed, this is `CollapsedHandoff` — the system's one
+                      drawing of "your contents are in the pane, press to stop".
+                      The receipt and the FINS recommendation preview say it with
+                      the same component, so the grammar cannot drift between
+                      the three places that speak it.
+                    */}
+                    {isActive ? (
+                      <CollapsedHandoff
+                        className={styles.inlineResultsCollapsed}
+                        onClose={resolvedCloseResults}
+                        ariaLabel="Close the results panel"
                       >
-                        <span className={styles.inlineResultsLabel}>
-                          {/*
-                            The same glyph in both states. It says what the card
-                            IS — a result set — and the state is carried by the
-                            collapse, the tint and the label. Swapping it would
-                            give one element two jobs, and no prototype's
-                            `iconPaths` has a right-panel glyph to swap to.
-                          */}
-                          <Icon name="search" size={16} />
-                          {isActive
-                            ? 'Seeing results in right panel'
-                            : `Showing ${results.rows.length} results`}
-                        </span>
-                        {/*
-                          The same slot "See all" uses, so the card keeps one
-                          grammar: state on the left, what you can do on the
-                          right. Revealed on hover and on focus rather than
-                          standing there — the dock has its own close, so this
-                          is the second way out, not the only one.
-                        */}
-                        {isActive && resolvedCloseResults && (
-                          <span className={styles.inlineResultsClose}>Close</span>
-                        )}
-                        {results.artifactId && resolvedSeeAllResults && !isActive && (
-                          <button
-                            type="button"
-                            className={styles.inlineResultsSeeAll}
-                            onClick={() => resolvedSeeAllResults(results)}
-                          >
-                            See all
-                            <Icon name="chevron-right" size={14} />
-                          </button>
-                        )}
-                      </div>
-                      {!isActive && (
+                        {glyph}
+                        Seeing results in right panel
+                      </CollapsedHandoff>
+                    ) : (
+                      <div className={styles.inlineResultsWrap}>
+                        <div className={styles.inlineResultsHeader}>
+                          <span className={styles.inlineResultsLabel}>
+                            {glyph}
+                            {/*
+                              The count is the SET, not the preview. `rows` is
+                              the five the card can show; `totalCount` is how
+                              many the search found, and the frames say the
+                              label reports the find. Falls back to the rows
+                              when a host supplies no total.
+                            */}
+                            {`Showing ${results.totalCount ?? results.rows.length} results`}
+                          </span>
+                          {results.artifactId && resolvedSeeAllResults && (
+                            <button
+                              type="button"
+                              className={styles.inlineResultsSeeAll}
+                              onClick={() => resolvedSeeAllResults(results)}
+                            >
+                              See all
+                              <Icon name="chevron-right" size={14} />
+                            </button>
+                          )}
+                        </div>
                         <DataTable
                           columns={inlineResultColumns}
                           data={results.rows}
@@ -1555,8 +2462,8 @@ export function IrisAgent({
                           className={styles.inlineResultsTable}
                           onRowClick={onInlineResultClick}
                         />
-                      )}
-                    </div>
+                      </div>
+                    )}
                     {/*
                       Nothing to add as context when there is nothing shown —
                       the button would be pointing at a table that is not there.
@@ -1600,24 +2507,109 @@ export function IrisAgent({
 
             {showContent && renderMessageExtra?.(msg)}
 
-            {isCompleted && isLastAssistantMessage && chatSuffix && (
-              <div className={styles.chatSuffixSlot}>{chatSuffix}</div>
+            {/*
+              NOTHING TO RATE UNTIL THE TURN IS DONE. Akshat, 2026-08-20: a turn
+              still holding a decision is unfinished, and thumbs on an
+              unfinished turn ask the reader to judge a half-answer. The row —
+              and the follow-ups under it — wait for `pending` to clear.
+
+              AND NOTHING TO RATE ON AN ACT AT ALL. `kind: 'action'` is the
+              turn whose body is cards or work in flight; it never wears the
+              row while it is marked, because the judgement it wants is Accept
+              or Dismiss and it is already asking for that.
+
+              AN ACT CAN FINISH BEING ONE. Akshat, 2026-08-20: the agent's
+              response to an acceptance — the ack line and the lifecycle object
+              under it — is a finished answer once that object resolves, and it
+              gets the row like any other. Nothing changes here: the consumer
+              derives `kind` and takes the mark off, so the row arrives exactly
+              when the work settles and not a beat before.
+
+              EVERY ANSWER'S ROW IS ON SCREEN, ON EVERY TURN.
+
+              Three rulings in two days, and the third explains the first.
+              2026-08-24: *"lots of dead space after the thumbs up, thumbs
+              down."* Read as "the icons cost too much room", the row was
+              collapsed to zero height and painted on hover — and then it
+              covered the label beneath it. Reserved again, it left a 40px hole.
+
+              2026-08-25, Akshat naming what he had been looking at all along:
+              *"the icons don't show up unless you're hovering over them. When I
+              look at the screen, it looks like there's a huge gap, and it's not
+              clear to me what happened… maybe we just show it by default, and
+              that solves everything."* The complaint was never the icons. It
+              was a space with nothing in it and no way to find out why.
+
+              So the row is simply there. It is consistent — his other rule that
+              day, *"just be consistent"* — nothing overlaps, because it never
+              leaves the flow, and the space between an answer and whatever
+              follows is occupied by the thing the space was for.
+
+              THE COST, NAMED: three glyphs repeat down a long thread. That is
+              the case for hover and it is why Claude hides them — but Claude's
+              turns are prose, where a gap reads as paragraph rhythm. This
+              surface is cards and boxes, where a gap reads as a missing
+              element.
+            */}
+            {isCompleted && !msg.pending && msg.kind !== 'action' && (msg.content || msg.markdownContent) && (showActions || messageTime) && (
+              <div className={styles.feedbackRow}>
+                {showActions && (feedbackVisibility === 'hover'
+                  ? <div className={styles.feedbackReveal}><FeedbackActions copyText={msg.markdownContent || msg.content} /></div>
+                  : <FeedbackActions copyText={msg.markdownContent || msg.content} />)}
+                {/* Last in the row, pushed to the far edge — the turn ends, you
+                    rate it, and the clock closes the line. */}
+                {messageTime && <time className={styles.messageTime}>{messageTime}</time>}
+              </div>
             )}
 
-            {isCompleted && (msg.content || msg.markdownContent) && (
-              <FeedbackActions copyText={msg.markdownContent || msg.content} />
-            )}
+            {/*
+              AFTER THE THUMBS, NOT BEFORE. Frame 381:51512 puts the suggestion
+              stack under the feedback row: the turn ends, you rate it, and then
+              you are offered where to go next. It used to sit above, which put
+              a forward step between the answer and the judgement of it.
+            */}
+            {isCompleted &&
+              !msg.pending &&
+              isLastAssistantMessage &&
+              (chatSuffix || (getStarted?.persist && getStartedCard)) && (
+                <div className={styles.chatSuffixSlot}>
+                  {/* The persisted checklist — see `IrisGetStarted.persist`. */}
+                  {getStarted?.persist && getStartedCard}
+                  {chatSuffix}
+                </div>
+              )}
 
-            {isCompleted && isLastMessage && msg.taskCompletion?.followUps && (
-              <ConversationLayout.Suggestions>
-                {msg.taskCompletion.followUps.map((fu) => (
-                  <SuggestionChip
-                    key={fu.id}
-                    label={fu.label}
-                    onClick={() => handleFollowUp(fu.id, fu.label)}
-                  />
-                ))}
-              </ConversationLayout.Suggestions>
+            {/*
+              THE ROW, NOT THE CHIP. Superseded 2026-08-19 by frame 381:51512:
+              follow-ups are the same 40px suggestion row the cold state draws,
+              with the same icon. Chips were a second treatment for one idea,
+              and they read as filters.
+
+              LABELLED IN-THREAD, 2026-08-20. Akshat took the label off the
+              COLD state — those rows are the composer's own tail and sit
+              against the input. In the thread the same rows are a block among
+              other blocks, with an answer above them, so they say what they
+              are. Composer-adjacent stays bare; in-thread gets "Suggestions".
+
+              `ZeroQueryActions` is that row, so this is a reuse and not a
+              rebuild — one component, one hover, one measure, wherever a
+              suggestion appears.
+            */}
+            {isCompleted && !msg.pending && isLastMessage && msg.taskCompletion?.followUps && (
+              <div className={styles.followUpSlot}>
+              <ZeroQueryActions
+                items={msg.taskCompletion.followUps.map((fu) => ({
+                  label: fu.label,
+                  kind: 'prompt' as const,
+                  icon: fu.icon ?? SUGGESTION_ICON,
+                  /* The id is the text sent; the label is what the bubble shows.
+                     That pairing is the whole reason this is not a plain send. */
+                  onClick: () => handleFollowUp(fu.id, fu.label),
+                }))}
+                onSend={() => {}}
+                sectionLabel="Suggestions"
+              />
+              </div>
             )}
           </ConversationLayout.AssistantTurn>
         );
@@ -1671,7 +2663,12 @@ export function IrisAgent({
    * A `navPages` entry IrisAgent opened wins; `navPageSlot` is what a consumer
    * holding that state itself still passes.
    */
-  const navPageContext: NavPageContext = { onPreview: setPreview, send, close: closeNavPage };
+  const navPageContext: NavPageContext = {
+    onPreview: setPreview,
+    send,
+    close: closeNavPage,
+    attach: handleAttachAgent,
+  };
   const navPage = activeNavPage
     ? activeNavPage.render(navPageContext)
     : typeof navPageSlot === 'function'
@@ -1693,6 +2690,11 @@ export function IrisAgent({
     <>
       {agreementContext && <AgreementSnapshot {...agreementContext} />}
       {coldStateHeaderSlot}
+      {coldStateHeaderRender?.({
+        send: (text: string) => send(text),
+        draft: inputText,
+        setDraft: setInputText,
+      })}
     </>
   );
 
@@ -1704,24 +2706,6 @@ export function IrisAgent({
   const liveInsights = agreementContext
     ? []
     : (insights ?? []).filter((insight) => !insightsDismissed.includes(insight.id));
-
-  const getStartedItems = (getStarted?.steps ?? []).map((step) => ({
-    id: step.id,
-    label: step.label,
-    icon: step.icon,
-    complete: getStartedDone.includes(step.id),
-    onTry: () => {
-      /*
-        A step that asks something sends it directly rather than typing into the
-        composer and pressing send — sending clears the box, so the two are the
-        same result by a longer road.
-      */
-      if (step.query) send(step.query);
-      else if (step.opens) setNavPageId(step.opens);
-      else step.onOpen?.();
-      setGetStartedDone((prev) => (prev.includes(step.id) ? prev : [...prev, step.id]));
-    },
-  }));
 
   const coldStateFooter = (
     <>
@@ -1747,29 +2731,75 @@ export function IrisAgent({
         />
       )}
 
-      {getStarted && !getStartedDismissed && (
-        <GetStarted
-          /* The epoch is the key: bumping it re-mounts the card, and every mount
-             after the first opens. */
-          key={getStartedEpoch}
-          items={getStartedItems}
-          title={getStarted.title}
-          variant={getStarted.variant}
-          marker={getStarted.marker}
-          tryLabel={getStarted.tryLabel}
-          dismissLabel={getStarted.dismissLabel}
-          /* Sequencing means the card IS the cold state, so it stands open.
-             Without it the first mount is closed and only a reopen opens. */
-          defaultOpen={getStarted.sequence !== false || getStartedEpoch > 0}
-          onDismiss={() => setGetStartedDismissed(true)}
-        />
-      )}
+      {getStartedCard}
 
       {coldStateFooterSlot}
     </>
   );
 
   // ── The dock ─────────────────────────────────────────────────────────────
+
+  /**
+   * HOW WIDE THE PANE OPENS, and how it is dragged.
+   *
+   * Akshat, 2026-08-19: *"the pane width is dependent on what you see… if it's
+   * agreement it should be 2/3 but for sources, progress 1/3 is good. we
+   * probably want it to be resizable too!"* So the width is the artifact's
+   * property, not the pane's: `PANE_SIZE` maps the kind, `paneWidthFor` turns
+   * that into px against the viewport, and the drag overrides it for as long as
+   * that artifact stays open.
+   *
+   * The state lives here rather than in the dock because the DIVIDER lives here
+   * — it is a flex item between the chat chrome and the pane, and only this
+   * component draws that row. `usePanelResize` is the same hook the panel's own
+   * edge uses; there is one drag mechanism in the system.
+   *
+   * `direction: 'left'` — the handle is on the pane's left, so dragging left
+   * makes the pane wider. `snapToCloseThreshold: 0` — the pane closes from its
+   * X, never by being dragged thin.
+   */
+  const openArtifactItem = artifacts?.find((item) => item.id === artifact?.openId);
+  const paneResize = usePanelResize({
+    initialWidth: 520,
+    minWidth: 420,
+    direction: 'left',
+    snapToCloseThreshold: 0,
+  });
+
+  /*
+    Back to the kind's own width whenever the pane changes what it holds — a
+    width dragged for an agreement is not a width chosen for a progress list.
+    Keyed on the id as well as the kind, so tabbing between two agreements
+    re-seats it too.
+  */
+  const paneSetWidth = paneResize.setWidth;
+  const paneItemId = openArtifactItem?.id;
+  const paneItemKind = openArtifactItem?.kind;
+  useEffect(() => {
+    if (!paneItemKind) return;
+    paneSetWidth(paneWidthFor(PANE_SIZE[paneItemKind], window.innerWidth));
+  }, [paneItemId, paneItemKind, paneSetWidth]);
+
+  /*
+    The divider's own props, the same shape `usePanelMode` hands `PanelShell`:
+    a separator that reports its width, so the drag is reachable from the
+    keyboard as well as the pointer. Left widens the pane, matching the drag.
+  */
+  const paneHandleProps: PanelHandleProps = {
+    onPointerDown: paneResize.handlePointerDown,
+    onKeyDown: (e) => {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      e.preventDefault();
+      paneSetWidth(paneResize.width + (e.key === 'ArrowLeft' ? 24 : -24));
+    },
+    role: 'separator',
+    tabIndex: 0,
+    'aria-orientation': 'vertical',
+    'aria-label': 'Resize artifact pane',
+    'aria-valuenow': paneResize.width,
+    'aria-valuemin': 420,
+    'aria-valuemax': typeof window === 'undefined' ? 1920 : window.innerWidth,
+  };
 
   /**
    * The host's node wins; otherwise IrisAgent draws the dock over the corpus it
@@ -1784,6 +2814,12 @@ export function IrisAgent({
         onOpenChange={artifact.setOpenId}
         expanded={artifact.expanded}
         onToggleExpand={artifact.toggleExpanded}
+        /* The kind's width, or the dragged one — at fullscreen only, where the
+           dock is the pane and shares the row with the chat. Below fullscreen
+           the dock is a 420px card and `ArtifactDock.module.css` owns that
+           number; the panel's own floor is what guarantees the chat still has
+           480 beside it (`THREE_COLUMN_MIN_WIDTH` in `usePanelMode`). */
+        width={isFullscreen ? paneResize.width : undefined}
         /* A source row navigates inside the dock — no fullscreen, no new tab. */
         onSourceOpen={artifact.setOpenId}
         onAction={(action, item, detail) => {
@@ -1848,12 +2884,24 @@ export function IrisAgent({
     },
   }));
 
+  /*
+    The compact menu's history rows. BOTH menu styles read this one list — the
+    `menuSection` History block and the accordion — so the marks are carried
+    once here rather than at each render site.
+
+    `status`/`unread` ride along from `ConversationItem` under the same names.
+    This path is a plain component, not Ink's `LocalNav`, so the row's icon is
+    just an icon: the sidebar's string-typed-label constraint does not reach
+    here, and nothing about it changes by these two fields existing.
+  */
   const menuHistoryItems: ZeroQueryActionItem[] = conversations
     .flatMap((group) => group.items)
     .map((c) => ({
       label: c.title,
       kind: 'action' as const,
       icon: 'messages',
+      status: c.status,
+      unread: c.unread,
       onClick: () => {
         setMenuOpen(false);
         setNavPageId(null);
@@ -2196,22 +3244,29 @@ export function IrisAgent({
 
   const chatInputNode = (variant: 'default' | 'expanded', flushTop = false) => (
     <ChatInput
+      disabled={composerDisabled}
       value={inputText}
       onChange={setInputText}
       onSend={send}
+      onVoiceCall={onVoiceCall}
       isLoading={isLoading}
       isStreaming={isStreaming}
       variant={variant}
+      appearance={isWorkspaceColdState && !hasMessages ? 'flat' : 'default'}
       flushTop={flushTop}
       contextSource={inputContextSource}
+      attachments={composerAttachments}
       focusKey={inputFocusKey}
-      commandContextItems={commandContextItems}
+      commandContextItems={onAttachFiles && !canAttachFiles
+        ? commandContextItems.filter((item) => item.id !== 'upload')
+        : commandContextItems}
       commandToolCategories={commandToolCategories}
       onCommandSelect={handleCommandSelect}
       placeholderHints={previewHints}
       placeholderToken={preview?.token}
       mentionItems={mentionItems}
       onMentionSelect={handleMentionSelect}
+      agentChip={agentChip}
     />
   );
 
@@ -2262,12 +3317,68 @@ export function IrisAgent({
       </>
     ));
 
+  /*
+    THE AGENT MENU IS DISMISSIBLE, SO IT CANNOT OUTLIVE ITS SURFACE.
+
+    Ink's Dropdown owns Escape on the menu element itself, and the menu never
+    takes focus — it opens with focus still on the trigger, so the key event was
+    delivered to a node that does not listen and the menu stayed open. Ink also
+    closes on an outside `mousedown` only, so anything opened from the keyboard
+    — Enter on a "Add a source" row — left the menu standing while the modal
+    came up over the page. It then painted above that modal, because
+    `--ink-z-dropdown` (1055) is deliberately above `--ink-z-modal` (1050) so a
+    dropdown inside a modal works. That layering is right; the menu outliving
+    its surface was the defect.
+
+    So the menu is controlled here and dismissed on Escape and on any click
+    outside it. Capture phase, so a row that opens a modal and stops
+    propagation still closes the menu first. Both listeners are only mounted
+    while it is open.
+  */
+  const [agentMenuOpen, setAgentMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!agentMenuOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setAgentMenuOpen(false);
+    };
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest(`[data-qa="${AGENT_MENU_QA}"], [aria-label="Switch agent"]`)) return;
+      setAgentMenuOpen(false);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('click', onClick, true);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('click', onClick, true);
+    };
+  }, [agentMenuOpen]);
+
   const agentMenuItems = useMemo<DropdownItemProps[] | null>(() => {
-    if (!agents?.length) return null;
+    /*
+      ONE AGENT IS NOT A CHOICE. A single-entry roster still built a menu, so
+      the header drew a button with a chevron and "Switch agent" on it that
+      opened a list of the agent you are already talking to. `null` sends the
+      identity down the static-span branch below: no button, no chevron, no
+      label — the name, which is all a roster of one can say.
+    */
+    if (!agents || agents.length <= 1) return null;
     return agents.map((agent) => ({
       label: agent.name,
       description: agent.description,
-      icon: agent.icon ?? <IrisIcon />,
+      /*
+        Each agent draws its own mark. `icon` (a ReactNode) wins; `glyph` (an
+        Ink icon NAME, the field the plain-row surfaces already read) is the
+        cheap way for a host to differentiate the picker without building
+        nodes; Iris's own glyph is the last resort. Before this, a host that
+        only set `glyph` got the Iris mark on every row and the list read as
+        one agent repeated.
+      */
+      icon: agent.icon ??
+        (agent.glyph ? <Icon name={agent.glyph as never} size={18} /> : <IrisIcon />),
       selected: agent.id === activeAgent.id,
       onClick: () => onSelectAgent?.(agent.id),
     }));
@@ -2284,6 +3395,46 @@ export function IrisAgent({
    * turn — and is cut at 32 characters.
    */
   const showNavTitle = Boolean(navPage && resolvedNavPageTitle);
+
+  /*
+    The hamburger, defined once and drawn in two places — beside the wordmark in
+    a conversation, and between the back arrow and the page's name on a nav
+    page. Akshat, 2026-08-24: "if you're in a part of the chat — we should add a
+    hamburger to the right of the back — so if you're in prompt library can we
+    bring the hamburger between back button and the title?"
+
+    This reverses 2026-08-12 ("we wouldn't need the hamburger and just keep the
+    back buttons"). A page reached from the menu had no way back INTO the menu:
+    history was unreachable without first leaving the page. Same control, same
+    label, same peek — one definition, so the two sites cannot drift.
+  */
+  const hamburgerNode = (
+    <HeaderMenu
+      navShortcuts={resolvedNavShortcuts}
+      conversationGroups={conversations}
+      onNewConversation={handleNewConversation}
+      /*
+        Clear the page first, exactly as the rail (`onConversationClick`) and
+        the full menu already do. The peek could not open over a nav page until
+        the hamburger was drawn on one, so it never had to — now it does, and
+        a picked conversation loading behind a still-open Activity page is the
+        one way this control could differ from the other two.
+      */
+      onSelectConversation={(id) => {
+        setNavPageId(null);
+        onSelectConversation?.(id);
+      }}
+      onSeeAll={() => setSidebarOpen(true)}
+    >
+      <IconButton
+        icon="menu"
+        variant="tertiary"
+        size="small"
+        aria-label="Open menu"
+        onClick={() => setMenuOpen(true)}
+      />
+    </HeaderMenu>
+  );
 
   /*
    * THE CONVERSATION TITLE IS GONE. Akshat, 2026-08-19: "let's hide the chat
@@ -2307,7 +3458,15 @@ export function IrisAgent({
    * feel like two apps."
    */
   const identityNode = agentMenuItems ? (
-    <Dropdown items={agentMenuItems} header="Selected Agent" position="bottom" align="start">
+    <Dropdown
+      items={agentMenuItems}
+      header="Selected Agent"
+      position="bottom"
+      align="start"
+      open={agentMenuOpen}
+      onOpenChange={setAgentMenuOpen}
+      data-qa={AGENT_MENU_QA}
+    >
       <button className={styles.panelIdentity} aria-label="Switch agent">
         {agentIdentity}
         {/*
@@ -2486,13 +3645,17 @@ export function IrisAgent({
                 </>
               ) : showNavTitle ? (
                 /*
-                  A page names itself. No hamburger — the back arrow to its left
-                  is the only way out a page needs, and the title stands where
-                  the wordmark stands, in the wordmark's type.
+                  A page names itself, and the hamburger stands between the back
+                  arrow and that name: [back] [hamburger] [title]. Back leaves
+                  the page, the hamburger reaches history and the other pages
+                  without leaving it first.
                 */
-                <span className={styles.panelIdentity}>
-                  <span className={styles.panelIdentityName}>{resolvedNavPageTitle}</span>
-                </span>
+                <>
+                  {hamburgerNode}
+                  <span className={styles.panelIdentity}>
+                    <span className={styles.panelIdentityName}>{resolvedNavPageTitle}</span>
+                  </span>
+                </>
               ) : (
                 <>
                   {/*
@@ -2501,21 +3664,7 @@ export function IrisAgent({
                     never the scrim drawer (Akshat, 2026-08-12). The peek's
                     "See all" still reaches the drawer.
                   */}
-                  <HeaderMenu
-                    navShortcuts={resolvedNavShortcuts}
-                    conversationGroups={conversations}
-                    onNewConversation={handleNewConversation}
-                    onSelectConversation={(id) => onSelectConversation?.(id)}
-                    onSeeAll={() => setSidebarOpen(true)}
-                  >
-                    <IconButton
-                      icon="menu"
-                      variant="tertiary"
-                      size="small"
-                      aria-label="Open menu"
-                      onClick={() => setMenuOpen(true)}
-                    />
-                  </HeaderMenu>
+                  {hamburgerNode}
                   {identityNode}
                 </>
               )}
@@ -2525,14 +3674,18 @@ export function IrisAgent({
             <div className={styles.contentHeaderCenter} />
             <div className={styles.contentHeaderRight}>
               {/*
-                No "New chat" on a new chat — the button would do nothing you
-                can see. It appears once there is a conversation to leave.
-                Frame 79:8822's header agrees: menu, wordmark, fullscreen, close.
+                "New chat" stands in every state, cold included — gated on the
+                host giving us the capability, never on the thread having
+                content. A control that removes itself when the thread empties
+                shifts the icons left under the cursor that just clicked it, and
+                shipping Iris keeps its compose control cold too (notes,
+                2026-08-24, shipping-iris-composer-plus-menu). On an already
+                empty thread the click is a no-op.
               */}
-              {hasMessages && (
+              {onNewConversation && (
                 <Tooltip text="New chat">
                   <IconButton
-                    icon="edit"
+                    icon="pencil-box"
                     variant="tertiary"
                     size="small"
                     aria-label="New chat"
@@ -2592,9 +3745,10 @@ export function IrisAgent({
               outside fullscreen the menu is the page, at every width.
             */}
             <div
-              className={`${styles.panelChatColumn} ${
+              className={`${styles.panelChatColumn} ${onAttachFiles ? styles.fileDropSurface : ''} ${
                 artifactExpanded && !isFullscreen ? styles.chatColumnCollapsed : ''
               }`}
+              {...fileDropHandlers}
             >
               {fullMenuNode}
               {navPage ? (
@@ -2602,15 +3756,35 @@ export function IrisAgent({
               ) : !hasMessages ? (
                 <div className={styles.panelWelcome}>
                   <div className={styles.panelWelcomeContent}>
-                    <div className={styles.greeting}>
-                      <p className={styles.greetingBold}>{greeting}</p>
-                      <p className={styles.greetingSubtitle}>{greetingSubtitle}</p>
-                    </div>
+                    {/* AN EMPTY GREETING MEANS NO GREETING. A cold-state
+                        surface that opens by speaking for itself — an
+                        interview, a first-run — would otherwise say hello
+                        twice, and the default cannot be turned off by passing
+                        `undefined`. Existing hosts are unaffected: they pass a
+                        string, or nothing and get the default. */}
+                    {greeting ? (
+                      <div className={styles.greeting}>
+                        <p className={styles.greetingBold}>{greeting}</p>
+                        {greetingSubtitle ? <p className={styles.greetingSubtitle}>{greetingSubtitle}</p> : null}
+                      </div>
+                    ) : null}
 
                     {coldStateHeader}
 
                     {coldSuggestions && (
                       <div className={styles.panelSuggestionsSection}>
+                        {/*
+                          NO LABEL OVER THE STACK. It carried "Suggestions"
+                          (frame 381:51512) until 2026-08-20, when Akshat asked
+                          of the FINS cold state: *"is there a way to combine
+                          recommended, suggestions?"* Two labelled sections
+                          stacked on each other read as two species of one
+                          thing. The rows sit directly above the composer with
+                          nothing over them — composer-adjacent, which is where
+                          the cold-state frames put them and what they have
+                          always been: the input's own tail. A labelled section
+                          above them belongs to whatever the host put there.
+                        */}
                         <ZeroQueryActions
                           items={coldSuggestions}
                           onSend={send}
@@ -2627,7 +3801,8 @@ export function IrisAgent({
                   </div>
                 </div>
               ) : (
-                <div ref={scrollRef} className={styles.panelChatMessages} onScroll={handleScroll}>
+                <div ref={scrollRef} className={`${styles.panelChatMessages} ${followLatestMessages ? styles.followLatest : ''}`} onScroll={handleScroll}>
+                  {threadHeaderSlot}
                   {conversationStream}
                   {bottomSpacer}
                 </div>
@@ -2640,7 +3815,7 @@ export function IrisAgent({
                 keep the input below so you can hover the items and see the
                 preview in the input." Frame 94:13551 draws it, disclaimer and all.
               */}
-              <div className={styles.panelChatInput}>
+              {!composerHidden && <div className={styles.panelChatInput}>
                 {/*
                     `default`, not `expanded` — the row count follows the content.
 
@@ -2667,10 +3842,24 @@ export function IrisAgent({
                   corners — so only the edge that clears the composer's ceiling
                   is ever seen.
                 */}
-                {suggestedContextStrip}
-                <div className={styles.panelComposer}>{chatInputNode('default')}</div>
+                {/*
+                  ONE SLOT. Suggested Context has priority; `composerStrip`
+                  takes the position back when there is no suggestion to show.
+
+                  An `ask` outranks both and empties the slot entirely — see the
+                  prop's doc comment. A question the agent is blocked on is the
+                  only thing in the composer area while it is up.
+                */}
+                {!ask && (suggestedContextStrip ?? composerStrip)}
+                {/*
+                  The ask replaces the input, it does not sit above it. The spec
+                  draws the surface inside the ChatInput region, and two ways to
+                  answer one question is one too many.
+                */}
+                <div className={styles.panelComposer}>{ask ?? chatInputNode('default')}</div>
                 {disclaimer && <p className={styles.panelDisclaimer}>{disclaimer}</p>}
-              </div>
+              </div>}
+              {fileAttachmentSurface}
             </div>
 
             {/*
@@ -2701,6 +3890,16 @@ export function IrisAgent({
           `.menuOuterRail + .rightArea` matching (the chrome's left corners and
           its ground) and puts the tab order in reading order: rail, chat, pane.
         */}
+        {/*
+          The seam between the chat and the pane, and the only place the pane's
+          width is set by hand. Not drawn when the pane is expanded (there is no
+          chat left to divide) or when the host supplied its own node (there is
+          no width of ours to move).
+        */}
+        {isFullscreen && openArtifactItem && !artifactExpanded && (
+          <ResizeHandle placement="inline" {...paneHandleProps} />
+        )}
+
         {isFullscreen && resolvedArtifactSlot}
       </div>
     );
@@ -2718,9 +3917,11 @@ export function IrisAgent({
         {/*
           One header for every state — the compact header's grammar, not the
           old title-dropdown one. The identity names the agent; the right side
-          carries the actions. The pencil appears once there is a conversation
-          to leave; the back arrow while a nav page is up.
+          carries the actions. The pencil stands whenever the host supplies
+          `onNewConversation`, cold or mid-thread, so the row never changes
+          width; the back arrow while a nav page is up.
         */}
+        {!hideContentHeader && (
         <div className={styles.contentHeader}>
           <div className={styles.contentHeaderLeft}>
             {isSingleColumn && (
@@ -2746,10 +3947,10 @@ export function IrisAgent({
           </div>
           <div className={styles.contentHeaderCenter} />
           <div className={styles.contentHeaderRight}>
-            {hasMessages && (
+            {onNewConversation && (
               <Tooltip text="New chat">
                 <IconButton
-                  icon="edit"
+                  icon="pencil-box"
                   variant="tertiary"
                   size="small"
                   aria-label="New chat"
@@ -2803,25 +4004,40 @@ export function IrisAgent({
             )}
           </div>
         </div>
+        )}
 
         <div className={styles.contentSurface}>
           <div className={styles.contentLayout}>
             <div
-              className={`${styles.contentMain} ${artifactExpanded ? styles.chatColumnCollapsed : ''}`}
+              className={`${styles.contentMain} ${onAttachFiles ? styles.fileDropSurface : ''} ${artifactExpanded ? styles.chatColumnCollapsed : ''}`}
+              {...fileDropHandlers}
             >
               {navPage ? (
                 navPage
               ) : !hasMessages ? (
-                <div className={styles.welcomeArea}>
-                  <div className={styles.welcomeContent}>
-                    <div className={styles.greeting}>
-                      <p className={styles.greetingBold}>{greeting}</p>
-                      <p className={styles.greetingSubtitle}>{greetingSubtitle}</p>
-                    </div>
+                <div
+                  className={`${styles.welcomeArea} ${coldStateAnchor === 'top' ? styles.welcomeAreaTop : ''} ${isWorkspaceColdState ? styles.welcomeWorkspace : ''}`}
+                >
+                  <div
+                    className={styles.welcomeContent}
+                    style={coldStateWidth !== undefined ? { maxWidth: coldStateWidth } : undefined}
+                  >
+                    {/* AN EMPTY GREETING MEANS NO GREETING. A cold-state
+                        surface that opens by speaking for itself — an
+                        interview, a first-run — would otherwise say hello
+                        twice, and the default cannot be turned off by passing
+                        `undefined`. Existing hosts are unaffected: they pass a
+                        string, or nothing and get the default. */}
+                    {greeting ? (
+                      <div className={styles.greeting}>
+                        <p className={styles.greetingBold}>{greeting}</p>
+                        {greetingSubtitle ? <p className={styles.greetingSubtitle}>{greetingSubtitle}</p> : null}
+                      </div>
+                    ) : null}
 
                     {coldStateHeader}
 
-                    <div className={styles.inputHero}>{chatInputNode('expanded')}</div>
+                    {!composerHidden && <div className={styles.inputHero}>{chatInputNode('expanded')}</div>}
 
                     {coldSuggestions ? (
                       <div className={styles.discoverySection}>
@@ -2845,6 +4061,25 @@ export function IrisAgent({
                               }
                               style={{ animationDelay: `${i * 40}ms` }}
                             >
+                              {/*
+                                THE SAME MARK THE COMPACT ROWS CARRY. Fullscreen
+                                drew label only, so one suggestion wore a glyph
+                                in the panel and none at full width — the same
+                                row saying two different things about itself.
+
+                                THE HOST'S GLYPH OR NOTHING. No default and no
+                                name written here: Ink renders silence for a
+                                glyph a consumer's snapshot does not carry, so a
+                                default invented in the system is a mark that
+                                vanishes in every prototype but the one it was
+                                written for. See `ZeroQueryActions`' icon
+                                comment for the same trap, at length.
+                              */}
+                              {suggestion.icon && (
+                                <span className={styles.suggestionItemIcon} aria-hidden="true">
+                                  <Icon name={suggestion.icon as never} size="small" />
+                                </span>
+                              )}
                               {suggestion.label}
                             </button>
                           ))}
@@ -2886,14 +4121,16 @@ export function IrisAgent({
                 </div>
               ) : (
                 <div className={styles.chatArea}>
-                  <div ref={scrollRef} className={styles.chatMessages} onScroll={handleScroll}>
+                  <div ref={scrollRef} className={`${styles.chatMessages} ${followLatestMessages ? styles.followLatest : ''}`} onScroll={handleScroll}>
+                    {threadHeaderSlot}
                     {conversationStream}
                     {bottomSpacer}
                   </div>
 
-                  <div className={styles.chatInput}>{chatInputNode('default')}</div>
+                  {!composerHidden && <div className={styles.chatInput}>{chatInputNode('default')}</div>}
                 </div>
               )}
+              {fileAttachmentSurface}
             </div>
 
             {resolvedArtifactSlot}

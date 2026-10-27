@@ -5,7 +5,6 @@
  * Uses Ink Design System tokens for consistent theming.
  */
 
-@import '../../../design-system/1-tokens/tokens.css';
 
 /* =============================================================================
    Container
@@ -120,7 +119,7 @@
 
 .actionType {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -132,7 +131,7 @@
   align-items: center;
   gap: var(--ink-spacing-50);
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-medium);
   padding: var(--ink-spacing-50) var(--ink-spacing-125);
   border-radius: var(--ink-radius-size-full);
@@ -196,7 +195,7 @@
 
 .title {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-m);
+  font-size: var(--ink-font-body-m-size);
   font-weight: var(--ink-font-weight-semibold);
   color: var(--ink-neutral-130);
   margin: 0;
@@ -205,7 +204,7 @@
 
 .description {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-s);
+  font-size: var(--ink-font-body-s-size);
   color: var(--ink-neutral-80);
   margin: 0;
   line-height: 1.5;
@@ -230,7 +229,7 @@
   align-items: baseline;
   gap: var(--ink-spacing-100);
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
 }
 
 .paramKey {
@@ -263,7 +262,7 @@
 
 .progressLabel {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-cobalt-100);
   min-width: 36px;
@@ -276,7 +275,7 @@
 
 .outputStream {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   background: var(--ink-neutral-110);
   color: var(--ink-neutral-30);
   padding: var(--ink-spacing-150) var(--ink-spacing-150);
@@ -323,14 +322,14 @@
   align-items: center;
   gap: var(--ink-spacing-50);
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-semibold);
   color: var(--ink-green-90);
 }
 
 .resultContent {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-s);
+  font-size: var(--ink-font-body-s-size);
   color: var(--ink-neutral-100);
   line-height: 1.5;
 }
@@ -347,7 +346,7 @@
   align-items: center;
   gap: var(--ink-spacing-50);
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-green-90);
   background: var(--ink-white-100);
@@ -375,14 +374,14 @@
   align-items: center;
   gap: var(--ink-spacing-50);
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-semibold);
   color: var(--ink-red-90);
 }
 
 .errorContent {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-s);
+  font-size: var(--ink-font-body-s-size);
   color: var(--ink-neutral-100);
   line-height: 1.5;
 }
@@ -416,7 +415,7 @@
 
 .cancelledNote {
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   color: var(--ink-neutral-60);
   font-style: italic;
 }

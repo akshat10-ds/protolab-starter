@@ -1,6 +1,5 @@
 /* Ink Design System - TaskCard Component Styles */
 /* Based on Figma: [INK] Task Card */
-@import '../../1-tokens/tokens.css';
 
 .taskCard {
   background: var(--ink-bg-color-default);

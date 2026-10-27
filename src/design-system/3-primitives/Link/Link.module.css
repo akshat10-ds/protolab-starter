@@ -80,7 +80,7 @@
 }
 
 .kind-subtle:hover {
-  color: var(--ink-font-color-link-subtle-hover); /* neutral-fade-80 - darkens per Figma */
+  color: var(--ink-font-color-link-subtle-hover); /* neutral-fade-80: 80% ink; lighter than the Standard 90% default */
 }
 
 .kind-subtle:active {

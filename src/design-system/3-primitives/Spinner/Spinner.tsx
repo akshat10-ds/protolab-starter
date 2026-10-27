@@ -31,16 +31,18 @@ export const Spinner: React.FC<SpinnerProps> = ({
 
   // strokeWidth scales in the 50-unit viewBox so rendered stroke = 2/4/8px at 16/40/80
   const strokeWidth = size === 'small' ? 6.25 : 5;
+  // Center the stroke inside the full Figma bounds (16/40/80px outer diameter).
+  const radius = 25 - strokeWidth / 2;
 
   return (
     <div data-ink-component="Spinner" data-ink-prop-size={size} className={`${styles.wrapper} ${styles[size]}`} role="status" {...props}>
-      <svg className={spinnerClasses} viewBox="0 0 50 50">
+      <svg aria-hidden="true" className={spinnerClasses} viewBox="0 0 50 50">
         {/* Background circle */}
         <circle
           className={styles.circleBackground}
           cx="25"
           cy="25"
-          r="20"
+          r={radius}
           fill="none"
           strokeWidth={strokeWidth}
         />
@@ -49,7 +51,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
           className={styles.circle}
           cx="25"
           cy="25"
-          r="20"
+          r={radius}
           fill="none"
           strokeWidth={strokeWidth}
         />

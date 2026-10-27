@@ -96,7 +96,7 @@
 }
 
 .statusLight.alert .text {
-  color: var(--ink-font-color-error); /* #c70547 */
+  color: var(--ink-font-color-error-emphasis); /* #c70547 */
 }
 
 .statusLight.alert.filled {

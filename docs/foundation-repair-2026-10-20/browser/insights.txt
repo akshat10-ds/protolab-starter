@@ -1,0 +1,110 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#insights".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 737-754, 756-757, 759-875
+~1 AXWebArea Protolab, URL: localhost:5173/#insights
+~				412 button (collapsed) Create, Secondary Actions: Expand
+~				736 content list
++					737 button Overview
++						738 text Overview
++				739 content list
++					740 button Dashboards
++					741 button My dashboard
++					742 button Administrator dashboard
++					743 button Agreements
++					744 button Obligations
++					745 button Renewals
++					746 button Requests
++				747 content list
++					748 button Reports
++			749 container
++				750 text We've updated the Reports page with new dashboards and reports
++				751 button See what's new
++			752 heading Overview, Value: 1
++				753 text Overview
++			754 combo box (collapsed, settable) Description: Find reports or dashboards, Secondary Actions: Expand
+~			755 text Your Recents
++			756 link Description: All agreements, Value: localhost:5173/#
++			757 text viewed today
+~			758 link Description: Agreement types, Value: localhost:5173/#
++			759 text viewed today
++			760 link Description: Top parties by contract value, Value: localhost:5173/#
++			761 text viewed today
++			762 link Description: Envelope Report, Value: localhost:5173/#
++			763 text viewed today
++			764 link Description: Envelope Status Report, Value: localhost:5173/#
++			765 text viewed 4 days ago
++			766 button View all
++			767 text Your Favorites
++			768 link Description: All agreements, Value: localhost:5173/#
++			769 text Report
++			770 link Description: Agreement types, Value: localhost:5173/#
++			771 text Report
++			772 link Description: Renewals Dashboard, Value: localhost:5173/#
++			773 text Dashboard
++			774 heading Suggested Reports, Value: 2
++				775 text Suggested Reports
++			776 text Beta
++			777 text AI Generated Recommendations
++			778 text Average Liability Cap Amount by Payment Terms
++			779 button Save
++			780 text Aggregation: Average • Measure: Liability Cap Amount • Group by: Payment Type
++			781 container Average liability cap by payment terms
++			782 text Count of Agreements by Assignment Termination Rights
++			783 button Save
++			784 text Aggregation: Count • Measure: Agreements • Group by: Assignment (Termination Rights)
++			785 container Donut chart
++			786 text Empty
++			787 text 1.7K
++			788 text Yes
++			789 text 15
++			790 text Total Mission Insurance Premium
++			791 button Save
++			792 text Sum
++			793 text 321,518,500
++			794 text Mission Insurance Premium
++			795 heading Weekly Insights, Value: 2
++				796 text Weekly Insights
++			797 text All agreements
++			798 text Count
++			799 text 1,746
++			800 text Agreements
++			801 text New agreements ingested
++			802 text Count
++			803 text 26
++			804 text Agreements
++			805 text Expiring agreements
++			806 text Count
++			807 text 54
++			808 text Agreements
++			809 text Upcoming renewals
++			810 text Aggregation: Count • Measure: Agreements • Group by: Renewal Notice Date • Segment by: Agreement Type
++			811 container Upcoming renewals by month
++			812 heading Review your agreements, Value: 2
++				813 text Review your agreements
++			814 button View Agreements Dashboard
++			815 text Upcoming renewals
++			816 text Renewal Notice Date: Next 12 Months; Renewal Type: Auto Renew +2
++			817 container Upcoming renewals
++			818 text Agreement types
++			819 text Aggregation: Count • Measure: Agreements • Group by: Agreement Type
++			820 container Agreement types
++			821 heading Explore Docusign Insights, Value: 2
++				822 text Explore Docusign Insights
++			823 text Review Upcoming Renewal
++			824 text Discover key metrics on your agreements
++			825 button Review
++			826 text Review Envelope Dashboard
++			827 text Discover key metrics on your envelopes
++			828 button Review
++			829 text Create custom dashboards
++			830 text Customize your dashboard to fit your needs
++			831 button Create
++			832 text Create custom reports
++			833 text Customize your reports to fit your needs
++			834 button Create
++			835 heading Resources, Value: 2
++				836 text Resources
++			837 link Description: Suggest a feature, Value: localhost:5173/#
++			838 link Description: eSignature Report Help Docs, Value: localhost:5173/#
++			839 link Description: Agreement dashboard Help Docs, Value: localhost:5173/#
+The focused UI element is 404 link Description: Insights, URL: localhost:5173/#

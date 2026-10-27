@@ -1,0 +1,37 @@
+{
+  "bundleHash": "16c70f74eb3e3ee2",
+  "checks": [
+    {
+      "check": 0,
+      "status": "fulfilled",
+      "chunk_id": "211e08",
+      "wall_time_seconds": 2.41428375,
+      "exit_code": 0,
+      "original_token_count": 227,
+      "output": "\n> typecheck\n> node scripts/check-source-shadows.mjs && tsc --noEmit\n\nSource shadow check passed.\n\n> audit:design-system\n> node scripts/design-system-audit.mjs --no-baseline\n\nDesign-system static source audit (not a visual fidelity score)\n6 application files; 1112 Ink tokens defined across 123 CSS files.\n0 findings: 0 existing, 0 new, 0 baseline occurrences resolved.\nBaseline: none\n\n  raw-control                      0 total      0 new\n  deep-design-system-import        0 total      0 new\n  undefined-ink-token              0 total      0 new\n  hardcoded-color                  0 total      0 new\n  hardcoded-typography             0 total      0 new\n  hardcoded-spacing                0 total      0 new\n  layout-bypass                    0 total      0 new\n\nCoverage: literal app styles, raw controls, deep imports, and undefined CSS tokens. Computed styles and visual parity require separate review.\n"
+    },
+    {
+      "check": 1,
+      "status": "fulfilled",
+      "chunk_id": "44eb1e",
+      "wall_time_seconds": 2.36031275,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    }
+  ],
+  "localTests": {
+    "sourceShadow": 1,
+    "sourceAudit": 16,
+    "passed": 17
+  },
+  "upstreamTests": {
+    "passed": 257,
+    "skipped": 5
+  },
+  "aiAdapterSuites": {
+    "canonical": 8,
+    "preparedSubset": 4
+  },
+  "scopeNote": "Counts describe separate runs and are not summed; some upstream suites also include AI checks."
+}

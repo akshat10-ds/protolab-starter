@@ -1,0 +1,11 @@
+{
+  "AGREEMENTS_DATA": true,
+  "NAVIGATOR_DATA": true,
+  "PARTIES_DATA": true,
+  "REQUESTS_DATA": true,
+  "WORKSPACES_DATA": true,
+  "TEMPLATES_DATA": true,
+  "REPORTS_DATA": true,
+  "DETAIL_TABS": true,
+  "INSIGHT_CARDS": true
+}

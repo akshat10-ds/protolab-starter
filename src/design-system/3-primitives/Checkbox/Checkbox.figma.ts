@@ -49,7 +49,7 @@ if (hasEnd) {
 // Figma-only property intentionally omitted: "❖ State" (interaction states, no code prop)
 
 export default {
-  example: figma.code`<Checkbox label="${label}"${checked ? ' checked' : ''}${indeterminate ? ' indeterminate' : ''}${disabled ? ' disabled' : ''}${error ? ' error' : ''}${errorMessage ? figma.code` errorMessage="${errorMessage}"` : ''}${showErrorMessage ? '' : ' showErrorMessage={false}'}${showLabel ? '' : ' showLabel={false}'}${description ? figma.code` description="${description}"` : ''}${startCode ? figma.code` startElement={${startCode}}` : ''}${endCode ? figma.code` endElement={${endCode}}` : ''} />`,
+  example: figma.code`<Checkbox label="${label}"${checked ? ' checked' : ''}${indeterminate ? ' indeterminate' : ''}${disabled ? ' disabled' : ''}${error ? ' error' : ''}${errorMessage ? figma.code` errorMessage="${errorMessage}"` : ''}${showErrorMessage ? '' : ' showErrorMessage={false}'}${showLabel ? '' : ' showLabel={false}'}${description ? figma.code` description="${description}"` : ''}${startCode ? figma.code` startElement={<>${startCode}</>}` : ''}${endCode ? figma.code` endElement={<>${endCode}</>}` : ''} />`,
   imports: ["import { Checkbox } from '@/design-system'"],
   id: 'checkbox',
   metadata: { nestable: true },

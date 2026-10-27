@@ -1,10 +1,9 @@
 /**
  * AIBadge Styles
- * AI denotation badge - matches Figma node-id=19467-181071
+ * AI denotation badge; historical Figma target remains unresolved.
  * Uses Callout component for the info popup
  */
 
-@import '../../1-tokens/tokens.css';
 
 /* Container for relative positioning */
 .container {
@@ -19,7 +18,7 @@
   gap: var(--ink-spacing-25);
   height: 24px;
   width: fit-content;
-  padding: 2px 12px 2px 6px;
+  padding: var(--ink-spacing-25) var(--ink-spacing-150) var(--ink-spacing-25) var(--ink-spacing-1-5);
   background: var(--ink-ai-badge-bg);
   border-radius: var(--ink-radius-full);
   font-family: var(--ink-font-family-default);
@@ -65,65 +64,20 @@
   color: var(--ink-font-color-default);
 }
 
-/* Callout wrapper for positioning */
+/* Position the shared Callout; its own location/alignment API owns the caret. */
 .calloutWrapper {
   position: absolute;
-  top: calc(100% + 10px);
   left: 0;
-  z-index: var(--ink-z-popover, 1000);
+  z-index: var(--ink-z-popover);
+  width: max-content;
+  max-width: calc(100vw - var(--ink-spacing-400));
+  outline: none;
   animation: calloutFadeIn var(--ink-motion-duration-200) var(--ink-motion-curve-default);
 }
-
-/* Hide Callout's built-in caret completely */
-.calloutWrapper [class*='caret'],
-.calloutWrapper [class*='caret']::before,
-.calloutWrapper [class*='caret']::after {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  border-color: transparent !important;
-  background: transparent !important;
-}
-
-/* Also target by structure - hide first child if it's the caret */
-.calloutWrapper > div > div:first-child:not([class*='callout']) {
-  display: none !important;
-}
-
-/* Custom caret at top-left */
-.calloutWrapper::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  left: 16px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 8px 8px 8px;
-  border-color: transparent transparent var(--ink-form-control-border-color-subtle) transparent;
-  z-index: 1;
-}
-
-.calloutWrapper::after {
-  content: '';
-  position: absolute;
-  top: -7px;
-  left: 16px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 8px 8px 8px;
-  border-color: transparent transparent var(--ink-bg-color-default) transparent;
-  z-index: 2;
-}
-
+.calloutWrapper.bottom { top: calc(100% + var(--ink-spacing-50)); }
+.calloutWrapper.top { bottom: calc(100% + var(--ink-spacing-50)); }
+.calloutWrapper > [data-ink-component="Callout"] { max-width: 100%; }
 @keyframes calloutFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(calc(-1 * var(--ink-spacing-50))); }
+  to { opacity: 1; transform: translateY(0); }
 }

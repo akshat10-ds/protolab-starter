@@ -1,0 +1,3 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#home".
+There has been no change in the accessibility tree.
+The focused UI element is 601 button Open in Navigator

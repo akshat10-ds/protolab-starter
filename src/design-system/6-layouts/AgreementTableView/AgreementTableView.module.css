@@ -5,7 +5,6 @@
  * Supports two padding variants: default (80px) and compact (32px).
  */
 
-@import '../../1-tokens/tokens.css';
 
 /* Container - fills available space with white background */
 .container {

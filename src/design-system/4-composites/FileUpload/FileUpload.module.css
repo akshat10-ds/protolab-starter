@@ -1,5 +1,4 @@
 /* Ink Design System - FileUpload Component Styles */
-@import '../../1-tokens/tokens.css';
 
 .wrapper {
   display: flex;
@@ -61,7 +60,7 @@
   align-items: center;
   gap: var(--ink-spacing-3);
   text-align: center;
-  pointer-events: none;
+
 }
 
 .uploadIcon {
@@ -250,3 +249,13 @@
     height: 40px;
   }
 }
+
+.dropzone { width: 100%; box-sizing: border-box; max-width: 720px; padding: var(--ink-spacing-400); }
+.dropzone.background { background: var(--ink-bg-color-default); }
+.dropzone.small { max-width: 543px; }
+.dropzone.disabled { opacity: var(--ink-opacity-disabled); }
+.browseActions { display: flex; flex-direction: row-reverse; justify-content: center; gap: var(--ink-spacing-200); width: 100%; }
+.small .browseActions { flex-direction: column; }
+.small .browseActions > * { width: 100%; }
+.uploadIcon { box-sizing: content-box; padding: var(--ink-spacing-100); background: var(--ink-form-control-bg-color-highlight); border-radius: var(--ink-radius-size-m); }
+.dropzone.dragging .uploadIcon { border-radius: var(--ink-radius-size-full); }

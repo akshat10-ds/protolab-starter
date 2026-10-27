@@ -1,0 +1,8 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 57
++					396 container
++						397 text 128 Master Service Agreement  documents have  Limitation of Liability Clause
+~					58 text You can now track and compare clauses across your agreements to flag risks and nonstandard terms.
+~					59 button View Agreements
+The focused UI element is 29 button More options for Folders

@@ -1,0 +1,456 @@
+import { DragHandleCell } from "./DragHandleCell"
+import { ColorPickerHueSlider } from "./ColorPickerHueSlider"
+import { ColorPickerHexInput } from "./ColorPickerHexInput"
+import { Eyedropper } from '@ds/icons'
+import { ChevronDownSmall } from '@ds/icons'
+import { Upload } from '@ds/icons'
+import { Button } from '@ds/ui'
+
+type InkColorPickerProps = {
+  className?: string;
+  type?: "Image" | "Gradient" | "Image Upload";
+};
+
+export default function InkColorPicker({ className, type = "Gradient" }: InkColorPickerProps) {
+  const isGradient = type === "Gradient";
+  const isImage = type === "Image";
+  const isImageUpload = type === "Image Upload";
+  return (
+    <div className={className || "bg-[var(--bgColorDefault,white)] border border-[var(--borderColorSubtle,rgba(19,0,50,0.1))] border-solid content-stretch flex flex-col gap-[var(--gap100,8px)] items-start max-w-[308px] min-w-[308px] overflow-clip p-[var(--gap200,16px)] relative rounded-[var(--radiusSizeM,12px)] shadow-[0px_4px_8px_0px_var(--internal\\/color\\/semantic\\/neutral\\/fade\\/15,rgba(19,0,50,0.15))] w-[308px]"} id={isImage ? "node-2923_13545" : isImageUpload ? "node-2923_13487" : "node-2923_13453"}>
+      {isGradient && (
+        <>
+          <div className="relative shrink-0 size-[276px]" data-node-id="2923:11480" data-name="Color Gradient">
+            <div className="absolute bg-[#da3225] left-0 rounded-[var(--radiusSizeS,8px)] size-[276px] top-0" data-node-id="2923:11481" data-name="Hue (CHANGE COLOR HERE)" />
+            <div className="absolute left-0 rounded-[var(--radiusSizeS,8px)] size-[276px] top-0" data-node-id="2923:11482" style={{ backgroundImage: "linear-gradient(135deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 50%)" }} data-name="Brightness" />
+            <div className="absolute bg-gradient-to-b from-[21.635%] from-[rgba(127,127,127,0)] left-0 rounded-[var(--radiusSizeS,8px)] size-[276px] to-black top-0" data-node-id="2923:11483" data-name="Saturation" />
+          </div>
+          <div className="content-stretch flex flex-col gap-[var(--gap100,8px)] items-start relative shrink-0" data-node-id="2923:11961" data-name="color.swatches">
+            <div className="content-stretch flex flex-col gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:11961;2923:11899" data-name="color.swatches">
+              <div className="content-stretch flex flex-col gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:11961;2923:11900" data-name="_Blocks / [INK] Color Swatches">
+                <div className="content-stretch flex gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:11961;2923:11901" data-name="Row">
+                  <div className="bg-black border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11902" data-name="Color Swatch" />
+                  <div className="bg-[#434343] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11903" data-name="Color Swatch" />
+                  <div className="bg-[#666] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11904" data-name="Color Swatch" />
+                  <div className="bg-[#999] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11905" data-name="Color Swatch" />
+                  <div className="bg-[#b7b7b7] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11906" data-name="Color Swatch" />
+                  <div className="bg-[#ccc] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11907" data-name="Color Swatch" />
+                  <div className="bg-[#d9d9d9] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11908" data-name="Color Swatch" />
+                  <div className="bg-[#efefef] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11909" data-name="Color Swatch" />
+                  <div className="bg-white border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11910" data-name="Color Swatch" />
+                  <button className="block cursor-pointer relative shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11911" data-name="Swatch Button" />
+                </div>
+                <div className="content-stretch flex gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:11961;2923:11913" data-name="Row">
+                  <div className="bg-[#980000] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11914" data-name="Color Swatch" />
+                  <div className="bg-[#ff0200] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11915" data-name="Color Swatch" />
+                  <div className="bg-[#f90] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11916" data-name="Color Swatch" />
+                  <div className="bg-[#fef000] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11917" data-name="Color Swatch" />
+                  <div className="bg-[#01ff00] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11918" data-name="Color Swatch" />
+                  <div className="bg-[#01ffff] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11919" data-name="Color Swatch" />
+                  <div className="bg-[#4a86e8] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11920" data-name="Color Swatch" />
+                  <div className="bg-[#1300ff] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11921" data-name="Color Swatch" />
+                  <div className="bg-[#90f] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11922" data-name="Color Swatch" />
+                  <div className="bg-[#f0f] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:11961;2923:11923" data-name="Color Swatch" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      {isImageUpload && (
+        <>
+          <div className="bg-[var(--ctaBgColorTertiaryDefault,rgba(19,0,50,0.05))] content-stretch cursor-pointer flex flex-col gap-[var(--gap200,16px)] h-[276px] items-center justify-center p-[var(--gap400,32px)] relative rounded-[var(--radiusSizeS,8px)] shrink-0 w-full" data-node-id="2923:13034" data-name="[INK] File Drop">
+            <div className="bg-[var(--formHighlightBgColorDefault,rgba(19,0,50,0.1))] content-stretch flex gap-[8px] items-center justify-center overflow-clip p-[8px] relative rounded-[var(--radiusSizeM,12px)] shrink-0 size-[40px]" data-node-id="I2923:13034;15293:35269" data-name="Icon">
+              <div className="absolute border-[length:var(--borderWidthXS,1px)] border-[var(--borderColorSubtleInverse,rgba(255,255,255,0.1))] border-solid inset-0 rounded-[var(--radiusSizeM,12px)]" data-node-id="I2923:13034;17864:2751" data-name="border" />
+            </div>
+            <div className="content-stretch flex flex-col gap-[var(--gap100,8px)] items-center relative shrink-0 w-full" data-node-id="I2923:13034;845:6235" data-name="Text">
+              <div className="content-stretch flex items-center relative shrink-0 w-full" data-node-id="I2923:13034;6246:20378" data-name="text">
+                <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Medium')] font-[var(--font.fontWeight.500,normal)] leading-[1.25] min-w-px relative text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))] text-[length:var(--font.fontSize.16,16px)] text-center tracking-[var(--font.letterSpacing.cozy,-0.16px)]" data-node-id="I2923:13034;6246:20378;6243:18105">
+                  Drag image file here
+                </p>
+              </div>
+              <div className="content-stretch flex flex-col items-center relative shrink-0 w-full" data-node-id="I2923:13034;850:3423" data-name="Body text">
+                <p className="[word-break:break-word] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] leading-[1.4] relative shrink-0 text-[color:var(--fontColorSubtle,rgba(19,0,50,0.7))] text-[length:var(--font.fontSize.14,14px)] text-center w-full" data-node-id="I2923:13034;850:3424">
+                  Supported formats: JPG, JPEG, PNG, GIF
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[var(--gap100,8px)] items-center relative shrink-0 w-full" data-node-id="I2923:13034;848:2753" data-name="Footer" />
+          </div>
+          <div className="content-stretch flex flex-col gap-[var(--gap100,8px)] items-start relative shrink-0" data-node-id="2923:12395" data-name="color.swatches">
+            <div className="content-stretch flex flex-col gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:12395;2923:11899" data-name="color.swatches">
+              <div className="content-stretch flex flex-col gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:12395;2923:11900" data-name="_Blocks / [INK] Color Swatches">
+                <div className="content-stretch flex gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:12395;2923:11901" data-name="Row">
+                  <div className="bg-black border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11902" data-name="Color Swatch" />
+                  <div className="bg-[#434343] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11903" data-name="Color Swatch" />
+                  <div className="bg-[#666] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11904" data-name="Color Swatch" />
+                  <div className="bg-[#999] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11905" data-name="Color Swatch" />
+                  <div className="bg-[#b7b7b7] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11906" data-name="Color Swatch" />
+                  <div className="bg-[#ccc] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11907" data-name="Color Swatch" />
+                  <div className="bg-[#d9d9d9] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11908" data-name="Color Swatch" />
+                  <div className="bg-[#efefef] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11909" data-name="Color Swatch" />
+                  <div className="bg-white border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11910" data-name="Color Swatch" />
+                  <button className="block cursor-pointer relative shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11911" data-name="Swatch Button" />
+                </div>
+                <div className="content-stretch flex gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:12395;2923:11913" data-name="Row">
+                  <div className="bg-[#980000] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11914" data-name="Color Swatch" />
+                  <div className="bg-[#ff0200] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11915" data-name="Color Swatch" />
+                  <div className="bg-[#f90] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11916" data-name="Color Swatch" />
+                  <div className="bg-[#fef000] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11917" data-name="Color Swatch" />
+                  <div className="bg-[#01ff00] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11918" data-name="Color Swatch" />
+                  <div className="bg-[#01ffff] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11919" data-name="Color Swatch" />
+                  <div className="bg-[#4a86e8] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11920" data-name="Color Swatch" />
+                  <div className="bg-[#1300ff] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11921" data-name="Color Swatch" />
+                  <div className="bg-[#90f] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11922" data-name="Color Swatch" />
+                  <div className="bg-[#f0f] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:12395;2923:11923" data-name="Color Swatch" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      {isImage && (
+        <>
+          <div className="bg-[rgba(255,0,204,0.3)] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid content-stretch flex h-[228px] items-center justify-center min-w-[24px] overflow-clip p-[12px] relative rounded-[var(--radiusSizeXS,4px)] shrink-0 w-full" data-node-id="2923:13284" data-name="_SLOT (Custom Content) [DEPRECATE]">
+            <p className="[word-break:break-word] flex-[1_0_0] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Medium')] font-[var(--font.fontWeight.500,normal)] leading-[1.4] min-w-px relative text-[#76005f] text-[length:var(--font.fontSize.10,10px)] tracking-[var(--font.letterSpacing.open,0.32px)]" data-node-id="I2923:13284;1309:6156">
+              This is a react node. Replace this with a child component from this library or your local set.
+            </p>
+          </div>
+          <div className="content-stretch flex flex-col gap-[var(--gap100,8px)] items-start relative shrink-0" data-node-id="2923:13072" data-name="color.swatches">
+            <div className="content-stretch flex flex-col gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:13072;2923:11899" data-name="color.swatches">
+              <div className="content-stretch flex flex-col gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:13072;2923:11900" data-name="_Blocks / [INK] Color Swatches">
+                <div className="content-stretch flex gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:13072;2923:11901" data-name="Row">
+                  <div className="bg-black border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11902" data-name="Color Swatch" />
+                  <div className="bg-[#434343] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11903" data-name="Color Swatch" />
+                  <div className="bg-[#666] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11904" data-name="Color Swatch" />
+                  <div className="bg-[#999] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11905" data-name="Color Swatch" />
+                  <div className="bg-[#b7b7b7] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11906" data-name="Color Swatch" />
+                  <div className="bg-[#ccc] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11907" data-name="Color Swatch" />
+                  <div className="bg-[#d9d9d9] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11908" data-name="Color Swatch" />
+                  <div className="bg-[#efefef] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11909" data-name="Color Swatch" />
+                  <div className="bg-white border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11910" data-name="Color Swatch" />
+                  <button className="block cursor-pointer relative shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11911" data-name="Swatch Button" />
+                </div>
+                <div className="content-stretch flex gap-[var(--gap50,4px)] items-start relative shrink-0" data-node-id="I2923:13072;2923:11913" data-name="Row">
+                  <div className="bg-[#980000] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11914" data-name="Color Swatch" />
+                  <div className="bg-[#ff0200] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11915" data-name="Color Swatch" />
+                  <div className="bg-[#f90] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11916" data-name="Color Swatch" />
+                  <div className="bg-[#fef000] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11917" data-name="Color Swatch" />
+                  <div className="bg-[#01ff00] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11918" data-name="Color Swatch" />
+                  <div className="bg-[#01ffff] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11919" data-name="Color Swatch" />
+                  <div className="bg-[#4a86e8] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11920" data-name="Color Swatch" />
+                  <div className="bg-[#1300ff] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11921" data-name="Color Swatch" />
+                  <div className="bg-[#90f] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11922" data-name="Color Swatch" />
+                  <div className="bg-[#f0f] border border-[var(--borderColorDefault,rgba(19,0,50,0.5))] border-solid relative rounded-[var(--radiusSizeXS,4px)] shrink-0 size-[24px]" data-node-id="I2923:13072;2923:11923" data-name="Color Swatch" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: elevationLow: Effect(type: DROP_SHADOW, color: Internal/color/semantic/neutral/fade/15, offset: (0, 4), radius: 8, spread: 0), fontElementLabel: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.14, weight: 500, lineHeight: 1.399999976158142, letterSpacing: 0), fontBodyM: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.16, weight: 400, lineHeight: 1.5, letterSpacing: 0), fontHeadingXXS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.16, weight: 500, lineHeight: 1.25, letterSpacing: font.letterSpacing.cozy), fontBodyS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.14, weight: 400, lineHeight: 1.399999976158142, letterSpacing: 0), fontButton: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.16, weight: 500, lineHeight: 1.5, letterSpacing: 0), fontDetailXS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.10, weight: 500, lineHeight: 1.399999976158142, letterSpacing: font.letterSpacing.open).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Color Picker
+**Node ID:** 2923:13579
+
+The Color Picker allows users to choose any color and provides different input options for selecting colors.
+
+  
+
+Props
+-----
+
+  
+
+`**_❖ Type:_**` Changes the method of color selection
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/29b455-color-picker](https://ink.docusign.com/94bc5d135/p/29b455-color-picker)
+- [Color Picker - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-colorpicker--default)
+
+## _Handle
+**Node ID:** 2363:7074
+
+This handle is used in the Color Gradient and Hue Slider.
+
+## _Hue Slider
+**Node ID:** 2363:7084
+
+Hue Slider is used in the `Color Picker` as a way to select different colors.
+
+## _Hex Input
+**Node ID:** 2363:7076
+
+Hex Input is a field that reflects the hex value of the selected color. An `Icon Button` is here to allow users to toggle into an Image Upload mode.
+
+## _Label (Default)
+**Node ID:** 163:962
+
+This component drives the text field label
+
+## selected=False, size=medium, ❖ State=Default, inactive=False
+**Node ID:** 19:466
+
+When additional clarity is required, an icon can be added alongside text to reinforce an action. If the icon is well-suited to conveying an action on its own, it can appear by itself
+
+## [INK] Toggle Button
+**Node ID:** 19:484
+
+Toggle buttons give users a way to enable or disable specific actions.
+
+  
+
+Props
+-----
+
+_`**selected:**`_ Indicates that the `ToogleButton` is selected.
+
+  
+
+_`**size:**`_ The size of the ToggleButton
+
+  
+
+_`**❖ State:**`_ The state of the `ToolbarButton`
+
+  
+
+_`**inactive:**`_ Indicates the element is disabled.
+
+  
+
+_`**HasIcon?:**`_ The provided icon will display at the start of the `Button`.
+
+  
+
+_`**icon**`_: The icon to display in `ToogleButton`.
+
+  
+
+_`**icon (Small)**`_: The icon to display in small `ToogleButton`.
+
+  
+
+_`**showText:**`_ Shows the ToggleButton text. When text is hidden, this still allows assistive devices to identify it.
+
+  
+
+_`**text:**`_ text for the `ToggleButton`
+
+  
+
+Rules
+-----
+
+1.  Cannot have both HasIcon? and showText set to `false`
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/65635e-toggle-button/b/35969a](https://ink.docusign.com/94bc5d135/p/65635e-toggle-button/b/35969a)
+- [Toolbar Button - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-toolbar-toolbarbutton--default)
+
+## eyedropper
+**Node ID:** 41751:4278
+
+eyedropper, eye dropper, pull color, color sample
+
+## _[INK] Color Swatches
+**Node ID:** 2923:11897
+
+Color Swatches show the color options available to choose from.
+
+  
+
+Props
+-----
+
+`**_❖ Expand Color Swatches:_**` Shows additional color swatches
+
+  
+
+`**_savedColorSwatches:_**` An array of saved color swatches with a maximum amount of 10 swatches.
+
+## chevronDownSmall
+**Node ID:** 41751:4627
+
+trigger, down, expand more, chevron
+
+## ❖ Small=True, background=False, ❖ State=Default, disabled=False
+**Node ID:** 846:10892
+
+Figma Config
+------------
+
+*   Use for xSmall (34rem/544px) breakpoint or below
+
+## [INK] File Drop 
+**Node ID:** 846:7730
+
+The File Drop component allows users to upload files by dragging and dropping files into the dashed area or by clicking a button to upload files locally
+
+  
+
+Props
+-----
+
+`**_❖ Small:_**` Changes File Drop to a small size and stacks full-width buttons.
+
+  
+
+`**_background:_**` Adds a default background color to the FileDrop
+
+  
+
+`**_❖ State:_**` The state of the `File Drop`
+
+  
+
+`**_disabled:_**` Applies a "disabled" treatment
+
+  
+
+`**_text:_**` The text to display, indicating that the FileDrop component is a drop target. Uses heading subcomponent.
+
+  
+
+`**_❖ Show Body Text:_**` Displays formats and maxFileSize
+
+  
+
+`**_❖ Formats:_**` shows formats
+
+  
+
+`**_formats:_**` Displays text detailing the supported file formats
+
+  
+
+`**_❖ Max File Size:_**` Shows maxFileSize
+
+  
+
+`**_maxFileSize:_**` Displays text indicating the maximum allowed file size
+
+  
+
+`**_❖ Show Secondary Action Button:_**` Shows a secondary button to provide an additional action
+
+  
+
+  
+
+Rules
+-----
+
+1.  Toggle `❖ Show Body Text` to remove gap if `❖ Formats` and `❖ Max File Size` are False
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/722f54-file-drop/b/843d60](https://ink.docusign.com/94bc5d135/p/722f54-file-drop/b/843d60)
+- [[FRNTEND-6567] FileDrop - Fix heading size](https://docusign.atlassian.net/browse/FRNTEND-6567)
+- [File Drop - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-filedrop--default)
+
+## upload
+**Node ID:** 41751:4654
+
+ingest, send to cloud, add, load
+
+## displayLevel=heading-xxs
+**Node ID:** 6243:18106
+
+Heading styles make up the middle portion of the type scale and most often pairs with the body styling to create a strong parent-child relationship. Headings are useful for short, impactful sentences or to emphasize sections of content on a page.
+
+## _Heading
+**Node ID:** 6246:18107
+
+Heading allows components to render a more robust set of styles on top of the semantic H1-H6 levels.
+
+  
+
+`**_displayLevel:_**` An optional display level (i.e. importance indicated by size / style / casing) that may differ from the semantic HTML section heading level
+
+  
+
+`**_text:_**` The text to be displayed
+
+**Documentation:**
+- [https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-heading--default](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-heading--default)
+
+## kind=primary, size=medium, ❖ State=default, disabled=false
+**Node ID:** 10:541
+
+The primary button styling is reserved for the most important call to action on the page. It should be applied sparingly to maximize effectiveness.
+
+## [INK] Button
+**Node ID:** 10:557
+
+`Buttons` give users a simple and direct way to take an action.
+
+  
+
+Props
+-----
+
+  
+
+`**_kind:_**` The kind of the `Button`.
+
+  
+
+`**_❖ State:_**` The state of the `Button`.
+
+  
+
+`**_disabled:_**` Applies the 'disabled' attribute.
+
+  
+
+`**_text:_**` The text to be displayed inside of the `Button`.
+
+  
+
+`**_startElement:_**` The provided icon will display at the start of the `Button`.
+
+  
+
+`**_menuTrigger:_**` Displays a caret icon at the end of the `Button`. When pressed, the `Button` will display a menu beneath it.
+
+  
+
+`**_loading:_**` Display a loading indicator in the `Button`. Cannot be used with an icon.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/241afc-button/b/32e1a2](https://ink.docusign.com/94bc5d135/p/241afc-button/b/32e1a2)
+- [Button - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-button--default)
+
+## selected=True, size=medium, ❖ State=Default, inactive=False
+**Node ID:** 2382:9489
+
+When additional clarity is required, an icon can be added alongside text to reinforce an action. If the icon is well-suited to conveying an action on its own, it can appear by itself
+
+## _SLOT (Custom Content) [DEPRECATE]
+**Node ID:** 582:3982
+
+Swap with a local component in your file to provide custom content without the need to detach
+
+## kind=secondary, size=medium, ❖ State=default, disabled=false
+**Node ID:** 18:234
+
+The secondary button styling should be applied to actions of medium importance or when there are multiple, equally important calls-to-action on the page, such as in a table
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

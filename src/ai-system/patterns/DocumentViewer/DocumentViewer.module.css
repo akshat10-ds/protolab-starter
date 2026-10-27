@@ -1,0 +1,383 @@
+
+/* ============================================
+   DocumentViewer — Document display pattern
+   ============================================ */
+
+.viewer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--ink-neutral-10);
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-m);
+  box-shadow: 0 4px 16px var(--ink-neutral-fade-10);
+  animation: viewerFadeIn 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes viewerFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================
+   Header / Toolbar
+   ============================================ */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  background: var(--ink-bg-color-default);
+  border-bottom: 1px solid var(--ink-border-color-subtle);
+  flex-shrink: 0;
+  height: 56px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  min-width: 0;
+  flex: 1;
+}
+
+.title {
+  font-size: var(--ink-font-body-s-size);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-default);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 var(--ink-spacing-50);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Body — thumbnails + content
+   ============================================ */
+
+.body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Thumbnails sidebar */
+.thumbnails {
+  width: 72px;
+  background: var(--ink-neutral-20);
+  border-right: 1px solid var(--ink-border-color-subtle);
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: var(--ink-spacing-150) var(--ink-spacing-100);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+}
+
+.thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--ink-radius-size-xs);
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.thumb:hover {
+  background: var(--ink-ecru-10);
+}
+
+.thumbActive {
+  border-color: var(--ink-cobalt-100);
+  background: var(--ink-white-100);
+}
+
+.thumbPage {
+  width: 44px;
+  height: 56px;
+  background: var(--ink-white-100);
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px var(--ink-neutral-fade-10);
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbPage::before {
+  content: '';
+  position: absolute;
+  inset: 6px 4px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--ink-neutral-30) 0px,
+    var(--ink-neutral-30) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+
+.thumbHighlight {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 10px;
+  background: var(--ink-orange-30);
+  border: 1px solid var(--ink-orange-60);
+  border-radius: 1px;
+  z-index: 1;
+}
+
+.thumbNum {
+  font-size: 10px;
+  color: var(--ink-font-color-secondary);
+  font-weight: var(--ink-font-weight-medium);
+}
+
+/* ============================================
+   Content area
+   ============================================ */
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--ink-spacing-200);
+  display: flex;
+  justify-content: center;
+}
+
+.document {
+  width: 100%;
+  max-width: 680px;
+  background: var(--ink-white-100);
+  border-radius: var(--ink-radius-size-s);
+  box-shadow: 0 1px 4px var(--ink-neutral-fade-10);
+  padding: var(--ink-spacing-200) var(--ink-spacing-250);
+  min-height: 100%;
+  position: relative;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ============================================
+   Document content elements
+   ============================================ */
+
+.letterhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--ink-spacing-200);
+  gap: var(--ink-spacing-100);
+  flex-wrap: wrap;
+}
+
+.companyLogo {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-150);
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: var(--ink-cobalt-100);
+  color: var(--ink-white-100);
+  border-radius: var(--ink-radius-size-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--ink-font-size-xl);
+  font-weight: var(--ink-font-weight-bold);
+}
+
+.companyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.companyName {
+  font-size: var(--ink-font-body-m-size);
+  font-weight: var(--ink-font-weight-bold);
+  color: var(--ink-font-color-default);
+  letter-spacing: 0.5px;
+}
+
+.companyAddress {
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-secondary);
+}
+
+.docType {
+  font-size: var(--ink-font-detail-xs-size);
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-font-color-secondary);
+  text-align: right;
+  letter-spacing: 0.5px;
+}
+
+.divider {
+  height: 2px;
+  background: var(--ink-neutral-20);
+  margin: var(--ink-spacing-200) 0;
+}
+
+.textContent {
+  line-height: 1.8;
+}
+
+.text {
+  font-size: var(--ink-font-body-s-size);
+  color: var(--ink-font-color-default);
+}
+
+.text p {
+  margin: 0 0 var(--ink-spacing-150);
+}
+
+/* Highlight region on document */
+.highlightRegion {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.highlightRegion[data-interactive='true'] {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Citation highlight inline */
+.citation {
+  position: relative;
+  margin: var(--ink-spacing-200) 0;
+}
+
+.citationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  background: var(--ink-orange-50);
+  color: var(--ink-neutral-100);
+  font-size: 10px;
+  font-weight: var(--ink-font-weight-bold);
+  padding: 2px 8px;
+  border-radius: var(--ink-radius-full);
+  margin-bottom: var(--ink-spacing-100);
+}
+
+.citationText {
+  font-size: var(--ink-font-body-s-size);
+  line-height: 1.7;
+  color: var(--ink-font-color-default);
+  margin: 0;
+}
+
+.citationHighlight {
+  background-color: var(--ink-orange-30);
+  color: inherit;
+  padding: 2px 0;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Page footer */
+.pageFooter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--ink-spacing-400);
+  padding-top: var(--ink-spacing-200);
+  border-top: 1px solid var(--ink-neutral-20);
+  font-size: var(--ink-font-detail-xs-size);
+  color: var(--ink-font-color-secondary);
+  gap: var(--ink-spacing-200);
+  flex-wrap: wrap;
+}
+
+/* Placeholder for non-content pages */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: var(--ink-font-color-secondary);
+  text-align: center;
+  gap: var(--ink-spacing-150);
+}
+
+.placeholder p {
+  margin: 0;
+  font-size: var(--ink-font-body-m-size);
+}
+
+.jumpButton {
+  padding: var(--ink-spacing-100) var(--ink-spacing-200);
+  background: var(--ink-cobalt-100);
+  color: var(--ink-white-100);
+  border: none;
+  border-radius: var(--ink-radius-size-xs);
+  font-size: var(--ink-font-body-s-size);
+  font-weight: var(--ink-font-weight-medium);
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.jumpButton:hover {
+  background: var(--ink-cobalt-120);
+}
+
+/* ============================================
+   Skeleton loading
+   ============================================ */
+
+.skeletonThumb {
+  width: 44px;
+  height: 56px;
+  background: var(--ink-neutral-20);
+  border-radius: 2px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeletonLine {
+  height: 14px;
+  background: var(--ink-neutral-15);
+  border-radius: 4px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeletonBlock {
+  height: 80px;
+  background: var(--ink-neutral-15);
+  border-radius: var(--ink-radius-size-xs);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

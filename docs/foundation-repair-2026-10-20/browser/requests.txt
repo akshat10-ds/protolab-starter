@@ -1,0 +1,181 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#agreements".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 738-759, 761-763, 765, 774-806
+~1 AXWebArea Protolab, URL: localhost:5173/#agreements
+~			736 container
+~				737 pop up button (collapsed) Start, Secondary Actions: Expand
++				738 content list
++					739 button All Agreements
++					740 button Drafts
++					741 button In Progress
++					742 button Completed
++					743 button Deleted
++				744 content list
++					745 container
++						746 button Folders
++						747 button More options for Folders
++				748 content list
++					749 button Parties
++					750 button Requests
++						751 text Requests
++					752 button Signatories
++					753 button Workflows New
++						754 text Workflows
++						755 text New
++					756 button Workspaces
++					757 button PowerForms
++					758 button Bulk Send
++				759 button Unlock navigation sidebar
+~			760 container
++				761 heading Requests, Value: 1
++					762 text Requests
++				763 button Create Request
+~			764 combo box (collapsed, settable) Secondary Actions: Expand
++			765 button Bookmarks
+~			766 text Status Type: Open
+~			767 button Remove Status Type: Open
+~			768 pop up button Created At
+~			769 pop up button Due Date
+~			770 pop up button Last Activity At
+~			771 pop up button Owner
+~			772 button All Filters
+~			773 table
++				774 row
++					775 cell
++						776 text Title
++					777 cell
++						778 text Status
++					779 cell
++						780 text Last Activity At
++					781 cell
++						782 text Due Date
++					783 cell
++						784 text Submitter
++					785 cell
++						786 text Owner
++					787 cell
++						788 button Customize columns
++				789 row
++					790 cell
++						791 text [Example] General Legal Request by DocuSign User Rename
++						792 text REQ-0006
++					793 cell
++						794 text New
++					795 cell
++						796 text 6/3/2026 07:16
++					797 cell
++						798 text —
++					799 cell
++						800 text DU
++						801 text DocuSign User
++						802 text navigator_test_admin@dsxtr.com
++					803 cell
++						804 text Unassigned
++				805 row
++					806 cell
++						807 text [Example] General Legal Request by DocuSign User JR
++						808 text REQ-0007
++					809 cell
++						810 text New
++					811 cell
++						812 text 26/2/2026 21:31
++					813 cell
++						814 text —
++					815 cell
++						816 text DU
++						817 text DocuSign User
++						818 text navigator_test_admin@dsxtr.com
++					819 cell
++						820 text Unassigned
++				821 row
++					822 cell
++						823 text [Example] General Legal Request by DocuSign User
++						824 text REQ-0005
++					825 cell
++						826 text New
++					827 cell
++						828 text 9/2/2026 19:19
++					829 cell
++						830 text —
++					831 cell
++						832 text DU
++						833 text DocuSign User
++						834 text navigator_test_admin@dsxtr.com
++					835 cell
++						836 text Unassigned
++				837 row
++					838 cell
++						839 text [Example] NDA Request by DocuSign User
++						840 text REQ-0004
++					841 cell
++						842 text New
++					843 cell
++						844 text 18/12/2025 23:10
++					845 cell
++						846 text —
++					847 cell
++						848 text DU
++						849 text DocuSign User
++						850 text navigator_test_admin@dsxtr.com
++					851 cell
++						852 text Unassigned
++				853 row
++					854 cell
++						855 text [Example] General Legal Request by DocuSign User
++						856 text REQ-0003
++					857 cell
++						858 text New
++					859 cell
++						860 text 18/12/2025 21:55
++					861 cell
++						862 text —
++					863 cell
++						864 text DU
++						865 text DocuSign User
++						866 text navigator_test_admin@dsxtr.com
++					867 cell
++						868 text Unassigned
++				869 row
++					870 cell
++						871 text [Example] NDA Request by DocuSign User
++						872 text REQ-0002
++					873 cell
++						874 text New
++					875 cell
++						876 text 15/11/2025 21:25
++					877 cell
++						878 text —
++					879 cell
++						880 text DU
++						881 text DocuSign User
++						882 text navigator_test_admin@dsxtr.com
++					883 cell
++						884 text Unassigned
++				885 row
++					886 cell
++						887 text [Example] NDA Request by DocuSign User
++						888 text REQ-0001
++					889 cell
++						890 text New
++					891 cell
++						892 text 23/10/2025 18:35
++					893 cell
++						894 text —
++					895 cell
++						896 text DU
++						897 text DocuSign User
++						898 text navigator_test_admin@dsxtr.com
++					899 cell
++						900 text Unassigned
++			901 text Items per page
++			902 container
++				903 pop up button (collapsed, settable) Items per page, Value: 10 / Page, Secondary Actions: Expand
++					904 menu
++						905 5 / Page
++						906 (selected) 10 / Page
++						907 25 / Page
++						908 50 / Page
++			909 text 1 - 7  of  7
++			910 button (disabled) Previous page
++			911 button (disabled) Next page
+The focused UI element is 1 AXWebArea Protolab, URL: localhost:5173/#agreements

@@ -232,3 +232,14 @@
 .kind-neutral.bottomBorder {
   border-bottom-color: var(--ink-white-fade-20);
 }
+
+.banner { min-width: 0; }
+.topBorder { border-top: var(--ink-form-border-width) solid var(--ink-border-color-subtle); }
+.kind-danger.topBorder { border-top-color: var(--ink-border-color-error); }
+.kind-success.topBorder { border-top-color: var(--ink-border-success); }
+.kind-warning.topBorder { border-top-color: var(--ink-border-warning); }
+.kind-promo.topBorder, .kind-information.topBorder { border-top-color: var(--ink-cobalt-100); }
+.kind-neutral.topBorder { border-top-color: var(--ink-white-fade-20); }
+.align-start .content { justify-content: flex-start; }
+
+.kind-neutral .actionButton button { border-color: var(--ink-white-fade-50); }

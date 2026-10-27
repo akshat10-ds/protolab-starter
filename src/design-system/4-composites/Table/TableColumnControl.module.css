@@ -1,5 +1,4 @@
 /* TableColumnControl Modal Styles */
-@import '../../1-tokens/tokens.css';
 
 .searchContainer {
   padding: 0 0 var(--ink-spacing-200) 0;

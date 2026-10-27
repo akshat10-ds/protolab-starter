@@ -1,0 +1,188 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- button "Skip to main content"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign logo, homepage":
+    - /url: https://apps.dev.docusign.net/api/send/home
+    - img "Docusign logo, homepage"
+  - navigation:
+    - list:
+      - link "Home":
+        - /url: /send/home
+        - generic: Home
+      - link "Agreements":
+        - /url: /send/documents
+        - generic: Agreements
+      - link "Templates":
+        - /url: /send/templates
+        - generic: Templates
+      - link "Automations":
+        - /url: /send/agents
+        - generic: Automations
+      - link "Insights":
+        - /url: /send/reports
+        - generic: Insights
+      - link "Admin":
+        - /url: /admin
+        - generic: Admin
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "tasks":
+    - generic: tasks
+  - button "Notifications":
+    - generic: Notifications
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- main:
+  - navigation "Secondary":
+    - button "Start":
+      - generic: Start
+    - list:
+      - button "Collapse" [expanded]:
+      - button "ENVELOPE TEMPLATES":
+        - generic: ENVELOPE TEMPLATES
+      - list:
+        - button "My Templates":
+          - generic "My Templates"
+        - button "Shared with Me":
+          - generic "Shared with Me"
+        - button "Favorites":
+          - generic "Favorites"
+        - button "Show More":
+          - generic: Show More
+      - button "Clauses":
+        - generic "Clauses"
+      - generic: New
+      - button "Document Templates":
+        - generic "Document Templates"
+      - button "Workspace Templates":
+        - generic "Workspace Templates"
+      - button "Workflow Templates":
+        - generic "Workflow Templates"
+      - button "Collapse" [expanded]:
+      - button "WEB FORMS":
+        - generic: WEB FORMS
+      - list:
+        - button "My Web Forms":
+          - generic "My Web Forms"
+        - button "Shared with Me":
+          - generic "Shared with Me"
+        - button "All Web Forms":
+          - generic "All Web Forms"
+      - button "Template Gallery":
+        - generic "Template Gallery"
+  - tablist:
+    - tab "Templates" [selected]:
+      - generic: Templates
+    - tab "Elastic Templates":
+      - generic: Elastic Templates
+  - tabpanel "Templates"
+  - heading "My Templates" [level=1]:
+    - generic: My Templates
+  - generic: Search
+  - textbox "Search":
+    - /placeholder: Search My Templates
+  - group "Manage Filters":
+    - button "Date":
+      - generic: Date
+    - button "Advanced search":
+      - generic: Advanced search
+  - button "Clear":
+    - generic: Clear
+  - button "Show or hide fields":
+  - table ", column headers with buttons are sortable":
+    - caption: ", column headers with buttons are sortable"
+    - rowgroup:
+      - row "Select all Favorites Name Owner Powerforms Created Date Last Change Folders Actions":
+        - columnheader "Select all":
+          - checkbox "Select all"
+          - generic: Select all
+        - columnheader "Favorites":
+          - generic: Favorites
+        - columnheader "Name":
+          - button "Name":
+            - text: Name
+        - columnheader "Owner":
+          - button "Owner":
+            - text: Owner
+        - columnheader "Powerforms":
+          - generic: Powerforms
+        - columnheader "Created Date":
+          - button "Created Date":
+            - text: Created Date
+        - columnheader "Last Change":
+          - button "Last Change":
+            - text: Last Change
+        - columnheader "Folders":
+          - generic: Folders
+        - columnheader "Actions":
+          - generic: Actions
+    - status: Table sorted by TemplateTable.TableHeader.lastChange, descending
+    - rowgroup:
+      - row "Select row Add [Kalyan Ghosh Test Template - Oct 22] to favorites [Kalyan Ghosh Test Template - Oct 22] Eligible for matching 3p gd 10/22/2026 04:43:32 am 10/22/2026 04:45:07 am Use [Kalyan Ghosh Test Template - Oct 22] More Actions - [Kalyan Ghosh Test Template - Oct 22]":
+        - cell "Select row":
+          - checkbox "Select row"
+          - generic: Select row
+        - cell "Add [Kalyan Ghosh Test Template - Oct 22] to favorites":
+          - button "Add [Kalyan Ghosh Test Template - Oct 22] to favorites":
+        - cell "[Kalyan Ghosh Test Template - Oct 22] Eligible for matching":
+          - link "[Kalyan Ghosh Test Template - Oct 22]":
+            - generic "[Kalyan Ghosh Test Template - Oct 22]"
+          - generic: Eligible for matching
+        - cell "3p gd"
+        - cell
+        - cell "10/22/2026 04:43:32 am":
+          - time: 10/22/2026
+          - time: 04:43:32 am
+        - cell "10/22/2026 04:45:07 am":
+          - time: 10/22/2026
+          - time: 04:45:07 am
+        - cell
+        - cell "Use [Kalyan Ghosh Test Template - Oct 22] More Actions - [Kalyan Ghosh Test Template - Oct 22]":
+          - button "Use [Kalyan Ghosh Test Template - Oct 22]":
+            - generic: Use
+          - button "More Actions - [Kalyan Ghosh Test Template - Oct 22]":
+      - row "Select row Add Untitled 16.10.2026 to favorites Untitled 16.10.2026 Eligible for matching 3p gd 10/16/2026 02:29:21 am 10/16/2026 02:35:59 am Use Untitled 16.10.2026 More Actions - Untitled 16.10.2026":
+        - cell "Select row":
+          - checkbox "Select row"
+          - generic: Select row
+        - cell "Add Untitled 16.10.2026 to favorites":
+          - button "Add Untitled 16.10.2026 to favorites":
+        - cell "Untitled 16.10.2026 Eligible for matching":
+          - link "Untitled 16.10.2026":
+            - generic "Untitled 16.10.2026"
+          - generic: Eligible for matching
+        - cell "3p gd"
+        - cell
+        - cell "10/16/2026 02:29:21 am":
+          - time: 10/16/2026
+          - time: 02:29:21 am
+        - cell "10/16/2026 02:35:59 am":
+          - time: 10/16/2026
+          - time: 02:3

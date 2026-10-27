@@ -13,7 +13,7 @@ export interface SearchSuggestion {
 
 export interface SearchInputProps extends Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  'size'
+  'size' | 'onChange'
 > {
   /** Input value */
   value?: string;
@@ -65,18 +65,31 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
       className,
       searchIcon,
       size = 'medium',
+      onFocus,
+      onBlur,
+      onKeyDown,
       ...props
     },
     ref
   ) => {
-    const [internalValue, setInternalValue] = React.useState(defaultValue || '');
+    const [internalValue, setInternalValue] = React.useState(value ?? defaultValue ?? '');
     const [showSuggestions, setShowSuggestions] = React.useState(false);
     const [selectedIndex, setSelectedIndex] = React.useState(-1);
-    const debounceTimer = React.useRef<NodeJS.Timeout>();
+    const debounceTimer = React.useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
     const containerRef = React.useRef<HTMLDivElement>(null);
 
     const isControlled = value !== undefined;
-    const currentValue = isControlled ? value : internalValue;
+    const currentValue = debounceMs > 0 ? internalValue : (isControlled ? value : internalValue);
+    const listId = React.useId();
+    const suggestionsVisible = !disabled && showSuggestions && suggestions.length > 0;
+
+    React.useEffect(() => {
+      if (value !== undefined) setInternalValue(value);
+    }, [value]);
+    React.useEffect(() => () => clearTimeout(debounceTimer.current), []);
+    React.useEffect(() => {
+      setSelectedIndex(-1);
+    }, [suggestions]);
 
     // Click outside to close suggestions
     React.useEffect(() => {
@@ -93,9 +106,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
 
-      if (!isControlled) {
-        setInternalValue(newValue);
-      }
+      setInternalValue(newValue);
 
       if (debounceMs > 0) {
         if (debounceTimer.current) {
@@ -113,24 +124,24 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
     };
 
     const handleClear = () => {
-      if (!isControlled) {
-        setInternalValue('');
-      }
+      clearTimeout(debounceTimer.current);
+      setInternalValue('');
       onChange?.('');
       onClear?.();
       setShowSuggestions(false);
     };
 
     const handleSuggestionClick = (suggestion: SearchSuggestion) => {
-      if (!isControlled) {
-        setInternalValue(suggestion.label);
-      }
+      clearTimeout(debounceTimer.current);
+      setInternalValue(suggestion.label);
       onChange?.(suggestion.label);
       onSuggestionSelect?.(suggestion);
       setShowSuggestions(false);
     };
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      onKeyDown?.(e);
+      if (e.defaultPrevented) return;
       if (suggestions.length === 0) {
         if (e.key === 'Enter' && onSearch) {
           e.preventDefault();
@@ -142,7 +153,8 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
       switch (e.key) {
         case 'ArrowDown':
           e.preventDefault();
-          setSelectedIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : prev));
+          setShowSuggestions(true);
+          setSelectedIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : 0));
           break;
         case 'ArrowUp':
           e.preventDefault();
@@ -150,7 +162,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
           break;
         case 'Enter':
           e.preventDefault();
-          if (selectedIndex >= 0) {
+          if (suggestionsVisible && selectedIndex >= 0 && suggestions[selectedIndex]) {
             handleSuggestionClick(suggestions[selectedIndex]);
           } else if (onSearch) {
             onSearch(currentValue);
@@ -171,16 +183,25 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
         <div className={cn(styles.inputWrapper, styles[size], disabled && styles.disabled)}>
           <span className={styles.searchIcon}>{searchIcon || defaultSearchIcon}</span>
           <input
+            {...props}
             ref={ref}
             type="text"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={suggestionsVisible}
+            aria-controls={suggestionsVisible ? listId : undefined}
+            aria-activedescendant={suggestionsVisible && selectedIndex >= 0 ? `${listId}-${selectedIndex}` : undefined}
             className={styles.input}
             value={currentValue}
             placeholder={placeholder}
             disabled={disabled}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
-            onFocus={() => setShowSuggestions(true)}
-            {...props}
+            onFocus={event => { onFocus?.(event); if (!event.defaultPrevented) setShowSuggestions(true); }}
+            onBlur={event => {
+              onBlur?.(event);
+              if (!containerRef.current?.contains(event.relatedTarget)) setShowSuggestions(false);
+            }}
           />
           {loading && (
             <span className={styles.loadingIcon}>
@@ -204,17 +225,22 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
               size="small"
               variant="tertiary"
               onClick={handleClear}
+              disabled={disabled}
               aria-label="Clear search"
               className={styles.clearButton}
             />
           )}
         </div>
 
-        {showSuggestions && suggestions.length > 0 && (
-          <ul className={styles.suggestions}>
+        {suggestionsVisible && (
+          <ul id={listId} role="listbox" className={styles.suggestions}>
             {suggestions.map((suggestion, index) => (
               <li
                 key={suggestion.id}
+                id={`${listId}-${index}`}
+                role="option"
+                aria-selected={index === selectedIndex}
+                onMouseDown={event => event.preventDefault()}
                 className={cn(styles.suggestion, index === selectedIndex && styles.selected)}
                 onClick={() => handleSuggestionClick(suggestion)}
                 onMouseEnter={() => setSelectedIndex(index)}

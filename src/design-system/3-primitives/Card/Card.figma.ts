@@ -27,12 +27,13 @@ if (hasImage) {
   }
 }
 
+const content = instance.getSlot('children')
 // Code-only prop with no Figma counterpart: radius
 
 export default {
   example: figma.code`<Card variant="${variant}"${disabled ? ' disabled' : ''}${noPadding ? ' noPadding' : ''}${imageCode ? figma.code` imagePosition="${imagePosition}"` : ''}>
-  ${imageCode ? figma.code`${imageCode}
-  ` : ''}{/* card content */}
+  <>${imageCode ? figma.code`${imageCode}
+  ` : ''}${content}</>
 </Card>`,
   imports: ["import { Card } from '@/design-system'"],
   id: 'card',

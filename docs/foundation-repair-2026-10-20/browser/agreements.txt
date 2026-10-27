@@ -1,0 +1,347 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#agreements".
+1 AXWebArea Protolab, URL: localhost:5173/#agreements
+	2 container
+		3 container
+			4 container
+				5 button App switcher
+				6 image DocuSign
+				7 link Description: Home, Value: localhost:5173/#
+				8 link Description: Agreements, Value: localhost:5173/#
+				9 link Description: Templates, Value: localhost:5173/#
+				10 link Description: Automations, Value: localhost:5173/#
+				11 link Description: Insights, Value: localhost:5173/#
+				12 link Description: Admin, Value: localhost:5173/#
+				13 button Search
+				14 button Notifications
+				15 button Tasks
+				16 button Help
+				17 button User menu
+			150 container
+				151 pop up button (collapsed) Start, Secondary Actions: Expand
+				152 content list
+					153 button All Agreements
+						154 text All Agreements
+					155 button Drafts
+					156 button In Progress
+					157 button Completed
+					158 button Deleted
+				159 content list
+					160 button Folders More options
+						161 text Folders
+						162 button More options
+				163 content list
+					164 button Parties
+					165 button Requests
+					166 button Signatories
+					167 button Workflows New
+						168 text Workflows
+						169 text New
+					170 button Workspaces
+					171 button PowerForms
+					172 button Bulk Send
+				173 button Unlock navigation sidebar
+			174 container
+				175 heading All Agreements, Value: 1
+					176 text All Agreements
+				177 pop up button Shared Access
+			178 combo box (collapsed, settable) Secondary Actions: Expand
+			179 text Date: Last 6 Months
+			180 button Remove Date: Last 6 Months
+			181 pop up button Status
+			182 pop up button Sender
+			183 pop up button Quick views
+			184 pop up button Advanced search
+			185 button Clear All
+			186 table
+				187 row
+					188 cell
+						189 container
+							190 checkbox (settable, integer) Description: Select all rows, Value: 0
+							191 text Select all rows
+					192 cell
+						193 text Name
+					194 cell
+						195 text Status
+					196 cell
+						197 text Last Change
+					198 cell
+						199 text Folder
+					200 cell
+						201 button Customize columns
+				202 row
+					203 cell
+						204 container
+							205 checkbox (settable, integer) Description: Select row 1, Value: 0
+							206 text Select row 1
+					207 cell
+						208 text Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf
+						209 text To: Akshat Mishra
+					210 cell
+						211 text Voided
+						212 text Purging soon
+					213 cell
+						214 text 24/3/2026
+						215 text 20:26
+					216 cell
+						217 button Copy
+						218 button More actions
+				219 row
+					220 cell
+						221 container
+							222 checkbox (settable, integer) Description: Select row 2, Value: 0
+							223 text Select row 2
+					224 cell
+						225 text Consulting Agreement — Acme Technologies
+						226 text To: Akshat Mishra
+					227 cell
+						228 progress indicator Description: Envelope progress, Value: 3
+						229 text Need to sign
+					230 cell
+						231 text 10/9/2026
+						232 text 12:26 PM
+					233 cell
+						234 button Sign
+						235 button More actions
+				236 row
+					237 cell
+						238 container
+							239 checkbox (settable, integer) Description: Select row 3, Value: 0
+							240 text Select row 3
+					241 cell
+						242 text Here is your signed document: Sample_Service_Agreement.pdf
+						243 text To: Akshat Mishra, [Placeholder]
+					244 cell
+						245 text Voided
+						246 text Purging soon
+					247 cell
+						248 text 24/3/2026
+						249 text 20:23
+					250 cell
+						251 button Copy
+						252 button More actions
+				253 row
+					254 cell
+						255 container
+							256 checkbox (settable, integer) Description: Select row 4, Value: 0
+							257 text Select row 4
+					258 cell
+						259 text Complete with Docusign: rhi.pdf
+						260 text To: Akshat Mishra
+					261 cell
+						262 text Voided
+						263 text Purging soon
+					264 cell
+						265 text 24/3/2026
+						266 text 20:16
+					267 cell
+						268 button Copy
+						269 button More actions
+				270 row
+					271 cell
+						272 container
+							273 checkbox (settable, integer) Description: Select row 5, Value: 0
+							274 text Select row 5
+					275 cell
+						276 text Complete with Docusign: Sample_Service_Agreement.pdf
+						277 text To: Akshat Mishra
+					278 cell
+						279 text Voided
+						280 text Purging soon
+					281 cell
+						282 text 24/3/2026
+						283 text 20:14
+					284 cell
+						285 button Copy
+						286 button More actions
+				287 row
+					288 cell
+						289 container
+							290 checkbox (settable, integer) Description: Select row 6, Value: 0
+							291 text Select row 6
+					292 cell
+						293 text Complete with Docusign: Sample_Service_Agreement.pdf
+						294 text To: Akshat Mishra
+					295 cell
+						296 text Voided
+						297 text Purging soon
+					298 cell
+						299 text 24/3/2026
+						300 text 20:10
+					301 cell
+						302 button Copy
+						303 button More actions
+				304 row
+					305 cell
+						306 container
+							307 checkbox (settable, integer) Description: Select row 7, Value: 0
+							308 text Select row 7
+					309 cell
+						310 text Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf
+						311 text To: Akshat Mishra
+					312 cell
+						313 text Completed
+						314 text Purging soon
+					315 cell
+						316 text 23/3/2026
+						317 text 20:25
+					318 cell
+						319 button Download
+						320 button More actions
+				321 row
+					322 cell
+						323 container
+							324 checkbox (settable, integer) Description: Select row 8, Value: 0
+							325 text Select row 8
+					326 cell
+						327 text Complete with Docusign: Screenshot 2026-03-18 at 10.27.30 AM.png
+						328 text To: Akshat Mishra
+					329 cell
+						330 text Completed
+						331 text Purging soon
+					332 cell
+						333 text 18/3/2026
+						334 text 11:05
+					335 cell
+						336 button Download
+						337 button More actions
+				338 row
+					339 cell
+						340 container
+							341 checkbox (settable, integer) Description: Select row 9, Value: 0
+							342 text Select row 9
+					343 cell
+						344 text Complete with Docusign: Screenshot 2026-03-18 at 10.27.21 AM.png
+						345 text To: Akshat Mishra
+					346 cell
+						347 text Completed
+						348 text Purging soon
+					349 cell
+						350 text 18/3/2026
+						351 text 10:57
+					352 cell
+						353 button Download
+						354 button More actions
+				355 row
+					356 cell
+						357 container
+							358 checkbox (settable, integer) Description: Select row 10, Value: 0
+							359 text Select row 10
+					360 cell
+						361 text Please sign: test.txt
+						362 text To: Akshat Mishra
+					363 cell
+						364 text Completed
+						365 text Purged
+					366 cell
+						367 text 26/2/2026
+						368 text 12:15
+					369 cell
+						370 button Download
+						371 button More actions
+				372 row
+					373 cell
+						374 container
+							375 checkbox (settable, integer) Description: Select row 11, Value: 0
+							376 text Select row 11
+					377 cell
+						378 text Complete with Docusign: Fontara Financial SOW.pdf
+						379 text To: Akshat Mishra
+					380 cell
+						381 text Completed
+						382 text Purged
+					383 cell
+						384 text 24/2/2026
+						385 text 10:50
+					386 cell
+						387 button Download
+						388 button More actions
+				389 row
+					390 cell
+						391 container
+							392 checkbox (settable, integer) Description: Select row 12, Value: 0
+							393 text Select row 12
+					394 cell
+						395 text Complete with DocuSign: Georgia-Residential-Lease-Agreement.pdf
+						396 text From: Renewal Management
+					397 cell
+						398 text Completed
+					399 cell
+						400 text 24/2/2026
+						401 text 10:44
+					402 cell
+						403 button Download
+						404 button More actions
+			405 text Items per page
+			406 container
+				407 pop up button (collapsed, settable) Items per page, Value: 25 / Page, Secondary Actions: Expand
+					408 menu
+						409 5 / Page
+						410 10 / Page
+						411 (selected) 25 / Page
+						412 50 / Page
+			413 text 1 - 12  of  12
+			414 button (disabled) Previous page
+			415 button (disabled) Next page
+			89 container
+				90 text English (US) |
+				91 link Description: Contact Us, Value: support.docusign.com/contactSupport
+				92 link Description: Terms of Use, Value: docusign.com/legal/terms-and-conditions
+				93 link Description: Privacy, Value: docusign.com/privacy
+				94 link Description: Intellectual Property, Value: docusign.com/ip
+				95 link Description: Trust, Value: docusign.com/trust
+				96 text Version: 1.13043 · Copyright © 2026 Docusign, Inc. All rights reserved.
+		97 button Help: Start feedback mode, v3.0.2 Switch to light mode Output Detail Standard React Components Hide Until Restart Marker Color Indigo Blue Cyan Green Yellow Orange Red Clear on copy/send Block page interactions
+			98 button
+				99 image
+			100 button
+				101 image
+			102 button
+				103 image
+			104 button
+				105 image
+			106 container
+				107 link agentation.com/
+				108 text v 3.0.2
+				109 button Switch to light mode
+					110 image
+				111 text Output Detail
+				112 image
+				113 button Standard
+				114 text React Components
+				115 image
+				116 checkbox (settable, integer) 1
+				117 text Hide Until Restart
+				118 image
+				119 checkbox (settable, integer) 0
+				120 text Marker Color
+				121 button Indigo
+				122 button Blue
+				123 button Cyan
+				124 button Green
+				125 button Yellow
+				126 button Orange
+				127 button Red
+				128 checkbox (settable, integer) Description: Clear on copy/send, Value: 0
+				129 image
+				130 image
+				131 checkbox (settable, integer) Description: Block page interactions, Value: 1
+				132 image
+				133 button Manage MCP & Webhooks
+					134 text Manage MCP & Webhooks
+					135 image
+				136 button Manage MCP & Webhooks
+					137 image
+					138 text Manage MCP & Webhooks
+				139 text MCP Connection
+				140 image
+				141 container
+					142 text MCP connection allows agents to receive and act on annotations.
+					143 link Description: Learn more, Value: agentation.dev/mcp
+				144 text Webhooks
+				145 image
+				146 checkbox (disabled, settable, integer) Description: Auto-Send, Value: 1, ID: agentation-auto-send
+				147 text The webhook URL will receive live annotation changes and annotation data.
+				148 text entry area (settable)
+		149 image
+
+The focused UI element is 8 link Description: Agreements, URL: localhost:5173/#

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useId } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Modal.module.css';
 import { IconButton } from '../../3-primitives/IconButton';
@@ -11,7 +11,11 @@ export interface ModalProps {
   /** Callback when modal requests to close */
   onClose?: () => void;
   /** Modal title */
-  title?: string;
+  title?: React.ReactNode;
+  'aria-label'?: string;
+  image?: React.ReactNode;
+  imagePosition?: 'top' | 'start' | 'end';
+  statusBadge?: React.ReactNode;
   /** Modal content */
   children: React.ReactNode;
   /** Footer content (typically buttons) */
@@ -34,6 +38,10 @@ export const Modal: React.FC<ModalProps> = ({
   open,
   onClose,
   title,
+  image,
+  imagePosition = 'top',
+  statusBadge,
+  'aria-label': ariaLabel,
   children,
   footer,
   size = 'medium',
@@ -43,6 +51,7 @@ export const Modal: React.FC<ModalProps> = ({
   'data-qa': dataQa,
   contained = false,
 }) => {
+  const titleId = useId();
   const modalRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
 
@@ -60,25 +69,33 @@ export const Modal: React.FC<ModalProps> = ({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [open, closeOnEscape, onClose]);
 
-  // Handle focus management
+  // Preserve the caller's scroll state and return focus to the opener on cleanup.
   useEffect(() => {
-    if (open) {
-      previousActiveElement.current = document.activeElement as HTMLElement;
-      modalRef.current?.focus();
-
-      // Prevent body scroll
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Restore focus
-      previousActiveElement.current?.focus();
-      // Restore body scroll
-      document.body.style.overflow = '';
-    }
-
+    if (!open) return;
+    previousActiveElement.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    modalRef.current?.focus();
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = previousOverflow;
+      previousActiveElement.current?.focus();
     };
   }, [open]);
+
+  const trapFocus = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== 'Tab') return;
+    const controls = Array.from(modalRef.current?.querySelectorAll<HTMLElement>(
+      'button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex="0"]'
+    ) ?? []).filter(node => !node.closest('[hidden]'));
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (!first) { event.preventDefault(); return; }
+    if (event.shiftKey && (document.activeElement === first || document.activeElement === modalRef.current)) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === modalRef.current)) {
+      event.preventDefault(); first.focus();
+    }
+  };
 
   // Handle backdrop click
   const handleBackdropClick = (e: React.MouseEvent) => {
@@ -95,17 +112,22 @@ export const Modal: React.FC<ModalProps> = ({
     <div data-ink-component="Modal" data-ink-prop-size={size} className={overlayClasses} onClick={handleBackdropClick} data-qa={dataQa}>
       <div
         ref={modalRef}
-        className={`${styles.modal} ${styles[size]} ${className || ''}`}
+        className={`${styles.modal} ${styles[size]} ${image ? styles[`image-${imagePosition}`] : ''} ${className || ''}`}
+        onKeyDown={trapFocus}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={title ? 'modal-title' : undefined}
+        aria-labelledby={title ? titleId : undefined}
+        aria-label={ariaLabel}
         tabIndex={-1}
       >
+        {image && <div className={styles.image}>{image}</div>}
+        <div className={styles.content}>
         {title && (
           <div className={styles.header}>
-            <h2 id="modal-title" className={styles.title}>
+            <h2 id={titleId} className={styles.title}>
               {title}
             </h2>
+            {statusBadge}
             {onClose && (
               <IconButton
                 icon="close"
@@ -122,6 +144,7 @@ export const Modal: React.FC<ModalProps> = ({
         <div className={styles.body}>{children}</div>
 
         {footer && <div className={styles.footer}>{footer}</div>}
+        </div>
       </div>
     </div>
   );

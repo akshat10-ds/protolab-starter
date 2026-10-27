@@ -10,7 +10,9 @@
 import type { ReactNode } from 'react';
 
 import type { AgentStep } from '@ai/composites/AgentThinking/AgentThinking';
+import type { RunChipData } from '@ai/composites/RunChip/RunChip';
 import type { ZeroQueryActionKind } from '@ai/composites/ZeroQueryActions/ZeroQueryActions';
+import type { AnswerPair } from '@ai/primitives/MessageBubble/MessageBubble';
 import type { Citation } from '@ai/primitives/CitationBadge/CitationBadge';
 
 /** Who produced a turn. The prototype's `'system'` role was never rendered. */
@@ -83,6 +85,28 @@ export interface ChatMessage {
   timestamp?: Date;
   /** When present, `AgentThinking` renders above the content */
   thinkingSteps?: AgentStep[];
+  /**
+   * THIS TURN IS AN AGENT RUN — `RunChip` renders above the content, and the
+   * content waits for `runChip.done`.
+   *
+   * Akshat, 2026-08-20, on Claude's deep-research pattern: **agent work is a
+   * chip in the thread, and the chip opens the record.** A run drawn this way
+   * leaves a permanent row saying it happened; `thinkingSteps` draws the
+   * accordion, which empties itself the moment the run lands. Both slots exist
+   * because they are two different things: a run is work, and thinking is a
+   * turn reasoning about its own answer.
+   *
+   * **The record is no longer the only place a chip can go.** Akshat,
+   * 2026-08-24: *"a little box that shows that the agent is working on thinking
+   * on this. If I click on it, I can expand and see the thinking, but otherwise
+   * it could just show us that it's working."* Give the chip `lines` and set
+   * `expandable` and the press opens the thinking IN PLACE instead of leaving
+   * for the record. The 2026-08-20 contract still governs every chip without
+   * `lines` — a chip with nothing to expand into still opens the record.
+   *
+   * They are mutually exclusive on one turn. Give both and the chip wins.
+   */
+  runChip?: RunChipData;
   /** Markdown body — streams in when this is the live turn */
   markdownContent?: string;
   /** Outcome summary + follow-up prompts */
@@ -95,6 +119,65 @@ export interface ChatMessage {
   commandMeta?: CommandMeta;
   /** Question that prompted this user selection — shown as a label above the bubble */
   elicitationQuestion?: string;
+  /**
+   * This user turn is a RECORD OF AN ACT, not something anyone said — "You
+   * approved: Request the income documents". Drawn as `MessageBubble`'s
+   * `action-receipt` chip instead of a bubble.
+   *
+   * It is what makes the thread a ledger: an agent that acts because a person
+   * pressed something appends the press, then its own response, as a pair.
+   */
+  actionReceipt?: boolean;
+  /**
+   * The overline caption over an action receipt — "Accepted Recommendation".
+   * The caption is what says which verdict this was, so a dismissal or a
+   * review is one string away and not a second variant.
+   */
+  receiptLabel?: string;
+  /**
+   * The mark on an action receipt. Default is the check; `none` is for a
+   * verdict that did not do anything — a dismissal (Akshat, 2026-08-20).
+   */
+  receiptGlyph?: 'check' | 'none';
+  /**
+   * THE ANSWER TO A DOCKED ASK, LANDED IN THE THREAD.
+   *
+   * The ask itself stays in the composer — that is the HITL spec and it does
+   * not move. What moves here is the confirmation: the composer frees the
+   * moment she answers, and this turn is what survives. One pair is a bubble;
+   * a batch is the condensed block. `receiptLabel` is the caption over it
+   * ("Answered").
+   */
+  answerRecord?: AnswerPair[];
+  /**
+   * THIS TURN IS NOT SETTLED. Akshat, 2026-08-20: a turn holding a decision
+   * nobody has made — an unactioned recommendation, an unreviewed flag, an
+   * unanswered question — is unfinished, so it wears no copy/thumbs and offers
+   * no follow-ups until every decision inside it resolves. The consumer owns
+   * what "resolved" means; the pattern only obeys the flag.
+   */
+  pending?: boolean;
+  /**
+   * THIS TURN IS AN ACT, NOT AN ANSWER. Akshat, 2026-08-20: a turn whose body
+   * is cards or work in flight — a recommendation, a wave of findings, a run,
+   * the preamble to a docked question — carries no copy/thumbs. There is
+   * nothing to rate: the thing to judge is the act, and she judges that by
+   * accepting or dismissing it.
+   *
+   * IT IS ALLOWED TO STOP BEING ONE. The agent's response to an acceptance —
+   * the ack line and the lifecycle object under it — is an act while the object
+   * is ticking and a finished ANSWER once it resolves, so the consumer takes
+   * the mark off and the feedback row arrives (2026-08-20). Derive it rather
+   * than freezing it at append time, exactly as `pending` is derived.
+   *
+   * NOT `pending`, which means "a decision nobody has made" and also holds the
+   * follow-up rows back. Work in flight is not a decision she owes anyone.
+   *
+   * Feedback is for informational turns — a question answered, an analysis
+   * returned. The consumer marks; the pattern obeys. Unmarked turns are
+   * informational, so no existing surface changes by adding this.
+   */
+  kind?: 'action';
 }
 
 /** Extra context handed up with `onSendMessage`. */

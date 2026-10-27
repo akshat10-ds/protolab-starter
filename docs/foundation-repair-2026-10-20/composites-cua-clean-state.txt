@@ -1,0 +1,93 @@
+Browser tab: 1, Title: "127.0.0.1:5186", URL: "http://127.0.0.1:5186/".
+1 AXWebArea 127.0.0.1:5186/
+	2 container root
+		3 container
+			4 text Foundation component verification
+			5 button Review details
+		6 container
+			7 checkbox Review AI, Value: 1
+			8 button Remove Review AI
+			9 text Neutral selected
+		10 tab group Tabs
+			11 tab (selectable, settable, boolean) First, Value: 0
+			12 tab (selectable, disabled, settable, boolean) Disabled, Value: 0
+			13 tab (selected, settable, boolean) Last 3, Value: 1
+				91 text Last
+				92 text 3
+		14 container Last 3
+			15 text Last content
+		16 button (expanded) Expand first, Secondary Actions: Collapse
+		93 container Expand first
+			94 button Inside accordion
+		17 button (disabled, collapsed) Unavailable, Secondary Actions: Expand
+		18 button (collapsed) Expand third Helpful subtitle Metadata, Secondary Actions: Expand
+			19 text Expand third
+			20 text Helpful subtitle
+			21 text Metadata
+		22 button (collapsed) Other first, Secondary Actions: Expand
+		23 image Sample
+		24 text Card start image
+		25 container
+			26 text Image slot
+			27 heading Callout heading, Value: 3
+				28 text Callout heading
+			29 text Callout body
+			30 button Callout footer
+			31 button Close callout
+		95 button (collapsed) Description: Expand panel, Secondary Actions: Expand
+		38 button Tools
+		39 text Step 4
+		40 text Next: Step 5
+		41 progress indicator Description: Step progress, Value: 4
+		42 container
+			43 text 1 Visited
+		44 text Current
+		45 text 11-20 of 100
+		46 container Pagination
+			47 button First page
+			48 button Previous page
+			49 button 1
+			50 button 2
+			51 button 3
+			52 text ...
+			53 button 10
+			54 button Next page
+			55 button Last page
+		56 text Items per page:
+		57 pop up button (collapsed, settable) Items per page:, Value: 10, Secondary Actions: Expand
+			58 menu
+				59 (selected) 10
+				60 25
+				61 50
+				62 100
+		63 content list
+			64 container
+				65 text First event
+				66 button (expanded) Description: Collapse First event, Secondary Actions: Collapse
+				96 text First description
+			67 container
+				68 text Second event Always visible
+		69 table
+			70 row
+				71 cell
+					72 text Name
+				73 cell
+					74 text Value
+			75 row
+				76 cell
+					77 text Example
+				78 cell
+					79 text One
+		80 heading Task heading, Value: 3
+			81 text Task heading
+		82 button More options
+		83 text Task body
+		84 text Metadata
+		85 button Button
+		86 container Breadcrumb
+			87 content list
+				88 link Description: Home, Value: 127.0.0.1:5186/#home
+				89 text Here
+		90 button Open small modal
+
+The focused UI element is 13 tab (selected, settable, boolean) Last 3, Value: 1

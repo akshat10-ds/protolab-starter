@@ -1,0 +1,44 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#agreements".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 398-410, 728-911
+~		396 container General Legal Request by DocuSign User Rename
+~			397 button Back
++			398 button Follow
++			399 button Share
++			400 heading General Legal Request by DocuSign User Rename, Value: 1
++				401 text General Legal Request by DocuSign User Rename
++			402 text New
++			403 tab group Tabs
++				404 tab (selected, settable, boolean) Overview, Value: 1
++				405 tab (selectable, settable, boolean) Details, Value: 0
++				406 tab (selectable, settable, boolean) Documents, Value: 0
++				407 tab (selectable, settable, boolean) Approvals, Value: 0
++				408 tab (selectable, settable, boolean) Envelopes, Value: 0
++			409 container Overview
++				410 heading Activity Feed, Value: 2
++					411 text Activity Feed
++				412 pop up button All activity
++				413 button Send Message
++				414 text 6/3/2026
++				415 text DU
++				416 container
++					417 text DocuSign User  created this request
++				418 text 07:16
++				419 button Chat with request
++				420 text Information
++				421 button Edit request information
++				422 text Request ID
++				423 text REQ-0006
++				424 text Status
++				425 text New
++				426 text Request type
++				427 text General Request
++				428 text Submitter
++				429 text DU
++				430 text DocuSign User
++				431 text Owner
++				432 text —
++				433 text Created
++				434 text 6/3/2026
++				435 button Delete Request
+The focused UI element is 397 button Back

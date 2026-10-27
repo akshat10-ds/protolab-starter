@@ -33,7 +33,7 @@ if (hasStart) {
 // Figma-only properties intentionally omitted: "❖ State", "❖ Focus" (interaction states, no code prop)
 
 export default {
-  example: figma.code`<Button kind="${kind}" size="${size}"${disabled ? ' disabled' : ''}${loading ? ' loading' : ''}${menuTrigger ? ' menuTrigger' : ''}${startCode ? figma.code` startElement={${startCode}}` : ''}>${label}</Button>`,
+  example: figma.code`<Button kind="${kind}" size="${size}"${disabled ? ' disabled' : ''}${loading ? ' loading' : ''}${menuTrigger ? ' menuTrigger' : ''}${startCode ? figma.code` startElement={<>${startCode}</>}` : ''}>${label}</Button>`,
   imports: ["import { Button } from '@/design-system'"],
   id: 'button',
   metadata: { nestable: true },

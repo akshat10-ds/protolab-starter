@@ -6,6 +6,7 @@
 import figma from 'figma'
 const instance = figma.selectedInstance
 
+const menuTrigger = instance.getBoolean('menuTrigger')
 const text = instance.getString('text')
 const startElement = instance.getBoolean('startElement')
 const kind = instance.getEnum('kind', {
@@ -19,7 +20,7 @@ const kind = instance.getEnum('kind', {
 })
 
 export default {
-  example: figma.code`<Badge text="${text}" kind="${kind}"${startElement ? ' startElement' : ''} />`,
+  example: figma.code`<Badge text="${text}" kind="${kind}"${startElement ? ' startElement' : ''}${menuTrigger ? ' menuTrigger onClick={() => {}}' : ''} />`,
   imports: ["import { Badge } from '@/design-system'"],
   id: 'badge',
   metadata: { nestable: true },

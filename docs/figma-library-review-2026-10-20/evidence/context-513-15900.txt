@@ -1,0 +1,251 @@
+import { ToastMessage } from '@ds/ui'
+import { Callout } from '@ds/ui'
+import { IconButton } from '@ds/ui'
+import { CloseSmall } from '@ds/icons'
+import { StatusInfo } from '@ds/icons'
+import { StatusCheck } from '@ds/icons'
+import { StatusWarn } from '@ds/icons'
+import { StatusError } from '@ds/icons'
+import { ProgressCircle } from '@ds/ui'
+
+type InkToastProps = {
+  className?: string;
+  kind?: "danger" | "information" | "success" | "warning" | "loading";
+};
+
+export default function InkToast({ className, kind = "information" }: InkToastProps) {
+  if (kind === "success") {
+    return (
+      <CodeConnectSnippet data-node-id="513:15881" data-name="kind=success" data-snippet-language="React">
+        <ToastMessage kind="success" children="A generic message about an action" closeButton={<Callout.Close />} />
+      </CodeConnectSnippet>
+    );
+  }
+  if (kind === "warning") {
+    return (
+      <CodeConnectSnippet data-node-id="513:15880" data-name="kind=warning" data-snippet-language="React">
+        <ToastMessage kind="warning" children="A generic message about an action" closeButton={<Callout.Close />} />
+      </CodeConnectSnippet>
+    );
+  }
+  if (kind === "danger") {
+    return (
+      <CodeConnectSnippet data-node-id="513:15879" data-name="kind=danger" data-snippet-language="React">
+        <ToastMessage kind="danger" children="A generic message about an action" closeButton={<Callout.Close />} />
+      </CodeConnectSnippet>
+    );
+  }
+  if (kind === "loading") {
+    return (
+      <CodeConnectSnippet data-node-id="513:15927" data-name="kind=loading" data-snippet-language="React">
+        <ToastMessage kind="loading" children="A generic message about an action" closeButton={<Callout.Close />} />
+      </CodeConnectSnippet>
+    );
+  }
+  return (
+    <CodeConnectSnippet data-node-id="513:15545" data-name="kind=information" data-snippet-language="React">
+      <ToastMessage kind="information" children="A generic message about an action" closeButton={<Callout.Close />} />
+    </CodeConnectSnippet>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontBodyS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.14, weight: 400, lineHeight: 1.399999976158142, letterSpacing: 0), elevationGlassHigh: Effect(type: DROP_SHADOW, color: Internal/color/semantic/neutral/fade/15, offset: (0, 8), radius: 32, spread: 0); Effect(type: BACKGROUND_BLUR, radius: 16).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Toast
+**Node ID:** 513:15900
+
+Toasts provide instant feedback about the outcome of an action taken.
+
+  
+
+⚠️ _**This component uses forced modes**___. For screens that require large tap targets, set the layer mode to the equivalent Large Target mode.__
+
+  
+
+Props
+-----
+
+_`**kind:**`_ The kind of Toast Message
+
+  
+
+_`**children:**`_ The Toast Message content
+
+  
+
+_`**showCTA:**`_ Show a call to action button
+
+  
+
+_`**showCloseButton:**`_ Adds a close button to the Toast Message
+
+  
+
+Rules
+=====
+
+1.  Change children layer top-padding to 12 when using Large Target mode
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/v/0/p/61e2f3-toast-message](https://ink.docusign.com/94bc5d135/v/0/p/61e2f3-toast-message)
+- [Toast - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-toastmessage--default)
+
+## kind=information
+**Node ID:** 513:15545
+
+Information is used when a neutral message tone is desired
+
+## statusInfo
+**Node ID:** 41751:4638
+
+status, info, information, neutral, alert
+
+## _PopoverClose
+**Node ID:** 567:5631
+
+`PopoverClose` is passed to Banner, Callout, ImageCallout, InlineMessage, Modal, and ToastMessage to support the action of dismissal. It supports separate kinds to provide accessible options when an image is used.
+
+  
+
+Props
+-----
+
+  
+
+_`**❖ Kind:**`_ Choose the type of closeButton depending on circumstance.
+
+  
+
+Rules
+-----
+
+1.  _**Default**_ should be the main kind used if no image is present
+2.  If an image is present use _**Image (Light)**_ for bright images or _**Image (Dark)**_ for dark images.
+
+## kind=tertiary, size=small, ❖ State=default, disabled=false
+**Node ID:** 8894:26907
+
+When additional clarity is required, an icon can be added alongside text to reinforce an action. If the icon is well-suited to conveying an action on its own, it can appear by itself
+
+## [INK] Icon Button
+**Node ID:** 14:953
+
+If the icon is well-suited to conveying an action on its own, it can appear by itself.
+
+  
+
+Props
+-----
+
+  
+
+_`**kind:**`_ The kind of the `Button`.
+
+  
+
+_`**❖ State:**`_ The state of the `Button`.
+
+  
+
+_`**disabled:**`_ Applies the 'disabled' attribute.
+
+  
+
+_`**❖ Icon:**`_ The icon to be displayed.
+
+  
+
+_`**badge:**`_ The AlertBadge to be displayed.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/241afc-button/t/45206c](https://ink.docusign.com/94bc5d135/p/241afc-button/t/45206c)
+- [Icon Button - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-button--with-icon)
+
+## closeSmall
+**Node ID:** 41751:5811
+
+dismiss, exit, cancel, close
+
+## kind=success
+**Node ID:** 513:15881
+
+Success is used to communicate positivity or success related to an action
+
+## statusCheck
+**Node ID:** 41751:5196
+
+status, complete, finished, positive, done, checkmark
+
+## kind=warning
+**Node ID:** 513:15880
+
+Warning is used to communicate a slight sense of urgency related to an action or a related item may require attention
+
+## statusWarn
+**Node ID:** 41751:4266
+
+status, warning, negative
+
+## kind=danger
+**Node ID:** 513:15879
+
+Danger is used to communicate negativity or failure related to an action
+
+## statusError
+**Node ID:** 41751:4392
+
+status, error, incomplete, negative, incorrect
+
+## kind=loading
+**Node ID:** 513:15927
+
+Loading indicates a process is occurring or taking longer than expected
+
+## size=small, kind=subtle
+**Node ID:** 474:12195
+
+Use subtle to avoid drawing unnecessary attention
+
+## [INK] Progress Circle
+**Node ID:** 474:12179
+
+Progress Circle is a loading indicator that notifies users that an action or system operation is being processed
+
+  
+
+Props
+-----
+
+`**_size:_**` The size of the Progress Circle
+
+  
+
+`**_kind:_**` Whether the Progress Circle displays the default style or subtle
+
+  
+
+`**_~showText:_**` Shows the Progress Circle text
+
+  
+
+`**_text*:_**` The text to be displayed at the end of the Circle
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/16da14-progress-circle/b/20b162](https://ink.docusign.com/94bc5d135/p/16da14-progress-circle/b/20b162)
+- [Progress Circle - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-progresscircle--default)
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

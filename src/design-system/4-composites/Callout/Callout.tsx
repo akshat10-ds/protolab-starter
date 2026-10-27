@@ -15,7 +15,10 @@ export interface CalloutAction {
 
 export interface CalloutProps {
   /** Heading text */
-  heading: string;
+  heading: React.ReactNode;
+  startElement?: React.ReactNode;
+  statusBadge?: React.ReactNode;
+  footer?: React.ReactNode;
   /** Body content */
   children: React.ReactNode;
   /** Width variant: xlarge (640px), large (480px), medium (384px), small (320px) */
@@ -50,6 +53,9 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
   (
     {
       heading,
+      startElement,
+      statusBadge,
+      footer,
       children,
       width = 'large',
       alignment = 'start',
@@ -95,17 +101,20 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
         {enableArrow && location === 'before' && <div className={styles.caretBefore} />}
 
         <div className={calloutClasses}>
-          <div className={styles.content}>
+          <div className={`${styles.content} ${styles[`image-${imagePosition}`]}`}>
             {image && <div className={styles.image}>{image}</div>}
 
             <div className={styles.body}>
               <div className={styles.header}>
+                {startElement}
                 <h3 className={styles.heading}>{heading}</h3>
+                {statusBadge}
               </div>
 
               <div className={styles.text}>{children}</div>
 
-              {actions && (primaryAction || secondaryAction) && (
+              {footer && <div className={styles.footer}>{footer}</div>}
+              {!footer && actions && (primaryAction || secondaryAction) && (
                 <div className={`${styles.footer} ${isGlass ? styles.footerGlass : ''}`}>
                   {secondaryAction && (
                     <Button
@@ -135,7 +144,7 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
               <IconButton
                 icon="close"
                 size="medium"
-                kind="tertiary"
+                variant="tertiary"
                 onClick={onClose}
                 aria-label="Close callout"
                 className={`${styles.closeButtonWrapper} ${isGlass ? styles.closeButtonGlass : ''}`}

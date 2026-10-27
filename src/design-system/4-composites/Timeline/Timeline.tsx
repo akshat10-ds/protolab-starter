@@ -14,7 +14,7 @@ import { Icon, IconName } from '../../3-primitives/Icon';
  * suppressed.
  */
 
-export type TimelineStatus = 'complete' | 'current' | 'incomplete';
+export type TimelineStatus = 'complete' | 'current' | 'incomplete' | 'error' | 'success' | 'warning';
 
 export interface TimelineItem {
   /** Unique identifier for the event */
@@ -27,6 +27,10 @@ export interface TimelineItem {
   description?: React.ReactNode;
   /** Icon shown before the label */
   icon?: IconName;
+  iconElement?: React.ReactNode;
+  collapsible?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   /** Overrides the status derived from `activeIndex` */
   status?: TimelineStatus;
   /** Call-to-action row under the event (Buttons, usually) */
@@ -42,6 +46,9 @@ export interface TimelineProps {
   collapsible?: boolean;
   /** Ids open on mount (collapsible only) */
   defaultOpenIds?: string[];
+  openIds?: string[];
+  onOpenIdsChange?: (ids: string[]) => void;
+  railTone?: 'default' | 'subtle';
   /** Custom className */
   className?: string;
 }
@@ -52,11 +59,17 @@ const Timeline = React.forwardRef<HTMLOListElement, TimelineProps>((props, ref) 
     activeIndex = items.length - 1,
     collapsible = false,
     defaultOpenIds,
+    openIds: controlledOpenIds,
+    onOpenIdsChange,
+    railTone = 'default',
     className,
     ...restProps
   } = props;
 
-  const [openIds, setOpenIds] = React.useState<string[]>(defaultOpenIds ?? []);
+  const [internalOpenIds, setOpenIds] = React.useState<string[]>(defaultOpenIds ?? []);
+
+  const openIds = controlledOpenIds ?? internalOpenIds;
+  const instanceId = React.useId();
 
   const statusOf = (item: TimelineItem, index: number): TimelineStatus => {
     if (item.status) return item.status;
@@ -65,27 +78,34 @@ const Timeline = React.forwardRef<HTMLOListElement, TimelineProps>((props, ref) 
     return 'incomplete';
   };
 
-  const toggle = (id: string) =>
-    setOpenIds((ids) => (ids.includes(id) ? ids.filter((i) => i !== id) : [...ids, id]));
+  const toggle = (item: TimelineItem, isOpen: boolean) => {
+    const next = isOpen ? openIds.filter(id => id !== item.id) : [...openIds, item.id];
+    if (controlledOpenIds === undefined && item.open === undefined) setOpenIds(next);
+    onOpenIdsChange?.(next);
+    item.onOpenChange?.(!isOpen);
+  };
 
   return (
     <ol
       data-ink-component="Timeline"
       ref={ref}
-      className={cn(styles.timeline, className)}
+      className={cn(styles.timeline, railTone === 'subtle' && styles.subtleRail, className)}
       {...restProps}
     >
       {items.map((item, index) => {
         const status = statusOf(item, index);
-        const isOpen = !collapsible || openIds.includes(item.id);
-        const canCollapse = collapsible && Boolean(item.description);
+        const itemCollapsible = item.collapsible ?? collapsible;
+        const isOpen = !itemCollapsible || (item.open ?? openIds.includes(item.id));
+        const canCollapse = itemCollapsible && Boolean(item.description);
 
         return (
           <li key={item.id} className={cn(styles.row, styles[status])} data-status={status}>
             <div className={styles.rail} aria-hidden="true">
               <span className={cn(styles.segment, index === 0 && styles.suppressed)} />
               <span className={styles.dotSlot}>
-                <span className={styles.dot} />
+                {status === 'error' || status === 'success' || status === 'warning'
+                  ? <Icon name={status === 'error' ? 'status-error' : status === 'success' ? 'status-verify' : 'status-warn'} size="small" className={styles.statusIcon} />
+                  : <span className={styles.dot} />}
               </span>
               <span
                 className={cn(
@@ -100,22 +120,23 @@ const Timeline = React.forwardRef<HTMLOListElement, TimelineProps>((props, ref) 
               <div className={styles.event}>
                 {item.timestamp && <div className={styles.timestamp}>{item.timestamp}</div>}
                 <div className={styles.labelRow}>
-                  {item.icon && <Icon name={item.icon} size={20} className={styles.icon} />}
+                  {item.iconElement ?? (item.icon && <Icon name={item.icon} size={20} className={styles.icon} />)}
                   <span className={styles.label}>{item.label}</span>
                   {canCollapse && (
                     <button
                       type="button"
                       className={styles.disclosure}
                       aria-expanded={isOpen}
-                      aria-label={isOpen ? 'Collapse' : 'Expand'}
-                      onClick={() => toggle(item.id)}
+                      aria-label={`${isOpen ? 'Collapse' : 'Expand'} ${item.label}`}
+                      aria-controls={`${instanceId}-${item.id}`}
+                      onClick={() => toggle(item, isOpen)}
                     >
                       <Icon name={isOpen ? 'chevron-up' : 'chevron-down'} size={20} />
                     </button>
                   )}
                 </div>
                 {item.description && isOpen && (
-                  <div className={styles.description}>{item.description}</div>
+                  <div id={`${instanceId}-${item.id}`} className={styles.description}>{item.description}</div>
                 )}
               </div>
               {item.actions && <div className={styles.footer}>{item.actions}</div>}

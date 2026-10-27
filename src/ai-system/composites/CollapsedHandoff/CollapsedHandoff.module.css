@@ -1,0 +1,92 @@
+/*
+ * The collapsed block. Border and fill are the SAME token, so the hairline
+ * dissolves into the fill: the box is no longer a container with something in
+ * it, it is one painted line.
+ *
+ * No outer margin — spacing belongs to the flow this lands in, and the caller
+ * passes it through `className`. The message stream wants 8px above and below;
+ * a grid with a `gap` wants none.
+ *
+ * No transition on the collapse itself. The block is unmounted and this is
+ * mounted — a hard cut, because the collapse and the state are one change.
+ */
+.wrap {
+  border: 1px solid var(--ai-indigo-10);
+  border-radius: var(--ink-radius-size-s);
+  overflow: hidden;
+  background: var(--ai-indigo-10);
+}
+
+/*
+ * The row. Same geometry as the header it replaces — glyph and line left, what
+ * you can do right, one 44px band.
+ */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ink-spacing-200);
+  padding: var(--ink-spacing-100) var(--ink-spacing-150);
+}
+
+/*
+ * Pressable: a cursor, and a hover a shade deeper than its own fill — the same
+ * "hover tints the whole card" grammar `InsightList` uses. The focus ring is
+ * INSET, because the fill runs all the way to the border and an outset ring
+ * would float clear of the shape it belongs to.
+ */
+.row[role='button'] {
+  cursor: pointer;
+  border-radius: inherit;
+  transition: background var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.row[role='button']:hover {
+  background: var(--ink-ecru-20);
+}
+
+.row[role='button']:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: -2px;
+}
+
+/*
+ * The line. Carries the collapsed register — xs / medium / 0.16px, promoted to
+ * `font-color-default` because this row is the loud one now. A consumer whose
+ * header line has its own typography sets it on its own elements, which win.
+ */
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  min-width: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-default);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * "Close", in the slot the block's own trailing action occupied.
+ *
+ * `opacity`, not `display`, so the row does not change width when it appears.
+ */
+.close {
+  flex-shrink: 0;
+  opacity: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-default);
+  transition: opacity var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.row[role='button']:hover .close,
+.row[role='button']:focus-visible .close {
+  opacity: 1;
+}

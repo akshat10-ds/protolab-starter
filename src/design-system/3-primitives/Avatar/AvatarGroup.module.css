@@ -19,12 +19,12 @@
 
 /* Add white border to create separation between overlapping avatars */
 .avatarWrapper > div {
-  border: 2px solid var(--ink-white-100);
+
   box-sizing: border-box;
 }
 
 .avatarWrapper:hover {
-  transform: translateY(-2px);
+  transform: translateY(calc(-1 * var(--ink-focus-width)));
   z-index: 11; /* Higher than max nth-child z-index (10) */
 }
 
@@ -59,7 +59,9 @@
   font-size: var(--ink-font-avatar-group-size); /* 12px */
   font-weight: var(--ink-font-weight-medium); /* 500 */
   line-height: var(--ink-font-avatar-group-line-height); /* 1.5 */
-  letter-spacing: 0.16px; /* wide tracking */
+  letter-spacing: var(--ink-letter-spacing-wide); /* wide tracking */
   color: var(--ink-font-color-default);
   white-space: nowrap;
 }
+
+.avatars { display: flex; isolation: isolate; }

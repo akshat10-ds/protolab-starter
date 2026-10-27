@@ -33,11 +33,16 @@ if (hasError) {
   error = errNode && errNode.type === 'TEXT' ? errNode.textContent : 'Error message'
 }
 
-// Figma-only properties intentionally omitted: "❖ State" (interaction states),
-// "characterCount", "inputHelp", "startElement", "endElement" (no code props on Input)
+const startElement = instance.getBoolean('startElement') ? instance.findInstance('startElement', { traverseInstances: true }) : null
+const startElementCode = startElement?.type === 'INSTANCE' ? startElement.executeTemplate().example : undefined
+const endElement = instance.getBoolean('endElement') ? instance.findInstance('endElement', { traverseInstances: true }) : null
+const endElementCode = endElement?.type === 'INSTANCE' ? endElement.executeTemplate().example : undefined
+const inputHelp = instance.getBoolean('inputHelp') ? instance.findInstance('inputHelp', { traverseInstances: true }) : null
+const inputHelpCode = inputHelp?.type === 'INSTANCE' ? inputHelp.executeTemplate().example : undefined
+const characterCount = instance.getBoolean('characterCount')
 
 export default {
-  example: figma.code`<Input label="${label}" size="${size}"${isPlaceholder ? figma.code` placeholder="${value}"` : figma.code` defaultValue="${value}"`}${disabled ? ' disabled' : ''}${readOnly ? ' readOnly' : ''}${error ? figma.code` error="${error}"` : ''}${description ? figma.code` description="${description}"` : ''}${showLabel ? '' : ' hideLabel'} />`,
+  example: figma.code`<Input label="${label}" size="${size}"${isPlaceholder ? figma.code` placeholder="${value}"` : figma.code` defaultValue="${value}"`}${disabled ? ' disabled' : ''}${readOnly ? ' readOnly' : ''}${error ? figma.code` error="${error}"` : ''}${description ? figma.code` description="${description}"` : ''}${showLabel ? '' : ' hideLabel'}${startElementCode ? figma.code` startElement={<>${startElementCode}</>}` : ''}${endElementCode ? figma.code` endElement={<>${endElementCode}</>}` : ''}${inputHelpCode ? figma.code` inputHelp={<>${inputHelpCode}</>}` : ''}${characterCount ? ' characterCount maxLength={maxLength}' : ''} />`,
   imports: ["import { Input } from '@/design-system'"],
   id: 'input',
   metadata: { nestable: true },

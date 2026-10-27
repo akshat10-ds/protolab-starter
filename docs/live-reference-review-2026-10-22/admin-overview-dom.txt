@@ -1,0 +1,297 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign Admin":
+    - /url: /
+    - img "Docusign Admin"
+  - navigation:
+    - list:
+      - button "Home":
+        - generic: Home
+      - button "Agreements":
+        - generic: Agreements
+      - button "Templates":
+        - generic: Templates
+      - button "Automations":
+        - generic: Automations
+      - button "Insights":
+        - generic: Insights
+      - button "Admin":
+        - generic: Admin
+  - button "Notifications":
+    - generic: Notifications
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- link "Organization":
+  - generic: Organization
+- link "Accounts":
+  - generic: Accounts
+- navigation "Secondary":
+  - heading "3p_gd_tk1" [level=3]
+  - generic: "Account ID: 3175396"
+  - generic: Accounts
+  - button "3p_gd_tk1 (3175396)" [pressed]:
+    - generic: 3p_gd_tk1 (3175396)
+  - separator
+  - list "Side Nav Group":
+    - button "Overview":
+      - generic "Overview"
+  - separator
+  - heading "Account" [level=4]
+  - list "Account":
+    - button "Plan and Billing":
+      - generic "Plan and Billing"
+    - button "Account Profile":
+      - generic "Account Profile"
+    - button "System Status Beta":
+      - generic "System Status"
+      - generic: Beta
+    - button "Security Settings":
+      - generic "Security Settings"
+    - button "Regional Settings":
+      - generic "Regional Settings"
+    - button "Brands":
+      - generic "Brands"
+    - button "Updates":
+      - generic "Updates"
+    - button "Sandbox":
+      - generic "Sandbox"
+    - button "Value Calculator":
+      - generic "Value Calculator"
+    - button "Sound Settings":
+      - generic "Sound Settings"
+    - button "AI Control Settings":
+      - generic "AI Control Settings"
+  - separator
+  - heading "Users and Groups" [level=4]
+  - list "Users and Groups":
+    - button "Users":
+      - generic "Users"
+    - button "Permission Profiles":
+      - generic "Permission Profiles"
+    - button "Groups":
+      - generic "Groups"
+    - button "Signing Groups":
+      - generic "Signing Groups"
+  - separator
+  - heading "Signing and Sending" [level=4]
+  - list "Signing and Sending":
+    - button "Signing Settings":
+      - generic "Signing Settings"
+    - button "Sending Settings":
+      - generic "Sending Settings"
+    - button "Workspaces Settings":
+      - generic "Workspaces Settings"
+    - button "Identity Verification":
+      - generic "Identity Verification"
+    - button "Email Preferences":
+      - generic "Email Preferences"
+    - button "Email Archive Configuration":
+      - generic "Email Archive Configuration"
+    - button "Custody Transfer":
+      - generic "Custody Transfer"
+    - button "Document Retention":
+      - generic "Document Retention"
+    - button "Legal Disclosure":
+      - generic "Legal Disclosure"
+    - button "Reminders and Expiration":
+      - generic "Reminders and Expiration"
+    - button "Comments":
+      - generic "Comments"
+    - button "Document Custom Fields":
+      - generic "Document Custom Fields"
+    - button "Envelope Custom Fields":
+      - generic "Envelope Custom Fields"
+  - separator
+  - heading "Integrations" [level=4]
+  - list "Integrations":
+    - button "App Center":
+      - generic "App Center"
+    - button "MCP Connections":
+      - generic "MCP Connections"
+    - button "Connect":
+      - generic "Connect"
+    - button "Apps and Keys":
+      - generic "Apps and Keys"
+    - button "API Usage Center":
+      - generic "API Usage Center"
+    - button "CORS":
+      - generic "CORS"
+    - button "Payments":
+      - generic "Payments"
+  - separator
+  - heading "Agreement Actions" [level=4]
+  - list "Agreement Actions":
+    - button "Rules":
+      - generic "Rules"
+    - button "Connections":
+      - generic "Connections"
+  - separator
+  - heading "Auditing" [level=4]
+  - list "Auditing":
+    - button "Audit Logs":
+      - generic "Audit Logs"
+    - button "Bulk Actions":
+      - generic "Bulk Actions"
+- heading [level=1]
+- heading "Allow your users greater access to signed agreements" [level=2]
+- paragraph: Now you can grant users or groups access to more agreements. By default, users can only view their sent, received and shared agreements.
+- button "Set permissions":
+  - generic: Set permissions
+- button "Dismiss":
+  - generic: Dismiss
+- heading "Find a Setting or User" [level=2]
+- generic: Find a Setting
+- textbox "Find a Setting":
+  - /placeholder: Enter keyword
+- generic: Find a User
+- combobox "Find a User":
+  - option "Name" [selected]
+  - option "Email"
+- generic: Search Query
+- textbox "Search Query":
+  - /placeholder: Enter name
+- button "Search" [disabled]:
+  - generic: Search
+- heading "Notifications" [level=2]
+- group "Filters":
+  - 'button "Date: Last 3 Months" [pressed]':
+    - generic: "Date: Last 3 Months"
+  - 'button "Clear Date: Last 3 Months"':
+    - generic: "Clear Date: Last 3 Months"
+  - button "Type":
+    - generic: Type
+- button "Clear All":
+  - generic: Clear All
+- button "Settings":
+- article:
+  - generic: Account Health
+  - generic: 28 minutes
+  - heading "Connect Failure - Endpoint" [level=3]
+  - generic: "Connect failed to send a message for your {{configType}} configuration, {{configId}}. Visit the Connect Failures page to learn more and address the issue."
+  - button "Connect Failures":
+    - generic: Connect Failures
+- article:
+  - generic: Account Health
+  - generic: 2 hours
+  - heading "Connect Certificate Renewal" [level=3]
+  - generic: The DocuSign certificate is being renewed. Connect certificates are used for Mutual TLS and for digitally signed, SOAP-formatted notification messages.
+  - button "Connect Certificates":
+    - generic: Connect Certificates
+- article:
+  - generic: Account Health
+  - generic: 3 hours
+  - heading "Connect Failure - Endpoint" [level=3]
+  - generic: "Connect failed to send a message for your {{configType}} configuration, {{configId}}. Visit the Connect Failures page to learn more and address the issue."
+  - button "Connect Failures":
+    - generic: Connect Failures
+- article:
+  - generic: Account Health
+  - generic: 8 hours
+  - heading "Connect Failure - Endpoint" [level=3]
+  - generic: "Connect failed to send a message for your {{configType}} configuration, {{configId}}. Visit the Connect Failures page to learn more and address the issue."
+  - button "Connect Failures":
+    - generic: Connect Failures
+- article:
+  - generic: Account Health
+  - generic: 9 hours
+  - heading "Connect Certificate Renewal" [level=3]
+  - generic: The DocuSign certificate is being renewed. Connect certificates are used for Mutual TLS and for digitally signed, SOAP-formatted notification messages.
+  - button "Connect Certificates":
+    - generic: Connect Certificates
+- article:
+  - generic: Account Health
+  - generic: 10 hours
+  - heading "Connect Certificate Renewal" [level=3]
+  - generic: The DocuSign certificate is being renewed. Connect certificates are used for Mutual TLS and for digitally signed, SOAP-formatted notification messages.
+  - button "Connect Certificates":
+    - generic: Connect Certificates
+- generic: Set special permissions for contract managers
+- generic: Allow certain users to organize agreements into sets that they can share with limited users and groups.
+- generic: Manage all attributes
+- generic: Share sets of related agreements
+- button "Try It":
+  - generic: Try It
+- link "Learn More, opens in new window":
+  - /url: https://support.docusign.com/s/document-item?bundleId=pqz1702943441912&topicId=zed1730843285476.html
+  - generic: Learn More
+- heading "Admin Resources" [level=2]
+- link "Docusign Community, opens in new window":
+  - /url: https://community.docusign.com/?internal_source=radmin&internal_trigger=resources__community&internal_campaign=MVP
+  - text: Docusign Community
+- generic: Ask and answer questions, join groups and grow together
+- link "Docusign University, opens in new window":
+  - /url: https://dsucustomers.docusign.com/
+  - text: Docusign University
+- generic: Access on-demand and live training to expand your product knowledge and become a Docusign expert
+- link "Template Library, opens in new window":
+  - /url: https://dsucustomers.docusign.com/page/km-template-library
+  - text: Template Library
+- generic: The DSU Template Library helps you start building eSignature templates and workflows.
+- link "Docusign Welcome Center, opens in new window":
+  - /url: https://dsucustomers.docusign.com/
+  - text: Docusign Welcome Center
+- generic: Get up and running quickly with a step-by-step checklist to help administrators and end users learn at their own pace
+- link "Trust Center, opens in new window":
+  - /url: https://www.docusign.com/trust
+  - text: Trust Center
+- generic: Understand the latest security, compliance, legal, privacy, and system performance information
+- link "Support Center, opens in new window":
+  - /url: https://support.docusign.com/login?from=/
+  - text: Support Center
+- generic: Administrators and end users can find answers to common questions, review troubleshooting articles, and contact Customer Support
+- contentinfo:
+  - generic: Powered by
+  - img "Docusign"
+  - list:
+    - button "Language Selector, current selection English (US)":
+      - generic: English (US)
+    - link "Contact Us, opens in new window":
+      - /url: https://support.docusign.com/contactSupport
+      - text: Contact Us
+    - text: "|"
+    - link "Terms of Use, opens in new window":
+      - /url: https://www.docusign.com/legal/terms-and-conditions
+      - text: Terms of Use
+    - text: "|"
+    - link "Privacy, opens in new window":
+      - /url: https://www.docusign.com/privacy
+      - text: Privacy
+    - text: "|"
+    - link "Intellectual Property, opens in new window":
+      - /url: https://www.docusign.com/ip
+      - text: Intellectual Property
+    - text: "|"
+    - link "Trust, opens in new window":
+      - /url: https://www.docusign.com/trust
+      - text: Trust
+  - generic: Copyright © 2026 Docusign, Inc. All rights reserved
+- status

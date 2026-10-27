@@ -1,0 +1,112 @@
+{
+  "owner": "primitives_behavior",
+  "status": "integrated_and_checked_with_explicit_limits",
+  "date": "2026-10-20",
+  "authoringSource": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon",
+  "generatedStarterEdited": false,
+  "readOnlyFigma": true,
+  "figma": {
+    "fileKey": "Y7VyYvcCvXjG1pgeXicozZ",
+    "pageId": "0:1",
+    "settings": {
+      "format": "SVG_STRING"
+    },
+    "activeMasters": 582,
+    "small20Masters": 291,
+    "medium24Masters": 291,
+    "families": 291,
+    "metadataInventoryExactMatch": true,
+    "assetsModified": false,
+    "provenance": "Icon/assets/system/provenance.json",
+    "transport": "six lossless LZW16 big-endian/base64 chunks of 97 exports"
+  },
+  "findings": [
+    {
+      "finding": "Small-master geometry",
+      "change": "Use independent 20px small and24px medium SVG assets; retain explicit numeric dimensions.",
+      "status": "implemented and representative browser checked"
+    },
+    {
+      "finding": "documentAnalyze/documentSplit/folderCopy missing",
+      "change": "Exact paired assets and normalized camel/kebab/underscore names.",
+      "status": "implemented and tested"
+    },
+    {
+      "finding": "Full asset fidelity with caller tint",
+      "change": "Unmodified external SVG alpha mask normalizes common .9 base paint to geometric coverage, then applies currentColor/explicit paint once, with unique mask/filter IDs.",
+      "status": "normalization regression and strict typecheck passed; final tint browser check delegated to root"
+    },
+    {
+      "finding": "Consumer compatibility",
+      "change": "Nine aliases and six legacy extension paths retained; five generic AI names delegate AIIcon.",
+      "status": "tested"
+    },
+    {
+      "finding": "Broad arbitrary props",
+      "change": "Native SVGProps and forwardRef replace broad any attribute indexer.",
+      "status": "strict typecheck passed"
+    },
+    {
+      "finding": "Bundled all-SVG data payload",
+      "change": "Vite URL glob uses no-inline; all582 System assets external.",
+      "status": "production build verified"
+    }
+  ],
+  "verification": {
+    "strictSourceTypecheck": "passed React19 ES2020",
+    "suite": {
+      "status": "passed",
+      "total": 47,
+      "primitive": 33,
+      "standardIcons": 10,
+      "aiBadge": 4
+    },
+    "productionBuild": {
+      "sourceSvgCount": 582,
+      "sourceUniqueHashes": 582,
+      "emittedSvgCount": 582,
+      "sourceHashesPresent": 582,
+      "missingSourceHashes": 0,
+      "systemSvgBytes": 250530,
+      "javascriptBytes": 365122,
+      "javascriptContainsSvgDataUrl": true,
+      "buildTool": "Vite 7.3.1",
+      "installedStarterVite": "6.4.1",
+      "starterNoInlineSupported": true,
+      "systemAssetUrlReferences": 582,
+      "systemSvgDataInlined": false,
+      "otherInlineSvgDataUrls": 13,
+      "otherInlineSvgDataUrlScope": "12 root-owned direct AIIcon assets and one existing Hotspot asset; no System master is inline",
+      "starterViteSupportSource": "/Users/akshat.mishra/Documents/Work/protolab-starter/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js"
+    },
+    "cua": {
+      "browser": "Chrome extension",
+      "terminalBrowserAutomation": false,
+      "screenshot": "icons-standard-cua.png",
+      "families": [
+        "document-analyze",
+        "document-split",
+        "folder-copy",
+        "chevron-down",
+        "gear",
+        "check",
+        "person",
+        "status-error"
+      ],
+      "referenceImagesLoaded": 16,
+      "smallMeasuredPx": 20,
+      "mediumMeasuredPx": 23.998579025268555,
+      "numericRedTintVisible": true,
+      "capturedConsoleWarningsOrErrors": 0,
+      "opacityCorrectionTiming": "Screenshot predates final alpha-normalization repair; geometry/assets still valid, corrected tint awaits integrated browser check."
+    }
+  },
+  "limitations": [
+    "Representative Cua comparison is not an exhaustive582glyph pixel diff.",
+    "Integrated starter refresh and full app verification owned by root.",
+    "External SVG masks require correctly served URLs; non-Chromium browsers and SSR asset hosts not exercised.",
+    "Asset-build summary predates final alpha-normalization renderer correction; external asset contents/hashes are unchanged."
+  ],
+  "evidence": "icons-standard.md",
+  "finalIntegrationEvidence": "browser/icon-final-tints.png"
+}

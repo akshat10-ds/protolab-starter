@@ -1,0 +1,398 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#".
+1 AXWebArea Protolab, URL: localhost:5173/#
+	2 container
+		396 container
+			397 container
+				398 button App switcher
+				399 image DocuSign
+				400 link Description: Home, Value: localhost:5173/#
+				401 link Description: Agreements, Value: localhost:5173/#
+				402 link Description: Templates, Value: localhost:5173/#
+				403 link Description: Automations, Value: localhost:5173/#
+				404 link Description: Insights, Value: localhost:5173/#
+				405 link Description: Admin, Value: localhost:5173/#
+				406 button Search
+				407 button Notifications
+				408 button Tasks
+				409 button Help
+				410 button User menu
+			411 container
+				412 pop up button (collapsed) Start, Secondary Actions: Expand
+				413 content list
+					414 button All Agreements
+					415 button Drafts
+					416 button In Progress
+					417 button Completed
+					418 button Deleted
+				419 content list
+					420 container
+						421 button Folders
+						422 button More options for Folders
+				423 content list
+					424 button Parties
+					425 button Requests
+					426 button Signatories
+					427 button Workflows New
+						428 text Workflows
+						429 text New
+					430 button Workspaces
+					431 button PowerForms
+					432 button Bulk Send
+				433 button Unlock navigation sidebar
+			434 heading Completed, Value: 1
+				435 text Completed
+			436 pop up button (collapsed) Select a view, Secondary Actions: Expand
+			437 text AI-Assisted
+			438 container
+				439 button Add documents
+				440 pop up button More add document options
+			441 pop up button Manage
+			442 container
+				443 tab group Agreement insights
+					444 tab (selected, settable, boolean) My Insights, Value: 1
+					445 tab (selectable, settable, boolean) Data Review, Value: 0
+				446 container My Insights
+					447 text Upcoming renewals
+					448 text Next 12 months
+					449 container Upcoming renewals by month
+					450 text Stay ahead of your renewals
+					451 text Review your upcoming renewal data and set up notifications in minutes.
+					452 button Review Data
+					453 button Do This Later
+					454 button Show insight 1
+					455 button Show insight 2
+					456 button Show insight 3
+				457 button Hide Insights
+				458 button Dismiss insights
+			459 container
+				460 combo box (collapsed, settable) Secondary Actions: Expand
+			461 button Saved searches
+			462 button Filters
+			463 pop up button Worksheets
+			464 button Ask Iris
+			465 table
+				466 row
+					467 cell
+						468 container
+							469 checkbox (settable, integer) Description: Select all rows, Value: 0
+							470 text Select all rows
+					471 cell
+						472 text Original File Name
+					473 cell
+						474 text Parties
+					475 cell
+						476 text Status
+					477 cell
+						478 text Agreement Type
+					479 cell
+						480 button Customize columns
+				481 row
+					482 cell
+						483 container
+							484 checkbox (settable, integer) Description: Select row 1, Value: 0
+							485 text Select row 1
+					486 cell
+						487 link Description: Obligation Management – Supported Extractions (Limited) (1).pdf, Value: localhost:5173/#
+						488 text ↑ Uploaded: 
+						489 link Description: View Job, Value: localhost:5173/#
+					490 cell
+						491 link Description: Acme Technologies, Inc., Value: localhost:5173/#
+						492 link Description: Brightline Solutions, LLC, Value: localhost:5173/#
+					493 cell
+						494 text Active Renews 12/31/2026
+					495 cell
+						496 text Master Service Agreement
+				497 row
+					498 cell
+						499 container
+							500 checkbox (settable, integer) Description: Select row 2, Value: 0
+							501 text Select row 2
+					502 cell
+						503 link Description: Stellar_Logical_Fontara_Order_Form_100123 (2).pdf, Value: localhost:5173/#
+						504 text ↑ Uploaded: 
+						505 link Description: View Job, Value: localhost:5173/#
+					506 cell
+						507 link Description: Stellar Logical, Value: localhost:5173/#
+						508 link Description: Fontara, Value: localhost:5173/#
+					509 cell
+						510 text Inactive
+					511 cell
+						512 text Order Form
+				513 row
+					514 cell
+						515 container
+							516 checkbox (settable, integer) Description: Select row 3, Value: 0
+							517 text Select row 3
+					518 cell
+						519 link Description: 3.pdf, Value: localhost:5173/#
+						520 text ↑ Uploaded: 
+						521 link Description: View Job, Value: localhost:5173/#
+					522 cell
+						523 link Description: Hamburger, Inc., Value: localhost:5173/#
+						524 link Description: Sorrel Co., Value: localhost:5173/#
+					525 cell
+						526 text Inactive
+					527 cell
+						528 text Purchase Agreement
+				529 row
+					530 cell
+						531 container
+							532 checkbox (settable, integer) Description: Select row 4, Value: 0
+							533 text Select row 4
+					534 cell
+						535 link Description: White-Label Software Licensing and Integrated Payment Services Agreement (1).pdf, Value: localhost:5173/#
+						536 text ↑ Uploaded: 
+						537 link Description: View Job, Value: localhost:5173/#
+					538 cell
+						539 link Description: CoreStream Processing Corp., Value: localhost:5173/#
+						540 link Description: SaaS Growth Ventures, LLC, Value: localhost:5173/#
+					541 cell
+						542 text Active
+					543 cell
+						544 text License
+				545 row
+					546 cell
+						547 container
+							548 checkbox (settable, integer) Description: Select row 5, Value: 0
+							549 text Select row 5
+					550 cell
+						551 link Description: Global Affiliate Marketing Network Contract (1).pdf, Value: localhost:5173/#
+						552 text ↑ Uploaded: 
+						553 link Description: View Job, Value: localhost:5173/#
+					554 cell
+						555 link Description: Delta Traffic Brokers, Value: localhost:5173/#
+						556 link Description: NexaCharge Gateways, Value: localhost:5173/#
+					557 cell
+						558 text Active
+					559 cell
+						560 text Marketing
+				561 row
+					562 cell
+						563 container
+							564 checkbox (settable, integer) Description: Select row 6, Value: 0
+							565 text Select row 6
+					566 cell
+						567 link Description: Test Agreement for Party Cleanup, Value: localhost:5173/#
+						568 text ✓ Completed envelope: 
+						569 link Description: View Job, Value: localhost:5173/#
+					570 cell
+						571 text —
+					572 cell
+						573 text Inactive
+					574 cell
+						575 text Master Service Agreement
+				576 row
+					577 cell
+						578 container
+							579 checkbox (settable, integer) Description: Select row 7, Value: 0
+							580 text Select row 7
+					581 cell
+						582 link Description: Test Agreement for Party Cleanup, Value: localhost:5173/#
+						583 text ✓ Completed envelope: 
+						584 link Description: View Job, Value: localhost:5173/#
+					585 cell
+						586 text —
+					587 cell
+						588 text Inactive
+					589 cell
+						590 text Master Service Agreement
+				591 row
+					592 cell
+						593 container
+							594 checkbox (settable, integer) Description: Select row 8, Value: 0
+							595 text Select row 8
+					596 cell
+						597 link Description: Test Agreement for Party Cleanup, Value: localhost:5173/#
+						598 text ✓ Completed envelope: 
+						599 link Description: View Job, Value: localhost:5173/#
+					600 cell
+						601 text —
+					602 cell
+						603 text Inactive
+					604 cell
+						605 text Master Service Agreement
+				606 row
+					607 cell
+						608 container
+							609 checkbox (settable, integer) Description: Select row 9, Value: 0
+							610 text Select row 9
+					611 cell
+						612 link Description: SpaceX_DocAnalyser-DCF-CX-2026-07-07-004.pdf, Value: localhost:5173/#
+						613 text ↑ Uploaded: 
+						614 link Description: View Job, Value: localhost:5173/#
+					615 cell
+						616 link Description: OrbitalNet Solutions, Value: localhost:5173/#
+						617 link Description: SpaceX Orbital Logistics, Value: localhost:5173/#
+					618 cell
+						619 text Inactive Expired 6/21/2024
+					620 cell
+						621 text SpaceX Launch Agreement
+				622 row
+					623 cell
+						624 container
+							625 checkbox (settable, integer) Description: Select row 10, Value: 0
+							626 text Select row 10
+					627 cell
+						628 link Description: SpaceX_DocAnalyser-DCF-CX-2026-07-07-003.pdf, Value: localhost:5173/#
+						629 text ↑ Uploaded: 
+						630 link Description: View Job, Value: localhost:5173/#
+					631 cell
+						632 link Description: SkyReach Satellite Systems GmbH, Value: localhost:5173/#
+						633 link Description: SpaceX Starship Launch Services, Value: localhost:5173/#
+					634 cell
+						635 text Inactive Expired 10/27/2025
+					636 cell
+						637 text Services Agreement
+				638 row
+					639 cell
+						640 container
+							641 checkbox (settable, integer) Description: Select row 11, Value: 0
+							642 text Select row 11
+					643 cell
+						644 link Description: SpaceX_DocAnalyser-DCF-CX-2026-07-07-001.pdf, Value: localhost:5173/#
+						645 text ↑ Uploaded: 
+						646 link Description: View Job, Value: localhost:5173/#
+					647 cell
+						648 link Description: OrbitalNet Solutions Ltd., Value: localhost:5173/#
+						649 link Description: SpaceX Launch Services, Value: localhost:5173/#
+					650 cell
+						651 text Active Expires 10/31/2026
+					652 cell
+						653 text SpaceX Launch Agreement
+				654 row
+					655 cell
+						656 container
+							657 checkbox (settable, integer) Description: Select row 12, Value: 0
+							658 text Select row 12
+					659 cell
+						660 link Description: SpaceX_DocAnalyser-DCF-CX-2026-07-07-002.pdf, Value: localhost:5173/#
+						661 text ↑ Uploaded: 
+						662 link Description: View Job, Value: localhost:5173/#
+					663 cell
+						664 link Description: Quasar Broadband Holdings, Inc., Value: localhost:5173/#
+						665 link Description: SpaceX Commercial Launch Division, Value: localhost:5173/#
+					666 cell
+						667 text Inactive Expired 2/19/2026
+					668 cell
+						669 text SpaceX Launch Agreement
+				670 row
+					671 cell
+						672 container
+							673 checkbox (settable, integer) Description: Select row 13, Value: 0
+							674 text Select row 13
+					675 cell
+						676 link Description: SpaceX_DocAnalyser-DCF-CX-2026-07-07-005.pdf, Value: localhost:5173/#
+						677 text ↑ Uploaded: 
+						678 link Description: View Job, Value: localhost:5173/#
+					679 cell
+						680 link Description: SpaceX Starship Launch Services, Value: localhost:5173/#
+						681 link Description: Vela Navigation Services S.A., Value: localhost:5173/#
+					682 cell
+						683 text Active Expires 2/17/2028
+					684 cell
+						685 text SpaceX Launch Agreement
+				686 row
+					687 cell
+						688 container
+							689 checkbox (settable, integer) Description: Select row 14, Value: 0
+							690 text Select row 14
+					691 cell
+						692 link Description: SXTesting-DCF-MSA-2026-07-07-002.pdf, Value: localhost:5173/#
+						693 text ↑ Uploaded: 
+						694 link Description: View Job, Value: localhost:5173/#
+					695 cell
+						696 link Description: NexGen Data Services Ltd., Value: localhost:5173/#
+						697 link Description: Pinnacle Dynamics Corp., Value: localhost:5173/#
+					698 cell
+						699 text Active Renews 4/25/2027
+					700 cell
+						701 text Miscellaneous
+				702 row
+					703 cell
+						704 container
+							705 checkbox (settable, integer) Description: Select row 15, Value: 0
+							706 text Select row 15
+					707 cell
+						708 link Description: ARTSpaceXdemo-DCF-CX-2026-07-06-001.pdf, Value: localhost:5173/#
+						709 text ↑ Uploaded: 
+						710 link Description: View Job, Value: localhost:5173/#
+					711 cell
+						712 text —
+					713 cell
+						714 text Effective Soon Effective 7/16/2026
+					715 cell
+						716 text SpaceX Launch Agreement
+			717 container
+				718 text Items per page
+				719 pop up button (collapsed, settable) Items per page, Value: 25 / Page, Secondary Actions: Expand
+					720 menu
+						721 5 / Page
+						722 10 / Page
+						723 (selected) 25 / Page
+						724 50 / Page
+				725 text 1 - 25  of  1659
+				726 button (disabled) Previous page
+				727 button Next page
+			728 container
+				729 text English (US) |
+				730 link Description: Contact Us, Value: support.docusign.com/contactSupport
+				731 link Description: Terms of Use, Value: docusign.com/legal/terms-and-conditions
+				732 link Description: Privacy, Value: docusign.com/privacy
+				733 link Description: Intellectual Property, Value: docusign.com/ip
+				734 link Description: Trust, Value: docusign.com/trust
+				735 text Version: 1.13043 · Copyright © 2026 Docusign, Inc. All rights reserved.
+		343 button Help: Start feedback mode, v3.0.2 Switch to light mode Output Detail Standard React Components Hide Until Restart Marker Color Indigo Blue Cyan Green Yellow Orange Red Clear on copy/send Block page interactions
+			344 button
+				345 image
+			346 button
+				347 image
+			348 button
+				349 image
+			350 button
+				351 image
+			352 container
+				353 link agentation.com/
+				354 text v 3.0.2
+				355 button Switch to light mode
+					356 image
+				357 text Output Detail
+				358 image
+				359 button Standard
+				360 text React Components
+				361 image
+				362 checkbox (settable, integer) 1
+				363 text Hide Until Restart
+				364 image
+				365 checkbox (settable, integer) 0
+				366 text Marker Color
+				367 button Indigo
+				368 button Blue
+				369 button Cyan
+				370 button Green
+				371 button Yellow
+				372 button Orange
+				373 button Red
+				374 checkbox (settable, integer) Description: Clear on copy/send, Value: 0
+				375 image
+				376 image
+				377 checkbox (settable, integer) Description: Block page interactions, Value: 1
+				378 image
+				379 button Manage MCP & Webhooks
+					380 text Manage MCP & Webhooks
+					381 image
+				382 button Manage MCP & Webhooks
+					383 image
+					384 text Manage MCP & Webhooks
+				385 text MCP Connection
+				386 image
+				387 container
+					388 text MCP connection allows agents to receive and act on annotations.
+					389 link Description: Learn more, Value: agentation.dev/mcp
+				390 text Webhooks
+				391 image
+				392 checkbox (disabled, settable, integer) Description: Auto-Send, Value: 1, ID: agentation-auto-send
+				393 text The webhook URL will receive live annotation changes and annotation data.
+				394 text entry area (settable)
+		395 image
+
+The focused UI element is 487 link Description: Obligation Management – Supported Extractions (Limited) (1).pdf, URL: localhost:5173/#

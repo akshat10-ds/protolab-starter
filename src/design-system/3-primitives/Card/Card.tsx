@@ -16,6 +16,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface CardImageProps extends React.HTMLAttributes<HTMLDivElement> {
+  ratio?: '16:9' | '3:2' | '1:1';
+  imageSpacing?: 'full-width' | 'document-preview' | 'floating';
   /** Image source URL */
   src: string;
   /** Alt text for accessibility */
@@ -58,9 +60,9 @@ export const CardFooter: React.FC<CardFooterProps> = ({ children, className, ...
   );
 };
 
-export const CardImage: React.FC<CardImageProps> = ({ src, alt, className, ...props }) => {
+export const CardImage: React.FC<CardImageProps> = ({ src, alt, ratio = '3:2', imageSpacing = 'full-width', className, ...props }) => {
   return (
-    <div className={`${styles.image} ${className || ''}`} {...props}>
+    <div className={`${styles.image} ${styles[`ratio-${ratio.replace(':', '-')}`]} ${styles[`spacing-${imageSpacing}`]} ${className || ''}`} {...props}>
       <img src={src} alt={alt} />
     </div>
   );
@@ -109,9 +111,8 @@ export const Card: React.FC<CardProps> & {
 
     return (
       <div data-ink-component="Card" className={cardClasses} {...props}>
-        {imagePosition === 'top' && imageChild}
+        {imageChild}
         <div className={styles.content}>{otherChildren}</div>
-        {imagePosition === 'start' && imageChild}
       </div>
     );
   }

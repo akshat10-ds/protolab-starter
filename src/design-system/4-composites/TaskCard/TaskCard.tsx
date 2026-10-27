@@ -40,7 +40,7 @@ export interface TaskCardFooterProps extends React.HTMLAttributes<HTMLDivElement
 
 export const TaskCardHeader: React.FC<TaskCardHeaderProps> = ({
   heading,
-  showIcon = false,
+  showIcon = true,
   icon = 'overflow-horizontal',
   onIconClick,
   iconAriaLabel = 'More options',
@@ -94,7 +94,7 @@ export const TaskCardFooter: React.FC<TaskCardFooterProps> = ({
   return (
     <div className={`${styles.footer} ${className || ''}`} {...props}>
       {showMetadata && metadata && (
-        <Text size="small" className={styles.metadata}>
+        <Text size="sm" className={styles.metadata}>
           {metadata}
         </Text>
       )}

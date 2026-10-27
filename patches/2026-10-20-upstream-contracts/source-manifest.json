@@ -1,0 +1,187 @@
+{
+  "protolab-mcp": {
+    "sourceRoot": "/Users/akshat.mishra/Documents/Work/protolab-mcp",
+    "files": [
+      {
+        "path": "package.json",
+        "beforeSha256": "b92641a31d833fb3a7146056679929df78f712649c2843514293ce8e5f0407cc",
+        "afterSha256": "95af01f11d33a533b05cdc59d5fcce22b9efda760c8d047a9e5dc9b7d22ca621"
+      },
+      {
+        "path": "protolab-source/src/design-system/1-tokens/tokens.css",
+        "beforeSha256": "25f094630934bca9dbc889455f23ef359596faaf3ade5bde7c36ac1876ba0da8",
+        "afterSha256": "389633d01b9d0e8437455b38e8a1a160ef59d6309be12ce51bd8a40f81a37759"
+      },
+      {
+        "path": "protolab-source/src/design-system/3-primitives/Switch/Switch.tsx",
+        "beforeSha256": "0215be813c7ca25d940123cf3ba454e7e930e7cf71d240bfb032f519614c241d",
+        "afterSha256": "bfeb030a3c51f30baac20dc7b4b941bfdc04b725a08116da046029bcd5a9cb32"
+      },
+      {
+        "path": "protolab-source/src/design-system/3-primitives/Tooltip/Tooltip.tsx",
+        "beforeSha256": "8b80299967d2135a7d01b0e2ddbd8701824cfa104f00ae35067fc884cc021f0f",
+        "afterSha256": "8a1a1eb74faf751cc117f48878300995406e16be33a680ef57540dc4847bd1b4"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.module.css",
+        "beforeSha256": "273b4cd52bafe8def2de31d1699afea06b3e3037bf5fd435aac3e73167186011",
+        "afterSha256": "f63253752f763297ec1edad8952a3596efe4e6b4a6329b424503bcaab584323b"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.tsx",
+        "beforeSha256": "de789346dc3634bd486c565f5725c3291f82fa4279e4a453d7dbe85ee756b7f0",
+        "afterSha256": "84db70d1751344aecd22d472a4a0855346e563bf73fca01a5d1506edc60d30af"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/Callout/Callout.tsx",
+        "beforeSha256": "1886d6183d3e58f2f1e28811ac6724cca6bd4ce846d58149cf25bbc046d211df",
+        "afterSha256": "47304b433eee638340076c3aa6ccb3d451b92dc92ed7a46fbffdc390ee997c2a"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/Chip/Chip.tsx",
+        "beforeSha256": "1798525c01475bf5b7847bacd98597c4bbdc47b34be9991b06acb6f23d3d95d8",
+        "afterSha256": "53940816d997a8f79e19ebf98b995d91058078369ce93ac81bf8151b6833f194"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/Dropdown/Dropdown.tsx",
+        "beforeSha256": "ee0209d8da75ec2a9a2ad5a2e25fe53500fe4176bb5ca173c5c311651f0e8b9b",
+        "afterSha256": "9428983e603dd5308b7c2752c559593cc911b10e9252f3329db6eeecba3540cd"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/FileUpload/FileUpload.tsx",
+        "beforeSha256": "2fa03ba7795a289dd217a35ed336ee90bdc2a49e453da4ea1d62cbaec9347958",
+        "afterSha256": "1a9bceaeda03007e9981beb7b2ff487bc750d3d0847d8c44e7389d7ad9ff6305"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/FilterTag/FilterTag.tsx",
+        "beforeSha256": "c9bb1650e3d770795fe144024ba98a624d32634caa76ff55d168873c37a2b724",
+        "afterSha256": "e8c126af5274f944f50a0b47954794385778e19d04c9daf5b92edd9b20d9e1b4"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/Popover/Popover.tsx",
+        "beforeSha256": "052de9e9ec536e86db0d9f564f7a546a8825483ed4c8e8edced839aeb0e40cff",
+        "afterSha256": "a376718b3088fd5273e48fec4f0d20a9a3bea0a8f886ab2677aa6279276067d7"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/SearchInput/SearchInput.tsx",
+        "beforeSha256": "bc15725af806b377c651133fd62be8109f8a8553a350df0831331aa248065f50",
+        "afterSha256": "8a7e09c62bd8d6c8f485a4d1e76b8d59ebed9817f7939377329323907e8d1d2d"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/Table/TableActionBar.tsx",
+        "beforeSha256": "8b8e1a170701fc88f4b241b75f12b7fde89bd89d41ad83b1bc82add276a38e70",
+        "afterSha256": "725ecb8ebecf638b0b7c002b44c084514f0f8e33963bcd750f66ae686cada0b0"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/Table/TableColumnControl.tsx",
+        "beforeSha256": "e6762a9a6caaa530e319ccc1de488766585fc2fba2454b18540ffeaea2aede03",
+        "afterSha256": "64db2bdc79d5fa05e3e64effa1dfbea142d923bb859946d59a3681c99042f299"
+      },
+      {
+        "path": "protolab-source/src/design-system/4-composites/TaskCard/TaskCard.tsx",
+        "beforeSha256": "f464e49c8aa77bb71b28c32777d8d75ea75b58999474da74b3525e9cd7cb1ccb",
+        "afterSha256": "affb38b71d2cb2302a8510b3c48057f7993475802f92a1699798c23476a330e4"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/AIChat/AIChat.module.css",
+        "beforeSha256": "30ac2c871f7b4cec78390a3a16c8deef880752c804916d025670fe520dc198c1",
+        "afterSha256": "ff4c1d694c557eeacadbc5710603a4ab243198d4c05f209e74354e38546ef875"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/AIChat/AIChat.tsx",
+        "beforeSha256": "a004c0e87af3ca36eda84558deee468ec522e4fdf1fd040302e39f66f6539dd1",
+        "afterSha256": "43f7e5e24083cbe26521f4cf77e1bb1bfae88845795587b77003c3cde2f93cf8"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/AgentPanel/AgentActionCard.module.css",
+        "beforeSha256": "f7a87e761402792b4eeb500762104635dc58fe1751bb8f8042ba0ddad642fefa",
+        "afterSha256": "7e3d14db16ee5ccad392cb249672fb1ef18197d18a45bc02f9ef4249bcc9c1ef"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/AgentPanel/AgentCanvas.module.css",
+        "beforeSha256": "210f99de167d2144bcfff693640566c72584586620a33f846c705dcbe1f8b1f2",
+        "afterSha256": "dedf47fd976a5fcf5a00c67be15cb3f62ee897408439cded718a135a42c5b9dc"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/AgentPanel/ThinkingSteps.module.css",
+        "beforeSha256": "5c18f51107e0601fa38176bd67ae5071a649901039e812784233863493aa7180",
+        "afterSha256": "56b409bc8b745eabb428660950ae75a4d38abfcafae964982a58e694c56f8ae8"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx",
+        "beforeSha256": "5234f4becc1440520648bbf1d7e81ca34da72d225f4056fb3095958f70a3ea17",
+        "afterSha256": "b19a01cc636ed97b8442b560a39482d208f54edf8ce45171f5f196f947ed4181"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/GlobalNav/GlobalNav.tsx",
+        "beforeSha256": "ea4bfdadf43268fcde781ccd21081f501ba6a72b85ca71e82e775b1ba94e53fb",
+        "afterSha256": "6307389e164cb379f7669014d09dba32871c7328ae5bd65288676fca6ac4b39b"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/LocalNav/LocalNav.tsx",
+        "beforeSha256": "09de49dd813eaf1c6f583ef2959d223a49574191200eda2d8a20657eb3f7141a",
+        "afterSha256": "1747c7b2baa7b730918c22ded88dd4196cb380234ae775923abaec40e2b80b2a"
+      },
+      {
+        "path": "protolab-source/src/design-system/5-patterns/PageHeader/PageHeader.module.css",
+        "beforeSha256": "2a12ef71c6f1af7672c64d9def95b2d024446d716cc7f2aff87c1fc5f9042cf3",
+        "afterSha256": "800a737526608e0f3bf74fe30c27c8478a514b1b163ef063149d5a632243a002"
+      },
+      {
+        "path": "protolab-source/src/design-system/index.ts",
+        "beforeSha256": "da1f650251e82abbb0fd070284c43ce3e44594afad3b855bbfb7f85b8b25290d",
+        "afterSha256": "052715adab828a9608ce9f35ff3d2e881d2687f5483e6e8cb7fe5dc81b7068a3"
+      },
+      {
+        "path": "scripts/bundle-data.ts",
+        "beforeSha256": "89ea889d581e79a118d01d875f5386f050be7d144a9d23d444cfc3213e5a2301",
+        "afterSha256": "349006c8db455c4132e89b14bb8f1a929a4d244b26659cb78e1119c31108535f"
+      },
+      {
+        "path": "scripts/check-template-contracts.mjs",
+        "beforeSha256": null,
+        "afterSha256": "636009f30826be9df0a83acef135ba8eaa3a5b5989a5edb08da0249437b7fd69"
+      },
+      {
+        "path": "scripts/generate-template.ts",
+        "beforeSha256": "2db07fce88cf300998904cf1b38492b24b8dc90a4827c51fab8717859f24dd6a",
+        "afterSha256": "09a06dc398525cb8ab71f27c590188e57ecebedc994a3e7f25c8c62626c3391b"
+      },
+      {
+        "path": "src/shared/project-templates.ts",
+        "beforeSha256": "ccde2778a069e2305446b2d69b8d4751195a6566dedc76a24659f8e9da9357f2",
+        "afterSha256": "219bbc17027fed307c76f826f4a2fa1db81495c79c1b4965519cc89f8185c115"
+      }
+    ]
+  },
+  "akshat-lab": {
+    "sourceRoot": "/Users/akshat.mishra/Documents/Work/akshat-lab",
+    "files": [
+      {
+        "path": "system/ai-system/composites/ChatInput/ChatInput.tsx",
+        "beforeSha256": "d9e25fd52e4d364922444060fb0b7796ec3baae23961a010c1780eeab42d80ae",
+        "afterSha256": "1eed9acfe6662782d315a7de391d459d18f950a620fdffdf5f35ba1e2556954b"
+      },
+      {
+        "path": "system/ai-system/composites/CommandMenu/CommandMenu.tsx",
+        "beforeSha256": "38499972e52d5364296ecc4a447682446d2fd37e8585751436a9dc2ab59c1ab5",
+        "afterSha256": "6164af1c3e0306a2167c45033cbe1d1fc11586259e0679f811367e3a221ab7e6"
+      },
+      {
+        "path": "system/ai-system/patterns/ArtifactViewer/AgreementView.tsx",
+        "beforeSha256": "0b50ffe0e2231757b076a570c01eb6cae61d0f3be3423d649b83ffcf86718678",
+        "afterSha256": "6ca4ebf95b56fe2e84666464d82d48be11854f37897dce45213a5c937b3d973a"
+      },
+      {
+        "path": "system/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx",
+        "beforeSha256": "d29b747036ba665c17ec54474f18848518021d01b3d3d4c2862f1b612b466f0f",
+        "afterSha256": "7eed82a005192c5d946a0ce3dd255abbbeaaa24bb74ae26568fa4c766dbc72ff"
+      },
+      {
+        "path": "system/ai-system/patterns/ArtifactViewer/SourceListView.tsx",
+        "beforeSha256": "fe33a059d702cc89f3b5e372620baefcaf949d5ec55cf9af45106c1c64e141b0",
+        "afterSha256": "2eb586600dc1eff09d298dc229ea84f071872d311fb4cc0aac3edd5f1211a826"
+      }
+    ]
+  }
+}

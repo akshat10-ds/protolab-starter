@@ -1,0 +1,11 @@
+Browser tab: 7, Title: "ProtoLab foundation verification", URL: "http://127.0.0.1:5190/tests/browser/index.html".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~					223 switch (settable, boolean) Description: Email notifications, Value: 1, ID: switch-_r_1o_
+~					227 text Notifications:  on
+~				231 text field (settable) Agreement title, Value: Consulting agreement
+~					233 text 20 / 30
+~					240 combo box (collapsed, settable) Party, Value: Beacon, Secondary Actions: Expand
+~					241 button Clear Party
+~					247 text Selected party:  beacon
++		274 container Saved changes are local
+The focused UI element is 228 button Explain local state

@@ -1,0 +1,137 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- button "Skip to main content"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign logo, homepage":
+    - /url: https://apps.dev.docusign.net/api/send/home
+    - img "Docusign logo, homepage"
+  - navigation:
+    - list:
+      - link "Home":
+        - /url: /send/home
+        - generic: Home
+      - link "Agreements":
+        - /url: /send/documents
+        - generic: Agreements
+      - link "Templates":
+        - /url: /send/templates
+        - generic: Templates
+      - link "Automations":
+        - /url: /send/agents
+        - generic: Automations
+      - link "Insights":
+        - /url: /send/reports
+        - generic: Insights
+      - link "Admin":
+        - /url: /admin
+        - generic: Admin
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "tasks":
+    - generic: tasks
+  - button "Notifications":
+    - generic: Notifications
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- main:
+  - navigation "Secondary":
+    - button "Agents":
+      - generic "Agents"
+    - generic: New
+    - button "Rules":
+      - generic "Rules"
+    - generic: New
+    - button "Workflows":
+      - generic "Workflows"
+  - heading "Handle routine tasks with rules" [level=1]
+  - paragraph: Choose what triggers a rule and what it does, like notifying your team or moving a file.
+  - link "Learn how Rules work, opens in new window":
+    - /url: https://support.docusign.com/s/document-item?bundleId=ugf550dff6-bf19-47be-82a7-2d1ff5798724&topicId=conced2b284-d5cc-4f2f-a099-c028c2225473.html
+    - text: Learn how Rules work
+  - button "Add a Rule":
+    - generic: Add a Rule
+  - button "Build with AI":
+    - generic: Build with AI
+  - iframe:
+    - region "Video Player":
+      - button "Play Video":
+        - text: 
+        - generic: Play Video
+      - text:            
+  - heading "Rule templates" [level=2]
+  - button "Create a request to renew the agreement before the renewal date":
+    - paragraph: Create a request to renew the agreement before the renewal date
+  - button "Notify Slack before an agreement's expiration date":
+    - paragraph: Notify Slack before an agreement's expiration date
+  - button "Notify by email before an agreement's expiration date":
+    - paragraph: Notify by email before an agreement's expiration date
+  - button "Send an approval email when an agreement exceeds a set dollar amount":
+    - paragraph: Send an approval email when an agreement exceeds a set dollar amount
+  - button "Notify by email when a new agreement request is submitted":
+    - paragraph: Notify by email when a new agreement request is submitted
+  - button "Email notification when an envelope is sent for a specific Request Type":
+    - paragraph: Email notification when an envelope is sent for a specific Request Type
+  - button "Email notification when an envelope is completed for a specific Request Type":
+    - paragraph: Email notification when an envelope is completed for a specific Request Type
+  - button "When an envelope is completed, archive it to the cloud storage of your choice":
+    - paragraph: When an envelope is completed, archive it to the cloud storage of your choice
+  - button "Notify Slack when an envelope is completed":
+    - paragraph: Notify Slack when an envelope is completed
+  - button "Notify Slack when an envelope is declined":
+    - paragraph: Notify Slack when an envelope is declined
+  - button "Notify by email when an envelope is declined":
+    - paragraph: Notify by email when an envelope is declined
+- contentinfo:
+  - list:
+    - button "Language Selector, current selection English (US)":
+      - generic: English (US)
+    - link "Contact Us, opens in new window":
+      - /url: https://support.docusign.com/contactSupport
+      - text: Contact Us
+    - text: "|"
+    - link "Terms of Use, opens in new window":
+      - /url: https://www.docusign.com/legal/terms-and-conditions
+      - text: Terms of Use
+    - text: "|"
+    - link "Privacy, opens in new window":
+      - /url: https://www.docusign.com/privacy
+      - text: Privacy
+    - text: "|"
+    - link "Intellectual Property, opens in new window":
+      - /url: https://www.docusign.com/ip
+      - text: Intellectual Property
+    - text: "|"
+    - link "Trust, opens in new window":
+      - /url: https://www.docusign.com/trust
+      - text: Trust
+    - text: "|"
+    - listitem: "Version: 1.1.3807"
+  - generic: Copyright © 2026 Docusign, Inc. All rights reserved
+- status
+- status

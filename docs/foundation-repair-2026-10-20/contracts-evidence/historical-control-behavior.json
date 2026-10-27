@@ -1,0 +1,12 @@
+{
+  "checks": [
+    "Trigger handler fires once and does not activate parent",
+    "Nested disabled, divider, selected, shortcut and keyboard states",
+    "Prevent-default, persistent selection and outside dismissal",
+    "Popover preserves trigger ref and dismisses with focus restoration",
+    "Controlled debounced search displays immediately and cancels stale clear/select callbacks",
+    "Debounce is cleaned up on unmount; browser has no uncaught errors"
+  ],
+  "status": "pass",
+  "scope": "Earlier isolated Chromium control checks; predates final source changes. Refreshed-starter CUA is reported separately by integrator."
+}

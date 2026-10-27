@@ -1,0 +1,1049 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign Admin":
+    - /url: /
+    - img "Docusign Admin"
+  - navigation:
+    - list:
+      - button "Home":
+        - generic: Home
+      - button "Agreements":
+        - generic: Agreements
+      - button "Templates":
+        - generic: Templates
+      - button "Automations":
+        - generic: Automations
+      - button "Insights":
+        - generic: Insights
+      - button "Admin":
+        - generic: Admin
+  - button "Notifications":
+    - generic: Notifications
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- link "Organization":
+  - generic: Organization
+- link "Accounts":
+  - generic: Accounts
+- navigation "Secondary":
+  - heading "3p_gd_tk1" [level=3]
+  - generic: "Account ID: 3175396"
+  - generic: Accounts
+  - button "3p_gd_tk1 (3175396)" [pressed]:
+    - generic: 3p_gd_tk1 (3175396)
+  - separator
+  - list "Side Nav Group":
+    - button "Overview":
+      - generic "Overview"
+  - separator
+  - heading "Account" [level=4]
+  - list "Account":
+    - button "Plan and Billing":
+      - generic "Plan and Billing"
+    - button "Account Profile":
+      - generic "Account Profile"
+    - button "System Status Beta":
+      - generic "System Status"
+      - generic: Beta
+    - button "Security Settings":
+      - generic "Security Settings"
+    - button "Regional Settings":
+      - generic "Regional Settings"
+    - button "Brands":
+      - generic "Brands"
+    - button "Updates":
+      - generic "Updates"
+    - button "Sandbox":
+      - generic "Sandbox"
+    - button "Value Calculator":
+      - generic "Value Calculator"
+    - button "Sound Settings":
+      - generic "Sound Settings"
+    - button "AI Control Settings":
+      - generic "AI Control Settings"
+  - separator
+  - heading "Users and Groups" [level=4]
+  - list "Users and Groups":
+    - button "Users":
+      - generic "Users"
+    - button "Permission Profiles":
+      - generic "Permission Profiles"
+    - button "Groups":
+      - generic "Groups"
+    - button "Signing Groups":
+      - generic "Signing Groups"
+  - separator
+  - heading "Signing and Sending" [level=4]
+  - list "Signing and Sending":
+    - button "Signing Settings":
+      - generic "Signing Settings"
+    - button "Sending Settings":
+      - generic "Sending Settings"
+    - button "Workspaces Settings":
+      - generic "Workspaces Settings"
+    - button "Identity Verification":
+      - generic "Identity Verification"
+    - button "Email Preferences":
+      - generic "Email Preferences"
+    - button "Email Archive Configuration":
+      - generic "Email Archive Configuration"
+    - button "Custody Transfer":
+      - generic "Custody Transfer"
+    - button "Document Retention":
+      - generic "Document Retention"
+    - button "Legal Disclosure":
+      - generic "Legal Disclosure"
+    - button "Reminders and Expiration":
+      - generic "Reminders and Expiration"
+    - button "Comments":
+      - generic "Comments"
+    - button "Document Custom Fields":
+      - generic "Document Custom Fields"
+    - button "Envelope Custom Fields":
+      - generic "Envelope Custom Fields"
+  - separator
+  - heading "Integrations" [level=4]
+  - list "Integrations":
+    - button "App Center":
+      - generic "App Center"
+    - button "MCP Connections":
+      - generic "MCP Connections"
+    - button "Connect":
+      - generic "Connect"
+    - button "Apps and Keys":
+      - generic "Apps and Keys"
+    - button "API Usage Center":
+      - generic "API Usage Center"
+    - button "CORS":
+      - generic "CORS"
+    - button "Payments":
+      - generic "Payments"
+  - separator
+  - heading "Agreement Actions" [level=4]
+  - list "Agreement Actions":
+    - button "Rules":
+      - generic "Rules"
+    - button "Connections":
+      - generic "Connections"
+  - separator
+  - heading "Auditing" [level=4]
+  - list "Auditing":
+    - button "Audit Logs":
+      - generic "Audit Logs"
+    - button "Bulk Actions":
+      - generic "Bulk Actions"
+- heading "Users" [level=1]
+- generic: Add new users and find, edit, close, or reactivate existing users.
+- button "Add User":
+  - generic: Add User
+- button "Download Users":
+  - generic: Download Users
+- button "Bulk Add":
+  - generic: Bulk Add
+- button "Bulk Update":
+  - generic: Bulk Update
+- generic: Type to search. Use arrow keys to navigate results.
+- status: eSignCommon.ComboBoxSearch.ResultsFound
+- combobox "Search users by name or email"
+- group "Filters":
+  - button "Status · 2" [pressed]:
+    - generic: Status · 2
+  - button "Clear Status · 2":
+    - generic: Clear Status · 2
+  - 'button "Permissions: All" [pressed]':
+    - generic: "Permissions: All"
+  - 'button "Clear Permissions: All"':
+    - generic: "Clear Permissions: All"
+  - button "Groups":
+    - generic: Groups
+- button "Clear All":
+  - generic: Clear All
+- button "Settings":
+- generic "Showing 52 results":
+  - strong: 1 - 50
+  - text: of 52 Users
+- button "First" [disabled]:
+  - generic: First
+- button "previous" [disabled]:
+- button "Next":
+- button "Last":
+  - generic: Last
+- table:
+  - rowgroup:
+    - row "Name Added Status Permission Profile Groups Actions":
+      - columnheader "Name":
+        - generic: Name
+      - columnheader "Added":
+        - generic: Added
+      - columnheader "Status":
+        - generic: Status
+      - columnheader "Permission Profile":
+        - generic: Permission Profile
+      - columnheader "Groups":
+        - generic: Groups
+      - columnheader "Actions":
+        - generic: Actions
+  - rowgroup:
+    - row "12_12admin1@dsxtr.com 12_12admin1@dsxtr.com 12/12/2024 | 1:23:24 pm Status light icon Agreement Desk Perms Everyone, Test Group 2 Action Button":
+      - cell "12_12admin1@dsxtr.com 12_12admin1@dsxtr.com":
+        - paragraph: 12_12admin1@dsxtr.com
+        - paragraph: 12_12admin1@dsxtr.com
+      - cell "12/12/2024 | 1:23:24 pm":
+        - generic: 12/12/2024 | 1:23:24 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "Agreement Desk Perms":
+        - generic: Agreement Desk Perms
+      - cell "Everyone, Test Group 2":
+        - generic: Everyone, Test Group 2
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "12_12admin2@dsxtr.com 12_12admin2@dsxtr.com 12/12/2024 | 3:49:16 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "12_12admin2@dsxtr.com 12_12admin2@dsxtr.com":
+        - paragraph: 12_12admin2@dsxtr.com
+        - paragraph: 12_12admin2@dsxtr.com
+      - cell "12/12/2024 | 3:49:16 pm":
+        - generic: 12/12/2024 | 3:49:16 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "12_19_3p_user1 12_19_3p_user1@dsxtr.com 12/19/2024 | 10:15:15 am Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "12_19_3p_user1 12_19_3p_user1@dsxtr.com":
+        - paragraph: 12_19_3p_user1
+        - paragraph: 12_19_3p_user1@dsxtr.com
+      - cell "12/19/2024 | 10:15:15 am":
+        - generic: 12/19/2024 | 10:15:15 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "1_2_2025user1 1_2_2025user1@dsxtr.com 1/2/2025 | 12:23:49 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "1_2_2025user1 1_2_2025user1@dsxtr.com":
+        - paragraph: 1_2_2025user1
+        - paragraph: 1_2_2025user1@dsxtr.com
+      - cell "1/2/2025 | 12:23:49 pm":
+        - generic: 1/2/2025 | 12:23:49 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "1_2_2025user2 1_2_2025user2@dsxtr.com 1/2/2025 | 3:33:13 pm Status light icon Custom Permission Profile (Testing Updates) Everyone Action Button":
+      - cell "1_2_2025user2 1_2_2025user2@dsxtr.com":
+        - paragraph: 1_2_2025user2
+        - paragraph: 1_2_2025user2@dsxtr.com
+      - cell "1/2/2025 | 3:33:13 pm":
+        - generic: 1/2/2025 | 3:33:13 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "Custom Permission Profile (Testing Updates)":
+        - generic: Custom Permission Profile (Testing Updates)
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "2_7_tk1user1 2_7_tk1user1@dsxtr.com 2/7/2025 | 1:20:32 pm Status light icon Custom Permission Profile (Testing Updates) Everyone Action Button":
+      - cell "2_7_tk1user1 2_7_tk1user1@dsxtr.com":
+        - paragraph: 2_7_tk1user1
+        - paragraph: 2_7_tk1user1@dsxtr.com
+      - cell "2/7/2025 | 1:20:32 pm":
+        - generic: 2/7/2025 | 1:20:32 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "Custom Permission Profile (Testing Updates)":
+        - generic: Custom Permission Profile (Testing Updates)
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "3p gd 3p_gd_tk1@dsxtr.com 8/29/2024 | 7:13:51 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "3p gd 3p_gd_tk1@dsxtr.com":
+        - paragraph: 3p gd
+        - paragraph: 3p_gd_tk1@dsxtr.com
+      - cell "8/29/2024 | 7:13:51 pm":
+        - generic: 8/29/2024 | 7:13:51 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "3p_gd_tk1_user1 3p_gd_tk1_user1@dsxtr.com 9/3/2024 | 1:39:14 pm Status light icon Custom Permission Profile (Testing Updates) Everyone Action Button":
+      - cell "3p_gd_tk1_user1 3p_gd_tk1_user1@dsxtr.com":
+        - paragraph: 3p_gd_tk1_user1
+        - paragraph: 3p_gd_tk1_user1@dsxtr.com
+      - cell "9/3/2024 | 1:39:14 pm":
+        - generic: 9/3/2024 | 1:39:14 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "Custom Permission Profile (Testing Updates)":
+        - generic: Custom Permission Profile (Testing Updates)
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "3p_gd_tk1_user2 3p_gd_tk1_user2@dsxtr.com 4/29/2026 | 4:55:31 pm Status light icon DS Viewer Everyone Action Button":
+      - cell "3p_gd_tk1_user2 3p_gd_tk1_user2@dsxtr.com":
+        - paragraph: 3p_gd_tk1_user2
+        - paragraph: 3p_gd_tk1_user2@dsxtr.com
+      - cell "4/29/2026 | 4:55:31 pm":
+        - generic: 4/29/2026 | 4:55:31 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Viewer":
+        - generic: DS Viewer
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "9_11_3p_user1 9_11_3p_user1@dsxtr.com 9/11/2025 | 1:09:37 pm Status light icon DS Sender Everyone Action Button":
+      - cell "9_11_3p_user1 9_11_3p_user1@dsxtr.com":
+        - paragraph: 9_11_3p_user1
+        - paragraph: 9_11_3p_user1@dsxtr.com
+      - cell "9/11/2025 | 1:09:37 pm":
+        - generic: 9/11/2025 | 1:09:37 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Aarohi Arora aarohi.arora@docusign.com 2/3/2025 | 2:02:13 am Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Aarohi Arora aarohi.arora@docusign.com":
+        - paragraph: Aarohi Arora
+        - paragraph: aarohi.arora@docusign.com
+      - cell "2/3/2025 | 2:02:13 am":
+        - generic: 2/3/2025 | 2:02:13 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Akansha Nema akansha.nema+ur_test@docusign.com 4/2/2026 | 3:46:33 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Akansha Nema akansha.nema+ur_test@docusign.com":
+        - paragraph: Akansha Nema
+        - paragraph: akansha.nema+ur_test@docusign.com
+      - cell "4/2/2026 | 3:46:33 pm":
+        - generic: 4/2/2026 | 3:46:33 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Andrew Pope andrew.pope@docusign.com 12/29/2024 | 4:07:50 pm Status light icon DS Admin Administrators, Everyone, 1 more Action Button":
+      - cell "Andrew Pope andrew.pope@docusign.com":
+        - paragraph: Andrew Pope
+        - paragraph: andrew.pope@docusign.com
+      - cell "12/29/2024 | 4:07:50 pm":
+        - generic: 12/29/2024 | 4:07:50 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone, 1 more":
+        - generic: Administrators, Everyone, 1 more
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "andrew2@dsxtr.com andrew2@dsxtr.com 7/30/2025 | 5:04:09 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "andrew2@dsxtr.com andrew2@dsxtr.com":
+        - paragraph: andrew2@dsxtr.com
+        - paragraph: andrew2@dsxtr.com
+      - cell "7/30/2025 | 5:04:09 pm":
+        - generic: 7/30/2025 | 5:04:09 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "andrew3@dsxtr.com andrew3@dsxtr.com 7/30/2025 | 5:14:00 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "andrew3@dsxtr.com andrew3@dsxtr.com":
+        - paragraph: andrew3@dsxtr.com
+        - paragraph: andrew3@dsxtr.com
+      - cell "7/30/2025 | 5:14:00 pm":
+        - generic: 7/30/2025 | 5:14:00 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "andrew@dsxtr.com andrew@dsxtr.com 7/30/2025 | 5:21:37 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "andrew@dsxtr.com andrew@dsxtr.com":
+        - paragraph: andrew@dsxtr.com
+        - paragraph: andrew@dsxtr.com
+      - cell "7/30/2025 | 5:21:37 pm":
+        - generic: 7/30/2025 | 5:21:37 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Anndo Ko anndo.ko@docusign.com 9/18/2026 | 12:35:36 pm Status light icon DS Viewer Everyone Action Button":
+      - cell "Anndo Ko anndo.ko@docusign.com":
+        - paragraph: Anndo Ko
+        - paragraph: anndo.ko@docusign.com
+      - cell "9/18/2026 | 12:35:36 pm":
+        - generic: 9/18/2026 | 12:35:36 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Viewer":
+        - generic: DS Viewer
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Ari Seror ari.seror@docusign.com 3/17/2026 | 9:42:44 am Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Ari Seror ari.seror@docusign.com":
+        - paragraph: Ari Seror
+        - paragraph: ari.seror@docusign.com
+      - cell "3/17/2026 | 9:42:44 am":
+        - generic: 3/17/2026 | 9:42:44 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Armando Sweeney abhishek.chaturvedi@docusign.com 12/20/2024 | 5:45:10 pm Status light icon DS Sender Everyone Action Button":
+      - cell "Armando Sweeney abhishek.chaturvedi@docusign.com":
+        - paragraph: Armando Sweeney
+        - paragraph: abhishek.chaturvedi@docusign.com
+      - cell "12/20/2024 | 5:45:10 pm":
+        - generic: 12/20/2024 | 5:45:10 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Arpit arpit.mehta@docusign.com 1/8/2025 | 12:04:43 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Arpit arpit.mehta@docusign.com":
+        - paragraph: Arpit
+        - paragraph: arpit.mehta@docusign.com
+      - cell "1/8/2025 | 12:04:43 pm":
+        - generic: 1/8/2025 | 12:04:43 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Audrey 3PG audrey.koziol+3pg@docusign.com 5/14/2026 | 8:53:07 am Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Audrey 3PG audrey.koziol+3pg@docusign.com":
+        - paragraph: Audrey 3PG
+        - paragraph: audrey.koziol+3pg@docusign.com
+      - cell "5/14/2026 | 8:53:07 am":
+        - generic: 5/14/2026 | 8:53:07 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Barry Lumpkin barry.lumpkin@docusign.com 1/8/2025 | 12:03:29 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Barry Lumpkin barry.lumpkin@docusign.com":
+        - paragraph: Barry Lumpkin
+        - paragraph: barry.lumpkin@docusign.com
+      - cell "1/8/2025 | 12:03:29 pm":
+        - generic: 1/8/2025 | 12:03:29 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Bhavya Gangadharan bhavya.gangadharan@docusign.com 1/8/2025 | 12:05:56 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Bhavya Gangadharan bhavya.gangadharan@docusign.com":
+        - paragraph: Bhavya Gangadharan
+        - paragraph: bhavya.gangadharan@docusign.com
+      - cell "1/8/2025 | 12:05:56 pm":
+        - generic: 1/8/2025 | 12:05:56 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Carl Johnson carl.johnson+3p-int-viewer@docusign.com 8/28/2026 | 9:35:51 am Status light icon DS Viewer Everyone Action Button":
+      - cell "Carl Johnson carl.johnson+3p-int-viewer@docusign.com":
+        - paragraph: Carl Johnson
+        - paragraph: carl.johnson+3p-int-viewer@docusign.com
+      - cell "8/28/2026 | 9:35:51 am":
+        - generic: 8/28/2026 | 9:35:51 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Viewer":
+        - generic: DS Viewer
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Colin Bleckner colin.bleckner@docusign.com 4/16/2026 | 12:54:43 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Colin Bleckner colin.bleckner@docusign.com":
+        - paragraph: Colin Bleckner
+        - paragraph: colin.bleckner@docusign.com
+      - cell "4/16/2026 | 12:54:43 pm":
+        - generic: 4/16/2026 | 12:54:43 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Darris Hupp darris.hupp@docusign.com 6/18/2026 | 12:05:37 pm Status light icon DS Sender Everyone Action Button":
+      - cell "Darris Hupp darris.hupp@docusign.com":
+        - paragraph: Darris Hupp
+        - paragraph: darris.hupp@docusign.com
+      - cell "6/18/2026 | 12:05:37 pm":
+        - generic: 6/18/2026 | 12:05:37 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Deepti.Gangwani Deepti.Gangwani@docusign.com 8/10/2026 | 11:28:35 am Status light icon DS Viewer Everyone Action Button":
+      - cell "Deepti.Gangwani Deepti.Gangwani@docusign.com":
+        - paragraph: Deepti.Gangwani
+        - paragraph: Deepti.Gangwani@docusign.com
+      - cell "8/10/2026 | 11:28:35 am":
+        - generic: 8/10/2026 | 11:28:35 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Viewer":
+        - generic: DS Viewer
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Dhanya Jayagopal dhanya.jayagopal@docusign.com 2/20/2025 | 1:01:55 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Dhanya Jayagopal dhanya.jayagopal@docusign.com":
+        - paragraph: Dhanya Jayagopal
+        - paragraph: dhanya.jayagopal@docusign.com
+      - cell "2/20/2025 | 1:01:55 pm":
+        - generic: 2/20/2025 | 1:01:55 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Dom Fernandez dom.fernandez@docusign.com 7/21/2026 | 11:40:58 pm Status light icon DS Sender Everyone Action Button":
+      - cell "Dom Fernandez dom.fernandez@docusign.com":
+        - paragraph: Dom Fernandez
+        - paragraph: dom.fernandez@docusign.com
+      - cell "7/21/2026 | 11:40:58 pm":
+        - generic: 7/21/2026 | 11:40:58 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Evan Eccker evan.eccker@docusign.com 1/8/2025 | 12:05:18 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Evan Eccker evan.eccker@docusign.com":
+        - paragraph: Evan Eccker
+        - paragraph: evan.eccker@docusign.com
+      - cell "1/8/2025 | 12:05:18 pm":
+        - generic: 1/8/2025 | 12:05:18 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Grace Miller grace.miller@docusign.com 3/13/2026 | 1:46:01 pm Status light icon Administrators, Everyone Action Button":
+      - cell "Grace Miller grace.miller@docusign.com":
+        - paragraph: Grace Miller
+        - paragraph: grace.miller@docusign.com
+      - cell "3/13/2026 | 1:46:01 pm":
+        - generic: 3/13/2026 | 1:46:01 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Gregoire Guetat gregoire.guetat@docusign.com 1/8/2025 | 12:13:06 pm Status light icon DS Sender Everyone Action Button":
+      - cell "Gregoire Guetat gregoire.guetat@docusign.com":
+        - paragraph: Gregoire Guetat
+        - paragraph: gregoire.guetat@docusign.com
+      - cell "1/8/2025 | 12:13:06 pm":
+        - generic: 1/8/2025 | 12:13:06 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Gregoire Guetat gregoire@live.com 9/25/2024 | 6:16:55 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Gregoire Guetat gregoire@live.com":
+        - paragraph: Gregoire Guetat
+        - paragraph: gregoire@live.com
+      - cell "9/25/2024 | 6:16:55 pm":
+        - generic: 9/25/2024 | 6:16:55 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Jahnavi Katikitala jahnavi.katikitala@docusign.com 6/3/2026 | 9:30:48 am Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Jahnavi Katikitala jahnavi.katikitala@docusign.com":
+        - paragraph: Jahnavi Katikitala
+        - paragraph: jahnavi.katikitala@docusign.com
+      - cell "6/3/2026 | 9:30:48 am":
+        - generic: 6/3/2026 | 9:30:48 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Jizhou Lu jizhou.lu@docusign.com 6/11/2026 | 6:18:48 pm Status light icon DS Viewer Everyone Action Button":
+      - cell "Jizhou Lu jizhou.lu@docusign.com":
+        - paragraph: Jizhou Lu
+        - paragraph: jizhou.lu@docusign.com
+      - cell "6/11/2026 | 6:18:48 pm":
+        - generic: 6/11/2026 | 6:18:48 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Viewer":
+        - generic: DS Viewer
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Ken Harris ken@dsxtr.com 2/26/2026 | 6:06:57 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Ken Harris ken@dsxtr.com":
+        - paragraph: Ken Harris
+        - paragraph: ken@dsxtr.com
+      - cell "2/26/2026 | 6:06:57 pm":
+        - generic: 2/26/2026 | 6:06:57 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Mariya mariya.pak+123@docusign.com 1/21/2026 | 1:33:02 pm Status light icon DS Sender Everyone Action Button":
+      - cell "Mariya mariya.pak+123@docusign.com":
+        - paragraph: Mariya
+        - paragraph: mariya.pak+123@docusign.com
+      - cell "1/21/2026 | 1:33:02 pm":
+        - generic: 1/21/2026 | 1:33:02 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Mukul Milind Mishra mukul.mishra@docusign.com 4/23/2026 | 9:37:42 pm Status light icon DS Admin Administrators, Everyone, 1 more Action Button":
+      - cell "Mukul Milind Mishra mukul.mishra@docusign.com":
+        - paragraph: Mukul Milind Mishra
+        - paragraph: mukul.mishra@docusign.com
+      - cell "4/23/2026 | 9:37:42 pm":
+        - generic: 4/23/2026 | 9:37:42 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone, 1 more":
+        - generic: Administrators, Everyone, 1 more
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Myself. myself&^&(^*)&_ 3p_gd_tk47@dsxtr.com 7/30/2025 | 5:03:30 pm Status light icon DS Sender Everyone Action Button":
+      - cell "Myself. myself&^&(^*)&_ 3p_gd_tk47@dsxtr.com":
+        - paragraph: Myself. myself&^&(^*)&_
+        - paragraph: 3p_gd_tk47@dsxtr.com
+      - cell "7/30/2025 | 5:03:30 pm":
+        - generic: 7/30/2025 | 5:03:30 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Nabeel Shahzad nabeel.shahzad@docusign.com 6/3/2026 | 11:33:41 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Nabeel Shahzad nabeel.shahzad@docusign.com":
+        - paragraph: Nabeel Shahzad
+        - paragraph: nabeel.shahzad@docusign.com
+      - cell "6/3/2026 | 11:33:41 pm":
+        - generic: 6/3/2026 | 11:33:41 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "newuser newuser@dsxtr.com 7/30/2025 | 5:00:23 pm Status light icon DS Sender Everyone Action Button":
+      - cell "newuser newuser@dsxtr.com":
+        - paragraph: newuser
+        - paragraph: newuser@dsxtr.com
+      - cell "7/30/2025 | 5:00:23 pm":
+        - generic: 7/30/2025 | 5:00:23 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Pankaj Pankaj.Chandel@docusign.com 1/8/2025 | 12:06:35 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Pankaj Pankaj.Chandel@docusign.com":
+        - paragraph: Pankaj
+        - paragraph: Pankaj.Chandel@docusign.com
+      - cell "1/8/2025 | 12:06:35 pm":
+        - generic: 1/8/2025 | 12:06:35 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Radhika Kotangoor radhika.kotangoor@docusign.com 12/27/2024 | 1:54:49 pm Status light icon DS Sender Everyone Action Button":
+      - cell "Radhika Kotangoor radhika.kotangoor@docusign.com":
+        - paragraph: Radhika Kotangoor
+        - paragraph: radhika.kotangoor@docusign.com
+      - cell "12/27/2024 | 1:54:49 pm":
+        - generic: 12/27/2024 | 1:54:49 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Reetika Jain View User reetika.jain+ur_viewuser@docusign.com 4/8/2026 | 4:08:25 pm Status light icon DS Viewer Everyone Action Button":
+      - cell "Reetika Jain View User reetika.jain+ur_viewuser@docusign.com":
+        - paragraph: Reetika Jain View User
+        - paragraph: reetika.jain+ur_viewuser@docusign.com
+      - cell "4/8/2026 | 4:08:25 pm":
+        - generic: 4/8/2026 | 4:08:25 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Viewer":
+        - generic: DS Viewer
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Sagar Test User sagar.kangutkar+test.user@docusign.com 11/21/2025 | 11:53:17 am Status light icon Administrators, Everyone Action Button":
+      - cell "Sagar Test User sagar.kangutkar+test.user@docusign.com":
+        - paragraph: Sagar Test User
+        - paragraph: sagar.kangutkar+test.user@docusign.com
+      - cell "11/21/2025 | 11:53:17 am":
+        - generic: 11/21/2025 | 11:53:17 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Sarah Test sarah.sweeney@docusign.com 1/2/2025 | 1:27:09 pm Status light icon DS Sender Everyone, Test group Action Button":
+      - cell "Sarah Test sarah.sweeney@docusign.com":
+        - paragraph: Sarah Test
+        - paragraph: sarah.sweeney@docusign.com
+      - cell "1/2/2025 | 1:27:09 pm":
+        - generic: 1/2/2025 | 1:27:09 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone, Test group":
+        - generic: Everyone, Test group
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Shay Dayan shay.dayan@docusign.com 2/10/2026 | 5:05:34 am Status light icon DS Sender Everyone Action Button":
+      - cell "Shay Dayan shay.dayan@docusign.com":
+        - paragraph: Shay Dayan
+        - paragraph: shay.dayan@docusign.com
+      - cell "2/10/2026 | 5:05:34 am":
+        - generic: 2/10/2026 | 5:05:34 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Sender":
+        - generic: DS Sender
+      - cell "Everyone":
+        - generic: Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Shruthi test shruthi.ramesh@docusign.com 7/16/2026 | 9:54:34 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Shruthi test shruthi.ramesh@docusign.com":
+        - paragraph: Shruthi test
+        - paragraph: shruthi.ramesh@docusign.com
+      - cell "7/16/2026 | 9:54:34 pm":
+        - generic: 7/16/2026 | 9:54:34 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "tk1 viewer tk1_viewer1@dsxtr.com 1/24/2025 | 9:22:03 am Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "tk1 viewer tk1_viewer1@dsxtr.com":
+        - paragraph: tk1 viewer
+        - paragraph: tk1_viewer1@dsxtr.com
+      - cell "1/24/2025 | 9:22:03 am":
+        - generic: 1/24/2025 | 9:22:03 am
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Active
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+    - row "Victor Victor.Hernandez@docusign.com 1/8/2025 | 12:04:03 pm Status light icon DS Admin Administrators, Everyone Action Button":
+      - cell "Victor Victor.Hernandez@docusign.com":
+        - paragraph: Victor
+        - paragraph: Victor.Hernandez@docusign.com
+      - cell "1/8/2025 | 12:04:03 pm":
+        - generic: 1/8/2025 | 12:04:03 pm
+      - cell "Status light icon":
+        - generic: Status light icon
+        - generic: Pending
+      - cell "DS Admin":
+        - generic: DS Admin
+      - cell "Administrators, Everyone":
+        - generic: Administrators, Everyone
+      - cell "Action Button":
+        - button "Action Button":
+          - generic: Actions
+- generic "Showing 52 results":
+  - strong: 1 - 50
+  - text: of 52 Users
+- button "First" [disabled]:
+  - generic: First
+- button "previous" [disabled]:
+- button "Next":
+- button "Last":
+  - generic: Last
+- contentinfo:
+  - generic: Powered by
+  - img "Docusign"
+  - list:
+    - button "Language Selector, current selection English (US)":
+      - generic: English (US)
+    - link "Contact Us, opens in new window":
+      - /url: https://support.docusign.com/contactSupport
+      - text: Contact Us
+    - text: "|"
+    - link "Terms of Use, opens in new window":
+      - /url: https://www.docusign.com/legal/terms-and-conditions
+      - text: Terms of Use
+    - text: "|"
+    - link "Privacy, opens in new window":
+      - /url: https://www.docusign.com/privacy
+      - text: Privacy
+    - text: "|"
+    - link "Intellectual Property, opens in new window":
+      - /url: https://www.docusign.com/ip
+      - text: Intellectual Property
+    - text: "|"
+    - link "Trust, opens in new window":
+      - /url: https://www.docusign.com/trust
+      - text: Trust
+  - generic: Copyright © 2026 Docusign, Inc. All rights reserved
+- status

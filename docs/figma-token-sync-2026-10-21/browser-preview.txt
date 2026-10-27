@@ -1,0 +1,128 @@
+Browser tab: 4, Title: "Protolab", URL: "http://127.0.0.1:5173/#tokens".
+1 AXWebArea Protolab, URL: 127.0.0.1:5173/#tokens
+	2 container
+		125 container
+			126 container
+				127 button App switcher
+				128 image DocuSign
+				129 link Description: Home, Value: 127.0.0.1:5173/#
+				130 link Description: Agreements, Value: 127.0.0.1:5173/#
+				131 link Description: Templates, Value: 127.0.0.1:5173/#
+				132 link Description: Automations, Value: 127.0.0.1:5173/#
+				133 link Description: Insights, Value: 127.0.0.1:5173/#
+				134 link Description: Admin, Value: 127.0.0.1:5173/#
+				135 button Search
+				136 button Notifications
+				137 button Tasks
+				138 button Help
+				139 button User menu
+			221 container
+				222 heading Figma token preview, Value: 1
+					223 text Figma token preview
+				224 button Run token check
+			225 container
+				226 text Live CSS checked against the Figma export from  2026-10-21 . This verifies token values and modes; component layout is reviewed separately.
+			267 text All 10,844 browser token checks passed.
+			227 heading Standard, Value: 2
+				228 text Standard
+			229 text Agreement ready for review
+			230 text Semantic colors, typography and controls on the current surface.
+			231 button Review agreement
+			232 button Save draft
+			233 text Agreement name · Standard
+			234 text field (settable) Agreement name · Standard, Value: Consulting agreement
+			235 text Completed Pending
+			236 container Pearl gradient · Standard
+			237 heading Inverse, Value: 2
+				238 text Inverse
+			239 text Agreement ready for review
+			240 text Semantic colors, typography and controls on the current surface.
+			241 button Review agreement
+			242 button Save draft
+			243 text Agreement name · Inverse
+			244 text field (settable) Agreement name · Inverse, Value: Consulting agreement
+			245 text Completed Pending
+			246 container Pearl gradient · Inverse
+			247 heading Standard (Touch), Value: 2
+				248 text Standard (Touch)
+			249 text Agreement ready for review
+			250 text Semantic colors, typography and controls on the current surface.
+			251 button Review agreement
+			252 button Save draft
+			253 text Agreement name · Standard (Touch)
+			254 text field (settable) Agreement name · Standard (Touch), Value: Consulting agreement
+			255 text Completed Pending
+			256 container Pearl gradient · Standard (Touch)
+			257 heading Inverse (Touch), Value: 2
+				258 text Inverse (Touch)
+			259 text Agreement ready for review
+			260 text Semantic colors, typography and controls on the current surface.
+			261 button Review agreement
+			262 button Save draft
+			263 text Agreement name · Inverse (Touch)
+			264 text field (settable) Agreement name · Inverse (Touch), Value: Consulting agreement
+			265 text Completed Pending
+			266 container Pearl gradient · Inverse (Touch)
+			212 container
+				213 text English (US) |
+				214 link Description: Contact Us, Value: support.docusign.com/contactSupport
+				215 link Description: Terms of Use, Value: docusign.com/legal/terms-and-conditions
+				216 link Description: Privacy, Value: docusign.com/privacy
+				217 link Description: Intellectual Property, Value: docusign.com/ip
+				218 link Description: Trust, Value: docusign.com/trust
+				219 text Version: 1.13043 · Copyright © 2026 Docusign, Inc. All rights reserved.
+		72 button Help: Start feedback mode, v3.0.2 Switch to light mode Output Detail Standard React Components Hide Until Restart Marker Color Indigo Blue Cyan Green Yellow Orange Red Clear on copy/send Block page interactions
+			73 button
+				74 image
+			75 button
+				76 image
+			77 button
+				78 image
+			79 button
+				80 image
+			81 container
+				82 link agentation.com/
+				83 text v 3.0.2
+				84 button Switch to light mode
+					85 image
+				86 text Output Detail
+				87 image
+				88 button Standard
+				89 text React Components
+				90 image
+				91 checkbox (settable, integer) 1
+				92 text Hide Until Restart
+				93 image
+				94 checkbox (settable, integer) 0
+				95 text Marker Color
+				96 button Indigo
+				97 button Blue
+				98 button Cyan
+				99 button Green
+				100 button Yellow
+				101 button Orange
+				102 button Red
+				103 checkbox (settable, integer) Description: Clear on copy/send, Value: 0
+				104 image
+				105 image
+				106 checkbox (settable, integer) Description: Block page interactions, Value: 1
+				107 image
+				108 button Manage MCP & Webhooks
+					109 text Manage MCP & Webhooks
+					110 image
+				111 button Manage MCP & Webhooks
+					112 image
+					113 text Manage MCP & Webhooks
+				114 text MCP Connection
+				115 image
+				116 container
+					117 text MCP connection allows agents to receive and act on annotations.
+					118 link Description: Learn more, Value: agentation.dev/mcp
+				119 text Webhooks
+				120 image
+				121 checkbox (disabled, settable, integer) Description: Auto-Send, Value: 1, ID: agentation-auto-send
+				122 text The webhook URL will receive live annotation changes and annotation data.
+				123 text entry area (settable)
+		124 image
+
+The focused UI element is 224 button Run token check

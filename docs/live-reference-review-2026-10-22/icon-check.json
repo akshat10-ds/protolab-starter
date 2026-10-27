@@ -1,0 +1,7 @@
+{
+  "checkedAt": "2026-10-22T19:33:15.044Z",
+  "catalogFamilies": 291,
+  "literalReferences": 459,
+  "invalid": [],
+  "scope": "Literal Icon/AIIcon name props, icon/startIcon/endIcon attributes and icon/statusIcon object properties. Dynamic names require runtime checks."
+}

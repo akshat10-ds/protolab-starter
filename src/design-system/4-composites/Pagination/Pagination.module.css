@@ -197,3 +197,11 @@
     height: 32px;
   }
 }
+
+.itemsPerPage { order: -1; }
+.navigation { margin-left: auto; display: flex; align-items: center; gap: var(--ink-spacing-200); }
+.small .pageButton, .small .dots { min-width: var(--ink-spacing-400); height: var(--ink-spacing-400); font-size: var(--ink-font-body-s-size); }
+.small .select, .small .navButton { height: var(--ink-spacing-400); font-size: var(--ink-font-body-s-size); }
+.endpoint { display: inline-flex; align-items: center; }
+
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

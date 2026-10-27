@@ -32,13 +32,49 @@ is where a kind is still named, and there the icon is doing navigation work.
 
 ## States
 
+- **Pane** — the state every Tier 1 path draws. The third region of the panel:
+  rail, chat, pane. Flush right, full height, one hairline on its left edge, no
+  frame, no radius, no margin. Its width comes from the artifact's kind (below),
+  and the CHAT takes the surplus.
 - **Card** — 420px, floating inside the panel, 16px in from the right edge. The
-  panel cannot be mistaken for the host app's own chrome.
-- **Pane** — at fullscreen the card becomes the third region of the panel: rail,
-  chat, pane. Flush right, full height, one hairline on its left edge and no
-  frame. It takes the surplus room rather than a fixed slice.
+  state below fullscreen, and a real resting state again as of 2026-08-19: the
+  panel's floor rises to 916 while a dock is open (`THREE_COLUMN_MIN_WIDTH`, see
+  PanelShell's spec), so the card always has a 480px chat beside it and a host
+  page beyond that. The defect this used to produce — a 420px card in a 480px
+  panel with a ~40px sliver of chat — is now unreachable by width rather than
+  prevented by closing the dock.
 - **Expanded** — the host collapses the chat column and the dock takes the whole
-  surface. A freshly opened artifact never arrives expanded.
+  surface. A freshly opened artifact never arrives expanded. The divider is not
+  drawn here: there is no chat left to divide.
+
+## Pane width — the artifact decides, and you can drag it
+
+Akshat, 2026-08-19, first: *"when you open the sidebar the width should be like
+1/3 and not 2/3."* Then, on the same pass: *"the pane width is dependent on what
+you see… if it's agreement it should be 2/3 but for sources, progress 1/3 is
+good. we probably want it to be resizable too!"*
+
+- **One entry per kind**, in `artifactRenderers.tsx` beside the registry —
+  `PANE_SIZE`, the only other place a kind is named. A new kind declares its
+  width where it declares its renderer.
+- **`wide` ≈ 2/3** — `document`, `table`. A reading surface: the thing you came
+  for. Clamped to `[560, 1100]`px.
+- **`narrow` ≈ 1/3** — `process`, `sources`, `markdown`, `visualization`. A
+  reference surface standing beside the conversation. Clamped to `[420, 560]`px;
+  420 is the card's own width, the floor below which a pane is not a pane.
+- **`table` is an assumption, flagged for his call.** He named agreements,
+  sources and progress. Wide, because the search-results table is six columns and
+  column room is the reason it is open.
+- **The width is JS, not CSS** — `paneWidthFor()`, passed down as `width` and
+  applied to `flex-basis`. The drag has to start from the resting width, so one
+  source, two readers. The `flex: 0 1 520px` in the stylesheet is what a
+  hand-mounted dock gets when no host supplies a width.
+- **Resizable, on the system's one divider.** The chat/pane seam is
+  `ResizeHandle placement="inline"` driven by `usePanelResize` — the same 16px
+  straddling target, 4px bar, hairline-in-every-state grammar as the panel's own
+  edge (Akshat, 2026-08-18: *"the entire divider be draggable"*). A drag holds
+  for as long as that artifact is open; opening or tabbing to another artifact
+  re-seats the width to the new kind's default.
 
 **The dock arrives; it does not appear.** Measured 2026-08-19: opening it fired
 zero transition and zero animation events anywhere in the panel — the dock
@@ -71,6 +107,14 @@ Both halves of one movement were cuts. It now runs an entrance keyframe on
   because the host is what knows the route — a document opened out of a search
   table returns to that table. Akshat, 2026-08-19: *"we do need breadcrumb
   before the agreement name to go back to the search results."*
+- **The trail replaces the tab strip when the trail is all there is.** Where the
+  pane draws the breadcrumb and the only two artifacts this conversation opened
+  are that breadcrumb's own two crumbs, the strip beneath it is the same two
+  labels in a second navigation grammar — and the frames draw a breadcrumb and
+  no strip. Open a third, untrailed artifact and the strip comes back: the
+  breadcrumb names one route, and the strip is then the only way to the artifact
+  that is not on it. The card, where the header keeps its arrow and title, keeps
+  its tabs unchanged.
 - **A renderer owns its own toolbar and its own well**, and returns both, so the
   wells can differ: the table is full-bleed, the document is a canvas ground
   with a white page in it, markdown keeps the padded well. Adding a kind is one
@@ -85,6 +129,50 @@ Both halves of one movement were cuts. It now runs an entrance keyframe on
 - **The CSS owns the width.** Supply `width` and the host wins at every width,
   because an inline style beats a container query — that is the override, not
   the default.
+
+## The `process` renderer — a stepper across, a timeline within
+
+Akshat, 2026-08-19, on the agent's work needing a standing surface rather than
+*"updating the entire experience through one little box"*, pointing at ds-ui's
+Timeline: the whole plan visible before it runs, future steps drawn grey, the
+current one marked by mass, each row expandable with its own detail and action.
+
+- **Two Ink components, same vocabulary, 90° apart.** The horizontal `Stepper`
+  is the phase header ACROSS the run — Classify · Disclosures · Documents ·
+  Ready. Ink's `Timeline` narrates WITHIN it: one row per event, oldest first.
+- **`process.events` turns it on.** Give it and the timeline replaces the
+  per-step bullets; omit it and the renderer falls back to one step's `bullets`,
+  which is what every existing host still gets.
+- **The stepper is also the FILTER.** Akshat, 2026-08-20: *"when I click on
+  Classify I should see history for that, then click Disclosures I see history
+  for that."* Stamp each event with `stepId` and selecting a step draws that
+  phase's slice — its realized rows and its planned ones — with reading starting
+  on the phase the run is on. All or nothing: if no event carries a `stepId`,
+  the whole run is drawn as one timeline, as before. (The stepper used to stop
+  being clickable when a timeline was under it, on the grounds that nothing was
+  pinned by clicking. Now something is.)
+- **`process.focusStepId` pins a phase from outside.** A run-chip in the thread
+  is a receipt for one stage of the run, so pressing it opens the record already
+  filtered to that stage rather than to the phase the run is currently on. Same
+  shape and same discipline as `focusRecId`: it travels in the data because the
+  surface mounts in two places, and the host clears it after the jump so a
+  second press of the same chip jumps again.
+- **Ink gates the click to completed and active steps.** A phase the run has not
+  reached is drawn but cannot be selected, so its planned rows are not readable
+  until the run gets there — which is in tension with *the whole plan visible
+  before it runs*. The fix is one line in Ink's `Stepper.isStepClickable`, and
+  Ink is not this renderer's to fork.
+- **The heading under the stepper names the phase you are reading.** Ink's
+  stepper has no selected mark distinct from its active one, so the heading is
+  the only signal of what the filter is set to.
+- **Realized rows carry a timestamp; planned rows do not.** A planned event has
+  not happened, so it has no time. `status: 'incomplete'` draws it grey.
+- **Append, never mutate.** A row's label and detail are fixed the moment it
+  appears; only `status` follows the frontier. The renderer remounts the
+  timeline when the current row changes, so the newest row opens itself.
+- **The row's action lives inside its detail**, not in a standing footer: a
+  control per row, always drawn, is twenty controls in a twenty-row run. It
+  reports `process:event` with the action's `id`.
 
 ## Do / don't
 
@@ -132,6 +220,7 @@ no token exists for them.
 | `.dock` | border | `1px solid --ink-border-color-subtle` |
 | `.dock` | border-radius | `--ink-radius-size-s` |
 | `.dock` | flex | `flex-shrink: 0`, column, `overflow: hidden` |
+| `.dock` | inline style | host `width` → `width` **and** `flex-basis` (a definite basis outranks `width` in the pane) |
 | `.dock[data-expanded]` | flex | `1` |
 
 ### Box — pane (`:global([data-fullscreen])`)
@@ -142,7 +231,8 @@ no token exists for them.
 | `.dock` | background | `none` (frame draws no fill) |
 | `.dock` | border | `none`; `border-left: 1px solid --ink-border-color-subtle` |
 | `.dock` | border-radius | `0` |
-| `.dock:not([data-expanded])` | flex | `1 1 520px` |
+| `.dock:not([data-expanded])` | flex | `0 1 520px` — basis is the host's inline `flex-basis` in practice (Akshat 2026-08-19: pane by kind, chat takes the surplus) |
+| `.dock:not([data-expanded])` | animation-name | `paneIn` — basis `0` → the host's, so the chat gives the room back at the rate the pane takes it |
 | `.dock` under `:not([data-ground])` | background | `--ink-bg-color-default` — the `flat` scheme |
 | `.dock` under `[data-ground='step']` | background | `--ink-bg-color-canvas-page` |
 | `.sourceRow:hover/:focus-visible` under `[data-ground='warm']` | background | `--ink-ecru-20` |

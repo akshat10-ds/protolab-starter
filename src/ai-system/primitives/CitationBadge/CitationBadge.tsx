@@ -33,6 +33,18 @@ export interface CitationBadgeProps {
   onClick?: (citation: Citation) => void;
   /** Tooltip width in px */
   tooltipWidth?: number;
+  /**
+   * This citation's source is the one open beside the text.
+   *
+   * Akshat, 2026-09-02: *"cann we make this pressable? like what's happening
+   * here? it seems like when it's active this should have the active state!"*
+   * `RunChip` answered that ruling in a1cab4f, so this is the same answer: a
+   * fill, and `aria-current` rather than `aria-pressed`, because the badge says
+   * which record is open and does not toggle a control.
+   *
+   * Unset, the badge draws exactly what it drew before this prop existed.
+   */
+  active?: boolean;
 }
 
 // =============================================================================
@@ -45,6 +57,7 @@ export const CitationBadge: React.FC<CitationBadgeProps> = ({
   displayText,
   onClick,
   tooltipWidth = 280,
+  active = false,
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -99,7 +112,8 @@ export const CitationBadge: React.FC<CitationBadgeProps> = ({
       <button
         ref={buttonRef}
         type="button"
-        className={styles.button}
+        className={`${styles.button}${active ? ` ${styles.active}` : ''}`}
+        aria-current={active || undefined}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={() => onClick?.(citation)}

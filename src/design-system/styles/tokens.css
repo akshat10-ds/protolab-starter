@@ -1,0 +1,2 @@
+/* Compatibility entry point; the Figma-synchronized token source is shared. */
+@import '../1-tokens/tokens.css';

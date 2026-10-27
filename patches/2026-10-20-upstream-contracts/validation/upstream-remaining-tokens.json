@@ -1,0 +1,122 @@
+{
+  "names": 23,
+  "references": 70,
+  "missing": {
+    "--ink-neutral-fade-65": [
+      "design-system/1-tokens/tokens.css:339"
+    ],
+    "--ink-bg-primary": [
+      "design-system/1-tokens/index.ts:38"
+    ],
+    "--ink-font-color-subtle": [
+      "design-system/4-composites/TaskCard/TaskCard.module.css:61",
+      "design-system/4-composites/Accordion/Accordion.module.css:120",
+      "design-system/4-composites/Accordion/Accordion.module.css:131",
+      "design-system/3-primitives/Slider/Slider.module.css:45"
+    ],
+    "--ink-spacing-lg": [
+      "design-system/4-composites/Drawer/Drawer.module.css:111",
+      "design-system/4-composites/Drawer/Drawer.module.css:136",
+      "design-system/4-composites/Drawer/Drawer.module.css:197",
+      "design-system/4-composites/Drawer/Drawer.module.css:269",
+      "design-system/4-composites/Drawer/Drawer.module.css:273",
+      "design-system/4-composites/Drawer/Drawer.module.css:277",
+      "design-system/4-composites/List/List.module.css:27",
+      "design-system/4-composites/List/List.module.css:32",
+      "design-system/4-composites/List/List.module.css:69",
+      "design-system/4-composites/List/List.module.css:240"
+    ],
+    "--ink-spacing-xl": [
+      "design-system/4-composites/Drawer/Drawer.module.css:111",
+      "design-system/4-composites/Drawer/Drawer.module.css:170",
+      "design-system/4-composites/Drawer/Drawer.module.css:197",
+      "design-system/4-composites/List/List.module.css:32"
+    ],
+    "--ink-spacing-md": [
+      "design-system/4-composites/Drawer/Drawer.module.css:135",
+      "design-system/4-composites/Drawer/Drawer.module.css:269",
+      "design-system/4-composites/Drawer/Drawer.module.css:277",
+      "design-system/4-composites/List/List.module.css:22",
+      "design-system/4-composites/List/List.module.css:27",
+      "design-system/4-composites/List/List.module.css:59",
+      "design-system/4-composites/List/List.module.css:69",
+      "design-system/4-composites/List/List.module.css:144",
+      "design-system/4-composites/List/List.module.css:153",
+      "design-system/4-composites/List/List.module.css:186",
+      "design-system/4-composites/List/List.module.css:236",
+      "design-system/4-composites/List/List.module.css:240"
+    ],
+    "--ink-icon-color-secondary": [
+      "design-system/4-composites/Accordion/Accordion.module.css:80",
+      "design-system/4-composites/Accordion/Accordion.module.css:146"
+    ],
+    "--ink-status-success": [
+      "design-system/4-composites/Table/Table.module.css:447"
+    ],
+    "--ink-status-error": [
+      "design-system/4-composites/Table/Table.module.css:459"
+    ],
+    "--ink-spacing-sm": [
+      "design-system/4-composites/List/List.module.css:22",
+      "design-system/4-composites/List/List.module.css:236"
+    ],
+    "--ink-spacing-xs": [
+      "design-system/4-composites/List/List.module.css:164"
+    ],
+    "--ink-bg-canvas": [
+      "design-system/6-layouts/DocuSignShell/DocuSignShell.module.css:9"
+    ],
+    "--ink-bg-color-neutral-subtle": [
+      "design-system/5-patterns/AIChat/AIChat.module.css:280"
+    ],
+    "--ink-bg-color-neutral": [
+      "design-system/5-patterns/AIChat/AIChat.module.css:286"
+    ],
+    "--ink-letter-spacing-cozy": [
+      "design-system/5-patterns/AIChat/AIChat.module.css:605",
+      "design-system/5-patterns/AIChat/AIChat.module.css:628"
+    ],
+    "--ink-spacing-75": [
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:104"
+    ],
+    "--ink-font-size-body-xs": [
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:116",
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:128",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:123",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:135",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:233",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:266",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:279",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:326",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:350",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:378",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:419",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:129",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:340",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:357",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:364",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:378",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:413"
+    ],
+    "--ink-yellow-20": [
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:191"
+    ],
+    "--ink-yellow-60": [
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:192"
+    ],
+    "--ink-radius-size-md": [
+      "design-system/3-primitives/Card/Card.module.css:83"
+    ],
+    "--ink-radius-size-lg": [
+      "design-system/3-primitives/Card/Card.module.css:87"
+    ],
+    "--ink-radius-xs": [
+      "design-system/3-primitives/Slider/Slider.module.css:10",
+      "design-system/3-primitives/Slider/Slider.module.css:240"
+    ],
+    "--ink-font-size-14": [
+      "design-system/3-primitives/ProgressBar/ProgressBar.module.css:21",
+      "design-system/3-primitives/ProgressBar/ProgressBar.module.css:30"
+    ]
+  }
+}

@@ -15,20 +15,21 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   className,
   ...props
 }) => {
-  const visibleAvatars = avatars.slice(0, max);
-  const remainingCount = avatars.length - max;
+  const visibleLimit = Math.max(0, Math.floor(max));
+  const visibleAvatars = avatars.slice(0, visibleLimit);
+  const remainingCount = Math.max(0, avatars.length - visibleLimit);
 
   return (
     <div data-ink-component="AvatarGroup" className={`${styles.avatarGroup} ${className || ''}`} {...props}>
-      <div style={{ display: 'flex', paddingRight: '8px', isolation: 'isolate' }}>
+      <div className={styles.avatars}>
         {visibleAvatars.map((avatarProps, index) => (
           <div key={index} className={styles.avatarWrapper}>
-            <Avatar {...avatarProps} size={size} />
+            <Avatar {...avatarProps} size={size} border />
           </div>
         ))}
       </div>
       {remainingCount > 0 && (
-        <span className={styles.overflowCount}>
+        <span className={styles.overflowCount} aria-label={`${remainingCount} more people`}>
           +{remainingCount}
         </span>
       )}

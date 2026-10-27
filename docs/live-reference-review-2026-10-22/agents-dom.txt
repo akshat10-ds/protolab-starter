@@ -1,0 +1,201 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- button "Skip to main content"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign logo, homepage":
+    - /url: https://apps.dev.docusign.net/api/send/home
+    - img "Docusign logo, homepage"
+  - navigation:
+    - list:
+      - link "Home":
+        - /url: /send/home
+        - generic: Home
+      - link "Agreements":
+        - /url: /send/documents
+        - generic: Agreements
+      - link "Templates":
+        - /url: /send/templates
+        - generic: Templates
+      - link "Automations" [active]:
+        - /url: /send/agents
+        - generic: Automations
+      - link "Insights":
+        - /url: /send/reports
+        - generic: Insights
+      - link "Admin":
+        - /url: /admin
+        - generic: Admin
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "tasks":
+    - generic: tasks
+  - button "Notifications":
+    - generic: Notifications
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- main:
+  - navigation "Secondary":
+    - button "Agents":
+      - generic "Agents"
+    - generic: New
+    - button "Rules":
+      - generic "Rules"
+    - generic: New
+    - button "Workflows":
+      - generic "Workflows"
+  - heading "Agents" [level=1]
+  - paragraph: AI agents let you move agreements forward with confidence by identifying relevant tasks, surfacing key agreement data, and helping you take the right next step.
+  - button "Create New":
+    - generic: Create New
+  - heading "Featured" [level=2]
+  - link "Show All":
+    - /url: "#"
+  - button "Open Request Triage Agent"
+  - heading "Request Triage Agent" [level=3]
+  - generic: Published
+  - button "Agent menu, Request Triage Agent":
+  - paragraph: Automatically analyzes incoming requests against your playbook and governing agreements, then classifies priority, flags deviations, and routes the request to the right reviewers
+  - generic: "Last modified: 06/10/2026"
+  - img "3p Gd": 3G
+  - button "Open Clause Deviation Analysis Agent"
+  - heading "Clause Deviation Analysis Agent" [level=3]
+  - generic: Published
+  - button "Agent menu, Clause Deviation Analysis Agent":
+  - paragraph: Comparative legal clause analysis agent that independently decomposes both a baseline and a target clause into reviewable concept fields, aligns the two field sets, computes a document-level deviation score, and identifies field-level deltas and deviation tags.
+  - generic: Created by
+  - img "Docusign"
+  - button "Open Clause Deviation Chat Agent"
+  - heading "Clause Deviation Chat Agent" [level=3]
+  - generic: Published
+  - button "Agent menu, Clause Deviation Chat Agent":
+  - paragraph: Comparative legal clause analysis agent that independently decomposes both a baseline and a target clause into reviewable concept fields, aligns the two field sets, computes a document-level deviation score, and identifies field-level deltas and deviation tags.
+  - generic: Created by
+  - img "Docusign"
+  - generic: Search agents
+  - searchbox "Search agents"
+  - generic: Status
+  - combobox "Status":
+    - generic "Status"
+  - generic: Created by
+  - combobox "Created by":
+    - generic "Created by"
+  - generic: Date
+  - combobox "Date":
+    - generic "Date"
+  - link "Clear":
+    - /url: "#"
+  - button "List view":
+  - button "Tile view":
+  - heading "My agents" [level=2]
+  - button "Open My Helpful Assistant"
+  - heading "My Helpful Assistant" [level=3]
+  - generic: Published
+  - generic: Draft
+  - button "Agent menu, My Helpful Assistant":
+  - paragraph: A helpful assistant agent for general queries
+  - generic: "Last modified: 09/01/2026"
+  - img "3p Gd": 3G
+  - button "Open Test Party Classifier Agent"
+  - heading "Test Party Classifier Agent" [level=3]
+  - generic: Published
+  - button "Agent menu, Test Party Classifier Agent":
+  - paragraph: Classifies a party name as Internal or External given an account name and org name.
+  - generic: "Last modified: 06/02/2026"
+  - img "Unknown": UN
+  - button "Open Slim Canvas Search Agent"
+  - heading "Slim Canvas Search Agent" [level=3]
+  - generic: Draft
+  - button "Agent menu, Slim Canvas Search Agent":
+  - paragraph: Lightweight classifier that determines if a user's search query can be answered through standard and custom agreement fields, or if it requires the full Canvas creation agent (JIT extraction, connected data, etc.).
+  - generic: "Last modified: 06/01/2026"
+  - img "Unknown": UN
+  - button "Open Extraction Prompt Builder (POC)"
+  - heading "Extraction Prompt Builder (POC)" [level=3]
+  - generic: Published
+  - button "Agent menu, Extraction Prompt Builder (POC)":
+  - paragraph: Generates a ready-to-publish extraction prompt for any Concerto model. Caller provides namespace, version, and declarations; agent returns the complete prompt text.
+  - generic: "Last modified: 05/28/2026"
+  - img "Unknown": UN
+  - button "Open Data Extraction Agent (POC)"
+  - heading "Data Extraction Agent (POC)" [level=3]
+  - generic: Published
+  - button "Agent menu, Data Extraction Agent (POC)":
+  - paragraph: Dynamic POC copy of system_data_extraction_agent. Published via API.
+  - generic: "Last modified: 05/28/2026"
+  - img "Unknown": UN
+  - button "Open Canvas Creation Agent v3 3P JIT (POC)"
+  - heading "Canvas Creation Agent v3 3P JIT (POC)" [level=3]
+  - generic: Published
+  - button "Agent menu, Canvas Creation Agent v3 3P JIT (POC)":
+  - paragraph: Dynamic POC copy of system_canvas_creation_agent_v3 with 3P JIT CONNECTED_DATA columns. Published via API.
+  - generic: "Last modified: 05/28/2026"
+  - img "Unknown": UN
+  - navigation "My agents list pages":
+    - button "Go to previous page" [disabled]:
+      - generic: Go to previous page
+    - list:
+      - button "Page 1":
+        - generic: "1"
+      - button "Go to page 2":
+        - generic: "2"
+      - button "Go to page 3":
+        - generic: "3"
+      - button "Go to page 4":
+        - generic: "4"
+      - button "Go to page 5":
+        - generic: "5"
+    - button "Go to next page":
+      - generic: Go to next page
+- contentinfo:
+  - list:
+    - button "Language Selector, current selection English (US)":
+      - generic: English (US)
+    - link "Contact Us, opens in new window":
+      - /url: https://support.docusign.com/contactSupport
+      - text: Contact Us
+    - text: "|"
+    - link "Terms of Use, opens in new window":
+      - /url: https://www.docusign.com/legal/terms-and-conditions
+      - text: Terms of Use
+    - text: "|"
+    - link "Privacy, opens in new window":
+      - /url: https://www.docusign.com/privacy
+      - text: Privacy
+    - text: "|"
+    - link "Intellectual Property, opens in new window":
+      - /url: https://www.docusign.com/ip
+      - text: Intellectual Property
+    - text: "|"
+    - link "Trust, opens in new window":
+      - /url: https://www.docusign.com/trust
+      - text: Trust
+    - text: "|"
+    - listitem: "Version: 1.1.3807"
+  - generic: Copyright © 2026 Docusign, Inc. All rights reserved
+- status

@@ -1,0 +1,16 @@
+{
+  "name": "prototyping",
+  "displayName": "Prototyping",
+  "version": "0.5.0",
+  "description": "Start a Docusign prototype in one step. Describe a screen or flow and get a live, shareable preview built on the real Docusign app, its patterns and the Ink design system.",
+  "author": {
+    "name": "Akshat Mishra",
+    "email": "akshat.mishra@docusign.com"
+  },
+  "keywords": [
+    "prototype",
+    "design-system",
+    "ink",
+    "docusign"
+  ]
+}

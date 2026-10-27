@@ -32,6 +32,22 @@ export interface NavShortcut {
 export interface ConversationItem {
   id: string;
   title: string;
+  /**
+   * WHAT IS HAPPENING IN A THREAD YOU ARE NOT IN.
+   *
+   * Akshat, 2026-08-24, moving the loan workspace to thread-per-action: a
+   * background agent working in a thread you left has to be visible from the
+   * history list, or the list is a list of names and the work is invisible.
+   *
+   *   running    the agent is working in there — a pulsing dot
+   *   needs-you  it stopped and is waiting on a person — a quiet dot
+   *   done       nothing. A finished thread is just a thread.
+   *
+   * Undefined draws nothing, so every list that exists today is unchanged.
+   */
+  status?: 'running' | 'needs-you' | 'done';
+  /** There is something in there you have not read. A dot at the row's lead. */
+  unread?: boolean;
 }
 
 export interface ConversationGroup {
@@ -71,6 +87,50 @@ export interface IrisSidebarProps {
   /** Additional className for the outer wrapper */
   className?: string;
 }
+
+/* =============================================================================
+   Conversation row
+   ============================================================================= */
+
+/**
+ * The row's label, with its marks.
+ *
+ * A row with no `status` and no `unread` returns the plain title string it
+ * always returned — that is the guarantee that every list rendering today
+ * renders identically.
+ *
+ * **THE CAST IS THE HONEST PART.** Ink types `LocalNavItem.label` as `string`,
+ * but the expanded row puts it straight into `<span className={itemLabel}>`, so
+ * a node renders. The two places Ink treats the label as a real string — the
+ * collapsed row's `Tooltip content` and its `aria-label` — are behind
+ * `if (!isExpanded && !item.icon) return null`, and a conversation item never
+ * carries an icon, so a conversation label never reaches them. **Give
+ * conversation items an icon and this stops being safe.** The alternative was
+ * to widen Ink's type, and Ink is vendored per prototype.
+ *
+ * Marks follow the grammar the system already states on `RunChip`: label left,
+ * quiet state right. Unread is the exception and leads, because that is where a
+ * list of messages has always put it.
+ */
+const conversationLabel = (item: ConversationItem): string => {
+  const status = item.status === 'running' || item.status === 'needs-you' ? item.status : null;
+  if (!status && !item.unread) return item.title;
+
+  return (
+    <span className={styles.convRow}>
+      {item.unread && (
+        <span className={styles.unreadDot} role="img" aria-label="Unread" />
+      )}
+      <span className={styles.convTitle}>{item.title}</span>
+      {status === 'running' && (
+        <span className={styles.runningDot} role="img" aria-label="Working" />
+      )}
+      {status === 'needs-you' && (
+        <span className={styles.needsYouDot} role="img" aria-label="Needs you" />
+      )}
+    </span>
+  ) as unknown as string;
+};
 
 /* =============================================================================
    IrisSidebar
@@ -245,7 +305,7 @@ export function IrisSidebar({
           : {}),
         items: group.items.map((item) => ({
           id: item.id,
-          label: item.title,
+          label: conversationLabel(item),
           onClick: () => onConversationClick?.(item.id),
         })),
       });

@@ -11,11 +11,14 @@ export type BadgeKind =
   | 'promo'
   | 'promoSubtle';
 
-export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface BadgeProps extends React.HTMLAttributes<HTMLElement> {
   /** Text content of the badge */
   text?: string;
   /** Show start element icon based on kind */
   startElement?: boolean;
+  /** Render an accessible menu trigger with the status text as its name. */
+  menuTrigger?: boolean;
+  disabled?: boolean;
   /** The kind/variant of the badge */
   kind?: BadgeKind;
   /** @deprecated Use `text` prop instead */
@@ -47,6 +50,8 @@ const kindToIconColor: Partial<Record<BadgeKind, string>> = {
 export const Badge: React.FC<BadgeProps> = ({
   text,
   startElement = false,
+  menuTrigger = false,
+  disabled = false,
   kind,
   children,
   variant,
@@ -60,15 +65,17 @@ export const Badge: React.FC<BadgeProps> = ({
 
   const badgeClasses = [styles.badge, styles[badgeKind], className].filter(Boolean).join(' ');
 
+  const Element = menuTrigger ? 'button' : 'span';
   return (
-    <span data-ink-component="Badge" data-ink-prop-kind={badgeKind} className={badgeClasses} {...props}>
+    <Element type={menuTrigger ? 'button' : undefined} disabled={menuTrigger ? disabled : undefined} aria-haspopup={menuTrigger ? 'menu' : undefined} data-ink-component="Badge" data-ink-prop-kind={badgeKind} className={`${badgeClasses} ${menuTrigger ? styles.menuTrigger : ''}`} {...props}>
       {startElement && (
         <span className={styles.icon}>
           <Icon name={kindToIcon[badgeKind]} size="small" color={kindToIconColor[badgeKind]} />
         </span>
       )}
       <span className={styles.text}>{displayText}</span>
-    </span>
+      {menuTrigger && <Icon name="chevron-down" size={12} className={styles.chevron} />}
+    </Element>
   );
 };
 

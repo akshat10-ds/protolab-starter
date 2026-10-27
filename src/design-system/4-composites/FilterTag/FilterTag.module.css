@@ -173,3 +173,5 @@
   outline: 2px solid var(--ink-form-control-border-color-active);
   outline-offset: -2px;
 }
+
+.startElement { display: inline-flex; align-items: center; flex-shrink: 0; }

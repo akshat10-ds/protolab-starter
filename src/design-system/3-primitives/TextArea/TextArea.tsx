@@ -30,6 +30,9 @@ export interface TextAreaProps extends Omit<
   autoExpand?: boolean;
   /** Maximum height in pixels when autoExpand is enabled */
   autoExpandLimit?: number;
+  /** Element rendered at the start of the text field. */
+  startElement?: React.ReactNode;
+  inputHelp?: React.ReactNode;
   /** Width of the textarea */
   width?: string;
 }
@@ -38,6 +41,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     {
       label,
+      startElement,
+      inputHelp,
       hideLabel = false,
       error,
       description,
@@ -54,6 +59,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       disabled,
       maxLength,
       value,
+      defaultValue,
+      'aria-describedby': describedBy,
       onChange,
       ...props
     },
@@ -66,17 +73,18 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const countId = `${textareaId}-count`;
 
     const internalRef = useRef<HTMLTextAreaElement>(null);
-    const [charCount, setCharCount] = useState(0);
+    const [charCount, setCharCount] = useState(String(defaultValue ?? '').length);
 
     const ariaDescribedBy = [
+      describedBy,
       error ? errorId : null,
-      description ? descriptionId : null,
-      characterCount && maxLength ? countId : null,
+      description && !error ? descriptionId : null,
+      characterCount && maxLength !== undefined ? countId : null,
     ]
       .filter(Boolean)
       .join(' ');
 
-    const isOverLimit = maxLength ? charCount > maxLength : false;
+    const isOverLimit = maxLength !== undefined ? charCount > maxLength : false;
 
     // Auto-expand functionality
     useEffect(() => {
@@ -87,7 +95,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         const maxHeight = autoExpandLimit || Infinity;
         textarea.style.height = `${Math.min(newHeight, maxHeight)}px`;
       }
-    }, [value, autoExpand, autoExpandLimit]);
+    }, [value, charCount, autoExpand, autoExpandLimit]);
 
     // Track character count
     useEffect(() => {
@@ -110,6 +118,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     const textareaClasses = [
       styles.textarea,
+      startElement && styles.hasStartElement,
       styles[`resize-${resize}`],
       error && styles.error,
       disabled && styles.disabled,
@@ -141,6 +150,9 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           </div>
         )}
 
+        <div className={styles.fieldRow}>
+        <div className={styles.field}>
+        {startElement && <span className={styles.startElement}>{startElement}</span>}
         <textarea
           ref={(node) => {
             // Merge refs
@@ -157,6 +169,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           aria-invalid={error ? true : undefined}
           aria-required={required || undefined}
           disabled={disabled}
+          required={required}
+          defaultValue={defaultValue}
           rows={rows}
           maxLength={!allowOverLimit ? maxLength : undefined}
           value={value}
@@ -164,7 +178,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           {...props}
         />
 
-        {characterCount && maxLength && (
+        </div>
+        {inputHelp && <span className={styles.inputHelp}>{inputHelp}</span>}
+        </div>
+
+        {characterCount && maxLength !== undefined && (
           <div id={countId} className={`${styles.count} ${isOverLimit ? styles.countError : ''}`}>
             {charCount}/{maxLength}
             {isOverLimit && allowOverLimit && (

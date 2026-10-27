@@ -13,11 +13,13 @@ const dismissible = instance.getEnum('dismissible', { false: false, true: true }
 const disabled = instance.getEnum('isDisabled', { false: false, true: true })
 const showTrigger = instance.getBoolean('❖ Show Trigger')
 
+const start = instance.getBoolean('startElement') ? instance.findInstance('startElement') : null
+const startCode = start?.type === 'INSTANCE' ? start.executeTemplate().example : undefined
 // Figma-only properties intentionally omitted: "❖ State", "❖ Split State" (interaction states),
 // "startElement" (no code prop)
 
 export default {
-  example: figma.code`<FilterTag label="${label}"${active ? ' active' : ''}${dismissible ? ' dismissible onDismiss={() => {}}' : ''}${disabled ? ' disabled' : ''}${showTrigger ? '' : ' showTrigger={false}'} onClick={() => {}} />`,
+  example: figma.code`<FilterTag label="${label}"${active ? ' active' : ''}${dismissible ? ' dismissible onDismiss={() => {}}' : ''}${disabled ? ' disabled' : ''}${showTrigger ? '' : ' showTrigger={false}'}${startCode ? figma.code` startElement={<>${startCode}</>}` : ''} onClick={() => {}} />`,
   imports: ["import { FilterTag } from '@/design-system'"],
   id: 'filter-tag',
   metadata: { nestable: true },

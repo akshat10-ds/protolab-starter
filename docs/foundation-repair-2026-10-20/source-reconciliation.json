@@ -1,0 +1,1111 @@
+{
+  "purpose": "Isolated upstream repair candidate; current checkouts unchanged, no release published.",
+  "source": "/Users/akshat.mishra/Documents/Work/protolab-starter/src/design-system",
+  "target": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system",
+  "files": [
+    {
+      "path": "1-tokens/tokens.css",
+      "upstreamBeforeSha256": "25f094630934bca9dbc889455f23ef359596faaf3ade5bde7c36ac1876ba0da8",
+      "starterSourceSha256": "c1baea8680955728e96cf7fb075f1562dbad49e7ca9e5a1becb644bfee82375a",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "2-utilities/Container/index.ts",
+      "upstreamBeforeSha256": "cc9fb6441c0c09b8bf998e55c0179a7c806d874ea3875d7afc8d4e5696cf9682",
+      "starterSourceSha256": "2f42825540c6fbfb17f4bea7baffd3e829b7c8a5d5046fa27accbbd83c28fb08",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "2-utilities/Grid/index.ts",
+      "upstreamBeforeSha256": "8959ea02402877d42f0274a10f1ca450b8dcf0dd18e1fbe942bbf2f7ea3958a1",
+      "starterSourceSha256": "67fe80d139c66d28f343269a9dda34a19cd36ac26fbd7f28dcc43e9937e77a2a",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "2-utilities/Inline/index.ts",
+      "upstreamBeforeSha256": "50649d8ecb7658b43443e64f370a006ed079688495627261124113c02f68ade9",
+      "starterSourceSha256": "4fb89c45ce88e2d52f3bbc4cda5deb053bab2bb3616a25e181c5a9824edf77e1",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "2-utilities/Portal/index.ts",
+      "upstreamBeforeSha256": "c146b6d54f640d040aeca4af3bb1267b76208fdbaf55571600a54b49d8ecbda1",
+      "starterSourceSha256": "833273d9b069d37244bc7f16c68b5eab4f944b776056f0617a6e073bc3b5c136",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "2-utilities/Spacer/index.ts",
+      "upstreamBeforeSha256": "c81fdff7d708e38ab922c6498de069d1f401e72fd26923e8b64a90deaecf84d0",
+      "starterSourceSha256": "c0e28b3101ed2358ad54c96d0534d1b5bf087c242a186ae7bf6c7a895bea18e7",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "2-utilities/Stack/index.ts",
+      "upstreamBeforeSha256": "e65cd884e834f53d06ed81ccbf64367e858170f2ef395424721dc397fad72252",
+      "starterSourceSha256": "f10b2770fbaa0a1522b5d83fc6577fab239912704e0713712aa1766d2856b3c5",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "2-utilities/index.ts",
+      "upstreamBeforeSha256": "8774bd4573f1fbf27719b9958073a8517ed0c8efd4a3055aa822a30dbf8b0063",
+      "starterSourceSha256": "30dc5414bc7354d83e69d30118998ba668b676e69040bb6bdad4bf10e7bc899d",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/AlertBadge/AlertBadge.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "b8c4ae263120a0e6c8df2867373ab42678d40d2a2a245c87f156d0c9d4eb1bab",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/AlertBadge/AlertBadge.module.css",
+      "upstreamBeforeSha256": "ec0bd14640b762b3c6e2cea089344d70e80f96a8015c6d8b96ace7eb344ec17c",
+      "starterSourceSha256": "a87b37139788926ae0a342294154fa2eb8ddf7404b95388d299abc78fd784e15",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/AlertBadge/index.ts",
+      "upstreamBeforeSha256": "e5fd6ba3a91ca53ee8d16f9a2d2d35205227ce7362bd48a9dfc3cf8e12c47b02",
+      "starterSourceSha256": "8606cc017f24aab630afd3d45d4f495593939514af1ae5b78a35a67fb5ebec03",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Avatar/Avatar.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "f9f438b996c799feab7c8dc38174f53c383f0d95549a1d1e4118fabe44cc49c1",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Avatar/Avatar.module.css",
+      "upstreamBeforeSha256": "aa960784916d280750c7d08bba0fdedb2cc87bcb345b049cbf7069c049676047",
+      "starterSourceSha256": "7fdd785b992b21a015a7a8184ffe3415c8badb63968ad19cea7c7fe0262b992f",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Avatar/Avatar.tsx",
+      "upstreamBeforeSha256": "61ecfeeff61b5bda6ca3fb4808a9e34684adeae09f003cfe5d63e41978563773",
+      "starterSourceSha256": "1b47e257ebb79a8706512f977f847c8fa4137eb4fa67cdb53f438c467b0ad5c6",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Avatar/AvatarGroup.module.css",
+      "upstreamBeforeSha256": "42d2c9b0df74e86017cba6c3f51d22e83221ad0fd9d37ba79433bdd373e04529",
+      "starterSourceSha256": "02be0e45fe172846a63bf4b3aac87a8dab426d817ce274bcf7d62fc362dd1d8f",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Avatar/index.ts",
+      "upstreamBeforeSha256": "60f058e0a089ec4e90335bf52cff45ba01c4fa99edbc05f8a0f288d229c5bdb0",
+      "starterSourceSha256": "8757446daa27b613ef76b0f7978269d2e1b3a5532e2071d3f2e2b6abac36e303",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Badge/Badge.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "0fb4a8c5135f178b31270f3c9c05f8663318a3d4efbc98ab04b0dab0cbaffe19",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Badge/Badge.module.css",
+      "upstreamBeforeSha256": "9c28a9d0b249aedf105150022a42916360a7256b0cabb37cc6da8af8cf4b2ac9",
+      "starterSourceSha256": "c6b882283e8523b98a0ab5bdbd7aeb4b5cba168eff966da4656c7a679849eecf",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Badge/Badge.tsx",
+      "upstreamBeforeSha256": "1e2f9943b95a37ad3725c9b87c935ae928edfb7a5286c1e8f4b81eddaa561d1b",
+      "starterSourceSha256": "064e8f21cabd90bbf8488c62702e2f7adc368e1186988cdaa972d65bda132e4c",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Badge/index.ts",
+      "upstreamBeforeSha256": "8f08dfc4a1315a888dd8a8d0164a9436be8b2df449d16e478ddd16c812d19772",
+      "starterSourceSha256": "c8ddc3e4520c477fbd560a0f77884c24220801039911c3656ee88fc431121c19",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/BarChart/BarChart.tsx",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "8a29899b4d97611dd28af7c696a9dd44269343861007ceb6337cd07f76ba1971",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/BarChart/index.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "4a5cf2611b20c3efcb7b402a6f24cdcbe771f5717be03021cf58e410d94d2253",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Button/Button.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "f98295fd930c0d479aff7f46bad4dbbdad04b819a3655dd3193f2ca2bcdae857",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Button/Button.module.css",
+      "upstreamBeforeSha256": "6b7fafe46822cebca1ab2ce1d4a5537faec5ed2a9f4483f7e93a550c4481ea23",
+      "starterSourceSha256": "802d5a0337439f34b2b60b69d34f83bd017feb7a52f2337503b5dbcc6ec92d5d",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Button/Button.tsx",
+      "upstreamBeforeSha256": "525377af7190e9227d87a5a37e941aedf20e2951e065539f0ee2716fb8a0743b",
+      "starterSourceSha256": "6bd03cad6795a7c26548a421c38a7843e6134dce6560b8918d21ab967b2b351d",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Button/index.ts",
+      "upstreamBeforeSha256": "908d45ee091be42a920e6a38f0aa1fae7026cea4b663fdc0a2e3c6fa90be8fcb",
+      "starterSourceSha256": "ee083b355085d100be23d1decf29d53d4ddefdda6ae215abc7cbbf131735ceef",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Card/Card.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "18479c5d157f2d85727f83962c38d9e1b21d6c11e7df9619ea3f9326047523f8",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Card/Card.module.css",
+      "upstreamBeforeSha256": "49c8ab1ccf29a7c1eba57761c6bb2827a99d39ff3fe26af7a84e934792ba4421",
+      "starterSourceSha256": "3bdf680c0d74860a88e7b34611f2cefff426dd7e2ea75f7d925355348815cbd7",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Card/index.ts",
+      "upstreamBeforeSha256": "ed3cea9f7e7e86aa715f03086d668da5b9bfc9b179a0df558b9a7d895e5843cd",
+      "starterSourceSha256": "eec278c44a5d22afa2f45eaab568dea45c45a58aea41c85332692f99c2672770",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Checkbox/Checkbox.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "5c86f852fd2ef1343d3116f7f350a1f9a43a3a3fc6ae64e7b4e36aa1e58a74a5",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Checkbox/Checkbox.module.css",
+      "upstreamBeforeSha256": "d4e1adf30ebf69a99b611dbe442b743ebde60c35db82b2061bf1186c40f9de5e",
+      "starterSourceSha256": "1d6cdcb80465dbbcf7a59b652150e34929b70f2412b6166b9613a6f540c747e2",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Checkbox/index.ts",
+      "upstreamBeforeSha256": "0855fd4f7dd71acbfc406968d94252865790922b2c9700c6abb241479daf0ac2",
+      "starterSourceSha256": "5177409669ac6b8c94e597a74183bcad072f1c2e6e29ce95a7f11bb4849f2957",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Divider/index.ts",
+      "upstreamBeforeSha256": "efe6db54eb18e3dfa760be26a3bdb1c29882ac46dffc751c51bd9ef098fbe570",
+      "starterSourceSha256": "4f91921d45cb66a707d93209669cb1b50a656a1185a6ff26985dcaba28ab20c0",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Icon/Icon.tsx",
+      "upstreamBeforeSha256": "eb44a1ee1e72ed0883cfaccf1dd6d26f3fdebb49df523bb802fb036cdb7a1899",
+      "starterSourceSha256": "83f19735f33f46a359f74554b1cac6d3c77dc76d95f5a252dc05a3267fe06a71",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Icon/iconPaths.ts",
+      "upstreamBeforeSha256": "9d3c08b9e92cb6aaa0ceac1b721442dc8bf176c8f08341d3acabedd63c63425e",
+      "starterSourceSha256": "6537aef1a75b5d961e59c22f4ca185a0ecb24977c88c592faca1cca6a95e6299",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Icon/index.ts",
+      "upstreamBeforeSha256": "6e6124834f24e5d3d83d628c3022d1b7e694ad591cea214cfdaa6c7270287dc7",
+      "starterSourceSha256": "f554465af84c24a61da246dbfca38bcf2f3548bd6beee10c2e3c48f7411c28fb",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/IconButton/IconButton.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "2d16c7d24742279d2bf4a16a95fa76eade490d5cdf553eb913b310604409286b",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/IconButton/IconButton.module.css",
+      "upstreamBeforeSha256": "915d712307bedc8806312b3751d3ece8185837e933f1081602ff3f6af848d7fc",
+      "starterSourceSha256": "da6d0ef56c93f0302e649a1fea6d64c1bc6ed953f746fafd167b90b2edc9389c",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/IconButton/index.ts",
+      "upstreamBeforeSha256": "e41ad0b95c2c666b561f7508800efc7753f6fbf23077823c278e1e8a81039a90",
+      "starterSourceSha256": "903f053f8e55a67a815031500e1e4381339d2979610652d7c89bfda6c81b08e4",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Input/Input.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "696797c4771a9196e74eb4481813bed44ed6f8cb815cab6c7e512f611cf8d213",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Input/Input.module.css",
+      "upstreamBeforeSha256": "fa43d4bcf7d440ce371475d0919b31ad228ef50a64313bc9ed641acfe6ed1fb0",
+      "starterSourceSha256": "01afe38219060805669a9606f9b551543b11d34725cad491630072d095113a72",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Input/index.ts",
+      "upstreamBeforeSha256": "c3aa02993f577e19060839717675946635509a500906f05706d28b05e57e1d3f",
+      "starterSourceSha256": "dbc01d9e9d303eba2fa4230b963ca0671bc4fd1c3dcea6a4a4e1541856c020d5",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Link/Link.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "2bd44b212b1c11df44b88cdf17ab62e608ed0045f43d35bf879ba8a677533e73",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Link/Link.module.css",
+      "upstreamBeforeSha256": "2bb81c5a327b1ad5cd1402b276496c7c7f96b01842ce46a880114b50847977fc",
+      "starterSourceSha256": "14ce01ae01cc672090fb3272570c3fb7630f0d3e73f58c8e21eeb96031a95f8d",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Link/index.ts",
+      "upstreamBeforeSha256": "fafeee8351e62cf1547c9276796a74ec478c76f436cdfcbd2be5213843890c65",
+      "starterSourceSha256": "cffab2f87bb351622c42d2d32170aff1a9e5763107e609c6dc80403e226ec2c7",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/ProgressBar/ProgressBar.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "b87e9b293100dc3570509f0a520026350a1480b5d890ca9baecd650eeae085b9",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/ProgressBar/ProgressBar.module.css",
+      "upstreamBeforeSha256": "7c63c97daa2612b139343254c87bc6a1d16512ac1b03373d97f92bc6ff52adcb",
+      "starterSourceSha256": "077bd110f4f40087dfd69d945726e3838e710ea37b61bce7d232017f7e1be426",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/ProgressBar/index.ts",
+      "upstreamBeforeSha256": "7e986f7016cabbbdbc1d8eecc046b34f67c9b62814af12b4ea699e6e82c47055",
+      "starterSourceSha256": "7eefa0a614fcb62b8a9128e00383b84997348292415e7de854887773d1bd56a0",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Radio/Radio.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "3b3bde14322dec75a41a617d2738f5ffc4dcbeebed7383c74cebace062c505f2",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Radio/Radio.module.css",
+      "upstreamBeforeSha256": "63e8a0d540e0871853dc83d5b9e57898cf36fd4b3e883801ad5d1db2fb1c568e",
+      "starterSourceSha256": "02924aae7a2cf8b4c19d939a688318183ff78a2db8201125b3c663438edae3ec",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Radio/index.ts",
+      "upstreamBeforeSha256": "d3c20dd1157e9f7cc79a129cce800d789ae985f9df8f8bd360997c61d99a318b",
+      "starterSourceSha256": "5ac998f26bf0196b8b0e39a1e893d20f0ea6a7f364ab061201ac6bf9127c20d9",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Select/Select.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "70553741dc2afb2b616c2abc3498a1dcae0a715a5ded37d9d882c71cf23ade42",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Select/Select.module.css",
+      "upstreamBeforeSha256": "ea0f008505a7ba15c66d70f85778f50e23cc2550035ab64f2775c29dfd4fd27e",
+      "starterSourceSha256": "83c1c3264141f6a1672ffc58fb6dde7c8b99f4f86259f5c9c65af04b43196ff4",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Select/index.ts",
+      "upstreamBeforeSha256": "3e26692cebfd796b7570e036a36878add4802024dcbf99b3a8b2627b379d23cf",
+      "starterSourceSha256": "b18e6834189b339b999f7233e06e8816a9bf095b3a8fc9b02b6fe0af35209335",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Skeleton/Skeleton.module.css",
+      "upstreamBeforeSha256": "cea97536126d8bdb60fb81bd3a9f585f1da746bc8476ece6a0ff97b0fc0803d8",
+      "starterSourceSha256": "3e27a48ebb55b7b54b26a743f214be59e25a720026b88e1579b33b50aafb6b04",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Skeleton/index.ts",
+      "upstreamBeforeSha256": "6f14d235012bdf55a23b722ef6a6edfae19f429f112b16c617a9a41b52f4471a",
+      "starterSourceSha256": "a5dfca018292a8392060c7af8847062aa8c3ba098d97c015b05a9d3697398057",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Slider/Slider.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "5761a166a9f1048597683f9d5546b00a8a873310e68ddf594a028dbfdb06082b",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Slider/Slider.module.css",
+      "upstreamBeforeSha256": "9ca025dce458af4854102d122c6fb61d59ce479cd6ba48fa168fdfac6d0b0bff",
+      "starterSourceSha256": "2d239c65182cd3bd080de513cf5eed1f687e4d1d3fd13a2f90f121df845de010",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Slider/index.ts",
+      "upstreamBeforeSha256": "3fe7921512269338e87d0706d1901b5e65f68eca627a334e3129e1b2e3c831a1",
+      "starterSourceSha256": "cae809724c5e989b834807cb3dcce1103e00cce0edae32ea056bdaf5321c428b",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Spinner/Spinner.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "1f5612f194772a299632c1f810ce24301ec888cb695f7c5a542a8c7d4be51e92",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Spinner/Spinner.module.css",
+      "upstreamBeforeSha256": "a8e6017191ac5dfcc35e7bf11c34e165815a6cfdc86f041b112736f7ba973f1d",
+      "starterSourceSha256": "1ba9fc819fb0041fff7f38996f8a78830f2afec74840ff496fa79d85cad4584b",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Spinner/Spinner.tsx",
+      "upstreamBeforeSha256": "60c589053d734ba18e8aaf4889719c14d4a4cf90cfb9ba6f620c43a69a2ceff3",
+      "starterSourceSha256": "7aec97193a31728a3d8c845de1efacbef108237691f8448f3b2d1396f59e4981",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Spinner/index.ts",
+      "upstreamBeforeSha256": "efa9df98d330e5644968ad6d963fbde870ca121393127be88ad21566d43d8c7b",
+      "starterSourceSha256": "cdd30e7697ef5a0529da0b5a51dfd0ea2c3f02afab12430e359486fead055836",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/StatusLight/StatusLight.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "59a04af4261c34f7374ca364e488f2e18c55998ec829d27c5ab1d398b26ba5b7",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/StatusLight/StatusLight.module.css",
+      "upstreamBeforeSha256": "f6b24be06e59b83ce4b79f9a327e54aeca62f09fe589575e9daebc767bff2c3c",
+      "starterSourceSha256": "18e86ec782696f5eeec3f006eee3c55a16bc31b2a65dafb2fd45d5fd0c11855b",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/StatusLight/index.ts",
+      "upstreamBeforeSha256": "b62ec521b97d96b2e50401866314169d17acb65da181ec05450c120ce8e7ea00",
+      "starterSourceSha256": "ec212da3b76350d8d08806bcf3d5ba738a22e5fc9c288d9fbe5df6ec21ab013e",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Switch/Switch.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "dc5103d8b2cfd3590864220d249057a48e2e57162f4022d5e9a17b60f5cd430a",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Switch/Switch.module.css",
+      "upstreamBeforeSha256": "3c6ae3f694eaa94c764b0311f19daa24db6aba5507909bd9b38e961e45e40a50",
+      "starterSourceSha256": "faee2c836282257397ab4b1fdd22e6fbb65609255181b4f44960424d7d956505",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Switch/index.ts",
+      "upstreamBeforeSha256": "c25f241ab7c85a5d7b6bf27f536fb2bffc4093598834c270e719a620c3a55978",
+      "starterSourceSha256": "5f578e22583e329036c0fc0881be94a958221a41d191448a51439ff4042b9c45",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/TextArea/TextArea.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "9fa8b78350930848afb1bb309db334de17b9b70e38e390c53bfa2604073a8e47",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/TextArea/TextArea.module.css",
+      "upstreamBeforeSha256": "b8eb5f03e356d17618e9729ee95281366ba2f12760f342f0bda9ec31b23bb8b1",
+      "starterSourceSha256": "db04a23f047bf77868a9ca166511a194ec99c5e93289eb0785ba0a46fe630f17",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/TextArea/index.ts",
+      "upstreamBeforeSha256": "e6bc060d2e6a56249162c8f5c684290a4a7c322404b5a281fb5eed39602339a8",
+      "starterSourceSha256": "a7949a602d8f7f2ee5aaf98ea179872534cdba6c7a37022c3945f29be6301618",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Tooltip/Tooltip.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "afbc9d16a46349caff4b9ec92dfe984d80b5ddae3e243e4b0a30d269ab508ff4",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Tooltip/Tooltip.module.css",
+      "upstreamBeforeSha256": "bc9ce2db17e7c1bcda89b6f2ddeeff616ed020d2c5a1ef0a5635a8bb18f3b676",
+      "starterSourceSha256": "23d330e0244359f023bd6e27acd2232885a25b9ec64f75fbb91a6634e87654fe",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Tooltip/index.ts",
+      "upstreamBeforeSha256": "d198be24868a6a285f82be6eb0814377eae714ba84fe1cea30d5a7c5bbe2a3d0",
+      "starterSourceSha256": "8b5339809914311fc7f76d17e827d491d6d9138fb74358507375a7f24da8859c",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Typography/Typography.module.css",
+      "upstreamBeforeSha256": "60019e509124588a1b0a686517c879bac5669df5b8acc73b09db5612b4f3d288",
+      "starterSourceSha256": "e610183bc8062fb8af5afc8d1d4adf52d3d16f1257390892a8c1815af3065c14",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/Typography/index.ts",
+      "upstreamBeforeSha256": "6d1470a0c984e8a53bbb1aa2b4ab9916f57383ad0c385b88778408549ade2ad4",
+      "starterSourceSha256": "2ecdf9da7e1586b099ce9479338dbb4a8ad12e8b460722d4d89a245f3bda28fb",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "3-primitives/index.ts",
+      "upstreamBeforeSha256": "028715bf462ac76c194187f47f16e0b12d2778cf064503f58452c2a47f7f6365",
+      "starterSourceSha256": "86e6c0e818bcc7ba53bafae77a159926cebd33c9ecdd6c221d2abbe611da50ac",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/AIBadge/AIBadge.module.css",
+      "upstreamBeforeSha256": "c72d8b7a4a44fbf2a0b61cff52d5af607e304da70d8316cdff24d4bb22f6dd47",
+      "starterSourceSha256": "db523e3e049090bd61bbadb8e5b8ea6fd9002204aeb2f576f80a803436cfc2b3",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/AIBadge/AIBadge.tsx",
+      "upstreamBeforeSha256": "91fa84f25325e36d7fe347da82e1939fecae89c8eecda2bb77c455a5b23e1a2e",
+      "starterSourceSha256": "6b6172192aa28ea8bb8910370e12cc8a6ae974cb76956ef271cb2321ffd8dc93",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/AIBadge/index.ts",
+      "upstreamBeforeSha256": "c0b63192a4bf103733cbabf3ad62ff67fc5367acd5ab83f2466a35a3daa5d358",
+      "starterSourceSha256": "fd544a7595278b3cf22ef920ab8fbbe7921d887cb99bad873cabe7a020d1a93e",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Accordion/Accordion.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "a133c9528a35c2fbf2297f9adc5575ccd3a5b176ab3bb4530f43b7d23039a828",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Accordion/Accordion.module.css",
+      "upstreamBeforeSha256": "7ee51ece11b782ebeb8df64e9a83a74ff12a6108cb1f78eaf289350dfe95be71",
+      "starterSourceSha256": "9839a1c174cde4f3bc3e09ef417b7d5a0d1c9468e96105d8ef278ed163d5dc47",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Accordion/index.ts",
+      "upstreamBeforeSha256": "1beaca1eefb2b1b5d70a1fb625baf98f6088079c4796adc50a5c3fde135cd4d6",
+      "starterSourceSha256": "dd058e51951c56e446a5b816fba3a26d5a77d9cab34db1500b8e4818d9da5563",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Alert/Alert.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "c681f06c22cb11456b2af17a7083d16be9b693e59009dc806aab8337650370e2",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Alert/Alert.module.css",
+      "upstreamBeforeSha256": "160fa385569533177db042f6aaf011df3cd9c26d3442862a1f406bb73339ab6b",
+      "starterSourceSha256": "fa73785bc5cbf1ebb3214a29d16629ed92e20e8643df412919dd43e46000acd9",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Alert/index.ts",
+      "upstreamBeforeSha256": "9858da9966f6abecc7ff91176e2078e00a7b6d44346f8b21f9cb0ec6ef5d38d5",
+      "starterSourceSha256": "69838b322bc48c477bd1ea030a032266ea4532f4e282798f9110ee3188107459",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Banner/Banner.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "167b2250f9b839f3864943d52c51ea0c84c0d4cd8e4dc39b4c81fa18f64c2afc",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Banner/Banner.module.css",
+      "upstreamBeforeSha256": "5156c0244437fb4b5589afdf92154419206604bb6334d91efd7ea53aa4edc66f",
+      "starterSourceSha256": "e09044c57fca9ba09976def8a4d5117334a2b261707a0b69d9f6738b3e377577",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Banner/index.ts",
+      "upstreamBeforeSha256": "9ef95aebc308e57a0b4fdf8fa5a071d910ebf70fa2296ff88e5801491a6933bf",
+      "starterSourceSha256": "4b1e9189fe893c530420b352475c2d963950aee922c0e355cbe20b89f1d83393",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Breadcrumb/Breadcrumb.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "4ba934cadedd8346e2a15e5fe57f6762fc3c372499d602cd69ebf83a4568c867",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Breadcrumb/Breadcrumb.module.css",
+      "upstreamBeforeSha256": "273b4cd52bafe8def2de31d1699afea06b3e3037bf5fd435aac3e73167186011",
+      "starterSourceSha256": "7cdf518ef99c3dbca2b57dce5e55170705258c75f018d449be7f913b13b0c56a",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Breadcrumb/index.ts",
+      "upstreamBeforeSha256": "04fbb2c395c34f73573e5f32a7cc6ff7f4e7ba92b5ebe44f1c6c630c55144707",
+      "starterSourceSha256": "12edfdee70a9c0dcb47156d46a24438f11816db0f573fff16c7412f6708346eb",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Callout/Callout.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "e33549775996fcc93ebcd51eb619b2fcf22a731805a8f8f95fc4f17ea8c9fb88",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Callout/Callout.module.css",
+      "upstreamBeforeSha256": "db442b366c231afc242d328c7e659c03e12fcdb62a256e9d9f7bad034389906f",
+      "starterSourceSha256": "73a45e9c2bb6151d8464e5b3da3684f6aec710601835788f3728f7e39c239f84",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Callout/index.ts",
+      "upstreamBeforeSha256": "c0c8e20fca1632f4d23531ad65aca78774f8569cf53173d0e8a042e02480e14d",
+      "starterSourceSha256": "e2fe1906ac25db7e9184a38f6affddee14e1491477f26be4e46bc10a7875cb8c",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Chip/Chip.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "0f0be7862601b91baa1d3e4a249ff95ef8a61859fccae4ab2e7ca698eb34b868",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Chip/Chip.module.css",
+      "upstreamBeforeSha256": "8a7bec1de72496555a80df16b942ea5e3aede8ed2e008f90c1364766b80d43db",
+      "starterSourceSha256": "1e259583d1ea236ee8280ff6fea6506820c93ecf774e4a11cab0ea0b8163d683",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Chip/index.ts",
+      "upstreamBeforeSha256": "746419f2d2117cbcc865908573d71d3f7cd68faf21931422456e4200c760fa7b",
+      "starterSourceSha256": "6d8fd1c9a6d1e2cdaade584c8c6e52d7d91a5b6e2473cb9a234fa61a5a2527ae",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/ComboBox/ComboBox.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "fa8a54b252cd97ebe6792d72d6f5af369b2d03e1c6b8a3f7355edc59ee42fdcc",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/ComboBox/ComboBox.module.css",
+      "upstreamBeforeSha256": "729e131b3ee4e0e577fa83d8f041768a4b1a4893f709d8fbaa4fa91541f5fb13",
+      "starterSourceSha256": "dcf3d22272d6a245045ab1244ff7acf1e04faa76a943dab432de69159b48bea7",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/ComboBox/index.ts",
+      "upstreamBeforeSha256": "c05bef02ff941c2a6ad93c2f837a7ffc77700b1d1862de506a807dca768efbfd",
+      "starterSourceSha256": "2c8683d3c15b43ff525a93ebf7162afb0b81cc570c72e94c75fce5f269661c6f",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/ComboButton/ComboButton.module.css",
+      "upstreamBeforeSha256": "f85d15294c80ffdd42f2ad01e0269933ec4652ad15b9ccfc185e7b899cb86ecc",
+      "starterSourceSha256": "6698610a1bbaa33ae8a87af84b229b4dfa11b4baf2fdff405efff72284778ee9",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/ComboButton/index.ts",
+      "upstreamBeforeSha256": "5728d1aa0e177272e6823f29a6dee0bc5fe8a6149a8bbaf65498047e00d7f842",
+      "starterSourceSha256": "5345800eb8391b13fced3308d44e88a0834a956bbd4fd010e5cf7a50a19bc6f9",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/DatePicker/DatePicker.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "be58b4ba62ea4695202fa32aa7874b2af185ebbb9a4e8c1d4a390bd2e1f0752e",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/DatePicker/DatePicker.module.css",
+      "upstreamBeforeSha256": "ac95c778d236fa7dc14c8f8a44bd556e6b034f384bc50ec172ddddf02f6c2158",
+      "starterSourceSha256": "b0754d582ed059ebe40b2b8d26a5542df58ef6a26a05491f312e97f29be59322",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/DatePicker/index.ts",
+      "upstreamBeforeSha256": "9eccef41fe0a9dd67b61a4875122ed8ddced8938a618f521f1e4f36cfd239ce1",
+      "starterSourceSha256": "44436c2d53542ef47b5fcf8aa2882ec6babe5efe654eeae9e654f4615a913553",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Drawer/Drawer.module.css",
+      "upstreamBeforeSha256": "ba798f5f08bd6d0ea10c4400dca36f58fdc596457b67ab65638591282630e0c9",
+      "starterSourceSha256": "49538147afe1094bd32576de7eb61e1337a104384f89c2fbe9e179ee1cc0cbad",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Drawer/index.ts",
+      "upstreamBeforeSha256": "d9e13d0c58d874ef01fc7e4ffd89b74fd74e4499183548abc163e0083515f91f",
+      "starterSourceSha256": "afc3874abc3e46f5e365e8b277d2ee15a96d5912ebada4a2a05ad436c8eeb6e2",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Dropdown/Dropdown.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "e85a5942475af57e8de516e1b8255f2a7793dec446dc5a47b1d5f47170940777",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Dropdown/Dropdown.module.css",
+      "upstreamBeforeSha256": "70d8bbb669ac69a072c56b41b2eb3f33e8d4daee31ec4bfb50a1085edb6deaa4",
+      "starterSourceSha256": "c24cf79bb9a65ace78e272685baa1bab3ffa05004048d6ebd8117a17eef85e86",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Dropdown/Dropdown.tsx",
+      "upstreamBeforeSha256": "ee0209d8da75ec2a9a2ad5a2e25fe53500fe4176bb5ca173c5c311651f0e8b9b",
+      "starterSourceSha256": "ea519f53577a2954761674c74f2750233cac3fbce6e5c4a1b78d969ec9115faa",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Dropdown/index.ts",
+      "upstreamBeforeSha256": "e639e1a01834b66ac01948d7bafef30831e0c3ffa0966b28767be39fdcb9891b",
+      "starterSourceSha256": "2d24ed6ab8737e49e4dab292ff086de0b18296682caf49061d08010120131c48",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FileInput/FileInput.module.css",
+      "upstreamBeforeSha256": "2a6d2706898f09ed48eb8373fb55fdc9b822d8d2ea6409d5b4b2dc2c6adaf1cd",
+      "starterSourceSha256": "b749a60ed9df15a4d039db3208ef768254b06a30bd187f64863eb1eef5fe9aad",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FileInput/FileInput.tsx",
+      "upstreamBeforeSha256": "1aa8feb539fef4e086cb01f00ccc55262fa6538c1a24fd960dd04fb8fbfad192",
+      "starterSourceSha256": "b9dbe6e71bd0c1bb3946c007c0d9a230edaef3a132358b278aea17f8a069b6b7",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FileInput/index.ts",
+      "upstreamBeforeSha256": "4430806014019e4123c06ad991dcb33112df0b39ad615f035a187d9f1720279f",
+      "starterSourceSha256": "71e65cc9bfc91723176e78ebab7014b8d75cc7ccb45212f89de5f390c66928d1",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FileUpload/FileUpload.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "b08f95a2709f44d2a3544f032e0e8c39256550ae02b21724a7e9bca32bd96318",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FileUpload/FileUpload.module.css",
+      "upstreamBeforeSha256": "e312681e63e6c5336314d760cc152bd1759f4ac90ad7765613f6b10cf07d6fc0",
+      "starterSourceSha256": "b680b0e3e7af4e6eab47b595443989efb82d0a47298b03dd5e21d2a2a57455cf",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FileUpload/index.ts",
+      "upstreamBeforeSha256": "cf59a0217a04545a4df2ca52851332ce0326fb18abc37ada1250e34db5a80138",
+      "starterSourceSha256": "e1fa7f6e506728d1caa18adf1fe6d632c891d8339324220767cebf5b328ad653",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FilterTag/FilterTag.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "ea2a99a6bfaa4181d6ab25e497d06976c266d3255e73deb30a1138793b51087f",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FilterTag/FilterTag.module.css",
+      "upstreamBeforeSha256": "aacceddfd716ca369f54ebc178a06b0b05a90168afdf5f9ab4266f41d1cabb39",
+      "starterSourceSha256": "14409e7063313cf0f11984e713ae6d614ff7f8d9ec87d3593fcbc58b35ebf42e",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/FilterTag/index.ts",
+      "upstreamBeforeSha256": "bb331576298be0c3a6b27670aaf8254751d213e4b3614a339f146029a70c2117",
+      "starterSourceSha256": "a149ff8609d18a78cd130a509b8fc81dee70eb35225dc2d1264e739e47ec6512",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/List/List.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "fe979ba37808cfc0cccc475c0661e846ef2ded80ff457db86bbbb66be4978ba7",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/List/List.module.css",
+      "upstreamBeforeSha256": "fe3872d7bba9c3e0425e3f5317c32f01f83bd8bff6ac2cac2c1c42ee5eb1ee86",
+      "starterSourceSha256": "d1487ecd7f70ee996cbe29bebdbf0dd25ad0f2a5cd1b37766bd638fe36dc3652",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/List/index.ts",
+      "upstreamBeforeSha256": "bcaa0a61ea1008a2d25dbecbc30963e2d8d7921349c7ed28ea0c684ca92e9ade",
+      "starterSourceSha256": "e31672ad2137b82d3d76e809c90c1308281075b66c73c4aab9d2a4dacc7b568f",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Modal/Modal.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "3749ed5a9f7d33cd08e1b78f7dd88c0efb2d6724dc14f59f244b2390619dd62e",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Modal/Modal.module.css",
+      "upstreamBeforeSha256": "711057bd09ea2f23f9a27039d17f3d0ddc642a617e49584c0fef98d36b9623a8",
+      "starterSourceSha256": "f3072e8caf43c099fd9f8b2f705fd27ebfcf825b76f0e14a19adf16a02ce34f4",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Modal/index.ts",
+      "upstreamBeforeSha256": "3ac87f0c1652c339e1e667e7839d7e82a11e8561229edf8be399cff08683385f",
+      "starterSourceSha256": "cf596b6a4fcab681524d9edb42339341178986e544144533ee61e8ddb8fabb2c",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Pagination/Pagination.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "8c2ca08ad8c5aff98a02ff0dcb743b710b9acd64745a185ca656beeec055d599",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Pagination/Pagination.module.css",
+      "upstreamBeforeSha256": "e872d7d991df8d81a8071bd13b4aefe9f0daa005ad295acd2b3c9f53469314f1",
+      "starterSourceSha256": "65028fcfda9fb88520735a531682190a8ff67a3c1a50d98ff79ee26fe8fc6ffd",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Pagination/index.ts",
+      "upstreamBeforeSha256": "18eddde5a9d24121ef62f767faa8ffe9489f0ab0fb016359cdbff761c6c7c300",
+      "starterSourceSha256": "12306126fabbed106b8b4caf9d5ad0dff573a79688817b2b952b80415891f2d3",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Popover/Popover.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "f8a05ad70e93e2170512cd7c37739474ff04b4398537d5e4bf2fa8a2c729dd2a",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Popover/Popover.module.css",
+      "upstreamBeforeSha256": "ae5c0529d89ed62bd5cee61d775b63273386006c93792c5007ae42d7bef7acfb",
+      "starterSourceSha256": "d3a7a5ce6ab2d22e3bc5ce622d8827440e710ec0c102f802430ff252c3d3e617",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Popover/index.ts",
+      "upstreamBeforeSha256": "c3f30b80817331ca7cf1f6587326e7720db31cbba274c77dad7595aeb8c3a5c6",
+      "starterSourceSha256": "5ef8e94f2118910c4c02544f7ee3eac9d752159ebdaa15fcc4d7681291cf8fa5",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/SearchInput/SearchInput.module.css",
+      "upstreamBeforeSha256": "f2c378381d3c2436e2b8243624641a8a0c99301ebca9ed60ac927e31962a81b2",
+      "starterSourceSha256": "1b01de4d764aa1421ab838fe783f4b58ce8fd483ca77d5ea1cc4077fd63937df",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/SearchInput/index.ts",
+      "upstreamBeforeSha256": "cc00b2f14382cff9ec88caa2f6b7056bcc300b7bf23c784b7dede08ac00f97f8",
+      "starterSourceSha256": "3f4d39e6b8dfb5e3586d5210136cef777a1f9ad675f8f6475395764eae2f5ae8",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Stepper/Stepper.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "6602ef9db945fa2be14019ef22f94e700e658a13cde4e9f6ab2ec172d47f6fec",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Stepper/Stepper.module.css",
+      "upstreamBeforeSha256": "7867d9eff6af660d9113f262cfb6c4d88b8a295520cd79efaaf6469a8d482f19",
+      "starterSourceSha256": "a43fa3b354c7d1f9749598a5b05e8b02204b0c2eb8a29458ee78b7aeb7d3a38c",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Stepper/Stepper.tsx",
+      "upstreamBeforeSha256": "980f8d8f54ec156e30a14d191f757905445a402670cef5826e2471d717f8b0c9",
+      "starterSourceSha256": "54065c98a6d81fcf79e23c8913ff2bfa97d011baf13b026015cb5f9d0fd74c1c",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Stepper/index.ts",
+      "upstreamBeforeSha256": "0d24e061ce3ac216d816b20a626d8c2770e15233791e85a09e3bf14141354d19",
+      "starterSourceSha256": "0973c1f5020e7360ab35c082c13889404d845da46dc7823b195d2e60814574ff",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Table/Table.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "74f5be3b65f28b485ec73e71c0014f8c22e3599c403d88965c9ab48449e42f83",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Table/Table.module.css",
+      "upstreamBeforeSha256": "20b26b4e10cd21e9122554df4e2026997bd30d54faa0dc8aa77832d81f8a50c1",
+      "starterSourceSha256": "b84f0bd24a3ee22023592244596f8307fc2bca9e903ff07fb07bf649229c8264",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Table/TableColumnControl.module.css",
+      "upstreamBeforeSha256": "e02764be0e422f4d47ab2201508a7d997da1ef54d51db5535386decef7700da5",
+      "starterSourceSha256": "09ba743754964d77fbfabf6da3f5f22baa55276fec996bb5951e3e9d6aed379f",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Table/index.ts",
+      "upstreamBeforeSha256": "2df8a32dbad49c6d4400cbfe00e9e2e495c353e365df56e86a44b83af855b38a",
+      "starterSourceSha256": "fc1bf29cc0dfd4c9150e9cb2577ecbdbd498391fad397fdc454a1be7f2b0d007",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Tabs/Tabs.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "68ba73ef245064c5a9e09a14b6fee5cf623dcb18e6dd33269e9cf95023177225",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Tabs/Tabs.module.css",
+      "upstreamBeforeSha256": "08729fa903a8533d8add52577b9006d105badabbca56edcec774762718279921",
+      "starterSourceSha256": "1bb037f29d0a47a09ea0e52c574363335d90e413fb57788ce9c2035879a02794",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Tabs/index.ts",
+      "upstreamBeforeSha256": "5f9464b15caae4cda2f09ca6b0d53f4a8b6ec18b5a9d9533917136ff7f7393c4",
+      "starterSourceSha256": "7ed0e897bafaaf7f737416544efafc19a2301f429e920142921565459ef23474",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/TaskCard/TaskCard.figma.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "ef40247677ae55e69456c24c514e88b4e992951ead5320ec7dbe3b05cba961ff",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/TaskCard/TaskCard.module.css",
+      "upstreamBeforeSha256": "80a2b2d2788e1711fb63986892e82f96ceafa5f9437d63ee9822c97b3a9e58e4",
+      "starterSourceSha256": "051dadefc5680c0639a1ce52caedc59e5f9d6b782975c2cf3df807dcea36fa9d",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/TaskCard/index.ts",
+      "upstreamBeforeSha256": "18b23dec5004a5a2f24dd728a6ac56a3136b6a59d84266d971dcb06bb3ed4f3b",
+      "starterSourceSha256": "5a3e938cdf8335e847c2d016ed074b0e9c820def5237e680f53f17a2af523bbb",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Timeline/Timeline.module.css",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "2092f6684a490daf671bc1c28a9f3f69e206d0373fe381cc43a79aa47a8d2c16",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Timeline/Timeline.tsx",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "40d2939f986916fcf9264e651464c3173b1852d450cbf7804a2b21b68ec0337f",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/Timeline/index.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "9865a2f3c7923401943b92e382942e3bebfa4d4acf8e7f959bf41f8e2cfa6842",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "4-composites/index.ts",
+      "upstreamBeforeSha256": "537b15565eb9d1c6a13342fd8d8fb6d487301bceb1103858138ce89d4add907a",
+      "starterSourceSha256": "ea7b49b39c0135768aac164b4b3ecd561b4b1bf2e5343b1ea2e41b7c6ab7416a",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/AIChat/AIChat.module.css",
+      "upstreamBeforeSha256": "30ac2c871f7b4cec78390a3a16c8deef880752c804916d025670fe520dc198c1",
+      "starterSourceSha256": "c38a68d201e34bae027fd3a12a6246883325836b8fa439ced296e1e00a84f301",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/AIChat/index.ts",
+      "upstreamBeforeSha256": "e58a42ff1057145fb02537fc411a34acc0e189632a4cab321db47473109ab915",
+      "starterSourceSha256": "5e226c8fc040037f13040cd1872605fb6af600b7bcd292ac853f57d9815e524a",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentActionCard.module.css",
+      "upstreamBeforeSha256": "f7a87e761402792b4eeb500762104635dc58fe1751bb8f8042ba0ddad642fefa",
+      "starterSourceSha256": "3b78b5d0c9aec52e7abead7f797244f99f2a84a069d53fc97d6214dbd645532c",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentCanvas.module.css",
+      "upstreamBeforeSha256": "210f99de167d2144bcfff693640566c72584586620a33f846c705dcbe1f8b1f2",
+      "starterSourceSha256": "134d27053ebed0576a955f2350d65ab85270b6764002f5f4a8888ba1ed65acf3",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/AgentPanel/AgentPanel.module.css",
+      "upstreamBeforeSha256": "2083d94e57e5306e9a2f4344d0a0a5f6aeb45a108307afc65f0348ecc74658fe",
+      "starterSourceSha256": "992e3416f4dc31d5b28848e90debd536f0482c0d885c7451255ef66917c050d9",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/AgentPanel/ThinkingSteps.module.css",
+      "upstreamBeforeSha256": "5c18f51107e0601fa38176bd67ae5071a649901039e812784233863493aa7180",
+      "starterSourceSha256": "65b66503fc58696aa2dfebb0d351a2316eda40ba84283050b6f465ea77c377f2",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/AgentPanel/index.ts",
+      "upstreamBeforeSha256": "cc145b848098b23ee5710d62eaa4175bdbc77b47bdd0f113d7bd476f5abdb0de",
+      "starterSourceSha256": "74678f3f0a68921752c0a6a9c6e1f617e0e38cd2fdc63edfa5f3377ba2860be2",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/DataTable/DataTable.module.css",
+      "upstreamBeforeSha256": "4085db9ca66ed807be48a712e1e274a2a6c469f53f1c5aa1a624164f10b07028",
+      "starterSourceSha256": "c26df874847d13efa36f0e7e2b18603dd380bfb7d63f59df000319fb5d27dc47",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/DataTable/DataTable.tsx",
+      "upstreamBeforeSha256": "a71cef45b9eb55ae657ad490f23f4ebc600ee4b350ff2a7eda54f940a57929a5",
+      "starterSourceSha256": "4f40a6d6fcae33009d2c0d19ccd1c6db418530b736906049dda758888dda3c60",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableActionBar.module.css",
+      "upstreamBeforeSha256": "89687e4bfa9ec59a27ba8a521020756a7e0ce07208cb6c1cb06f377ca2ea14d9",
+      "starterSourceSha256": "941490d26945b7fdf5fa04ad5e643b7fd7a5e41153ef680e725fcd672214b761",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableColumnControl.module.css",
+      "upstreamBeforeSha256": "d1d6ae3c60dd031902b862f5ea0726ce41bbb55ccadddbb4554eed5d4d6c1aba",
+      "starterSourceSha256": "4308ed6966fce3aa16523f95d44a9963a1b626a029bce3ea09493a6a2701cd1f",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/DataTable/DataTableRow.tsx",
+      "upstreamBeforeSha256": "841ef90a0f25a0b195a2ea1b01188a90b6e3d2090e6fdf1f7da099b03e6259ed",
+      "starterSourceSha256": "daadfeae99a7c12f013e6ad696841ae3943dd6a9331ea7bc7d44e854f47cd6dc",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/DataTable/index.ts",
+      "upstreamBeforeSha256": "4c2398f549aaf6b30ccdaf783cd68fcb988d1ff40a704dafde84769e2f00cc83",
+      "starterSourceSha256": "67a77f159fc6609e9392b0b6d24701f73e7c3ac8edf1aa5cba3f4e8a020b4087",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/DataTable/types.ts",
+      "upstreamBeforeSha256": "2dc02e6713fb006960815e203854f86e37f20bca67bb928cd3e6cf810db75ca8",
+      "starterSourceSha256": "325ec73d7ab9d9c063100f46105962ccf5cd00a08384ac40c96aa87a9cfaa768",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/FilterBar/FilterBar.module.css",
+      "upstreamBeforeSha256": "34274a2781b13e82d67328b3381f6da25239cbf82ab8478e213d4323bb5e5b8b",
+      "starterSourceSha256": "5c82bca546f3c907ff255ee790b15f9c46410944318d2846a381c9ae50112f1e",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/FilterBar/FilterBar.tsx",
+      "upstreamBeforeSha256": "66cbe26654e62eeff0dd06246ae60fd8e8833b5a5ed9b26b2fa19fb9be4a6fba",
+      "starterSourceSha256": "7630339f2c3023a5cc7ba7fb4069c67e812d76838ac575bb6ef2c6cb4974f071",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/FilterBar/index.ts",
+      "upstreamBeforeSha256": "771826d572c811940ee24ba5f2c7b7513d5846a87319132a90515f8b74c5f2b9",
+      "starterSourceSha256": "56f31202b94769a7e8d410fc685915ea841bc33e0808589532c76d989f229d04",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/GlobalNav/GlobalNav.module.css",
+      "upstreamBeforeSha256": "4595b2a9591d969fdb2f85cb858277b12f5bd8687960a5cb39d83660893557ac",
+      "starterSourceSha256": "27ee7ba578a6da5d9a880db2b40817599f6d546058f6ed8a1deb93cf94aa3975",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/GlobalNav/GlobalNav.tsx",
+      "upstreamBeforeSha256": "ea4bfdadf43268fcde781ccd21081f501ba6a72b85ca71e82e775b1ba94e53fb",
+      "starterSourceSha256": "d84397cb76df3d46378c8f621f61bae671408d4a68f0608021d900d813acc300",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/GlobalNav/index.ts",
+      "upstreamBeforeSha256": "a3bcc27e477526b3a6532dbf77bf12c6c0ccf9677eff7623e4130636bf0b1e4d",
+      "starterSourceSha256": "4586e1128efeec26804a40d674b9c90d49e18065f7e505c33cf8488b6d75d660",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/LocalNav/LocalNav.module.css",
+      "upstreamBeforeSha256": "a8479f4bf956469245ea920522cd9a8b71903faf0c62eb22908e9b2f8804a535",
+      "starterSourceSha256": "e0b95cef2a3ca0264e27a7388b1f954d2172044bda8a3fcfe946a9b15481c04d",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/LocalNav/index.ts",
+      "upstreamBeforeSha256": "25632e4e21828e1b8a490a26057b6be206a655469a1f49293c9af01f87c37d33",
+      "starterSourceSha256": "ac903545bb0c427926385d7b32a28a10c56943bf900052c23eb80fa3b4634ae0",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/PageHeader/index.ts",
+      "upstreamBeforeSha256": "e8dfea625a92f582691f59fb8746cff6b08001cd7ac5ffcdb2a0eadd5e4ac4c5",
+      "starterSourceSha256": "657dc10281c9a0180ed25c5c3193b0ea174b803bfe9967e1860f3e3882a8c97e",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "5-patterns/index.ts",
+      "upstreamBeforeSha256": "c7b3074b8ac5a3ae0fd100ef73761f8b9c662a1f5f0cec73d461ab2ad9d3a042",
+      "starterSourceSha256": "388ce3e68302b129152059f9e495a1b5d3bf64fc80a5b374077c6fcba5703313",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "6-layouts/AgreementTableView/index.ts",
+      "upstreamBeforeSha256": "77e1309a2a48a34e5a3cf772555903fc3f904e3ddce33d22abf2c49f974498d8",
+      "starterSourceSha256": "5e1ab1c0f99fa3b51091180e047d1f2a12588eb9fac4721c47fc1f51c50b6528",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "6-layouts/DocuSignShell/DocuSignShell.module.css",
+      "upstreamBeforeSha256": "d08bad85d43c584f6f43ba9787d6acf70f04e90880f4b5c842f1b337156f4081",
+      "starterSourceSha256": "6b761f4c318e8943dcc4475ce74306f229718b8ac0721d4f02922bcbf9b02d12",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "6-layouts/DocuSignShell/index.ts",
+      "upstreamBeforeSha256": "fe255265ae1f5f54f885376234ddb1823ef89e0013293f29f6a03302e84efe05",
+      "starterSourceSha256": "b30d99fc705eb025c5ed03121e8bdef4db292c5470e207397f6fef82e30e3a89",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "6-layouts/index.ts",
+      "upstreamBeforeSha256": "14c1b94d3e07daad748b1e70d35e25aeee3f3d61827c504785fe8daa2c383567",
+      "starterSourceSha256": "04088d8db18af7d1295ffede0488c9a7053345e3da54d83dfba66a9658e75aee",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "index.ts",
+      "upstreamBeforeSha256": "da1f650251e82abbb0fd070284c43ce3e44594afad3b855bbfb7f85b8b25290d",
+      "starterSourceSha256": "2109a42a2b8da5ee23c8412d5149bd4f25721a503651c820f7d13df01956e1d0",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    },
+    {
+      "path": "motion.ts",
+      "upstreamBeforeSha256": null,
+      "starterSourceSha256": "dcb9d94a3ec97636a55daefadeda871be88ed595c15f96544bf43d65825f1876",
+      "reason": "Recover current starter API and source capabilities into isolated upstream branch before repair."
+    }
+  ]
+}

@@ -209,7 +209,7 @@
 .userCardName {
   font-size: 15px;
   font-weight: 600;
-  color: var(--ink-font-color, rgba(19, 0, 50, 0.9));
+  color: var(--ink-font-color-default, rgba(19, 0, 50, 0.9));
 }
 
 .userCardOrg {

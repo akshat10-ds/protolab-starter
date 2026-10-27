@@ -1,0 +1,113 @@
+{
+  "canonical": "/private/tmp/protolab-foundation-repair/ai/system/ai-system",
+  "prepared": "/private/tmp/protolab-token-ai-used-set",
+  "backup": "/private/tmp/protolab-token-sync-2026-10-21-before/ai-system",
+  "fileCount": 96,
+  "files": [
+    {
+      "path": "composites/AgentThinking/AgentThinking.module.css",
+      "before": "aae9b8b5e5901947003e53cc274f3afa1fea4340249f47893a41b301495bbc2c",
+      "after": "1c937cc4779ffcba5022957639bb064d56ef2bba353769febea21a6cb2247fb7"
+    },
+    {
+      "path": "composites/ChatInput/ChatInput.module.css",
+      "before": "cf89def4d12d751953b8428a43f1498b3b090f50a534c941689606ffecc05de8",
+      "after": "f599e1d51396dbcbf0bea904b06debb305211a2c41d8385bb030ddf669941895"
+    },
+    {
+      "path": "composites/ConversationLayout/ConversationLayout.module.css",
+      "before": "7670db00fe9d3fb46362b322fbac33096ea463754071852aab8680b4c897db82",
+      "after": "68f874a53ae2821c3288df2ea164365a2e6d7a18f70dcbceaf9477671c5ae942"
+    },
+    {
+      "path": "composites/MarkdownRenderer/MarkdownRenderer.module.css",
+      "before": "f1900edbb80b9976823a3d6a047ddd9767d40c460e81fbeadc164a4b7725baf1",
+      "after": "15ac54f5c171baf1e630dd972f0d8d21a0b5ba8437aba293b4efa11dc319f30d"
+    },
+    {
+      "path": "composites/StreamingMarkdown/StreamingMarkdown.module.css",
+      "before": "4474719b763ac26cb5b658635ca53e91f73e1474bee143988d4db770e8797778",
+      "after": "84f73b2c3524165f9225dd4ade420ff7b212cf247c7ae3b2e8b6192d48f7ff6b"
+    },
+    {
+      "path": "index.ts",
+      "before": "4de0a39165a76af21f41ce89f02f63e69a9bd00fde9c9fc624245678a33d4be7",
+      "after": "145e199d08be160a197941dd68988e38cce238e86edfe213c96b2daa2f81701e"
+    },
+    {
+      "path": "patterns/ArtifactViewer/AgreementView.module.css",
+      "before": "157095f42c8786fd254f80cc57061499e1b8f60eb162e1f4cca127213edcf5e7",
+      "after": "0a7ac81554e1d4575a75b2c1a6a8bc715370741029453bcf5d81862a6f436c4c"
+    },
+    {
+      "path": "patterns/ArtifactViewer/ArtifactColumn.module.css",
+      "before": "3928e337f16d8c5ff92fba4bdeb39d259a3b65b9be40877f416604cf33f4666e",
+      "after": "d9715571ba5dd2dae05be71f3b0f3b29cf2bcd12537756cbec7108910401fa45"
+    },
+    {
+      "path": "patterns/ArtifactViewer/ArtifactDock.module.css",
+      "before": "59290471910917fc6d2450c3d5407cf083059893724d114fb4e69741188fdd1e",
+      "after": "aabb0253954ee9fcf99585164829eb1af7f7407e9f539de3bc6c4047f9a89533"
+    },
+    {
+      "path": "patterns/ArtifactViewer/ArtifactViewer.module.css",
+      "before": "cebac61a3f39d601cf12a7dc5427780429f9d7d7d63213024ec175ff4f42155c",
+      "after": "e7688ee4ca527058bc4f43475ab5f3be4cec3177685b94456793bcf5b227c908"
+    },
+    {
+      "path": "patterns/ArtifactViewer/DocumentRenderer.module.css",
+      "before": "468d637df385a40c8e00df6684407101161182b9516cda7705d62ce135c03c81",
+      "after": "b259e38cd8efdb6dbef7c3fb924ecf52dc18a52056b110eca3566417e17a9275"
+    },
+    {
+      "path": "patterns/ArtifactViewer/SourceListView.module.css",
+      "before": "46152237ca3ce6bdb4cdac210b11d28e1b25aa4f617938c5389fa791134722fe",
+      "after": "bd9b3b5186479fda20788b70d63828180cc044a386b0d5313c529feb59d47b30"
+    },
+    {
+      "path": "patterns/ArtifactViewer/TableRenderer.module.css",
+      "before": "7f2171e96d340093e78c8b8ba0fd93f89c94947327da99870f535bd15abe8fec",
+      "after": "2c3fef6855c4fff252c698ed5aa1890b91be8a12acc93318a2fed90b8830dded"
+    },
+    {
+      "path": "patterns/DocumentViewer/DocumentViewer.module.css",
+      "before": "ba9a54e391dbcc74a20eef678c3560013a4495b35c1d2b308d0c3ef7e9c0d2f6",
+      "after": "8a05474c0092cfd53cdb1f29d8c5378679b2c718a701808ae41269a9b7ca3518"
+    },
+    {
+      "path": "patterns/IrisAgent/IrisAgent.module.css",
+      "before": "211eefc69dba9c210be3abbe36374256621a6f371fe923857a0a236b2738063e",
+      "after": "9f824d60eb8c7a2c52e9bc777e2aeeaec18a3518285da4e2b8ebbe160a4f9c32"
+    },
+    {
+      "path": "patterns/IrisSidebar/IrisSidebar.module.css",
+      "before": "1a35d831a1b806efe5c9bbbfd0f3742152e9afd63f47a8ebf9d61dfa1455f750",
+      "after": "53bb6478ac6bd9f93cfbc80009f75c27175c154132ba84aaba9c0f5988723283"
+    },
+    {
+      "path": "patterns/PanelShell/PanelShell.module.css",
+      "before": "1e21f45fa1727e3cf925933bf704639c6cdfd4895eb041e5bf57a44d67bcd292",
+      "after": "d9855355a3e22a8694ad952151c8ad5f1285f89671541eb636bedecb8ca9523a"
+    },
+    {
+      "path": "primitives/CitationBadge/CitationBadge.module.css",
+      "before": "9f31a2cd9c4841483e0861a19573bacf334c312ffa12197591594e2cc28baf85",
+      "after": "dbce7f14eab0dd9e6259a599dcbab3a734c513a9bcb380733c0235a4423fcd6b"
+    },
+    {
+      "path": "primitives/FeedbackActions/FeedbackActions.module.css",
+      "before": "b33c4f0aad8ecc11d8326d89ec44f63fb8dd0a5a402b926d9ecccf995b689238",
+      "after": "62bd62922f4a4f5c0ee63a5c1e2920814a7a74703becd8658b33335591748b46"
+    },
+    {
+      "path": "primitives/MessageBubble/MessageBubble.module.css",
+      "before": "28089e95503001687b62724cde539ba004e91af7c619404babdb0d8df1890fa8",
+      "after": "2867f788300946baa64f621883d8c950a71a60102c160a31a64f0a40c38e5b5f"
+    },
+    {
+      "path": "primitives/SuggestionChip/SuggestionChip.module.css",
+      "before": "f9b70e4c1471db2c44424f80ed2b195763086298dfe762cb4c59bb7b5de65788",
+      "after": "029e8216406bc845110f1372060598137b90cb922f67c693e102ad73ca6f901b"
+    }
+  ]
+}

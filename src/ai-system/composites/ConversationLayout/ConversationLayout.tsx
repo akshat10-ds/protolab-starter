@@ -47,6 +47,30 @@ export interface ConversationLayoutProps {
 export interface UserTurnProps {
   /** MessageBubble component */
   children: React.ReactNode;
+  /**
+   * THIS TURN IS A RECORD OF AN ACT, NOT A QUESTION — an action receipt, an
+   * answered ask. Akshat, 2026-08-20: *"add space after the message so it's
+   * clear you're getting a response back."*
+   *
+   * The 4px under a user turn is an ANCHOR: it glues a question to the answer
+   * it asked for. A receipt asked nothing, so what follows it is a fresh turn
+   * and not the tail of this one — it takes the full 24px turn gap instead.
+   */
+  receipt?: boolean;
+  /**
+   * The turn's own id, stamped as `data-message-id`.
+   *
+   * Added 2026-08-24 so a scroll anchor can name ONE turn. `data-role="user"`
+   * only ever finds the last one, which is right for "pin what was just sent"
+   * and useless for "pin the turn the host named". Omit it and the attribute is
+   * absent, exactly as before.
+   */
+  messageId?: string;
+  /**
+   * This turn JUST ARRIVED, so it plays its entrance. See the entrance block in
+   * the stylesheet. The host decides — history must never replay.
+   */
+  entering?: boolean;
 }
 
 export interface AssistantTurnProps {
@@ -54,6 +78,8 @@ export interface AssistantTurnProps {
   children: React.ReactNode;
   /** Whether this is the first turn (no top margin) */
   isFirst?: boolean;
+  /** This turn JUST ARRIVED — plays its entrance. See `UserTurnProps.entering`. */
+  entering?: boolean;
 }
 
 export interface SuggestionsProps {
@@ -68,9 +94,15 @@ export interface SuggestionsProps {
 // =============================================================================
 
 /** User turn — right-aligned bubble with max-width constraint */
-function UserTurn({ children }: UserTurnProps) {
+function UserTurn({ children, receipt, messageId, entering }: UserTurnProps) {
   return (
-    <div className={styles.userTurn} data-role="user">
+    <div
+      className={styles.userTurn}
+      data-role="user"
+      data-receipt={receipt || undefined}
+      data-message-id={messageId}
+      data-enter={entering || undefined}
+    >
       {children}
     </div>
   );
@@ -79,9 +111,14 @@ function UserTurn({ children }: UserTurnProps) {
 UserTurn.displayName = 'ConversationLayout.UserTurn';
 
 /** Assistant turn — left-aligned response block with intra-block spacing */
-function AssistantTurn({ children, isFirst }: AssistantTurnProps) {
+function AssistantTurn({ children, isFirst, entering }: AssistantTurnProps) {
   return (
-    <div className={styles.assistantTurn} data-role="assistant" data-first={isFirst || undefined}>
+    <div
+      className={styles.assistantTurn}
+      data-role="assistant"
+      data-first={isFirst || undefined}
+      data-enter={entering || undefined}
+    >
       {children}
     </div>
   );

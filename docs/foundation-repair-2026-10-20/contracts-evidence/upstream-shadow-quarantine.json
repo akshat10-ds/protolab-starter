@@ -1,0 +1,1794 @@
+[
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/index.ts",
+    "sha256": "29e979f9a5930895b5374286298c68b3b8a6f122c9f8ca4746520b51c391e786",
+    "mtime": 1792531279.4606473,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/motion.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/motion.ts",
+    "sha256": "9ddf783b7e7d0768fe347fac40ff35709b410ae86007374dad26dac538deeba6",
+    "mtime": 1792531279.4604526,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/motion.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/index.ts",
+    "sha256": "e3899b66ff843415785154fc80eb4c0b3dca2d33258be6319f9df56a14f296ef",
+    "mtime": 1792531279.2938485,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/index.ts",
+    "sha256": "b53a96d0ceac027d691a51703f61bf4065927b8b2b6c0cac05e12ff6a50d57ac",
+    "mtime": 1792531279.354551,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/index.ts",
+    "sha256": "2d5f665e71ed615ce1aeeed074bf0ec6b3fadec5ac391238accbaf0f64e24a87",
+    "mtime": 1792531279.4591455,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/index.ts",
+    "sha256": "cccc1010b259513a16e7dd998aab3614f71ee5dd260b7fab40c4d21a95d2bedf",
+    "mtime": 1792531279.4601007,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/6-layouts/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/1-tokens/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/1-tokens/index.ts",
+    "sha256": "8100f6864ef1f92c1233b6228a0bd297f0d88b96c2c0497938a86529f50f6c6a",
+    "mtime": 1792531279.2815657,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/1-tokens/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/index.ts",
+    "sha256": "3aaa113b891d035b6fe4c7587ea30113a883ce1dffc6d10930102d6725e45513",
+    "mtime": 1792531279.4321861,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/TaskCard/TaskCard.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/TaskCard/TaskCard.tsx",
+    "sha256": "e61d25a3996215d9b91c8e279a0d4984d8f527a85181429d6524a6f990d79ef0",
+    "mtime": 1792531279.4129097,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/TaskCard/TaskCard.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/TaskCard/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/TaskCard/index.ts",
+    "sha256": "5a3e938cdf8335e847c2d016ed074b0e9c820def5237e680f53f17a2af523bbb",
+    "mtime": 1792531279.413131,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/TaskCard/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Tabs/Tabs.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Tabs/Tabs.tsx",
+    "sha256": "385a2a365175388ed39b9de9076278ac73eb11eb486c88c11d7219cde0c22a0a",
+    "mtime": 1792531279.4117808,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Tabs/Tabs.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Tabs/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Tabs/index.ts",
+    "sha256": "7ed0e897bafaaf7f737416544efafc19a2301f429e920142921565459ef23474",
+    "mtime": 1792531279.4120846,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Tabs/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Tree/Tree.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Tree/Tree.tsx",
+    "sha256": "82c20a634dc7b7646c868cfe1c95472de0baf2dc437e501f4c9b49c7d6d245e5",
+    "mtime": 1792531279.426305,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Tree/Tree.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Tree/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Tree/index.ts",
+    "sha256": "386907a18b082527ba2bbb6b246ec93e1c63367adfef5080a74ba38c4b39150c",
+    "mtime": 1792531279.4265466,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Tree/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FileUpload/FileUpload.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FileUpload/FileUpload.tsx",
+    "sha256": "0e08ab120fc5a07741c04964e485abeac64ae4e5042f387ecfc0f4168f1037b5",
+    "mtime": 1792531279.38866,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/FileUpload/FileUpload.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FileUpload/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FileUpload/index.ts",
+    "sha256": "e1fa7f6e506728d1caa18adf1fe6d632c891d8339324220767cebf5b328ad653",
+    "mtime": 1792531279.3889675,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/FileUpload/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Dropdown/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Dropdown/index.ts",
+    "sha256": "2d24ed6ab8737e49e4dab292ff086de0b18296682caf49061d08010120131c48",
+    "mtime": 1792531279.3827946,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Dropdown/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Dropdown/Dropdown.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Dropdown/Dropdown.tsx",
+    "sha256": "b2a0530533e276535cac40afc4a1615a8a695aae042281237cede11299437d6d",
+    "mtime": 1792531279.3825312,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Dropdown/Dropdown.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Drawer/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Drawer/index.ts",
+    "sha256": "afc3874abc3e46f5e365e8b277d2ee15a96d5912ebada4a2a05ad436c8eeb6e2",
+    "mtime": 1792531279.3795393,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Drawer/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Drawer/Drawer.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Drawer/Drawer.tsx",
+    "sha256": "7e5cf0b1d40ba56c8f3172a5b7694dae8dd28f78088ae8cf0dd29359764ccd80",
+    "mtime": 1792531279.379216,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Drawer/Drawer.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Pagination/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Pagination/index.ts",
+    "sha256": "12306126fabbed106b8b4caf9d5ad0dff573a79688817b2b952b80415891f2d3",
+    "mtime": 1792531279.3954973,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Pagination/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Pagination/Pagination.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Pagination/Pagination.tsx",
+    "sha256": "b29da52e31d4cc2bbca8e42499ddf8e96ea84669b9d248aa38edcddf035ac6ac",
+    "mtime": 1792531279.394457,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Pagination/Pagination.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Panel/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Panel/index.ts",
+    "sha256": "ce5dffdac085f155a1fb825be6ce7b9c36de846844eb817a27cc6465bbb69e8c",
+    "mtime": 1792531279.4158733,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Panel/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Panel/Panel.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Panel/Panel.tsx",
+    "sha256": "59335b27a863d64a64bdf646c8cc250ade5652ad3250c6ba60235e395f0f9e64",
+    "mtime": 1792531279.4156601,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Panel/Panel.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ZoomControl/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ZoomControl/index.ts",
+    "sha256": "ee247c1ecdc95773f25af39108caf40f8bbd4c8df0d1cf1a7fae94f1d3f1239c",
+    "mtime": 1792531279.4166849,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ZoomControl/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ZoomControl/ZoomControl.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ZoomControl/ZoomControl.tsx",
+    "sha256": "8297cbc4ae485ea4b962b491dc675d3ce0336b1f16d7480731f9b3cc5b2afd78",
+    "mtime": 1792531279.416532,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ZoomControl/ZoomControl.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/AIBadge/AIBadge.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/AIBadge/AIBadge.tsx",
+    "sha256": "507a556f8ad738370800ad46eb77758d932454a2da48ee28c171fb3fdb31c50b",
+    "mtime": 1792531279.358718,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/AIBadge/AIBadge.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/AIBadge/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/AIBadge/index.ts",
+    "sha256": "fd544a7595278b3cf22ef920ab8fbbe7921d887cb99bad873cabe7a020d1a93e",
+    "mtime": 1792531279.3590844,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/AIBadge/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FilterTag/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FilterTag/index.ts",
+    "sha256": "a149ff8609d18a78cd130a509b8fc81dee70eb35225dc2d1264e739e47ec6512",
+    "mtime": 1792531279.3902135,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/FilterTag/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FilterTag/FilterTag.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FilterTag/FilterTag.tsx",
+    "sha256": "061eb6e0e52db9306aaf9a689d9683de1939eeeea7d459bb117de7f9e2964689",
+    "mtime": 1792531279.3899617,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/FilterTag/FilterTag.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Alert/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Alert/index.ts",
+    "sha256": "69838b322bc48c477bd1ea030a032266ea4532f4e282798f9110ee3188107459",
+    "mtime": 1792531279.3617635,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Alert/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Alert/Alert.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Alert/Alert.tsx",
+    "sha256": "1f7a622d4f71171bad4f680ad66ba6261f71b05c849625150bc19a39191f3e25",
+    "mtime": 1792531279.361602,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Alert/Alert.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Accordion/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Accordion/index.ts",
+    "sha256": "dd058e51951c56e446a5b816fba3a26d5a77d9cab34db1500b8e4818d9da5563",
+    "mtime": 1792531279.3608847,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Accordion/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Accordion/Accordion.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Accordion/Accordion.tsx",
+    "sha256": "6aba28707546ac5d6082eeb2b9837265d353ec0553f69d5329c4529cc589838a",
+    "mtime": 1792531279.3607128,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Accordion/Accordion.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/DatePicker/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/DatePicker/index.ts",
+    "sha256": "44436c2d53542ef47b5fcf8aa2882ec6babe5efe654eeae9e654f4615a913553",
+    "mtime": 1792531279.3778355,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/DatePicker/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/DatePicker/dateUtils.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/DatePicker/dateUtils.ts",
+    "sha256": "0e0d40cfd68accd679726ffce98005e99fcdce3b3c6daec9eb5080141be47f42",
+    "mtime": 1792531279.3728194,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/DatePicker/dateUtils.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/DatePicker/DatePicker.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/DatePicker/DatePicker.tsx",
+    "sha256": "0fd07fe1b08f0f0b81606b640a4a5fc68b3205d6fe8e0c73386c6e7411f8efd2",
+    "mtime": 1792531279.3774095,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/DatePicker/DatePicker.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Toast/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Toast/index.ts",
+    "sha256": "2245a0875f3ad1eb734d0707db940f67b6bae20d95b7d6f7487e4da79d87d18c",
+    "mtime": 1792531279.4236774,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Toast/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Toast/Toast.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Toast/Toast.tsx",
+    "sha256": "beb3f3f1c3552d3698aae4f741a06158b8b0fa44ba8772ffa2a4d361f921d690",
+    "mtime": 1792531279.4233537,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Toast/Toast.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Chip/Chip.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Chip/Chip.tsx",
+    "sha256": "c35f25bf901683bdff306ffa6a999877463ea21fa8ae0bcc36152da63a8f6bad",
+    "mtime": 1792531279.364781,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Chip/Chip.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Chip/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Chip/index.ts",
+    "sha256": "6d8fd1c9a6d1e2cdaade584c8c6e52d7d91a5b6e2473cb9a234fa61a5a2527ae",
+    "mtime": 1792531279.3649542,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Chip/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/PreviewCard/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/PreviewCard/index.ts",
+    "sha256": "5e1b8ce14a733929b12d4e647d58759496c9f45792e6acaf368f958134545056",
+    "mtime": 1792531279.4192574,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/PreviewCard/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/PreviewCard/PreviewCard.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/PreviewCard/PreviewCard.tsx",
+    "sha256": "3babbb97f4a13d68963f068944c35ad23a999e1e85fbe8240fd2939fd6bdb191",
+    "mtime": 1792531279.4191298,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/PreviewCard/PreviewCard.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Stepper/Stepper.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Stepper/Stepper.tsx",
+    "sha256": "0fae281770e7572dc5298c9a72d8e3c2055efa94cd5862d8c3b4c6916808ce53",
+    "mtime": 1792531279.4015589,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Stepper/Stepper.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Stepper/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Stepper/index.ts",
+    "sha256": "17c03e7ab6233d52815a32d547e8ca8accf4f49a6cb73840b12782db85983be2",
+    "mtime": 1792531279.4018538,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Stepper/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ComboBox/ComboBox.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ComboBox/ComboBox.tsx",
+    "sha256": "d83637e726ab91fd28c8a36416c9abc25d88d655e48f57d3b605349a6957d663",
+    "mtime": 1792531279.3701334,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ComboBox/ComboBox.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ComboBox/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ComboBox/index.ts",
+    "sha256": "2c8683d3c15b43ff525a93ebf7162afb0b81cc570c72e94c75fce5f269661c6f",
+    "mtime": 1792531279.3703928,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ComboBox/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Callout/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Callout/index.ts",
+    "sha256": "e2fe1906ac25db7e9184a38f6affddee14e1491477f26be4e46bc10a7875cb8c",
+    "mtime": 1792531279.3565545,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Callout/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Callout/Callout.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Callout/Callout.tsx",
+    "sha256": "ea7154c6f22e917f64476181de2b747e031b9df5f52e29d918d6a177eb30a9b7",
+    "mtime": 1792531279.3561218,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Callout/Callout.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Popover/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Popover/index.ts",
+    "sha256": "5ef8e94f2118910c4c02544f7ee3eac9d752159ebdaa15fcc4d7681291cf8fa5",
+    "mtime": 1792531279.3974583,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Popover/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Popover/Popover.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Popover/Popover.tsx",
+    "sha256": "18c595f7d2fb4b1c17bda1be99cea2ff33a36cbdf38f8739c5193f710a64a666",
+    "mtime": 1792531279.397258,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Popover/Popover.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SearchInput/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SearchInput/index.ts",
+    "sha256": "3f4d39e6b8dfb5e3586d5210136cef777a1f9ad675f8f6475395764eae2f5ae8",
+    "mtime": 1792531279.39984,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/SearchInput/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SearchInput/SearchInput.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SearchInput/SearchInput.tsx",
+    "sha256": "20ae194a9cb4a4aa98580ea630a3de3465491fc271decbd94280e542c8e7c0f8",
+    "mtime": 1792531279.3994958,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/SearchInput/SearchInput.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ComboButton/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ComboButton/index.ts",
+    "sha256": "5345800eb8391b13fced3308d44e88a0834a956bbd4fd010e5cf7a50a19bc6f9",
+    "mtime": 1792531279.3716772,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ComboButton/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ComboButton/ComboButton.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ComboButton/ComboButton.tsx",
+    "sha256": "ff290e0ba873019a240c35ace91abb2b2ec65961cfe832774cbfd313249d481e",
+    "mtime": 1792531279.371331,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ComboButton/ComboButton.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/EmptyState/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/EmptyState/index.ts",
+    "sha256": "245be0a915ac87b89b3e54a908c968589cd10981cc32717807b834cf9e62a70b",
+    "mtime": 1792531279.4185498,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/EmptyState/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/EmptyState/EmptyState.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/EmptyState/EmptyState.tsx",
+    "sha256": "b905baa0f0c5f682eecf248b3127f916a5e52ff8923558558829b15ea0f9db5b",
+    "mtime": 1792531279.4183865,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/EmptyState/EmptyState.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/TableActionBar.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/TableActionBar.tsx",
+    "sha256": "8e80e95bf94688f521a3689d008a635ce1166d2f1ca5d7bbc1e0e7b980692a41",
+    "mtime": 1792531279.4029942,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Table/TableActionBar.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/TableColumnControl.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/TableColumnControl.tsx",
+    "sha256": "9af2c2e297bc4dfda8f4ca4b0bb1155cc981ef6952bd3629e7dcae74804e5346",
+    "mtime": 1792531279.404975,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Table/TableColumnControl.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/types.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/types.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "mtime": 1792531279.4022593,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Table/types.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/TablePagination.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/TablePagination.tsx",
+    "sha256": "3f609426416bd165203372e5302c63a9ba8e217eeda027dcbf88ff7a859977db",
+    "mtime": 1792531279.4063916,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Table/TablePagination.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/index.ts",
+    "sha256": "fc1bf29cc0dfd4c9150e9cb2577ecbdbd498391fad397fdc454a1be7f2b0d007",
+    "mtime": 1792531279.4100695,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Table/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/Table.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Table/Table.tsx",
+    "sha256": "f2ade961617dd31642952098de5d3ace08287b69cd30bb3ec1192acb3b0b457a",
+    "mtime": 1792531279.4096768,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Table/Table.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SegmentedControl/SegmentedControl.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SegmentedControl/SegmentedControl.tsx",
+    "sha256": "474772a1e7452235516348e2440f7ecc33c719ef67444c3f830055d158d3dd64",
+    "mtime": 1792531279.4177506,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/SegmentedControl/SegmentedControl.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SegmentedControl/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SegmentedControl/index.ts",
+    "sha256": "f95eb1e0e6e9465858ce1a4ecc5c64a54a344b2643cf4ee416e3cb5b1d5a5384",
+    "mtime": 1792531279.4178965,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/SegmentedControl/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/List/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/List/index.ts",
+    "sha256": "e31672ad2137b82d3d76e809c90c1308281075b66c73c4aab9d2a4dacc7b568f",
+    "mtime": 1792531279.3915534,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/List/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/List/List.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/List/List.tsx",
+    "sha256": "8a96537d1a1acb948aebb2c6c3270fd9cdeaced782285ae267cbc9bc3c445123",
+    "mtime": 1792531279.3913796,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/List/List.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ColorPicker/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ColorPicker/index.ts",
+    "sha256": "cf07cfa01167177b6a47e2b4dc26a353803d270a6e104da944292c1ea9f5f484",
+    "mtime": 1792531279.431964,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ColorPicker/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ColorPicker/ColorPicker.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ColorPicker/ColorPicker.tsx",
+    "sha256": "b77523749f3c20afc847e792d03e0bef08ec8502f708c4f46670b3de3fd8cd75",
+    "mtime": 1792531279.4314973,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ColorPicker/ColorPicker.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ColorPicker/color.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/ColorPicker/color.ts",
+    "sha256": "2569f1148a2820478fd292e7a05a042de18d738446a0defb3fe29f210dae91ac",
+    "mtime": 1792531279.4289734,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/ColorPicker/color.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/StarRating/StarRating.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/StarRating/StarRating.tsx",
+    "sha256": "c8e29597ab4ed370393995793389e359200c16644edff86a20de6cb9bc6c23fa",
+    "mtime": 1792531279.421442,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/StarRating/StarRating.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/StarRating/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/StarRating/index.ts",
+    "sha256": "e01e72964001b45cc3458e6ea0dcb64650ec4399a510184b242cca43bcfe696b",
+    "mtime": 1792531279.4217026,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/StarRating/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.tsx",
+    "sha256": "0e6f5e28b5de88c2305f187b2276a17d861ce9b63781787edd04ffc91fbb8f34",
+    "mtime": 1792531279.3640316,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Breadcrumb/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Breadcrumb/index.ts",
+    "sha256": "12edfdee70a9c0dcb47156d46a24438f11816db0f573fff16c7412f6708346eb",
+    "mtime": 1792531279.3641844,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Breadcrumb/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Modal/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Modal/index.ts",
+    "sha256": "cf596b6a4fcab681524d9edb42339341178986e544144533ee61e8ddb8fabb2c",
+    "mtime": 1792531279.3928409,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Modal/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Modal/Modal.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Modal/Modal.tsx",
+    "sha256": "09d9920f27ee20258b483f72d157a2850bdbcfa5edfea599a41c565d0958e2fe",
+    "mtime": 1792531279.392635,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Modal/Modal.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Timeline/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Timeline/index.ts",
+    "sha256": "5ccf169fa66cbad1802e95070c66658c35aa7188d98e9098270791a690f9f9a5",
+    "mtime": 1792531279.4147573,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Timeline/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Timeline/Timeline.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Timeline/Timeline.tsx",
+    "sha256": "5784607b9e7f490c62af6bc20da346a4874e0dbfb70765379736414756bebf4f",
+    "mtime": 1792531279.4145007,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Timeline/Timeline.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FileInput/FileInput.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FileInput/FileInput.tsx",
+    "sha256": "ba0c06a11df64fa3cbf4cc775980e444717eb10bf1110c453515ae85930ded0f",
+    "mtime": 1792531279.3852391,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/FileInput/FileInput.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FileInput/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/FileInput/index.ts",
+    "sha256": "71e65cc9bfc91723176e78ebab7014b8d75cc7ccb45212f89de5f390c66928d1",
+    "mtime": 1792531279.385514,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/FileInput/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SelectTile/SelectTile.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SelectTile/SelectTile.tsx",
+    "sha256": "ac10b1045ca41af2df3fb064facc4801217f86a091d0bbfcecfd139d5800e10e",
+    "mtime": 1792531279.4201617,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/SelectTile/SelectTile.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SelectTile/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/SelectTile/index.ts",
+    "sha256": "0f431f9a5599a4f076c5ac2e856152c01f5a3f28fea5e57b486c328ff20799b8",
+    "mtime": 1792531279.4203289,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/SelectTile/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Banner/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Banner/index.ts",
+    "sha256": "4b1e9189fe893c530420b352475c2d963950aee922c0e355cbe20b89f1d83393",
+    "mtime": 1792531279.3628705,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Banner/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Banner/Banner.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/Banner/Banner.tsx",
+    "sha256": "819341bac29d87d8fcab4136352498d88d96abadc6d7c317bf3baa389cbd49a3",
+    "mtime": 1792531279.3626757,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/Banner/Banner.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/WorkflowStepper/WorkflowStepper.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/WorkflowStepper/WorkflowStepper.tsx",
+    "sha256": "ce4412c625b96dceb66e171721a7397b93d0f204986cd5cfb6a66daa8f0b8db6",
+    "mtime": 1792531279.4274771,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/WorkflowStepper/WorkflowStepper.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/WorkflowStepper/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/WorkflowStepper/index.ts",
+    "sha256": "b6c9cc2ea15cd68c7bd75c9540649b9900e0cdc581fbf0a8540e73bf7c423d53",
+    "mtime": 1792531279.4277368,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/4-composites/WorkflowStepper/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/DocuSignShell/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/DocuSignShell/index.ts",
+    "sha256": "b30d99fc705eb025c5ed03121e8bdef4db292c5470e207397f6fef82e30e3a89",
+    "mtime": 1792531279.459987,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/6-layouts/DocuSignShell/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/DocuSignShell/DocuSignShell.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/DocuSignShell/DocuSignShell.tsx",
+    "sha256": "3fcfc08cc96f820c81ef6cfc17d03a7eaa6930487a0a362b4263b84dc7108f6b",
+    "mtime": 1792531279.4598744,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/6-layouts/DocuSignShell/DocuSignShell.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/AgreementTableView/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/AgreementTableView/index.ts",
+    "sha256": "5e1ab1c0f99fa3b51091180e047d1f2a12588eb9fac4721c47fc1f51c50b6528",
+    "mtime": 1792531279.4595876,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/6-layouts/AgreementTableView/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/AgreementTableView/AgreementTableView.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/6-layouts/AgreementTableView/AgreementTableView.tsx",
+    "sha256": "54fe22e13ae5d25e61dc1ec28f65e8396c81887e100460e6a12e3475e90063ad",
+    "mtime": 1792531279.4594724,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/6-layouts/AgreementTableView/AgreementTableView.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/FilterBar/FilterBar.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/FilterBar/FilterBar.tsx",
+    "sha256": "7c727d0c2a686b77e4d9e057afc773c2d5ca01507e0140b45c587a5fcb34c0e1",
+    "mtime": 1792531279.4534066,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/FilterBar/FilterBar.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/FilterBar/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/FilterBar/index.ts",
+    "sha256": "56f31202b94769a7e8d410fc685915ea841bc33e0808589532c76d989f229d04",
+    "mtime": 1792531279.4535315,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/FilterBar/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/PageHeader/PageHeader.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/PageHeader/PageHeader.tsx",
+    "sha256": "dee634cdd9841d9c46b496019454c040c42c963c0f8982392cabf36e423b314c",
+    "mtime": 1792531279.4588876,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/PageHeader/PageHeader.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/PageHeader/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/PageHeader/index.ts",
+    "sha256": "657dc10281c9a0180ed25c5c3193b0ea174b803bfe9967e1860f3e3882a8c97e",
+    "mtime": 1792531279.4590127,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/PageHeader/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AIChat/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AIChat/index.ts",
+    "sha256": "5e226c8fc040037f13040cd1872605fb6af600b7bcd292ac853f57d9815e524a",
+    "mtime": 1792531279.4367974,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/AIChat/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AIChat/AIChat.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AIChat/AIChat.tsx",
+    "sha256": "8a3452c532c168e7fba06546eee61961cfd26173ef1307bde988e6fad67b810c",
+    "mtime": 1792531279.4365194,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/AIChat/AIChat.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/GlobalNav/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/GlobalNav/index.ts",
+    "sha256": "4586e1128efeec26804a40d674b9c90d49e18065f7e505c33cf8488b6d75d660",
+    "mtime": 1792531279.4549077,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/GlobalNav/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/GlobalNav/GlobalNav.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/GlobalNav/GlobalNav.tsx",
+    "sha256": "764c4cbb773fed57262d1b94ca3200d30dde80928b6150ff08d4f46daa667235",
+    "mtime": 1792531279.4546313,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/GlobalNav/GlobalNav.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/types.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/types.ts",
+    "sha256": "c8d425ba2325f91683be4339771f30b59a4a3f28ace4391972e02e6d39095adc",
+    "mtime": 1792531279.439087,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/AgentPanel/types.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentCanvas.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentCanvas.tsx",
+    "sha256": "d1c11f316b9adf76f9594916734719eb029a6f3fee2931e5804b15e59a6c4ac5",
+    "mtime": 1792531279.4425595,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentCanvas.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/index.ts",
+    "sha256": "74678f3f0a68921752c0a6a9c6e1f617e0e38cd2fdc63edfa5f3377ba2860be2",
+    "mtime": 1792531279.4387367,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/AgentPanel/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentPanel.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentPanel.tsx",
+    "sha256": "381d6908edbe5635ec3de8dcd9a793618c9b27b7f382f77699f5c426d8fcedbb",
+    "mtime": 1792531279.438459,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentPanel.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/ThinkingSteps.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/ThinkingSteps.tsx",
+    "sha256": "2f92066450a185d0e4546ef7ca4075beba2263d9c5bb725234a0aa517605477e",
+    "mtime": 1792531279.4442024,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/AgentPanel/ThinkingSteps.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentActionCard.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentActionCard.tsx",
+    "sha256": "b4171a03397e565a5bd9609939058ba5b7aba64c641a91152d8ecff020aa1b76",
+    "mtime": 1792531279.4410877,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/AgentPanel/AgentActionCard.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/LocalNav/LocalNav.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/LocalNav/LocalNav.tsx",
+    "sha256": "6ab517b94ad0a9b6ab9f3fd15b8a7eaac8f497dc9f55770258adc5309d61f7b0",
+    "mtime": 1792531279.458139,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/LocalNav/LocalNav.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/LocalNav/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/LocalNav/index.ts",
+    "sha256": "ac903545bb0c427926385d7b32a28a10c56943bf900052c23eb80fa3b4634ae0",
+    "mtime": 1792531279.4584582,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/LocalNav/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableFooter.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableFooter.tsx",
+    "sha256": "fc453b330e025813a65f0959918f1182b86fe25e66fb418acfa473d2e07a61cf",
+    "mtime": 1792531279.4478526,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableFooter.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/types.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/types.ts",
+    "sha256": "1b03772eaa651be160748766a90371eda55493c8552351107b81328252a01b25",
+    "mtime": 1792531279.4444852,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/types.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableBody.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableBody.tsx",
+    "sha256": "3657b2c18a8d5f8eec9c1f9256c2534790ed9c2a2ee50b43baea3ce8511559cf",
+    "mtime": 1792531279.4472387,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableBody.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableCell.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableCell.tsx",
+    "sha256": "eaf1792cc0249a28169f87182785d52cb1fd33fb1fc536368789822bc7b08575",
+    "mtime": 1792531279.446082,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableCell.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableActionBar.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableActionBar.tsx",
+    "sha256": "65d2d25e5a3cbded25ca4ced79a8e69faf43d00a8b46b6fa7546a435b03e8d9e",
+    "mtime": 1792531279.4482617,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableActionBar.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/index.ts",
+    "sha256": "67a77f159fc6609e9392b0b6d24701f73e7c3ac8edf1aa5cba3f4e8a020b4087",
+    "mtime": 1792531279.4528139,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTable.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTable.tsx",
+    "sha256": "3590916800fd29384001893845522f9ad404361c4369cdc53ff3860c8c1d81f0",
+    "mtime": 1792531279.452562,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTable.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableHeader.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableHeader.tsx",
+    "sha256": "e8abda2b2e8f7494e4a3f2c4f72e8e10a5c3bd7f536f1d07ee37f0f6b85e05c3",
+    "mtime": 1792531279.4456322,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableHeader.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableColumnControl.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx",
+    "sha256": "b3d507c4a0225c20b7dfdd723333b409a83ac933e45afe8af3642d0d0ab70a25",
+    "mtime": 1792531279.4496598,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableColumnControl.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableRow.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableRow.tsx",
+    "sha256": "547968624a13a11029b000ed8c53e0260705abf68df7bebcae303c64321fb6fb",
+    "mtime": 1792531279.4468818,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/5-patterns/DataTable/DataTableRow.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Tooltip/Tooltip.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Tooltip/Tooltip.tsx",
+    "sha256": "b15208a52e656c63105f8e86f58e998a8946c66f754f1270ac9cab6303de0c8c",
+    "mtime": 1792531279.3347049,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Tooltip/Tooltip.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Tooltip/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Tooltip/index.ts",
+    "sha256": "8b5339809914311fc7f76d17e827d491d6d9138fb74358507375a7f24da8859c",
+    "mtime": 1792531279.3351457,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Tooltip/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Radio/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Radio/index.ts",
+    "sha256": "5ac998f26bf0196b8b0e39a1e893d20f0ea6a7f364ab061201ac6bf9127c20d9",
+    "mtime": 1792531279.322027,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Radio/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Radio/Radio.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Radio/Radio.tsx",
+    "sha256": "075cb6ec5f5cac10eecc1b2b377b835340bf0269628163552ea4a7f05f514b4d",
+    "mtime": 1792531279.3214855,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Radio/Radio.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Card/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Card/index.ts",
+    "sha256": "eec278c44a5d22afa2f45eaab568dea45c45a58aea41c85332692f99c2672770",
+    "mtime": 1792531279.3126068,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Card/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Card/Card.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Card/Card.tsx",
+    "sha256": "99c244b16c6fffc3d94ee61eb21290c7eb5db7726a78238cec85c5c16a3fb5e2",
+    "mtime": 1792531279.3123474,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Card/Card.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/BarChart/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/BarChart/index.ts",
+    "sha256": "80667273f958ca15b206ccbd1bf8d17ac04347ab76ee5bb104acef87769fb6e1",
+    "mtime": 1792531279.3080733,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/BarChart/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/BarChart/BarChart.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/BarChart/BarChart.tsx",
+    "sha256": "fa421aa679de7e97a18778e32b3e822d1b65d27ac887ddda049243276b8074d9",
+    "mtime": 1792531279.3077443,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/BarChart/BarChart.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Input/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Input/index.ts",
+    "sha256": "dbc01d9e9d303eba2fa4230b963ca0671bc4fd1c3dcea6a4a4e1541856c020d5",
+    "mtime": 1792531279.3185608,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Input/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Input/Input.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Input/Input.tsx",
+    "sha256": "ecd70067e44e99526cac30069d9269954511a096607eda8271502aa647917160",
+    "mtime": 1792531279.3183384,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Input/Input.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Skeleton/Skeleton.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Skeleton/Skeleton.tsx",
+    "sha256": "cc45e1f9d9785db472b3b48b9078bebb0d50ca47dbbb4b72284c128c577875ca",
+    "mtime": 1792531279.3251843,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Skeleton/Skeleton.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Skeleton/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Skeleton/index.ts",
+    "sha256": "a5dfca018292a8392060c7af8847062aa8c3ba098d97c015b05a9d3697398057",
+    "mtime": 1792531279.325426,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Skeleton/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Checkbox/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Checkbox/index.ts",
+    "sha256": "5177409669ac6b8c94e597a74183bcad072f1c2e6e29ce95a7f11bb4849f2957",
+    "mtime": 1792531279.314569,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Checkbox/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Checkbox/Checkbox.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Checkbox/Checkbox.tsx",
+    "sha256": "8793b31016261a7d05bc8b446677a1c0dcbac5f56aa2fc1b57d83d220c010fa1",
+    "mtime": 1792531279.3143137,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Checkbox/Checkbox.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Hotspot/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Hotspot/index.ts",
+    "sha256": "4ab9151f1368d962c22029762b5e45734dc35d0491a900682ee5e57ce119a654",
+    "mtime": 1792531279.350468,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Hotspot/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Hotspot/Hotspot.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Hotspot/Hotspot.tsx",
+    "sha256": "e0b6b2f29b51930f2a38f8db86318f9af5781e3cf279c82e34cf7d2e80f57938",
+    "mtime": 1792531279.3369331,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Hotspot/Hotspot.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/AlertBadge/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/AlertBadge/index.ts",
+    "sha256": "8606cc017f24aab630afd3d45d4f495593939514af1ae5b78a35a67fb5ebec03",
+    "mtime": 1792531279.2946131,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/AlertBadge/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/AlertBadge/AlertBadge.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/AlertBadge/AlertBadge.tsx",
+    "sha256": "230d7d98dac589e01486ba5cdbdefbb19a445c49889dae75252f2c753ddda47c",
+    "mtime": 1792531279.2944586,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/AlertBadge/AlertBadge.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Slider/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Slider/index.ts",
+    "sha256": "cae809724c5e989b834807cb3dcce1103e00cce0edae32ea056bdaf5321c428b",
+    "mtime": 1792531279.3276696,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Slider/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Slider/Slider.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Slider/Slider.tsx",
+    "sha256": "ebac9b171a50d9911c22d12f0eccfad921fda8c5ebc769a168cc281d8e0d4245",
+    "mtime": 1792531279.3274033,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Slider/Slider.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Spinner/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Spinner/index.ts",
+    "sha256": "cdd30e7697ef5a0529da0b5a51dfd0ea2c3f02afab12430e359486fead055836",
+    "mtime": 1792531279.3284657,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Spinner/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Spinner/Spinner.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Spinner/Spinner.tsx",
+    "sha256": "62f9d653365e4daeda13aa712c6362bdc4ddaf8b0529f85e1401666ce9cfecca",
+    "mtime": 1792531279.328285,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Spinner/Spinner.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/ProgressBar/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/ProgressBar/index.ts",
+    "sha256": "7eefa0a614fcb62b8a9128e00383b84997348292415e7de854887773d1bd56a0",
+    "mtime": 1792531279.3201482,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/ProgressBar/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/ProgressBar/ProgressBar.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/ProgressBar/ProgressBar.tsx",
+    "sha256": "a3e244e09caad8f7289f074ef0f9e19b863d1897dfdb05482a1d51dc16bf4f64",
+    "mtime": 1792531279.3200104,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/ProgressBar/ProgressBar.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/TextArea/TextArea.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/TextArea/TextArea.tsx",
+    "sha256": "d3665a33144662806a19bae2191b9ba79d261844501ae1eecdfad33aeca91e3b",
+    "mtime": 1792531279.3317835,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/TextArea/TextArea.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/TextArea/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/TextArea/index.ts",
+    "sha256": "a7949a602d8f7f2ee5aaf98ea179872534cdba6c7a37022c3945f29be6301618",
+    "mtime": 1792531279.331966,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/TextArea/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Button/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Button/index.ts",
+    "sha256": "ee083b355085d100be23d1decf29d53d4ddefdda6ae215abc7cbbf131735ceef",
+    "mtime": 1792531279.3105965,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Button/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Button/Button.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Button/Button.tsx",
+    "sha256": "24b2c802a933c090e068598ef351e97119863d324f18a2ccd852e0588095c38d",
+    "mtime": 1792531279.3102086,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Button/Button.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Link/Link.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Link/Link.tsx",
+    "sha256": "e5b51a5276ffe93707292395c91ef4d02a5e9ec28f2235d9064014ef9598db79",
+    "mtime": 1792531279.3191895,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Link/Link.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Link/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Link/index.ts",
+    "sha256": "cffab2f87bb351622c42d2d32170aff1a9e5763107e609c6dc80403e226ec2c7",
+    "mtime": 1792531279.3193378,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Link/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Divider/Divider.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Divider/Divider.tsx",
+    "sha256": "163f84d02c8cf4c9f7bd35da8a471d8116c48b63fe4de96c39fadceca56ac0d8",
+    "mtime": 1792531279.3150296,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Divider/Divider.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Divider/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Divider/index.ts",
+    "sha256": "4f91921d45cb66a707d93209669cb1b50a656a1185a6ff26985dcaba28ab20c0",
+    "mtime": 1792531279.3151789,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Divider/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Avatar/Avatar.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Avatar/Avatar.tsx",
+    "sha256": "7c1e4717b45a02a6d2a255d2d78e1d8325efe1d2346554b508436b86e31c4aa4",
+    "mtime": 1792531279.3025787,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Avatar/Avatar.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Avatar/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Avatar/index.ts",
+    "sha256": "c647a4bbfd055b6e9aa8120045d35134189a8c6bb13a133b8f97a6a897e833ef",
+    "mtime": 1792531279.3034718,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Avatar/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Avatar/AvatarGroup.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Avatar/AvatarGroup.tsx",
+    "sha256": "26c969818994012cc3f878505fe801a630ff5b2802f060101efd36f672b7329d",
+    "mtime": 1792531279.3032696,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Avatar/AvatarGroup.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Typography/Typography.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Typography/Typography.tsx",
+    "sha256": "ebd14b43f5a3b5edee6741261f9b39ff57435e24a54b13a6759e21e6a81027f8",
+    "mtime": 1792531279.3360653,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Typography/Typography.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Typography/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Typography/index.ts",
+    "sha256": "2ecdf9da7e1586b099ce9479338dbb4a8ad12e8b460722d4d89a245f3bda28fb",
+    "mtime": 1792531279.3362901,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Typography/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Switch/Switch.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Switch/Switch.tsx",
+    "sha256": "0308c7d3b4e246b076cf81e5c2051fa98ddc46183156b785e4692e7bc6015fd0",
+    "mtime": 1792531279.3299239,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Switch/Switch.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Switch/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Switch/index.ts",
+    "sha256": "5f578e22583e329036c0fc0881be94a958221a41d191448a51439ff4042b9c45",
+    "mtime": 1792531279.3301713,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Switch/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/IconButton/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/IconButton/index.ts",
+    "sha256": "903f053f8e55a67a815031500e1e4381339d2979610652d7c89bfda6c81b08e4",
+    "mtime": 1792531279.3161075,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/IconButton/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/IconButton/IconButton.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/IconButton/IconButton.tsx",
+    "sha256": "b1eb4ddef8b8b47a94962f0ea0484e5e7b0692819a11752472227601cd433538",
+    "mtime": 1792531279.31588,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/IconButton/IconButton.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Select/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Select/index.ts",
+    "sha256": "b18e6834189b339b999f7233e06e8816a9bf095b3a8fc9b02b6fe0af35209335",
+    "mtime": 1792531279.3241112,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Select/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Select/Select.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Select/Select.tsx",
+    "sha256": "4c64d9b212bb8ead19721f0dacf4ec7e910ca251e1e52969821728108849ebfa",
+    "mtime": 1792531279.3237708,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Select/Select.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon/AIIcon.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon/AIIcon.tsx",
+    "sha256": "4f95583ab52d6c5324024478cfe277a92f5c37c15db512bd153d9b45c690a5cb",
+    "mtime": 1792531279.2961416,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Icon/AIIcon.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon/iconPaths.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon/iconPaths.ts",
+    "sha256": "9fdd4f997ba3f75ad21af114417eb68acf5740d27c6827e18793c6388fce1118",
+    "mtime": 1792531279.2989824,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Icon/iconPaths.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon/Icon.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon/Icon.tsx",
+    "sha256": "6ac11399c6c6cbc92d37503255a6a81461d4c887535898a3d9c39608513c1f04",
+    "mtime": 1792531279.299897,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Icon/Icon.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Icon/index.ts",
+    "sha256": "3a4aaf84d3216909807cf3b91fc304d1e770472896fe1f772ad986da4f398606",
+    "mtime": 1792531279.3001049,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Icon/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/StatusLight/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/StatusLight/index.ts",
+    "sha256": "ec212da3b76350d8d08806bcf3d5ba738a22e5fc9c288d9fbe5df6ec21ab013e",
+    "mtime": 1792531279.3290918,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/StatusLight/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/StatusLight/StatusLight.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/StatusLight/StatusLight.tsx",
+    "sha256": "aa6c3a934ab64500d182604c33c303cf60281ea5d8391f60779c01fe11f335df",
+    "mtime": 1792531279.3289528,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/StatusLight/StatusLight.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Meter/Meter.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Meter/Meter.tsx",
+    "sha256": "c5394cce2fbb5b22280dba4ffbda8427f6697816fa4bcc191c91d7fde8e520be",
+    "mtime": 1792531279.3514802,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Meter/Meter.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Meter/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Meter/index.ts",
+    "sha256": "b3147c6147ae6866fb12205676d4515efc9b4b59c7c133f71a807004202ea7ec",
+    "mtime": 1792531279.3517623,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Meter/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Tag/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Tag/index.ts",
+    "sha256": "bfcf5b29fa4b4005b069d8426a442db8d452b0d5a51244578c5d05be77890b90",
+    "mtime": 1792531279.3542407,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Tag/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Tag/Tag.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Tag/Tag.tsx",
+    "sha256": "4e9cc228b647cbed8686e450dbf6fece0f39404900628487177b098dc925515c",
+    "mtime": 1792531279.3530817,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Tag/Tag.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Badge/Badge.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Badge/Badge.tsx",
+    "sha256": "7aeec8a324b5afccd2dfcb807733dcc3b72cb5d0a730d6da1b09df9894a51673",
+    "mtime": 1792531279.3045948,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Badge/Badge.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Badge/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/3-primitives/Badge/index.ts",
+    "sha256": "c8ddc3e4520c477fbd560a0f77884c24220801039911c3656ee88fc431121c19",
+    "mtime": 1792531279.3048916,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/3-primitives/Badge/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Portal/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Portal/index.ts",
+    "sha256": "833273d9b069d37244bc7f16c68b5eab4f944b776056f0617a6e073bc3b5c136",
+    "mtime": 1792531279.2919888,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Portal/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Portal/Portal.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Portal/Portal.tsx",
+    "sha256": "4db364996141a29634ed0a3401df080dbacb186100dfe61b25f1bf8d826bc663",
+    "mtime": 1792531279.2914016,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Portal/Portal.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Spacer/Spacer.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Spacer/Spacer.tsx",
+    "sha256": "e1fdda340bc3c3463dd4f2bbc0cbb3a913694e9cd4b969099fa09d9307a61e2b",
+    "mtime": 1792531279.2927322,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Spacer/Spacer.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Spacer/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Spacer/index.ts",
+    "sha256": "c0e28b3101ed2358ad54c96d0534d1b5bf087c242a186ae7bf6c7a895bea18e7",
+    "mtime": 1792531279.29294,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Spacer/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Inline/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Inline/index.ts",
+    "sha256": "4fb89c45ce88e2d52f3bbc4cda5deb053bab2bb3616a25e181c5a9824edf77e1",
+    "mtime": 1792531279.2907517,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Inline/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Inline/Inline.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Inline/Inline.tsx",
+    "sha256": "03ea25084c67b4cb912ec9c837db49ad2444a877a9697c4ad839c2fa2fc413d5",
+    "mtime": 1792531279.2904677,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Inline/Inline.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Container/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Container/index.ts",
+    "sha256": "2f42825540c6fbfb17f4bea7baffd3e829b7c8a5d5046fa27accbbd83c28fb08",
+    "mtime": 1792531279.2881987,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Container/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Container/Container.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Container/Container.tsx",
+    "sha256": "b3402e783a73f865e9e1e8eba3d5a51a9b83137c98cda854bebf81870e3cbe07",
+    "mtime": 1792531279.2874963,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Container/Container.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Stack/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Stack/index.ts",
+    "sha256": "f10b2770fbaa0a1522b5d83fc6577fab239912704e0713712aa1766d2856b3c5",
+    "mtime": 1792531279.2936883,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Stack/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Stack/Stack.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Stack/Stack.tsx",
+    "sha256": "45c62de6cf29f2aad7881533dd9eda212de315bbaaff422fba4d8f397c933847",
+    "mtime": 1792531279.293541,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Stack/Stack.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Grid/Grid.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Grid/Grid.tsx",
+    "sha256": "65273cbb6bc960bf58f21ea042522c324c365b5f94776aa2278e13b24e65b96c",
+    "mtime": 1792531279.2893586,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Grid/Grid.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Grid/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/2-utilities/Grid/index.ts",
+    "sha256": "67fe80d139c66d28f343269a9dda34a19cd36ac26fbd7f28dcc43e9937e77a2a",
+    "mtime": 1792531279.2896492,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ink/protolab-source/src/design-system/2-utilities/Grid/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/index.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/index.ts",
+    "sha256": "87207980bf7d5de9867cbf35d68a7c4c6d23cfcf27c614d4b4cec3a9c29d7bd6",
+    "mtime": 1792531279.5758245,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/index.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/useSmartScroll.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/useSmartScroll.ts",
+    "sha256": "63d226e4ae429f891665382002dc6374f45fd940cad21a1553ac59363269c4ca",
+    "mtime": 1792531279.4948401,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/hooks/useSmartScroll.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/useKeyboardShortcuts.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/useKeyboardShortcuts.ts",
+    "sha256": "4ed37c0462041dd1eac8608db584ba8989bdc296b0b70b173a197450dee68a99",
+    "mtime": 1792531279.5347219,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/hooks/useKeyboardShortcuts.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/usePanelMode.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/usePanelMode.ts",
+    "sha256": "d5117a5874a8398dd567968acd6d9d3a06879ed5fa94558dfc620da193f985cd",
+    "mtime": 1792531279.4979756,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/hooks/usePanelMode.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/useSemanticStreaming.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/useSemanticStreaming.ts",
+    "sha256": "0a2c22b09ac7947f6ed7a9adb6ee6091290f034e204590c03b603b5d57e8037e",
+    "mtime": 1792531279.4791062,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/hooks/useSemanticStreaming.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/usePanelResize.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/hooks/usePanelResize.ts",
+    "sha256": "65f265b390ddc87eceb37749e15a93ed39c66c28b70707603f857de77a35c048",
+    "mtime": 1792531279.4960582,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/hooks/usePanelResize.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/ToolCallCard/ToolCallCard.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/ToolCallCard/ToolCallCard.tsx",
+    "sha256": "aa60a0b7487d2974b52df01256da93eb9e123d0735b5ec52a380b0927bfbc890",
+    "mtime": 1792531279.5357955,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/ToolCallCard/ToolCallCard.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/StreamingCursor/StreamingCursor.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/StreamingCursor/StreamingCursor.tsx",
+    "sha256": "348c1aa20566a2068bbca1b5c968a6ea4a327fd9af4d24836ded5aabfcee1e26",
+    "mtime": 1792531279.5330868,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/StreamingCursor/StreamingCursor.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/CitationBadge/CitationBadge.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/CitationBadge/CitationBadge.tsx",
+    "sha256": "9b6979656597dcabcb9068be6c6caf8fe6ec27d7865b9d1bd7c46a100bde1ea8",
+    "mtime": 1792531279.470553,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/CitationBadge/CitationBadge.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/MessageBubble/MessageBubble.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/MessageBubble/MessageBubble.tsx",
+    "sha256": "ad2abc3fa60d629e767db316ce9adfe73b72ecc436f5828bc8534feb9d494ce3",
+    "mtime": 1792531279.4909441,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/MessageBubble/MessageBubble.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/GroupedCitationBadge/GroupedCitationBadge.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/GroupedCitationBadge/GroupedCitationBadge.tsx",
+    "sha256": "268bc5b866bbff63e7a64ce5b2a13d27eac4401a6ebd05213ceb2007746ba42a",
+    "mtime": 1792531279.529562,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/GroupedCitationBadge/GroupedCitationBadge.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/StatusIndicator/StatusIndicator.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/StatusIndicator/StatusIndicator.tsx",
+    "sha256": "71d12739a61eac5c1c5bfb290f9a1302b36baf2bf00c2216fc56bc87db7f6a7d",
+    "mtime": 1792531279.5368245,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/StatusIndicator/StatusIndicator.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/SuggestionChip/SuggestionChip.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/SuggestionChip/SuggestionChip.tsx",
+    "sha256": "61454c4cdba970dd04504139ed82d10a89615540e04c578d0416eec2da992e7e",
+    "mtime": 1792531279.5285196,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/SuggestionChip/SuggestionChip.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/ContextPill/ContextPill.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/ContextPill/ContextPill.tsx",
+    "sha256": "3875f15846357292fca8fc97bd0ebc5637b7f3e55dbda6f239899567afabc670",
+    "mtime": 1792531279.5373042,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/ContextPill/ContextPill.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/ArtifactCard/ArtifactCard.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/ArtifactCard/ArtifactCard.tsx",
+    "sha256": "a031e5188ff32ae6594d0e2febb1b22a52b8587d87340206567c44feb73f7231",
+    "mtime": 1792531279.5379357,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/ArtifactCard/ArtifactCard.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/FeedbackActions/FeedbackActions.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/FeedbackActions/FeedbackActions.tsx",
+    "sha256": "f768569d8b1c333d22a155b2282a559958df713a1875132f06fbe0d1ad10a7ab",
+    "mtime": 1792531279.4918542,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/FeedbackActions/FeedbackActions.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/Spark/Spark.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/Spark/Spark.tsx",
+    "sha256": "41cb9d1d023fc0a787e1d018bde45730a1dc8407f32ca4b24287263b9f610e91",
+    "mtime": 1792531279.482306,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/Spark/Spark.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/Shimmer/Shimmer.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/primitives/Shimmer/Shimmer.tsx",
+    "sha256": "5684021364aed7ca42a321825c0521fbb3579b26491f38eac92263fb281407d7",
+    "mtime": 1792531279.4814973,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/primitives/Shimmer/Shimmer.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ComposerAsk/ComposerAsk.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ComposerAsk/ComposerAsk.tsx",
+    "sha256": "7ff1f02be7651def3c42e00daafbdac606fff679730003de4a1f09bc675f2d11",
+    "mtime": 1792531279.5470319,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ComposerAsk/ComposerAsk.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/PromptLibrary/PromptLibrary.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/PromptLibrary/PromptLibrary.tsx",
+    "sha256": "681c9d003d7481bdb0da433b3b9822f2926f2c4228310fd556d9b3cc070d7616",
+    "mtime": 1792531279.5510519,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/PromptLibrary/PromptLibrary.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ContextBar/ContextBar.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ContextBar/ContextBar.tsx",
+    "sha256": "2b808877aedc489f39d26f4860f21387adfc9ebfca1150601f57cc557c422b7c",
+    "mtime": 1792531279.5516014,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ContextBar/ContextBar.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ElicitationCard/ElicitationCard.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ElicitationCard/ElicitationCard.tsx",
+    "sha256": "4ae72e4c67f4e8d271efa23f410ecea31d682edededb96bd485d66ab71c201a9",
+    "mtime": 1792531279.532664,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ElicitationCard/ElicitationCard.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/AgreementSnapshot/AgreementSnapshot.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/AgreementSnapshot/AgreementSnapshot.tsx",
+    "sha256": "d9945a526bb4a3c28843210fd754fdd8949397e8bb5e5990005bd4703d7ffb48",
+    "mtime": 1792531279.501813,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/AgreementSnapshot/AgreementSnapshot.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ProgressReceipt/ProgressReceipt.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ProgressReceipt/ProgressReceipt.tsx",
+    "sha256": "e7060155e80cf5ca8020f8a006c3fa4f1f3248f33f1839d1d8570d24d1bc2445",
+    "mtime": 1792531279.543288,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ProgressReceipt/ProgressReceipt.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ConversationLayout/ConversationLayout.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ConversationLayout/ConversationLayout.tsx",
+    "sha256": "3af1f84afb51a1984b094897f8782dd7b3cb66ae3649bddc9bbe7170c5f6de93",
+    "mtime": 1792531279.4842472,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ConversationLayout/ConversationLayout.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ActivityTimeline/ActivityTimeline.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ActivityTimeline/ActivityTimeline.tsx",
+    "sha256": "f9a3a5ebd24d048f7da730570278d1e337ca0399ab699ed1bf077aedd7d4cc14",
+    "mtime": 1792531279.5485048,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ActivityTimeline/ActivityTimeline.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ExecutionTrace/ExecutionTrace.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ExecutionTrace/ExecutionTrace.tsx",
+    "sha256": "fa3cda90881f0b7cc560e3f7e906b6777051005df628bff8455e6e7bc7eb5acd",
+    "mtime": 1792531279.5547662,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ExecutionTrace/ExecutionTrace.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ComposerStrip/ComposerStrip.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ComposerStrip/ComposerStrip.tsx",
+    "sha256": "6f9367244ccff6afd5ab31c0dde332d228bbdd33dd898fa7e59d96efdcfa47bd",
+    "mtime": 1792531279.5438926,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ComposerStrip/ComposerStrip.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ConversationList/ConversationList.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ConversationList/ConversationList.tsx",
+    "sha256": "ae8a706748fb5f266ee6a2e63e3372b26e83c5842ad714e0363d2373d5201aee",
+    "mtime": 1792531279.5402014,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ConversationList/ConversationList.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/AgentActivity/AgentActivity.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/AgentActivity/AgentActivity.tsx",
+    "sha256": "5284de1949ada9e6712784aedf13332d74feff7b9eb11f87fa91f1fb7837a1fc",
+    "mtime": 1792531279.5597053,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/AgentActivity/AgentActivity.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/AgentActivity/sampleRuns.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/AgentActivity/sampleRuns.ts",
+    "sha256": "16c1cf171c39b4470aeb663ec90dc78e4e9e880df108ef95932d3a54ff1d16a5",
+    "mtime": 1792531279.5602388,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/AgentActivity/sampleRuns.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/SkillsGrid/SkillsGrid.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/SkillsGrid/SkillsGrid.tsx",
+    "sha256": "65bde1c306ae38c0e9f9b2fe4b4c21c71e6d749b0bd04de7421f1cf59902732d",
+    "mtime": 1792531279.541003,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/SkillsGrid/SkillsGrid.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/CommandMenu/CommandMenu.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/CommandMenu/CommandMenu.tsx",
+    "sha256": "32e221bfc88072e9bfc7a824c321d9a3b22765f4959c640e2b1e554733c34641",
+    "mtime": 1792531279.4618237,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/CommandMenu/CommandMenu.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/NavPage/NavPage.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/NavPage/NavPage.tsx",
+    "sha256": "ec686879b5ef911f3dc266f040a0bb5888033bc6877652584e595ff9ff37aa40",
+    "mtime": 1792531279.5416863,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/NavPage/NavPage.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/InsightList/InsightList.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/InsightList/InsightList.tsx",
+    "sha256": "a259926b5551ff62a20346fa3805ffe588a5c5ba73d64aeb0293ef054c7481ea",
+    "mtime": 1792531279.5006616,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/InsightList/InsightList.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/RecommendationCard/RecommendationCard.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/RecommendationCard/RecommendationCard.tsx",
+    "sha256": "d62c57d80f515b480799f243a29f6fe3d48bc3ad8f4b1ab16ee55751803c582d",
+    "mtime": 1792531279.5082815,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/RecommendationCard/RecommendationCard.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/GetStarted/GetStarted.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/GetStarted/GetStarted.tsx",
+    "sha256": "8896aeaf3274f54774a22ff857af72fa5c7b46485810f4054f3586849a59e124",
+    "mtime": 1792531279.4999247,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/GetStarted/GetStarted.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/RunChip/RunChip.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/RunChip/RunChip.tsx",
+    "sha256": "a48d7099add26fabeaf0cc13c301ed2373a5d98726be367dc2bf7ada7352f1b2",
+    "mtime": 1792531279.483698,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/RunChip/RunChip.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/CallControls/CallControls.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/CallControls/CallControls.tsx",
+    "sha256": "822c15462d79adb9657537992027febc4e2f8816b4a6659d157d71d015c1c07f",
+    "mtime": 1792531279.5341773,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/CallControls/CallControls.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/AgentThinking/AgentThinking.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/AgentThinking/AgentThinking.tsx",
+    "sha256": "6242a853d849fa79e7fd3d003522406416696f2b22dc57ac795ccd85884d05a5",
+    "mtime": 1792531279.4811277,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/AgentThinking/AgentThinking.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/RichResponse/RichResponse.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/RichResponse/RichResponse.tsx",
+    "sha256": "38dad6887065ed97b84b7afbe992b82695833af4818ad81629eafbcfb95e0ce7",
+    "mtime": 1792531279.549845,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/RichResponse/RichResponse.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ZeroQueryActions/ZeroQueryActions.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ZeroQueryActions/ZeroQueryActions.tsx",
+    "sha256": "ebc386edcdee2a2ba1c9b98eddba63511b1de313e2094a8ee1ae583298e7eeca",
+    "mtime": 1792531279.4851878,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ZeroQueryActions/ZeroQueryActions.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ChatInput/ChatInput.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/ChatInput/ChatInput.tsx",
+    "sha256": "1ff3c174b3bd597ee8b3c691e50d4e4aa1034929ac8d07142b2e63e2d4e44c6e",
+    "mtime": 1792531279.4692848,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/ChatInput/ChatInput.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/LabeledSection/LabeledSection.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/LabeledSection/LabeledSection.tsx",
+    "sha256": "859c7fde3c2600cb2fe2a4190ae99f437917ba7dfe3f3b593239b3a860e9fd39",
+    "mtime": 1792531279.5436628,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/LabeledSection/LabeledSection.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/StreamingMarkdown/StreamingMarkdown.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/StreamingMarkdown/StreamingMarkdown.tsx",
+    "sha256": "f0fec1c695eb45b3f0587be62484218fdd7ffbd7ffff330c8a9351ad80463077",
+    "mtime": 1792531279.4795122,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/StreamingMarkdown/StreamingMarkdown.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/MarkdownRenderer/MarkdownRenderer.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/MarkdownRenderer/MarkdownRenderer.tsx",
+    "sha256": "4f97678eb213ca6e6aee27872919b520be3a76fee56e96a7bfd3ab26e0e02222",
+    "mtime": 1792531279.477712,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/MarkdownRenderer/MarkdownRenderer.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/TaskCompletionCard/TaskCompletionCard.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/TaskCompletionCard/TaskCompletionCard.tsx",
+    "sha256": "6a181614734ecb5f4a0d74e61dcb468684fb0112fd75e8d98b0747f3482307a8",
+    "mtime": 1792531279.5539212,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/TaskCompletionCard/TaskCompletionCard.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/CollapsedHandoff/CollapsedHandoff.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/CollapsedHandoff/CollapsedHandoff.tsx",
+    "sha256": "9d63a5c9c653e880cf9a7378d1c4cbcf74ce17d99089fc8dd0bb245dcc55dc3f",
+    "mtime": 1792531279.501173,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/CollapsedHandoff/CollapsedHandoff.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/WelcomeScreen/WelcomeScreen.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/composites/WelcomeScreen/WelcomeScreen.tsx",
+    "sha256": "77623ac1eb048636037b8b239d485fa76748240077b795ed4dad7cbd5223b4b8",
+    "mtime": 1792531279.5530777,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/composites/WelcomeScreen/WelcomeScreen.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/SourceListView.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/SourceListView.tsx",
+    "sha256": "2752579daa9d25aba5fb2c6c844bdede12baa112ce075cf3e6e0c1ac5858f145",
+    "mtime": 1792531279.5642915,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/SourceListView.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/types.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/types.ts",
+    "sha256": "8615da22df4f17c936a7682db696a390eb1fbaaec02c03bbc0dcd0bed0cdd0db",
+    "mtime": 1792531279.5031958,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/types.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/DocumentRenderer.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/DocumentRenderer.tsx",
+    "sha256": "f62140758af56ab4e483fdcb10be77e307d5b45181308f1b4cd853c1d57d9b99",
+    "mtime": 1792531279.5043857,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/DocumentRenderer.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/ArtifactColumn.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/ArtifactColumn.tsx",
+    "sha256": "fc06700c1e39cb167d630785d49a1dcdb1adc35f1ece6069bc916742cafa82e7",
+    "mtime": 1792531279.5703142,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/ArtifactColumn.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/ProcessArtifact.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/ProcessArtifact.tsx",
+    "sha256": "2c7ced3679d349597d1553f3d14594a2d9820ba68251eb7b16be1ef36837fdfe",
+    "mtime": 1792531279.5103517,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/ProcessArtifact.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/ArtifactDock.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/ArtifactDock.tsx",
+    "sha256": "d434f68750fcb2fede97c5283f61203b47464c8970ed2dbccfd513e676e88bcf",
+    "mtime": 1792531279.5146642,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/ArtifactDock.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/AgreementView.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/AgreementView.tsx",
+    "sha256": "c2d40500ee26176887a5df79532e1735c48cc76d5520428190ec992799c440d7",
+    "mtime": 1792531279.5634303,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/AgreementView.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx",
+    "sha256": "4cf207c6445904d1aabba6c9f0413027ddd40dad07ac22b937dc4f71d92ffab8",
+    "mtime": 1792531279.568806,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/artifactRenderers.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/artifactRenderers.tsx",
+    "sha256": "5862a478b2b6e4f4425b2d42f12536540834c4662747a55e74b591c7f89a6c1f",
+    "mtime": 1792531279.5136125,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/artifactRenderers.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/sampleArtifacts.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/sampleArtifacts.ts",
+    "sha256": "c8c70ec83cf561da944809a3b222bce431cd156f9b10b36625bf84cfb619df88",
+    "mtime": 1792531279.5715628,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/sampleArtifacts.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/TableRenderer.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/TableRenderer.tsx",
+    "sha256": "b36cdbccf7587e4d592d7ef24288c4a3a6e6828f6ed5c7fad035e8042ae32a8a",
+    "mtime": 1792531279.5125427,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/TableRenderer.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/ArtifactViewer.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactViewer/ArtifactViewer.tsx",
+    "sha256": "595c2fa2d9b402432d4f2d4c89322d5855973af0e9113a8cbf8c463110c68f5b",
+    "mtime": 1792531279.56225,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactViewer/ArtifactViewer.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactPanel/ArtifactPanel.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ArtifactPanel/ArtifactPanel.tsx",
+    "sha256": "8d63e517e5a607c4ba136b4439a5e4b97a8d195e35b0e204f0b844b4967bb9de",
+    "mtime": 1792531279.575024,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ArtifactPanel/ArtifactPanel.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisAgent/types.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisAgent/types.ts",
+    "sha256": "7471f69889d4438edebd25a04904e7cf24cabd5ce8d88c1f7e0f223947a1ad28",
+    "mtime": 1792531279.5150943,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/IrisAgent/types.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisAgent/IrisAgent.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisAgent/IrisAgent.tsx",
+    "sha256": "125a6108ee4e0a3a300078a66a6b5c7b70de840deecd3156a3feb7c65f68fcb2",
+    "mtime": 1792531279.527636,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/IrisAgent/IrisAgent.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisAgent/dateDividers.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisAgent/dateDividers.ts",
+    "sha256": "8365959ea8543c3dc005d71d133eaf8b79fefd897364a31da360256a7917f8e2",
+    "mtime": 1792531279.5154653,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/IrisAgent/dateDividers.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisAgent/HeaderMenu.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisAgent/HeaderMenu.tsx",
+    "sha256": "479d8f1cb2d61a84952921db40053b149f161d8e896279ce015c0f8db040a87d",
+    "mtime": 1792531279.488708,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/IrisAgent/HeaderMenu.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/DocumentViewer/DocumentViewer.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/DocumentViewer/DocumentViewer.tsx",
+    "sha256": "306ba364c5f026b19fb2cf968a90748d883ec354895d5ac2ad8d878812cf668c",
+    "mtime": 1792531279.5029752,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/DocumentViewer/DocumentViewer.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ScreenAwareAgent/ScreenAwareAgent.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ScreenAwareAgent/ScreenAwareAgent.tsx",
+    "sha256": "2406bb250387fe93abb347e6f00075b91d6de1e722bf20cb364e9e8a3e753c9e",
+    "mtime": 1792531279.5697148,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ScreenAwareAgent/ScreenAwareAgent.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisSidebar/IrisSidebar.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/IrisSidebar/IrisSidebar.tsx",
+    "sha256": "41cebc5b7888db3da2ac088bac8325763ae62c7b79cc2c4bba2cb8b2ddfaa3c8",
+    "mtime": 1792531279.4872293,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/IrisSidebar/IrisSidebar.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ChatPanel/ChatPanel.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/ChatPanel/ChatPanel.tsx",
+    "sha256": "57991e81a034edd86d9bb6148e97412537647f0f015443102998775f809840ae",
+    "mtime": 1792531279.572883,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/ChatPanel/ChatPanel.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/AgentShell/AgentShell.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/AgentShell/AgentShell.tsx",
+    "sha256": "602011684906972eb7eebec00fbbc734a0473aefd210f57f91151efb796c91bb",
+    "mtime": 1792531279.573707,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/AgentShell/AgentShell.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/PanelShell/ResizeHandle.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/PanelShell/ResizeHandle.tsx",
+    "sha256": "d94cb978375c37b1d7745c96b7e5f36accb4fb350173e3a28ca66519d871fee3",
+    "mtime": 1792531279.5149295,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/PanelShell/ResizeHandle.js"
+  },
+  {
+    "path": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/PanelShell/PanelShell.js",
+    "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system/patterns/PanelShell/PanelShell.tsx",
+    "sha256": "ebc4a548f723c4603fd9cdba577301fe7e8129e171597e4fe06cdfdd9a88230b",
+    "mtime": 1792531279.5282228,
+    "quarantine": "/private/tmp/protolab-foundation-repair/emitted-shadow-quarantine/ai/system/ai-system/patterns/PanelShell/PanelShell.js"
+  }
+]

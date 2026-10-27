@@ -24,7 +24,11 @@
         "./src/ai-system/*"
       ]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "types": [
+      "vite/client"
+    ],
+    "noEmit": true
   },
   "include": [
     "src"

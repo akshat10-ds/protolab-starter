@@ -278,7 +278,7 @@ export const LocalNav: React.FC<LocalNavProps> = ({
               <li key={item.id}>
                 {!isExpanded ? (
                   // Collapsed view: icon only with tooltip
-                  <Tooltip content={item.label} side="right">
+                  <Tooltip content={item.label} location="after">
                     <button
                       className={`${styles.itemCollapsed} ${isItemActive ? styles.active : ''}`}
                       onClick={() => handleItemClick(item)}
@@ -290,29 +290,26 @@ export const LocalNav: React.FC<LocalNavProps> = ({
                   </Tooltip>
                 ) : (
                   // Expanded view: full item (hover handled by CSS)
-                  // Use div with role="button" when hasMenu to avoid button-in-button nesting
+                  // Navigation and item actions are sibling native buttons.
                   item.hasMenu ? (
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      className={`${styles.item} ${isItemActive ? styles.active : ''} ${
-                        item.nested ? styles.nested : ''
-                      } ${styles.hasMenu} ${item.icon ? styles.hasIcon : ''}`}
-                      onClick={() => handleItemClick(item)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          handleItemClick(item);
-                        }
-                      }}
-                    >
-                      {item.icon && (
-                        <span className={styles.itemIcon}>
-                          <Icon name={item.icon} size="medium" />
-                        </span>
-                      )}
-                      <span className={styles.itemLabel}>{item.label}</span>
-                      {item.badge && <Badge variant="subtle">{item.badge}</Badge>}
+                    <div className={styles.menuRow}>
+                      <button
+                        type="button"
+                        className={`${styles.item} ${isItemActive ? styles.active : ''} ${
+                          item.nested ? styles.nested : ''
+                        } ${styles.hasMenu} ${item.icon ? styles.hasIcon : ''}`}
+                        onClick={() => handleItemClick(item)}
+                        aria-current={isItemActive ? 'page' : undefined}
+                      >
+                        {item.icon && (
+                          <span className={styles.itemIcon}>
+                            <Icon name={item.icon} size="medium" />
+                          </span>
+                        )}
+                        <span className={styles.itemLabel}>{item.label}</span>
+                        {item.badge && <Badge variant="subtle">{item.badge}</Badge>}
+                        {isItemActive && <div className={styles.activeIndicator} />}
+                      </button>
                       <IconButton
                         icon="overflow-horizontal"
                         size="small"
@@ -321,10 +318,9 @@ export const LocalNav: React.FC<LocalNavProps> = ({
                           e.stopPropagation();
                           item.onMenuClick?.(e);
                         }}
-                        aria-label="More options"
+                        aria-label={`More options for ${item.label}`}
                         className={styles.menuButton}
                       />
-                      {isItemActive && <div className={styles.activeIndicator} />}
                     </div>
                   ) : (
                     <button
@@ -439,7 +435,7 @@ export const LocalNav: React.FC<LocalNavProps> = ({
             </>
           )}
           {allowCollapsibility && (
-            <Tooltip content={isLocked ? 'Unlock sidebar' : 'Lock sidebar'} side="right">
+            <Tooltip content={isLocked ? 'Unlock sidebar' : 'Lock sidebar'} location="after">
               <IconButton
                 icon={isLocked ? 'lock' : 'unlock'}
                 size="medium"

@@ -2,7 +2,7 @@
 // source=src/design-system/3-primitives/Tooltip/Tooltip.tsx
 // component=Tooltip
 // NOTE: code "children" (the trigger element) is required and has no Figma
-// counterpart — a placeholder comment is emitted.
+// counterpart — bind tooltipTrigger to the actual trigger element.
 import figma from 'figma'
 const instance = figma.selectedInstance
 
@@ -20,7 +20,7 @@ const alignment = instance.getEnum('alignment', {
 })
 
 export default {
-  example: figma.code`<Tooltip text="${text}" location="${location}" alignment="${alignment}">{/* trigger element */}</Tooltip>`,
+  example: figma.code`<Tooltip text="${text}" location="${location}" alignment="${alignment}">{tooltipTrigger}</Tooltip>`,
   imports: ["import { Tooltip } from '@/design-system'"],
   id: 'tooltip',
   metadata: { nestable: true },

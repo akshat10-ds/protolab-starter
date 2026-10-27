@@ -39,14 +39,14 @@
 /* Glass Effects */
 /* Figma bgColorGlassFrost = white@90% + dark text (was inverted to dark) */
 .glass-frost {
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(var(--ink-elevation-glass));
   background: var(--ink-bg-glass-frost);
   border-color: var(--ink-border-color-subtle);
 }
 
 /* Figma bgColorGlassTint = near-black@90% + white text */
 .glass-tint {
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--ink-elevation-glass));
   background: var(--ink-bg-glass-tint);
   border-color: var(--ink-border-color-subtle);
 }
@@ -266,11 +266,11 @@
 }
 
 /* Caret for before/after - horizontal */
-.location-before .container {
+.container.location-before {
   flex-direction: row;
 }
 
-.location-after .container {
+.container.location-after {
   flex-direction: row;
 }
 
@@ -368,3 +368,22 @@
 .container-glasstint.location-below .caret::after {
   border-color: transparent transparent var(--ink-bg-glass-tint) transparent;
 }
+
+.container { max-width: 100%; }
+.container.location-before .callout, .container.location-after .callout { min-width: 0; flex: 1; }
+.content.image-top { flex-direction: column; }
+.image-top .image { width: 100%; }
+.image-top .body { width: 100%; }
+.header { display: flex; align-items: center; gap: var(--ink-spacing-100); }
+.header .heading { flex: 1; }
+
+.image-top .body { box-sizing: border-box; }
+
+.container { --callout-caret-fill: var(--ink-bg-color-default); }
+.container-glassfrost { --callout-caret-fill: var(--ink-bg-glass-frost); }
+.container-glasstint { --callout-caret-fill: var(--ink-bg-glass-tint); }
+.container.location-before .caretBefore::before { border-width: 8px 0 8px 10px; border-color: transparent transparent transparent var(--ink-border-color-subtle); }
+.container.location-before .caretBefore::after { left: -1px; border-width: 7.5px 0 7.5px 9px; border-color: transparent transparent transparent var(--callout-caret-fill); }
+.container.location-after .caretAfter { order: -1; }
+.container.location-after .caretAfter::before { border-width: 8px 10px 8px 0; border-color: transparent var(--ink-border-color-subtle) transparent transparent; }
+.container.location-after .caretAfter::after { right: -1px; border-width: 7.5px 9px 7.5px 0; border-color: transparent var(--callout-caret-fill) transparent transparent; }

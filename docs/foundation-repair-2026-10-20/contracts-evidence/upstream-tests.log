@@ -1,0 +1,427 @@
+
+ RUN  v3.2.4 /private/tmp/protolab-foundation-repair/ink
+
+stderr | tests/e2e/http-benchmarks.test.ts
+
+Server not running at http://localhost:3000/api/mcp — skipping E2E benchmarks.
+Start with: npm run dev
+
+
+ ✓ tests/e2e/http-benchmarks.test.ts (5 tests | 5 skipped) 17ms
+ ✓ tests/analytics.test.ts (15 tests) 208ms
+ ✓ tests/integration/data-quality.test.ts (15 tests) 4ms
+stdout | tests/integration/cold-start.test.ts > Cold start - time to first tool call > full cold start breakdown
+
+Cold start breakdown:
+┌────────────────┬────────┐
+│ (index)        │ Values │
+├────────────────┼────────┤
+│ totalMs        │ 305.53 │
+│ importsMs      │ 235.81 │
+│ constructionMs │ 0.91   │
+│ connectionMs   │ 64.16  │
+│ firstCallMs    │ 4.65   │
+└────────────────┴────────┘
+
+ ✓ tests/integration/cold-start.test.ts (1 test) 307ms
+   ✓ Cold start - time to first tool call > full cold start breakdown  307ms
+ ✓ tests/integration/search-quality.test.ts (11 tests) 6ms
+ ✓ tests/integration/tool-output-quality.test.ts (11 tests) 28ms
+ ✓ tests/integration/scan-source.test.ts (19 tests) 12ms
+stdout | tests/integration/prompts.test.ts > Prompt benchmarks (InMemoryTransport) > build_prototype prompt
+build_prototype: 5.72ms, 21712 chars
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > list_components - no filter
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.05   │
+│ max        │ 0.13   │
+│ mean       │ 0.07   │
+│ p50        │ 0.06   │
+│ p95        │ 0.12   │
+│ p99        │ 0.13   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > list_components - layer filter
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.04   │
+│ max        │ 0.06   │
+│ mean       │ 0.04   │
+│ p50        │ 0.04   │
+│ p95        │ 0.05   │
+│ p99        │ 0.06   │
+└────────────┴────────┘
+
+ ✓ tests/integration/prompt-fidelity.test.ts (15 tests) 22ms
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_component - full detail
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.04   │
+│ max        │ 0.26   │
+│ mean       │ 0.05   │
+│ p50        │ 0.04   │
+│ p95        │ 0.11   │
+│ p99        │ 0.26   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_component - summary detail
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.03   │
+│ max        │ 0.05   │
+│ mean       │ 0.04   │
+│ p50        │ 0.04   │
+│ p95        │ 0.05   │
+│ p99        │ 0.05   │
+└────────────┴────────┘
+
+stdout | tests/integration/prompts.test.ts > Prompt benchmarks (InMemoryTransport) > build_prototype prompt
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 30     │
+│ min        │ 0.41   │
+│ max        │ 1.75   │
+│ mean       │ 0.55   │
+│ p50        │ 0.47   │
+│ p95        │ 1.07   │
+│ p99        │ 1.75   │
+└────────────┴────────┘
+
+stdout | tests/integration/prompts.test.ts > Prompt benchmarks (InMemoryTransport) > figma_to_code prompt
+figma_to_code: 0.14ms, 4979 chars
+
+stdout | tests/integration/prompts.test.ts > Prompt benchmarks (InMemoryTransport) > figma_to_code prompt
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.03   │
+│ max        │ 0.04   │
+│ mean       │ 0.03   │
+│ p50        │ 0.03   │
+│ p95        │ 0.04   │
+│ p99        │ 0.04   │
+└────────────┴────────┘
+
+stdout | tests/integration/prompts.test.ts > Prompt benchmarks (InMemoryTransport) > find_component prompt
+find_component: 0.46ms, 2976 chars
+
+stdout | tests/integration/response-sizes.test.ts > Response size analysis > print size report
+
+=== RESPONSE SIZE REPORT ===
+
+┌─────────┬────────────────────────────┬────────────────┬─────────┬─────────────────┐
+│ (index) │ tool                       │ mode           │ chars   │ estimatedTokens │
+├─────────┼────────────────────────────┼────────────────┼─────────┼─────────────────┤
+│ 0       │ 'scaffold_project'         │ 'inline-large' │ 1077522 │ 269381          │
+│ 1       │ 'get_component_source'     │ 'inline'       │ 815306  │ 203827          │
+│ 2       │ 'scaffold_project'         │ 'inline'       │ 778141  │ 194536          │
+│ 3       │ 'scaffold_project'         │ 'urls'         │ 271644  │ 67911           │
+│ 4       │ 'get_component_source'     │ 'urls'         │ 99864   │ 24966           │
+│ 5       │ 'get_design_tokens'        │ 'inline'       │ 73390   │ 18348           │
+│ 6       │ 'resource:tokens'          │ 'default'      │ 71854   │ 17964           │
+│ 7       │ 'get_design_tokens'        │ 'color'        │ 49288   │ 12322           │
+│ 8       │ 'resource:catalog'         │ 'default'      │ 21472   │ 5368            │
+│ 9       │ 'list_components'          │ 'all'          │ 10863   │ 2716            │
+│ 10      │ 'get_component'            │ 'full'         │ 6959    │ 1740            │
+│ 11      │ 'get_design_tokens'        │ 'guide'        │ 4271    │ 1068            │
+│ 12      │ 'list_components'          │ 'layer:3'      │ 3899    │ 975             │
+│ 13      │ 'search_components'        │ 'default'      │ 3119    │ 780             │
+│ 14      │ 'get_component'            │ 'summary'      │ 1715    │ 429             │
+│ 15      │ 'map_ui_elements'          │ 'default'      │ 1564    │ 391             │
+│ 16      │ 'get_design_tokens'        │ 'urls'         │ 259     │ 65              │
+│ 17      │ 'validate_component_usage' │ 'default'      │ 137     │ 35              │
+└─────────┴────────────────────────────┴────────────────┴─────────┴─────────────────┘
+
+Total inline modes: 2744359 chars (~686090 tokens)
+Total urls modes: 371767 chars (~92942 tokens)
+Token savings from urls mode: ~593148 tokens
+
+
+ ✓ tests/integration/response-sizes.test.ts (19 tests) 41ms
+ ✓ tests/integration/journey.test.ts (21 tests) 48ms
+stdout | tests/integration/prompts.test.ts > Prompt benchmarks (InMemoryTransport) > find_component prompt
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.17   │
+│ max        │ 3.58   │
+│ mean       │ 0.29   │
+│ p50        │ 0.2    │
+│ p95        │ 0.37   │
+│ p99        │ 3.58   │
+└────────────┴────────┘
+
+ ✓ tests/integration/prompts.test.ts (3 tests) 53ms
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_component - not found
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.45   │
+│ max        │ 2.96   │
+│ mean       │ 0.7    │
+│ p50        │ 0.54   │
+│ p95        │ 2.06   │
+│ p99        │ 2.96   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > search_components - single term
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.09   │
+│ max        │ 2.01   │
+│ mean       │ 0.15   │
+│ p50        │ 0.09   │
+│ p95        │ 0.25   │
+│ p99        │ 2.01   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > search_components - multi term
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.23   │
+│ max        │ 4.53   │
+│ mean       │ 0.73   │
+│ p50        │ 0.35   │
+│ p95        │ 3.16   │
+│ p99        │ 4.53   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_component_source - urls mode
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.12   │
+│ max        │ 2.32   │
+│ mean       │ 0.22   │
+│ p50        │ 0.15   │
+│ p95        │ 0.46   │
+│ p99        │ 2.32   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_component_source - inline mode
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 20     │
+│ min        │ 0.76   │
+│ max        │ 4.27   │
+│ mean       │ 1.14   │
+│ p50        │ 0.86   │
+│ p95        │ 4.27   │
+│ p99        │ 4.27   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_design_tokens - urls mode
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.03   │
+│ max        │ 0.51   │
+│ mean       │ 0.04   │
+│ p50        │ 0.03   │
+│ p95        │ 0.08   │
+│ p99        │ 0.51   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_design_tokens - category: color
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.07   │
+│ max        │ 2.6    │
+│ mean       │ 0.16   │
+│ p50        │ 0.07   │
+│ p95        │ 0.18   │
+│ p99        │ 2.6    │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_design_tokens - category: guide
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.03   │
+│ max        │ 1.8    │
+│ mean       │ 0.07   │
+│ p50        │ 0.03   │
+│ p95        │ 0.04   │
+│ p99        │ 1.8    │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > get_usage_stats
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.02   │
+│ max        │ 4.99   │
+│ mean       │ 0.22   │
+│ p50        │ 0.02   │
+│ p95        │ 0.07   │
+│ p99        │ 4.99   │
+└────────────┴────────┘
+
+ ✓ tests/integration/version-check.test.ts (6 tests) 16ms
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > map_ui_elements - 5 elements
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 30     │
+│ min        │ 0.61   │
+│ max        │ 6.07   │
+│ mean       │ 1.35   │
+│ p50        │ 0.94   │
+│ p95        │ 2.79   │
+│ p99        │ 6.07   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > map_ui_elements - 10 elements with tokens
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 30     │
+│ min        │ 1.37   │
+│ max        │ 5.65   │
+│ mean       │ 2.21   │
+│ p50        │ 1.9    │
+│ p95        │ 3.45   │
+│ p99        │ 5.65   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > scaffold_project - urls mode, 3 components
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 20     │
+│ min        │ 1.46   │
+│ max        │ 2.87   │
+│ mean       │ 2.03   │
+│ p50        │ 2.08   │
+│ p95        │ 2.87   │
+│ p99        │ 2.87   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > scaffold_project - inline mode, 3 components
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 10     │
+│ min        │ 1.98   │
+│ max        │ 3.55   │
+│ mean       │ 2.46   │
+│ p50        │ 2.43   │
+│ p95        │ 3.55   │
+│ p99        │ 3.55   │
+└────────────┴────────┘
+
+stdout | tests/integration/resources.test.ts > Resource benchmarks (InMemoryTransport) > component-catalog resource
+component-catalog: 0.46ms, 21472 chars
+
+stdout | tests/integration/resources.test.ts > Resource benchmarks (InMemoryTransport) > component-catalog resource
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.05   │
+│ max        │ 0.17   │
+│ mean       │ 0.06   │
+│ p50        │ 0.05   │
+│ p95        │ 0.13   │
+│ p99        │ 0.17   │
+└────────────┴────────┘
+
+stdout | tests/integration/resources.test.ts > Resource benchmarks (InMemoryTransport) > design-tokens resource
+design-tokens: 0.08ms, 71854 chars
+
+stdout | tests/integration/resources.test.ts > Resource benchmarks (InMemoryTransport) > design-tokens resource
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 50     │
+│ min        │ 0.02   │
+│ max        │ 0.04   │
+│ mean       │ 0.03   │
+│ p50        │ 0.03   │
+│ p95        │ 0.03   │
+│ p99        │ 0.04   │
+└────────────┴────────┘
+
+ ✓ tests/integration/resources.test.ts (2 tests) 17ms
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > scaffold_project - inline mode, many components (worst case)
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 5      │
+│ min        │ 2.81   │
+│ max        │ 5.31   │
+│ mean       │ 3.66   │
+│ p50        │ 3.48   │
+│ p95        │ 5.31   │
+│ p99        │ 5.31   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > validate_component_usage - small code
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 30     │
+│ min        │ 0.03   │
+│ max        │ 0.16   │
+│ mean       │ 0.06   │
+│ p50        │ 0.04   │
+│ p95        │ 0.14   │
+│ p99        │ 0.16   │
+└────────────┴────────┘
+
+stdout | tests/integration/tools.test.ts > Tool benchmarks (InMemoryTransport) > validate_component_usage - large code with issues
+┌────────────┬────────┐
+│ (index)    │ Values │
+├────────────┼────────┤
+│ iterations │ 30     │
+│ min        │ 0.06   │
+│ max        │ 0.11   │
+│ mean       │ 0.07   │
+│ p50        │ 0.07   │
+│ p95        │ 0.09   │
+│ p99        │ 0.11   │
+└────────────┴────────┘
+
+ ✓ tests/integration/tools.test.ts (20 tests) 418ms
+ ✓ tests/toast-source.test.ts (3 tests) 7ms
+ ✓ tests/icons-standard.test.ts (10 tests) 133ms
+ ✓ tests/new-families.test.ts (37 tests) 20ms
+ ✓ tests/primitive-foundation.test.ts (33 tests) 33ms
+ ✓ tests/ai-badge.test.ts (4 tests) 9ms
+ ✓ tests/search-input-source.test.ts (3 tests) 6ms
+ ✓ tests/local-nav-source.test.ts (3 tests) 10ms
+ ✓ tests/integration/generation-contracts.test.ts (6 tests) 3165ms
+   ✓ Generated subset contracts > typechecks a real Button scaffold  758ms
+   ✓ Generated subset contracts > typechecks a real Input, Select, ComboBox, PageHeader, DocuSignShell scaffold  782ms
+   ✓ Generated subset contracts > typechecks a real DataTable, AgreementTableView, FilterBar, Tabs, Banner, Breadcrumb, IconButton, Badge, PageHeader scaffold  670ms
+   ✓ Generated subset contracts > typechecks a real Panel, Hotspot, Tree, ColorPicker, Toast, Dropdown, AvatarGroup scaffold  617ms
+
+ Test Files  22 passed (22)
+      Tests  257 passed | 5 skipped (262)
+   Start at  14:47:38
+   Duration  3.94s (transform 2.02s, setup 0ms, collect 14.10s, tests 4.58s, environment 2ms, prepare 1.16s)
+

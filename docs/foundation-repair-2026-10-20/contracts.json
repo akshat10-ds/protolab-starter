@@ -1,0 +1,175 @@
+{
+  "status": "implemented_and_integrated_with_bounded_browser_verification",
+  "scope": "Private Ink source/generator/contracts/token and canonical AI repair candidates; no publication, deployment, merge or live Figma writes.",
+  "findingIds": [
+    "FOUNDATION-TYPES",
+    "FOUNDATION-TOKENS",
+    "FOUNDATION-GENERATION"
+  ],
+  "updatedAt": "2026-10-20T21:49:20.088188+00:00",
+  "version": {
+    "version": "1.0.0",
+    "buildTimestamp": "2026-10-20T21:47:23.749Z",
+    "componentCount": 85,
+    "bundleHash": "16c70f74eb3e3ee2"
+  },
+  "inkOutput": "/private/tmp/protolab-foundation-repair/ink/template/ink-starter/src/design-system",
+  "versionOutput": "/private/tmp/protolab-foundation-repair/ink/template/ink-starter/version.json",
+  "aiOutput": "/private/tmp/protolab-foundation-repair/ai-used-set-final",
+  "aiProvenance": {
+    "canonicalFileCount": 158,
+    "preparedFileCount": 96,
+    "seedFileCount": 78,
+    "addedDependencyFiles": 18,
+    "newLivePrototypeClosureComputed": false,
+    "published": false,
+    "manifest": "contracts-evidence/ai-used-set-manifest.json"
+  },
+  "archives": {
+    "ink": {
+      "root": "/private/tmp/protolab-foundation-repair/ink",
+      "baseCommit": "6d10d5c4cbcf2604a4422715eefccc086fff5672",
+      "archive": "ink-source-candidate.tar.gz",
+      "archiveSha256": "229925b649e1558da7261655ddfc05225076e7deffe35b928a41785add301a07",
+      "fileCount": 1083,
+      "trackedDeletions": []
+    },
+    "ai": {
+      "root": "/private/tmp/protolab-foundation-repair/ai",
+      "baseCommit": "45eea424f31111d29eeef282e4225201d792dd7e",
+      "archive": "ai-source-candidate.tar.gz",
+      "archiveSha256": "431187d404fa4e2c16e738f81ebbbed8ad696fd7351d5d874b0c24bc2ab78ec6",
+      "fileCount": 158,
+      "trackedDeletions": []
+    }
+  },
+  "archiveManifest": "../../patches/2026-10-20-foundation-repair/source-manifest.json",
+  "generatedTemplateArchive": {
+    "archive": "ink-starter-kit.zip",
+    "archiveSha256": "291e684039c46d269e4ed9b84a566ccc14f7165745b70dc57625fcb3f83697ef",
+    "version": {
+      "version": "1.0.0",
+      "buildTimestamp": "2026-10-20T21:47:23.749Z",
+      "componentCount": 85,
+      "bundleHash": "16c70f74eb3e3ee2"
+    }
+  },
+  "preparedAIArchive": {
+    "archive": "ai-used-set-candidate.tar.gz",
+    "archiveSha256": "09653195629e6ef4ca03ed106d4b27a3516beb96d90d48e0726f169e15717483",
+    "fileCount": 96,
+    "seedFileCount": 78,
+    "provenanceManifest": "ai-used-set-manifest.json"
+  },
+  "checks": {
+    "fullInkAndCanonicalAISource": {
+      "status": "pass",
+      "undefinedInkTokenReferences": 0,
+      "log": "contracts-evidence/source-contracts.log"
+    },
+    "preparedAISource": {
+      "status": "pass",
+      "undefinedInkTokenReferences": 0,
+      "log": "contracts-evidence/ai-used-set-contracts.log"
+    },
+    "sourceBundleTemplateParityExamplesPublicAPI": {
+      "status": "pass",
+      "deliveryFileCount": 957,
+      "log": "contracts-evidence/template-contracts.log"
+    },
+    "generatedViteBuild": {
+      "status": "pass",
+      "target": "ES2020",
+      "noEmit": true,
+      "log": "contracts-evidence/template-build.log"
+    },
+    "serverTypeScript": {
+      "status": "pass",
+      "noEmit": true,
+      "diagnostics": 0,
+      "log": "contracts-evidence/server-typecheck.log"
+    },
+    "nextProductionBuild": {
+      "status": "pass",
+      "log": "contracts-evidence/server-build.log"
+    },
+    "upstreamSuite": {
+      "status": "pass",
+      "suites": 22,
+      "passed": 257,
+      "skipped": 5,
+      "log": "contracts-evidence/upstream-tests.log"
+    },
+    "canonicalAITests": {
+      "status": "pass",
+      "passed": 8,
+      "log": "contracts-evidence/ai-source-tests.log"
+    },
+    "preparedAIUsedSetTests": {
+      "status": "pass",
+      "passed": 4,
+      "log": "contracts-evidence/ai-used-set-tests.log"
+    },
+    "realMCPScaffoldsAndGenerationGuards": {
+      "status": "pass",
+      "passed": 6,
+      "actualScaffoldCases": 4,
+      "staleSourceRejection": true,
+      "javascriptShadowRejection": true,
+      "log": "contracts-evidence/scaffold-tests.log"
+    },
+    "generatedSourceShadowNodeTest": {
+      "status": "pass",
+      "passed": 1,
+      "log": "contracts-evidence/shadow-tests.log"
+    },
+    "postBuildSourceAndDelivery": {
+      "status": "pass",
+      "undefinedInkTokenReferences": 0,
+      "logs": [
+        "contracts-evidence/post-build-source-contracts.log",
+        "contracts-evidence/post-build-template-contracts.log"
+      ]
+    },
+    "historicalIsolatedControlsBrowser": {
+      "status": "pass",
+      "groups": 6,
+      "scope": "Pre-final isolated Chromium checks, not final refreshed-app proof",
+      "log": "contracts-evidence/historical-control-behavior.json"
+    }
+  },
+  "tokenComparison": {
+    "counts": {
+      "equal": 367,
+      "different": 1,
+      "noExplicitNameMapping": 78,
+      "excludedDeprecatedOrNonsemantic": 22
+    },
+    "declarations": 1094,
+    "scope": "Saved explicit-name Standard comparison; inverse/touch runtime not compared",
+    "preservedFocusInset": {
+      "code": "-4px",
+      "figma": 0,
+      "reason": "Prior accepted user decision"
+    },
+    "glassBlur": "16px",
+    "evidence": "contracts-evidence/token-comparison.json"
+  },
+  "integration": {
+    "reportedBy": "root",
+    "refreshedBundleHash": "16c70f74eb3e3ee2",
+    "sourceHashEquality": true,
+    "starterTypeScriptDiagnostics": 0,
+    "starterAuditViolations": 0,
+    "starterBuild": "pass",
+    "refreshedMainAppCUA": "passed; browser/root-checks.json and screenshots"
+  },
+  "knownLimits": [
+    "Five upstream tests are skipped; the result is not an all-tests-executed claim.",
+    "Token comparison is explicit-name Standard evidence; 78 names remain unmapped and inverse/touch/permutation/glyph raster fidelity is not proven.",
+    "The 14:21:19 compiler-output emitter was not conclusively identified. Exact hashes were preserved; source guards, explicit noEmit and post-build checks prevent unnoticed recurrence.",
+    "The prepared AI subset preserves the original released file seed plus dependency closure, rather than representing a newly computed live-prototype used set or a published release.",
+    "Native file picker and all visual permutations are outside verified coverage."
+  ],
+  "archiveVerification": "../../patches/2026-10-20-foundation-repair/archive-verification.json"
+}

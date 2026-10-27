@@ -1,5 +1,4 @@
 /* Ink Design System - Table - Production Match */
-@import '../../1-tokens/tokens.css';
 
 /* ==========================================================================
    Table Wrapper (for action bar + table + pagination)
@@ -578,3 +577,10 @@
   align-items: center;
   gap: var(--ink-spacing-50);
 }
+
+/* Explicit Figma border rule overrides legacy variant borders. */
+.table.border-none .th, .table.border-none .td { border: none; }
+.table.border-rows .th, .table.border-rows .td { border: none; border-bottom: var(--ink-border-width-xs) solid var(--ink-border-color-subtle); }
+.table.border-columns .th, .table.border-columns .td { border: none; border-right: var(--ink-border-width-xs) solid var(--ink-border-color-subtle); }
+.table.border-both .th, .table.border-both .td { border: none; border-right: var(--ink-border-width-xs) solid var(--ink-border-color-subtle); border-bottom: var(--ink-border-width-xs) solid var(--ink-border-color-subtle); }
+.table.border-columns :is(.th,.td):last-child, .table.border-both :is(.th,.td):last-child { border-right: none; }

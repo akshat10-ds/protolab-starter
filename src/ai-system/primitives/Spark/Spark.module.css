@@ -1,0 +1,133 @@
+/*
+ * The mark holds the box. Both the glyph and the tunnel are laid over the same
+ * 14px square, so switching between them moves nothing around them.
+ */
+.spark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.glyph {
+  display: inline-flex;
+  line-height: 0;
+}
+
+/*
+ * THE ANIMATION IS THE MARK. The Lottie carries no static layer, so while the
+ * tunnel runs the glyph is not underneath it — leaving it there is what made
+ * the first port read as a gradient painted onto a solid body.
+ */
+.working .glyph {
+  visibility: hidden;
+}
+
+/*
+ * `overflow: visible` on purpose: a full-grown ring measures 20.4 units in a
+ * 20-unit box, so its tips reach just past the frame. The reference render lets
+ * them, and clipping there is what turns the loop's last beat into a hard edge.
+ */
+.tunnel {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/*
+ * A ring is the sparkle at one scale minus the same sparkle at a smaller one.
+ *
+ * THE TWO EDGES SHARE ONE CYCLE. They must not be the same animation with
+ * different delays: a delayed copy wraps on its own schedule, and the live DOM
+ * caught exactly that — a ring whose inner edge had looped ahead to 0.862 while
+ * its outer was still at 0.117, so the hole swallowed the ring and it vanished
+ * for part of every loop. The lag is expressed INSIDE the inner's keyframes
+ * instead, so an edge can never overtake the ring it belongs to.
+ *
+ * The numbers are the Lottie's: the inner starts at frame 61 of 240 (25.4%) and
+ * is at 179/240 = 0.746 when the outer reaches 1. Checked against the reference
+ * at frame 120 — outer 0.5, inner 0.246 — which this reproduces exactly.
+ */
+.outer,
+.inner {
+  /* fill-box, NOT view-box: these paths live inside a translated, scaled group,
+     so a viewBox-relative origin lands off-centre and the ring renders as a
+     clipped wedge (seen, then fixed, 2026-08-24). fill-box centres on the
+     path's own bounds, which is the sparkle's own centre. */
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-duration: 4000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.outer {
+  animation-name: sparkOuter;
+}
+
+.inner {
+  animation-name: sparkInner;
+}
+
+@keyframes sparkOuter {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes sparkInner {
+  0%,
+  25.4% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0.746);
+  }
+}
+
+/*
+ * The fade rides the RING, not its mask. A mask is read as luminance, so fading
+ * a mask path would thin the hole rather than the band — the ring has to fade
+ * as one object, which is the rect carrying the gradient.
+ *
+ * This is the one liberty taken: the original ends a ring by swapping a fresh
+ * layer over it, which a two-slot loop cannot do, and a ring vanishing at full
+ * size would pop.
+ */
+.ring {
+  animation: sparkFade 4000ms linear infinite;
+}
+
+@keyframes sparkFade {
+  0% {
+    opacity: 0;
+  }
+  10%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*
+ * NO JAVASCRIPT IN THE FALLBACK. Dropping the tunnel and restoring the glyph
+ * lands on exactly what `active={false}` renders, so reduced motion gets the
+ * resolved state's appearance rather than a frozen frame of something else.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .tunnel {
+    display: none;
+  }
+
+  .working .glyph {
+    visibility: visible;
+  }
+}

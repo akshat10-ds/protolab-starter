@@ -4,6 +4,7 @@ import { Icon } from '../../3-primitives/Icon';
 import { IconButton } from '../../3-primitives/IconButton';
 
 export interface FilterTagProps {
+  startElement?: React.ReactNode;
   /** Label text */
   label: string;
   /** Whether the filter is active */
@@ -22,10 +23,11 @@ export interface FilterTagProps {
   className?: string;
 }
 
-export const FilterTag = React.forwardRef<HTMLDivElement, FilterTagProps>(
+export const FilterTag = React.forwardRef<HTMLDivElement | HTMLButtonElement, FilterTagProps>(
   (
     {
       label,
+      startElement,
       active = false,
       dismissible = false,
       disabled = false,
@@ -36,6 +38,11 @@ export const FilterTag = React.forwardRef<HTMLDivElement, FilterTagProps>(
     },
     ref
   ) => {
+    const setElementRef = (element: HTMLDivElement | HTMLButtonElement | null) => {
+      if (typeof ref === 'function') return ref(element);
+      if (ref) ref.current = element;
+    };
+
     const containerClasses = [
       styles.filterTag,
       active && styles.active,
@@ -46,7 +53,7 @@ export const FilterTag = React.forwardRef<HTMLDivElement, FilterTagProps>(
       .filter(Boolean)
       .join(' ');
 
-    const handleTagClick = (e: React.MouseEvent) => {
+    const handleTagClick = () => {
       if (disabled) return;
       onClick?.();
     };
@@ -59,14 +66,16 @@ export const FilterTag = React.forwardRef<HTMLDivElement, FilterTagProps>(
 
     if (dismissible) {
       return (
-        <div data-ink-component="FilterTag" ref={ref} className={containerClasses}>
+        <div data-ink-component="FilterTag" ref={setElementRef} className={containerClasses}>
           <button
             className={styles.tagButton}
             onClick={handleTagClick}
             disabled={disabled}
             type="button"
           >
+            {startElement && <span className={styles.startElement}>{startElement}</span>}
             <span className={styles.label}>{label}</span>
+            {showTrigger && <Icon name="chevron-down" size={20} className={styles.trigger} />}
           </button>
           <IconButton
             icon="close"
@@ -74,7 +83,7 @@ export const FilterTag = React.forwardRef<HTMLDivElement, FilterTagProps>(
             variant="tertiary"
             onClick={handleDismissClick}
             disabled={disabled}
-            aria-label="Remove filter"
+            aria-label={`Remove ${label} filter`}
             className={styles.dismissButton}
           />
         </div>
@@ -84,12 +93,13 @@ export const FilterTag = React.forwardRef<HTMLDivElement, FilterTagProps>(
     return (
       <button
         data-ink-component="FilterTag"
-        ref={ref}
+        ref={setElementRef}
         className={containerClasses}
         onClick={handleTagClick}
         disabled={disabled}
         type="button"
       >
+        {startElement && <span className={styles.startElement}>{startElement}</span>}
         <span className={styles.label}>{label}</span>
         {showTrigger && (
           <Icon name="chevron-down" size="small" className={styles.trigger} />

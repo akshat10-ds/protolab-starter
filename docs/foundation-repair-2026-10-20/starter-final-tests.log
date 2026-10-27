@@ -1,0 +1,28 @@
+
+> test:audit:design-system
+> node --test scripts/design-system-audit.test.mjs
+
+✔ raw controls are JSX nodes, excluding comments, text, components, and closing tags (4.102541ms)
+✔ detects actual deep imports, re-exports, dynamic imports, and require calls (0.914375ms)
+✔ ignores chart/data colors, SVG paint attributes, and structural dimensions (1.1925ms)
+✔ reads direct JSX styles and token-aware color, typography, spacing and layout debt (0.503375ms)
+✔ resolves unique bindings and style spreads, and does not flag DS layout components (0.759542ms)
+✔ does not guess ambiguous shadowed bindings or execute style calls (0.486708ms)
+✔ handles conditional literal style branches without treating expressions as literal values (0.438ms)
+✔ finds undefined Ink variables, including fallback use, while ignoring comments and dynamic token names (0.447833ms)
+✔ undefined token source locations use original escaped string text (0.200125ms)
+✔ CSS lexer balances nested rules, comments, quoted punctuation, and URL functions (0.421375ms)
+✔ CSS appearance rules skip font-face registration, token fallbacks, zero and token arithmetic (0.203375ms)
+✔ project scope excludes generated sources and Code Connect while reading their CSS token definitions (10.423458ms)
+✔ baseline fingerprints survive line moves and use occurrence counts to catch duplicates (0.356709ms)
+✔ changed literal evidence remains a new finding even when its source position is unchanged (0.185375ms)
+✔ rejects malformed baseline data instead of silently accepting findings (0.170916ms)
+✔ CLI writes JSON, captures explicit baseline, and fails on new debt with useful exit codes (1004.38725ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1160.162667
