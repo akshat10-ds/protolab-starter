@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import styles from './Radio.module.css';
+import { Icon } from '../Icon';
 
 export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
   label: string;
@@ -15,7 +16,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     const errorId = `${radioId}-error`;
     const descriptionId = `${radioId}-description`;
 
-    const ariaDescribedBy = [error ? errorId : null, description ? descriptionId : null]
+    const ariaDescribedBy = [error ? errorId : null, description && !error ? descriptionId : null]
       .filter(Boolean)
       .join(' ');
 
@@ -53,7 +54,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
         {error && (
           <div id={errorId} className={styles.errorMessage}>
-            {error}
+            <Icon name="status-error" size="small" />
+            <span>{error}</span>
           </div>
         )}
       </div>

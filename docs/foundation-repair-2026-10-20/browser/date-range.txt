@@ -1,0 +1,5 @@
+Browser tab: 7, Title: "ProtoLab foundation verification", URL: "http://127.0.0.1:5190/tests/browser/index.html".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~					257 text field (settable) Date range, Value: 10/22/2026 – 10/25/2026
+~					263 text Selected range:  10/22/2026 to 10/25/2026
+The focused UI element is 257 text field (settable) Date range, Value: 10/22/2026 – 10/25/2026

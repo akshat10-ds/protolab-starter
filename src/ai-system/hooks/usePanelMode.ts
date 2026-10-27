@@ -31,6 +31,11 @@
  * A controller that cannot do that is a controller the host has to finish, and
  * the host finishing it is how the panel prototype shipped a 43px chat sliver.
  *
+ * An open dock also RAISES THE PANEL'S FLOOR to `THREE_COLUMN_MIN_WIDTH`, so
+ * host + chat + dock is a layout the panel can rest in below fullscreen and the
+ * squeeze that produced the sliver is out of reach. Leaving fullscreen with a
+ * dock open used to close it; it does not (2026-08-19 — see the mode stream).
+ *
  * Composition
  * -----------
  * All drag math, the window-resize clamp, and the near-full-width detection come
@@ -97,8 +102,29 @@ export interface PanelArtifactState {
    * Promote an artifact into the dock. Goes **fullscreen first** — a 420px dock
    * does not fit beside the chat in a 360px sidebar — records the item as one
    * this conversation has produced, and never arrives expanded.
+   *
+   * Fullscreen is where it ARRIVES, not where it is confined. While the dock is
+   * open the panel's floor rises to `THREE_COLUMN_MIN_WIDTH`, so contracting
+   * out of fullscreen lands on host + chat + dock rather than closing the dock.
+   *
+   * `{ fullscreen: false }` asks for that resting layout DIRECTLY — the panel
+   * opens at `THREE_COLUMN_MIN_WIDTH` and the host page stays on screen beside
+   * it. It is what shipping Iris does with the sources column, and it is an
+   * opt-in: omit the option and the fullscreen-first rule is unchanged. An
+   * extent too narrow to hold three columns ignores it and goes fullscreen,
+   * which is where a dock belongs when three columns cannot fit — and so does
+   * an extent that would leave the host page under
+   * `THREE_COLUMN_MIN_HOST_WIDTH`, because a third column is not worth a page
+   * nobody can read.
+   *
+   * `{ inPlace: true }` asks for neither. The dock takes the panel it already
+   * has — arriving expanded, so the chat folds away rather than being squeezed
+   * — and mode and width are not touched at all. It is for a host page that
+   * must not be displaced: a document the user is reading beside the chat. It
+   * outranks `fullscreen`, because "do not move the panel" is the stronger
+   * statement of the two.
    */
-  open: (id: string) => void;
+  open: (id: string, options?: { fullscreen?: boolean; inPlace?: boolean }) => void;
   /**
    * Move the dock to another item it already holds, or `null` to close it.
    * Does not change panel mode and does not add to `openedIds`: a tab, a back
@@ -107,6 +133,18 @@ export interface PanelArtifactState {
   setOpenId: (id: string | null) => void;
   /** Close the dock and drop `expanded`, so reopening never inherits it. */
   close: () => void;
+  /**
+   * A NEW CONVERSATION — close the dock and empty the tab strip.
+   *
+   * `openedIds` is documented as what THIS conversation has produced, and
+   * `close` never emptied it: the strip carried the last conversation's
+   * artifacts into the next one. Every host that starts a fresh thread —
+   * `onNewConversation`, a scenario jig between participants — wants this and
+   * had no verb for it.
+   *
+   * Additive. `close` is unchanged, and a host that never resets is untouched.
+   */
+  reset: () => void;
   /** The dock's expand/contract control. */
   toggleExpanded: () => void;
 }
@@ -201,6 +239,64 @@ const KEYBOARD_RESIZE_STEP = 24;
 /** Matches `usePanelResize`'s SSR fallback. */
 const SSR_VIEWPORT_WIDTH = 1920;
 
+/**
+ * THE THREE-COLUMN FLOOR — how wide a `sidebar` must be to hold a chat AND a
+ * dock beside it, with the host page still visible on the other side.
+ *
+ * 916 = 480 + 420 + 16.
+ *   480  the chat column's floor. `IrisAgent.module.css` states it as
+ *        `flex-basis: 480px` on `.rightArea`, and it is the panel's own
+ *        default `sidebarWidth`.
+ *   420  the dock card. `ArtifactDock.module.css` `.dock { width: 420px }`
+ *        with `flex-shrink: 0`, so it is a constant, not a preference.
+ *    16  the card's own right margin (`--ink-spacing-200`), which is panel
+ *        width the chat never gets.
+ *
+ * It is a FLOOR ON THE DRAG, not a mode trigger. Akshat, 2026-08-19: *"we
+ * shouldn't automatically collapse the right sidebar if they start narrowing
+ * the chat."* So narrowing simply stops here; nothing closes and nothing
+ * flips mid-drag.
+ *
+ * Below `916 + FULLSCREEN_EPSILON + 1` of extent there is no room for three
+ * columns at all. The floor is then clamped to the extent itself, which reads
+ * as fullscreen — so a viewport that cannot hold three columns gets the dock
+ * at fullscreen, which is the fullscreen-first rule doing its existing job.
+ */
+export const THREE_COLUMN_MIN_WIDTH = 916;
+
+/**
+ * THE OTHER HALF OF THE THREE-COLUMN RULE — what the HOST is left with.
+ *
+ * `THREE_COLUMN_MIN_WIDTH` is entirely about the panel's side of the seam. It
+ * says nothing about the remainder, and the remainder is a whole page. At
+ * 1440 the panel takes 916 and the host page gets 524, which is not a
+ * three-column layout so much as a chat with a stripe of app behind it.
+ *
+ * MEASURED, not chosen. Navigator's own insights band (`.ink-insights__body`)
+ * is a flex row of two cards — `flex: 1 1 440px` and `flex: 0 1 460px`, both
+ * `min-width: 0` — so it has no breakpoint and no floor: it shrinks until its
+ * contents clip. Driven live at 1440/1600/1700/1800 with the sources column
+ * open, the knee is where the CTA card stops clipping its own action row
+ * ("Review Data" / "Do This Later", 183px intrinsic + 48px card padding = a
+ * 231px card):
+ *
+ *   viewport 1440 → host 524 → card  89  — headline one word per line
+ *   viewport 1600 → host 684 → card 175  — action row clipped by 43px
+ *   viewport 1700 → host 784 → card 229  — action row clipped by 2px
+ *   viewport 1800 → host 884 → card 283  — nothing clipped, headline 2 lines
+ *
+ * The knee is host ≈ 786; 800 is that rounded up. Below it the dock opens the
+ * way it always did — fullscreen — rather than onto a host page too narrow to
+ * read. Only `open(id, { fullscreen: false })` consults this, so a host that
+ * never asks for the resting layout is untouched.
+ *
+ * Not applied to `resolvedMinWidth`: the drag floor is every prototype's, and
+ * raising it here would change what contracting out of fullscreen lands on for
+ * all of them. Contracting at 1440 still lands on the 916 floor and the 524px
+ * host — that is today's behaviour, left alone deliberately.
+ */
+export const THREE_COLUMN_MIN_HOST_WIDTH = 800;
+
 // =============================================================================
 // Helpers
 // =============================================================================
@@ -250,10 +346,43 @@ export function usePanelMode({
   const extentWidth =
     maxWidth === undefined ? viewportWidth : resolvePanelSize(maxWidth, viewportWidth);
 
-  const resolvedMinWidth = resolvePanelSize(minWidth, extentWidth);
   const resolvedSidebarWidth = resolvePanelSize(sidebarWidth, extentWidth);
 
   const [isOpen, setIsOpen] = useState(initialMode !== 'closed');
+
+  /*
+    The dock's state is declared up here, ahead of the resize hook, because the
+    panel's own floor depends on it — see `resolvedMinWidth` below. The verbs
+    that move it still live in their own section further down, next to the
+    artifact block they belong to.
+  */
+  const [artifactOpenId, setArtifactOpenId] = useState<string | null>(null);
+  const [artifactExpanded, setArtifactExpanded] = useState(false);
+  const [openedArtifactIds, setOpenedArtifactIds] = useState<string[]>([]);
+
+  /**
+   * The panel's floor, and the whole of the three-column rule.
+   *
+   * With a dock open the panel may not be narrowed past the width where the
+   * chat and the dock both fit — `usePanelResize` clamps every drag frame,
+   * every keyboard step and every `setWidth` against this number, so one value
+   * enforces the rule on all three paths and no mode ever flips underneath the
+   * pointer.
+   *
+   * It also does the work on the way OUT of fullscreen at no cost: the contract
+   * control restores the width the panel came from (often 480), `setWidth`
+   * clamps that up to the floor, and the panel lands on the three-column layout
+   * instead of the squeezed one.
+   *
+   * `Math.min(…, extentWidth)` is the small-viewport case: a floor wider than
+   * the extent would push the panel past the screen edge. Clamped to the extent
+   * it reads as fullscreen instead, which is where a dock belongs when three
+   * columns cannot fit.
+   */
+  const baseMinWidth = resolvePanelSize(minWidth, extentWidth);
+  const resolvedMinWidth = artifactOpenId
+    ? Math.min(THREE_COLUMN_MIN_WIDTH, extentWidth)
+    : baseMinWidth;
 
   /**
    * A drag crossed `snapToCloseThreshold`. Assigned below, once `resize` exists;
@@ -305,7 +434,15 @@ export function usePanelMode({
   // ---------------------------------------------------------------------------
 
   /** The widest a `sidebar` may be before it reads as `fullscreen`. */
-  const maxSidebarWidth = Math.max(resolvedMinWidth, extentWidth - FULLSCREEN_EPSILON - 1);
+  /*
+    `baseMinWidth`, not the dock-aware floor: this is a ceiling, and pinning it
+    to a floor that moves when the dock opens would change the identity of
+    `open` and `setMode` — which are documented as stable, and which a consumer
+    is invited to put in an effect's dependency array. The floor is enforced
+    where it belongs, inside `usePanelResize.setWidth`, which clamps every write
+    up to `minWidth` after this ceiling has clamped it down.
+  */
+  const maxSidebarWidth = Math.max(baseMinWidth, extentWidth - FULLSCREEN_EPSILON - 1);
 
   /**
    * The transitions read the *current* mode and width, but must not be
@@ -395,18 +532,76 @@ export function usePanelMode({
   // The artifact dock
   // ---------------------------------------------------------------------------
 
-  const [artifactOpenId, setArtifactOpenId] = useState<string | null>(null);
-  const [artifactExpanded, setArtifactExpanded] = useState(false);
-  const [openedArtifactIds, setOpenedArtifactIds] = useState<string[]>([]);
+  /* State declared above the resize hook — it is what sets the panel's floor. */
 
   const openArtifact = useCallback(
-    (id: string) => {
-      setMode('fullscreen');
+    (id: string, options?: { fullscreen?: boolean; inPlace?: boolean }) => {
+      /*
+        THE DOCK IN THE PANEL IT ALREADY HAS.
+
+        `{ inPlace: true }` is the opt-out from the whole width negotiation
+        below: no fullscreen, no three-column floor, no width change at all.
+        The dock arrives EXPANDED — it takes the panel's own width, and the
+        chat column folds away rather than being squeezed into a sliver next to
+        a 420px card.
+
+        It exists because a host page can be something the user is reading —
+        a document open beside the chat — and every other route to the dock
+        displaces it. Akshat, 2026-08-25: *"in the doc preview mode we kinda
+        want to stay in the sidebar mode only and not go fullscreen."*
+
+        Checked first, and it returns: `fullscreen: false` still asks the panel
+        to move (to `THREE_COLUMN_MIN_WIDTH`, or to fullscreen when three
+        columns do not fit), and "do not move the panel" outranks it.
+      */
+      if (options?.inPlace) {
+        /* "In place" needs a place. A closed panel has none, and a dock opened
+           into one is an artifact nobody can see — so a shut panel gets its
+           sidebar back. An OPEN panel is not touched, at any width: `setMode`
+           would snap a dragged width back to `sidebarWidth`. */
+        if (modeRef.current === 'closed') setMode('sidebar');
+        setArtifactExpanded(true);
+        setOpenedArtifactIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+        setArtifactOpenId(id);
+        return;
+      }
+
+      /*
+        THE THIRD COLUMN, ASKED FOR DIRECTLY.
+
+        `artifact.open(id)` goes fullscreen first because a 420px dock does not
+        fit beside a 360px chat. But `host | chat | dock` is already a layout
+        the panel can rest in — the floor rises to `THREE_COLUMN_MIN_WIDTH` the
+        moment a dock is open, which is what contracting out of fullscreen
+        lands on. `{ fullscreen: false }` simply opens onto that resting layout
+        instead of arriving through fullscreen, so the host page never blinks
+        out. Shipping Iris opens Sources this way.
+
+        Below `THREE_COLUMN_MIN_WIDTH + FULLSCREEN_EPSILON + 1` of extent the
+        three columns do not fit and the option is ignored: the panel goes
+        fullscreen, which is the existing rule doing its existing job.
+
+        And below `THREE_COLUMN_MIN_HOST_WIDTH` of REMAINDER they fit only
+        arithmetically: the third column exists and the page behind it is
+        unreadable. Same fallback, same reason — see that constant for the
+        measurement.
+      */
+      if (
+        options?.fullscreen === false &&
+        extentWidth > THREE_COLUMN_MIN_WIDTH + FULLSCREEN_EPSILON &&
+        extentWidth - THREE_COLUMN_MIN_WIDTH >= THREE_COLUMN_MIN_HOST_WIDTH
+      ) {
+        priorRef.current = null;
+        setIsOpen(true);
+        resizeRef.current.setWidth(THREE_COLUMN_MIN_WIDTH);
+      } else {
+        setMode('fullscreen');
+      }
       setArtifactExpanded(false); // a freshly opened artifact never arrives expanded
       setOpenedArtifactIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
       setArtifactOpenId(id);
     },
-    [setMode]
+    [setMode, extentWidth]
   );
 
   const setArtifactOpen = useCallback((id: string | null) => {
@@ -419,6 +614,12 @@ export function usePanelMode({
     setArtifactExpanded(false);
   }, []);
 
+  const resetArtifacts = useCallback(() => {
+    setArtifactOpenId(null);
+    setArtifactExpanded(false);
+    setOpenedArtifactIds([]);
+  }, []);
+
   const toggleArtifactExpanded = useCallback(() => setArtifactExpanded((v) => !v), []);
 
   const artifact = useMemo<PanelArtifactState>(
@@ -429,6 +630,7 @@ export function usePanelMode({
       open: openArtifact,
       setOpenId: setArtifactOpen,
       close: closeArtifact,
+      reset: resetArtifacts,
       toggleExpanded: toggleArtifactExpanded,
     }),
     [
@@ -438,6 +640,7 @@ export function usePanelMode({
       openArtifact,
       setArtifactOpen,
       closeArtifact,
+      resetArtifacts,
       toggleArtifactExpanded,
     ]
   );
@@ -456,11 +659,48 @@ export function usePanelMode({
     callbacksRef.current.onWidthChange?.(width);
   }, [width]);
 
+  /*
+    FULLSCREEN IS A WIDTH, SO IT HAS TO BE THE WHOLE WIDTH.
+
+    `usePanelResize` re-pins a panel that was AT the old extent when the extent
+    changes — that is what makes fullscreen sticky across a window resize. It
+    does nothing for the panel that BECOMES fullscreen because the viewport
+    shrank down to it, which is now a reachable state: a dock-open panel sits on
+    its 916 floor, the window narrows to 940, and the derived mode flips to
+    `fullscreen` while a 24px strip of host page still shows beside it. The
+    chrome switches to the fullscreen grammar; the geometry does not.
+
+    Not during a drag: the drag owns the width while the pointer is down, and a
+    panel that snapped to the edge 50px early would fight the hand. On release
+    it settles, which is the same rule stated once.
+  */
+  useEffect(() => {
+    if (mode !== 'fullscreen' || resize.isResizing) return;
+    if (width === extentWidth) return;
+    resizeRef.current.setWidth(extentWidth);
+  }, [mode, width, extentWidth, resize.isResizing]);
+
   const lastModeRef = useRef(mode);
   useEffect(() => {
     if (lastModeRef.current === mode) return;
     const prev = lastModeRef.current;
     lastModeRef.current = mode;
+    /*
+      LEAVING FULLSCREEN NO LONGER CLOSES THE DOCK — REMOVED 2026-08-19.
+
+      The rule that stood here closed the dock whenever the panel left
+      fullscreen. It was written against a real defect: a 420px card floating
+      inside a 480px panel with a ~40px sliver of chat beside it. Akshat
+      overruled the cure rather than the diagnosis — *"we shouldn't
+      automatically collapse the right sidebar if they start narrowing the
+      chat"* — because a dock the user opened is not the mode machine's to
+      close.
+
+      What replaces it is `THREE_COLUMN_MIN_WIDTH` on `resolvedMinWidth`: with a
+      dock open the panel simply cannot be narrower than a chat plus a dock, so
+      the squeezed frame is unreachable and host + chat + dock is a state the
+      panel can rest in. The defect stays dead; the dock stays open.
+    */
     callbacksRef.current.onModeChange?.(mode, prev);
   }, [mode]);
 

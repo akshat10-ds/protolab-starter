@@ -2,13 +2,19 @@ import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import styles from './ComboBox.module.css';
 import { Icon } from '../../3-primitives/Icon';
 import { IconButton } from '../../3-primitives/IconButton';
+import { Spinner } from '../../3-primitives/Spinner';
 
 export interface ComboBoxOption {
   value: string;
   label: string;
   disabled?: boolean;
+  description?: string;
+  startElement?: React.ReactNode;
+  endElement?: React.ReactNode;
+  group?: string;
+  /** A parent option navigates to its children without changing the selected value. */
+  children?: ComboBoxOption[];
 }
-
 export interface ComboBoxProps {
   label: string;
   hideLabel?: boolean;
@@ -19,347 +25,128 @@ export interface ComboBoxProps {
   onChange: (value: string) => void;
   placeholder?: string;
   disabled?: boolean;
+  readOnly?: boolean;
   required?: boolean;
   id?: string;
   width?: string;
+  className?: string;
+  /** Defaults to editable for compatibility. Set false for the published Combobox family. */
+  editable?: boolean;
+  size?: 'small' | 'medium';
+  startElement?: React.ReactNode;
+  inputHelp?: React.ReactNode;
+  clearable?: boolean;
+  showTrigger?: boolean;
+  loading?: boolean;
+  loadingText?: string;
+  emptyText?: string;
+  renderOption?: (option: ComboBoxOption) => React.ReactNode;
+  'aria-describedby'?: string;
 }
-
+function findOption(options: ComboBoxOption[], value: string): ComboBoxOption | undefined {
+  for (const option of options) {
+    if (option.value === value) return option;
+    const child = option.children && findOption(option.children, value);
+    if (child) return child;
+  }
+}
 export const ComboBox = forwardRef<HTMLInputElement, ComboBoxProps>(
-  (
-    {
-      label,
-      hideLabel = false,
-      description,
-      error,
-      options,
-      value,
-      onChange,
-      placeholder = 'Select an option...',
-      disabled = false,
-      required = false,
-      id,
-      width,
-    },
-    ref
-  ) => {
+  ({ label, hideLabel = false, description, error, options, value, onChange,
+    placeholder = 'Select an option...', disabled = false, readOnly = false, required = false,
+    id, width, className, editable = true, size = 'medium', startElement, inputHelp,
+    clearable = true, showTrigger = true, loading = false, loadingText = 'Loading options',
+    emptyText = 'No options found', renderOption, 'aria-describedby': describedBy }, ref) => {
     const generatedId = React.useId();
     const comboBoxId = id || generatedId;
-    const errorId = `${comboBoxId}-error`;
-    const descriptionId = `${comboBoxId}-description`;
     const listboxId = `${comboBoxId}-listbox`;
-
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
     const [highlightedIndex, setHighlightedIndex] = useState(-1);
-    const [inputValue, setInputValue] = useState('');
-
+    const [parents, setParents] = useState<ComboBoxOption[]>([]);
     const containerRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    const listboxRef = useRef<HTMLUListElement>(null);
-
-    // Find selected option label
-    const selectedOption = options.find((opt) => opt.value === value);
-
-    // Filter options based on search term
-    const filteredOptions = options.filter((option) =>
-      option.label.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    // Update input value when value prop changes
+    const selectedOption = findOption(options, value);
+    const currentOptions = parents.length ? parents[parents.length - 1].children ?? [] : options;
+    const filteredOptions = loading ? [] : currentOptions.filter(option => !editable || !isSearching || option.label.toLowerCase().includes(searchTerm.toLowerCase()));
+    const enabledIndices = filteredOptions.flatMap((option, index) => option.disabled ? [] : [index]);
+    const canInteract = !disabled && !readOnly;
+    const showClear = editable && clearable && !!value && canInteract;
+    const inputValue = isSearching ? searchTerm : selectedOption?.label ?? '';
+    const resetSearch = () => { setSearchTerm(''); setIsSearching(false); setHighlightedIndex(-1); };
+    const close = () => { setIsOpen(false); resetSearch(); setParents([]); };
+    const open = () => { if (canInteract) setIsOpen(true); };
+    useEffect(() => { resetSearch(); }, [value]);
+    useEffect(() => { if (!canInteract) close(); }, [canInteract]);
     useEffect(() => {
-      if (selectedOption) {
-        setInputValue(selectedOption.label);
-        setSearchTerm('');
-      } else {
-        setInputValue('');
-        setSearchTerm('');
-      }
-    }, [value, selectedOption]);
-
-    // Close dropdown when clicking outside
+      if (!isOpen) return;
+      const outside = (event: MouseEvent) => { if (!containerRef.current?.contains(event.target as Node)) close(); };
+      document.addEventListener('mousedown', outside);
+      return () => document.removeEventListener('mousedown', outside);
+    }, [isOpen]);
     useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-          setIsOpen(false);
-          // Reset input to selected value
-          if (selectedOption) {
-            setInputValue(selectedOption.label);
-            setSearchTerm('');
-          } else {
-            setInputValue('');
-            setSearchTerm('');
-          }
-          setHighlightedIndex(-1);
-        }
-      };
-
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [selectedOption]);
-
-    // Scroll highlighted option into view
-    useEffect(() => {
-      if (highlightedIndex >= 0 && listboxRef.current) {
-        const highlightedElement = listboxRef.current.children[highlightedIndex] as HTMLElement;
-        if (highlightedElement) {
-          highlightedElement.scrollIntoView({
-            block: 'nearest',
-          });
-        }
-      }
-    }, [highlightedIndex]);
-
-    const ariaDescribedBy = [
-      error ? errorId : null,
-      description ? descriptionId : null,
-    ]
-      .filter(Boolean)
-      .join(' ');
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const newValue = e.target.value;
-      setInputValue(newValue);
-      setSearchTerm(newValue);
-      setIsOpen(true);
-      setHighlightedIndex(-1);
+      if (isOpen && highlightedIndex >= 0) document.getElementById(`${comboBoxId}-option-${highlightedIndex}`)?.scrollIntoView?.({ block: 'nearest' });
+    }, [isOpen, highlightedIndex, comboBoxId]);
+    const choose = (option: ComboBoxOption) => {
+      if (!canInteract || option.disabled) return;
+      if (option.children?.length) { setParents([...parents, option]); resetSearch(); return; }
+      onChange(option.value); close(); inputRef.current?.focus();
     };
-
-    const handleInputClick = () => {
-      if (!disabled) {
-        setIsOpen(!isOpen);
-      }
+    const move = (direction: 1 | -1) => {
+      if (!canInteract) return;
+      open();
+      if (!enabledIndices.length) { setHighlightedIndex(-1); return; }
+      const position = enabledIndices.indexOf(highlightedIndex);
+      setHighlightedIndex(enabledIndices[position < 0 ? (direction === 1 ? 0 : enabledIndices.length - 1) : (position + direction + enabledIndices.length) % enabledIndices.length]);
     };
-
-    const handleChevronClick = (e: React.MouseEvent) => {
-      e.stopPropagation();
-      if (!disabled) {
-        setIsOpen(!isOpen);
-        inputRef.current?.focus();
-      }
-    };
-
-    const handleOptionClick = (option: ComboBoxOption) => {
-      if (!option.disabled) {
-        onChange(option.value);
-        setInputValue(option.label);
-        setSearchTerm('');
-        setIsOpen(false);
-        setHighlightedIndex(-1);
-      }
-    };
-
-    const handleClear = () => {
-      onChange('');
-      setInputValue('');
-      setSearchTerm('');
-      setHighlightedIndex(-1);
-      inputRef.current?.focus();
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      switch (e.key) {
-        case 'ArrowDown':
-          e.preventDefault();
-          if (!isOpen) {
-            setIsOpen(true);
-          } else {
-            let nextIndex = highlightedIndex;
-            do {
-              nextIndex = nextIndex < filteredOptions.length - 1 ? nextIndex + 1 : nextIndex;
-            } while (
-              nextIndex < filteredOptions.length - 1 &&
-              filteredOptions[nextIndex]?.disabled
-            );
-            setHighlightedIndex(nextIndex);
-          }
-          break;
-
-        case 'ArrowUp':
-          e.preventDefault();
-          if (!isOpen) {
-            setIsOpen(true);
-          } else {
-            let prevIndex = highlightedIndex;
-            do {
-              prevIndex = prevIndex > 0 ? prevIndex - 1 : -1;
-            } while (prevIndex > 0 && filteredOptions[prevIndex]?.disabled);
-            setHighlightedIndex(prevIndex);
-          }
-          break;
-
+    const keyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (!canInteract) return;
+      switch (event.key) {
+        case 'ArrowDown': event.preventDefault(); move(1); break;
+        case 'ArrowUp': event.preventDefault(); move(-1); break;
+        case 'Home': if (isOpen) { event.preventDefault(); setHighlightedIndex(enabledIndices[0] ?? -1); } break;
+        case 'End': if (isOpen) { event.preventDefault(); setHighlightedIndex(enabledIndices[enabledIndices.length - 1] ?? -1); } break;
         case 'Enter':
-          e.preventDefault();
-          if (isOpen && highlightedIndex >= 0 && filteredOptions[highlightedIndex]) {
-            handleOptionClick(filteredOptions[highlightedIndex]);
+        case ' ': if (event.key === ' ' && editable) break; event.preventDefault(); if (isOpen && highlightedIndex >= 0) choose(filteredOptions[highlightedIndex]); else open(); break;
+        case 'ArrowRight': if (isOpen && filteredOptions[highlightedIndex]?.children?.length) { event.preventDefault(); choose(filteredOptions[highlightedIndex]); } break;
+        case 'ArrowLeft': if (isOpen && parents.length && !editable) { event.preventDefault(); setParents(parents.slice(0, -1)); resetSearch(); } break;
+        case 'Escape': if (isOpen) { event.preventDefault(); close(); } break;
+        case 'Tab': close(); break;
+        default:
+          if (!editable && event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
+            open(); const match = filteredOptions.findIndex(option => !option.disabled && option.label.toLowerCase().startsWith(event.key.toLowerCase())); setHighlightedIndex(match);
           }
-          break;
-
-        case 'Escape':
-          e.preventDefault();
-          setIsOpen(false);
-          // Reset input to selected value
-          if (selectedOption) {
-            setInputValue(selectedOption.label);
-            setSearchTerm('');
-          } else {
-            setInputValue('');
-            setSearchTerm('');
-          }
-          setHighlightedIndex(-1);
-          break;
-
-        case 'Tab':
-          setIsOpen(false);
-          // Reset input to selected value on tab
-          if (selectedOption) {
-            setInputValue(selectedOption.label);
-            setSearchTerm('');
-          } else {
-            setInputValue('');
-            setSearchTerm('');
-          }
-          setHighlightedIndex(-1);
-          break;
       }
     };
-
-    const inputClasses = [
-      styles.input,
-      error && styles.error,
-      disabled && styles.disabled,
-    ]
-      .filter(Boolean)
-      .join(' ');
-
+    const descriptionIds = [describedBy, error ? `${comboBoxId}-error` : description ? `${comboBoxId}-description` : null].filter(Boolean).join(' ') || undefined;
     return (
-      <div data-ink-component="ComboBox" className={styles.wrapper} style={{ width }} ref={containerRef}>
-        <label
-          htmlFor={comboBoxId}
-          className={`${styles.label} ${hideLabel ? styles.visuallyHidden : ''} ${
-            disabled ? styles.labelDisabled : ''
-          }`}
-        >
-          {label}
-          {required && <span className={styles.required}> *</span>}
-        </label>
-
-        {description && !error && (
-          <div id={descriptionId} className={styles.description}>
-            {description}
+      <div data-ink-component="ComboBox" data-ink-prop-size={size} data-ink-prop-editable={editable} className={`${styles.wrapper} ${disabled ? styles.wrapperDisabled : ''} ${className ?? ''}`} style={{ width }} ref={containerRef} onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) close(); }}>
+        <label htmlFor={comboBoxId} className={`${styles.label} ${hideLabel ? styles.visuallyHidden : ''}`}>{label}{required && <span className={styles.required}> *</span>}</label>
+        {description && !error && <div id={`${comboBoxId}-description`} className={styles.description}>{description}</div>}
+        <div className={styles.fieldRow}>
+          <div className={`${styles.inputContainer} ${styles[size]} ${error ? styles.error : ''} ${readOnly ? styles.readOnly : ''}`}>
+            {startElement && <span className={styles.startElement}>{startElement}</span>}
+            <input ref={node => { inputRef.current = node; if (typeof ref === 'function') return ref(node); if (ref) ref.current = node; }} id={comboBoxId} type="text" role="combobox" aria-autocomplete={editable ? 'list' : 'none'} aria-haspopup="listbox" aria-expanded={isOpen && canInteract} aria-controls={isOpen ? listboxId : undefined} aria-activedescendant={isOpen && filteredOptions[highlightedIndex] ? `${comboBoxId}-option-${highlightedIndex}` : undefined} aria-describedby={descriptionIds} aria-invalid={error ? true : undefined} aria-required={required || undefined} aria-readonly={readOnly || undefined} className={styles.input} value={inputValue} readOnly={!editable || readOnly} onChange={event => { if (canInteract && editable) { setSearchTerm(event.target.value); setIsSearching(true); setHighlightedIndex(-1); open(); } }} onClick={() => isOpen ? close() : open()} onKeyDown={keyDown} placeholder={placeholder} disabled={disabled} autoComplete="off" />
+            {showClear ? <IconButton icon="close" size="small" variant="tertiary" onClick={() => { onChange(''); resetSearch(); inputRef.current?.focus(); }} aria-label={`Clear ${label}`} className={styles.clearButton} /> : showTrigger && <IconButton icon="chevron-down" size="small" variant="tertiary" onClick={() => { isOpen ? close() : open(); inputRef.current?.focus(); }} aria-label={`Show ${label} options`} aria-expanded={isOpen && canInteract} aria-controls={isOpen ? listboxId : undefined} disabled={!canInteract} className={styles.triggerButton} />}
+            {isOpen && canInteract && <div className={styles.popup}>
+              {parents.length > 0 && <button type="button" className={styles.backOption} onMouseDown={event => event.preventDefault()} onClick={() => { setParents(parents.slice(0, -1)); resetSearch(); }}><Icon name="chevron-left" size={20} />Back</button>}
+              {loading && <div className={styles.loading} role="status"><Spinner size="small" label={loadingText} /></div>}
+              <ul id={listboxId} role="listbox" className={styles.listbox} aria-label={label} aria-busy={loading}>
+                {!loading && !filteredOptions.length && <li role="presentation" className={styles.noResults}>{emptyText}</li>}
+                {filteredOptions.map((option, index) => <React.Fragment key={option.value}>
+                  {option.group && (index === 0 || option.group !== filteredOptions[index - 1].group) && <li role="presentation" className={styles.groupLabel}>{option.group}</li>}
+                  <li id={`${comboBoxId}-option-${index}`} role="option" aria-label={option.label} aria-selected={option.value === value} aria-disabled={option.disabled || undefined} aria-describedby={option.description ? `${comboBoxId}-option-${index}-description` : undefined} className={`${styles.option} ${option.value === value ? styles.optionSelected : ''} ${index === highlightedIndex ? styles.optionHighlighted : ''} ${option.disabled ? styles.optionDisabled : ''}`} onMouseDown={event => event.preventDefault()} onClick={() => choose(option)} onMouseEnter={() => !option.disabled && setHighlightedIndex(index)}>
+                    {renderOption ? renderOption(option) : <>{option.startElement && <span className={styles.optionElement}>{option.startElement}</span>}<span className={styles.optionText}><span>{option.label}</span>{option.description && <span id={`${comboBoxId}-option-${index}-description`} className={styles.optionDescription}>{option.description}</span>}</span>{option.endElement && <span className={styles.optionElement}>{option.endElement}</span>}{option.children?.length ? <Icon name="chevron-right" size={20} /> : option.value === value && <Icon name="check" size={20} />}</>}
+                  </li>
+                </React.Fragment>)}
+              </ul>
+            </div>}
           </div>
-        )}
-
-        <div className={styles.inputContainer}>
-          <input
-            ref={(node) => {
-              if (typeof ref === 'function') {
-                ref(node);
-              } else if (ref) {
-                ref.current = node;
-              }
-              (inputRef as React.MutableRefObject<HTMLInputElement | null>).current = node;
-            }}
-            id={comboBoxId}
-            type="text"
-            role="combobox"
-            aria-autocomplete="list"
-            aria-expanded={isOpen}
-            aria-controls={listboxId}
-            aria-activedescendant={
-              highlightedIndex >= 0
-                ? `${comboBoxId}-option-${highlightedIndex}`
-                : undefined
-            }
-            aria-describedby={ariaDescribedBy || undefined}
-            aria-invalid={error ? true : undefined}
-            aria-required={required || undefined}
-            className={inputClasses}
-            value={inputValue}
-            onChange={handleInputChange}
-            onClick={handleInputClick}
-            onKeyDown={handleKeyDown}
-            placeholder={placeholder}
-            disabled={disabled}
-            autoComplete="off"
-          />
-
-          <div className={styles.iconContainer} onClick={handleChevronClick}>
-            {value && !disabled && (
-              <IconButton
-                icon="close"
-                size="small"
-                variant="tertiary"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleClear();
-                }}
-                aria-label="Clear selection"
-                tabIndex={-1}
-                className={styles.clearButton}
-              />
-            )}
-            <div
-              className={`${styles.chevronIcon} ${isOpen ? styles.chevronOpen : ''}`}
-            >
-              <Icon name="chevron-down" size="small" />
-            </div>
-          </div>
-
-          {isOpen && !disabled && (
-            <ul
-              ref={listboxRef}
-              id={listboxId}
-              role="listbox"
-              className={styles.listbox}
-              aria-label={label}
-            >
-              {filteredOptions.length === 0 ? (
-                <li className={styles.noResults}>No options found</li>
-              ) : (
-                filteredOptions.map((option, index) => {
-                  const isSelected = option.value === value;
-                  const isHighlighted = index === highlightedIndex;
-
-                  return (
-                    <li
-                      key={option.value}
-                      id={`${comboBoxId}-option-${index}`}
-                      role="option"
-                      aria-selected={isSelected}
-                      aria-disabled={option.disabled}
-                      className={`${styles.option} ${
-                        isSelected ? styles.optionSelected : ''
-                      } ${isHighlighted ? styles.optionHighlighted : ''} ${
-                        option.disabled ? styles.optionDisabled : ''
-                      }`}
-                      onClick={() => handleOptionClick(option)}
-                      onMouseEnter={() => !option.disabled && setHighlightedIndex(index)}
-                    >
-                      {option.label}
-                      {isSelected && (
-                        <span className={styles.checkIcon}>
-                          <Icon name="check" size="small" />
-                        </span>
-                      )}
-                    </li>
-                  );
-                })
-              )}
-            </ul>
-          )}
+          {inputHelp && <span className={styles.inputHelp}>{inputHelp}</span>}
         </div>
-
-        {error && (
-          <div id={errorId} className={styles.errorMessage}>
-            <span className={styles.errorIcon}>
-              <Icon name="status-error" size="small" />
-            </span>
-            <span>{error}</span>
-          </div>
-        )}
+        {error && <div id={`${comboBoxId}-error`} className={styles.errorMessage}><Icon name="status-error" size="small" /><span>{error}</span></div>}
       </div>
     );
   }
 );
-
 ComboBox.displayName = 'ComboBox';

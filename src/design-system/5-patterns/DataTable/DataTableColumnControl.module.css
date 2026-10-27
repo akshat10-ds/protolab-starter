@@ -2,7 +2,6 @@
  * DataTableColumnControl Styles - Production Match
  */
 
-@import '../../1-tokens/tokens.css';
 
 .searchContainer {
   padding: var(--ink-spacing-200);

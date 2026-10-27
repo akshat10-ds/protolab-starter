@@ -41,7 +41,7 @@ loading, streaming — modifies one of the three, it does not select among them.
 | **Cold / zero-query** | Greeting + subtitle, the composer, and a discovery section | `greeting`, `greetingSubtitle`, `categories`, `customSuggestions`, `coldStateSlot` | **`sidebar` / `single-column`:** hero composer (`variant="expanded"`) with the aurora glow, then `customSuggestions` **or** category tabs, then `coldStateSlot`. **`compact`:** greeting, then `customSuggestions` as full-width icon rows, then `coldStateSlot`; the composer is docked at the bottom (`variant="expanded"`, two rows) with the `disclaimer`. No badge and no section label — the shipping panel has neither. **`compact` ignores `categories` entirely** — pass `customSuggestions` or `coldStateSlot` or the panel shows greeting + composer and nothing else. |
 | **Cold, indexing** | Subtitle becomes *"Reading N agreements…"*; a progress bar fills and agreement names appear one by one | `agreements` (non-empty) | Same node in every layout. **`compact`** hides the suggestions and `coldStateSlot` while it runs; **`sidebar` / `single-column`** keep showing them beside the bar. |
 | **Cold, indexed** | Subtitle returns to `greetingSubtitle`; the *"N agreements"* context pill appears above the composer | `agreements`, `onOpenSources` | The pill is the **only** `onOpenSources` entry point in `compact` — the Sources header button exists only in the `sidebar` / `single-column` header, which itself renders only once there are messages. |
-| **Cold, header** | Close, and (single-column) the sidebar toggle | `onClose` | **`sidebar` / `single-column`** collapse to `headerWelcome`: **no title, no Share, no Sources, no Fullscreen** until a message exists. **`compact`** keeps its full header at every moment (sidebar toggle, agent picker, New chat, Fullscreen, Close) — it never hides the agent's name, because the header names the *agent*, not the conversation. |
+| **Cold, header** | Close, New chat (when `onNewConversation` is passed), and (single-column) the sidebar toggle | `onClose`, `onNewConversation` | **New chat is gated on the handler, never on the thread.** It stands cold in every layout, so the icon row does not change width under the cursor that just cleared the thread. **`sidebar` / `single-column`** collapse to `headerWelcome`: **no title, no Share, no Sources, no Fullscreen** until a message exists. **`compact`** keeps its full header at every moment (sidebar toggle, agent picker, New chat, Fullscreen, Close) — it never hides the agent's name, because the header names the *agent*, not the conversation. |
 | **Loading (skeleton)** | Three shimmering lines after the last turn | `isLoading` | None. |
 | **Streaming, no content yet** | `AgentThinking` animates; the turn's content is withheld until the accordion finishes | `isStreaming` + `messages[last].thinkingSteps` | None. |
 | **Streaming, no thinking and no markdown** | Nothing visible; `CompleteOnMount` reports completion after 1,500 ms so `FeedbackActions` can appear | `isStreaming` | None. |
@@ -117,10 +117,40 @@ finished, with `AgentThinking` in its `initialDone` state. There is no prop to
 seed "already completed" ids; `isStreaming: false` says it.
 
 ### Input
+`onVoiceCall` optionally adds a **Start voice call** waveform action to the empty
+composer. Typed text keeps Send; streaming keeps Stop. The host starts the call
+and owns permissions/transport. Omission preserves text-only behavior. For example:
+`<IrisAgent messages={messages} onSendMessage={send} onVoiceCall={startCall} />`.
+
 `inputValue` / `onInputChange` (omit to let IrisAgent own the text) ·
 `placeholderHints` · `commandContextItems` · `commandToolCategories` ·
 `onCommandSelect` · `mentionItems` · `onMentionSelect` · `disclaimer`
 (`compact` only).
+
+| Prop | Type | Notes |
+|---|---|---|
+| `onAttachFiles` | `(files: File[]) => void` | Enables native selection through **+ → Upload agreements** and file drop over the chat column. The host validates files and owns attachment state. Omit to retain the existing slash-token behavior. |
+| `acceptFiles` | `string` | Native picker filter; defaults to `.pdf,application/pdf`. Drop forwards files without filtering so the host can show validation errors. |
+| `composerAttachments` | `React.ReactNode` | Host-owned filename, preview and removal UI, forwarded to `ChatInput.attachments` in every layout. |
+
+Selection and drop only attach files: neither reads content nor sends a message.
+The picker permits multiple files and resets after selection so the same file can
+be picked again. `composerDisabled`, `composerHidden` and `isLoading` block file
+attachment; voice hosts use their existing composer guards. File drops inside an
+opted-in chat are prevented from navigating the browser even while attachment is
+blocked, and the Upload menu action is omitted while blocked. Text drags, history
+rails, headers and artifact panes keep their existing
+behavior. Nested file drags show one **Drop an agreement here** overlay without
+changing the chat layout; the default filter adds a **PDF files** cue.
+
+```tsx
+<IrisAgent
+  messages={messages}
+  onSendMessage={send}
+  onAttachFiles={attachFiles}
+  composerAttachments={attachmentPreview}
+/>
+```
 
 Tool commands (menu items carrying a `description`) are additionally sent as a
 slash command, with `commandMeta.commandType` resolved by looking the child's
@@ -154,6 +184,33 @@ while `agreements` are indexing.
 This is the zero-query state. The `WelcomeScreen` composite in Tier 2 is a
 parallel, never-adopted answer to the same question and is `@deprecated`; it has
 no composer, and the composer is the centerpiece here. See "States" above.
+
+#### Workspace presentation
+
+`coldStatePresentation="workspace"` opts `sidebar` and `single-column` into a
+vertically centered cold state, 36px block gaps, a flat 96px expanded composer,
+neutral selected category tabs, and 40px suggestion rows (Figma `140:11536`).
+The content stays reachable when a short viewport requires scrolling.
+`coldStateAnchor="top"` still pins it to the top. Compact layouts, conversations,
+and the omitted/default presentation retain their existing styles and behavior.
+
+Reuse `greeting`, `greetingSubtitle`, `categories`, and `placeholderHints` for
+content. One placeholder hint remains static. `coldStateWidth` caps the **padded
+wrapper**: `720` produces a 656px content column with its 32px side padding.
+The plus menu comes from `commandContextItems` / `commandToolCategories`; its
+actions, @mentions, keyboard send, loading, and reset keep the same handlers.
+
+The underlying public `ChatInput` also accepts `appearance="flat"`. This removes
+its resting shadow and gives `variant="expanded"` a 96px minimum height while
+allowing longer input to grow. Its default appearance is unchanged. IrisAgent
+passes this appearance only to the workspace cold composer.
+
+Colors remain Ink tokens. The reference uses a newer palette than some consumer
+snapshots; a host needing those exact values can scope its existing Ink variables
+on the workspace surface: `--ink-cobalt-140` (greeting),
+`--ink-font-color-default` (subtitle), `--ink-font-color-placeholder` (hint),
+`--ink-neutral-20` (selected category), and `--ink-ecru-90` (suggestions).
+Do not restyle component internals or change global tokens for one host.
 
 ### Context attachment
 `agreements` · `canvasContext` · `onCanvasContextDismiss` · `onOpenSources`
@@ -344,3 +401,28 @@ patterns/IrisAgent/
 
 `IrisAgent` is Tier 1 of the `@ai` barrel — `import { IrisAgent } from '@ai'`,
 alongside `PanelShell` and `usePanelMode`.
+
+### Host-owned voice input
+
+`composerDisabled` (default `false`) forwards to the existing ChatInput disabled
+state and guards every IrisAgent send path. A host can display controlled voice
+transcripts without silently sending typed prompts through a mock transport.
+Provide an explanatory `placeholderHints` entry and visible `CallControls` for
+Mute/End. No microphone or transport behavior is added to IrisAgent.
+
+`composerHidden` (default `false`) omits the text composer in a host-owned call
+presentation. Pair it with `composerDisabled` to block all send paths while
+controlled messages, inline results and run chips continue to render. Use
+`subHeader` for compact-panel call controls; a page host may place the same
+controls above IrisAgent. The host owns transcript handoff when the call ends.
+
+`followLatestMessages` (default `false`) follows incoming controlled transcript
+updates while the reader is within the existing 120px bottom threshold. Scrolling
+up preserves the reading position. Entering this mode or a new layout starts at
+the current end; updates use immediate scrolling, including reduced motion.
+Typed sends in this mode follow the end instead of pinning a turn to the top.
+
+`feedbackVisibility="hover"` opts into quiet feedback controls: message hover or
+keyboard focus reveals them on fine pointers; touch keeps them visible. Geometry
+is reserved so neither messages nor timestamps shift. The default remains
+`always`; `showMessageActions` continues to govern which messages get feedback.

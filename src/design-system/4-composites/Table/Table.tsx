@@ -37,6 +37,7 @@ export function Table<T = any>({
   columns,
   data,
   variant = 'default',
+  borderRule,
   size = 'medium',
   hoverable = false,
   onRowClick,
@@ -240,6 +241,7 @@ export function Table<T = any>({
 
   const tableClasses = `
     ${styles.table}
+    ${borderRule ? styles[`border-${borderRule}`] : ''}
     ${styles[variant]}
     ${styles[size]}
     ${hoverable ? styles.hoverable : ''}

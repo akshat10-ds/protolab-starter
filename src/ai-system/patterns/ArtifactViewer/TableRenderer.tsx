@@ -106,7 +106,12 @@ const Cell: React.FC<{ cell?: ArtifactTableCell }> = ({ cell }) => {
     default:
       return (
         <span className={styles.text}>
-          <span className={styles.textMain}>{cell.text}</span>
+          {/* The full value on hover, because a fixed column can ellipsise it.
+              `title` and not a tooltip component: the browser draws it for a
+              truncated cell and there is nothing to draw when it fits. */}
+          <span className={styles.textMain} title={cell.text}>
+            {cell.text}
+          </span>
           {cell.sub && (
             <span className={styles.textSub}>
               {cell.subIcon && <Icon name={cell.subIcon as any} size={16} />}

@@ -1,0 +1,218 @@
+{
+  "zone": "primitives_behavior",
+  "authoringSource": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system",
+  "sourceBranch": "codex/protolab-foundation-repair",
+  "generatedStarterEdited": false,
+  "readOnlyFigma": true,
+  "findings": [
+    {
+      "id": "PRIM-01",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-02",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-03",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-04",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-05",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-06",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-07",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-08",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-09",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-10",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-11",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-12",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-13",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-14",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-15",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-16",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-17",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-18",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-19",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "PRIM-20",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Representative browser evidence recorded in browser/root-checks.json; exhaustive visual parity is not asserted."
+    },
+    {
+      "id": "PRIM-21",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "C06",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    },
+    {
+      "id": "C09",
+      "implementation": "implemented",
+      "evidence": "primitives.md",
+      "strictTypecheck": "passed",
+      "boundedAutomatedTests": "passed",
+      "runtimeVisualParity": "Source/semantic checks pass; this specific variant has not been individually raster-verified."
+    }
+  ],
+  "verification": {
+    "typecheck": {
+      "command": "node node_modules/typescript/bin/tsc -p primitive-check.tsconfig.json --pretty false",
+      "status": "passed",
+      "scope": "complete Ink source ES2020 strict React19, established .figma.ts exclusion"
+    },
+    "tests": {
+      "command": "node node_modules/vitest/vitest.mjs run --config tests/primitive-foundation.config.ts",
+      "status": "passed",
+      "count": 33,
+      "scope": "rendered semantic markup and date parsing/bounds/navigation/range selection helpers"
+    },
+    "unknownPrimitiveZoneCssTokens": 0,
+    "browser": "Bounded CUA checks complete; exact scope in browser/root-checks.json."
+  },
+  "limitations": [
+    "SSR and utility tests do not establish interactive browser behavior.",
+    "Saved and fresh Figma screenshots are visual targets, not implementation image assets.",
+    "Arbitrary slot permutations, responsive/touch states and every raster match remain unverified."
+  ],
+  "additionalReadOnlyFigmaNodes": [
+    "36936:5241",
+    "36936:5243",
+    "36936:5246"
+  ]
+}

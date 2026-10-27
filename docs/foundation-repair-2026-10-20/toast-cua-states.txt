@@ -1,0 +1,426 @@
+CONTROLLED REJECT
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  1
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  0
+		26 container Notifications
+
+The focused UI element is 16 button Dismiss controlled
+
+CONTROLLED ACCEPT
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: yes
+				9 text Accept controlled close: 
+				10 text yes
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  2
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  0
+		26 container Notifications
+
+The focused UI element is 8 button Accept controlled close: yes
+
+PROVIDER EVICTION
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: yes
+				9 text Accept controlled close: 
+				10 text yes
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  2
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  0
+		26 container Notifications
+			27 container
+				28 text Replacement provider notification
+				29 button Dismiss notification
+
+The focused UI element is 4 button Show eviction test
+
+PROVIDER DISMISS
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: yes
+				9 text Accept controlled close: 
+				10 text yes
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  2
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  0
+		26 container Notifications
+
+The focused UI element is 5 button Show provider dismiss test
+
+STANDALONE DISMISS
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: yes
+				9 text Accept controlled close: 
+				10 text yes
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  2
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  0
+		26 container Notifications
+
+The focused UI element is 5 button Show provider dismiss test
+
+BACKGROUND BEFORE
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  0
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  0
+		26 container Notifications
+			27 container
+				28 text Background notification
+				29 button Dismiss notification
+
+The focused UI element is 7 button Keep external focus
+
+BACKGROUND AFTER
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  0
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  0
+		26 container Notifications
+
+The focused UI element is 7 button Keep external focus
+
+TIMED FIRST EXPIRED
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  0
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  1
+		26 container Notifications
+
+The focused UI element is 23 button Start timed controlled notification
+
+TIMED REOPENED
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  0
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  1
+			27 container
+				28 text Timed controlled notification
+				29 button Dismiss notification
+		26 container Notifications
+
+The focused UI element is 23 button Start timed controlled notificationFINAL TIMER CYCLE START
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  0
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  0
+			27 container
+				28 text Timed controlled notification
+				29 button Dismiss notification
+		26 container Notifications
+
+The focused UI element is 23 button Start timed controlled notification
+
+FINAL FIRST EXPIRY
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  0
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  1
+		26 container Notifications
+
+The focused UI element is 23 button Start timed controlled notification
+
+FINAL REOPENED
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  0
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  1
+			27 container
+				28 text Timed controlled notification
+				29 button Dismiss notification
+		26 container Notifications
+
+The focused UI element is 23 button Start timed controlled notification
+
+FINAL SECOND EXPIRY
+
+Browser tab: 236172786, Title: "Toast behavior verification", URL: "http://127.0.0.1:5186/toast.html".
+0 AXWebArea Toast behavior verification, URL: 127.0.0.1:5186/toast.html
+	1 container
+		2 container root
+			3 text Toast behavior verification
+			4 button Show eviction test
+			5 button Show provider dismiss test
+			6 button Show background expiry
+			7 button Keep external focus
+			8 button Accept controlled close: no
+				9 text Accept controlled close: 
+				10 text no
+			11 button Toggle controlled notification
+			12 container
+				13 text Controlled close requests:  0
+			14 container
+				15 text Controlled notification
+				16 button Dismiss controlled
+			17 container
+				18 text Standalone notification
+				19 button Dismiss standalone
+			20 container
+				21 text Notification without dismiss button
+				22 button Hidden-close action
+			23 button Start timed controlled notification
+			24 container
+				25 text Controlled expirations:  2
+		26 container Notifications
+
+The focused UI element is 23 button Start timed controlled notification

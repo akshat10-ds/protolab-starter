@@ -1,0 +1,89 @@
+{
+  "fileKey": "nAKX1rO3Mir2OCBdCkC5oq",
+  "readOnly": true,
+  "skill": "figma-design-to-code",
+  "contexts": [
+    {
+      "nodeId": "36936:5241",
+      "screenshotInspected": true,
+      "content": [
+        {
+          "type": "text",
+          "text": "type BlocksInkDigitProps = {\n  className?: string;\n  currentDay?: \"False\";\n  dateRange?: \"None\";\n  disabled?: \"False\";\n  nullBlock?: \"False\";\n  selected?: \"True\";\n  state?: \"Default\";\n};\n\nfunction BlocksInkDigit({ className, currentDay = \"False\", dateRange = \"None\", disabled = \"False\", nullBlock = \"False\", selected = \"True\", state = \"Default\" }: BlocksInkDigitProps) {\n  return (\n    <div className={className || \"content-stretch flex items-center justify-center px-[4px] relative size-[var(--ctaSizeMd,40px)]\"} data-node-id=\"36936:5241\">\n      <div className=\"content-stretch flex items-start relative shrink-0\" data-node-id=\"36936:5242\" data-name=\"Default\">\n        <div className=\"bg-[var(--ctaToggleBgColorSelected,#260559)] content-stretch flex items-center justify-center px-[16px] relative rounded-[20px] shrink-0 w-[40px]\" data-node-id=\"36936:5243\" data-name=\"Selected\">\n          <div className=\"grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0\" data-node-id=\"36936:5244\" data-name=\"Text\">\n            <div className=\"col-1 ml-0 mt-0 relative row-1 size-[40px]\" data-node-id=\"36936:5245\" data-name=\"Min Width\" />\n            <div className=\"[word-break:break-word] col-1 flex flex-col font-[family-name:var(--'\\'DSIndigo\\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] justify-center ml-[4px] mt-[8px] relative row-1 text-[color:var(--fontColorInverse,white)] text-[length:var(--font.fontSize.16,16px)] text-center w-[32px]\" data-node-id=\"36936:5246\">\n              <p className=\"leading-[1.5]\">10</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}"
+        },
+        {
+          "type": "text",
+          "text": "SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.\n1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens\n2. Convert React syntax to the target framework/library\n3. Transform all Tailwind classes to the target styling system while preserving exact visual design\n4. Follow the project's existing patterns and conventions\nDO NOT install any Tailwind as a dependency unless the user instructs you to do so.\n"
+        },
+        {
+          "type": "text",
+          "text": "Node ids have been added to the code as data attributes, e.g. `data-node-id=\"1:2\"`."
+        },
+        {
+          "type": "text",
+          "text": "These styles are contained in the design: fontBodyM: Font(family: \"\"\\\"DS Indigo\\\",DSIndigo,Helvetica,Arial,sans-serif\"\", style: font.fontWeight.400, size: font.fontSize.16, weight: 400, lineHeight: 1.5, letterSpacing: 0)."
+        },
+        {
+          "type": "text",
+          "text": "Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.\n\n## _Blocks / [INK] Digit\n**Node ID:** 36936:5174\n\nThese individual blocks drive the behavior of the Date Picker component. They should not be used outside of this component.\n\n  \n\nProps\n-----\n\n_`**❖ Selected:**`_ Indicates that the `Digit` is selected.\n\n  \n\n_`**❖ State:**`_ The state of the `Digit`\n\n  \n\n_`**❖ Disabled:**`_ Indicates the element is disabled.\n\n  \n\n_`**❖ Current Day**`_: Indicates the current day\n\n  \n\n_`**❖ Null Block**`_: Displays an empty block\n\n  \n\n_`**❖ Date Range**`_: Renders date type range"
+        },
+        {
+          "type": "text",
+          "text": "The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources."
+        }
+      ]
+    },
+    {
+      "nodeId": "36936:5243",
+      "screenshotInspected": true,
+      "content": [
+        {
+          "type": "text",
+          "text": "export default function Selected() {\n  return (\n    <div className=\"bg-[var(--ctaToggleBgColorSelected,#260559)] content-stretch flex items-center justify-center px-[16px] relative rounded-[20px] size-full\" data-node-id=\"36936:5243\" data-name=\"Selected\">\n      <div className=\"grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0\" data-node-id=\"36936:5244\" data-name=\"Text\">\n        <div className=\"col-1 ml-0 mt-0 relative row-1 size-[40px]\" data-node-id=\"36936:5245\" data-name=\"Min Width\" />\n        <div className=\"[word-break:break-word] col-1 flex flex-col font-[family-name:var(--'\\'DSIndigo\\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] justify-center ml-[4px] mt-[8px] relative row-1 text-[color:var(--fontColorInverse,white)] text-[length:var(--font.fontSize.16,16px)] text-center w-[32px]\" data-node-id=\"36936:5246\">\n          <p className=\"leading-[1.5]\">10</p>\n        </div>\n      </div>\n    </div>\n  );\n}"
+        },
+        {
+          "type": "text",
+          "text": "SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.\n1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens\n2. Convert React syntax to the target framework/library\n3. Transform all Tailwind classes to the target styling system while preserving exact visual design\n4. Follow the project's existing patterns and conventions\nDO NOT install any Tailwind as a dependency unless the user instructs you to do so.\n"
+        },
+        {
+          "type": "text",
+          "text": "Node ids have been added to the code as data attributes, e.g. `data-node-id=\"1:2\"`."
+        },
+        {
+          "type": "text",
+          "text": "These styles are contained in the design: fontBodyM: Font(family: \"\"\\\"DS Indigo\\\",DSIndigo,Helvetica,Arial,sans-serif\"\", style: font.fontWeight.400, size: font.fontSize.16, weight: 400, lineHeight: 1.5, letterSpacing: 0)."
+        },
+        {
+          "type": "text",
+          "text": "The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources."
+        }
+      ]
+    },
+    {
+      "nodeId": "36936:5246",
+      "screenshotInspected": true,
+      "content": [
+        {
+          "type": "text",
+          "text": "export default function DateText() {\n  return (\n    <div className=\"[word-break:break-word] flex flex-col font-[family-name:var(--'\\'DSIndigo\\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Regular')] font-[var(--font.fontWeight.400,normal)] justify-center leading-[0] relative size-full text-[color:var(--fontColorInverse,white)] text-[length:var(--font.fontSize.16,16px)] text-center\" data-node-id=\"36936:5246\">\n      <p className=\"leading-[1.5]\">10</p>\n    </div>\n  );\n}"
+        },
+        {
+          "type": "text",
+          "text": "SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.\n1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens\n2. Convert React syntax to the target framework/library\n3. Transform all Tailwind classes to the target styling system while preserving exact visual design\n4. Follow the project's existing patterns and conventions\nDO NOT install any Tailwind as a dependency unless the user instructs you to do so.\n"
+        },
+        {
+          "type": "text",
+          "text": "Node ids have been added to the code as data attributes, e.g. `data-node-id=\"1:2\"`."
+        },
+        {
+          "type": "text",
+          "text": "These styles are contained in the design: fontBodyM: Font(family: \"\"\\\"DS Indigo\\\",DSIndigo,Helvetica,Arial,sans-serif\"\", style: font.fontWeight.400, size: font.fontSize.16, weight: 400, lineHeight: 1.5, letterSpacing: 0)."
+        },
+        {
+          "type": "text",
+          "text": "The generated code contains image and SVG URL constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources."
+        }
+      ]
+    }
+  ]
+}

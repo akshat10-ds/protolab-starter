@@ -238,3 +238,15 @@
 .dropdown::-webkit-scrollbar-thumb:hover {
   background: var(--ink-neutral-40);
 }
+
+.solid {
+  background: var(--ink-bg-color-default);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-width: var(--ink-form-border-width);
+}
+
+.item.alert,
+.item.alert .icon {
+  color: var(--ink-font-color-error);
+}

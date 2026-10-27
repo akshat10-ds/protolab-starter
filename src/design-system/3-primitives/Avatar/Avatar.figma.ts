@@ -35,10 +35,12 @@ if (hasInitials) {
   initials = initialsNode && initialsNode.type === 'TEXT' ? initialsNode.textContent : 'AB'
 }
 
-// Figma-only properties intentionally omitted: "shadow", "badge", "border" (no code props)
+const shadow = instance.getBoolean('shadow')
+const border = instance.getBoolean('border')
+const badge = instance.getBoolean('badge')
 
 export default {
-  example: figma.code`<Avatar size="${size}" shape="${shape}" colorIndex={${colorIndex}}${hasImage ? ' src="image-url" alt=""' : ''}${initials ? figma.code` initials="${initials}"` : ''} />`,
+  example: figma.code`<Avatar size="${size}" shape="${shape}" colorIndex={${colorIndex}} shadow={${shadow}} border={${border}} badge={${badge}}${hasImage ? ' src={avatarSrc} alt={avatarAlt}' : ''}${initials ? figma.code` initials="${initials}"` : ''} />`,
   imports: ["import { Avatar } from '@/design-system'"],
   id: 'avatar',
   metadata: { nestable: true },

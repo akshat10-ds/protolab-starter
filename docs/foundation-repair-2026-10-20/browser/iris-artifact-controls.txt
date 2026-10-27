@@ -1,0 +1,13 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#home".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 621-628
+~				598 splitter Description: Resize artifact pane, Value: 1075
+~						608 text field (settable) Page number, Value: 2
+~					610 button Previous page
+~					611 button (disabled) Next page
+~					613 text 125 %
+~				616 container Acme vendor summary, page 2 of 2
+~						618 heading 4. Recommendation, Value: 3
+~							619 text 4. Recommendation
+~						620 text Consolidate identity-verification spend at the next Acme renewal window (60-day notice, before 14 Mar 2027). Reconcile the order form’s terms with the master before any renegotiation.
+The focused UI element is 598 splitter Description: Resize artifact pane, Value: 1075

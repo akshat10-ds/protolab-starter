@@ -32,11 +32,11 @@ if (hasError) {
   error = errNode && errNode.type === 'TEXT' ? errNode.textContent : 'Error message'
 }
 
-// Figma-only properties intentionally omitted: "❖ State" (interaction states),
-// "startElement" (no code prop on TextArea)
+const startElement = instance.getBoolean('startElement') ? instance.findInstance('startElement', { traverseInstances: true }) : null
+const startElementCode = startElement?.type === 'INSTANCE' ? startElement.executeTemplate().example : undefined
 
 export default {
-  example: figma.code`<TextArea label="${label}"${isPlaceholder ? figma.code` placeholder="${value}"` : figma.code` defaultValue="${value}"`}${showLabel ? '' : ' hideLabel'}${disabled ? ' disabled' : ''}${readOnly ? ' readOnly' : ''}${error ? figma.code` error="${error}"` : ''}${description ? figma.code` description="${description}"` : ''}${characterCount ? ' characterCount maxLength={200}' : ''} />`,
+  example: figma.code`<TextArea label="${label}"${isPlaceholder ? figma.code` placeholder="${value}"` : figma.code` defaultValue="${value}"`}${showLabel ? '' : ' hideLabel'}${disabled ? ' disabled' : ''}${readOnly ? ' readOnly' : ''}${error ? figma.code` error="${error}"` : ''}${description ? figma.code` description="${description}"` : ''}${characterCount ? ' characterCount maxLength={maxLength}' : ''}${startElementCode ? figma.code` startElement={<>${startElementCode}</>}` : ''} />`,
   imports: ["import { TextArea } from '@/design-system'"],
   id: 'text-area',
   metadata: { nestable: true },

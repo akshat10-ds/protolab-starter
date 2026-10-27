@@ -1,0 +1,12 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#home".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 500-517, 519
++					524 container
++						525 text Which agreements expire in the next 90 days?
++						526 button Copy message
++						527 text Copy
++						528 container Iris is thinking
++						529 text Ask, @mention, or / for actions
++						530 button 2 sources
++						531 button Remove 2 sources filter
+The focused UI element is 520 text entry area (settable) Ask a question...

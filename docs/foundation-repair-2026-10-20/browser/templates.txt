@@ -1,0 +1,145 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#templates".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 413-432, 434-727
+~1 AXWebArea Protolab, URL: localhost:5173/#templates
++				736 button Envelope Templates
++				737 content list
++					738 button My Templates
++					739 button Shared with Me
++					740 button Favorites
++				741 content list
++					742 button Clauses New
++						743 text Clauses
++						744 text New
++					745 button Document Templates
++					746 button Workspace Templates
++					747 button Workflow Templates
++				748 button Web Forms
++				749 content list
++					750 button My Web Forms
++					751 button Shared with Me
++					752 button All Web Forms
++				753 content list
++					754 button Template Gallery
++			755 tab group Tabs
++				756 tab (selected, settable, boolean) Templates, Value: 1
++				757 tab (selectable, disabled, settable, boolean) Elastic Templates, Value: 0
++			758 container Templates
++				759 heading My Templates, Value: 1
++					760 text My Templates
++				761 combo box (collapsed, settable) Secondary Actions: Expand
++				762 pop up button Date
++				763 pop up button Advanced search
++				764 button Clear
++				765 table
++					766 row
++						767 cell
++							768 container
++								769 checkbox (settable, integer) Description: Select all rows, Value: 0
++								770 text Select all rows
++						771 cell
++							772 text Name
++						773 cell
++							774 text Owner
++						775 cell
++							776 text Powerforms
++						777 cell
++							778 text Created Date
++						779 cell
++							780 text Last Change
++						781 cell
++							782 text Folders
++						783 cell
++							784 button Customize columns
++					785 row
++						786 cell
++							787 container
++								788 checkbox (settable, integer) Description: Select row 1, Value: 0
++								789 text Select row 1
++						790 cell
++							791 button Remove quick send from favorites
++						792 cell
++							793 text quick send
++							794 text Default template for quick envelope sending
++						795 cell
++							796 text Akshat Mishra
++						797 cell
++							798 text 03/13/2026
++						799 cell
++							800 text 03/13/2026
++						801 cell
++							802 button Use
++							803 button More actions for quick send
++					804 row
++						805 cell
++							806 container
++								807 checkbox (settable, integer) Description: Select row 2, Value: 0
++								808 text Select row 2
++						809 cell
++							810 button Remove shared template info from favorites
++						811 cell
++							812 text shared template info
++							813 text Shared informational template
++						814 cell
++							815 text Akshat Mishra
++						816 cell
++							817 text 08/12/2025
++						818 cell
++							819 text 08/12/2025
++						820 cell
++							821 button Use
++							822 button More actions for shared template info
++					823 row
++						824 cell
++							825 container
++								826 checkbox (settable, integer) Description: Select row 3, Value: 0
++								827 text Select row 3
++						828 cell
++							829 button Add Consulting Agreement to favorites
++						830 cell
++							831 text Consulting Agreement
++							832 text Independent contractor consulting agreement
++						833 cell
++							834 text Akshat Mishra
++						835 cell
++							836 text 02/10/2026
++						837 cell
++							838 text 02/10/2026
++						839 cell
++							840 button Use
++							841 button More actions for Consulting Agreement
++					842 row
++						843 cell
++							844 container
++								845 checkbox (settable, integer) Description: Select row 4, Value: 0
++								846 text Select row 4
++						847 cell
++							848 button Add Change Order to favorites
++						849 cell
++							850 text Change Order
++							851 text Amendment to existing SOW or contract
++						852 cell
++							853 text Akshat Mishra
++						854 cell
++							855 text 03/22/2026
++						856 cell
++							857 text 03/22/2026
++						858 cell
++							859 button Use
++							860 button More actions for Change Order
++				861 text Items per page
++				862 container
++					863 pop up button (collapsed, settable) Items per page, Value: 25 / Page, Secondary Actions: Expand
++						864 menu
++							865 5 / Page
++							866 10 / Page
++							867 (selected) 25 / Page
++							868 50 / Page
++				869 text 1
++				870 text -
++				871 text 4
++				872 text  of 
++				873 text 4
++				874 button (disabled) Previous page
++				875 button (disabled) Next page
+The focused UI element is 402 link Description: Templates, URL: localhost:5173/#

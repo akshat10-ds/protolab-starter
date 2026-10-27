@@ -1,0 +1,162 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- button "Skip to main content"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign logo, homepage":
+    - /url: https://apps.dev.docusign.net/api/send/home
+    - img "Docusign logo, homepage"
+  - navigation:
+    - list:
+      - link "Home":
+        - /url: /send/home
+        - generic: Home
+      - link "Agreements":
+        - /url: /send/documents
+        - generic: Agreements
+      - link "Templates":
+        - /url: /send/templates
+        - generic: Templates
+      - link "Automations":
+        - /url: /send/agents
+        - generic: Automations
+      - link "Insights":
+        - /url: /send/reports
+        - generic: Insights
+      - link "Admin":
+        - /url: /admin
+        - generic: Admin
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "tasks":
+    - generic: tasks
+  - button "Notifications":
+    - generic: Notifications
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- main:
+  - navigation "Secondary":
+    - button "Create":
+      - generic: Create
+    - separator
+    - list:
+      - button "Overview":
+        - generic "Overview"
+      - button "Procurement Hub":
+        - generic "Procurement Hub"
+      - button "Dashboards":
+        - generic "Dashboards"
+      - button "Components.ReportingLegacy.CollapseDashboards" [expanded]:
+      - button "My dashboard" [active]:
+        - generic "My dashboard"
+      - button "Administrator dashboard":
+        - generic "Administrator dashboard"
+      - button "Agreements":
+        - generic "Agreements"
+      - button "Obligations":
+        - generic "Obligations"
+      - button "Renewals":
+        - generic "Renewals"
+      - button "Requests":
+        - generic "Requests"
+      - button "AI Assistant and Agent Usage":
+        - generic "AI Assistant and Agent Usage"
+      - button "Custom Dashboards":
+        - generic "Custom Dashboards"
+      - button "Components.ReportingLegacy.CollapseCustomDashboards" [expanded]:
+      - button "Obligations":
+        - generic "Obligations"
+      - button "Untitled":
+        - generic "Untitled"
+      - button "Obligations":
+        - generic "Obligations"
+      - button "new":
+        - generic "new"
+      - button "Untitled23":
+        - generic "Untitled23"
+      - button "Reports":
+        - generic "Reports"
+  - img "Announcement:"
+  - text: Get ready for a better reporting experience! We're rolling out updates to make your reports easier to find and manage, including a new name for the "Reports" tab.
+  - link "See what’s changing.":
+    - /url: https://support.docusign.com/s/document-item?bundleId=pqz1702943441912&topicId=jyq1749000353004.html&language=en&anchor=jyq1749000353004__section_sh4_kzw_pfc
+    - generic: See what’s changing.
+  - heading "My dashboard" [level=3]
+  - button "The data is displayed in UTC and was refreshed within the last 24 hours.":
+  - heading "Docusign's environmental impact" [level=2]
+  - generic: All Time
+  - strong: 7,885,939,343 lb
+  - text: of carbon emissions reduced
+  - strong: 9,892,420,952 gal
+  - text: of water conserved
+  - strong: 3,359,690,134 lb
+  - text: of wood saved
+  - strong: 545,949,646 lb
+  - text: of waste eliminated
+  - button "How is this calculated?":
+    - generic: How is this calculated?
+  - heading "This compares to:" [level=3]
+  - text: Removing
+  - strong: 716,057 cars
+  - text: from the road
+  - text: Skipping
+  - strong: 7,137,388 loads
+  - text: of laundry
+  - text: Conserving
+  - strong: 10,079,070 trees
+  - link "Learn how to save more, opens in new window":
+    - /url: https://www.docusign.com/forests
+    - generic: Learn how to save more
+- contentinfo:
+  - list:
+    - button "Language Selector, current selection English (US)":
+      - generic: English (US)
+    - link "Contact Us, opens in new window":
+      - /url: https://support.docusign.com/contactSupport
+      - text: Contact Us
+    - text: "|"
+    - link "Terms of Use, opens in new window":
+      - /url: https://www.docusign.com/legal/terms-and-conditions
+      - text: Terms of Use
+    - text: "|"
+    - link "Privacy, opens in new window":
+      - /url: https://www.docusign.com/privacy
+      - text: Privacy
+    - text: "|"
+    - link "Intellectual Property, opens in new window":
+      - /url: https://www.docusign.com/ip
+      - text: Intellectual Property
+    - text: "|"
+    - link "Trust, opens in new window":
+      - /url: https://www.docusign.com/trust
+      - text: Trust
+    - text: "|"
+    - listitem: "Version: 1.1.3807"
+  - generic: Copyright © 2026 Docusign, Inc. All rights reserved
+- status
+- generic: "700"

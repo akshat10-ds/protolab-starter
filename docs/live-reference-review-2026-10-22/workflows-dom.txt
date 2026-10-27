@@ -1,0 +1,211 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- button "Skip to main content"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign logo, homepage":
+    - /url: https://apps.dev.docusign.net/api/send/home
+    - img "Docusign logo, homepage"
+  - navigation:
+    - list:
+      - link "Home":
+        - /url: /send/home
+        - generic: Home
+      - link "Agreements":
+        - /url: /send/documents
+        - generic: Agreements
+      - link "Templates":
+        - /url: /send/templates
+        - generic: Templates
+      - link "Automations":
+        - /url: /send/agents
+        - generic: Automations
+      - link "Insights":
+        - /url: /send/reports
+        - generic: Insights
+      - link "Admin":
+        - /url: /admin
+        - generic: Admin
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "tasks":
+    - generic: tasks
+  - button "Notifications":
+    - generic: Notifications
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- main:
+  - navigation "Secondary":
+    - button "Agents":
+      - generic "Agents"
+    - generic: New
+    - button "Rules":
+      - generic "Rules"
+    - generic: New
+    - button "Workflows" [active]:
+      - generic "Workflows"
+  - heading "Workflows" [level=1]
+  - button "Button for creating a new workflow":
+    - generic: Create Workflow
+  - button "Menu":
+  - generic: Search workflow name or ID
+  - combobox "Search workflow name or ID"
+  - group "Filters":
+    - button "Status":
+      - generic: Status
+    - button "Created by":
+      - generic: Created by
+    - button "Started From":
+      - generic: Started From
+  - table ", column headers with buttons are sortable":
+    - caption: ", column headers with buttons are sortable"
+    - rowgroup:
+      - row "Name Status Last modified Created by Copy URL Use workflow":
+        - columnheader "Name":
+          - button "Name":
+            - text: Name
+        - columnheader "Status":
+          - button "Status":
+            - text: Status
+        - columnheader "Last modified":
+          - button "Last modified":
+            - text: Last modified
+        - columnheader "Created by":
+          - button "Created by":
+            - text: Created by
+        - columnheader "Copy URL":
+          - generic: Copy URL
+        - columnheader "Use workflow":
+          - generic: Use workflow
+    - status
+    - rowgroup:
+      - row "ConditionTest Draft saved Edit Unpublished 4 hours 3p gd Menu":
+        - cell "ConditionTest Draft saved Edit":
+          - button "ConditionTest":
+            - generic: ConditionTest
+          - text: Draft saved
+          - button "Edit":
+            - generic: Edit
+        - cell "Unpublished":
+          - cell "Unpublished":
+            - generic: Unpublished
+        - cell "4 hours"
+        - cell "3p gd"
+        - cell
+        - cell "Menu":
+          - button "Menu":
+      - row "UpdateTest Published 6 hours 3p gd Menu":
+        - cell "UpdateTest":
+          - button "UpdateTest":
+            - generic: UpdateTest
+        - cell "Published":
+          - cell "Published":
+            - generic: Published
+        - cell "6 hours"
+        - cell "3p gd"
+        - cell
+        - cell "Menu":
+          - button "Menu":
+      - row "TriggerTest Draft saved Edit Unpublished 6 hours 3p gd Menu":
+        - cell "TriggerTest Draft saved Edit":
+          - button "TriggerTest":
+            - generic: TriggerTest
+          - text: Draft saved
+          - button "Edit":
+            - generic: Edit
+        - cell "Unpublished":
+          - cell "Unpublished":
+            - generic: Unpublished
+        - cell "6 hours"
+        - cell "3p gd"
+        - cell
+        - cell "Menu":
+          - button "Menu":
+      - row "Untitled workflow Draft saved Edit Unpublished 10/14/2026 3p gd Menu":
+        - cell "Untitled workflow Draft saved Edit":
+          - button "Untitled workflow":
+            - generic: Untitled workflow
+          - text: Draft saved
+          - button "Edit":
+            - generic: Edit
+        - cell "Unpublished":
+          - cell "Unpublished":
+            - generic: Unpublished
+        - cell "10/14/2026"
+        - cell "3p gd"
+        - cell
+        - cell "Menu":
+          - button "Menu":
+      - row "Untitled workflow Draft saved Edit Unpublished 10/02/2026 3p gd Menu":
+        - cell "Untitled workflow Draft saved Edit":
+          - button "Untitled workflow":
+            - generic: Untitled workflow
+          - text: Draft saved
+          - button "Edit":
+            - generic: Edit
+        - cell "Unpublished":
+          - cell "Unpublished":
+            - generic: Unpublished
+        - cell "10/02/2026"
+        - cell "3p gd"
+        - cell
+        - cell "Menu":
+          - button "Menu":
+      - row "Test Workflow Draft saved Edit Unpublished 09/17/2026 3p gd Menu":
+        - cell "Test Workflow Draft saved Edit":
+          - button "Test Workflow":
+            - generic: Test Workflow
+          - text: Draft saved
+          - button "Edit":
+            - generic: Edit
+        - cell "Unpublished":
+          - cell "Unpublished":
+            - generic: Unpublished
+        - cell "09/17/2026"
+        - cell "3p gd"
+        - cell
+        - cell "Menu":
+          - button "Menu":
+      - row "Untitled workflow Draft saved Edit Unpublished 09/14/2026 3p gd Menu":
+        - cell "Untitled workflow Draft saved Edit":
+          - button "Untitled workflow":
+            - generic: Untitled workflow
+          - text: Draft saved
+          - button "Edit":
+            - generic: Edit
+        - cell "Unpublished":
+          - cell "Unpublished":
+            - generic: Unpublished
+        - cell "09/14/2026"
+        - cell "3p gd"
+        - cell
+        - cell "Menu":
+          - button "Menu":
+      - row "Contract Review Alert Draft saved Edit Unpublished 09/14/2026 3p gd Menu":
+        - cell "Contract Review Alert Draft saved Edit":
+          

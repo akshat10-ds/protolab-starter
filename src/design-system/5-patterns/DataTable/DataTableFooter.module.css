@@ -2,7 +2,6 @@
  * DataTableFooter Styles - Production Match
  */
 
-@import '../../1-tokens/tokens.css';
 
 .footer {
   display: flex;

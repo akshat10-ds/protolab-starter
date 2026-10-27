@@ -1,5 +1,4 @@
 /* Ink Design System - ComboButton Component Styles */
-@import '../../1-tokens/tokens.css';
 
 /* Wrapper */
 .comboButton {
@@ -235,4 +234,16 @@
 .comboButton.inverted .mainButton:active:not(:disabled),
 .comboButton.inverted .dropdownButton:active:not(:disabled) {
   background-color: var(--ink-neutral-20);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

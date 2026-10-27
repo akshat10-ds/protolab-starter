@@ -1,0 +1,187 @@
+[
+  {
+    "component": "TaskCard",
+    "path": "src/design-system/4-composites/TaskCard/TaskCard.figma.ts",
+    "nodeId": "582:3894"
+  },
+  {
+    "component": "Tabs",
+    "path": "src/design-system/4-composites/Tabs/Tabs.figma.ts",
+    "nodeId": "875:21503"
+  },
+  {
+    "component": "FileUpload",
+    "path": "src/design-system/4-composites/FileUpload/FileUpload.figma.ts",
+    "nodeId": "846:7730"
+  },
+  {
+    "component": "Dropdown",
+    "path": "src/design-system/4-composites/Dropdown/Dropdown.figma.ts",
+    "nodeId": "11096:31227"
+  },
+  {
+    "component": "Pagination",
+    "path": "src/design-system/4-composites/Pagination/Pagination.figma.ts",
+    "nodeId": "512:17528"
+  },
+  {
+    "component": "FilterTag",
+    "path": "src/design-system/4-composites/FilterTag/FilterTag.figma.ts",
+    "nodeId": "1674:3949"
+  },
+  {
+    "component": "Alert",
+    "path": "src/design-system/4-composites/Alert/Alert.figma.ts",
+    "nodeId": "123:919"
+  },
+  {
+    "component": "Accordion",
+    "path": "src/design-system/4-composites/Accordion/Accordion.figma.ts",
+    "nodeId": "9238:26557"
+  },
+  {
+    "component": "DatePicker",
+    "path": "src/design-system/4-composites/DatePicker/DatePicker.figma.ts",
+    "nodeId": "28226:6401"
+  },
+  {
+    "component": "Chip",
+    "path": "src/design-system/4-composites/Chip/Chip.figma.ts",
+    "nodeId": "16004:4399"
+  },
+  {
+    "component": "Stepper",
+    "path": "src/design-system/4-composites/Stepper/Stepper.figma.ts",
+    "nodeId": "851:8080"
+  },
+  {
+    "component": "ComboBox",
+    "path": "src/design-system/4-composites/ComboBox/ComboBox.figma.ts",
+    "nodeId": "5517:2448"
+  },
+  {
+    "component": "Callout",
+    "path": "src/design-system/4-composites/Callout/Callout.figma.ts",
+    "nodeId": "23:1062"
+  },
+  {
+    "component": "Popover",
+    "path": "src/design-system/4-composites/Popover/Popover.figma.ts",
+    "nodeId": null
+  },
+  {
+    "component": "Table",
+    "path": "src/design-system/4-composites/Table/Table.figma.ts",
+    "nodeId": "33703:4948"
+  },
+  {
+    "component": "List",
+    "path": "src/design-system/4-composites/List/List.figma.ts",
+    "nodeId": "15330:36710"
+  },
+  {
+    "component": "Breadcrumb",
+    "path": "src/design-system/4-composites/Breadcrumb/Breadcrumb.figma.ts",
+    "nodeId": "180:2159"
+  },
+  {
+    "component": "Modal",
+    "path": "src/design-system/4-composites/Modal/Modal.figma.ts",
+    "nodeId": "589:2910"
+  },
+  {
+    "component": "Banner",
+    "path": "src/design-system/4-composites/Banner/Banner.figma.ts",
+    "nodeId": "1070:8230"
+  },
+  {
+    "component": "Tooltip",
+    "path": "src/design-system/3-primitives/Tooltip/Tooltip.figma.ts",
+    "nodeId": "196:1439"
+  },
+  {
+    "component": "Radio",
+    "path": "src/design-system/3-primitives/Radio/Radio.figma.ts",
+    "nodeId": "274:4817"
+  },
+  {
+    "component": "Card",
+    "path": "src/design-system/3-primitives/Card/Card.figma.ts",
+    "nodeId": "12985:36285"
+  },
+  {
+    "component": "Input",
+    "path": "src/design-system/3-primitives/Input/Input.figma.ts",
+    "nodeId": "144:17002"
+  },
+  {
+    "component": "Checkbox",
+    "path": "src/design-system/3-primitives/Checkbox/Checkbox.figma.ts",
+    "nodeId": "377:23064"
+  },
+  {
+    "component": "AlertBadge",
+    "path": "src/design-system/3-primitives/AlertBadge/AlertBadge.figma.ts",
+    "nodeId": "4:409"
+  },
+  {
+    "component": "Slider",
+    "path": "src/design-system/3-primitives/Slider/Slider.figma.ts",
+    "nodeId": "1108:6861"
+  },
+  {
+    "component": "Spinner",
+    "path": "src/design-system/3-primitives/Spinner/Spinner.figma.ts",
+    "nodeId": "474:12179"
+  },
+  {
+    "component": "ProgressBar",
+    "path": "src/design-system/3-primitives/ProgressBar/ProgressBar.figma.ts",
+    "nodeId": "471:9459"
+  },
+  {
+    "component": "TextArea",
+    "path": "src/design-system/3-primitives/TextArea/TextArea.figma.ts",
+    "nodeId": "261:2190"
+  },
+  {
+    "component": "Button",
+    "path": "src/design-system/3-primitives/Button/Button.figma.ts",
+    "nodeId": "10:557"
+  },
+  {
+    "component": "Link",
+    "path": "src/design-system/3-primitives/Link/Link.figma.ts",
+    "nodeId": "55:2626"
+  },
+  {
+    "component": "Avatar",
+    "path": "src/design-system/3-primitives/Avatar/Avatar.figma.ts",
+    "nodeId": "871:18543"
+  },
+  {
+    "component": "Switch",
+    "path": "src/design-system/3-primitives/Switch/Switch.figma.ts",
+    "nodeId": "171:3566"
+  },
+  {
+    "component": "IconButton",
+    "path": "src/design-system/3-primitives/IconButton/IconButton.figma.ts",
+    "nodeId": "14:953"
+  },
+  {
+    "component": "Select",
+    "path": "src/design-system/3-primitives/Select/Select.figma.ts",
+    "nodeId": "259:5197"
+  },
+  {
+    "component": "StatusLight",
+    "path": "src/design-system/3-primitives/StatusLight/StatusLight.figma.ts",
+    "nodeId": "166:2875"
+  },
+  {
+    "component": "Badge",
+    "path": "src/design-system/3-primitives/Badge/Badge.figma.ts",
+    "nodeId": "83:2801"
+  }
+]

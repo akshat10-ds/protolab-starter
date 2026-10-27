@@ -1,0 +1,6620 @@
+{
+  "scope": "Current Ink collection, explicit-name Standard-mode candidates only. No inferred value matches; inverse/touch runtime not compared. Mismatches require semantic review, not automatic fixes.",
+  "cssDeclarationCount": 1093,
+  "counts": {
+    "equal": 357,
+    "excluded_deprecated_or_nonsemantic": 22,
+    "no_explicit_name_mapping": 78,
+    "different": 11
+  },
+  "variables": [
+    {
+      "figmaId": "VariableID:6240:60",
+      "figmaName": "Published/Radius/radiusSizeNone",
+      "cssToken": "--ink-radius-none",
+      "mode": "Standard",
+      "figmaValue": 0,
+      "cssValue": "0",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:409",
+      "figmaName": "Internal/color/semantic/neutral/10",
+      "cssToken": "--ink-neutral-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9686274528503418,
+        "g": 0.9647058844566345,
+        "b": 0.9686274528503418,
+        "a": 1
+      },
+      "cssValue": "#f7f6f7",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:410",
+      "figmaName": "Internal/color/semantic/neutral/20",
+      "cssToken": "--ink-neutral-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9411764740943909,
+        "g": 0.9372549057006836,
+        "b": 0.9411764740943909,
+        "a": 1
+      },
+      "cssValue": "#f0eff0",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:411",
+      "figmaName": "Internal/color/semantic/neutral/30",
+      "cssToken": "--ink-neutral-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8980392217636108,
+        "g": 0.8941176533699036,
+        "b": 0.8980392217636108,
+        "a": 1
+      },
+      "cssValue": "#e5e4e5",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:412",
+      "figmaName": "Internal/color/semantic/neutral/40",
+      "cssToken": "--ink-neutral-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8470588326454163,
+        "g": 0.843137264251709,
+        "b": 0.8470588326454163,
+        "a": 1
+      },
+      "cssValue": "#d8d7d8",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:413",
+      "figmaName": "Internal/color/semantic/neutral/50",
+      "cssToken": "--ink-neutral-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7764706015586853,
+        "g": 0.7686274647712708,
+        "b": 0.7764706015586853,
+        "a": 1
+      },
+      "cssValue": "#c6c4c6",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:414",
+      "figmaName": "Internal/color/semantic/neutral/60",
+      "cssToken": "--ink-neutral-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.686274528503418,
+        "g": 0.6784313917160034,
+        "b": 0.686274528503418,
+        "a": 1
+      },
+      "cssValue": "#afadaf",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:415",
+      "figmaName": "Internal/color/semantic/neutral/70",
+      "cssToken": "--ink-neutral-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.572549045085907,
+        "g": 0.5607843399047852,
+        "b": 0.5764706134796143,
+        "a": 1
+      },
+      "cssValue": "#928f93",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:416",
+      "figmaName": "Internal/color/semantic/neutral/80",
+      "cssToken": "--ink-neutral-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.47058823704719543,
+        "g": 0.4588235318660736,
+        "b": 0.4941176474094391,
+        "a": 1
+      },
+      "cssValue": "#78757e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:417",
+      "figmaName": "Internal/color/semantic/neutral/90",
+      "cssToken": "--ink-neutral-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.33725491166114807,
+        "g": 0.32549020648002625,
+        "b": 0.3803921639919281,
+        "a": 1
+      },
+      "cssValue": "#565361",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:418",
+      "figmaName": "Internal/color/semantic/neutral/100",
+      "cssToken": "--ink-neutral-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.239215686917305,
+        "g": 0.22745098173618317,
+        "b": 0.30588236451148987,
+        "a": 1
+      },
+      "cssValue": "#3d3a4e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:454",
+      "figmaName": "Internal/color/semantic/neutral/110",
+      "cssToken": "--ink-neutral-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.1568627506494522,
+        "b": 0.26274511218070984,
+        "a": 1
+      },
+      "cssValue": "#2b2843",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:455",
+      "figmaName": "Internal/color/semantic/neutral/120",
+      "cssToken": "--ink-neutral-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.125490203499794,
+        "g": 0.10588235408067703,
+        "b": 0.22745098173618317,
+        "a": 1
+      },
+      "cssValue": "#201b3a",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:456",
+      "figmaName": "Internal/color/semantic/neutral/130",
+      "cssToken": "--ink-neutral-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.09803921729326248,
+        "g": 0.05882352963089943,
+        "b": 0.2078431397676468,
+        "a": 1
+      },
+      "cssValue": "#190f35",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:457",
+      "figmaName": "Internal/color/semantic/neutral/140",
+      "cssToken": "--ink-neutral-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:459",
+      "figmaName": "Internal/color/semantic/cobalt/10",
+      "cssToken": "--ink-cobalt-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9529411792755127,
+        "g": 0.9490196108818054,
+        "b": 0.9960784316062927,
+        "a": 1
+      },
+      "cssValue": "#f3f2fe",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:460",
+      "figmaName": "Internal/color/semantic/cobalt/20",
+      "cssToken": "--ink-cobalt-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9137254953384399,
+        "g": 0.9019607901573181,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "cssValue": "#e9e6fd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:461",
+      "figmaName": "Internal/color/semantic/cobalt/30",
+      "cssToken": "--ink-cobalt-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.8392156958580017,
+        "b": 0.9960784316062927,
+        "a": 1
+      },
+      "cssValue": "#dbd6fe",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:462",
+      "figmaName": "Internal/color/semantic/cobalt/40",
+      "cssToken": "--ink-cobalt-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7921568751335144,
+        "g": 0.7607843279838562,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#cac2ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:463",
+      "figmaName": "Internal/color/semantic/cobalt/50",
+      "cssToken": "--ink-cobalt-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7333333492279053,
+        "g": 0.6941176652908325,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#bbb1ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:464",
+      "figmaName": "Internal/color/semantic/cobalt/60",
+      "cssToken": "--ink-cobalt-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6470588445663452,
+        "g": 0.5960784554481506,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#a598ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:465",
+      "figmaName": "Internal/color/semantic/cobalt/70",
+      "cssToken": "--ink-cobalt-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.545098066329956,
+        "g": 0.47843137383461,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#8b7aff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:466",
+      "figmaName": "Internal/color/semantic/cobalt/80",
+      "cssToken": "--ink-cobalt-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.45098039507865906,
+        "g": 0.3529411852359772,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#735aff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:467",
+      "figmaName": "Internal/color/semantic/cobalt/90",
+      "cssToken": "--ink-cobalt-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.37254902720451355,
+        "g": 0.19607843458652496,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#5f32ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:468",
+      "figmaName": "Internal/color/semantic/cobalt/100",
+      "cssToken": "--ink-cobalt-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:469",
+      "figmaName": "Internal/color/semantic/cobalt/110",
+      "cssToken": "--ink-cobalt-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:470",
+      "figmaName": "Internal/color/semantic/cobalt/120",
+      "cssToken": "--ink-cobalt-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:471",
+      "figmaName": "Internal/color/semantic/cobalt/130",
+      "cssToken": "--ink-cobalt-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.01568627543747425,
+        "b": 0.49803921580314636,
+        "a": 1
+      },
+      "cssValue": "#2b047f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:472",
+      "figmaName": "Internal/color/semantic/cobalt/140",
+      "cssToken": "--ink-cobalt-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.14901961386203766,
+        "g": 0.019607843831181526,
+        "b": 0.3490196168422699,
+        "a": 1
+      },
+      "cssValue": "#260559",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:475",
+      "figmaName": "Internal/color/semantic/red/10",
+      "cssToken": "--ink-red-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.9411764740943909,
+        "b": 0.9490196108818054,
+        "a": 1
+      },
+      "cssValue": "#fef0f2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:476",
+      "figmaName": "Internal/color/semantic/red/20",
+      "cssToken": "--ink-red-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.9098039269447327,
+        "b": 0.9176470637321472,
+        "a": 1
+      },
+      "cssValue": "#fee8ea",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:477",
+      "figmaName": "Internal/color/semantic/red/30",
+      "cssToken": "--ink-red-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.8392156958580017,
+        "b": 0.8470588326454163,
+        "a": 1
+      },
+      "cssValue": "#fed6d8",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:478",
+      "figmaName": "Internal/color/semantic/red/40",
+      "cssToken": "--ink-red-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.7490196228027344,
+        "b": 0.7607843279838562,
+        "a": 1
+      },
+      "cssValue": "#febfc2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:479",
+      "figmaName": "Internal/color/semantic/red/50",
+      "cssToken": "--ink-red-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.6352941393852234,
+        "b": 0.6549019813537598,
+        "a": 1
+      },
+      "cssValue": "#ffa2a7",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:480",
+      "figmaName": "Internal/color/semantic/red/60",
+      "cssToken": "--ink-red-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.4901960790157318,
+        "b": 0.529411792755127,
+        "a": 1
+      },
+      "cssValue": "#ff7d87",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:481",
+      "figmaName": "Internal/color/semantic/red/70",
+      "cssToken": "--ink-red-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.2666666805744171,
+        "b": 0.3921568691730499,
+        "a": 1
+      },
+      "cssValue": "#ff4464",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:482",
+      "figmaName": "Internal/color/semantic/red/80",
+      "cssToken": "--ink-red-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9254902005195618,
+        "g": 0,
+        "b": 0.2980392277240753,
+        "a": 1
+      },
+      "cssValue": "#ec004c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:483",
+      "figmaName": "Internal/color/semantic/red/90",
+      "cssToken": "--ink-red-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7803921699523926,
+        "g": 0.019607843831181526,
+        "b": 0.27843138575553894,
+        "a": 1
+      },
+      "cssValue": "#c70547",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:484",
+      "figmaName": "Internal/color/semantic/red/100",
+      "cssToken": "--ink-red-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6509804129600525,
+        "g": 0,
+        "b": 0.24705882370471954,
+        "a": 1
+      },
+      "cssValue": "#a6003f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:485",
+      "figmaName": "Internal/color/semantic/red/110",
+      "cssToken": "--ink-red-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.529411792755127,
+        "g": 0,
+        "b": 0.2078431397676468,
+        "a": 1
+      },
+      "cssValue": "#870035",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:486",
+      "figmaName": "Internal/color/semantic/red/120",
+      "cssToken": "--ink-red-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.42352941632270813,
+        "g": 0.003921568859368563,
+        "b": 0.16470588743686676,
+        "a": 1
+      },
+      "cssValue": "#6c012a",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:487",
+      "figmaName": "Internal/color/semantic/red/130",
+      "cssToken": "--ink-red-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.33725491166114807,
+        "g": 0.003921568859368563,
+        "b": 0.12941177189350128,
+        "a": 1
+      },
+      "cssValue": "#560121",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:488",
+      "figmaName": "Internal/color/semantic/red/140",
+      "cssToken": "--ink-red-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2549019753932953,
+        "g": 0.0117647061124444,
+        "b": 0.0941176488995552,
+        "a": 1
+      },
+      "cssValue": "#410318",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:490",
+      "figmaName": "Internal/color/semantic/green/10",
+      "cssToken": "--ink-green-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8784313797950745,
+        "g": 0.9764705896377563,
+        "b": 0.9372549057006836,
+        "a": 1
+      },
+      "cssValue": "#e0f9ef",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:491",
+      "figmaName": "Internal/color/semantic/green/20",
+      "cssToken": "--ink-green-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7254902124404907,
+        "g": 0.9647058844566345,
+        "b": 0.8666666746139526,
+        "a": 1
+      },
+      "cssValue": "#b9f6dd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:492",
+      "figmaName": "Internal/color/semantic/green/30",
+      "cssToken": "--ink-green-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5176470875740051,
+        "g": 0.9372549057006836,
+        "b": 0.7647058963775635,
+        "a": 1
+      },
+      "cssValue": "#84efc3",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:493",
+      "figmaName": "Internal/color/semantic/green/40",
+      "cssToken": "--ink-green-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.38823530077934265,
+        "g": 0.8745098114013672,
+        "b": 0.6705882549285889,
+        "a": 1
+      },
+      "cssValue": "#63dfab",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:494",
+      "figmaName": "Internal/color/semantic/green/50",
+      "cssToken": "--ink-green-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.26274511218070984,
+        "g": 0.8196078538894653,
+        "b": 0.5921568870544434,
+        "a": 1
+      },
+      "cssValue": "#43d197",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:495",
+      "figmaName": "Internal/color/semantic/green/60",
+      "cssToken": "--ink-green-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.11372549086809158,
+        "g": 0.7372549176216125,
+        "b": 0.501960813999176,
+        "a": 1
+      },
+      "cssValue": "#1dbc80",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:496",
+      "figmaName": "Internal/color/semantic/green/70",
+      "cssToken": "--ink-green-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0235294122248888,
+        "g": 0.6313725709915161,
+        "b": 0.42352941632270813,
+        "a": 1
+      },
+      "cssValue": "#06a16c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:497",
+      "figmaName": "Internal/color/semantic/green/80",
+      "cssToken": "--ink-green-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.529411792755127,
+        "b": 0.3607843220233917,
+        "a": 1
+      },
+      "cssValue": "#00875c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:498",
+      "figmaName": "Internal/color/semantic/green/90",
+      "cssToken": "--ink-green-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.43529412150382996,
+        "b": 0.3019607961177826,
+        "a": 1
+      },
+      "cssValue": "#006f4d",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:499",
+      "figmaName": "Internal/color/semantic/green/100",
+      "cssToken": "--ink-green-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.37254902720451355,
+        "b": 0.26274511218070984,
+        "a": 1
+      },
+      "cssValue": "#005f43",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:500",
+      "figmaName": "Internal/color/semantic/green/110",
+      "cssToken": "--ink-green-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.2980392277240753,
+        "b": 0.21176470816135406,
+        "a": 1
+      },
+      "cssValue": "#004c36",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:501",
+      "figmaName": "Internal/color/semantic/green/120",
+      "cssToken": "--ink-green-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.003921568859368563,
+        "g": 0.23137255012989044,
+        "b": 0.16862745583057404,
+        "a": 1
+      },
+      "cssValue": "#013b2b",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:502",
+      "figmaName": "Internal/color/semantic/green/130",
+      "cssToken": "--ink-green-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.003921568859368563,
+        "g": 0.18431372940540314,
+        "b": 0.13333334028720856,
+        "a": 1
+      },
+      "cssValue": "#012f22",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6199:503",
+      "figmaName": "Internal/color/semantic/green/140",
+      "cssToken": "--ink-green-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.007843137718737125,
+        "g": 0.13725490868091583,
+        "b": 0.10196078568696976,
+        "a": 1
+      },
+      "cssValue": "#02231a",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:49",
+      "figmaName": "Internal/color/semantic/orange/10",
+      "cssToken": "--ink-orange-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.9490196108818054,
+        "b": 0.886274516582489,
+        "a": 1
+      },
+      "cssValue": "#fdf2e2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:50",
+      "figmaName": "Internal/color/semantic/orange/20",
+      "cssToken": "--ink-orange-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9882352948188782,
+        "g": 0.8823529481887817,
+        "b": 0.7607843279838562,
+        "a": 1
+      },
+      "cssValue": "#fce1c2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:51",
+      "figmaName": "Internal/color/semantic/orange/30",
+      "cssToken": "--ink-orange-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.800000011920929,
+        "b": 0.6039215922355652,
+        "a": 1
+      },
+      "cssValue": "#fdcc9a",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:52",
+      "figmaName": "Internal/color/semantic/orange/40",
+      "cssToken": "--ink-orange-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.6941176652908325,
+        "b": 0.40392157435417175,
+        "a": 1
+      },
+      "cssValue": "#feb167",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:53",
+      "figmaName": "Internal/color/semantic/orange/50",
+      "cssToken": "--ink-orange-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.5843137502670288,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#ff9532",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:54",
+      "figmaName": "Internal/color/semantic/orange/60",
+      "cssToken": "--ink-orange-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9843137264251709,
+        "g": 0.48627451062202454,
+        "b": 0,
+        "a": 1
+      },
+      "cssValue": "#fb7c00",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:55",
+      "figmaName": "Internal/color/semantic/orange/70",
+      "cssToken": "--ink-orange-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9450980424880981,
+        "g": 0.40392157435417175,
+        "b": 0,
+        "a": 1
+      },
+      "cssValue": "#f16700",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:56",
+      "figmaName": "Internal/color/semantic/orange/80",
+      "cssToken": "--ink-orange-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8627451062202454,
+        "g": 0.30588236451148987,
+        "b": 0,
+        "a": 1
+      },
+      "cssValue": "#dc4e00",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:57",
+      "figmaName": "Internal/color/semantic/orange/90",
+      "cssToken": "--ink-orange-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7490196228027344,
+        "g": 0.24313725531101227,
+        "b": 0.027450980618596077,
+        "a": 1
+      },
+      "cssValue": "#bf3e07",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:58",
+      "figmaName": "Internal/color/semantic/orange/100",
+      "cssToken": "--ink-orange-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6470588445663452,
+        "g": 0.14901961386203766,
+        "b": 0.0313725508749485,
+        "a": 1
+      },
+      "cssValue": "#a52608",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:59",
+      "figmaName": "Internal/color/semantic/orange/110",
+      "cssToken": "--ink-orange-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5568627715110779,
+        "g": 0.09019608050584793,
+        "b": 0.027450980618596077,
+        "a": 1
+      },
+      "cssValue": "#8e1707",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:60",
+      "figmaName": "Internal/color/semantic/orange/120",
+      "cssToken": "--ink-orange-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.46666666865348816,
+        "g": 0.03921568766236305,
+        "b": 0.019607843831181526,
+        "a": 1
+      },
+      "cssValue": "#770a05",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:61",
+      "figmaName": "Internal/color/semantic/orange/130",
+      "cssToken": "--ink-orange-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.3803921639919281,
+        "g": 0.01568627543747425,
+        "b": 0.0235294122248888,
+        "a": 1
+      },
+      "cssValue": "#610406",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:62",
+      "figmaName": "Internal/color/semantic/orange/140",
+      "cssToken": "--ink-orange-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.32549020648002625,
+        "g": 0.003921568859368563,
+        "b": 0.03529411926865578,
+        "a": 1
+      },
+      "cssValue": "#530109",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:63",
+      "figmaName": "Internal/color/semantic/ecru/10",
+      "cssToken": "--ink-ecru-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9725490212440491,
+        "g": 0.9529411792755127,
+        "b": 0.9411764740943909,
+        "a": 1
+      },
+      "cssValue": "#f8f3f0",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:64",
+      "figmaName": "Internal/color/semantic/ecru/20",
+      "cssToken": "--ink-ecru-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9490196108818054,
+        "g": 0.929411768913269,
+        "b": 0.9176470637321472,
+        "a": 1
+      },
+      "cssValue": "#f2edea",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:65",
+      "figmaName": "Internal/color/semantic/ecru/30",
+      "cssToken": "--ink-ecru-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9019607901573181,
+        "g": 0.8705882430076599,
+        "b": 0.8509804010391235,
+        "a": 1
+      },
+      "cssValue": "#e6ded9",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:66",
+      "figmaName": "Internal/color/semantic/ecru/40",
+      "cssToken": "--ink-ecru-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.843137264251709,
+        "g": 0.8039215803146362,
+        "b": 0.7803921699523926,
+        "a": 1
+      },
+      "cssValue": "#d7cdc7",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:67",
+      "figmaName": "Internal/color/semantic/ecru/50",
+      "cssToken": "--ink-ecru-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7686274647712708,
+        "g": 0.729411780834198,
+        "b": 0.7019608020782471,
+        "a": 1
+      },
+      "cssValue": "#c4bab3",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:68",
+      "figmaName": "Internal/color/semantic/ecru/60",
+      "cssToken": "--ink-ecru-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6705882549285889,
+        "g": 0.6431372761726379,
+        "b": 0.6235294342041016,
+        "a": 1
+      },
+      "cssValue": "#aba49f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:69",
+      "figmaName": "Internal/color/semantic/ecru/70",
+      "cssToken": "--ink-ecru-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.572549045085907,
+        "g": 0.5490196347236633,
+        "b": 0.529411792755127,
+        "a": 1
+      },
+      "cssValue": "#928c87",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:70",
+      "figmaName": "Internal/color/semantic/ecru/80",
+      "cssToken": "--ink-ecru-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.48235294222831726,
+        "g": 0.4627451002597809,
+        "b": 0.4470588266849518,
+        "a": 1
+      },
+      "cssValue": "#7b7672",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:71",
+      "figmaName": "Internal/color/semantic/ecru/90",
+      "cssToken": "--ink-ecru-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.40392157435417175,
+        "g": 0.38823530077934265,
+        "b": 0.3764705955982208,
+        "a": 1
+      },
+      "cssValue": "#676360",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:72",
+      "figmaName": "Internal/color/semantic/ecru/100",
+      "cssToken": "--ink-ecru-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.33725491166114807,
+        "g": 0.32156863808631897,
+        "b": 0.30588236451148987,
+        "a": 1
+      },
+      "cssValue": "#56524e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:73",
+      "figmaName": "Internal/color/semantic/ecru/110",
+      "cssToken": "--ink-ecru-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2705882489681244,
+        "g": 0.2549019753932953,
+        "b": 0.239215686917305,
+        "a": 1
+      },
+      "cssValue": "#45413d",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:74",
+      "figmaName": "Internal/color/semantic/ecru/120",
+      "cssToken": "--ink-ecru-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.20000000298023224,
+        "b": 0.18039216101169586,
+        "a": 1
+      },
+      "cssValue": "#37332e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:75",
+      "figmaName": "Internal/color/semantic/ecru/130",
+      "cssToken": "--ink-ecru-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.1725490242242813,
+        "g": 0.15294118225574493,
+        "b": 0.13333334028720856,
+        "a": 1
+      },
+      "cssValue": "#2c2722",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:76",
+      "figmaName": "Internal/color/semantic/ecru/140",
+      "cssToken": "--ink-ecru-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.13333334028720856,
+        "g": 0.11372549086809158,
+        "b": 0.09019608050584793,
+        "a": 1
+      },
+      "cssValue": "#221d17",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:78",
+      "figmaName": "Internal/color/semantic/neutral/fade/5",
+      "cssToken": "--ink-neutral-fade-5",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(19, 0, 50, 0.05)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:79",
+      "figmaName": "Internal/color/semantic/neutral/fade/10",
+      "cssToken": "--ink-neutral-fade-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:89",
+      "figmaName": "Internal/color/semantic/neutral/fade/15",
+      "cssToken": "--ink-neutral-fade-15",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.15000000596046448
+      },
+      "cssValue": "rgba(19, 0, 50, 0.15)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:90",
+      "figmaName": "Internal/color/semantic/neutral/fade/20",
+      "cssToken": "--ink-neutral-fade-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.20000000298023224
+      },
+      "cssValue": "rgba(19, 0, 50, 0.2)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:91",
+      "figmaName": "Internal/color/semantic/neutral/fade/30",
+      "cssToken": "--ink-neutral-fade-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.30000001192092896
+      },
+      "cssValue": "rgba(19, 0, 50, 0.3)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:92",
+      "figmaName": "Internal/color/semantic/neutral/fade/40",
+      "cssToken": "--ink-neutral-fade-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.4000000059604645
+      },
+      "cssValue": "rgba(19, 0, 50, 0.4)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:93",
+      "figmaName": "Internal/color/semantic/neutral/fade/50",
+      "cssToken": "--ink-neutral-fade-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.5
+      },
+      "cssValue": "rgba(19, 0, 50, 0.5)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:94",
+      "figmaName": "Internal/color/semantic/neutral/fade/60",
+      "cssToken": "--ink-neutral-fade-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.6000000238418579
+      },
+      "cssValue": "rgba(19, 0, 50, 0.6)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:95",
+      "figmaName": "Internal/color/semantic/neutral/fade/70",
+      "cssToken": "--ink-neutral-fade-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:96",
+      "figmaName": "Internal/color/semantic/neutral/fade/80",
+      "cssToken": "--ink-neutral-fade-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.800000011920929
+      },
+      "cssValue": "rgba(19, 0, 50, 0.8)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:97",
+      "figmaName": "Internal/color/semantic/neutral/fade/90",
+      "cssToken": "--ink-neutral-fade-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(19, 0, 50, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:98",
+      "figmaName": "Internal/color/semantic/white/fade/5",
+      "cssToken": "--ink-white-fade-5",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(255, 255, 255, 0.05)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:99",
+      "figmaName": "Internal/color/semantic/white/fade/10",
+      "cssToken": "--ink-white-fade-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(255, 255, 255, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:100",
+      "figmaName": "Internal/color/semantic/white/fade/15",
+      "cssToken": "--ink-white-fade-15",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.15000000596046448
+      },
+      "cssValue": "rgba(255, 255, 255, 0.15)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:101",
+      "figmaName": "Internal/color/semantic/white/fade/20",
+      "cssToken": "--ink-white-fade-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.20000000298023224
+      },
+      "cssValue": "rgba(255, 255, 255, 0.2)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:102",
+      "figmaName": "Internal/color/semantic/white/fade/30",
+      "cssToken": "--ink-white-fade-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.30000001192092896
+      },
+      "cssValue": "rgba(255, 255, 255, 0.3)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:103",
+      "figmaName": "Internal/color/semantic/white/fade/40",
+      "cssToken": "--ink-white-fade-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.4000000059604645
+      },
+      "cssValue": "rgba(255, 255, 255, 0.4)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:104",
+      "figmaName": "Internal/color/semantic/white/fade/50",
+      "cssToken": "--ink-white-fade-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.5
+      },
+      "cssValue": "rgba(255, 255, 255, 0.5)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:105",
+      "figmaName": "Internal/color/semantic/white/fade/60",
+      "cssToken": "--ink-white-fade-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.6000000238418579
+      },
+      "cssValue": "rgba(255, 255, 255, 0.6)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:106",
+      "figmaName": "Internal/color/semantic/white/fade/70",
+      "cssToken": "--ink-white-fade-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(255, 255, 255, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:107",
+      "figmaName": "Internal/color/semantic/white/fade/80",
+      "cssToken": "--ink-white-fade-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.800000011920929
+      },
+      "cssValue": "rgba(255, 255, 255, 0.8)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:108",
+      "figmaName": "Internal/color/semantic/white/fade/90",
+      "cssToken": "--ink-white-fade-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(255, 255, 255, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:110",
+      "figmaName": "Internal/color/semantic/white/100",
+      "cssToken": "--ink-white-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#ffffff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:111",
+      "figmaName": "Internal/color/semantic/black/100",
+      "cssToken": "--ink-black-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      },
+      "cssValue": "#000000",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6237:112",
+      "figmaName": "Internal/color/semantic/transparent",
+      "cssToken": "--ink-transparent",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.800000011920929,
+        "g": 1,
+        "b": 0,
+        "a": 0
+      },
+      "cssValue": "transparent",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6238:49",
+      "figmaName": "Internal/dimension/0",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 0,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:6238:50",
+      "figmaName": "Internal/dimension/1",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 1,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:6238:51",
+      "figmaName": "Internal/dimension/2",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 2,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:6238:52",
+      "figmaName": "Internal/dimension/4",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 4,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:6238:53",
+      "figmaName": "Internal/dimension/8",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 8,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:6240:70",
+      "figmaName": "Published/Font/fontColorDefault",
+      "cssToken": "--ink-font-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(19, 0, 50, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15938",
+      "figmaName": "Published/Font/fontColorInverse",
+      "cssToken": "--ink-font-color-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#ffffff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15939",
+      "figmaName": "Published/Font/fontColorSubtle",
+      "cssToken": "--ink-font-color-neutral-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15940",
+      "figmaName": "Published/Font/fontColorSubtleInverse",
+      "cssToken": "--ink-font-color-subtle-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.699999988079071
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:6240:15941",
+      "figmaName": "Published/Font/fontColorDisabled",
+      "cssToken": "--ink-font-color-disabled",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.20000000298023224
+      },
+      "cssValue": "rgba(19, 0, 50, 0.2)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15942",
+      "figmaName": "Published/Font/fontColorLink",
+      "cssToken": "--ink-font-color-link-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15943",
+      "figmaName": "Published/Font/fontColorLinkSubtle",
+      "cssToken": "--ink-font-color-link-subtle-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(19, 0, 50, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15944",
+      "figmaName": "Published/Font/fontColorLinkHover",
+      "cssToken": "--ink-font-color-link-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15945",
+      "figmaName": "Published/Font/fontColorLinkActive",
+      "cssToken": "--ink-font-color-link-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15946",
+      "figmaName": "Published/Font/fontColorLinkVisited",
+      "cssToken": "--ink-font-color-link-visited",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.14901961386203766,
+        "g": 0.019607843831181526,
+        "b": 0.3490196168422699,
+        "a": 1
+      },
+      "cssValue": "#260559",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15947",
+      "figmaName": "Published/Font/fontColorLinkSubtleVisited",
+      "cssToken": "--ink-font-color-link-subtle-visited",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15948",
+      "figmaName": "Published/Font/fontColorSuccess",
+      "cssToken": "--ink-font-color-success",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.43529412150382996,
+        "b": 0.3019607961177826,
+        "a": 1
+      },
+      "cssValue": "#005f43",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:6240:15949",
+      "figmaName": "Published/Font/fontColorError",
+      "cssToken": "--ink-font-color-error",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7803921699523926,
+        "g": 0.019607843831181526,
+        "b": 0.27843138575553894,
+        "a": 1
+      },
+      "cssValue": "#c70547",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15950",
+      "figmaName": "Published/Border/borderColorSubtle",
+      "cssToken": "--ink-border-color-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15951",
+      "figmaName": "Published/Border/borderColorDefault",
+      "cssToken": "--ink-border-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.5
+      },
+      "cssValue": "rgba(19, 0, 50, 0.5)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15952",
+      "figmaName": "Published/Border/borderColorEmphasis",
+      "cssToken": "--ink-border-color-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15953",
+      "figmaName": "Published/Border/borderColorEmphasisInverse",
+      "cssToken": "--ink-border-color-emphasis-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#ffffff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15954",
+      "figmaName": "Published/Border/borderColorSubtleInverse",
+      "cssToken": "--ink-border-color-subtle-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(255, 255, 255, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15955",
+      "figmaName": "Published/Border/borderWidthXS",
+      "cssToken": "--ink-border-width-xs",
+      "mode": "Standard",
+      "figmaValue": 1,
+      "cssValue": "1px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15956",
+      "figmaName": "Published/Border/borderWidthS",
+      "cssToken": "--ink-border-width-s",
+      "mode": "Standard",
+      "figmaValue": 2,
+      "cssValue": "2px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15959",
+      "figmaName": "Published/Focus/focusColor",
+      "cssToken": "--ink-focus-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15960",
+      "figmaName": "Published/Focus/focusWidth",
+      "cssToken": "--ink-focus-width",
+      "mode": "Standard",
+      "figmaValue": 2,
+      "cssValue": "2px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15962",
+      "figmaName": "Published/Focus/focusOutsetS",
+      "cssToken": "--ink-focus-outset-s",
+      "mode": "Standard",
+      "figmaValue": 2,
+      "cssValue": "2px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15963",
+      "figmaName": "Published/Focus/focusOutsetM",
+      "cssToken": "--ink-focus-outset-m",
+      "mode": "Standard",
+      "figmaValue": 4,
+      "cssValue": "4px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15964",
+      "figmaName": "Published/Focus/focusOutsetL",
+      "cssToken": "--ink-focus-outset-l",
+      "mode": "Standard",
+      "figmaValue": 8,
+      "cssValue": "8px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15965",
+      "figmaName": "Published/Focus/focusInset",
+      "cssToken": "--ink-focus-inset",
+      "mode": "Standard",
+      "figmaValue": 0,
+      "cssValue": "-4px",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:6240:15966",
+      "figmaName": "Published/Background/bgColorDefault",
+      "cssToken": "--ink-bg-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#ffffff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15967",
+      "figmaName": "Published/Background/bgColorInverse",
+      "cssToken": "--ink-bg-color-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15968",
+      "figmaName": "Published/Background/bgColorCanvasPage",
+      "cssToken": "--ink-bg-color-canvas-page",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9686274528503418,
+        "g": 0.9647058844566345,
+        "b": 0.9686274528503418,
+        "a": 1
+      },
+      "cssValue": "#f7f6f7",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15969",
+      "figmaName": "Published/Background/bgColorCanvasDocument",
+      "cssToken": "--ink-bg-color-canvas-document",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9411764740943909,
+        "g": 0.9372549057006836,
+        "b": 0.9411764740943909,
+        "a": 1
+      },
+      "cssValue": "#f0eff0",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15970",
+      "figmaName": "Published/Background/bgColorSuccess",
+      "cssToken": "--ink-bg-color-success",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7254902124404907,
+        "g": 0.9647058844566345,
+        "b": 0.8666666746139526,
+        "a": 1
+      },
+      "cssValue": "#b9f6dd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15971",
+      "figmaName": "Published/Background/bgColorError",
+      "cssToken": "--ink-bg-color-error",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.9098039269447327,
+        "b": 0.9176470637321472,
+        "a": 1
+      },
+      "cssValue": "#fee8ea",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15972",
+      "figmaName": "Published/Background/bgColorScrim",
+      "cssToken": "--ink-bg-color-scrim",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.800000011920929
+      },
+      "cssValue": "rgba(19, 0, 50, 0.8)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15973",
+      "figmaName": "Published/Spacing/gap50",
+      "cssToken": "--ink-spacing-50",
+      "mode": "Standard",
+      "figmaValue": 4,
+      "cssValue": "4px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15974",
+      "figmaName": "Published/Spacing/gap100",
+      "cssToken": "--ink-spacing-100",
+      "mode": "Standard",
+      "figmaValue": 8,
+      "cssValue": "8px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15975",
+      "figmaName": "Published/Spacing/gap150",
+      "cssToken": "--ink-spacing-150",
+      "mode": "Standard",
+      "figmaValue": 12,
+      "cssValue": "12px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15976",
+      "figmaName": "Published/Spacing/gap200",
+      "cssToken": "--ink-spacing-200",
+      "mode": "Standard",
+      "figmaValue": 16,
+      "cssValue": "16px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15977",
+      "figmaName": "Published/Spacing/gap250",
+      "cssToken": "--ink-spacing-250",
+      "mode": "Standard",
+      "figmaValue": 20,
+      "cssValue": "20px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15978",
+      "figmaName": "Published/Spacing/gap300",
+      "cssToken": "--ink-spacing-300",
+      "mode": "Standard",
+      "figmaValue": 24,
+      "cssValue": "24px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15979",
+      "figmaName": "Published/Spacing/gap400",
+      "cssToken": "--ink-spacing-400",
+      "mode": "Standard",
+      "figmaValue": 32,
+      "cssValue": "32px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15980",
+      "figmaName": "Published/Spacing/gap500",
+      "cssToken": "--ink-spacing-500",
+      "mode": "Standard",
+      "figmaValue": 40,
+      "cssValue": "40px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15982",
+      "figmaName": "Published/Icon/iconColorDefault",
+      "cssToken": "--ink-icon-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(19, 0, 50, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15983",
+      "figmaName": "Published/Icon/iconColorEmphasis",
+      "cssToken": "--ink-icon-color-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15984",
+      "figmaName": "Published/Icon/iconColorInverse",
+      "cssToken": "--ink-icon-color-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(255, 255, 255, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15985",
+      "figmaName": "Published/Icon/iconColorInverseEmphasis",
+      "cssToken": "--ink-icon-color-inverse-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#ffffff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15986",
+      "figmaName": "Published/Icon/iconColorSuccess",
+      "cssToken": "--ink-icon-color-success",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.529411792755127,
+        "b": 0.3607843220233917,
+        "a": 1
+      },
+      "cssValue": "#00875c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15987",
+      "figmaName": "Published/Icon/iconColorWarning",
+      "cssToken": "--ink-icon-color-warning",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8627451062202454,
+        "g": 0.30588236451148987,
+        "b": 0,
+        "a": 1
+      },
+      "cssValue": "#dc4e00",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15988",
+      "figmaName": "Published/Icon/iconColorError",
+      "cssToken": "--ink-icon-color-error",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9254902005195618,
+        "g": 0,
+        "b": 0.2980392277240753,
+        "a": 1
+      },
+      "cssValue": "#ec004c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15989",
+      "figmaName": "Published/Icon/iconColorDisabled",
+      "cssToken": "--ink-icon-color-disabled",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.20000000298023224
+      },
+      "cssValue": "rgba(19, 0, 50, 0.2)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15991",
+      "figmaName": "Published/Breakpoint/deviceBreakpointXS",
+      "cssToken": "--ink-breakpoint-xs",
+      "mode": "Standard",
+      "figmaValue": 544,
+      "cssValue": "544px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15992",
+      "figmaName": "Published/Breakpoint/deviceBreakpointS",
+      "cssToken": "--ink-breakpoint-s",
+      "mode": "Standard",
+      "figmaValue": 768,
+      "cssValue": "768px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15993",
+      "figmaName": "Published/Breakpoint/deviceBreakpointM",
+      "cssToken": "--ink-breakpoint-m",
+      "mode": "Standard",
+      "figmaValue": 980,
+      "cssValue": "980px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15994",
+      "figmaName": "Published/Breakpoint/deviceBreakpointL",
+      "cssToken": "--ink-breakpoint-l",
+      "mode": "Standard",
+      "figmaValue": 1280,
+      "cssValue": "1280px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15995",
+      "figmaName": "Published/Breakpoint/deviceBreakpointXXL",
+      "cssToken": "--ink-breakpoint-xxl",
+      "mode": "Standard",
+      "figmaValue": 1920,
+      "cssValue": "1920px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15996",
+      "figmaName": "Published/Bar/barWidthXS",
+      "cssToken": "--ink-bar-width-xs",
+      "mode": "Standard",
+      "figmaValue": 2,
+      "cssValue": "2px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15997",
+      "figmaName": "Published/Bar/barWidthS",
+      "cssToken": "--ink-bar-width-s",
+      "mode": "Standard",
+      "figmaValue": 4,
+      "cssValue": "4px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15998",
+      "figmaName": "Published/Bar/barWidthM",
+      "cssToken": "--ink-bar-width-m",
+      "mode": "Standard",
+      "figmaValue": 8,
+      "cssValue": "8px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:15999",
+      "figmaName": "Published/Bar/barTrackColorDefault",
+      "cssToken": "--ink-bar-track-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:16001",
+      "figmaName": "Published/Bar/barFillColorDefault",
+      "cssToken": "--ink-bar-fill-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.45098039507865906,
+        "g": 0.3529411852359772,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#735aff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:16002",
+      "figmaName": "Published/Bar/barFillColorSubtle",
+      "cssToken": "--ink-bar-fill-color-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:16003",
+      "figmaName": "Published/Bar/barFillColorSuccess",
+      "cssToken": "--ink-bar-fill-color-success",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.529411792755127,
+        "b": 0.3607843220233917,
+        "a": 1
+      },
+      "cssValue": "#00875c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:16004",
+      "figmaName": "Published/Bar/barFillColorWarning",
+      "cssToken": "--ink-bar-fill-color-warning",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8627451062202454,
+        "g": 0.30588236451148987,
+        "b": 0,
+        "a": 1
+      },
+      "cssValue": "#dc4e00",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:16005",
+      "figmaName": "Published/Bar/barFillColorError",
+      "cssToken": "--ink-bar-fill-color-error",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9254902005195618,
+        "g": 0,
+        "b": 0.2980392277240753,
+        "a": 1
+      },
+      "cssValue": "#ec004c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:16006",
+      "figmaName": "Published/Form/formTextColorRequired",
+      "cssToken": "--ink-form-control-font-color-required",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7803921699523926,
+        "g": 0.019607843831181526,
+        "b": 0.27843138575553894,
+        "a": 1
+      },
+      "cssValue": "#c70547",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:16007",
+      "figmaName": "Published/Form/formTextColorDisabled",
+      "cssToken": "--ink-form-control-font-color-disabled",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.5
+      },
+      "cssValue": "rgba(19, 0, 50, 0.5)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6240:16008",
+      "figmaName": "Published/Form/formBgColorDefault",
+      "cssToken": "--ink-form-control-bg-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#ffffff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:49",
+      "figmaName": "Published/Form/formBgColorDisabled",
+      "cssToken": "--ink-form-control-bg-color-disabled",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.15000000596046448
+      },
+      "cssValue": "rgba(19, 0, 50, 0.15)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:50",
+      "figmaName": "Published/Form/formBgColorRead",
+      "cssToken": "--ink-form-control-bg-color-read",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(19, 0, 50, 0.05)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:51",
+      "figmaName": "Published/Form/formBorderWidth",
+      "cssToken": "--ink-form-control-border-width",
+      "mode": "Standard",
+      "figmaValue": 1,
+      "cssValue": "1px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:52",
+      "figmaName": "Published/Form/formBorderWidthActive",
+      "cssToken": "--ink-form-control-border-width-active",
+      "mode": "Standard",
+      "figmaValue": 2,
+      "cssValue": "2px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:53",
+      "figmaName": "Published/Form/formBorderColorDefault",
+      "cssToken": "--ink-form-control-border-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.5
+      },
+      "cssValue": "rgba(19, 0, 50, 0.5)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:54",
+      "figmaName": "Published/Form/formBorderColorHover",
+      "cssToken": "--ink-form-control-border-color-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:55",
+      "figmaName": "Published/Form/formBorderColorActive",
+      "cssToken": "--ink-form-control-border-color-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:56",
+      "figmaName": "Published/Form/formBorderColorError",
+      "cssToken": "--ink-form-control-border-color-error",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7803921699523926,
+        "g": 0.019607843831181526,
+        "b": 0.27843138575553894,
+        "a": 1
+      },
+      "cssValue": "#c70547",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:61",
+      "figmaName": "Published/Form/formBgColorSelected",
+      "cssToken": "--ink-form-control-bg-color-selected",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:62",
+      "figmaName": "Published/Form/formBgColorSelectedActive",
+      "cssToken": "--ink-form-control-bg-color-selected-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:67",
+      "figmaName": "Published/Form/formBorderColorSelected",
+      "cssToken": "--ink-form-control-border-color-selected",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:68",
+      "figmaName": "Published/Form/formBorderColorSelectedHover",
+      "cssToken": "--ink-form-control-border-color-selected-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.01568627543747425,
+        "b": 0.49803921580314636,
+        "a": 1
+      },
+      "cssValue": "#2b047f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:69",
+      "figmaName": "Published/Form/formBorderColorSelectedActive",
+      "cssToken": "--ink-form-control-border-color-selected-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:70",
+      "figmaName": "Published/Form/formHighlightBgColorDefault",
+      "cssToken": "--ink-form-control-bg-color-highlight",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:71",
+      "figmaName": "Published/Form/formThumbBgColorDefault",
+      "cssToken": "--ink-form-control-thumb-bg-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.239215686917305,
+        "g": 0.22745098173618317,
+        "b": 0.30588236451148987,
+        "a": 1
+      },
+      "cssValue": "#3d3a4e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:72",
+      "figmaName": "Published/Form/formThumbBgColorHover",
+      "cssToken": "--ink-form-control-thumb-bg-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:73",
+      "figmaName": "Published/Form/formThumbBgColorActive",
+      "cssToken": "--ink-form-control-thumb-bg-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:74",
+      "figmaName": "Published/Message/messageBgColorDefault",
+      "cssToken": "--ink-message-bg-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.1568627506494522,
+        "b": 0.26274511218070984,
+        "a": 1
+      },
+      "cssValue": "#2b2843",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:75",
+      "figmaName": "Published/Message/messageBgColorPromo",
+      "cssToken": "--ink-message-bg-color-promo",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9137254953384399,
+        "g": 0.9019607901573181,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "cssValue": "#e9e6fd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:76",
+      "figmaName": "Published/Message/messageBgColorEmphasis",
+      "cssToken": "--ink-message-bg-color-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(19, 0, 50, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:77",
+      "figmaName": "Published/Message/messageBgColorSubtle",
+      "cssToken": "--ink-message-bg-color-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(19, 0, 50, 0.05)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:78",
+      "figmaName": "Published/Message/messageBgColorSuccess",
+      "cssToken": "--ink-message-bg-color-success",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7254902124404907,
+        "g": 0.9647058844566345,
+        "b": 0.8666666746139526,
+        "a": 1
+      },
+      "cssValue": "#b9f6dd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:79",
+      "figmaName": "Published/Message/messageBgColorWarning",
+      "cssToken": "--ink-message-bg-color-warning",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9882352948188782,
+        "g": 0.8823529481887817,
+        "b": 0.7607843279838562,
+        "a": 1
+      },
+      "cssValue": "#fce1c2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:80",
+      "figmaName": "Published/Message/messageBgColorError",
+      "cssToken": "--ink-message-bg-color-error",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.9098039269447327,
+        "b": 0.9176470637321472,
+        "a": 1
+      },
+      "cssValue": "#fee8ea",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:81",
+      "figmaName": "Published/Message/messageBorderColorDefault",
+      "cssToken": "--ink-message-border-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:82",
+      "figmaName": "Published/Message/messageBorderColorPromo",
+      "cssToken": "--ink-message-border-color-promo",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:83",
+      "figmaName": "Published/Message/messageBgColorAlertAlternate",
+      "cssToken": "--ink-message-bg-color-alert-alternate",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.33725491166114807,
+        "g": 0.32549020648002625,
+        "b": 0.3803921639919281,
+        "a": 1
+      },
+      "cssValue": "#565361",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:84",
+      "figmaName": "Published/Message/messageBgColorAlert",
+      "cssToken": "--ink-message-bg-color-alert",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7803921699523926,
+        "g": 0.019607843831181526,
+        "b": 0.27843138575553894,
+        "a": 1
+      },
+      "cssValue": "#c70547",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:85",
+      "figmaName": "Published/Item/itemBgColorDefault",
+      "cssToken": "--ink-item-bg-color-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.800000011920929,
+        "g": 1,
+        "b": 0,
+        "a": 0
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:6242:86",
+      "figmaName": "Published/Item/itemBgColorHover",
+      "cssToken": "--ink-item-bg-color-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:87",
+      "figmaName": "Published/Item/itemBgColorHoverSubtle",
+      "cssToken": "--ink-item-bg-color-hover-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(19, 0, 50, 0.05)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:88",
+      "figmaName": "Published/Item/itemBgColorActiveSubtle",
+      "cssToken": "--ink-item-bg-color-active-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:89",
+      "figmaName": "Published/Item/itemBgColorActive",
+      "cssToken": "--ink-item-bg-color-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.15000000596046448
+      },
+      "cssValue": "rgba(19, 0, 50, 0.15)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:90",
+      "figmaName": "Published/Item/itemBgColorSelected",
+      "cssToken": "--ink-item-bg-color-selected",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:91",
+      "figmaName": "Published/Item/itemBgColorSelectedSubtle",
+      "cssToken": "--ink-item-bg-color-selected-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(19, 0, 50, 0.05)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:92",
+      "figmaName": "Published/Item/itemBorderColorHover",
+      "cssToken": "--ink-item-border-color-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:93",
+      "figmaName": "Published/Item/itemBorderColorActive",
+      "cssToken": "--ink-item-border-color-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(19, 0, 50, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:95",
+      "figmaName": "Published/Status/statusBgColorSubtle",
+      "cssToken": "--ink-status-bg-color-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9411764740943909,
+        "g": 0.9372549057006836,
+        "b": 0.9411764740943909,
+        "a": 1
+      },
+      "cssValue": "#f0eff0",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:96",
+      "figmaName": "Published/Status/statusBgColorEmphasis",
+      "cssToken": "--ink-status-bg-color-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.1568627506494522,
+        "b": 0.26274511218070984,
+        "a": 1
+      },
+      "cssValue": "#2b2843",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:97",
+      "figmaName": "Published/Status/statusBgColorSuccess",
+      "cssToken": "--ink-status-bg-color-success",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7254902124404907,
+        "g": 0.9647058844566345,
+        "b": 0.8666666746139526,
+        "a": 1
+      },
+      "cssValue": "#b9f6dd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:98",
+      "figmaName": "Published/Status/statusBgColorWarning",
+      "cssToken": "--ink-status-bg-color-warning",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9882352948188782,
+        "g": 0.8823529481887817,
+        "b": 0.7607843279838562,
+        "a": 1
+      },
+      "cssValue": "#fce1c2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:99",
+      "figmaName": "Published/Status/statusBgColorAccent",
+      "cssToken": "--ink-status-bg-color-accent",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:100",
+      "figmaName": "Published/Status/statusBgColorAlert",
+      "cssToken": "--ink-status-bg-color-alert",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.9098039269447327,
+        "b": 0.9176470637321472,
+        "a": 1
+      },
+      "cssValue": "#fee8ea",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:101",
+      "figmaName": "Published/Status/statusBgColorPast",
+      "cssToken": "--ink-status-bg-color-past",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9137254953384399,
+        "g": 0.9019607901573181,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "cssValue": "#e9e6fd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:102",
+      "figmaName": "Published/Status/statusBgColorCurrent",
+      "cssToken": "--ink-status-bg-color-current",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:103",
+      "figmaName": "Published/Status/statusBgColorFuture",
+      "cssToken": "--ink-status-bg-color-future",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:105",
+      "figmaName": "Published/CTA/ctaBgColorPrimaryDefault",
+      "cssToken": "--ink-cta-bg-color-primary-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.14901961386203766,
+        "g": 0.019607843831181526,
+        "b": 0.3490196168422699,
+        "a": 1
+      },
+      "cssValue": "#260559",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:106",
+      "figmaName": "Published/CTA/ctaBgColorSecondaryDefault",
+      "cssToken": "--ink-cta-bg-color-secondary-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.800000011920929,
+        "g": 1,
+        "b": 0,
+        "a": 0
+      },
+      "cssValue": "transparent",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:107",
+      "figmaName": "Published/CTA/ctaBgColorTertiaryDefault",
+      "cssToken": "--ink-cta-bg-color-tertiary-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(19, 0, 50, 0.05)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:108",
+      "figmaName": "Published/CTA/ctaBgColorPrimaryHover",
+      "cssToken": "--ink-cta-bg-color-primary-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.01568627543747425,
+        "b": 0.49803921580314636,
+        "a": 1
+      },
+      "cssValue": "#2b047f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:109",
+      "figmaName": "Published/CTA/ctaBgColorSecondaryHover",
+      "cssToken": "--ink-cta-bg-color-secondary-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(19, 0, 50, 0.05)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:110",
+      "figmaName": "Published/CTA/ctaBgColorTertiaryHover",
+      "cssToken": "--ink-cta-bg-color-tertiary-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:111",
+      "figmaName": "Published/CTA/ctaBgColorPrimaryActive",
+      "cssToken": "--ink-cta-bg-color-primary-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:112",
+      "figmaName": "Published/CTA/ctaBgColorSecondaryActive",
+      "cssToken": "--ink-cta-bg-color-secondary-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:113",
+      "figmaName": "Published/CTA/ctaBgColorTertiaryActive",
+      "cssToken": "--ink-cta-bg-color-tertiary-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.15000000596046448
+      },
+      "cssValue": "rgba(19, 0, 50, 0.15)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:115",
+      "figmaName": "Published/CTA/ctaBorderColorSecondaryDefault",
+      "cssToken": "--ink-cta-border-color-secondary-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.5
+      },
+      "cssValue": "rgba(19, 0, 50, 0.5)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:116",
+      "figmaName": "Published/CTA/ctaBorderColorSecondaryHover",
+      "cssToken": "--ink-cta-border-color-secondary-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:117",
+      "figmaName": "Published/CTA/ctaBorderColorSecondaryActive",
+      "cssToken": "--ink-cta-border-color-secondary-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(19, 0, 50, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:118",
+      "figmaName": "Published/CTA/ctaComboBorderColorPrimaryDefault",
+      "cssToken": "--ink-cta-combo-border-primary",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#2b047f",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:6242:119",
+      "figmaName": "Published/CTA/ctaComboBorderColorSecondaryDefault",
+      "cssToken": "--ink-cta-combo-border-secondary",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.5
+      },
+      "cssValue": "rgba(19, 0, 50, 0.5)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:121",
+      "figmaName": "Published/CTA/ctaFabBgColorBrandDefault",
+      "cssToken": "--ink-cta-fab-bg-brand-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:122",
+      "figmaName": "Published/CTA/ctaFabBgColorBrandHover",
+      "cssToken": "--ink-cta-fab-bg-brand-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.37254902720451355,
+        "g": 0.19607843458652496,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#5f32ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:124",
+      "figmaName": "Published/CTA/ctaFabBgColorBrandActive",
+      "cssToken": "--ink-cta-fab-bg-brand-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:125",
+      "figmaName": "Published/CTA/ctaFabBorderColorPrimaryActive",
+      "cssToken": "--ink-cta-fab-border-color-primary-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:6242:126",
+      "figmaName": "Published/CTA/ctaToggleBgColorHover",
+      "cssToken": "--ink-cta-toggle-bg-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.05000000074505806
+      },
+      "cssValue": "rgba(19, 0, 50, 0.1)",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:6242:127",
+      "figmaName": "Published/CTA/ctaToggleBgColorActive",
+      "cssToken": "--ink-cta-toggle-bg-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "rgba(19, 0, 50, 0.15)",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:6242:128",
+      "figmaName": "Published/CTA/ctaToggleBgColorSelected",
+      "cssToken": "--ink-cta-toggle-bg-selected",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.14901961386203766,
+        "g": 0.019607843831181526,
+        "b": 0.3490196168422699,
+        "a": 1
+      },
+      "cssValue": "#260559",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:129",
+      "figmaName": "Published/CTA/ctaToggleBgColorSelectedHover",
+      "cssToken": "--ink-cta-toggle-bg-selected-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.01568627543747425,
+        "b": 0.49803921580314636,
+        "a": 1
+      },
+      "cssValue": "#2b047f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:130",
+      "figmaName": "Published/CTA/ctaToggleBgColorSelectedActive",
+      "cssToken": "--ink-cta-toggle-bg-selected-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6242:11049",
+      "figmaName": "Published/CTA/ctaSizeMd",
+      "cssToken": "--ink-cta-size-md",
+      "mode": "Standard",
+      "figmaValue": 40,
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:6242:11050",
+      "figmaName": "Published/CTA/ctaSizeMd (Flex)",
+      "cssToken": "--ink-cta-size-md (flex)",
+      "mode": "Standard",
+      "figmaValue": 8,
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:6242:11052",
+      "figmaName": "Published/CTA/ctaSizeSm",
+      "cssToken": "--ink-cta-size-sm",
+      "mode": "Standard",
+      "figmaValue": 32,
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:6242:11053",
+      "figmaName": "Published/CTA/ctaSizeSm (Flex)",
+      "cssToken": "--ink-cta-size-sm (flex)",
+      "mode": "Standard",
+      "figmaValue": 0,
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:6981:21035",
+      "figmaName": "Internal/color/accent/cyan/10",
+      "cssToken": "--ink-cyan-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.9764705896377563,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "cssValue": "#dbf9fd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21036",
+      "figmaName": "Internal/color/accent/cyan/20",
+      "cssToken": "--ink-cyan-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7921568751335144,
+        "g": 0.95686274766922,
+        "b": 0.9882352948188782,
+        "a": 1
+      },
+      "cssValue": "#caf4fc",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21037",
+      "figmaName": "Internal/color/accent/cyan/30",
+      "cssToken": "--ink-cyan-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6470588445663452,
+        "g": 0.929411768913269,
+        "b": 0.9882352948188782,
+        "a": 1
+      },
+      "cssValue": "#a5edfc",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21038",
+      "figmaName": "Internal/color/accent/cyan/40",
+      "cssToken": "--ink-cyan-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.4000000059604645,
+        "g": 0.8980392217636108,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "cssValue": "#66e5fd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21039",
+      "figmaName": "Internal/color/accent/cyan/50",
+      "cssToken": "--ink-cyan-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.8470588326454163,
+        "b": 0.9686274528503418,
+        "a": 1
+      },
+      "cssValue": "#00d8f7",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21040",
+      "figmaName": "Internal/color/accent/cyan/60",
+      "cssToken": "--ink-cyan-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.7529411911964417,
+        "b": 0.8784313797950745,
+        "a": 1
+      },
+      "cssValue": "#00c0e0",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21041",
+      "figmaName": "Internal/color/accent/cyan/70",
+      "cssToken": "--ink-cyan-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.6235294342041016,
+        "b": 0.7490196228027344,
+        "a": 1
+      },
+      "cssValue": "#009fbf",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21042",
+      "figmaName": "Internal/color/accent/cyan/80",
+      "cssToken": "--ink-cyan-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.5137255191802979,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#00839e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21043",
+      "figmaName": "Internal/color/accent/cyan/90",
+      "cssToken": "--ink-cyan-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.01568627543747425,
+        "g": 0.4274509847164154,
+        "b": 0.5176470875740051,
+        "a": 1
+      },
+      "cssValue": "#046d84",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21044",
+      "figmaName": "Internal/color/accent/cyan/100",
+      "cssToken": "--ink-cyan-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.3529411852359772,
+        "b": 0.42352941632270813,
+        "a": 1
+      },
+      "cssValue": "#035a6c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21045",
+      "figmaName": "Internal/color/accent/cyan/110",
+      "cssToken": "--ink-cyan-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.2862745225429535,
+        "b": 0.3450980484485626,
+        "a": 1
+      },
+      "cssValue": "#034958",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21046",
+      "figmaName": "Internal/color/accent/cyan/120",
+      "cssToken": "--ink-cyan-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.2235294133424759,
+        "b": 0.2666666805744171,
+        "a": 1
+      },
+      "cssValue": "#033944",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21047",
+      "figmaName": "Internal/color/accent/cyan/130",
+      "cssToken": "--ink-cyan-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.1764705926179886,
+        "b": 0.21176470816135406,
+        "a": 1
+      },
+      "cssValue": "#032d36",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21048",
+      "figmaName": "Internal/color/accent/cyan/140",
+      "cssToken": "--ink-cyan-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.12941177189350128,
+        "b": 0.1568627506494522,
+        "a": 1
+      },
+      "cssValue": "#032128",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21049",
+      "figmaName": "Internal/color/accent/purple/10",
+      "cssToken": "--ink-purple-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9843137264251709,
+        "g": 0.9411764740943909,
+        "b": 0.9882352948188782,
+        "a": 1
+      },
+      "cssValue": "#fbf0fc",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21050",
+      "figmaName": "Internal/color/accent/purple/20",
+      "cssToken": "--ink-purple-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9725490212440491,
+        "g": 0.9098039269447327,
+        "b": 0.9803921580314636,
+        "a": 1
+      },
+      "cssValue": "#f8e8fa",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21051",
+      "figmaName": "Internal/color/accent/purple/30",
+      "cssToken": "--ink-purple-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9529411792755127,
+        "g": 0.8392156958580017,
+        "b": 0.9725490212440491,
+        "a": 1
+      },
+      "cssValue": "#f3d6f8",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21052",
+      "figmaName": "Internal/color/accent/purple/40",
+      "cssToken": "--ink-purple-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9176470637321472,
+        "g": 0.7568627595901489,
+        "b": 0.95686274766922,
+        "a": 1
+      },
+      "cssValue": "#eac1f4",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21053",
+      "figmaName": "Internal/color/accent/purple/50",
+      "cssToken": "--ink-purple-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.6627451181411743,
+        "b": 0.9450980424880981,
+        "a": 1
+      },
+      "cssValue": "#dba9f1",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21054",
+      "figmaName": "Internal/color/accent/purple/60",
+      "cssToken": "--ink-purple-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7882353067398071,
+        "g": 0.5529412031173706,
+        "b": 0.929411768913269,
+        "a": 1
+      },
+      "cssValue": "#c98ded",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21055",
+      "figmaName": "Internal/color/accent/purple/70",
+      "cssToken": "--ink-purple-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7098039388656616,
+        "g": 0.41960784792900085,
+        "b": 0.9176470637321472,
+        "a": 1
+      },
+      "cssValue": "#b56bea",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21056",
+      "figmaName": "Internal/color/accent/purple/80",
+      "cssToken": "--ink-purple-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6313725709915161,
+        "g": 0.29019609093666077,
+        "b": 0.9176470637321472,
+        "a": 1
+      },
+      "cssValue": "#a14aea",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21057",
+      "figmaName": "Internal/color/accent/purple/90",
+      "cssToken": "--ink-purple-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5333333611488342,
+        "g": 0.15294118225574493,
+        "b": 0.8627451062202454,
+        "a": 1
+      },
+      "cssValue": "#8827dc",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21058",
+      "figmaName": "Internal/color/accent/purple/100",
+      "cssToken": "--ink-purple-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.43921568989753723,
+        "g": 0.12156862765550613,
+        "b": 0.7764706015586853,
+        "a": 1
+      },
+      "cssValue": "#701fc6",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21059",
+      "figmaName": "Internal/color/accent/purple/110",
+      "cssToken": "--ink-purple-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.3490196168422699,
+        "g": 0.08627451211214066,
+        "b": 0.6470588445663452,
+        "a": 1
+      },
+      "cssValue": "#5916a5",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21060",
+      "figmaName": "Internal/color/accent/purple/120",
+      "cssToken": "--ink-purple-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.29019609093666077,
+        "g": 0.05882352963089943,
+        "b": 0.501960813999176,
+        "a": 1
+      },
+      "cssValue": "#4a0f80",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21061",
+      "figmaName": "Internal/color/accent/purple/130",
+      "cssToken": "--ink-purple-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.24705882370471954,
+        "g": 0.03529411926865578,
+        "b": 0.38823530077934265,
+        "a": 1
+      },
+      "cssValue": "#3f0963",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21062",
+      "figmaName": "Internal/color/accent/purple/140",
+      "cssToken": "--ink-purple-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.20000000298023224,
+        "g": 0.019607843831181526,
+        "b": 0.27450981736183167,
+        "a": 1
+      },
+      "cssValue": "#330546",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21063",
+      "figmaName": "Internal/color/accent/fuchsia/10",
+      "cssToken": "--ink-fuchsia-10",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.9411764740943909,
+        "b": 0.9686274528503418,
+        "a": 1
+      },
+      "cssValue": "#fef0f7",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21064",
+      "figmaName": "Internal/color/accent/fuchsia/20",
+      "cssToken": "--ink-fuchsia-20",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.9058823585510254,
+        "b": 0.9529411792755127,
+        "a": 1
+      },
+      "cssValue": "#fde7f3",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21065",
+      "figmaName": "Internal/color/accent/fuchsia/30",
+      "cssToken": "--ink-fuchsia-30",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.8313725590705872,
+        "b": 0.9137254953384399,
+        "a": 1
+      },
+      "cssValue": "#fed4e9",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21066",
+      "figmaName": "Internal/color/accent/fuchsia/40",
+      "cssToken": "--ink-fuchsia-40",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.7333333492279053,
+        "b": 0.8745098114013672,
+        "a": 1
+      },
+      "cssValue": "#ffbbdf",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21067",
+      "figmaName": "Internal/color/accent/fuchsia/50",
+      "cssToken": "--ink-fuchsia-50",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.615686297416687,
+        "b": 0.8156862854957581,
+        "a": 1
+      },
+      "cssValue": "#ff9dd0",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21068",
+      "figmaName": "Internal/color/accent/fuchsia/60",
+      "cssToken": "--ink-fuchsia-60",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.4588235318660736,
+        "b": 0.7450980544090271,
+        "a": 1
+      },
+      "cssValue": "#ff75be",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21069",
+      "figmaName": "Internal/color/accent/fuchsia/70",
+      "cssToken": "--ink-fuchsia-70",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.18431372940540314,
+        "b": 0.6705882549285889,
+        "a": 1
+      },
+      "cssValue": "#ff2fab",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21070",
+      "figmaName": "Internal/color/accent/fuchsia/80",
+      "cssToken": "--ink-fuchsia-80",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.886274516582489,
+        "g": 0,
+        "b": 0.5764706134796143,
+        "a": 1
+      },
+      "cssValue": "#e20093",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21071",
+      "figmaName": "Internal/color/accent/fuchsia/90",
+      "cssToken": "--ink-fuchsia-90",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7529411911964417,
+        "g": 0,
+        "b": 0.48627451062202454,
+        "a": 1
+      },
+      "cssValue": "#c0007c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21072",
+      "figmaName": "Internal/color/accent/fuchsia/100",
+      "cssToken": "--ink-fuchsia-100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6274510025978088,
+        "g": 0,
+        "b": 0.40784314274787903,
+        "a": 1
+      },
+      "cssValue": "#a00068",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21073",
+      "figmaName": "Internal/color/accent/fuchsia/110",
+      "cssToken": "--ink-fuchsia-110",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5098039507865906,
+        "g": 0,
+        "b": 0.3450980484485626,
+        "a": 1
+      },
+      "cssValue": "#820058",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21074",
+      "figmaName": "Internal/color/accent/fuchsia/120",
+      "cssToken": "--ink-fuchsia-120",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.4000000059604645,
+        "g": 0.003921568859368563,
+        "b": 0.2823529541492462,
+        "a": 1
+      },
+      "cssValue": "#660148",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21075",
+      "figmaName": "Internal/color/accent/fuchsia/130",
+      "cssToken": "--ink-fuchsia-130",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.32156863808631897,
+        "g": 0.007843137718737125,
+        "b": 0.22745098173618317,
+        "a": 1
+      },
+      "cssValue": "#52023a",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:6981:21076",
+      "figmaName": "Internal/color/accent/fuchsia/140",
+      "cssToken": "--ink-fuchsia-140",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.24313725531101227,
+        "g": 0.0117647061124444,
+        "b": 0.16862745583057404,
+        "a": 1
+      },
+      "cssValue": "#3e032b",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8169:5648",
+      "figmaName": "Published/Font/fontColorLinkSubtleHover",
+      "cssToken": "--ink-font-color-link-subtle-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.800000011920929
+      },
+      "cssValue": "rgba(19, 0, 50, 0.8)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8169:5649",
+      "figmaName": "Published/Font/fontColorLinkSubtleActive",
+      "cssToken": "--ink-font-color-link-subtle-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8202:117",
+      "figmaName": "Published/Focus/focusColorInverse",
+      "cssToken": "--ink-focus-color-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#ffffff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8202:119",
+      "figmaName": "Published/CTA/ctaBgColorTertiaryHoverInverse",
+      "cssToken": "--ink-cta-bg-color-tertiary-hover-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.10000000149011612
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:8253:119",
+      "figmaName": "Published/Status/statusBgColorSubtleInverse",
+      "cssToken": "--ink-status-bg-color-subtle-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.33725491166114807,
+        "g": 0.32549020648002625,
+        "b": 0.3803921639919281,
+        "a": 1
+      },
+      "cssValue": "#565361",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8878:117",
+      "figmaName": "Internal/dimension/12",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 12,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:123",
+      "figmaName": "Internal/dimension/16",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 16,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:124",
+      "figmaName": "Internal/dimension/20",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 20,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:128",
+      "figmaName": "Internal/dimension/24",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 24,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:131",
+      "figmaName": "Internal/dimension/32",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 32,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:134",
+      "figmaName": "Internal/dimension/40",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 40,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:137",
+      "figmaName": "Internal/dimension/48",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 48,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:140",
+      "figmaName": "Internal/dimension/56",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 56,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:143",
+      "figmaName": "Internal/dimension/64",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 64,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:146",
+      "figmaName": "Internal/dimension/72",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 72,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:149",
+      "figmaName": "Internal/dimension/80",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 80,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:152",
+      "figmaName": "Internal/dimension/88",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 88,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:155",
+      "figmaName": "Internal/dimension/96",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 96,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:158",
+      "figmaName": "Internal/dimension/104",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 104,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:161",
+      "figmaName": "Internal/dimension/112",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 112,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:164",
+      "figmaName": "Internal/dimension/120",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 120,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:8878:13393",
+      "figmaName": "Published/Font/fontColorAccent",
+      "cssToken": "--ink-font-color-accent",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8942:10726",
+      "figmaName": "Published/CTA/ctaBgColorBrandDefault",
+      "cssToken": "--ink-cta-bg-color-brand-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8942:10732",
+      "figmaName": "Published/CTA/ctaBgColorBrandHover",
+      "cssToken": "--ink-cta-bg-color-brand-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.37254902720451355,
+        "g": 0.19607843458652496,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#5f32ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8942:10735",
+      "figmaName": "Published/CTA/ctaBgColorBrandActive",
+      "cssToken": "--ink-cta-bg-color-brand-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8942:17189",
+      "figmaName": "Published/CTA/ctaIconBgColorTertiaryDefault",
+      "cssToken": "--ink-cta-icon-bg-color-tertiary-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.800000011920929,
+        "g": 1,
+        "b": 0,
+        "a": 0
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:8942:18036",
+      "figmaName": "Published/CTA/ctaBgColorDangerDefault",
+      "cssToken": "--ink-cta-bg-color-danger-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7803921699523926,
+        "g": 0.019607843831181526,
+        "b": 0.27843138575553894,
+        "a": 1
+      },
+      "cssValue": "#c70547",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8942:18091",
+      "figmaName": "Published/CTA/ctaBgColorDangerHover",
+      "cssToken": "--ink-cta-bg-color-danger-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6509804129600525,
+        "g": 0,
+        "b": 0.24705882370471954,
+        "a": 1
+      },
+      "cssValue": "#a6003f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8942:18094",
+      "figmaName": "Published/CTA/ctaBgColorDangerActive",
+      "cssToken": "--ink-cta-bg-color-danger-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.529411792755127,
+        "g": 0,
+        "b": 0.2078431397676468,
+        "a": 1
+      },
+      "cssValue": "#870035",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8942:18354",
+      "figmaName": "Published/Icon/iconColorSubtle",
+      "cssToken": "--ink-icon-color-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8942:23463",
+      "figmaName": "Published/Icon/iconColorInverseSubtle",
+      "cssToken": "--ink-icon-color-inverse-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(255, 255, 255, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8960:817",
+      "figmaName": "Published/Radius/radiusSizeFull",
+      "cssToken": "--ink-radius-size-full",
+      "mode": "Standard",
+      "figmaValue": 9999,
+      "cssValue": "9999px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8960:828",
+      "figmaName": "Published/Radius/radiusSizeXS",
+      "cssToken": "--ink-radius-size-xs",
+      "mode": "Standard",
+      "figmaValue": 4,
+      "cssValue": "4px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8960:831",
+      "figmaName": "Published/Radius/radiusSizeS",
+      "cssToken": "--ink-radius-size-s",
+      "mode": "Standard",
+      "figmaValue": 8,
+      "cssValue": "8px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8960:834",
+      "figmaName": "Published/Radius/radiusSizeM",
+      "cssToken": "--ink-radius-size-m",
+      "mode": "Standard",
+      "figmaValue": 12,
+      "cssValue": "12px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:8960:837",
+      "figmaName": "Published/Radius/radiusSizeL",
+      "cssToken": "--ink-radius-size-l",
+      "mode": "Standard",
+      "figmaValue": 16,
+      "cssValue": "16px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:9105:3998",
+      "figmaName": "Published/Icon/iconColorAccent",
+      "cssToken": "--ink-icon-color-accent",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:10009:2203",
+      "figmaName": "Published/Bar/barTrackColorVisited",
+      "cssToken": "--ink-bar-track-color-visited",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.14901961386203766,
+        "g": 0.019607843831181526,
+        "b": 0.3490196168422699,
+        "a": 1
+      },
+      "cssValue": "#260559",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:10009:2255",
+      "figmaName": "Published/Font/fontColorWarning",
+      "cssToken": "--ink-font-color-warning",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7490196228027344,
+        "g": 0.24313725531101227,
+        "b": 0.027450980618596077,
+        "a": 1
+      },
+      "cssValue": "#a52608",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:10009:3808",
+      "figmaName": "Published/Border/borderColorError",
+      "cssToken": "--ink-border-color-error",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9254902005195618,
+        "g": 0,
+        "b": 0.2980392277240753,
+        "a": 1
+      },
+      "cssValue": "#ec004c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:10009:3809",
+      "figmaName": "Published/Border/borderColorSuccess",
+      "cssToken": "--ink-border-color-success",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.529411792755127,
+        "b": 0.3607843220233917,
+        "a": 1
+      },
+      "cssValue": "#00875c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:10009:3810",
+      "figmaName": "Published/Border/borderColorWarning",
+      "cssToken": "--ink-border-color-warning",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7490196228027344,
+        "g": 0.24313725531101227,
+        "b": 0.027450980618596077,
+        "a": 1
+      },
+      "cssValue": "#bf3e07",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:10009:3811",
+      "figmaName": "Published/Border/borderColorAccent",
+      "cssToken": "--ink-border-color-accent",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:10009:3831",
+      "figmaName": "Internal/dimension/9999",
+      "cssToken": null,
+      "mode": "Standard",
+      "figmaValue": 9999,
+      "status": "excluded_deprecated_or_nonsemantic"
+    },
+    {
+      "figmaId": "VariableID:10097:28790",
+      "figmaName": "Published/Background/bgColorGlassFrost",
+      "cssToken": "--ink-bg-color-glass-frost",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(255, 255, 255, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:10100:28791",
+      "figmaName": "Published/Background/bgColorGlassTint",
+      "cssToken": "--ink-bg-color-glass-tint",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.8999999761581421
+      },
+      "cssValue": "rgba(19, 0, 50, 0.9)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:11291:4114",
+      "figmaName": "Published/Background/bgColorAccent",
+      "cssToken": "--ink-bg-color-accent",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:11291:10213",
+      "figmaName": "Published/Background/bgColorWarning",
+      "cssToken": "--ink-bg-color-warning",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9882352948188782,
+        "g": 0.8823529481887817,
+        "b": 0.7607843279838562,
+        "a": 1
+      },
+      "cssValue": "#fce1c2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:11309:9847",
+      "figmaName": "Published/Spacing/gap600",
+      "cssToken": "--ink-spacing-600",
+      "mode": "Standard",
+      "figmaValue": 48,
+      "cssValue": "48px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:11309:9848",
+      "figmaName": "Published/Spacing/gap700",
+      "cssToken": "--ink-spacing-700",
+      "mode": "Standard",
+      "figmaValue": 64,
+      "cssValue": "64px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:11804:10370",
+      "figmaName": "Published/Status/statusBgColorNeutral",
+      "cssToken": "--ink-status-bg-color-neutral",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(19, 0, 50, 0.7)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12664:14567",
+      "figmaName": "Published/CTA/ctaFabBgColorPrimaryDefault",
+      "cssToken": "--ink-cta-fab-bg-primary-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.14901961386203766,
+        "g": 0.019607843831181526,
+        "b": 0.3490196168422699,
+        "a": 1
+      },
+      "cssValue": "#260559",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12664:14732",
+      "figmaName": "Published/CTA/ctaFabBgColorPrimaryHover",
+      "cssToken": "--ink-cta-fab-bg-primary-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.01568627543747425,
+        "b": 0.49803921580314636,
+        "a": 1
+      },
+      "cssValue": "#2b047f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12664:14733",
+      "figmaName": "Published/CTA/ctaFabBgColorPrimaryActive",
+      "cssToken": "--ink-cta-fab-bg-primary-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "cssValue": "#37039e",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12825:2885",
+      "figmaName": "Published/Bar/barFillColorEmphasis",
+      "cssToken": "--ink-bar-fill-color-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 1
+      },
+      "cssValue": "#130032",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12825:6670",
+      "figmaName": "Published/Bar/barFillColorAccentEmphasis [PR]",
+      "cssToken": "--ink-bar-fill-color-accent-emphasis [pr]",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.21568627655506134,
+        "g": 0.0117647061124444,
+        "b": 0.6196078658103943,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:12886:8078",
+      "figmaName": "Published/Font/fontColorSuccessSubtle",
+      "cssToken": "--ink-font-color-success-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5176470875740051,
+        "g": 0.9372549057006836,
+        "b": 0.7647058963775635,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:12886:8079",
+      "figmaName": "Published/Font/fontColorSuccessEmphasis",
+      "cssToken": "--ink-font-color-success-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.37254902720451355,
+        "b": 0.26274511218070984,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:12886:8080",
+      "figmaName": "Published/Font/fontColorWarningSubtle",
+      "cssToken": "--ink-font-color-warning-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.800000011920929,
+        "b": 0.6039215922355652,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:12886:8081",
+      "figmaName": "Published/Font/fontColorWarningEmphasis",
+      "cssToken": "--ink-font-color-warning-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6470588445663452,
+        "g": 0.14901961386203766,
+        "b": 0.0313725508749485,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:12886:8082",
+      "figmaName": "Published/Font/fontColorErrorSubtle",
+      "cssToken": "--ink-font-color-error-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.8392156958580017,
+        "b": 0.8470588326454163,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:12886:8083",
+      "figmaName": "Published/Font/fontColorErrorEmphasis",
+      "cssToken": "--ink-font-color-error-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6509804129600525,
+        "g": 0,
+        "b": 0.24705882370471954,
+        "a": 1
+      },
+      "cssValue": "#a6003f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8084",
+      "figmaName": "Published/Font/fontColorAccentSubtle",
+      "cssToken": "--ink-font-color-accent-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.8392156958580017,
+        "b": 0.9960784316062927,
+        "a": 1
+      },
+      "cssValue": "#dbd6fe",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8085",
+      "figmaName": "Published/Font/fontColorAccentEmphasis",
+      "cssToken": "--ink-font-color-accent-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8086",
+      "figmaName": "Published/Icon/iconColorAccentSubtle",
+      "cssToken": "--ink-icon-color-accent-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.8392156958580017,
+        "b": 0.9960784316062927,
+        "a": 1
+      },
+      "cssValue": "#dbd6fe",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8087",
+      "figmaName": "Published/Icon/iconColorAccentEmphasis",
+      "cssToken": "--ink-icon-color-accent-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8088",
+      "figmaName": "Published/Icon/iconColorSuccessSubtle",
+      "cssToken": "--ink-icon-color-success-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5176470875740051,
+        "g": 0.9372549057006836,
+        "b": 0.7647058963775635,
+        "a": 1
+      },
+      "cssValue": "#84efc3",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8089",
+      "figmaName": "Published/Icon/iconColorSuccessEmphasis",
+      "cssToken": "--ink-icon-color-success-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.2980392277240753,
+        "b": 0.21176470816135406,
+        "a": 1
+      },
+      "cssValue": "#004c36",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8090",
+      "figmaName": "Published/Icon/iconColorWarningEmphasis",
+      "cssToken": "--ink-icon-color-warning-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5568627715110779,
+        "g": 0.09019608050584793,
+        "b": 0.027450980618596077,
+        "a": 1
+      },
+      "cssValue": "#8e1707",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8091",
+      "figmaName": "Published/Icon/iconColorWarningSubtle",
+      "cssToken": "--ink-icon-color-warning-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.800000011920929,
+        "b": 0.6039215922355652,
+        "a": 1
+      },
+      "cssValue": "#fdcc9a",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8092",
+      "figmaName": "Published/Icon/iconColorErrorSubtle",
+      "cssToken": "--ink-icon-color-error-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.8392156958580017,
+        "b": 0.8470588326454163,
+        "a": 1
+      },
+      "cssValue": "#fed6d8",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8093",
+      "figmaName": "Published/Icon/iconColorErrorEmphasis",
+      "cssToken": "--ink-icon-color-error-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.529411792755127,
+        "g": 0,
+        "b": 0.2078431397676468,
+        "a": 1
+      },
+      "cssValue": "#870035",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8094",
+      "figmaName": "Published/Background/bgColorSuccessSubtle",
+      "cssToken": "--ink-bg-color-success-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8784313797950745,
+        "g": 0.9764705896377563,
+        "b": 0.9372549057006836,
+        "a": 1
+      },
+      "cssValue": "#e0f9ef",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8095",
+      "figmaName": "Published/Background/bgColorSuccessEmphasis",
+      "cssToken": "--ink-bg-color-success-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.2980392277240753,
+        "b": 0.21176470816135406,
+        "a": 1
+      },
+      "cssValue": "#004c36",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8240",
+      "figmaName": "Published/Background/bgColorWarningSubtle",
+      "cssToken": "--ink-bg-color-warning-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.9490196108818054,
+        "b": 0.886274516582489,
+        "a": 1
+      },
+      "cssValue": "#fdf2e2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8241",
+      "figmaName": "Published/Background/bgColorWarningEmphasis",
+      "cssToken": "--ink-bg-color-warning-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5568627715110779,
+        "g": 0.09019608050584793,
+        "b": 0.027450980618596077,
+        "a": 1
+      },
+      "cssValue": "#8e1707",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8242",
+      "figmaName": "Published/Background/bgColorErrorSubtle",
+      "cssToken": "--ink-bg-color-error-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.9411764740943909,
+        "b": 0.9490196108818054,
+        "a": 1
+      },
+      "cssValue": "#fef0f2",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8243",
+      "figmaName": "Published/Background/bgColorErrorEmphasis",
+      "cssToken": "--ink-bg-color-error-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.529411792755127,
+        "g": 0,
+        "b": 0.2078431397676468,
+        "a": 1
+      },
+      "cssValue": "#870035",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8244",
+      "figmaName": "Published/Background/bgColorAccentSubtle",
+      "cssToken": "--ink-bg-color-accent-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7921568751335144,
+        "g": 0.7607843279838562,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#cac2ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8245",
+      "figmaName": "Published/Background/bgColorAccentEmphasis",
+      "cssToken": "--ink-bg-color-accent-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.14901961386203766,
+        "g": 0.019607843831181526,
+        "b": 0.3490196168422699,
+        "a": 1
+      },
+      "cssValue": "#260559",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8246",
+      "figmaName": "Published/Border/borderColorSuccessSubtle",
+      "cssToken": "--ink-border-color-success-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0235294122248888,
+        "g": 0.6313725709915161,
+        "b": 0.42352941632270813,
+        "a": 1
+      },
+      "cssValue": "#06a16c",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8247",
+      "figmaName": "Published/Border/borderColorErrorSubtle",
+      "cssToken": "--ink-border-color-error-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.2666666805744171,
+        "b": 0.3921568691730499,
+        "a": 1
+      },
+      "cssValue": "#ff4464",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8248",
+      "figmaName": "Published/Border/borderColorAccentSubtle",
+      "cssToken": "--ink-border-color-accent-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.45098039507865906,
+        "g": 0.3529411852359772,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#735aff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8249",
+      "figmaName": "Published/Border/borderColorWarningSubtle",
+      "cssToken": "--ink-border-color-warning-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8627451062202454,
+        "g": 0.30588236451148987,
+        "b": 0,
+        "a": 1
+      },
+      "cssValue": "#dc4e00",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8250",
+      "figmaName": "Published/Border/borderColorSuccessEmphasis",
+      "cssToken": "--ink-border-color-success-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.2980392277240753,
+        "b": 0.21176470816135406,
+        "a": 1
+      },
+      "cssValue": "#004c36",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8251",
+      "figmaName": "Published/Border/borderColorWarningEmphasis",
+      "cssToken": "--ink-border-color-warning-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5568627715110779,
+        "g": 0.09019608050584793,
+        "b": 0.027450980618596077,
+        "a": 1
+      },
+      "cssValue": "#8e1707",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8252",
+      "figmaName": "Published/Border/borderColorErrorEmphasis",
+      "cssToken": "--ink-border-color-error-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.529411792755127,
+        "g": 0,
+        "b": 0.2078431397676468,
+        "a": 1
+      },
+      "cssValue": "#870035",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12886:8253",
+      "figmaName": "Published/Border/borderColorAccentEmphasis",
+      "cssToken": "--ink-border-color-accent-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:12906:41622",
+      "figmaName": "Published/Bar/barStopIndicator",
+      "cssToken": "--ink-bar-stop-indicator-color",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.5
+      },
+      "cssValue": "rgba(19, 0, 50, 0.5)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:16475:48652",
+      "figmaName": "Published/CTA/ctaToggleBgColorSelectedSubtle",
+      "cssToken": "--ink-cta-toggle-bg-selected-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.10000000149011612
+      },
+      "cssValue": "#f3f2fe",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:16475:48653",
+      "figmaName": "Published/CTA/ctaToggleBgColorSelectedSubtleHover",
+      "cssToken": "--ink-cta-toggle-bg-selected-subtle-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.15000000596046448
+      },
+      "cssValue": "#e9e6fd",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:16475:48654",
+      "figmaName": "Published/CTA/ctaToggleBgColorSelectedSubtleActive",
+      "cssToken": "--ink-cta-toggle-bg-selected-subtle-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.20000000298023224
+      },
+      "cssValue": "#dbd6fe",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:16627:8369",
+      "figmaName": "Published/Background/bgColorPopoverClose",
+      "cssToken": "--ink-bg-color-popover-close",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 0.699999988079071
+      },
+      "cssValue": "rgba(255, 255, 255, 0.8)",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:16627:10720",
+      "figmaName": "Published/Background/bgColorPopoverCloseInverse",
+      "cssToken": "--ink-bg-color-popover-close-inverse",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.07450980693101883,
+        "g": 0,
+        "b": 0.19607843458652496,
+        "a": 0.800000011920929
+      },
+      "cssValue": "rgba(19, 0, 50, 0.8)",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:18834:10942",
+      "figmaName": "Published/Form/formBgColorSelectedHover",
+      "cssToken": "--ink-form-control-bg-color-selected-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.16862745583057404,
+        "g": 0.01568627543747425,
+        "b": 0.49803921580314636,
+        "a": 1
+      },
+      "cssValue": "#2b047f",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:18863:30783",
+      "figmaName": "Published/Form/formBgColorError",
+      "cssToken": "--ink-form-control-bg-color-error",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7803921699523926,
+        "g": 0.019607843831181526,
+        "b": 0.27843138575553894,
+        "a": 1
+      },
+      "cssValue": "#c70547",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:19437:80802",
+      "figmaName": "Published/CTA/ctaComboBorderColorBrandDefault",
+      "cssToken": "--ink-cta-combo-border-brand",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 1,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#5f32ff",
+      "status": "different"
+    },
+    {
+      "figmaId": "VariableID:21398:555",
+      "figmaName": "Published/Recipient/recipientBgColorSign",
+      "cssToken": "--ink-recipient-bg-color-sign",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9137254953384399,
+        "g": 0.9019607901573181,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "cssValue": "#e9e6fd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:21398:6009",
+      "figmaName": "Published/Recipient/recipientBgColor100",
+      "cssToken": "--ink-recipient-bg-color100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7921568751335144,
+        "g": 0.95686274766922,
+        "b": 0.9882352948188782,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6010",
+      "figmaName": "Published/Recipient/recipientBgColor150",
+      "cssToken": "--ink-recipient-bg-color150",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.9764705896377563,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6011",
+      "figmaName": "Published/Recipient/recipientBgColor200",
+      "cssToken": "--ink-recipient-bg-color200",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.9058823585510254,
+        "b": 0.9529411792755127,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6012",
+      "figmaName": "Published/Recipient/recipientBgColor300",
+      "cssToken": "--ink-recipient-bg-color300",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7254902124404907,
+        "g": 0.9647058844566345,
+        "b": 0.8666666746139526,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6013",
+      "figmaName": "Published/Recipient/recipientBgColor400",
+      "cssToken": "--ink-recipient-bg-color400",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9882352948188782,
+        "g": 0.8823529481887817,
+        "b": 0.7607843279838562,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6014",
+      "figmaName": "Published/Recipient/recipientBgColor500",
+      "cssToken": "--ink-recipient-bg-color500",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9725490212440491,
+        "g": 0.9098039269447327,
+        "b": 0.9803921580314636,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6015",
+      "figmaName": "Published/Recipient/recipientBgColor350",
+      "cssToken": "--ink-recipient-bg-color350",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9843137264251709,
+        "g": 0.9411764740943909,
+        "b": 0.9882352948188782,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6016",
+      "figmaName": "Published/Recipient/recipientBgColor250",
+      "cssToken": "--ink-recipient-bg-color250",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.9490196108818054,
+        "b": 0.886274516582489,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6017",
+      "figmaName": "Published/Recipient/recipientBgColor450",
+      "cssToken": "--ink-recipient-bg-color450",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.9411764740943909,
+        "b": 0.9490196108818054,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6018",
+      "figmaName": "Published/Recipient/recipientBgColor550",
+      "cssToken": "--ink-recipient-bg-color550",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8784313797950745,
+        "g": 0.9764705896377563,
+        "b": 0.9372549057006836,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6042",
+      "figmaName": "Published/Recipient/recipientFontColor450",
+      "cssToken": "--ink-recipient-font-color450",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6509804129600525,
+        "g": 0,
+        "b": 0.24705882370471954,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6043",
+      "figmaName": "Published/Recipient/recipientFontColor250",
+      "cssToken": "--ink-recipient-font-color250",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6470588445663452,
+        "g": 0.14901961386203766,
+        "b": 0.0313725508749485,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6044",
+      "figmaName": "Published/Recipient/recipientFontColor150",
+      "cssToken": "--ink-recipient-font-color150",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.3529411852359772,
+        "b": 0.42352941632270813,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6045",
+      "figmaName": "Published/Recipient/recipientFontColor350",
+      "cssToken": "--ink-recipient-font-color350",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.43921568989753723,
+        "g": 0.12156862765550613,
+        "b": 0.7764706015586853,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6046",
+      "figmaName": "Published/Recipient/recipientFontColor500",
+      "cssToken": "--ink-recipient-font-color500",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.43921568989753723,
+        "g": 0.12156862765550613,
+        "b": 0.7764706015586853,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6047",
+      "figmaName": "Published/Recipient/recipientFontColor400",
+      "cssToken": "--ink-recipient-font-color400",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6470588445663452,
+        "g": 0.14901961386203766,
+        "b": 0.0313725508749485,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6048",
+      "figmaName": "Published/Recipient/recipientFontColorSign",
+      "cssToken": "--ink-recipient-font-color-sign",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:21398:6049",
+      "figmaName": "Published/Recipient/recipientFontColor100",
+      "cssToken": "--ink-recipient-font-color100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.3529411852359772,
+        "b": 0.42352941632270813,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6050",
+      "figmaName": "Published/Recipient/recipientFontColor300",
+      "cssToken": "--ink-recipient-font-color300",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.37254902720451355,
+        "b": 0.26274511218070984,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6051",
+      "figmaName": "Published/Recipient/recipientFontColor200",
+      "cssToken": "--ink-recipient-font-color200",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6274510025978088,
+        "g": 0,
+        "b": 0.40784314274787903,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:21398:6052",
+      "figmaName": "Published/Recipient/recipientFontColor550",
+      "cssToken": "--ink-recipient-font-color550",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.37254902720451355,
+        "b": 0.26274511218070984,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34632",
+      "figmaName": "Published/Recipient/recipientBgColor100Rest",
+      "cssToken": "--ink-recipient-bg-color100-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6470588445663452,
+        "g": 0.929411768913269,
+        "b": 0.9882352948188782,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34636",
+      "figmaName": "Published/Recipient/recipientBgColor100Hover",
+      "cssToken": "--ink-recipient-bg-color100-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.4000000059604645,
+        "g": 0.8980392217636108,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34639",
+      "figmaName": "Published/Recipient/recipientBgColor100Active",
+      "cssToken": "--ink-recipient-bg-color100-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.4000000059604645,
+        "g": 0.8980392217636108,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34640",
+      "figmaName": "Published/Recipient/recipientBgColor200Rest",
+      "cssToken": "--ink-recipient-bg-color200-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.8313725590705872,
+        "b": 0.9137254953384399,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34644",
+      "figmaName": "Published/Recipient/recipientBgColor200Hover",
+      "cssToken": "--ink-recipient-bg-color200-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.7333333492279053,
+        "b": 0.8745098114013672,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34647",
+      "figmaName": "Published/Recipient/recipientBgColor200Active",
+      "cssToken": "--ink-recipient-bg-color200-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.7333333492279053,
+        "b": 0.8745098114013672,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34648",
+      "figmaName": "Published/Recipient/recipientBgColor300Rest",
+      "cssToken": "--ink-recipient-bg-color300-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5176470875740051,
+        "g": 0.9372549057006836,
+        "b": 0.7647058963775635,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34652",
+      "figmaName": "Published/Recipient/recipientBgColor300Hover",
+      "cssToken": "--ink-recipient-bg-color300-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.38823530077934265,
+        "g": 0.8745098114013672,
+        "b": 0.6705882549285889,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34655",
+      "figmaName": "Published/Recipient/recipientBgColor300Active",
+      "cssToken": "--ink-recipient-bg-color300-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.38823530077934265,
+        "g": 0.8745098114013672,
+        "b": 0.6705882549285889,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34659",
+      "figmaName": "Published/Recipient/recipientBgColor400Rest",
+      "cssToken": "--ink-recipient-bg-color400-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.800000011920929,
+        "b": 0.6039215922355652,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34662",
+      "figmaName": "Published/Recipient/recipientBgColor400Hover",
+      "cssToken": "--ink-recipient-bg-color400-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.6941176652908325,
+        "b": 0.40392157435417175,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34665",
+      "figmaName": "Published/Recipient/recipientBgColor400Active",
+      "cssToken": "--ink-recipient-bg-color400-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.6941176652908325,
+        "b": 0.40392157435417175,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34669",
+      "figmaName": "Published/Recipient/recipientBgColor500Rest",
+      "cssToken": "--ink-recipient-bg-color500-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9529411792755127,
+        "g": 0.8392156958580017,
+        "b": 0.9725490212440491,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34672",
+      "figmaName": "Published/Recipient/recipientBgColor500Hover",
+      "cssToken": "--ink-recipient-bg-color500-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9176470637321472,
+        "g": 0.7568627595901489,
+        "b": 0.95686274766922,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34675",
+      "figmaName": "Published/Recipient/recipientBgColor500Active",
+      "cssToken": "--ink-recipient-bg-color500-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9176470637321472,
+        "g": 0.7568627595901489,
+        "b": 0.95686274766922,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34679",
+      "figmaName": "Published/Recipient/recipientBgColor150Rest",
+      "cssToken": "--ink-recipient-bg-color150-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.4000000059604645,
+        "g": 0.8980392217636108,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34682",
+      "figmaName": "Published/Recipient/recipientBgColor150Hover",
+      "cssToken": "--ink-recipient-bg-color150-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.8470588326454163,
+        "b": 0.9686274528503418,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34685",
+      "figmaName": "Published/Recipient/recipientBgColor150Active",
+      "cssToken": "--ink-recipient-bg-color150-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.8470588326454163,
+        "b": 0.9686274528503418,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34689",
+      "figmaName": "Published/Recipient/recipientBgColor250Rest",
+      "cssToken": "--ink-recipient-bg-color250-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9882352948188782,
+        "g": 0.8823529481887817,
+        "b": 0.7607843279838562,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34692",
+      "figmaName": "Published/Recipient/recipientBgColor250Hover",
+      "cssToken": "--ink-recipient-bg-color250-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.800000011920929,
+        "b": 0.6039215922355652,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34695",
+      "figmaName": "Published/Recipient/recipientBgColor250Active",
+      "cssToken": "--ink-recipient-bg-color250-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9921568632125854,
+        "g": 0.800000011920929,
+        "b": 0.6039215922355652,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34699",
+      "figmaName": "Published/Recipient/recipientBgColor350Rest",
+      "cssToken": "--ink-recipient-bg-color350-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9176470637321472,
+        "g": 0.7568627595901489,
+        "b": 0.95686274766922,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34702",
+      "figmaName": "Published/Recipient/recipientBgColor350Hover",
+      "cssToken": "--ink-recipient-bg-color350-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.6627451181411743,
+        "b": 0.9450980424880981,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34705",
+      "figmaName": "Published/Recipient/recipientBgColor350Active",
+      "cssToken": "--ink-recipient-bg-color350-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.6627451181411743,
+        "b": 0.9450980424880981,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34709",
+      "figmaName": "Published/Recipient/recipientBgColor450Rest",
+      "cssToken": "--ink-recipient-bg-color450-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9960784316062927,
+        "g": 0.7490196228027344,
+        "b": 0.7607843279838562,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34712",
+      "figmaName": "Published/Recipient/recipientBgColor450Hover",
+      "cssToken": "--ink-recipient-bg-color450-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.6352941393852234,
+        "b": 0.6549019813537598,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34715",
+      "figmaName": "Published/Recipient/recipientBgColor450Active",
+      "cssToken": "--ink-recipient-bg-color450-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 1,
+        "g": 0.6352941393852234,
+        "b": 0.6549019813537598,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34719",
+      "figmaName": "Published/Recipient/recipientBgColor550Rest",
+      "cssToken": "--ink-recipient-bg-color550-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7254902124404907,
+        "g": 0.9647058844566345,
+        "b": 0.8666666746139526,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34722",
+      "figmaName": "Published/Recipient/recipientBgColor550Hover",
+      "cssToken": "--ink-recipient-bg-color550-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5176470875740051,
+        "g": 0.9372549057006836,
+        "b": 0.7647058963775635,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34725",
+      "figmaName": "Published/Recipient/recipientBgColor550Active",
+      "cssToken": "--ink-recipient-bg-color550-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5176470875740051,
+        "g": 0.9372549057006836,
+        "b": 0.7647058963775635,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23471:34729",
+      "figmaName": "Published/Recipient/recipientBgColorSignRest",
+      "cssToken": "--ink-recipient-bg-color-sign-rest",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.8392156958580017,
+        "b": 0.9960784316062927,
+        "a": 1
+      },
+      "cssValue": "#dbd6fe",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:23471:34732",
+      "figmaName": "Published/Recipient/recipientBgColorSignHover",
+      "cssToken": "--ink-recipient-bg-color-sign-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7921568751335144,
+        "g": 0.7607843279838562,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#cac2ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:23471:34736",
+      "figmaName": "Published/Recipient/recipientBgColorSignActive",
+      "cssToken": "--ink-recipient-bg-color-sign-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7921568751335144,
+        "g": 0.7607843279838562,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#cac2ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:23506:12620",
+      "figmaName": "Published/Recipient/recipientBgColorFallback",
+      "cssToken": "--ink-recipient-bg-color-fallback",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9411764740943909,
+        "g": 0.9372549057006836,
+        "b": 0.9411764740943909,
+        "a": 1
+      },
+      "cssValue": "#f0eff0",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:23506:12621",
+      "figmaName": "Published/Recipient/recipientBorderColor100",
+      "cssToken": "--ink-recipient-border-color100",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.2862745225429535,
+        "b": 0.3450980484485626,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12625",
+      "figmaName": "Published/Recipient/recipientBorderColor200",
+      "cssToken": "--ink-recipient-border-color200",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5098039507865906,
+        "g": 0,
+        "b": 0.3450980484485626,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12628",
+      "figmaName": "Published/Recipient/recipientBorderColor300",
+      "cssToken": "--ink-recipient-border-color300",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.2980392277240753,
+        "b": 0.21176470816135406,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12631",
+      "figmaName": "Published/Recipient/recipientBorderColor400",
+      "cssToken": "--ink-recipient-border-color400",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.5568627715110779,
+        "g": 0.09019608050584793,
+        "b": 0.027450980618596077,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12634",
+      "figmaName": "Published/Recipient/recipientBorderColor500",
+      "cssToken": "--ink-recipient-border-color500",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.3490196168422699,
+        "g": 0.08627451211214066,
+        "b": 0.6470588445663452,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12646",
+      "figmaName": "Published/Recipient/recipientBorderColor450",
+      "cssToken": "--ink-recipient-border-color450",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6509804129600525,
+        "g": 0,
+        "b": 0.24705882370471954,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12647",
+      "figmaName": "Published/Recipient/recipientBorderColor550",
+      "cssToken": "--ink-recipient-border-color550",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0,
+        "g": 0.37254902720451355,
+        "b": 0.26274511218070984,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12648",
+      "figmaName": "Published/Recipient/recipientBorderColor350",
+      "cssToken": "--ink-recipient-border-color350",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.43921568989753723,
+        "g": 0.12156862765550613,
+        "b": 0.7764706015586853,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12649",
+      "figmaName": "Published/Recipient/recipientBorderColor250",
+      "cssToken": "--ink-recipient-border-color250",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.6470588445663452,
+        "g": 0.14901961386203766,
+        "b": 0.0313725508749485,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12650",
+      "figmaName": "Published/Recipient/recipientBorderColor150",
+      "cssToken": "--ink-recipient-border-color150",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.0117647061124444,
+        "g": 0.3529411852359772,
+        "b": 0.42352941632270813,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:23506:12759",
+      "figmaName": "Published/Recipient/recipientBorderColorSelectedSubtle",
+      "cssToken": "--ink-recipient-border-color-selected-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7333333492279053,
+        "g": 0.6941176652908325,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#bbb1ff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:23506:12761",
+      "figmaName": "Published/Recipient/recipientBorderColorSelectedEmphasis",
+      "cssToken": "--ink-recipient-border-color-selected-emphasis",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.25882354378700256,
+        "g": 0,
+        "b": 0.7921568751335144,
+        "a": 1
+      },
+      "cssValue": "#4200ca",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:23506:12762",
+      "figmaName": "Published/Recipient/recipientBorderColorSelected",
+      "cssToken": "--ink-recipient-border-color-selected",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.545098066329956,
+        "g": 0.47843137383461,
+        "b": 1,
+        "a": 1
+      },
+      "cssValue": "#8b7aff",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:23506:12763",
+      "figmaName": "Published/Recipient/recipientBorderColorSign",
+      "cssToken": "--ink-recipient-border-color-sign",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.2980392277240753,
+        "g": 0,
+        "b": 0.9843137264251709,
+        "a": 1
+      },
+      "cssValue": "#4c00fb",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:25053:10376",
+      "figmaName": "Published/Breakpoint/deviceBreakpointXL",
+      "cssToken": "--ink-breakpoint-xl",
+      "mode": "Standard",
+      "figmaValue": 1440,
+      "cssValue": "1440px",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:29384:36769",
+      "figmaName": "Published/Status/statusBgColorAccentSubtle",
+      "cssToken": "--ink-status-bg-color-accent-subtle",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9137254953384399,
+        "g": 0.9019607901573181,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "cssValue": "#e9e6fd",
+      "status": "equal"
+    },
+    {
+      "figmaId": "VariableID:41751:1133",
+      "figmaName": "Published/CTA/ctaBgColorAiDefault",
+      "cssToken": "--ink-cta-bg-color-ai-default",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.9137254953384399,
+        "g": 0.9019607901573181,
+        "b": 0.9921568632125854,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:41751:1134",
+      "figmaName": "Published/CTA/ctaBgColorAiHover",
+      "cssToken": "--ink-cta-bg-color-ai-hover",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.8588235378265381,
+        "g": 0.8392156958580017,
+        "b": 0.9960784316062927,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    },
+    {
+      "figmaId": "VariableID:41751:1135",
+      "figmaName": "Published/CTA/ctaBgColorAiActive",
+      "cssToken": "--ink-cta-bg-color-ai-active",
+      "mode": "Standard",
+      "figmaValue": {
+        "r": 0.7921568751335144,
+        "g": 0.7607843279838562,
+        "b": 1,
+        "a": 1
+      },
+      "status": "no_explicit_name_mapping"
+    }
+  ],
+  "textStyleCandidates": [
+    {
+      "figmaStyleId": "S:36184366476f65871adf9e3939e1b613a951d2ad,",
+      "figmaName": "fontDetailXS",
+      "figmaSize": 10,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-detail-xs-size",
+      "cssSize": "10px",
+      "cssLineHeight": "1.4"
+    },
+    {
+      "figmaStyleId": "S:abe1ec26f3797ec064c9b289bf33183b8d917d35,",
+      "figmaName": "fontDetailS",
+      "figmaSize": 12,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-detail-s-size",
+      "cssSize": "12px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:0799465f82142a85454e6e6f87cf807e79688ed6,",
+      "figmaName": "fontBodyS",
+      "figmaSize": 14,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-body-s-size",
+      "cssSize": "14px",
+      "cssLineHeight": "1.4"
+    },
+    {
+      "figmaStyleId": "S:c8a300e07c5721efcb1f2a16f0c5c7299330b535,",
+      "figmaName": "fontBodyM",
+      "figmaSize": 16,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-body-m-size",
+      "cssSize": "16px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:19a6db37ae7e903ca737509b56c9cbb03c8f2450,",
+      "figmaName": "fontBodyL",
+      "figmaSize": 20,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-body-l-size",
+      "cssSize": "20px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:3ca3ee1742e83d969f4cd502931220151de09cac,",
+      "figmaName": "fontBodyXL",
+      "figmaSize": 24,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-body-xl-size",
+      "cssSize": "24px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:cef11ab506bb6c30caf147bd5a59846bb198b7fb,",
+      "figmaName": "fontHeadingXXS",
+      "figmaSize": 16,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-heading-xxs-size",
+      "cssSize": "16px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:d52edabd501ab2330912c9d48a427fb1c64d0013,",
+      "figmaName": "fontHeadingXS",
+      "figmaSize": 20,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-heading-xs-size",
+      "cssSize": "20px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:20691c425312846e1f869b35a371c7ea43521b6c,",
+      "figmaName": "fontHeadingS",
+      "figmaSize": 24,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-heading-s-size",
+      "cssSize": "24px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:5d992449bb8f17c79317fce26fa577d235b2af89,",
+      "figmaName": "fontHeadingM",
+      "figmaSize": 32,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-heading-m-size",
+      "cssSize": "32px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:6802981e50e4569fb1b70d267615a13c17063ef5,",
+      "figmaName": "fontDisplayXS",
+      "figmaSize": 40,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-display-xs-size",
+      "cssSize": "40px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:8b024500aa81b22932656565ad5f2ca30aa92439,",
+      "figmaName": "fontDisplayS",
+      "figmaSize": 48,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-display-s-size",
+      "cssSize": "48px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:9b6f1fafbac9fb693daa13cf34c2237f7b17a49d,",
+      "figmaName": "fontDisplayM",
+      "figmaSize": 56,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-display-m-size",
+      "cssSize": "56px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:c975e6e67a37aee1137492f1034ea2527327ec29,",
+      "figmaName": "fontDisplayL",
+      "figmaSize": 64,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-display-l-size",
+      "cssSize": "64px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:71f0aca1533b85bf56161cfb7aa3377de7543946,",
+      "figmaName": "fontDisplayXL",
+      "figmaSize": 72,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-display-xl-size",
+      "cssSize": "72px",
+      "cssLineHeight": "1.25"
+    },
+    {
+      "figmaStyleId": "S:9b92305e4334b2fa03b50e41cd32ca0b6e09fdd9,",
+      "figmaName": "fontAvatarGroup",
+      "figmaSize": 12,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-avatar-group-size",
+      "cssSize": "12px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:85591f2c348223236f106f36352479b0525e5475,",
+      "figmaName": "fontBadge",
+      "figmaSize": 12,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-badge-size",
+      "cssSize": "12px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:ea9b938b8016cdd201f6b8379da780265d591049,",
+      "figmaName": "fontButton",
+      "figmaSize": 16,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-button-size",
+      "cssSize": "16px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:a8d7e401ff1a5de3d3b10ed50419a6c75cbd6fba,",
+      "figmaName": "fontButtonS",
+      "figmaSize": 14,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-button-s-size",
+      "cssSize": "14px",
+      "cssLineHeight": "1.4"
+    },
+    {
+      "figmaStyleId": "S:09eb9b51e5bbfcd281b2dc59e93d74159e37d44e,",
+      "figmaName": "fontElementLabel",
+      "figmaSize": 14,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-element-label-size",
+      "cssSize": "14px",
+      "cssLineHeight": "1.4"
+    },
+    {
+      "figmaStyleId": "S:b8db302ced1833b033d5139eb5da1dc55cad2489,",
+      "figmaName": "fontElementLabelEmphasis",
+      "figmaSize": 14,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "SemiBold"
+      },
+      "cssSizeToken": "--ink-font-element-label-emphasis-size",
+      "cssSize": "14px",
+      "cssLineHeight": "1.4"
+    },
+    {
+      "figmaStyleId": "S:44d068e9be07f7c49766dd501093e183aff1805e,",
+      "figmaName": "fontItemSelected",
+      "figmaSize": 14,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "SemiBold"
+      },
+      "cssSizeToken": "--ink-font-item-selected-size",
+      "cssSize": "14px",
+      "cssLineHeight": "1.4"
+    },
+    {
+      "figmaStyleId": "S:1970816aed31f4089fc7fa4ef719c2fbb99ca903,",
+      "figmaName": "fontLink",
+      "figmaSize": 16,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-link-size",
+      "cssSize": "16px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:e212dcf8e26ba6b762a96abad160492848eba62e,",
+      "figmaName": "fontLinkS",
+      "figmaSize": 14,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-font-link-s-size",
+      "cssSize": "14px",
+      "cssLineHeight": "1.4"
+    },
+    {
+      "figmaStyleId": "S:7c83e8605377337922ac1b3d9ff7de3962df1189,",
+      "figmaName": "fontSectionHeadline",
+      "figmaSize": 12,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "SemiBold"
+      },
+      "cssSizeToken": "--ink-font-section-headline-size",
+      "cssSize": "12px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:3172a441944e77140a7882933eed057bd17d8e0a,",
+      "figmaName": "fontTab",
+      "figmaSize": 14,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "cssSizeToken": "--ink-font-tab-size",
+      "cssSize": "14px",
+      "cssLineHeight": "1.4"
+    },
+    {
+      "figmaStyleId": "S:67f17c6a491e64d43800b6de3cfcb60f8335086d,",
+      "figmaName": "fontTimestamp",
+      "figmaSize": 12,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "SemiBold"
+      },
+      "cssSizeToken": "--ink-font-timestamp-size",
+      "cssSize": "12px",
+      "cssLineHeight": "1.5"
+    },
+    {
+      "figmaStyleId": "S:c66eb3f6329f89306e5cf1ea62eb1c32b76b2157,",
+      "figmaName": "[PR] fontNumeric",
+      "figmaSize": 14,
+      "figmaLineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "figmaFont": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "cssSizeToken": "--ink-[pr] font-numeric-size",
+      "cssSize": null,
+      "cssLineHeight": null
+    }
+  ],
+  "glass": {
+    "figmaEffectStyleId": "S:829576424874ffa74678b675ff6da792fcaf78db,",
+    "figmaBlur": 16,
+    "cssToken": "--ink-elevation-glass",
+    "cssValue": "8px"
+  }
+}

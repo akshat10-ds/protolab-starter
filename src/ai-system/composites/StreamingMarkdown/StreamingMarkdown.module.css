@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 
 /* Positioning context for the streaming cursor / any absolutely-placed
    affordance the renderer drops at the tail of the stream. */

@@ -1,0 +1,1302 @@
+{
+  "paintStyles": [
+    {
+      "id": "S:960f7d38d668a5a334bff88d06498a898d118ab8,",
+      "name": "Gradient/gradientPearl",
+      "paints": [
+        {
+          "type": "GRADIENT_LINEAR",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "gradientStops": [
+            {
+              "color": {
+                "r": 0.9725490212440491,
+                "g": 0.9529411792755127,
+                "b": 0.9411764740943909,
+                "a": 1
+              },
+              "position": 0,
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:6237:63"
+                }
+              }
+            },
+            {
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 1
+              },
+              "position": 1,
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:6237:110"
+                }
+              }
+            }
+          ],
+          "gradientTransform": [
+            [
+              0.1049388125538826,
+              0.9281068444252014,
+              -0.017405716702342033
+            ],
+            [
+              -0.9281068444252014,
+              0.6358424425125122,
+              0.6539407968521118
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S:e681c3879d9dd912526d7dc1a7e067720701d562,",
+      "name": "Gradient/gradientAtmosphere",
+      "paints": [
+        {
+          "type": "GRADIENT_LINEAR",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "gradientStops": [
+            {
+              "color": {
+                "r": 0.7921568751335144,
+                "g": 0.7607843279838562,
+                "b": 1,
+                "a": 1
+              },
+              "position": 0,
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:6199:462"
+                }
+              }
+            },
+            {
+              "color": {
+                "r": 0.2980392277240753,
+                "g": 0,
+                "b": 0.9843137264251709,
+                "a": 1
+              },
+              "position": 1,
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:6199:468"
+                }
+              }
+            }
+          ],
+          "gradientTransform": [
+            [
+              0.10208115726709366,
+              0.9322730302810669,
+              -0.016931729391217232
+            ],
+            [
+              -0.9322730898857117,
+              0.618527352809906,
+              0.6546318531036377
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S:52ff72627b98ecdacf18515d7b121f56c0df45d7,",
+      "name": "Gradient/gradientBlueHaze",
+      "paints": [
+        {
+          "type": "GRADIENT_LINEAR",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "gradientStops": [
+            {
+              "color": {
+                "r": 0.2980392277240753,
+                "g": 0,
+                "b": 0.9843137264251709,
+                "a": 1
+              },
+              "position": 0,
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:6199:468"
+                }
+              }
+            },
+            {
+              "color": {
+                "r": 0.14901961386203766,
+                "g": 0.019607843831181526,
+                "b": 0.3490196168422699,
+                "a": 1
+              },
+              "position": 1,
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:6199:472"
+                }
+              }
+            }
+          ],
+          "gradientTransform": [
+            [
+              0.09525853395462036,
+              0.9416083693504333,
+              -0.01534211914986372
+            ],
+            [
+              -0.9416083693504333,
+              0.5771877765655518,
+              0.6516532897949219
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S:8d528bbe807c094afcf855fa87ed5e3ecdade927,",
+      "name": "Gradient/gradientNightglow",
+      "paints": [
+        {
+          "type": "GRADIENT_LINEAR",
+          "visible": true,
+          "opacity": 1,
+          "blendMode": "NORMAL",
+          "gradientStops": [
+            {
+              "color": {
+                "r": 1,
+                "g": 0.2666666805744171,
+                "b": 0.3921568691730499,
+                "a": 1
+              },
+              "position": 0,
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:6199:481"
+                }
+              }
+            },
+            {
+              "color": {
+                "r": 0.2980392277240753,
+                "g": 0,
+                "b": 0.9843137264251709,
+                "a": 1
+              },
+              "position": 1,
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:6199:468"
+                }
+              }
+            }
+          ],
+          "gradientTransform": [
+            [
+              0.07465479522943497,
+              0.9650055766105652,
+              -0.01920207403600216
+            ],
+            [
+              -0.9650055766105652,
+              0.4523463547229767,
+              0.748210608959198
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "textStyles": [
+    {
+      "id": "S:36184366476f65871adf9e3939e1b613a951d2ad,",
+      "name": "fontDetailXS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 10,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0.3199999928474426
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:abe1ec26f3797ec064c9b289bf33183b8d917d35,",
+      "name": "fontDetailS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:0799465f82142a85454e6e6f87cf807e79688ed6,",
+      "name": "fontBodyS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:c8a300e07c5721efcb1f2a16f0c5c7299330b535,",
+      "name": "fontBodyM",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:19a6db37ae7e903ca737509b56c9cbb03c8f2450,",
+      "name": "fontBodyL",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 20,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:3ca3ee1742e83d969f4cd502931220151de09cac,",
+      "name": "fontBodyXL",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 24,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:cef11ab506bb6c30caf147bd5a59846bb198b7fb,",
+      "name": "fontHeadingXXS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:d52edabd501ab2330912c9d48a427fb1c64d0013,",
+      "name": "fontHeadingXS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 20,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:20691c425312846e1f869b35a371c7ea43521b6c,",
+      "name": "fontHeadingS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 24,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:5d992449bb8f17c79317fce26fa577d235b2af89,",
+      "name": "fontHeadingM",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 32,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:6802981e50e4569fb1b70d267615a13c17063ef5,",
+      "name": "fontDisplayXS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 40,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.3199999928474426
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:8b024500aa81b22932656565ad5f2ca30aa92439,",
+      "name": "fontDisplayS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 48,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.3199999928474426
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:9b6f1fafbac9fb693daa13cf34c2237f7b17a49d,",
+      "name": "fontDisplayM",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 56,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.3199999928474426
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:c975e6e67a37aee1137492f1034ea2527327ec29,",
+      "name": "fontDisplayL",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 64,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.3199999928474426
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:71f0aca1533b85bf56161cfb7aa3377de7543946,",
+      "name": "fontDisplayXL",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 72,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 125
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.3199999928474426
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:9b92305e4334b2fa03b50e41cd32ca0b6e09fdd9,",
+      "name": "fontAvatarGroup",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:85591f2c348223236f106f36352479b0525e5475,",
+      "name": "fontBadge",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:ea9b938b8016cdd201f6b8379da780265d591049,",
+      "name": "fontButton",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:a8d7e401ff1a5de3d3b10ed50419a6c75cbd6fba,",
+      "name": "fontButtonS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:09eb9b51e5bbfcd281b2dc59e93d74159e37d44e,",
+      "name": "fontElementLabel",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:b8db302ced1833b033d5139eb5da1dc55cad2489,",
+      "name": "fontElementLabelEmphasis",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "SemiBold"
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:44d068e9be07f7c49766dd501093e183aff1805e,",
+      "name": "fontItemSelected",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "SemiBold"
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:1970816aed31f4089fc7fa4ef719c2fbb99ca903,",
+      "name": "fontLink",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "UNDERLINE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:e212dcf8e26ba6b762a96abad160492848eba62e,",
+      "name": "fontLinkS",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PERCENT",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "UNDERLINE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:7c83e8605377337922ac1b3d9ff7de3962df1189,",
+      "name": "fontSectionHeadline",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "SemiBold"
+      },
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:3172a441944e77140a7882933eed057bd17d8e0a,",
+      "name": "fontTab",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Medium"
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:67f17c6a491e64d43800b6de3cfcb60f8335086d,",
+      "name": "fontTimestamp",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "SemiBold"
+      },
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 150
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0.1599999964237213
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    },
+    {
+      "id": "S:c66eb3f6329f89306e5cf1ea62eb1c32b76b2157,",
+      "name": "[PR] fontNumeric",
+      "fontName": {
+        "family": "DS Indigo",
+        "style": "Regular"
+      },
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "PERCENT",
+        "value": 139.9999976158142
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textCase": "ORIGINAL",
+      "textDecoration": "NONE",
+      "paragraphSpacing": 0,
+      "paragraphIndent": 0
+    }
+  ],
+  "effectStyles": [
+    {
+      "id": "S:15a95c978c073f201567b750b01b768c65cfcfa3,",
+      "name": "elevationLowest",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 20,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 0
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        }
+      ]
+    },
+    {
+      "id": "S:2c3dfb6157aa55501b2f3cef3f1d17fd10fc27d5,",
+      "name": "elevationLow",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 8,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 4
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        }
+      ]
+    },
+    {
+      "id": "S:5abecbd27a67a9de136dc13f11f5179cc24e4201,",
+      "name": "elevationMedium",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 20,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 8
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        }
+      ]
+    },
+    {
+      "id": "S:63016c3bcce0e2e342a5155dc645427cc4a0c2c1,",
+      "name": "elevationHigh",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 32,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 8
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        }
+      ]
+    },
+    {
+      "id": "S:829576424874ffa74678b675ff6da792fcaf78db,",
+      "name": "elevationGlass",
+      "effects": [
+        {
+          "type": "BACKGROUND_BLUR",
+          "visible": true,
+          "radius": 16,
+          "boundVariables": {},
+          "blurType": "NORMAL"
+        }
+      ]
+    },
+    {
+      "id": "S:ca546747d590732348ce1783e1fe0a7979bd8288,",
+      "name": "elevationGlassLowest",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 20,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 0
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        },
+        {
+          "type": "BACKGROUND_BLUR",
+          "visible": true,
+          "radius": 16,
+          "boundVariables": {},
+          "blurType": "NORMAL"
+        }
+      ]
+    },
+    {
+      "id": "S:7032459660bb104d440ff8ca24bd24a08220ef49,",
+      "name": "elevationGlassLow",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 8,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 4
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        },
+        {
+          "type": "BACKGROUND_BLUR",
+          "visible": true,
+          "radius": 20,
+          "boundVariables": {
+            "radius": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:9762:19408"
+            }
+          },
+          "blurType": "NORMAL"
+        }
+      ]
+    },
+    {
+      "id": "S:ce9a440a9b7bb39317c194c5261d870b1c9844fe,",
+      "name": "elevationGlassMedium",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 20,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 8
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        },
+        {
+          "type": "BACKGROUND_BLUR",
+          "visible": true,
+          "radius": 16,
+          "boundVariables": {},
+          "blurType": "NORMAL"
+        }
+      ]
+    },
+    {
+      "id": "S:66ab921324e6833b21117d659456d9fdc1644372,",
+      "name": "elevationGlassHigh",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 32,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 8
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        },
+        {
+          "type": "BACKGROUND_BLUR",
+          "visible": true,
+          "radius": 16,
+          "boundVariables": {},
+          "blurType": "NORMAL"
+        }
+      ]
+    },
+    {
+      "id": "S:15bc95f5dec8c14fb89079d8383cd873a5143fe7,",
+      "name": "elevationDrag",
+      "effects": [
+        {
+          "type": "DROP_SHADOW",
+          "visible": true,
+          "radius": 8,
+          "boundVariables": {
+            "color": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6237:89"
+            },
+            "radius": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6240:15930"
+            },
+            "offsetX": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6240:15920"
+            },
+            "offsetY": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6240:15923"
+            }
+          },
+          "color": {
+            "r": 0.07450980693101883,
+            "g": 0,
+            "b": 0.19607843458652496,
+            "a": 0.15000000596046448
+          },
+          "offset": {
+            "x": 0,
+            "y": 4
+          },
+          "spread": 0,
+          "blendMode": "NORMAL",
+          "showShadowBehindNode": false
+        }
+      ]
+    }
+  ],
+  "gridStyles": [
+    {
+      "id": "S:b210eab3032f706957975843bd044656525744bc,",
+      "name": "XXLarge (1920px +)",
+      "grids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 0.25882354378700256,
+            "g": 0,
+            "b": 0.7921568751335144,
+            "a": 0.07000000029802322
+          },
+          "gutterSize": 32,
+          "alignment": "CENTER",
+          "count": 12,
+          "sectionSize": 123,
+          "boundVariables": {
+            "gutterSize": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:6240:15979"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "S:2b0caf0f7e55f8678cad104952be8d64df77b100,",
+      "name": "XLarge (1440px - 1919px)",
+      "grids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 0.25882354378700256,
+            "g": 0,
+            "b": 0.7921568751335144,
+            "a": 0.07000000029802322
+          },
+          "gutterSize": 32,
+          "alignment": "STRETCH",
+          "count": 12,
+          "offset": 32,
+          "boundVariables": {}
+        }
+      ]
+    },
+    {
+      "id": "S:c55f80831eb107371305ce4343b3a2fae2de6f12,",
+      "name": "Large (1280px - 1439px)",
+      "grids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 0.25882354378700256,
+            "g": 0,
+            "b": 0.7921568751335144,
+            "a": 0.07000000029802322
+          },
+          "gutterSize": 32,
+          "alignment": "STRETCH",
+          "count": 12,
+          "offset": 32,
+          "boundVariables": {}
+        }
+      ]
+    },
+    {
+      "id": "S:6ebd0a598a209caa8ef8aba3d21f568f60f53706,",
+      "name": "Medium (980px - 1279px)",
+      "grids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 0.25882354378700256,
+            "g": 0,
+            "b": 0.7921568751335144,
+            "a": 0.07000000029802322
+          },
+          "gutterSize": 24,
+          "alignment": "STRETCH",
+          "count": 12,
+          "offset": 24,
+          "boundVariables": {}
+        }
+      ]
+    },
+    {
+      "id": "S:baefff521e7ca14a7dfac8cfe3e10e5196a12f3d,",
+      "name": "Small (768px - 979px)",
+      "grids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 0.25882354378700256,
+            "g": 0,
+            "b": 0.7921568751335144,
+            "a": 0.07000000029802322
+          },
+          "gutterSize": 24,
+          "alignment": "STRETCH",
+          "count": 12,
+          "offset": 24,
+          "boundVariables": {}
+        }
+      ]
+    },
+    {
+      "id": "S:28d65dcd37cf869ef2007ffeafcf96df21e1b032,",
+      "name": "XSmall (544px - 767px)",
+      "grids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 0.25882354378700256,
+            "g": 0,
+            "b": 0.7921568751335144,
+            "a": 0.07000000029802322
+          },
+          "gutterSize": 8,
+          "alignment": "STRETCH",
+          "count": 12,
+          "offset": 16,
+          "boundVariables": {}
+        }
+      ]
+    },
+    {
+      "id": "S:b5fc882e5446b9c4081252199c57c4f716030f51,",
+      "name": "XXSmall (320px - 543px)",
+      "grids": [
+        {
+          "pattern": "COLUMNS",
+          "visible": true,
+          "color": {
+            "r": 0.25882354378700256,
+            "g": 0,
+            "b": 0.7921568751335144,
+            "a": 0.07000000029802322
+          },
+          "gutterSize": 8,
+          "alignment": "STRETCH",
+          "count": 12,
+          "offset": 16,
+          "boundVariables": {}
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+.stepper { margin: 0; padding: 0; list-style: none; font-family: var(--ink-font-family-default); color: var(--ink-font-color-secondary); }
+.item { position: relative; display: flex; align-items: flex-start; gap: var(--ink-spacing-100); padding-block-end: var(--ink-spacing-250); }
+.before, .after { position: absolute; inset-inline-start: var(--ink-spacing-200); width: var(--ink-border-width-s); background: var(--ink-bar-track-color-default); }
+.before { top: calc(-1 * var(--ink-spacing-150)); height: var(--ink-spacing-100); }
+.after { top: calc(var(--ink-spacing-400) + var(--ink-spacing-50)); bottom: var(--ink-spacing-50); }
+.complete .before, .complete .after { background: var(--ink-bar-track-color-visited); }
+.item:last-child { padding-block-end: 0; }
+.marker { display: inline-flex; justify-content: center; align-items: center; flex-shrink: 0; width: var(--ink-spacing-400); height: var(--ink-spacing-400); border: var(--ink-border-width-xs) solid var(--ink-border-color-subtle); border-radius: var(--ink-radius-full); font-size: var(--ink-font-body-m-size); font-weight: var(--ink-font-weight-medium); color: var(--ink-font-color-default); }
+.complete .marker { background: var(--ink-status-bg-color-past); border-color: transparent; }
+.current .marker { background: var(--ink-status-bg-color-current); color: var(--ink-font-color-inverse); border-color: transparent; }
+.body { flex: 1; min-width: 0; }
+.header { display: flex; gap: var(--ink-spacing-200); justify-content: space-between; align-items: center; min-height: var(--ink-spacing-400); }
+.text, .toggle { font-size: var(--ink-font-body-s-size); line-height: var(--ink-font-body-s-line-height); }
+.current .text, .current .toggle { color: var(--ink-font-color-accent); font-weight: var(--ink-font-weight-semibold); }
+.toggle { display: inline-flex; gap: var(--ink-spacing-100); align-items: center; border: 0; background: transparent; padding: 0; color: inherit; font-family: inherit; text-align: start; cursor: pointer; }
+.toggle:focus-visible { outline: var(--ink-border-width-s) solid var(--ink-border-color-focus); outline-offset: var(--ink-spacing-50); }
+.description { font-size: var(--ink-font-body-s-size); line-height: var(--ink-font-body-s-line-height); color: var(--ink-font-color-secondary); }
+.compact .description { display: none; }
+.action { flex-shrink: 0; }
+.content { padding-block: var(--ink-spacing-150); }
+.expanded .item { padding-block-end: var(--ink-spacing-300); }

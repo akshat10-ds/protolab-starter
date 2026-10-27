@@ -109,8 +109,17 @@ The strip above the composer, offering the agreement the host page has open.
 
 - **User turn** — plain bubble; command-bubble variant when sent via slash
   command; a question label above when it answers an elicitation.
-- **Assistant turn** — thinking steps → markdown body → citations → inline
-  result card → completion summary + follow-ups.
+- **Assistant turn** — thinking steps *or a run-chip* → markdown body →
+  citations → inline result card → completion summary + follow-ups.
+- **Run-chip** — `message.runChip` draws `RunChip` where `thinkingSteps` would
+  draw `AgentThinking`, and the body waits for it. Akshat, 2026-08-20, naming
+  Claude's deep-research pattern: **agent work is a chip in the thread, and the
+  chip opens the record.** A run ticks its activity with the shimmer sweeping,
+  then resolves in place to generic counts and a duration and **stays** — the
+  accordion said "Analysis complete" and then said nothing. The resolved row is
+  pressable and carries no feedback: mark the turn `kind: 'action'` and leave it
+  marked. `done` is the HOST's fact, not the chip's, so a resolved chip survives
+  the remount a fullscreen switch causes.
 - **Result card** — every result set renders inline as a preview card, always. A
   glyph and "Showing N results" on the left, "See all ›" on the right, the
   preview table below. The pane never opens on its own.
@@ -147,18 +156,57 @@ The strip above the composer, offering the agreement the host page has open.
 - **The title-dropdown header is retired** (2026-08-12) — every layout draws the
   agent-identity header. `title`, `onTitleChange` and `onStarChange` are inert,
   kept only so old call sites do not break.
+- **The agent menu closes on Escape and on any outside click.** Ink's Dropdown
+  hears Escape only on the menu element, which never holds focus, and closes on
+  `mousedown` only, so a keyboard-opened modal left the menu standing above it.
+  IrisAgent controls the menu and dismisses it itself. The z-order is not the
+  fix — `--ink-z-dropdown` sits above `--ink-z-modal` on purpose.
 - **The disclaimer is a node, not a string** — the shipping panel's disclaimer
   ends in a link, which a string cannot carry.
 - **The chat measure is one variable.** `--iris-chat-measure`: 620px in the
   sidebar, 720px at fullscreen. The greeting, the rows and the composer all draw
   from it, so their left edges cannot drift. 720 is this file's existing measure
-  for "the chat is the page", not a stated dose — the variable is the knob.
+  for "the chat is the page", not a stated dose — the variable is the knob. Since
+  2026-08-19 it bites beside an open pane too: the chat used to be pinned at 480
+  there, and it now grows into whatever the pane does not take (Akshat: *"when
+  you open the sidebar the width should be like 1/3 and not 2/3"*).
+- **The chat grows; the pane is the pinned region.** At fullscreen `.rightArea`
+  keeps `flex-basis: 480px` as a floor and `flex-grow: 1`; the pane's width is
+  the artifact's own (`PANE_SIZE`, see ArtifactDock's spec) and is draggable at
+  the seam between them. The inverse — chat pinned at 480, pane absorbing the
+  rest, from frame 163:21261 — is what he was reviewing when he rejected it.
 - **The stream scrolls full width.** The measure lives in `padding-inline`, so
   the scrollbar sits at the column's right edge instead of floating in the
   gutter at fullscreen.
 - **Nav pages are IrisAgent's.** Give it `navPages` and the shortcut opens one,
   the header names it, the back arrow leaves it, and a send, a new conversation
   or a picked conversation clears it.
+- **Two agent mechanisms, two doors.** The header's `Iris ⌄` sets the
+  conversation's identity — it is persistent, it draws a check beside the
+  selection, and every row carries its own glyph (`icon`, then `glyph`, then the
+  Iris mark) and one line of description. Picking an agent anywhere else — a
+  cold-state `agent` row, an Agents nav page, the `+` menu's Agents branch —
+  is PER MESSAGE: the slash token lands in the composer and nothing is sent.
+  `NavPageContext.attach` is how a page reaches that one commit, so a page and
+  the cold state cannot disagree about what picking an agent does.
+- **Picking an agent replaces the composer, and never sends.** Akshat,
+  2026-08-25, on both halves. Whatever was typed goes; what is left is the chip
+  and the caret after it. And an agent is committed, never fired — the `+`
+  menu's Agents branch used to send any child carrying a `description`, so the
+  same menu behaved one way where the agents had a line of copy and another way
+  where they did not. `isAgentCommandItem` reads the parent category instead, so
+  a fixture field can no longer decide behaviour. Skills and playbooks still
+  send on pick.
+- **The token in the composer is a chip, not characters.** An active agent reads
+  as one object: the accent, a fill on hover, the user's own sentence plain
+  beside it. Hovering or focusing it opens a callout above the composer — the
+  agent's name, its one line, a ✕ that closes the callout, and **Switch to Iris**
+  that leaves the agent. Leaving drops the token and the one space behind it and
+  keeps everything the user typed; it does not move the header. Backspace against
+  the chip's edge is the same act, because the chip is one object and the browser
+  deletes it whole. `IrisAgent` resolves the name from `agents` first and the `+`
+  menu's Agents branch second, and hands `ChatInput.agentChip` the answer — so
+  every layout draws the same chip, and there is no second agent visual.
 - **Everything is additive.** `openArtifactId`, `artifactExpanded`,
   `onSeeAllResults`, `onCloseResults`, `coldStateHeaderSlot`,
   `coldStateFooterSlot`, `navPageSlot`, `navPageTitle` and `onNavBack` all still
@@ -252,6 +300,7 @@ is listed with its literal value, because that is what the CSS holds.
 | `.suggestedContextMenuItem:focus-visible` | `outline` | `2px solid var(--ink-border-color-accent)` at `-2px` offset |
 | `.panelDisclaimer` | `font-size` / `weight` / `color` | `--ink-font-size-xs` / `--ink-font-weight-medium` / `--ink-font-color-neutral-subtle` |
 | `.panelDisclaimer` | `margin` / `padding` | `var(--ink-spacing-150) 0 0` / `0 var(--ink-spacing-200) var(--ink-spacing-200)` |
+| `.pageCompact[data-fullscreen] .rightArea` | `flex-basis` / `flex-grow` | `480px` / `1` — a floor, not a width; the chat takes what the pane leaves (Akshat 2026-08-19) |
 | `.chatColumnCollapsed` | `flex` / `max-width` / `opacity` | `0 0 0` / `0` / `0` |
 | `.chatColumnCollapsed` | `transform` / `pointer-events` | `translateX(-12px)` / `none` |
 | Reduced motion | `animation` | `none` on greeting, subtitle, hero, discovery, suggestions, chat area, skeleton, backdrop and thinking mark |
@@ -267,3 +316,49 @@ One variable moves the rail, `.pageCompact`, the notch corner and the dock.
 | `warm` | `--ink-ecru-20` |
 
 `step` moves the pane's ground rather than the rail's, so it sets nothing here.
+
+### Host-owned input mode
+
+Native file attachment is opt-in through `onAttachFiles?: (files: File[]) => void`.
+It wires **+ → Upload agreements** to a hidden native file input and clears the
+menu's slash token, following the existing Navigator picker path. The picker uses
+`acceptFiles?: string` (default `.pdf,application/pdf`) and allows multiple files.
+It resets after a selection, so choosing the same file again fires a new callback.
+Omitting `onAttachFiles` preserves the existing Upload command behavior.
+
+File drop is scoped to the chat column in all three layouts. Rails, headers and
+artifact panes are outside it; text drags are not intercepted. Native file drags
+prevent browser navigation inside the opted-in column, including when attachment
+is disabled. Nested drag events use depth tracking to keep one inert overlay
+visible until the drag leaves or drops. It reads **Drop an agreement here**, with
+a **PDF files** cue for the default filter. Drop calls the host once with `File[]`
+and clears the overlay. `composerDisabled`, `composerHidden` and `isLoading`
+prevent picker activation and attachment delivery, and omit the Upload menu action.
+
+`composerAttachments?: React.ReactNode` forwards to the existing
+`ChatInput.attachments` slot in every layout. The host owns filename previews,
+removal, file validation and errors. IrisAgent does not read file contents, send a
+message, start voice or run a business action on attachment.
+
+`onVoiceCall` is optional and forwards to canonical ChatInput. Empty or whitespace
+input shows the official Ink audio-wave action; nonempty input retains Send;
+streaming retains Stop. Loading/disabled state prevents voice activation. The
+host callback is invoked only by explicit button activation, never by empty
+Enter or on mount. Omission retains the existing empty disabled Send action.
+
+`composerDisabled` defaults to `false`. A voice-call host sets it while audio owns
+the input channel. It forwards the existing ChatInput disabled state and guards
+IrisAgent send callbacks, while controlled transcript messages keep rendering.
+The host supplies an explanatory placeholder and visible CallControls; IrisAgent
+does not request microphone permission, initiate a session or implement transport.
+
+`composerHidden` defaults to `false`. It omits the existing composer in all three
+layouts without replacing the canonical transcript. Call hosts pair it with
+`composerDisabled`, provide visible call controls through `subHeader` or their
+page composition, and restore an editable conversation after the call ends.
+
+`followLatestMessages` is an opt-in controlled-transcript behavior. It uses
+useSmartScroll's existing near-bottom tracking and bottom action; default pinning
+is unchanged. Controlled appends and text growth follow only while near the end;
+upward reading remains undisturbed. `feedbackVisibility='hover'` similarly opts
+into hover/focus feedback on fine pointers while keeping touch actions visible.

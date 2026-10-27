@@ -1,0 +1,139 @@
+{
+  "owner": "primitives_behavior, transferred app wave",
+  "files": [
+    "src/App.tsx",
+    "src/index.css",
+    "src/iris/scenarios.tsx"
+  ],
+  "generatedSourceEdited": false,
+  "baselineChanged": false,
+  "baselineSha256": "6216809ecfc320f2a6d90cd59cc00d335f6cc1a35280c463f9e6a08312b64767",
+  "before": {
+    "total": 173,
+    "existing": 0,
+    "new": 173,
+    "resolvedBaselineCount": 0,
+    "byRule": {
+      "raw-control": {
+        "total": 24,
+        "new": 24
+      },
+      "deep-design-system-import": {
+        "total": 0,
+        "new": 0
+      },
+      "undefined-ink-token": {
+        "total": 0,
+        "new": 0
+      },
+      "hardcoded-color": {
+        "total": 25,
+        "new": 25
+      },
+      "hardcoded-typography": {
+        "total": 56,
+        "new": 56
+      },
+      "hardcoded-spacing": {
+        "total": 45,
+        "new": 45
+      },
+      "layout-bypass": {
+        "total": 23,
+        "new": 23
+      }
+    }
+  },
+  "after": {
+    "total": 0,
+    "existing": 0,
+    "new": 0,
+    "resolvedBaselineCount": 201,
+    "byRule": {
+      "raw-control": {
+        "total": 0,
+        "new": 0
+      },
+      "deep-design-system-import": {
+        "total": 0,
+        "new": 0
+      },
+      "undefined-ink-token": {
+        "total": 0,
+        "new": 0
+      },
+      "hardcoded-color": {
+        "total": 0,
+        "new": 0
+      },
+      "hardcoded-typography": {
+        "total": 0,
+        "new": 0
+      },
+      "hardcoded-spacing": {
+        "total": 0,
+        "new": 0
+      },
+      "layout-bypass": {
+        "total": 0,
+        "new": 0
+      }
+    }
+  },
+  "verification": {
+    "unbaselinedSourceAudit": "passed, zero findings",
+    "auditParserTests": {
+      "status": "passed",
+      "count": 16
+    },
+    "repairedSourceAliasTypecheck": "passed",
+    "viteBuild": "passed with existing bundle-size warning",
+    "normalStarterTypecheck": "passed after final generated refresh; zero diagnostics",
+    "preservationCheck": [
+      {
+        "file": "src/App.tsx",
+        "functionsPreserved": true,
+        "fixtureNames": [
+          "AGREEMENTS_DATA",
+          "NAVIGATOR_DATA",
+          "PARTIES_DATA",
+          "REQUESTS_DATA",
+          "WORKSPACES_DATA",
+          "TEMPLATES_DATA",
+          "REPORTS_DATA",
+          "DETAIL_TABS",
+          "INSIGHT_CARDS"
+        ],
+        "fixturesUnchanged": true,
+        "stateInitializersPreserved": true
+      },
+      {
+        "file": "src/iris/scenarios.tsx",
+        "functionsPreserved": true,
+        "fixtureNames": [
+          "ALL_ARTIFACTS",
+          "SCENARIOS",
+          "SCRIPTED_EXCHANGES"
+        ],
+        "fixturesUnchanged": true,
+        "stateInitializersPreserved": true
+      }
+    ],
+    "browserRuntime": "passed bounded CUA key-screen checks; see browser/root-checks.json",
+    "finalFixturePreservation": "fixture-preservation.json",
+    "recordFocus": "Agreement, Request and Workspace lifecycle verified through CUA"
+  },
+  "newApiConsumers": [
+    "FileUpload.primaryAction",
+    "ComboButton.accessibilityText/dropdownLabel",
+    "Tabs icon"
+  ],
+  "details": "app.md",
+  "visualRisks": [
+    "Typography normalized to existing role sizes and tracking",
+    "Teal chart literal replaced by existing cyan70 palette role",
+    "Shared control/card/banner/tabs surfaces replace bespoke CSS",
+    "Agreement detail fixed tracks preserved with flex composition; verify scrolling/reflow",
+    "Envelope browse action now comes from FileUpload slot; requires refreshed source"
+  ]
+}

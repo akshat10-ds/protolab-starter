@@ -1,0 +1,52 @@
+<frame id="2761:19350" name="[INK] Select Tile" x="3042" y="-651" width="2052" height="1418.28564453125">
+  <symbol id="2761:19351" name="selected=False, ❖ State=Default, direction=row, image=fit, HasIcon?=False, readOnly=False, disabled=False" x="16" y="16" width="298" height="84" />
+  <symbol id="2761:19400" name="selected=False, ❖ State=Hover, direction=row, image=fit, HasIcon?=False, readOnly=False, disabled=False" x="354" y="16" width="298" height="84" />
+  <symbol id="2761:19407" name="selected=False, ❖ State=Active, direction=row, image=fit, HasIcon?=False, readOnly=False, disabled=False" x="692" y="16" width="298" height="84" />
+  <symbol id="2761:19414" name="selected=True, ❖ State=Default, direction=row, image=fit, HasIcon?=False, readOnly=False, disabled=False" x="1030" y="16" width="298" height="84" />
+  <symbol id="2761:19393" name="selected=False, ❖ State=Default, direction=row, image=fit, HasIcon?=False, readOnly=True, disabled=False" x="1368" y="16" width="298" height="84" />
+  <symbol id="26195:5137" name="selected=False, ❖ State=Default, direction=row, image=fit, HasIcon?=False, readOnly=False, disabled=True" x="1706" y="16" width="298" height="84" />
+  <symbol id="2761:19421" name="selected=False, ❖ State=Default, direction=column, image=fit, HasIcon?=False, readOnly=False, disabled=False" x="50" y="180" width="230" height="144" />
+  <symbol id="2761:19429" name="selected=False, ❖ State=Hover, direction=column, image=fit, HasIcon?=False, readOnly=False, disabled=False" x="388" y="180" width="230" height="144" />
+  <symbol id="2761:19437" name="selected=False, ❖ State=Active, direction=column, image=fit, HasIcon?=False, readOnly=False, disabled=False" x="726" y="180" width="230" height="144" />
+  <symbol id="2761:19445" name="selected=True, ❖ State=Default, direction=column, image=fit, HasIcon?=False, readOnly=False, disabled=False" x="1064" y="180" width="230" height="144" />
+  <symbol id="2761:19453" name="selected=False, ❖ State=Default, direction=column, image=fit, HasIcon?=False, readOnly=True, disabled=False" x="1402" y="180" width="230" height="144" />
+  <symbol id="26195:5149" name="selected=False, ❖ State=Default, direction=column, image=fit, HasIcon?=False, readOnly=False, disabled=True" x="1740" y="180" width="230" height="144" />
+  <symbol id="2761:19461" name="selected=False, ❖ State=Default, direction=row, image=fill, HasIcon?=False, readOnly=False, disabled=False" x="16" y="404" width="298" height="84" />
+  <symbol id="2761:19469" name="selected=False, ❖ State=Hover, direction=row, image=fill, HasIcon?=False, readOnly=False, disabled=False" x="354" y="404" width="298" height="84" />
+  <symbol id="2761:19477" name="selected=False, ❖ State=Active, direction=row, image=fill, HasIcon?=False, readOnly=False, disabled=False" x="692" y="404" width="298" height="84" />
+  <symbol id="2761:19485" name="selected=True, ❖ State=Default, direction=row, image=fill, HasIcon?=False, readOnly=False, disabled=False" x="1030" y="404" width="298" height="84" />
+  <symbol id="2761:19493" name="selected=False, ❖ State=Default, direction=row, image=fill, HasIcon?=False, readOnly=True, disabled=False" x="1368" y="404" width="298" height="84" />
+  <symbol id="26195:5159" name="selected=False, ❖ State=Default, direction=row, image=fill, HasIcon?=False, readOnly=False, disabled=True" x="1706" y="404" width="298" height="84" />
+  <symbol id="2761:19501" name="selected=False, ❖ State=Default, direction=column, image=fill, HasIcon?=False, readOnly=False, disabled=False" x="50" y="568" width="230" height="168" />
+  <symbol id="2761:19509" name="selected=False, ❖ State=Hover, direction=column, image=fill, HasIcon?=False, readOnly=False, disabled=False" x="388" y="568" width="230" height="168" />
+  <symbol id="2761:19517" name="selected=False, ❖ State=Active, direction=column, image=fill, HasIcon?=False, readOnly=False, disabled=False" x="726" y="568" width="230" height="168" />
+  <symbol id="2761:19525" name="selected=True, ❖ State=Default, direction=column, image=fill, HasIcon?=False, readOnly=False, disabled=False" x="1064" y="568" width="230" height="168" />
+  <symbol id="2761:19533" name="selected=False, ❖ State=Default, direction=column, image=fill, HasIcon?=False, readOnly=True, disabled=False" x="1402" y="568" width="230" height="168" />
+  <symbol id="26195:5170" name="selected=False, ❖ State=Default, direction=column, image=fill, HasIcon?=False, readOnly=False, disabled=True" x="1740" y="568" width="230" height="168" />
+  <symbol id="27558:24133" name="selected=False, ❖ State=Default, direction=column, image=none, HasIcon?=False, readOnly=False, disabled=True" x="1714" y="960" width="298" height="64" />
+  <symbol id="27558:24142" name="selected=False, ❖ State=Default, direction=column, image=none, HasIcon?=False, readOnly=True, disabled=False" x="1376" y="960" width="298" height="64" />
+  <symbol id="27558:24151" name="selected=True, ❖ State=Default, direction=column, image=none, HasIcon?=False, readOnly=False, disabled=False" x="1038" y="960" width="298" height="64" />
+  <symbol id="27558:24160" name="selected=False, ❖ State=Active, direction=column, image=none, HasIcon?=False, readOnly=False, disabled=False" x="700" y="960" width="298" height="64" />
+  <symbol id="27558:24169" name="selected=False, ❖ State=Hover, direction=column, image=none, HasIcon?=False, readOnly=False, disabled=False" x="362" y="960" width="298" height="64" />
+  <symbol id="27558:24178" name="selected=False, ❖ State=Default, direction=column, image=none, HasIcon?=False, readOnly=False, disabled=False" x="24" y="960" width="298" height="64" />
+  <symbol id="25891:15587" name="selected=False, ❖ State=Default, direction=row, image=fit, HasIcon?=True, readOnly=False, disabled=False" x="16" y="1104" width="298" height="64" />
+  <symbol id="25891:15599" name="selected=False, ❖ State=Hover, direction=row, image=fit, HasIcon?=True, readOnly=False, disabled=False" x="354" y="1104" width="298" height="64" />
+  <symbol id="25891:15610" name="selected=False, ❖ State=Active, direction=row, image=fit, HasIcon?=True, readOnly=False, disabled=False" x="692" y="1104" width="298" height="64" />
+  <symbol id="25891:15621" name="selected=True, ❖ State=Default, direction=row, image=fit, HasIcon?=True, readOnly=False, disabled=False" x="1030" y="1104" width="298" height="64" />
+  <symbol id="25891:15632" name="selected=False, ❖ State=Default, direction=row, image=fit, HasIcon?=True, readOnly=True, disabled=False" x="1368" y="1104" width="298" height="64" />
+  <symbol id="26195:5190" name="selected=False, ❖ State=Default, direction=row, image=fit, HasIcon?=True, readOnly=False, disabled=True" x="1706" y="1104" width="298" height="64" />
+  <symbol id="25891:15643" name="selected=False, ❖ State=Default, direction=column, image=fit, HasIcon?=True, readOnly=False, disabled=False" x="50" y="1248" width="230" height="120" />
+  <symbol id="25891:15653" name="selected=False, ❖ State=Hover, direction=column, image=fit, HasIcon?=True, readOnly=False, disabled=False" x="388" y="1248" width="230" height="120" />
+  <symbol id="25891:15663" name="selected=False, ❖ State=Active, direction=column, image=fit, HasIcon?=True, readOnly=False, disabled=False" x="726" y="1248" width="230" height="120" />
+  <symbol id="25891:15673" name="selected=True, ❖ State=Default, direction=column, image=fit, HasIcon?=True, readOnly=False, disabled=False" x="1064" y="1248" width="230" height="120" />
+  <symbol id="25891:15683" name="selected=False, ❖ State=Default, direction=column, image=fit, HasIcon?=True, readOnly=True, disabled=False" x="1402" y="1248" width="230" height="120" />
+  <symbol id="26195:5201" name="selected=False, ❖ State=Default, direction=column, image=fit, HasIcon?=True, readOnly=False, disabled=True" x="1740" y="1248" width="230" height="120" />
+  <symbol id="2761:19386" name="selected=False, ❖ State=Default, direction=row, image=none, HasIcon?=False, readOnly=False, disabled=False" x="16" y="816" width="298" height="64" />
+  <symbol id="2761:19379" name="selected=False, ❖ State=Hover, direction=row, image=none, HasIcon?=False, readOnly=False, disabled=False" x="354" y="816" width="298" height="64" />
+  <symbol id="2761:19365" name="selected=False, ❖ State=Active, direction=row, image=none, HasIcon?=False, readOnly=False, disabled=False" x="692" y="816" width="298" height="64" />
+  <symbol id="2761:19372" name="selected=True, ❖ State=Default, direction=row, image=none, HasIcon?=False, readOnly=False, disabled=False" x="1030" y="816" width="298" height="64" />
+  <symbol id="2761:19358" name="selected=False, ❖ State=Default, direction=row, image=none, HasIcon?=False, readOnly=True, disabled=False" x="1368" y="816" width="298" height="64" />
+  <symbol id="26195:5179" name="selected=False, ❖ State=Default, direction=row, image=none, HasIcon?=False, readOnly=False, disabled=True" x="1706" y="816" width="298" height="64" />
+</frame>
+
+IMPORTANT: The design was too large to fit into context with get_design_context. Instead you have received a sparse metadata response, you MUST call get_design_context on the IDs of the sublayers to get the full code. Split up the calls to ensure the sublayers do not also exceed the context limit.

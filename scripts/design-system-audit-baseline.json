@@ -1,0 +1,710 @@
+{
+  "schemaVersion": 1,
+  "description": "Known static debt only. Fingerprints omit line numbers and count matching file/rule/property/evidence occurrences. This baseline is not visual approval.",
+  "entries": [
+    {
+      "fingerprint": "118bb92077b9c1367c5f0b8ddc37aef2e955e4bb2317c0c6ff3485ff4cb03d27",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"#fff\""
+    },
+    {
+      "fingerprint": "155fab31d9e861933f29edfd1aae7142b1e849dd01d4dfe97bd36ffb057786c6",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "color",
+      "evidence": "color: \"rgba(255,255,255,0.9)\""
+    },
+    {
+      "fingerprint": "23e9c42e19f6cc5601d4d1840d565761fd4e44e1a553107d3f6913a4152649d0",
+      "count": 2,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"rgb(247, 246, 247)\""
+    },
+    {
+      "fingerprint": "251e191f7cab6822a2ea8d6f7fccc8ebd126d8f8e051abe12a1f466bfd8178fb",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "border",
+      "evidence": "border: \"1px solid rgba(19,0,50,0.35)\""
+    },
+    {
+      "fingerprint": "3a7fe8349ceaaccf5da33d9c13e9683d432b3ba1e4d10e11ec0b11786f256b13",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"rgba(19, 0, 50, 0.05)\""
+    },
+    {
+      "fingerprint": "3b4f429348468f412642d53a44cec7386de3d8b1108eaa90c963ce9ac19e9893",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"#009EB3\""
+    },
+    {
+      "fingerprint": "404cd3f529b61806c7296a1fcadcd2e4c524ee753267c89fa8d8f75e4131c0a3",
+      "count": 9,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "color",
+      "evidence": "color: \"white\""
+    },
+    {
+      "fingerprint": "4a00a0609006a827a50f2fa2c5ca62317e510325e11fee9a2dd9725ee5fc9301",
+      "count": 2,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"white\""
+    },
+    {
+      "fingerprint": "4e251708656ecf596fcbec1b1f8236d41dc509ef2deac2f9922564a85e3c35fc",
+      "count": 3,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "color",
+      "evidence": "color: \"#fff\""
+    },
+    {
+      "fingerprint": "586a10532d80e134d4bc1f0df1f1274f757b22a438194595c5b7d5290c74437e",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"rgba(19,0,50,0.05)\""
+    },
+    {
+      "fingerprint": "5c2bf2c012fef2a133d0843174d4f8fc316981c271acf8977d8e40257ab43a45",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"radial-gradient(106.11% 145.09% at 50% -23.62%, #4200CA 0%, #260559 100%)\""
+    },
+    {
+      "fingerprint": "7215b721ccc4680f8f592b52afd78d209f2558ce9e966ca286845ff622c481d4",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "border",
+      "evidence": "border: \"1px solid rgba(255,255,255,0.25)\""
+    },
+    {
+      "fingerprint": "a12347dfa1a5172c842f483c4fd886b5402c4677edb7499cd2b428cfcc92d8ed",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "border",
+      "evidence": "border: \"1px solid rgba(19,0,50,0.5)\""
+    },
+    {
+      "fingerprint": "aa0b7ebd38183afb662babb1e00fdbbd15c1e2db898620fbb570de1473c4450a",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"#ECEAFB\""
+    },
+    {
+      "fingerprint": "af7e9149b946c05886673e2b65939773f30a6253baa385129d783a993b5291b6",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"#260559\""
+    },
+    {
+      "fingerprint": "c8c2165baf6467c3351151f61a0ac28fa10544373c472dd6fd330cc7f8233807",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "borderLeft",
+      "evidence": "borderLeft: \"1px solid rgba(255,255,255,0.2)\""
+    },
+    {
+      "fingerprint": "ee78579ce689c7889517981bae3422c284a5d06b9c4df878d7161fc7da3b220a",
+      "count": 2,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"linear-gradient(174.22deg, #4C00FB 1.48%, #260559 97.92%)\""
+    },
+    {
+      "fingerprint": "fa235937977040c63b0dcf6c0d726fad62b3acf570996824ea17b0096312ff49",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/App.tsx",
+      "property": "background",
+      "evidence": "background: \"#4200CA\""
+    },
+    {
+      "fingerprint": "00760d404f1637849e6e9f2f16ba6c1300a013b6b23be723054c7594ee953ecd",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"8px 20px\""
+    },
+    {
+      "fingerprint": "1b980ee6e366cb260b707d51ce8eb322ff052d9da43c0b757691f0e4e54dbc58",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "marginBottom",
+      "evidence": "marginBottom: 16"
+    },
+    {
+      "fingerprint": "2462b487db8ccb50a784adc31f59deafe4a4276f8cc5d6c799c62bcd8000af83",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "borderRadius",
+      "evidence": "borderRadius: \"0 4px 4px 0\""
+    },
+    {
+      "fingerprint": "2c41ce13f4b46af6c83c8159db8925de74cc285726417abb6eb22811ef96aaa7",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"70px var(--ink-spacing-300) 63px\""
+    },
+    {
+      "fingerprint": "31e03a6e76ffb88b097d8febfbc328c5c4dd4eb11e83d92c764a01eabccf6a64",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "borderRadius",
+      "evidence": "borderRadius: 8"
+    },
+    {
+      "fingerprint": "3729ca415c91beae2c1fb6e664bc0244940cd13f314e5de377e99af4991f4101",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "gap",
+      "evidence": "gap: 4"
+    },
+    {
+      "fingerprint": "44eec9c4062faaa9e63ae13967176d15bd75b46a42c69d4070707cbaae00697b",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "marginBottom",
+      "evidence": "marginBottom: 20"
+    },
+    {
+      "fingerprint": "4c0882c43e480b32e01338ab18c68c572db3080a3ffa606501d22c60f4007759",
+      "count": 2,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"4px 8px\""
+    },
+    {
+      "fingerprint": "5d3f1fbbed920f01c3ef53849f4291ab6aafb87409454b9017e745875673c401",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "gap",
+      "evidence": "gap: \"16px\""
+    },
+    {
+      "fingerprint": "5d47f6950c465357438276110fbdc409f6d2950877ddbec1295d4c98a676ada9",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"24px 4px\""
+    },
+    {
+      "fingerprint": "772e2c25308b9610709814375b93b725ecce6c384ca77ec52ad622cde5079c4a",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "gap",
+      "evidence": "gap: 24"
+    },
+    {
+      "fingerprint": "7b59f89b7e036fd2560a1391de7e78c06b456894685d32db9c8156941c30b336",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"8px 12px\""
+    },
+    {
+      "fingerprint": "7fd95bdbf2af8d6ddcc745489b64748f01d45d98b95d8f4f73b6c1e32eccd5eb",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"4px 12px\""
+    },
+    {
+      "fingerprint": "84caf46eec97a0d4721e2586fa7de47c402b08e83c08a1472fa08a22ab22e309",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "marginLeft",
+      "evidence": "marginLeft: 4"
+    },
+    {
+      "fingerprint": "86a58b60eddf7d5add0c672e335115839299d4709b1602415537a67fd7148de7",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "marginBottom",
+      "evidence": "marginBottom: 4"
+    },
+    {
+      "fingerprint": "8cf63978865f0b91098a73a15af1751ebd01bb06046aa917f511b0bb8a9eaafa",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "borderRadius",
+      "evidence": "borderRadius: \"4px 0 0 4px\""
+    },
+    {
+      "fingerprint": "c6c060b0a73bdba372d78860ed2f3f6416fc14a303988984acda79759afa1f17",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "gap",
+      "evidence": "gap: 32"
+    },
+    {
+      "fingerprint": "cf50629070273552b942085f4b9b6c28ff11edbe5fc0577103a654093cfafb04",
+      "count": 2,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"7px 12px\""
+    },
+    {
+      "fingerprint": "d938ee05030ff1e4425c5af6993312501417676079376387c5322632319e346d",
+      "count": 2,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"20px 24px\""
+    },
+    {
+      "fingerprint": "da682f9f8b364795c0a27227d1d1bf17f88d42b20d07058dc58ff88aa474c63a",
+      "count": 3,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "borderRadius",
+      "evidence": "borderRadius: \"50%\""
+    },
+    {
+      "fingerprint": "db5890aa935fdd51dff95492550914097f973d5d30177488c5f92a044138a218",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"2px 8px\""
+    },
+    {
+      "fingerprint": "dd17fe917c962012f3ffb87a1adbd352add1876be3c4ecf45562b43d55a4aaa1",
+      "count": 2,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "gap",
+      "evidence": "gap: 6"
+    },
+    {
+      "fingerprint": "dea2c7510246a91e78a7f06cbc7e26103548298babd1011d49002354220066bb",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "marginTop",
+      "evidence": "marginTop: 16"
+    },
+    {
+      "fingerprint": "e6ba6229fd0e5fef9f8fafeb981217da84ce8d460269edbc8fb0d41083619a5b",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"2px 4px\""
+    },
+    {
+      "fingerprint": "e78b7db31c817fc90e5b98e20a45f63a64912a844cf52162d03b4391c4a01d45",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "marginTop",
+      "evidence": "marginTop: 4"
+    },
+    {
+      "fingerprint": "e9e72376f951f1034c87dfa40104ead3cdd69ddcab54244c0ddbe6f0d0103585",
+      "count": 5,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "borderRadius",
+      "evidence": "borderRadius: 4"
+    },
+    {
+      "fingerprint": "ee70d7e6d521f90fb5c9b76181e8943ab9870186478d4bd5b79f98767b7b7e18",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "padding",
+      "evidence": "padding: \"0 16px\""
+    },
+    {
+      "fingerprint": "f2bdaabfd7ea2376166fbf0c78dc96c61930f936ec8258a378c95a7bbbbe77d2",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "marginBottom",
+      "evidence": "marginBottom: 8"
+    },
+    {
+      "fingerprint": "fe3b18a0a8f97b7f7ee25b89be08c72e0963938b912bb6c95518a416be315e00",
+      "count": 2,
+      "rule": "hardcoded-spacing",
+      "file": "src/App.tsx",
+      "property": "borderRadius",
+      "evidence": "borderRadius: 2"
+    },
+    {
+      "fingerprint": "05a05c03ed95e4d8ad4e5da6d3bc5707c9fc42e55dd0ce015566ebec26910dca",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "lineHeight",
+      "evidence": "lineHeight: 1.25"
+    },
+    {
+      "fingerprint": "25b540b842a902c6d1665a1471001480963ae3142cf3842e7efb2328569827c6",
+      "count": 2,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 20"
+    },
+    {
+      "fingerprint": "273f904cabeed5d551a471d9d8a2b9dd6b65572472d0c746b5354b09643a4e2d",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "lineHeight",
+      "evidence": "lineHeight: 1.3"
+    },
+    {
+      "fingerprint": "2aae87c3d3aba98035bc1f2a77bf341667a64397e712c6362a2a7ba9fa194105",
+      "count": 8,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontWeight",
+      "evidence": "fontWeight: 400"
+    },
+    {
+      "fingerprint": "3a5d61d8d26b262bd4962905c78d522618fc62996f4be21bdb21f7c70b5d47ee",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 32"
+    },
+    {
+      "fingerprint": "41e73acb417d443571f29f48381b4aebb0d350a70b04efc8b7c360e6adfaa98a",
+      "count": 2,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontWeight",
+      "evidence": "fontWeight: 600"
+    },
+    {
+      "fingerprint": "62eab45836f5b723f8f97562b5beac5199810d7dffa58ba3a244751a1d6e08e2",
+      "count": 3,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontWeight",
+      "evidence": "fontWeight: 700"
+    },
+    {
+      "fingerprint": "6e8a00dbce230b8b5cb53f9ed167d002dca26616d87b9ef9d20c1cd2f242c883",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 11"
+    },
+    {
+      "fingerprint": "774207d7ec734d252fd6e53261231f066faeb1a79b79ed4e185fcb1cf3fbf451",
+      "count": 2,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 15"
+    },
+    {
+      "fingerprint": "79324554d922455b08df5d9564dc4c7d50113ec01a73c702487a6e948fce0357",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontFamily",
+      "evidence": "fontFamily: \"serif\""
+    },
+    {
+      "fingerprint": "8b40c8a6102ee793cbd180ead13bc23cbd0d04b61d9f6d329fb500f8599aab14",
+      "count": 7,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 24"
+    },
+    {
+      "fingerprint": "9e64a33876b567710c22ab873d58c71ef287fa59d25eb7745f0c118f6263e843",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "letterSpacing",
+      "evidence": "letterSpacing: \"0.08em\""
+    },
+    {
+      "fingerprint": "a13c86f6eeddd150aa14de1c6391c1f0b62eb381f1d3340a626b3e2f21a4dff6",
+      "count": 5,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 14"
+    },
+    {
+      "fingerprint": "adace0a47add15b7a55443c1378ea5e06395970a9628317dee7927da728de049",
+      "count": 2,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 16"
+    },
+    {
+      "fingerprint": "bb47911a7cc820a1fa507a7df523fc48539faba2ec663b5a5ec5ea0d1bbd8ed1",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 40"
+    },
+    {
+      "fingerprint": "c49099aaf40831b177100c807728f8c9bbe4662fac7b984b65ca09298d951870",
+      "count": 9,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontWeight",
+      "evidence": "fontWeight: 500"
+    },
+    {
+      "fingerprint": "f5625135375c93b39a9bc43e83ddedae339a93fb8038024871ac03bb7c157d94",
+      "count": 9,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "letterSpacing",
+      "evidence": "letterSpacing: \"0.05em\""
+    },
+    {
+      "fingerprint": "f61a4b58d6c050e8bc0b011aea2521bf92612a4d3c25fea77dab1a93c68d9460",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 13"
+    },
+    {
+      "fingerprint": "fa5d246b8f34455eab32a32f34d9b46164f4c2da52fd232881ed0073725091e7",
+      "count": 2,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "lineHeight",
+      "evidence": "lineHeight: 1"
+    },
+    {
+      "fingerprint": "fe605fff1cf548c133a6b84e4089c08b3593c55ea89e5c96759de776b0098ab7",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/App.tsx",
+      "property": "fontSize",
+      "evidence": "fontSize: 44"
+    },
+    {
+      "fingerprint": "7c2b4f450987db940e0bc01da401a580e72cda41e65df49f292b3c7dcae3d684",
+      "count": 20,
+      "rule": "layout-bypass",
+      "file": "src/App.tsx",
+      "property": "display",
+      "evidence": "display: \"flex\""
+    },
+    {
+      "fingerprint": "fe7bf0a32c7b0ad3ec7e342790b9d7011682a16876c84e7af2beab076f5d4be6",
+      "count": 6,
+      "rule": "layout-bypass",
+      "file": "src/App.tsx",
+      "property": "display",
+      "evidence": "display: \"grid\""
+    },
+    {
+      "fingerprint": "8ab4b0d97107d270249abd89c0f9bc7cbd331e2b2661b800c49244b08d34d817",
+      "count": 18,
+      "rule": "raw-control",
+      "file": "src/App.tsx",
+      "property": "button",
+      "evidence": "<button>"
+    },
+    {
+      "fingerprint": "c0a30d8905a906f42b3c1f530cf70cb187aa6b260962f1ed4897c8a9105d8256",
+      "count": 1,
+      "rule": "raw-control",
+      "file": "src/App.tsx",
+      "property": "input",
+      "evidence": "<input>"
+    },
+    {
+      "fingerprint": "f29a2541f467ac717c7e4bfe084614dbc207b15236a11e9e8a5b857724acb112",
+      "count": 8,
+      "rule": "raw-control",
+      "file": "src/App.tsx",
+      "property": "a",
+      "evidence": "<a>"
+    },
+    {
+      "fingerprint": "0cc337ff84b1af941b836f21c482f803576eb7a8958fccd003cc52a89101aa25",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/index.css",
+      "property": "background-color",
+      "evidence": "background-color: rgba(255,255,255,0.06) !important"
+    },
+    {
+      "fingerprint": "f4ea5348d362ffd4e4fdb6fc65ae5b7da5b32302630d8e4035d28a8cd27911f3",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/index.css",
+      "property": "border-color",
+      "evidence": "border-color: rgba(255,255,255,0.45) !important"
+    },
+    {
+      "fingerprint": "a15a384d14d599b1c6e00c0f8d52698266b9363fd8da4b051f7da2a90b687478",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/index.css",
+      "property": "border-radius",
+      "evidence": "border-radius: 16px !important"
+    },
+    {
+      "fingerprint": "f4df38a554778dd713799a0e982f5d350c9b2b4574a7a60f147ee5a2560858c0",
+      "count": 1,
+      "rule": "hardcoded-typography",
+      "file": "src/index.css",
+      "property": "line-height",
+      "evidence": "line-height: 1.5"
+    },
+    {
+      "fingerprint": "790e1252c3bde2ec1bc5d8c52fe98387782115def32e439c79569affdef75382",
+      "count": 1,
+      "rule": "layout-bypass",
+      "file": "src/index.css",
+      "property": "display",
+      "evidence": "display: flex !important"
+    },
+    {
+      "fingerprint": "9fd0a4d2f567311eb89eb70750caed6333f44fdfd7594d218e662049a5b2922e",
+      "count": 1,
+      "rule": "layout-bypass",
+      "file": "src/index.css",
+      "property": "display",
+      "evidence": "display: flex"
+    },
+    {
+      "fingerprint": "d23abb5d9c06e7d8eb5350ad94e499ccf4562df0b4bd75345b5e2eafb6d3a820",
+      "count": 1,
+      "rule": "hardcoded-color",
+      "file": "src/iris/scenarios.tsx",
+      "property": "boxShadow",
+      "evidence": "boxShadow: \"0 4px 16px rgba(0,0,0,0.08)\""
+    },
+    {
+      "fingerprint": "01393cf89279a5fc8fca70a6876af6e838bea39e5e5dbc0d46cd53b1226fc946",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/iris/scenarios.tsx",
+      "property": "gap",
+      "evidence": "gap: 16"
+    },
+    {
+      "fingerprint": "3a33823388f7e3465cfd5d9ee90eeb02662aad227835adf5b0482bb0c87986ed",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/iris/scenarios.tsx",
+      "property": "gap",
+      "evidence": "gap: 8"
+    },
+    {
+      "fingerprint": "3aeb7af0c4f398febf4e7601892d50cfcbb590c5b3710761e026f9e220b701cc",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/iris/scenarios.tsx",
+      "property": "marginTop",
+      "evidence": "marginTop: 4"
+    },
+    {
+      "fingerprint": "9dafc29485c0cf0f2629cad2f2dcd40dcb8a5eb1b198706c532e04e38e5ed189",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/iris/scenarios.tsx",
+      "property": "borderRadius",
+      "evidence": "borderRadius: 8"
+    },
+    {
+      "fingerprint": "c6b9cf5e73e25d5dbf0485afe6485a144f318d711fa1e8bf92013151cb5ec67f",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/iris/scenarios.tsx",
+      "property": "padding",
+      "evidence": "padding: 16"
+    },
+    {
+      "fingerprint": "cfdbd5f47e6e3006dda5e7d3c54ab0f777d73e3541e44881928c14442a689616",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/iris/scenarios.tsx",
+      "property": "padding",
+      "evidence": "padding: 32"
+    },
+    {
+      "fingerprint": "db323934ef05edcc24166851ada904dbd4a981922d87c35c7fb6e7cc1c2ff7f6",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/iris/scenarios.tsx",
+      "property": "marginTop",
+      "evidence": "marginTop: 24"
+    },
+    {
+      "fingerprint": "f4724314c11a7c34d35a8df84c658c6afb4b7cffde26e10b1d9a72c142ed64c7",
+      "count": 1,
+      "rule": "hardcoded-spacing",
+      "file": "src/iris/scenarios.tsx",
+      "property": "padding",
+      "evidence": "padding: \"12px 0\""
+    },
+    {
+      "fingerprint": "8e707ecf8ce59e8a8afa2807e65c13a70fa7378ee34d0534f76a59a25d6522dd",
+      "count": 2,
+      "rule": "layout-bypass",
+      "file": "src/iris/scenarios.tsx",
+      "property": "display",
+      "evidence": "display: \"flex\""
+    }
+  ]
+}

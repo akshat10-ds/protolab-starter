@@ -1,0 +1,2229 @@
+[
+  {
+    "page": {
+      "id": "3140:1301",
+      "name": "Thumbnail"
+    },
+    "ownerCount": 0,
+    "variantCount": 0,
+    "runtime": [],
+    "approach": "Documentation/cover page with no on-canvas component owners.",
+    "priority": "none",
+    "limits": "No component parity claim.",
+    "owners": []
+  },
+  {
+    "page": {
+      "id": "7038:2010",
+      "name": "Component Demo"
+    },
+    "ownerCount": 0,
+    "variantCount": 0,
+    "runtime": [],
+    "approach": "Demo instances, no on-canvas component owners.",
+    "priority": "none",
+    "limits": "Demo flow behavior is outside reusable library review.",
+    "owners": []
+  },
+  {
+    "page": {
+      "id": "7038:10318",
+      "name": "---"
+    },
+    "ownerCount": 0,
+    "variantCount": 0,
+    "runtime": [],
+    "approach": "Separator page with no on-canvas component owners.",
+    "priority": "none",
+    "limits": "No component parity claim.",
+    "owners": []
+  },
+  {
+    "page": {
+      "id": "153:84",
+      "name": "ColorPicker"
+    },
+    "ownerCount": 7,
+    "variantCount": 10,
+    "runtime": [],
+    "approach": "No ColorPicker export. Existing Input, Slider, Button and FileUpload provide pieces; they do not provide color-space selection, swatch history or eyedropper behavior.",
+    "priority": "P3 unless an editor key screen needs color selection",
+    "limits": "No local interactive color-picker rendering or keyboard interaction comparison.",
+    "owners": [
+      {
+        "nodeId": "2363:7076",
+        "name": "_Hex Input",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-153-84.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2363-7076"
+      },
+      {
+        "nodeId": "2363:7084",
+        "name": "_Hue Slider",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-153-84.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2363-7084"
+      },
+      {
+        "nodeId": "2923:11807",
+        "name": "_Saved Colors",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-153-84.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2923-11807"
+      },
+      {
+        "nodeId": "2923:11771",
+        "name": "_Expanded Colors",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-153-84.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2923-11771"
+      },
+      {
+        "nodeId": "2363:7074",
+        "name": "_Handle",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-153-84.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2363-7074"
+      },
+      {
+        "nodeId": "2923:11897",
+        "name": "_[INK] Color Swatches",
+        "type": "COMPONENT_SET",
+        "variantCount": 2,
+        "properties": {
+          "savedColorSwatches#2923:3": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "❖ Expand Color Swatches": {
+            "type": "VARIANT",
+            "defaultValue": "True",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-153-84.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2923-11897"
+      },
+      {
+        "nodeId": "2923:13579",
+        "name": "[INK] Color Picker",
+        "type": "COMPONENT_SET",
+        "variantCount": 3,
+        "properties": {
+          "❖ Type": {
+            "type": "VARIANT",
+            "defaultValue": "Gradient",
+            "variantOptions": [
+              "Image",
+              "Gradient",
+              "Image Upload"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-153-84.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2923-13579"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "37:2511",
+      "name": "EmptyState"
+    },
+    "ownerCount": 5,
+    "variantCount": 12,
+    "runtime": [
+      "Stack",
+      "Grid",
+      "Heading",
+      "Text",
+      "Button",
+      "Link"
+    ],
+    "approach": "No dedicated EmptyState export; documented empty-state composition and existing views are the intended reuse path. Image/header/body/footer are slots, not four missing standalone controls.",
+    "priority": "P2 when a key empty screen needs the reusable composition",
+    "limits": "Illustration assets and responsive breakpoints of existing app compositions not compared to every Figma size/direction/alignment.",
+    "owners": [
+      {
+        "nodeId": "113:598",
+        "name": "Child/[INK] EmptyState.Header",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2511.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=113-598"
+      },
+      {
+        "nodeId": "113:597",
+        "name": "Child/[INK] EmptyState.Body",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "body#113:2": {
+            "type": "TEXT",
+            "defaultValue": "An Ink is a liquid containing various pigments or dyes used for coloring a surface to render an image or text."
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2511.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=113-597"
+      },
+      {
+        "nodeId": "113:589",
+        "name": "Child/[INK] EmptyState.Footer",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "HasButton?#113:0": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "HasLink?#113:1": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2511.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=113-589"
+      },
+      {
+        "nodeId": "1227:10209",
+        "name": "_Child/[INK] EmptyState.Image [DEPRECATE]",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2511.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1227-10209"
+      },
+      {
+        "nodeId": "113:620",
+        "name": "[INK] Empty State",
+        "type": "COMPONENT_SET",
+        "variantCount": 8,
+        "properties": {
+          "footer#113:4": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "imageSrc#42296:12": {
+            "type": "SLOT",
+            "description": "",
+            "slotSettings": {
+              "stretchChildOnInsert": false,
+              "displayEmptyByDefault": true,
+              "minChildren": null,
+              "maxChildren": null,
+              "allowPreferredValuesOnly": false
+            },
+            "preferredValues": [
+              {
+                "type": "COMPONENT",
+                "key": "a69788695a644cc8f5b399ceb41a6b939562d6eb"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "edbbc53c6ea63a62084fedcabb36585474a741bf"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "a02b7c8d9fa72d17e4ae32cd093e1298aad9f01b"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "fee5a263c0c14835f8952c9a5f10506de7083271"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "70aa8225784f1970ecbb67b34510afebbbf3a046"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "a48df600692e5087603fcf4f28d73f32d08b5094"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "a1df88e512a66b809e4c17b0c504a141498163e8"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "3f27a3bbd0b632647f58fbac8bdbe840904277db"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "650a522d15b4e5230ce039a6d8c05a1c25f22b42"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "e596fbb24fa842bf8bd1e867d9f50fbae0e4f978"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "b5dff4bb300b802c2b14612897425e999e55201a"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "9632f3ba8002f0a26c37babd62a66783962896ad"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "f26484dc07b66846bdbc80067ebf6a7d4eb35101"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "6e438dc5d9da04d3f555e404571a2301ff2fd1b3"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "613e3f5422d3e92ad1d88478576e6c3dff213104"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "875dd9f2391f118ddfc7f5d423bea9936789a98d"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "1eb846719db65b827fb0a353104f5be10dabda80"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "423db69aa318552807514a9211322929285b61be"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "811dc8e548a3e28fc089d6bbcfa7107af14fe058"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "9f375d4c114c7f036ad0d23f3f4c31f18ee6a6b7"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "de8f2ff1179a05bfe778ebdb7e28bc99225ce727"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "99096879e93e61e3b883b7b601a9bc28f4d66de7"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "61666b71e3e49552f7182fdaae911d2feac04e50"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "eece56b3a6abeb7d03089d8b6eb7121d55388a09"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "e2cc1228e003d4331a630bd2df8b3580dbcb59ee"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "b4e634868f0a94ceb6319917163614123de39a5a"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "21349c881f9f6a85b49f53f041bb96668bc09b45"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "5e59ad5b716b720fdc47aa271d8ecd7b132b89eb"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "8efa53dc4c68cbd4aba7c04d7f08c483ecfee8ed"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "7bd2b4240d48cea55cf66f13ca56cba92ca632d4"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "f2bfa18df8ceac5550f5734ddf62ab55480eae44"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "12bc59fb8456d7c5a34199c9bf2eef1803ca9364"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "0f48c6893ba6a142c66ed835220a02751fba0783"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "2fcd47b618dbf0391b9174a5e616120cadcff50b"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "fa5df91ed2b13deb56a8060cf22ad64d13d34677"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "2670f760c09a6ee5f38490cbd4d2db8464adbae5"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "97b0b98783fa676022afc1b32c88c49ec00f1f89"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "401052650802e8a08c70131c144abd485df5d962"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "a03af2389e3c5bc39d215fac0f5c0b7134f722d3"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "babb694d168d28501c55ff348a6946e93a05ee28"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "84f0694638c9711938a1e1369ce969bada97eab1"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "9d62221e37fdb3b44ddff413f016dc5410aa7f66"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "339f6a273fb24192405294e2b09764cffa84c581"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "cb0889cbd8128abe7caa3e6c986fa130e77908ed"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "3a9e5122d7c90a5dec6b23e08ccaedaaf173132e"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "ba840f2596b2d0589d5b4a6551ef1860905074c6"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "5399ab86a05cc44e86582a3a61865cfdd5b56d25"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "b5328cc675638347430bb22052ffa0c5420ecd05"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "77a725e46a8874b84cee2e404ba6d1d54b47795d"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "a268e1d83b849e12f35b2d6cbc9d6b1a4c4b41bd"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "e2cea5d48b8e41deb8202a91574b87c80ab1c24a"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "a44f5fca4e85380fed98f45381843136f5c0bd43"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "46458d95bb458e9a2deca08d5f602bcf9258e882"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "a09e1bcd3ac1cd51c1602f94cde52748e22f9ac8"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "9d43432cf8cebcffd053c5872ce744e8dd04a65c"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "02fb7200201ebc3a72a770fffdcdf92dc50d4e43"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "3226f5bafc1edf904d84161aa6c867f1f029b3d1"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "587f006648e7dde1c8dd51e03e6a400cdcbba7ff"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "1c8920050c16f6611eda96a1a65a75192b6560d7"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "009071a0f748abfc960cc80f062d02fed961647a"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "c8a95a1d85221e91f7e5e65983489a3e04b6b0a6"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "813776e407d4ec32cf219a074666235b4a4887b9"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "244c0f6eff812f434d101b3640b15ea21bb284a0"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "98d29e21fca3fb19bf3a46f436f730f0f5a05e0b"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "b8b08a655c6e7d85604be4cec9c16368f67432cd"
+              },
+              {
+                "type": "COMPONENT",
+                "key": "609d49f7eeca9a931c5c434d0bf4b15905200188"
+              }
+            ]
+          },
+          "image#42296:16": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "size": {
+            "type": "VARIANT",
+            "defaultValue": "medium",
+            "variantOptions": [
+              "medium",
+              "small"
+            ]
+          },
+          "direction": {
+            "type": "VARIANT",
+            "defaultValue": "row",
+            "variantOptions": [
+              "row",
+              "column"
+            ]
+          },
+          "alignment": {
+            "type": "VARIANT",
+            "defaultValue": "start",
+            "variantOptions": [
+              "start",
+              "center",
+              "end"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2511.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=113-620"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "14248:22418",
+      "name": "Hotspot"
+    },
+    "ownerCount": 1,
+    "variantCount": 1,
+    "runtime": [
+      "Icon"
+    ],
+    "approach": "A single 24px authoring/annotation hotspot exists. No exact runtime component. Its presence does not require adding onboarding tour flows.",
+    "priority": "P3",
+    "limits": "No runtime hotspot pulse, positioning or tour interaction checked.",
+    "owners": [
+      {
+        "nodeId": "18206:38100",
+        "name": "Hotspot",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-14248-22418.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=18206-38100"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "37:2515",
+      "name": "Meter"
+    },
+    "ownerCount": 1,
+    "variantCount": 4,
+    "runtime": [
+      "ProgressBar"
+    ],
+    "approach": "ProgressBar can express a similar track but is a progress indicator rather than a semantic strength meter; kind lanes differ.",
+    "priority": "P3 unless a strength/quality key screen needs it",
+    "limits": "No exact meter API or rendered parity.",
+    "owners": [
+      {
+        "nodeId": "473:11943",
+        "name": "[INK] Meter",
+        "type": "COMPONENT_SET",
+        "variantCount": 4,
+        "properties": {
+          "label#473:0": {
+            "type": "TEXT",
+            "defaultValue": "Label"
+          },
+          "content#473:5": {
+            "type": "TEXT",
+            "defaultValue": "Strong"
+          },
+          "kind": {
+            "type": "VARIANT",
+            "defaultValue": "info",
+            "variantOptions": [
+              "info",
+              "semantic - high",
+              "semantic - medium",
+              "semantic - low"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2515.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=473-11943"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "37:2519",
+      "name": "PreviewCard"
+    },
+    "ownerCount": 3,
+    "variantCount": 11,
+    "runtime": [
+      "Card",
+      "Badge",
+      "Dropdown",
+      "Text"
+    ],
+    "approach": "Document preview, heading/description, status and menu are a composition; focus/hover/active border states are explicit live design states. Generic Card is available but no PreviewCard contract.",
+    "priority": "P2 when a key screen uses document grids",
+    "limits": "Document-image cropping, interaction and all four rendered states not compared.",
+    "owners": [
+      {
+        "nodeId": "1467:14574",
+        "name": "[INK] PreviewCard",
+        "type": "COMPONENT_SET",
+        "variantCount": 4,
+        "properties": {
+          "❖ State": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Hover",
+              "Active",
+              "Selected [PR]"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2519.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1467-14574"
+      },
+      {
+        "nodeId": "1467:17894",
+        "name": "Child/[INK] PreviewCard.Heading",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "description#1467:8": {
+            "type": "TEXT",
+            "defaultValue": "This is a short description"
+          },
+          "HasDescription?#1467:9": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "action#1467:10": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2519.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1467-17894"
+      },
+      {
+        "nodeId": "1467:17881",
+        "name": "Child/[INK] PreviewCard.Image",
+        "type": "COMPONENT_SET",
+        "variantCount": 6,
+        "properties": {
+          "badge#1467:0": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "kind": {
+            "type": "VARIANT",
+            "defaultValue": "document",
+            "variantOptions": [
+              "image",
+              "document"
+            ]
+          },
+          "ratio": {
+            "type": "VARIANT",
+            "defaultValue": "3:2",
+            "variantOptions": [
+              "16:9",
+              "3:2",
+              "1:1"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2519.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1467-17881"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "32631:462",
+      "name": "SegmentedControl"
+    },
+    "ownerCount": 2,
+    "variantCount": 6,
+    "runtime": [
+      "Tabs",
+      "Button",
+      "Inline"
+    ],
+    "approach": "No exact SegmentedControl export. Tabs may fit content switching; a labelled Button group can fit action selection. They are not automatically equivalent keyboard/selection semantics.",
+    "priority": "P2 when visible on a key screen",
+    "limits": "No exact segmented selection API or keyboard runtime verification.",
+    "owners": [
+      {
+        "nodeId": "32656:625",
+        "name": "[INK] SegmentedControl.Option",
+        "type": "COMPONENT_SET",
+        "variantCount": 4,
+        "properties": {
+          "showIcon#32656:0": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "showLabel#32732:15": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "State": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Hover",
+              "Active"
+            ]
+          },
+          "Selected": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "True",
+              "False"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-32631-462.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=32656-625"
+      },
+      {
+        "nodeId": "32665:1131",
+        "name": "[INK] Segmented Control",
+        "type": "COMPONENT_SET",
+        "variantCount": 2,
+        "properties": {
+          "showDescription#37111:0": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "children#37137:10": {
+            "type": "SLOT",
+            "description": null,
+            "slotSettings": {
+              "stretchChildOnInsert": false,
+              "displayEmptyByDefault": false,
+              "minChildren": null,
+              "maxChildren": null,
+              "allowPreferredValuesOnly": true
+            },
+            "preferredValues": [
+              {
+                "type": "COMPONENT_SET",
+                "key": "fd4bc3a2e30c2884a07d0052dccf3da6242499cb"
+              }
+            ]
+          },
+          "fullWidth": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-32631-462.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=32665-1131"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "563:4653",
+      "name": "SelectTile"
+    },
+    "ownerCount": 2,
+    "variantCount": 50,
+    "runtime": [
+      "Card",
+      "Radio",
+      "Checkbox"
+    ],
+    "approach": "No exact SelectTile or SelectTileGroup export. Figma includes selected, hover/active, row/column, image fit/fill/none, icon, readOnly and disabled. A Card alone cannot express accessible choice behavior.",
+    "priority": "P2 when a key choice screen needs tiles",
+    "limits": "48 tile variants plus 2 group variants inspected as metadata; only default row-image specimen visually inspected.",
+    "owners": [
+      {
+        "nodeId": "2761:19350",
+        "name": "[INK] Select Tile",
+        "type": "COMPONENT_SET",
+        "variantCount": 48,
+        "properties": {
+          "HasDescription?#924:0": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "badge#924:6": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "description#2725:57": {
+            "type": "TEXT",
+            "defaultValue": "A short, but also optional description"
+          },
+          "icon#25891:7": {
+            "type": "INSTANCE_SWAP",
+            "defaultValue": "41751:3722",
+            "preferredValues": [
+              {
+                "type": "COMPONENT",
+                "key": "306e860478a3f2f4adc0d17c8ffdd301bf82c185"
+              }
+            ]
+          },
+          "selected": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "❖ State": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Hover",
+              "Active"
+            ]
+          },
+          "direction": {
+            "type": "VARIANT",
+            "defaultValue": "row",
+            "variantOptions": [
+              "row",
+              "column"
+            ]
+          },
+          "image": {
+            "type": "VARIANT",
+            "defaultValue": "fit",
+            "variantOptions": [
+              "fit",
+              "fill",
+              "none"
+            ]
+          },
+          "HasIcon?": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "True",
+              "False"
+            ]
+          },
+          "readOnly": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "disabled": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "True",
+              "False"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-563-4653.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2761-19350"
+      },
+      {
+        "nodeId": "37058:15681",
+        "name": "[INK] Select Tile Group",
+        "type": "COMPONENT_SET",
+        "variantCount": 2,
+        "properties": {
+          "HasDescription?#37058:2": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "HasLegend?#37058:3": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "HasError?#37058:4": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "children#42302:169": {
+            "type": "SLOT",
+            "description": "",
+            "slotSettings": {
+              "stretchChildOnInsert": false,
+              "displayEmptyByDefault": false,
+              "minChildren": null,
+              "maxChildren": null,
+              "allowPreferredValuesOnly": true
+            },
+            "preferredValues": [
+              {
+                "type": "COMPONENT_SET",
+                "key": "fdf10747cb9834a9a2c5f11c4f8fa655915009b8"
+              }
+            ]
+          },
+          "disabled": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-563-4653.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=37058-15681"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "37:2527",
+      "name": "StarRating"
+    },
+    "ownerCount": 2,
+    "variantCount": 18,
+    "runtime": [
+      "Icon",
+      "Button"
+    ],
+    "approach": "No exact StarRating export. Six rating levels and disabled states are current; rating accessibility and labels would need a source-owned reusable contract if required.",
+    "priority": "P3",
+    "limits": "No interactive star rating or hover/keyboard rendering.",
+    "owners": [
+      {
+        "nodeId": "293:3444",
+        "name": "_[INK] Star",
+        "type": "COMPONENT_SET",
+        "variantCount": 6,
+        "properties": {
+          "❖ State": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Hover",
+              "Active"
+            ]
+          },
+          "❖ Selected": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2527.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=293-3444"
+      },
+      {
+        "nodeId": "313:2635",
+        "name": "[INK] Star Rating",
+        "type": "COMPONENT_SET",
+        "variantCount": 12,
+        "properties": {
+          "HasError?#313:0": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "showRatingLabels#313:2": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "showLegend#1338:9": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "disabled": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "❖ Rating": {
+            "type": "VARIANT",
+            "defaultValue": "0",
+            "variantOptions": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2527.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=313-2635"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "3196:3974",
+      "name": "Tag"
+    },
+    "ownerCount": 1,
+    "variantCount": 4,
+    "runtime": [
+      "Chip"
+    ],
+    "approach": "The live Tag is a removable neutral label. Chip provides a related dismissible affordance but also selected, icon and other API features; map deliberately rather than assume exact identity.",
+    "priority": "P2 if removable tags are on a key screen",
+    "limits": "No all-state rendered comparison between Tag and Chip.",
+    "owners": [
+      {
+        "nodeId": "2590:1814",
+        "name": "[INK] Tag",
+        "type": "COMPONENT_SET",
+        "variantCount": 4,
+        "properties": {
+          "text#1674:1": {
+            "type": "TEXT",
+            "defaultValue": "Tag"
+          },
+          "closeButton#2590:16": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "startElement#36434:0": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "❖ State": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Hover",
+              "Active"
+            ]
+          },
+          "disabled": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-3196-3974.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=2590-1814"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "37:2537",
+      "name": "Toast"
+    },
+    "ownerCount": 1,
+    "variantCount": 5,
+    "runtime": [
+      "Alert",
+      "Banner"
+    ],
+    "approach": "No exact Toast export. Figma is a transient dark feedback surface with kind icon, copy and close. Alert is persistent inline feedback; local Alert's stale InlineMessage target does not become a Toast mapping.",
+    "priority": "P2 only where key-screen feedback needs toast behavior",
+    "limits": "No lifetime, stacking, portal, dismissal or assistive-technology live-region testing.",
+    "owners": [
+      {
+        "nodeId": "513:15900",
+        "name": "[INK] Toast",
+        "type": "COMPONENT_SET",
+        "variantCount": 5,
+        "properties": {
+          "children#513:3": {
+            "type": "TEXT",
+            "defaultValue": "A generic message about an action"
+          },
+          "action#513:4": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "closeButton#513:5": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "kind": {
+            "type": "VARIANT",
+            "defaultValue": "information",
+            "variantOptions": [
+              "danger",
+              "information",
+              "success",
+              "warning",
+              "loading"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2537.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=513-15900"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "37:2539",
+      "name": "Tree"
+    },
+    "ownerCount": 5,
+    "variantCount": 58,
+    "runtime": [
+      "List",
+      "LocalNav"
+    ],
+    "approach": "Three tree compositions plus Item/Header masters exist. No recursive Tree export. List/LocalNav do not prove tree expansion, parent selection and keyboard support.",
+    "priority": "P2 only for a key hierarchy screen",
+    "limits": "Nested parent-selection states read; no full keyboard/selection runtime.",
+    "owners": [
+      {
+        "nodeId": "14692:7813",
+        "name": "Child/[INK] Tree Item",
+        "type": "COMPONENT_SET",
+        "variantCount": 52,
+        "properties": {
+          "text#415:11": {
+            "type": "TEXT",
+            "defaultValue": "Tree Item"
+          },
+          "icon#415:12": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "draggable#415:13": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "actionButton#415:14": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "❖ State": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Hover",
+              "Active"
+            ]
+          },
+          "❖ Is Parent Selected?": {
+            "type": "VARIANT",
+            "defaultValue": "n/a",
+            "variantOptions": [
+              "True",
+              "False",
+              "n/a"
+            ]
+          },
+          "selected": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "disclosure": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "children": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "disabled": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "shape": {
+            "type": "VARIANT",
+            "defaultValue": "round",
+            "variantOptions": [
+              "round",
+              "square"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2539.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=14692-7813"
+      },
+      {
+        "nodeId": "14692:7982",
+        "name": "Child/[INK] Section Header",
+        "type": "COMPONENT_SET",
+        "variantCount": 3,
+        "properties": {
+          "title#415:7": {
+            "type": "TEXT",
+            "defaultValue": "Tree section header"
+          },
+          "actionButton#415:8": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "❖ State": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Hover"
+            ]
+          },
+          "shape": {
+            "type": "VARIANT",
+            "defaultValue": "round",
+            "variantOptions": [
+              "round",
+              "square"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2539.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=14692-7982"
+      },
+      {
+        "nodeId": "15930:6102",
+        "name": "[INK] Tree (Nested - Parent Selection)",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "title#15930:6": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "children#37741:3": {
+            "type": "SLOT",
+            "description": "",
+            "slotSettings": {
+              "stretchChildOnInsert": false,
+              "displayEmptyByDefault": true,
+              "minChildren": null,
+              "maxChildren": null,
+              "allowPreferredValuesOnly": true
+            },
+            "preferredValues": [
+              {
+                "type": "COMPONENT_SET",
+                "key": "67eff046424a550e7457763b661d9970f0b6c7d8"
+              },
+              {
+                "type": "COMPONENT_SET",
+                "key": "2a197cdff29320de50a681b8ebc3d217bd403932"
+              }
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2539.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=15930-6102"
+      },
+      {
+        "nodeId": "15930:5857",
+        "name": "[INK] Tree (Deep Nested - Parent Selection)",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "title#15930:5": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "children#37741:2": {
+            "type": "SLOT",
+            "description": "",
+            "slotSettings": {
+              "stretchChildOnInsert": false,
+              "displayEmptyByDefault": true,
+              "minChildren": null,
+              "maxChildren": null,
+              "allowPreferredValuesOnly": true
+            },
+            "preferredValues": [
+              {
+                "type": "COMPONENT_SET",
+                "key": "2a197cdff29320de50a681b8ebc3d217bd403932"
+              },
+              {
+                "type": "COMPONENT_SET",
+                "key": "67eff046424a550e7457763b661d9970f0b6c7d8"
+              }
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2539.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=15930-5857"
+      },
+      {
+        "nodeId": "15930:6203",
+        "name": "[INK] Tree (Nested - No Parent Selection)",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "title#15930:7": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "children#37741:1": {
+            "type": "SLOT",
+            "description": "",
+            "slotSettings": {
+              "stretchChildOnInsert": false,
+              "displayEmptyByDefault": true,
+              "minChildren": null,
+              "maxChildren": null,
+              "allowPreferredValuesOnly": true
+            },
+            "preferredValues": [
+              {
+                "type": "COMPONENT_SET",
+                "key": "67eff046424a550e7457763b661d9970f0b6c7d8"
+              },
+              {
+                "type": "COMPONENT_SET",
+                "key": "2a197cdff29320de50a681b8ebc3d217bd403932"
+              }
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2539.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=15930-6203"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "37:2540",
+      "name": "WorkflowStepper"
+    },
+    "ownerCount": 4,
+    "variantCount": 8,
+    "runtime": [
+      "Stepper",
+      "Button",
+      "Stack"
+    ],
+    "approach": "Workflow stepper is an actionable progress composition with Compact/Expanded presets, distinct from ProgressStepper. Local Stepper supplies an indicator foundation, not the exact workflow contract.",
+    "priority": "P3 unless a workflow key screen needs it",
+    "limits": "No step action/content lifecycle or expanded runtime rendering.",
+    "owners": [
+      {
+        "nodeId": "577:10373",
+        "name": "Child/[INK] WorkflowStepper.Item",
+        "type": "COMPONENT_SET",
+        "variantCount": 5,
+        "properties": {
+          "❖ Show Before Connector#577:9": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "callToAction#577:10": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "description#577:11": {
+            "type": "TEXT",
+            "defaultValue": "Description text should be short."
+          },
+          "text#577:12": {
+            "type": "TEXT",
+            "defaultValue": "Step number"
+          },
+          "❖ Description#577:13": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "❖ Show End Connector#579:6": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "❖ Expand children#649:0": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "children#38038:47": {
+            "type": "SLOT",
+            "description": "",
+            "slotSettings": {
+              "stretchChildOnInsert": false,
+              "displayEmptyByDefault": true,
+              "minChildren": null,
+              "maxChildren": null,
+              "allowPreferredValuesOnly": false
+            },
+            "preferredValues": []
+          },
+          "isComplete": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "status": {
+            "type": "VARIANT",
+            "defaultValue": "unvisited",
+            "variantOptions": [
+              "current",
+              "unvisited",
+              "visited"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2540.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=577-10373"
+      },
+      {
+        "nodeId": "579:7398",
+        "name": "[INK] Workflow Stepper (Compact)",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "children#38038:56": {
+            "type": "SLOT",
+            "description": "",
+            "preferredValues": [
+              {
+                "type": "COMPONENT_SET",
+                "key": "1663468981379f418105c630fbfedad7102f0848"
+              }
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2540.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=579-7398"
+      },
+      {
+        "nodeId": "579:7397",
+        "name": "[INK] Workflow Stepper (Expanded)",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "children#38038:55": {
+            "type": "SLOT",
+            "description": "",
+            "preferredValues": [
+              {
+                "type": "COMPONENT_SET",
+                "key": "1663468981379f418105c630fbfedad7102f0848"
+              }
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2540.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=579-7397"
+      },
+      {
+        "nodeId": "649:8057",
+        "name": "_[INK] WorkflowStepper.Body [DEPRECATE]",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-37-2540.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=649-8057"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "3638:617",
+      "name": "ZoomControl"
+    },
+    "ownerCount": 1,
+    "variantCount": 2,
+    "runtime": [
+      "IconButton",
+      "Inline",
+      "Stack",
+      "Text"
+    ],
+    "approach": "Horizontal/vertical zoom controls can be composed from existing pieces. No exact ZoomControl export; use the composition only if a document-preview key screen needs it.",
+    "priority": "P3",
+    "limits": "No zoom limits, document transforms or runtime zoom behavior.",
+    "owners": [
+      {
+        "nodeId": "3638:3159",
+        "name": "[INK] Zoom Control",
+        "type": "COMPONENT_SET",
+        "variantCount": 2,
+        "properties": {
+          "value#3638:0": {
+            "type": "TEXT",
+            "defaultValue": "100%"
+          },
+          "stripped#3638:3": {
+            "type": "BOOLEAN",
+            "defaultValue": true
+          },
+          "min#37183:0": {
+            "type": "TEXT",
+            "defaultValue": "25"
+          },
+          "max#37183:3": {
+            "type": "TEXT",
+            "defaultValue": "400"
+          },
+          "direction": {
+            "type": "VARIANT",
+            "defaultValue": "column",
+            "variantOptions": [
+              "row",
+              "column"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "current family specimen screenshot inspected",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-3638-617.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=3638-3159"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "137:647",
+      "name": "🧰 Form Element Quarks"
+    },
+    "ownerCount": 6,
+    "variantCount": 9,
+    "runtime": [
+      "Input",
+      "TextArea",
+      "ComboBox",
+      "DatePicker",
+      "Select"
+    ],
+    "approach": "Internal labels, helper/error text, character count and browser resize handle belong to their parent field APIs/CSS. They are not standalone missing controls.",
+    "priority": "P2 for shared field consistency",
+    "limits": "Per-parent source review is in primitives group; no standalone runtime component expected.",
+    "owners": [
+      {
+        "nodeId": "374:10958",
+        "name": "_InputDescription",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "description#374:0": {
+            "type": "TEXT",
+            "defaultValue": "This text should be short and helpful"
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-137-647.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=374-10958"
+      },
+      {
+        "nodeId": "124:1638",
+        "name": "_Character Count",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "maxLength#129:65": {
+            "type": "TEXT",
+            "defaultValue": "160/200"
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-137-647.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=124-1638"
+      },
+      {
+        "nodeId": "124:1634",
+        "name": "_Error Message",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "error#134:66": {
+            "type": "TEXT",
+            "defaultValue": "This is an error message"
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-137-647.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=124-1634"
+      },
+      {
+        "nodeId": "265:3492",
+        "name": "_Subtle Label",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {
+          "label#274:1": {
+            "type": "TEXT",
+            "defaultValue": "Subtle label"
+          },
+          "required#274:3": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-137-647.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=265-3492"
+      },
+      {
+        "nodeId": "261:1718",
+        "name": "_Resize Handle (Browser Native)",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-137-647.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=261-1718"
+      },
+      {
+        "nodeId": "22240:3309",
+        "name": "_Label",
+        "type": "COMPONENT_SET",
+        "variantCount": 4,
+        "properties": {
+          "required#22240:0": {
+            "type": "BOOLEAN",
+            "defaultValue": false
+          },
+          "label#22240:1": {
+            "type": "TEXT",
+            "defaultValue": "Label"
+          },
+          "❖ Kind": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Emphasis",
+              "Subtle",
+              "LabelHelp"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-137-647.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=22240-3309"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "363:1115",
+      "name": "🧰 Component Quarks"
+    },
+    "ownerCount": 11,
+    "variantCount": 34,
+    "runtime": [
+      "Heading",
+      "Tooltip",
+      "Callout",
+      "Accordion",
+      "Stepper",
+      "Popover"
+    ],
+    "approach": "Internal caret/disclosure/bar/indicator/connector/heading/close/slot/deprecation/FPO authoring pieces. Reuse the parent APIs; no export required per internal master. Heading's nine display levels differ from local semantic-only Heading API; PageHeader and token composition remain the documented screen solution.",
+    "priority": "P2 for shared parent APIs; P3 authoring/deprecated placeholders",
+    "limits": "No standalone runtime match for authoring warnings or FPO placeholders; full glyph paths handled in supplemental icon review.",
+    "owners": [
+      {
+        "nodeId": "363:1281",
+        "name": "_Caret",
+        "type": "COMPONENT_SET",
+        "variantCount": 4,
+        "properties": {
+          "Offset": {
+            "type": "VARIANT",
+            "defaultValue": "True",
+            "variantOptions": [
+              "False",
+              "True"
+            ]
+          },
+          "Glass": {
+            "type": "VARIANT",
+            "defaultValue": "None",
+            "variantOptions": [
+              "None",
+              "glassFrost",
+              "glassTint"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=363-1281"
+      },
+      {
+        "nodeId": "403:13116",
+        "name": "_Disclosure",
+        "type": "COMPONENT_SET",
+        "variantCount": 2,
+        "properties": {
+          "Open": {
+            "type": "VARIANT",
+            "defaultValue": "True",
+            "variantOptions": [
+              "True",
+              "False"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=403-13116"
+      },
+      {
+        "nodeId": "471:2322",
+        "name": "_Bar",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=471-2322"
+      },
+      {
+        "nodeId": "523:25121",
+        "name": "_Indicator ",
+        "type": "COMPONENT_SET",
+        "variantCount": 5,
+        "properties": {
+          "step#523:27": {
+            "type": "TEXT",
+            "defaultValue": "1"
+          },
+          "isComplete": {
+            "type": "VARIANT",
+            "defaultValue": "False",
+            "variantOptions": [
+              "True",
+              "False"
+            ]
+          },
+          "❖ State": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Active",
+              "Default",
+              "Visited"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=523-25121"
+      },
+      {
+        "nodeId": "523:25159",
+        "name": "_Connector",
+        "type": "COMPONENT_SET",
+        "variantCount": 2,
+        "properties": {
+          "status": {
+            "type": "VARIANT",
+            "defaultValue": "unvisited",
+            "variantOptions": [
+              "unvisited",
+              "visited"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=523-25159"
+      },
+      {
+        "nodeId": "582:3982",
+        "name": "_SLOT (Custom Content) [DEPRECATE]",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=582-3982"
+      },
+      {
+        "nodeId": "6246:18107",
+        "name": "_Heading",
+        "type": "COMPONENT_SET",
+        "variantCount": 9,
+        "properties": {
+          "text#6246:1": {
+            "type": "TEXT",
+            "defaultValue": "Heading text"
+          },
+          "displayLevel": {
+            "type": "VARIANT",
+            "defaultValue": "heading-xxs",
+            "variantOptions": [
+              "heading-xxs",
+              "heading-xs",
+              "heading-s",
+              "heading-m",
+              "display-xs",
+              "display-s",
+              "display-m",
+              "display-l",
+              "display-xl"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=6246-18107"
+      },
+      {
+        "nodeId": "6416:26912",
+        "name": "_Component Deprecation Warning",
+        "type": "COMPONENT_SET",
+        "variantCount": 2,
+        "properties": {
+          "Message#6416:5": {
+            "type": "TEXT",
+            "defaultValue": "This component is no longer supported in [ds/ui] and will be removed in a future update."
+          },
+          "Direction": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Vertical"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=6416-26912"
+      },
+      {
+        "nodeId": "6915:291",
+        "name": "_Illustration FPO (SWAP) [DEPRECATE]",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=6915-291"
+      },
+      {
+        "nodeId": "567:5631",
+        "name": "_PopoverClose",
+        "type": "COMPONENT_SET",
+        "variantCount": 6,
+        "properties": {
+          "❖ Kind": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Default",
+              "Image (Light)",
+              "Image (Dark)"
+            ]
+          },
+          "❖ Size": {
+            "type": "VARIANT",
+            "defaultValue": "Default",
+            "variantOptions": [
+              "Small",
+              "Default"
+            ]
+          }
+        },
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=567-5631"
+      },
+      {
+        "nodeId": "23799:3505",
+        "name": "_Image FPO (SWAP)",
+        "type": "COMPONENT",
+        "variantCount": 1,
+        "properties": {},
+        "coverage": {
+          "metadata": "all actual variants and descendant appearance read",
+          "codeComparison": "family-level source/export/composition analysis; exact equivalent absent or internal piece",
+          "visualSpecimen": "parent family specimens; standalone quark screenshots not captured",
+          "runtimeParity": "unverified"
+        },
+        "metadataPath": "../evidence/page-363-1115.json.gz",
+        "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=23799-3505"
+      }
+    ]
+  },
+  {
+    "page": {
+      "id": "3457:567",
+      "name": "🧰 Content Quarks"
+    },
+    "ownerCount": 0,
+    "variantCount": 0,
+    "runtime": [],
+    "approach": "Page contains no on-canvas component owners.",
+    "priority": "none",
+    "limits": "No missing runtime components inferred.",
+    "owners": []
+  }
+]

@@ -1,0 +1,212 @@
+{
+  "date": "2026-10-20",
+  "owner": "composites_mappings",
+  "sourceRoot": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system",
+  "findings": [
+    {
+      "id": "C01",
+      "family": "Chip",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Added default/AI and small/medium contracts; default selected uses neutral10%, AI selected cobalt140 with cobalt30 text; AI hover/active palettes use current tokens. Select and remove actions are separate native buttons.",
+      "verification": "Initial browser assertions verify both selected backgrounds and independent removal; clean-source cua_repl confirms selected state. All current Chip variants execute/typecheck.",
+      "limits": "Arbitrary start-slot permutations and inverse/touch modes have not all been rendered."
+    },
+    {
+      "id": "C02",
+      "family": "Tabs",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Added fullWidth/extended, per-item icon/badge/iconOnly; preserved selected and disabled Figma data. Added roving tab focus, Arrow/Home/End navigation and instance-unique IDs.",
+      "verification": "Browser assertions and clean-source cua_repl show ArrowRight skips disabled and activates Last. Current template variants execute/typecheck.",
+      "limits": "Badge/icon slot raster parity is not claimed."
+    },
+    {
+      "id": "C03",
+      "family": "Panel/Rail",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Added true in-flow supplemental Panel and Rail with docked/floating, background, borders, padding, header/body/footer, close and controlled/uncontrolled collapse APIs. No portal, scrim, dialog role or body-scroll mutation; Drawer remains separate.",
+      "verification": "Browser assertions verify64px collapse, body restoration and absence of modal side effects; clean-source cua_repl confirms collapse. Both exact current published owners have templates.",
+      "limits": "Iris continues using its existing PanelShell; no production workflow was rebuilt."
+    },
+    {
+      "id": "C04",
+      "family": "Modal",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Small width is272px with responsive min-width0; added image top/start/end and statusBadge slots, small-header typography, unique title IDs, focus trap and opener/scroll restoration. Mapping extracts current headerTitle paths, body and footer actions, including frame-based specimens.",
+      "verification": "Browser assertions verify272px, narrow viewport, Tab/reverse Tab/Escape and restoration. Clean-source cua_repl independently confirms close-button entry, reverse loop to Done and Escape focus return. All6current Modal specimens execute/typecheck.",
+      "limits": "Nested simultaneous modals and every custom image combination are not separately browser exercised."
+    },
+    {
+      "id": "C05",
+      "family": "Callout",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Fixed root-side selectors, caret side/order/direction and glass caret fill; imagePosition now controls actual layout. Added header start/status and custom footer slots; corrected top-image body box sizing. Templates keep current Body/Footer and gated image/header content.",
+      "verification": "Browser assertions verify side-row layout, top-image orientation and body fits width;8saved family PNGs were inspected. All current Callout variants execute/typecheck.",
+      "limits": "Every arrow/alignment/glass/image combination has not been screenshot compared; data images remain explicit application bindings."
+    },
+    {
+      "id": "C06",
+      "family": "FileUpload",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Primitive owner added designed functional browse action, optional secondary/custom actions, small/background/body controls and keyboard/label behavior. Mapping parses actual visible size helper into numeric maxSize so validation/copy agree; primary stays functional native picker.",
+      "verification": "Exact property schema check and strict emitted snippet checks pass for all current FileDrop variants; runtime source/behavior verification belongs to primitive owner.",
+      "limits": "Custom secondary action semantics are caller supplied; unsupported freeform limit text is not silently interpreted as a numeric validation value."
+    },
+    {
+      "id": "C07",
+      "family": "Mappings",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Refreshed Breadcrumb labels/root/overflow, Chip/List modern SLOT gates, Table column/cell composition, current Modal title/body/footer, Menu label data and Step Text. Added child mappings where dynamic composition needed. Slider retains exact double-space property name. No raw button trigger examples. Retired disproved Alert target rather than register stale ID.",
+      "verification": "81active current targets;334direct-root getter reads agree exactly with saved authoritative types. Offline documented-handle harness executes955actual saved variants with0getter/JSX errors; generated JSX plus .figma.ts compile0strict diagnostics. Source paths checked.",
+      "limits": "Offline handle simulation is not Dev Mode registration or complete Figma service execution. Foreign unconnected descendants/assets are not recreated. Contextual domain bindings are explicit."
+    },
+    {
+      "id": "C08",
+      "family": "Card",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Added16:9/3:2/1:1 and full-width/document-preview/floating image APIs. Start image renders before content and no longer stretches via min-height100%. Image template preserves ratio/spacing and explicit real image source/alt binding.",
+      "verification": "Browser assertions verify image before content and rendered16:9. Current image/container variant snippets execute/typecheck.",
+      "limits": "Document-preview/floating and all ratios were source/contract checked; all raster combinations have not been independently rendered."
+    },
+    {
+      "id": "C09",
+      "family": "FilterTag",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Primitive owner restored split-branch showTrigger and added leading content. Template resolves leading element dynamically and preserves active/disabled/dismissible/showTrigger.",
+      "verification": "All current variants pass getter/schema/snippet contracts; runtime state verification belongs to primitive owner.",
+      "limits": "Caller provides actual click and dismiss handlers."
+    },
+    {
+      "id": "C10",
+      "family": "Table",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Added explicit none/rows/columns/both borderRule without replacing legacy variant. Mapping reads actual visible column/header/cell data, text/detail/component slots and sort state; removed nonexistent root selection property.",
+      "verification": "Browser assertion verifies column-only cell borders. Current Table variants and cell content variants execute/typecheck. Production lists keep DataTable.",
+      "limits": "Source generic Table remains data driven; drag/reorder workflows are not inferred from decorative rows."
+    },
+    {
+      "id": "C11",
+      "family": "Stepper",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Added compact summary/progress circle with explicit count override,40px ring/current fill and10px counter, independent completed/visited state and per-item connector controls. Mapping reads Step Text/status/isComplete and compact4/5 content.",
+      "verification": "Browser assertions verify compact4/5 and visited-incomplete number. All current Stepper specimens execute/typecheck, including standalone compact summary.",
+      "limits": "No full wizard flow was introduced."
+    },
+    {
+      "id": "C12",
+      "family": "Dropdown menus",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Contracts owner preserves shortcut/icon/section/divider/selected/alert/end content/nested behavior and disabled nested handling. Added meaningful sibling templates for all6menu owners; current text labels, sections, slots and shortcut text are dynamic.",
+      "verification": "All6menu-owner saved variants execute/typecheck; emitted trigger is design-system Button. Nested popup contents bind to actual application submenu data when absent from the selected Figma frame.",
+      "limits": "Templates do not fabricate submenu items that are not present in the design. Runtime keyboard/disabled coverage belongs to contracts owner."
+    },
+    {
+      "id": "C13",
+      "family": "Banner",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Added alignment and none/top/bottom/both borderRule while retaining bottomBorder alias. Designed action uses secondary with inverse border treatment on neutral. Template keeps actual action label and nested border rule.",
+      "verification": "Browser assertions verify both borders/start alignment; saved supported Subtle PNG inspected. All current variants execute/typecheck.",
+      "limits": "Information remains a supported compatibility kind despite Figma deprecation guidance."
+    },
+    {
+      "id": "C14",
+      "family": "Pagination",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Added small/medium, item count info, per-page control first and right-side info/navigation, distinct endpoint glyphs, unique selector ID and reset callback. Optional per-page display/hidden label reproduce specimen format; current default API preserved.",
+      "verification": "Browser assertions verify control order, next-page counts and page-size reset. Current variants execute/typecheck; mapped snippet wires the per-page callback.",
+      "limits": "DataTable footer remains the high-level list pattern; no production list footer was rebuilt."
+    },
+    {
+      "id": "C15",
+      "family": "TaskCard",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Header now defaults showIcon true. New exact child templates read HasIcon and preserve body/custom/AvatarGroup/metadata footer subtype gates. Fixed invalid Text size usage.",
+      "verification": "Browser assertion confirms default overflow action. Current root and child snippets execute/typecheck.",
+      "limits": "The overflow menu content remains the caller action."
+    },
+    {
+      "id": "C16",
+      "family": "Overlay/Popover",
+      "status": "repaired-source-and-contract; verification limits explicit",
+      "sourceChange": "Kept anchored Popover intentionally unmapped and corrected its comment to full-page Overlay shell. Panel is mapped to new genuine Panel, never Drawer. No false Overlay-to-Popover mapping restored.",
+      "verification": "Static target inventory confirms no active stale Popover or Alert URL. Existing DetailPageShell remains the record-shell pattern.",
+      "limits": "No new generic public Overlay family is claimed; record screens use their established shell."
+    }
+  ],
+  "additionalRepairs": {
+    "Timeline": "Added per-item collapsible/open/onOpenChange, controlled openIds/onOpenIdsChange, canonical-AI railTone compatibility and error/success/warning status glyphs. Current root template preserves dates, descriptions, actions and event state. Browser/clean-source cua_repl verify independent controlled disclosure.",
+    "Accordion": "Added per-item border/height/display level/startElement, custom header/root noPadding compatibility, unique IDs and hidden closed content. Current mapped items preserve actual labels/open/disabled/subtitle/metadata/start/content. Browser/clean-source cua_repl verify hiding, disabled guard and unique repeated IDs.",
+    "Additional current families": "Added primary/meaningful child mappings for all13new public root families, plus genuine ToggleButton, AvatarGroup, ComboButton, EditableComboBox and standalone DatePicker. Contextual asset/action/data bindings are explicit; internal/deprecated owners are not invented as public components."
+  },
+  "checks": {
+    "schema": {
+      "activeTargets": 81,
+      "rootGetterReads": 334,
+      "errors": 0
+    },
+    "offlineTemplateExecution": {
+      "actualSavedVariants": 955,
+      "errors": 0,
+      "strictEmittedSnippetDiagnostics": 0
+    },
+    "browser": {
+      "initialMethod": "installed Playwright Node library + local Chromium, decorative animations disabled for geometry",
+      "assertionsPassed": 31,
+      "result": "composites-browser-results.json",
+      "followupMethod": "cua_repl IAB after shadow-JS quarantine and verification-server restart",
+      "cleanEvidence": [
+        "composites-cua-clean-state.txt",
+        "composites-cua-clean-final.txt",
+        "composites-cua-clean-state.png",
+        "composites-cua-clean-modal.png"
+      ]
+    },
+    "cssUnknownInkReferences": 0,
+    "sourceSideJsFilesAfterCleanup": 0
+  },
+  "testSources": "/private/tmp/protolab-foundation-repair/ink/tests/foundation-composites",
+  "limits": [
+    "No Figma writes, registration, deployment or publishing.",
+    "All generated source is repaired only through authoritative Ink source.",
+    "Offline template checks model documented saved property/layer contracts; unknown foreign nested assets are not reconstructed.",
+    "Arbitrary data/slot permutations, inverse/touch modes and every glyph pixel match are not certified."
+  ],
+  "unresolvedMappings": [
+    {
+      "component": "Alert",
+      "historicalNode": "123:919",
+      "disposition": "Historical owner absent in current accepted inventory; retired active URL and property reads; runtime component remains."
+    },
+    {
+      "component": "Popover",
+      "historicalIncorrectNode": "980:13202",
+      "disposition": "This is full-page Overlay, not an anchored Popover. Intentionally unmapped with no active URL."
+    },
+    {
+      "component": "AIBadge",
+      "historicalNode": "19467:181071",
+      "disposition": "Historical citation not found in current component-file inventory. No active local .figma.ts was present or fabricated; runtime renderer work belongs to root."
+    }
+  ],
+  "toastFollowup": {
+    "sourceChanges": [
+      "Added closeButton boolean (default true) and exact current closeButton mapping.",
+      "An explicit open prop controls visibility; close requests only call onClose, so a rejecting parent retains display and focus. Omitted open uses internal dismissal.",
+      "Stable DOM removal callback and provider dismiss/capacity eviction recover focus only when the removed notification owns focus; previous valid control is preferred.",
+      "Controlled false-to-true transitions reset timer; expiry remains paused on focus/hover/hidden document."
+    ],
+    "verification": [
+      "3 SSR regressions pass: default named dismiss; closeButton false retains action/content; closed toast absent.",
+      "Authoritative source strict noEmit compile passes.",
+      "CUA Chrome fixture verifies controlled rejection/acceptance, standalone close, explicit provider dismiss, focused capacity eviction, neutral background expiry, and controlled timer reopening.",
+      "81 active mappings and 955 saved variants pass offline execution/JSX check; typed emitted snippets compile."
+    ],
+    "evidence": [
+      "toast-cua-states.txt",
+      "toast-cua-verified.png",
+      "ink/tests/toast-source.test.ts",
+      "ink/tests/foundation-composites/toast.tsx",
+      "ink/tests/foundation-composites/toast.html"
+    ],
+    "limits": "Browser checks use the local authoritative source fixture, not live Figma or production Docusign. All announcement timing across screen readers and every simultaneous toast configuration were not independently exercised."
+  }
+}

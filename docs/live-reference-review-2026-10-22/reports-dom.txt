@@ -1,0 +1,287 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- button "Skip to main content"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign logo, homepage":
+    - /url: https://apps.dev.docusign.net/api/send/home
+    - img "Docusign logo, homepage"
+  - navigation:
+    - list:
+      - link "Home":
+        - /url: /send/home
+        - generic: Home
+      - link "Agreements":
+        - /url: /send/documents
+        - generic: Agreements
+      - link "Templates":
+        - /url: /send/templates
+        - generic: Templates
+      - link "Automations":
+        - /url: /send/agents
+        - generic: Automations
+      - link "Insights":
+        - /url: /send/reports
+        - generic: Insights
+      - link "Admin":
+        - /url: /admin
+        - generic: Admin
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "tasks":
+    - generic: tasks
+  - button "Notifications":
+    - generic: Notifications
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- main:
+  - navigation "Secondary":
+    - button "Create":
+      - generic: Create
+    - separator
+    - list:
+      - button "Overview":
+        - generic "Overview"
+      - button "Procurement Hub":
+        - generic "Procurement Hub"
+      - button "Dashboards":
+        - generic "Dashboards"
+      - button "Components.ReportingLegacy.CollapseDashboards" [expanded]:
+      - button "My dashboard":
+        - generic "My dashboard"
+      - button "Administrator dashboard":
+        - generic "Administrator dashboard"
+      - button "Agreements":
+        - generic "Agreements"
+      - button "Obligations":
+        - generic "Obligations"
+      - button "Renewals":
+        - generic "Renewals"
+      - button "Requests":
+        - generic "Requests"
+      - button "AI Assistant and Agent Usage":
+        - generic "AI Assistant and Agent Usage"
+      - button "Custom Dashboards":
+        - generic "Custom Dashboards"
+      - button "Components.ReportingLegacy.CollapseCustomDashboards" [expanded]:
+      - button "Obligations":
+        - generic "Obligations"
+      - button "Untitled":
+        - generic "Untitled"
+      - button "Obligations":
+        - generic "Obligations"
+      - button "new":
+        - generic "new"
+      - button "Untitled23":
+        - generic "Untitled23"
+      - button "Reports":
+        - generic "Reports"
+  - heading "Reports" [level=3]
+  - generic: Find Reports
+  - textbox "Find Reports":
+    - /placeholder: Find reports
+  - tablist:
+    - tab "Recents (12)":
+      - generic: Recents (12)
+    - tab "All Envelope (27)" [active] [selected]:
+      - generic: All Envelope (27)
+    - tab "Envelope (9)":
+      - generic: Envelope (9)
+    - tab "Recipient (2)":
+      - generic: Recipient (2)
+    - tab "Usage (15)":
+      - generic: Usage (15)
+    - tab "Custom (102)":
+      - generic: Custom (102)
+    - tab "Downloads (10)":
+      - generic: Downloads (10)
+    - tab "Web forms":
+      - generic: Web forms
+  - tabpanel "All Envelope (27)"
+  - table:
+    - rowgroup:
+      - row "Name Schedule Actions":
+        - columnheader "Name":
+          - generic: Name
+        - columnheader "Schedule":
+          - generic: Schedule
+        - columnheader "Actions":
+          - generic: Actions
+    - rowgroup:
+      - row "Envelope Report Information on envelopes sent from this account. View More actions":
+        - cell "Envelope Report Information on envelopes sent from this account.":
+          - generic: Envelope Report
+          - generic: Information on envelopes sent from this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Envelope Recipient Report Sender and recipient information on all envelopes sent from this account. View More actions":
+        - cell "Envelope Recipient Report Sender and recipient information on all envelopes sent from this account.":
+          - generic: Envelope Recipient Report
+          - generic: Sender and recipient information on all envelopes sent from this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Envelope Status Report Totals based on envelope status for this account. View More actions":
+        - cell "Envelope Status Report Totals based on envelope status for this account.":
+          - generic: Envelope Status Report
+          - generic: Totals based on envelope status for this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Envelope Velocity Report Totals based on envelope completion time for this account. View More actions":
+        - cell "Envelope Velocity Report Totals based on envelope completion time for this account.":
+          - generic: Envelope Velocity Report
+          - generic: Totals based on envelope completion time for this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Envelope Volume Report Envelope status totals for a specific time period for this account. View More actions":
+        - cell "Envelope Volume Report Envelope status totals for a specific time period for this account.":
+          - generic: Envelope Volume Report
+          - generic: Envelope status totals for a specific time period for this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Application Identity Verification Report Recipient, sender and authentication data for all identity verifications performed by this account across all Docusign applications. View More actions":
+        - cell "Application Identity Verification Report Recipient, sender and authentication data for all identity verifications performed by this account across all Docusign applications.":
+          - generic: Application Identity Verification Report
+          - generic: Recipient, sender and authentication data for all identity verifications performed by this account across all Docusign applications.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Envelope Authentication Report Information on envelope authentication for this account. View More actions":
+        - cell "Envelope Authentication Report Information on envelope authentication for this account.":
+          - generic: Envelope Authentication Report
+          - generic: Information on envelope authentication for this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Purged Envelope Report List of purged envelopes by envelope ID for this account. View More actions":
+        - cell "Purged Envelope Report List of purged envelopes by envelope ID for this account.":
+          - generic: Purged Envelope Report
+          - generic: List of purged envelopes by envelope ID for this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Failed Delivery Report A list of failed envelopes from this account. View More actions":
+        - cell "Failed Delivery Report A list of failed envelopes from this account.":
+          - generic: Failed Delivery Report
+          - generic: A list of failed envelopes from this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Recipient Activity Report Recipient activity on all envelopes sent from this account. View More actions":
+        - cell "Recipient Activity Report Recipient activity on all envelopes sent from this account.":
+          - generic: Recipient Activity Report
+          - generic: Recipient activity on all envelopes sent from this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Recipient Authentication Report Identity verification data for this account. View More actions":
+        - cell "Recipient Authentication Report Identity verification data for this account.":
+          - generic: Recipient Authentication Report
+          - generic: Identity verification data for this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "User Activity Report User activity for this account. View More actions":
+        - cell "User Activity Report User activity for this account.":
+          - generic: User Activity Report
+          - generic: User activity for this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Group Activity Report Activity broken down by group. View More actions":
+        - cell "Group Activity Report Activity broken down by group.":
+          - generic: Group Activity Report
+          - generic: Activity broken down by group.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Account Activity Report Summary of user, envelope, and template data. View More actions":
+        - cell "Account Activity Report Summary of user, envelope, and template data.":
+          - generic: Account Activity Report
+          - generic: Summary of user, envelope, and template data.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "ID Verification Attempt Report Summary of ID verification attempted by recipients. View More actions":
+        - cell "ID Verification Attempt Report Summary of ID verification attempted by recipients.":
+          - generic: ID Verification Attempt Report
+          - generic: Summary of ID verification attempted by recipients.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Account Identity Verification Report Authentication attempts by category and type on this account. View More actions":
+        - cell "Account Identity Verification Report Authentication attempts by category and type on this account.":
+          - generic: Account Identity Verification Report
+          - generic: Authentication attempts by category and type on this account.
+        - cell
+        - cell "View More actions":
+          - button "View":
+            - generic: View
+          - button "More actions"
+      - row "Account Authentication Report Summary authentication activity and results. View More actions":
+        - cell "Account Authentication Report Summary authentication activity and results.":
+          - generic: Account Authentication Report
+          - generic: Summary authentication activity and results.
+        - cell
+        - cell "View More actions":
+          - button "View":
+         

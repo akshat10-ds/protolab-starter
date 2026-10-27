@@ -1,0 +1,137 @@
+import { Meter } from '@ds/ui'
+
+type LabelProps = {
+  className?: string;
+  kind?: "Default";
+  label?: string;
+  required?: boolean;
+};
+
+function Label({ className, kind = "Default", label = "Label", required = false }: LabelProps) {
+  return (
+    <div className={className || "content-stretch flex flex-col items-start relative"} data-node-id="124:1665">
+      <div className="[word-break:break-word] content-stretch flex font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Medium')] font-[var(--font.fontWeight.500,normal)] gap-[var(--gap50,4px)] items-center leading-[1.4] relative shrink-0 text-[length:var(--font.fontSize.14,14px)] w-full whitespace-nowrap" data-node-id="124:1666" data-name="Label">
+        <p className="relative shrink-0 text-[color:var(--fontColorDefault,rgba(19,0,50,0.9))]" data-node-id="124:1667">
+          {label}
+        </p>
+        {required && (
+          <p className="relative shrink-0 text-[color:var(--fontTextColorRequired,#c70547)]" data-node-id="124:1668">
+            *
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+type InkMeterProps = {
+  className?: string;
+  kind?: "info" | "semantic - high" | "semantic - medium" | "semantic - low";
+};
+
+export default function InkMeter({ className, kind = "info" }: InkMeterProps) {
+  if (kind === "semantic - low") {
+    return (
+      <CodeConnectSnippet data-node-id="473:11909" data-name="kind=semantic - low" data-snippet-language="React">
+        <Meter content="Strong" kind="semantic" label="Label" />
+      </CodeConnectSnippet>
+    );
+  }
+  if (kind === "semantic - medium") {
+    return (
+      <CodeConnectSnippet data-node-id="473:11908" data-name="kind=semantic - medium" data-snippet-language="React">
+        <Meter content="Strong" kind="semantic" label="Label" />
+      </CodeConnectSnippet>
+    );
+  }
+  if (kind === "semantic - high") {
+    return (
+      <CodeConnectSnippet data-node-id="473:11906" data-name="kind=semantic - high" data-snippet-language="React">
+        <Meter content="Strong" kind="semantic" label="Label" />
+      </CodeConnectSnippet>
+    );
+  }
+  return (
+    <CodeConnectSnippet data-node-id="473:11907" data-name="kind=info" data-snippet-language="React">
+      <Meter content="Strong" kind="info" label="Label" />
+    </CodeConnectSnippet>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontElementLabel: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.14, weight: 500, lineHeight: 1.399999976158142, letterSpacing: 0), fontBodyS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.14, weight: 400, lineHeight: 1.399999976158142, letterSpacing: 0).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Meter
+**Node ID:** 473:11943
+
+A meter is used to indicate status towards a goal, activity, or process
+
+  
+
+Prop
+----
+
+`**_~kind:_**` Determines the styling of the Meter
+
+  
+
+`**_label*:_**` Label to display for the Meter
+
+  
+
+`**_content*:_**` The content of the Meter to provide clarity. People with low vision may not be able to see the color. Ensure the content conveys the meaning and importance of the color.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/86187a-meter/b/7957e6](https://ink.docusign.com/94bc5d135/p/86187a-meter/b/7957e6)
+- [Meter - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-meter--default)
+
+## kind=info
+**Node ID:** 473:11907
+
+Signal neutral or non-semantic progress towards processes that require multiple steps
+
+## ❖ Kind=Default
+**Node ID:** 124:1665
+
+This component drives the required text field label with additional help text and allows for auto layout
+
+  
+
+Props
+-----
+
+`**_label*:_**` The text label
+
+  
+
+`**_required:_**` Adds a visual treatment indicating that the associated control requires a value.
+
+## kind=semantic - low
+**Node ID:** 473:11909
+
+Signal an issue that needs immediate attention
+
+## kind=semantic - medium
+**Node ID:** 473:11908
+
+Signal an action may need to be taken soon
+
+## kind=semantic - high
+**Node ID:** 473:11906
+
+Signal a positive status
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

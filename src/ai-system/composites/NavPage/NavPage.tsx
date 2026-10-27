@@ -17,6 +17,7 @@
  */
 
 import { useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
 import { SearchInput } from '@ink';
 
 import { ZeroQueryActions } from '@ai/composites/ZeroQueryActions/ZeroQueryActions';
@@ -46,7 +47,41 @@ export interface NavPageProps {
    * `navPageSlot` render prop; omit it and the rows are mute.
    */
   onPreview?: (preview: ZeroQueryPreview | null) => void;
+  /**
+   * An `agent` row was clicked — commit the token the hover showed into the
+   * composer. Comes from `IrisAgent`'s `navPageSlot` context as `attach`; omit
+   * it and an agent row does nothing, which is `ZeroQueryActions`' own rule.
+   */
+  onAttach?: (preview: ZeroQueryPreview) => void;
   searchPlaceholder?: string;
+  /**
+   * A control beside the page's title — "New prompt". A node, not a
+   * `{label, icon}` shape, because the glyph has to come from the CONSUMER's
+   * Ink. `@ink` inside this file resolves to whichever snapshot the prototype
+   * vendored, and an icon a snapshot does not carry renders nothing at all —
+   * the same reason `ZeroQueryActions` keeps its per-kind defaults
+   * conservative. The page owns the slot; the host owns what sits in it.
+   */
+  headerAction?: ReactNode;
+  /**
+   * A trailing control on each row — an edit pencil, say — revealed on hover
+   * and on keyboard focus.
+   *
+   * It is an OVERLAY, not a column: the row is `ZeroQueryActions`' own button
+   * and a button cannot nest, so the control is a sibling laid over the row's
+   * right edge. That also settles the layout question — nothing appears in
+   * flow, so nothing moves when the pointer arrives, and the row's own click
+   * still sends or previews exactly as it did.
+   *
+   * Revealed by `:hover` AND `:focus-within`, and it stays in the tab order at
+   * rest, so the keyboard reaches it in the same order the eye does. Hovering
+   * the control itself does drop the row's tint — the pointer has left the row
+   * button — which is honest about which target is under it.
+   *
+   * `index` is the item's place in `items`, not in the filtered view, so a
+   * search does not renumber what the host is editing.
+   */
+  rowAction?: (item: ZeroQueryActionItem, index: number) => ReactNode;
 }
 
 export function NavPage({
@@ -55,7 +90,10 @@ export function NavPage({
   items,
   onSend,
   onPreview,
+  onAttach,
   searchPlaceholder = 'Search',
+  headerAction,
+  rowAction,
 }: NavPageProps) {
   const [query, setQuery] = useState('');
 
@@ -79,7 +117,10 @@ export function NavPage({
       */}
       <div className={styles.column}>
         <div className={styles.heading}>
-          <h2 className={styles.title}>{title}</h2>
+          <div className={styles.headingRow}>
+            <h2 className={styles.title}>{title}</h2>
+            {headerAction}
+          </div>
           {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         </div>
 
@@ -93,12 +134,37 @@ export function NavPage({
           />
 
           {visible.length > 0 ? (
-            <ZeroQueryActions
-              items={visible}
-              onSend={onSend}
-              onPreview={onPreview}
-              appearance="card"
-            />
+            rowAction ? (
+              /*
+                One row per stack, so the action can be laid over it. The gap
+                moves up here — `.listCard`'s own 4px has nothing left to space
+                — and every other row property stays where it was written.
+              */
+              <div className={styles.rows}>
+                {visible.map((item) => (
+                  <div key={item.label} className={styles.rowWrap}>
+                    <ZeroQueryActions
+                      items={[item]}
+                      onSend={onSend}
+                      onAttach={onAttach}
+                      onPreview={onPreview}
+                      appearance="card"
+                    />
+                    <span className={styles.rowAction}>
+                      {rowAction(item, items.indexOf(item))}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <ZeroQueryActions
+                items={visible}
+                onSend={onSend}
+                onAttach={onAttach}
+                onPreview={onPreview}
+                appearance="card"
+              />
+            )
           ) : (
             <p className={styles.empty}>Nothing matches “{query}”.</p>
           )}

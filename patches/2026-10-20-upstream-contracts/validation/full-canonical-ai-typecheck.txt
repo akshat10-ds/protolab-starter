@@ -1,0 +1,25 @@
+src/ai-system/composites/ActivityTimeline/ActivityTimeline.tsx(124,13): error TS2322: Type 'number | undefined' is not assignable to type '0 | 1 | "sign" | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | undefined'.
+  Type 'number' is not assignable to type '0 | 1 | "sign" | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | undefined'.
+src/ai-system/composites/ProgressReceipt/ProgressReceipt.tsx(516,17): error TS2353: Object literal may only specify known properties, and 'header' does not exist in type 'AccordionItemData'.
+src/ai-system/composites/ProgressReceipt/ProgressReceipt.tsx(531,23): error TS2322: Type '{ railTone: string; items: { id: string; label: string; timestamp: string | undefined; status: "current" | "complete" | "incomplete"; }[]; }' is not assignable to type 'IntrinsicAttributes & TimelineProps & RefAttributes<HTMLOListElement>'.
+  Property 'railTone' does not exist on type 'IntrinsicAttributes & TimelineProps & RefAttributes<HTMLOListElement>'.
+src/ai-system/composites/ProgressReceipt/ProgressReceipt.tsx(591,15): error TS2322: Type '{ railTone: string; items: { id: string; label: string; status: "incomplete"; }[]; }' is not assignable to type 'IntrinsicAttributes & TimelineProps & RefAttributes<HTMLOListElement>'.
+  Property 'railTone' does not exist on type 'IntrinsicAttributes & TimelineProps & RefAttributes<HTMLOListElement>'.
+src/ai-system/composites/PromptLibrary/PromptLibrary.tsx(84,17): error TS2322: Type '(e: any) => void' is not assignable to type '() => void'.
+  Target signature provides too few arguments. Expected 1 or more, but got 0.
+src/ai-system/composites/PromptLibrary/PromptLibrary.tsx(84,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/ai-system/patterns/AgentShell/AgentShell.tsx(87,40): error TS2339: Property 'handleMouseDown' does not exist on type 'UsePanelResizeReturn'.
+src/ai-system/patterns/AgentShell/AgentShell.tsx(109,41): error TS2339: Property 'handleMouseDown' does not exist on type 'UsePanelResizeReturn'.
+src/ai-system/patterns/ArtifactPanel/ArtifactPanel.tsx(107,31): error TS2339: Property 'handleMouseDown' does not exist on type 'UsePanelResizeReturn'.
+src/ai-system/patterns/ArtifactViewer/ProcessArtifact.tsx(209,13): error TS2322: Type '{ railTone: string; key: string; items: { id: string; label: string; timestamp: string | undefined; status: "current" | "complete" | "incomplete"; description: Element | undefined; }[]; collapsible: true; defaultOpenIds: string[]; }' is not assignable to type 'IntrinsicAttributes & TimelineProps & RefAttributes<HTMLOListElement>'.
+  Property 'railTone' does not exist on type 'IntrinsicAttributes & TimelineProps & RefAttributes<HTMLOListElement>'.
+src/ai-system/patterns/ArtifactViewer/ProcessArtifact.tsx(316,21): error TS2322: Type '"flag" | "request" | "judgement" | undefined' is not assignable to type '"flag" | "request" | undefined'.
+  Type '"judgement"' is not assignable to type '"flag" | "request" | undefined'.
+src/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx(655,25): error TS2322: Type '{ key: number; label: string; icon: string | undefined; onClick: () => void; animationDelay: number; }' is not assignable to type 'IntrinsicAttributes & SuggestionChipProps'.
+  Property 'animationDelay' does not exist on type 'IntrinsicAttributes & SuggestionChipProps'.
+src/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx(692,11): error TS2322: Type '{ placeholder: string; value: string; onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement, HTMLInputElement>) => void; onKeyDown: (e: KeyboardEvent<...>) => void; startElement: Element; size: "medium"; }' is not assignable to type 'IntrinsicAttributes & InputProps & RefAttributes<HTMLInputElement | HTMLTextAreaElement>'.
+  Property 'startElement' does not exist on type 'IntrinsicAttributes & InputProps & RefAttributes<HTMLInputElement | HTMLTextAreaElement>'.
+src/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx(819,23): error TS2322: Type '{ key: number; label: string; icon: string | undefined; onClick: () => void; animationDelay: number; }' is not assignable to type 'IntrinsicAttributes & SuggestionChipProps'.
+  Property 'animationDelay' does not exist on type 'IntrinsicAttributes & SuggestionChipProps'.
+src/ai-system/patterns/ScreenAwareAgent/ScreenAwareAgent.tsx(106,11): error TS2536: Type 'TScreen' cannot be used to index type '{}'.
+src/ai-system/patterns/ScreenAwareAgent/ScreenAwareAgent.tsx(135,27): error TS2536: Type 'TScreen' cannot be used to index type '{}'.

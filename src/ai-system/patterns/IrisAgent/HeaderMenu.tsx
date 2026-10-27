@@ -173,6 +173,12 @@ export function HeaderMenu({
               <span className={styles.itemLabel}>{newChatLabel}</span>
             </button>
 
+            {/*
+              The peek reports the same three marks the sidebar does (2026-08-24)
+              — unread leading, agent state trailing. A menu that showed five
+              thread names while one of them was working would be the shorter
+              version of the problem, not an exemption from it.
+            */}
             {conversations.map((conversation) => (
               <button
                 key={conversation.id}
@@ -181,7 +187,16 @@ export function HeaderMenu({
                 className={styles.item}
                 onClick={run(() => onSelectConversation(conversation.id))}
               >
+                {conversation.unread && (
+                  <span className={styles.unreadDot} role="img" aria-label="Unread" />
+                )}
                 <span className={styles.itemLabel}>{conversation.title}</span>
+                {conversation.status === 'running' && (
+                  <span className={styles.runningDot} role="img" aria-label="Working" />
+                )}
+                {conversation.status === 'needs-you' && (
+                  <span className={styles.needsYouDot} role="img" aria-label="Needs you" />
+                )}
               </button>
             ))}
 

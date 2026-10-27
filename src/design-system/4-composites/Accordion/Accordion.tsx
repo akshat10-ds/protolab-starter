@@ -7,11 +7,16 @@ export interface AccordionItemData {
   /** Unique identifier */
   id: string;
   /** Title/header text */
-  title: string;
+  title?: string;
+  header?: React.ReactNode;
   /** Content to display when expanded */
   content: React.ReactNode;
   /** Icon name to display before title */
   startIcon?: IconName;
+  startElement?: React.ReactNode;
+  bordered?: boolean;
+  itemHeight?: 'compact' | 'default' | 'tall';
+  displayLevel?: 'xs' | 's';
   /** Subtitle text below title */
   subtitle?: string;
   /** Metadata text displayed on the right */
@@ -41,6 +46,7 @@ export interface AccordionProps {
   itemHeight?: 'compact' | 'default' | 'tall';
   /** Title display level for font size: xs (14px), s (18px), default (16px) */
   displayLevel?: 'xs' | 's';
+  noPadding?: boolean;
 }
 
 const Accordion: React.FC<AccordionProps> = ({
@@ -53,7 +59,9 @@ const Accordion: React.FC<AccordionProps> = ({
   bordered = true,
   itemHeight = 'default',
   displayLevel,
+  noPadding = false,
 }) => {
+  const instanceId = React.useId();
   const [internalOpenItems, setInternalOpenItems] = React.useState<string[]>(defaultOpenItems);
   const isControlled = controlledOpenItems !== undefined;
   const openItems = isControlled ? controlledOpenItems : internalOpenItems;
@@ -101,7 +109,10 @@ const Accordion: React.FC<AccordionProps> = ({
             className={cn(
               styles.item,
               isOpen && styles.itemOpen,
-              item.disabled && styles.itemDisabled
+              item.disabled && styles.itemDisabled,
+              (item.bordered ?? bordered) && styles.itemBordered,
+              styles[`height-${item.itemHeight ?? itemHeight}`],
+              styles[`level-${item.displayLevel ?? displayLevel}`]
             )}
           >
             <button
@@ -110,17 +121,17 @@ const Accordion: React.FC<AccordionProps> = ({
               onClick={() => !item.disabled && toggleItem(item.id)}
               disabled={item.disabled}
               aria-expanded={isOpen}
-              aria-controls={`accordion-content-${item.id}`}
-              id={`accordion-header-${item.id}`}
+              aria-controls={`${instanceId}-content-${item.id}`}
+              id={`${instanceId}-header-${item.id}`}
             >
-              {item.startIcon && (
+              {(item.startElement || item.startIcon) && (
                 <span className={styles.startIcon}>
-                  <Icon name={item.startIcon} size="medium" />
+                  {item.startElement ?? <Icon name={item.startIcon!} size="medium" />}
                 </span>
               )}
               <div className={styles.titleWrapper}>
                 <div className={styles.titleRow}>
-                  <span className={styles.title}>{item.title}</span>
+                  <span className={styles.title}>{item.header ?? item.title}</span>
                 </div>
                 {item.subtitle && <span className={styles.subtitle}>{item.subtitle}</span>}
               </div>
@@ -131,12 +142,13 @@ const Accordion: React.FC<AccordionProps> = ({
             </button>
 
             <div
-              id={`accordion-content-${item.id}`}
+              id={`${instanceId}-content-${item.id}`}
               className={cn(styles.panel, isOpen && styles.panelOpen)}
-              aria-labelledby={`accordion-header-${item.id}`}
+              aria-labelledby={`${instanceId}-header-${item.id}`}
               role="region"
+              hidden={!isOpen}
             >
-              <div className={cn(styles.content, item.noPadding && styles.noPadding)}>
+              <div className={cn(styles.content, (item.noPadding ?? noPadding) && styles.noPadding)}>
                 {item.content}
               </div>
             </div>

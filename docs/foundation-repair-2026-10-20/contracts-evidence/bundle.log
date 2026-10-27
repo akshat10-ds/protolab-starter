@@ -1,0 +1,28 @@
+Full bundle mode — reading from: /private/tmp/protolab-foundation-repair/ink/protolab-source
+Registry: 85 components
+Metadata enrichment: applied curated aliases/useCases
+Sources: 945 files from 78 components
+Virtual component: Heading → source from Typography
+Virtual component: Text → source from Typography
+Virtual component: AIIcon → source from Icon
+Virtual component: AvatarGroup → source from Avatar
+Virtual component: Rail → source from Panel
+Virtual component: SelectTileGroup → source from SelectTile
+Virtual component: ToastProvider → source from Toast
+Dependency scan: augmented 6 components
+  AIChat: +Text
+  AgentPanel: +Heading, Text
+  PageHeader: +Heading
+  AIBadge: +AIIcon
+  TaskCard: +Heading, Text
+  Icon: +AIIcon
+Tokens: 70304 bytes
+  Warning: Non-monotonic spacing tokens: --ink-spacing-7 (28px) > --ink-spacing-25 (2px)
+  Warning: Non-monotonic spacing tokens: --ink-spacing-350 (36px) > --ink-spacing-400 (32px)
+Utility: 180 bytes
+Prop details: 834 props from 84 components
+Props reconciliation: updated 1 components
+Bundle written to: /private/tmp/protolab-foundation-repair/ink/data/bundle.json (2.51 MB)
+
+Static source files: 1589 files written to public/source/
+Icons: split 300 icons into individual files

@@ -1,0 +1,859 @@
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+@@ -4,13 +4,14 @@
+   "private": true,
+   "scripts": {
+     "dev": "next dev",
+-    "build": "tsx scripts/bundle-data.ts && tsx scripts/generate-template.ts && npm --prefix template/ink-starter install --include=dev && npx vite build template/ink-starter --outDir ../../public/starter --base /starter/ && next build",
++    "build": "tsx scripts/bundle-data.ts && tsx scripts/generate-template.ts && npm --prefix template/ink-starter install --include=dev && npm run test:template && npm --prefix template/ink-starter run build -- --outDir ../../public/starter --base /starter/ && next build",
+     "template": "tsx scripts/generate-template.ts",
+     "start": "next start",
+     "bundle": "tsx scripts/bundle-data.ts",
+     "test": "vitest run",
+     "test:watch": "vitest",
+-    "bench": "vitest bench"
++    "bench": "vitest bench",
++    "test:template": "node scripts/check-template-contracts.mjs"
+   },
+   "dependencies": {
+     "@modelcontextprotocol/sdk": "^1.12.0",
+diff --git a/protolab-source/src/design-system/1-tokens/tokens.css b/protolab-source/src/design-system/1-tokens/tokens.css
+--- a/protolab-source/src/design-system/1-tokens/tokens.css
++++ b/protolab-source/src/design-system/1-tokens/tokens.css
+@@ -843,6 +843,8 @@
+   --ink-font-family:
+     'DS Indigo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+   --ink-font-family-default: var(--ink-font-family);
++  /* Mode-independent code font; preserves the consumers' existing fallback. */
++  --ink-font-family-mono: monospace;
+   --ink-font-family-bold:
+     'DS Indigo Bold', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+     sans-serif;
+diff --git a/protolab-source/src/design-system/3-primitives/Switch/Switch.tsx b/protolab-source/src/design-system/3-primitives/Switch/Switch.tsx
+--- a/protolab-source/src/design-system/3-primitives/Switch/Switch.tsx
++++ b/protolab-source/src/design-system/3-primitives/Switch/Switch.tsx
+@@ -2,7 +2,7 @@
+ import { cn } from '@/lib/utils';
+ import styles from './Switch.module.css';
+ 
+-export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
++export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'> {
+   /** Whether the switch is checked */
+   checked?: boolean;
+   /** Default checked state for uncontrolled component */
+diff --git a/protolab-source/src/design-system/3-primitives/Tooltip/Tooltip.tsx b/protolab-source/src/design-system/3-primitives/Tooltip/Tooltip.tsx
+--- a/protolab-source/src/design-system/3-primitives/Tooltip/Tooltip.tsx
++++ b/protolab-source/src/design-system/3-primitives/Tooltip/Tooltip.tsx
+@@ -12,7 +12,7 @@
+   /** The text to display inside the Tooltip */
+   text?: string;
+   /** The element that triggers the tooltip */
+-  children: React.ReactElement;
++  children: React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+   /** The preferred location of the Tooltip relative to its anchor element */
+   location?: TooltipLocation;
+   /**
+@@ -63,7 +63,7 @@
+   const [actualLocation, setActualLocation] = useState<TooltipLocation>(tooltipLocation);
+   const triggerRef = useRef<HTMLElement>(null);
+   const tooltipRef = useRef<HTMLDivElement>(null);
+-  const timeoutRef = useRef<NodeJS.Timeout>();
++  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+ 
+   const calculatePosition = () => {
+     if (!triggerRef.current || !tooltipRef.current) return;
+@@ -219,19 +219,19 @@
+ 
+   const trigger = React.cloneElement(children, {
+     ref: triggerRef,
+-    onMouseEnter: (e: React.MouseEvent) => {
++    onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
+       handleMouseEnter();
+       children.props?.onMouseEnter?.(e);
+     },
+-    onMouseLeave: (e: React.MouseEvent) => {
++    onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
+       handleMouseLeave();
+       children.props?.onMouseLeave?.(e);
+     },
+-    onFocus: (e: React.FocusEvent) => {
++    onFocus: (e: React.FocusEvent<HTMLElement>) => {
+       handleMouseEnter();
+       children.props?.onFocus?.(e);
+     },
+-    onBlur: (e: React.FocusEvent) => {
++    onBlur: (e: React.FocusEvent<HTMLElement>) => {
+       handleMouseLeave();
+       children.props?.onBlur?.(e);
+     },
+diff --git a/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.module.css b/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.module.css
+--- a/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.module.css
++++ b/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.module.css
+@@ -91,3 +91,16 @@
+     max-width: 120px;
+   }
+ }
++
++/* Preserve the link's accessible name while showing only its root icon. */
++.srOnly {
++  position: absolute;
++  width: 1px;
++  height: 1px;
++  padding: 0;
++  margin: -1px;
++  overflow: hidden;
++  clip-path: inset(50%);
++  white-space: nowrap;
++  border: 0;
++}
+diff --git a/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.tsx b/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.tsx
+--- a/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.tsx
++++ b/protolab-source/src/design-system/4-composites/Breadcrumb/Breadcrumb.tsx
+@@ -3,6 +3,7 @@
+ import styles from './Breadcrumb.module.css';
+ import { Icon } from '../../3-primitives/Icon';
+ import { IconButton } from '../../3-primitives/IconButton';
++import { Button } from '../../3-primitives/Button';
+ 
+ export interface BreadcrumbItem {
+   /** Label for the breadcrumb */
+@@ -74,7 +75,7 @@
+               <IconButton
+                 icon="overflow-horizontal"
+                 size="small"
+-                kind="tertiary"
++                variant="tertiary"
+                 aria-label="Show more breadcrumbs"
+                 onClick={onOverflowClick}
+                 className={styles.overflowButton}
+@@ -118,15 +119,27 @@
+     if (showAsRootIcon) {
+       return (
+         <li className={styles.item}>
+-          <IconButton
+-            icon="folder"
+-            size="small"
+-            kind="tertiary"
+-            aria-label={item.label}
+-            onClick={handleClick}
+-            className={styles.rootIconButton}
+-            href={item.href}
+-          />
++          {item.href && !isCurrent ? (
++            <Button
++              kind="tertiary"
++              size="small"
++              href={item.href}
++              onClick={handleClick}
++              className={styles.rootIconButton}
++            >
++              <Icon name="folder" size="small" aria-hidden />
++              <span className={styles.srOnly}>{item.label}</span>
++            </Button>
++          ) : (
++            <IconButton
++              icon="folder"
++              size="small"
++              variant="tertiary"
++              aria-label={item.label}
++              onClick={handleClick}
++              className={styles.rootIconButton}
++            />
++          )}
+         </li>
+       );
+     }
+diff --git a/protolab-source/src/design-system/4-composites/Callout/Callout.tsx b/protolab-source/src/design-system/4-composites/Callout/Callout.tsx
+--- a/protolab-source/src/design-system/4-composites/Callout/Callout.tsx
++++ b/protolab-source/src/design-system/4-composites/Callout/Callout.tsx
+@@ -135,7 +135,7 @@
+               <IconButton
+                 icon="close"
+                 size="medium"
+-                kind="tertiary"
++                variant="tertiary"
+                 onClick={onClose}
+                 aria-label="Close callout"
+                 className={`${styles.closeButtonWrapper} ${isGlass ? styles.closeButtonGlass : ''}`}
+diff --git a/protolab-source/src/design-system/4-composites/Chip/Chip.tsx b/protolab-source/src/design-system/4-composites/Chip/Chip.tsx
+--- a/protolab-source/src/design-system/4-composites/Chip/Chip.tsx
++++ b/protolab-source/src/design-system/4-composites/Chip/Chip.tsx
+@@ -26,7 +26,7 @@
+ 
+     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+       if (disabled) return;
+-      onClick?.(e);
++      onClick?.();
+     };
+ 
+     const handleRemoveClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+@@ -52,7 +52,7 @@
+         onKeyDown={(e) => {
+           if (onClick && !disabled && (e.key === 'Enter' || e.key === ' ')) {
+             e.preventDefault();
+-            onClick(e as any);
++            onClick();
+           }
+         }}
+       >
+diff --git a/protolab-source/src/design-system/4-composites/Dropdown/Dropdown.tsx b/protolab-source/src/design-system/4-composites/Dropdown/Dropdown.tsx
+--- a/protolab-source/src/design-system/4-composites/Dropdown/Dropdown.tsx
++++ b/protolab-source/src/design-system/4-composites/Dropdown/Dropdown.tsx
+@@ -36,7 +36,7 @@
+   /** Menu items */
+   items: DropdownItemProps[];
+   /** The element that triggers the dropdown */
+-  children: React.ReactElement;
++  children: React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+   /** Position of the dropdown relative to the trigger */
+   position?: DropdownPosition;
+   /** Alignment of the dropdown */
+diff --git a/protolab-source/src/design-system/4-composites/FileUpload/FileUpload.tsx b/protolab-source/src/design-system/4-composites/FileUpload/FileUpload.tsx
+--- a/protolab-source/src/design-system/4-composites/FileUpload/FileUpload.tsx
++++ b/protolab-source/src/design-system/4-composites/FileUpload/FileUpload.tsx
+@@ -270,7 +270,7 @@
+           />
+ 
+           <div className={styles.dropzoneContent}>
+-            <Icon name="upload" size="lg" className={styles.uploadIcon} />
++            <Icon name="upload" size="medium" className={styles.uploadIcon} />
+             <div className={styles.dropzoneText}>{placeholder}</div>
+             {helperText && !error && <div className={styles.dropzoneHelper}>{helperText}</div>}
+             {error && <div className={styles.errorText}>{error}</div>}
+diff --git a/protolab-source/src/design-system/4-composites/FilterTag/FilterTag.tsx b/protolab-source/src/design-system/4-composites/FilterTag/FilterTag.tsx
+--- a/protolab-source/src/design-system/4-composites/FilterTag/FilterTag.tsx
++++ b/protolab-source/src/design-system/4-composites/FilterTag/FilterTag.tsx
+@@ -22,7 +22,7 @@
+   className?: string;
+ }
+ 
+-export const FilterTag = React.forwardRef<HTMLDivElement, FilterTagProps>(
++export const FilterTag = React.forwardRef<HTMLDivElement | HTMLButtonElement, FilterTagProps>(
+   (
+     {
+       label,
+@@ -36,6 +36,11 @@
+     },
+     ref
+   ) => {
++    const setElementRef = (element: HTMLDivElement | HTMLButtonElement | null) => {
++      if (typeof ref === 'function') return ref(element);
++      if (ref) ref.current = element;
++    };
++
+     const containerClasses = [
+       styles.filterTag,
+       active && styles.active,
+@@ -59,7 +64,7 @@
+ 
+     if (dismissible) {
+       return (
+-        <div data-ink-component="FilterTag" ref={ref} className={containerClasses}>
++        <div data-ink-component="FilterTag" ref={setElementRef} className={containerClasses}>
+           <button
+             className={styles.tagButton}
+             onClick={handleTagClick}
+@@ -84,7 +89,7 @@
+     return (
+       <button
+         data-ink-component="FilterTag"
+-        ref={ref}
++        ref={setElementRef}
+         className={containerClasses}
+         onClick={handleTagClick}
+         disabled={disabled}
+diff --git a/protolab-source/src/design-system/4-composites/Popover/Popover.tsx b/protolab-source/src/design-system/4-composites/Popover/Popover.tsx
+--- a/protolab-source/src/design-system/4-composites/Popover/Popover.tsx
++++ b/protolab-source/src/design-system/4-composites/Popover/Popover.tsx
+@@ -8,7 +8,7 @@
+   /** The content to display in the popover */
+   content: React.ReactNode;
+   /** The element that triggers the popover */
+-  children: React.ReactElement;
++  children: React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+   /** Position of the popover relative to the trigger */
+   position?: PopoverPosition;
+   /** Alignment of the popover */
+@@ -124,7 +124,7 @@
+     setCoords({ top, left });
+   };
+ 
+-  const handleTriggerClick = (e: React.MouseEvent) => {
++  const handleTriggerClick = (e: React.MouseEvent<HTMLElement>) => {
+     e.stopPropagation();
+     setOpen(!open);
+     children.props.onClick?.(e);
+diff --git a/protolab-source/src/design-system/4-composites/SearchInput/SearchInput.tsx b/protolab-source/src/design-system/4-composites/SearchInput/SearchInput.tsx
+--- a/protolab-source/src/design-system/4-composites/SearchInput/SearchInput.tsx
++++ b/protolab-source/src/design-system/4-composites/SearchInput/SearchInput.tsx
+@@ -13,7 +13,7 @@
+ 
+ export interface SearchInputProps extends Omit<
+   React.InputHTMLAttributes<HTMLInputElement>,
+-  'size'
++  'size' | 'onChange'
+ > {
+   /** Input value */
+   value?: string;
+@@ -72,7 +72,7 @@
+     const [internalValue, setInternalValue] = React.useState(defaultValue || '');
+     const [showSuggestions, setShowSuggestions] = React.useState(false);
+     const [selectedIndex, setSelectedIndex] = React.useState(-1);
+-    const debounceTimer = React.useRef<NodeJS.Timeout>();
++    const debounceTimer = React.useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+     const containerRef = React.useRef<HTMLDivElement>(null);
+ 
+     const isControlled = value !== undefined;
+diff --git a/protolab-source/src/design-system/4-composites/Table/TableActionBar.tsx b/protolab-source/src/design-system/4-composites/Table/TableActionBar.tsx
+--- a/protolab-source/src/design-system/4-composites/Table/TableActionBar.tsx
++++ b/protolab-source/src/design-system/4-composites/Table/TableActionBar.tsx
+@@ -37,7 +37,7 @@
+           actions.map((action, index) => (
+             <Button
+               key={index}
+-              variant={action.variant || 'secondary'}
++              kind={action.variant === 'destructive' ? 'danger' : action.variant || 'secondary'}
+               size="small"
+               onClick={() => action.onClick(selectedRows)}
+               disabled={action.disabled}
+diff --git a/protolab-source/src/design-system/4-composites/Table/TableColumnControl.tsx b/protolab-source/src/design-system/4-composites/Table/TableColumnControl.tsx
+--- a/protolab-source/src/design-system/4-composites/Table/TableColumnControl.tsx
++++ b/protolab-source/src/design-system/4-composites/Table/TableColumnControl.tsx
+@@ -162,14 +162,14 @@
+   const footer = (
+     <div className={styles.footer}>
+       {initialColumns && hasChanges && (
+-        <Button variant="tertiary" onClick={handleReset}>
++        <Button kind="tertiary" onClick={handleReset}>
+           Reset
+         </Button>
+       )}
+-      <Button variant="secondary" onClick={onCancel}>
++      <Button kind="secondary" onClick={onCancel}>
+         Cancel
+       </Button>
+-      <Button variant="primary" onClick={handleSave}>
++      <Button kind="primary" onClick={handleSave}>
+         Save
+       </Button>
+     </div>
+diff --git a/protolab-source/src/design-system/4-composites/TaskCard/TaskCard.tsx b/protolab-source/src/design-system/4-composites/TaskCard/TaskCard.tsx
+--- a/protolab-source/src/design-system/4-composites/TaskCard/TaskCard.tsx
++++ b/protolab-source/src/design-system/4-composites/TaskCard/TaskCard.tsx
+@@ -94,7 +94,7 @@
+   return (
+     <div className={`${styles.footer} ${className || ''}`} {...props}>
+       {showMetadata && metadata && (
+-        <Text size="small" className={styles.metadata}>
++        <Text size="sm" className={styles.metadata}>
+           {metadata}
+         </Text>
+       )}
+diff --git a/protolab-source/src/design-system/5-patterns/AIChat/AIChat.module.css b/protolab-source/src/design-system/5-patterns/AIChat/AIChat.module.css
+--- a/protolab-source/src/design-system/5-patterns/AIChat/AIChat.module.css
++++ b/protolab-source/src/design-system/5-patterns/AIChat/AIChat.module.css
+@@ -402,7 +402,7 @@
+   border-radius: var(--ink-radius-full);
+   cursor: pointer;
+   font-family: var(--ink-font-family-default);
+-  font-size: var(--ink-font-size-detail-xs);
++  font-size: var(--ink-font-detail-xs-size);
+   font-weight: var(--ink-font-weight-medium);
+   color: var(--ink-font-color-default);
+   transition: all 150ms ease;
+diff --git a/protolab-source/src/design-system/5-patterns/AIChat/AIChat.tsx b/protolab-source/src/design-system/5-patterns/AIChat/AIChat.tsx
+--- a/protolab-source/src/design-system/5-patterns/AIChat/AIChat.tsx
++++ b/protolab-source/src/design-system/5-patterns/AIChat/AIChat.tsx
+@@ -205,7 +205,7 @@
+   if (isSystem) {
+     return (
+       <div className={styles.systemMessage}>
+-        <Text variant="caption" color="secondary">
++        <Text size="sm" color="secondary">
+           {message.content}
+         </Text>
+       </div>
+@@ -221,14 +221,14 @@
+     <div className={`${styles.message} ${isUser ? styles.userMessage : styles.assistantMessage}`}>
+       <div className={styles.messageContent}>
+         {showTimestamp && (
+-          <Text variant="caption" color="secondary">
++          <Text size="sm" color="secondary">
+             {formatTime(message.timestamp)}
+           </Text>
+         )}
+ 
+         {message.content && (
+           <div className={styles.messageBubble}>
+-            <Text variant="body">{message.content}</Text>
++            <Text size="md">{message.content}</Text>
+           </div>
+         )}
+ 
+@@ -240,7 +240,7 @@
+                   <IconButton
+                     icon={feedback === 'positive' ? 'thumbs-up-filled' : 'thumbs-up'}
+                     size="small"
+-                    kind="tertiary"
++                    variant="tertiary"
+                     onClick={() => onFeedback?.(feedback === 'positive' ? null : 'positive')}
+                     aria-label="Mark as helpful"
+                     className={feedback === 'positive' ? styles.feedbackActive : undefined}
+@@ -250,7 +250,7 @@
+                   <IconButton
+                     icon={feedback === 'negative' ? 'thumbs-down-filled' : 'thumbs-down'}
+                     size="small"
+-                    kind="tertiary"
++                    variant="tertiary"
+                     onClick={() => onFeedback?.(feedback === 'negative' ? null : 'negative')}
+                     aria-label="Mark as not helpful"
+                     className={feedback === 'negative' ? styles.feedbackActive : undefined}
+@@ -263,7 +263,7 @@
+                 <IconButton
+                   icon="duplicate"
+                   size="small"
+-                  kind="tertiary"
++                  variant="tertiary"
+                   onClick={handleCopy}
+                   aria-label="Copy message"
+                 />
+@@ -275,7 +275,7 @@
+         {message.status === 'error' && (
+           <Inline gap="small" align="center">
+             <Icon name="status-warn" size="small" />
+-            <Text variant="caption" color="danger">
++            <Text size="sm" color="error">
+               Failed to send
+             </Text>
+             <Button kind="tertiary" size="small" onClick={() => onAction?.('retry', message)}>
+@@ -596,12 +596,12 @@
+                 role={onSuggestedActionsHeaderClick ? 'button' : undefined}
+                 tabIndex={onSuggestedActionsHeaderClick ? 0 : undefined}
+               >
+-                <Text variant="caption" color="secondary" weight="medium">
++                <Text size="sm" color="secondary" weight="medium">
+                   {suggestedActionsTitle}
+                 </Text>
+                 {suggestedActionsActionText && onSuggestedActionsHeaderClick && (
+                   <Inline gap="small" align="center" className={styles.sectionHeaderAction}>
+-                    <Text variant="caption" color="secondary">
++                    <Text size="sm" color="secondary">
+                       {suggestedActionsActionText}
+                     </Text>
+                     <Icon name="chevron-right" size="small" />
+@@ -626,10 +626,10 @@
+                       />
+                     </div>
+                     <div className={styles.suggestionContent}>
+-                      <Text variant="body" weight="medium">
++                      <Text size="md" weight="medium">
+                         {action.label}
+                       </Text>
+-                      {action.description && <Text variant="caption">{action.description}</Text>}
++                      {action.description && <Text size="sm">{action.description}</Text>}
+                     </div>
+                   </button>
+                 ))}
+@@ -641,7 +641,7 @@
+           {suggestedQuestions && suggestedQuestions.length > 0 && (
+             <div className={styles.suggestionsSection}>
+               <Inline gap="small" align="center" className={styles.sectionHeader}>
+-                <Text variant="caption" color="secondary" weight="medium">
++                <Text size="sm" color="secondary" weight="medium">
+                   {suggestedQuestionsTitle}
+                 </Text>
+                 <Icon name="chevron-right" size="small" />
+@@ -657,7 +657,7 @@
+                     <div className={styles.suggestionIcon}>
+                       <Icon name="help" size="medium" />
+                     </div>
+-                    <Text variant="body">{question}</Text>
++                    <Text size="md">{question}</Text>
+                   </button>
+                 ))}
+               </Stack>
+@@ -672,9 +672,9 @@
+     <div className={styles.welcome}>
+       <Stack gap="medium" align="center">
+         <div className={styles.welcomeIcon}>
+-          <Icon name="messages" size="large" />
++          <Icon name="messages" size="medium" />
+         </div>
+-        <Text variant="body" color="secondary" align="center">
++        <Text size="md" color="secondary" style={{ textAlign: 'center' }}>
+           Start a conversation with {assistantName}
+         </Text>
+       </Stack>
+@@ -701,7 +701,7 @@
+           <IconButton
+             icon="menu"
+             size="small"
+-            kind="tertiary"
++            variant="tertiary"
+             onClick={onShowHistory}
+             aria-label="Show history"
+           />
+@@ -712,7 +712,7 @@
+           <IconButton
+             icon="plus"
+             size="small"
+-            kind="tertiary"
++            variant="tertiary"
+             onClick={onNewChat}
+             aria-label="New chat"
+           />
+@@ -721,7 +721,7 @@
+           <IconButton
+             icon="container-enlarge"
+             size="small"
+-            kind="tertiary"
++            variant="tertiary"
+             onClick={onMaximize}
+             aria-label="Maximize"
+           />
+@@ -730,7 +730,7 @@
+           <IconButton
+             icon="close"
+             size="small"
+-            kind="tertiary"
++            variant="tertiary"
+             onClick={onClose}
+             aria-label="Close"
+           />
+diff --git a/protolab-source/src/design-system/5-patterns/AgentPanel/AgentActionCard.module.css b/protolab-source/src/design-system/5-patterns/AgentPanel/AgentActionCard.module.css
+--- a/protolab-source/src/design-system/5-patterns/AgentPanel/AgentActionCard.module.css
++++ b/protolab-source/src/design-system/5-patterns/AgentPanel/AgentActionCard.module.css
+@@ -196,7 +196,7 @@
+ 
+ .title {
+   font-family: var(--ink-font-family), system-ui, sans-serif;
+-  font-size: var(--ink-font-size-body-m);
++  font-size: var(--ink-font-body-m-size);
+   font-weight: var(--ink-font-weight-semibold);
+   color: var(--ink-neutral-130);
+   margin: 0;
+@@ -205,7 +205,7 @@
+ 
+ .description {
+   font-family: var(--ink-font-family), system-ui, sans-serif;
+-  font-size: var(--ink-font-size-body-s);
++  font-size: var(--ink-font-body-s-size);
+   color: var(--ink-neutral-80);
+   margin: 0;
+   line-height: 1.5;
+@@ -330,7 +330,7 @@
+ 
+ .resultContent {
+   font-family: var(--ink-font-family), system-ui, sans-serif;
+-  font-size: var(--ink-font-size-body-s);
++  font-size: var(--ink-font-body-s-size);
+   color: var(--ink-neutral-100);
+   line-height: 1.5;
+ }
+@@ -382,7 +382,7 @@
+ 
+ .errorContent {
+   font-family: var(--ink-font-family), system-ui, sans-serif;
+-  font-size: var(--ink-font-size-body-s);
++  font-size: var(--ink-font-body-s-size);
+   color: var(--ink-neutral-100);
+   line-height: 1.5;
+ }
+diff --git a/protolab-source/src/design-system/5-patterns/AgentPanel/AgentCanvas.module.css b/protolab-source/src/design-system/5-patterns/AgentPanel/AgentCanvas.module.css
+--- a/protolab-source/src/design-system/5-patterns/AgentPanel/AgentCanvas.module.css
++++ b/protolab-source/src/design-system/5-patterns/AgentPanel/AgentCanvas.module.css
+@@ -103,7 +103,7 @@
+   align-items: center;
+   gap: var(--ink-spacing-75);
+   font-family: var(--ink-font-family), system-ui, sans-serif;
+-  font-size: var(--ink-font-size-body-s);
++  font-size: var(--ink-font-body-s-size);
+   font-weight: var(--ink-font-weight-medium);
+   color: var(--ink-neutral-100);
+   white-space: nowrap;
+diff --git a/protolab-source/src/design-system/5-patterns/AgentPanel/ThinkingSteps.module.css b/protolab-source/src/design-system/5-patterns/AgentPanel/ThinkingSteps.module.css
+--- a/protolab-source/src/design-system/5-patterns/AgentPanel/ThinkingSteps.module.css
++++ b/protolab-source/src/design-system/5-patterns/AgentPanel/ThinkingSteps.module.css
+@@ -118,7 +118,7 @@
+ 
+ .headerTitle {
+   font-family: var(--ink-font-family), system-ui, sans-serif;
+-  font-size: var(--ink-font-size-body-s);
++  font-size: var(--ink-font-body-s-size);
+   font-weight: var(--ink-font-weight-semibold);
+   color: var(--ink-neutral-110);
+   letter-spacing: -0.01em;
+@@ -315,7 +315,7 @@
+ 
+ .stepTitle {
+   font-family: var(--ink-font-family), system-ui, sans-serif;
+-  font-size: var(--ink-font-size-body-s);
++  font-size: var(--ink-font-body-s-size);
+   font-weight: var(--ink-font-weight-medium);
+   color: var(--ink-neutral-100);
+   line-height: 1.4;
+diff --git a/protolab-source/src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx b/protolab-source/src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx
+--- a/protolab-source/src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx
++++ b/protolab-source/src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx
+@@ -162,14 +162,14 @@
+   const footer = (
+     <div className={styles.footer}>
+       {initialColumns && hasChanges && (
+-        <Button variant="tertiary" onClick={handleReset}>
++        <Button kind="tertiary" onClick={handleReset}>
+           Reset
+         </Button>
+       )}
+-      <Button variant="secondary" onClick={onCancel}>
++      <Button kind="secondary" onClick={onCancel}>
+         Cancel
+       </Button>
+-      <Button variant="primary" onClick={handleSave}>
++      <Button kind="primary" onClick={handleSave}>
+         Save
+       </Button>
+     </div>
+diff --git a/protolab-source/src/design-system/5-patterns/GlobalNav/GlobalNav.tsx b/protolab-source/src/design-system/5-patterns/GlobalNav/GlobalNav.tsx
+--- a/protolab-source/src/design-system/5-patterns/GlobalNav/GlobalNav.tsx
++++ b/protolab-source/src/design-system/5-patterns/GlobalNav/GlobalNav.tsx
+@@ -181,7 +181,7 @@
+         {/* User Avatar */}
+         {user && (
+           <button className={styles.avatarButton} onClick={onUserMenuClick} aria-label="User menu">
+-            <Avatar name={user.name} src={user.avatar} size="small" />
++            <Avatar initials={user.name.trim().split(/\s+/).map(part => part[0]).join('')} alt={user.name} src={user.avatar} size="small" />
+           </button>
+         )}
+       </div>
+diff --git a/protolab-source/src/design-system/5-patterns/LocalNav/LocalNav.tsx b/protolab-source/src/design-system/5-patterns/LocalNav/LocalNav.tsx
+--- a/protolab-source/src/design-system/5-patterns/LocalNav/LocalNav.tsx
++++ b/protolab-source/src/design-system/5-patterns/LocalNav/LocalNav.tsx
+@@ -278,7 +278,7 @@
+               <li key={item.id}>
+                 {!isExpanded ? (
+                   // Collapsed view: icon only with tooltip
+-                  <Tooltip content={item.label} side="right">
++                  <Tooltip content={item.label} location="after">
+                     <button
+                       className={`${styles.itemCollapsed} ${isItemActive ? styles.active : ''}`}
+                       onClick={() => handleItemClick(item)}
+@@ -439,7 +439,7 @@
+             </>
+           )}
+           {allowCollapsibility && (
+-            <Tooltip content={isLocked ? 'Unlock sidebar' : 'Lock sidebar'} side="right">
++            <Tooltip content={isLocked ? 'Unlock sidebar' : 'Lock sidebar'} location="after">
+               <IconButton
+                 icon={isLocked ? 'lock' : 'unlock'}
+                 size="medium"
+diff --git a/protolab-source/src/design-system/5-patterns/PageHeader/PageHeader.module.css b/protolab-source/src/design-system/5-patterns/PageHeader/PageHeader.module.css
+--- a/protolab-source/src/design-system/5-patterns/PageHeader/PageHeader.module.css
++++ b/protolab-source/src/design-system/5-patterns/PageHeader/PageHeader.module.css
+@@ -12,7 +12,7 @@
+ }
+ 
+ .title {
+-  font-size: var(--ink-font-size-xxl); /* 32px */
++  font-size: var(--ink-font-heading-m-size); /* 32px */
+   font-weight: var(--ink-font-weight-regular); /* DocuSign uses 400 for page titles */
+   line-height: var(--ink-font-heading-m-line-height); /* 1.25 → 40px line height */
+   color: var(--ink-font-default);
+diff --git a/protolab-source/src/design-system/index.ts b/protolab-source/src/design-system/index.ts
+--- a/protolab-source/src/design-system/index.ts
++++ b/protolab-source/src/design-system/index.ts
+@@ -20,7 +20,7 @@
+ // ============================================================================
+ // LAYER 2: UTILITIES
+ // ============================================================================
+-export { Stack, Inline, Grid, Container, Spacer } from './2-utilities';
++export { Stack, Inline, Grid, Container, Spacer, Portal } from './2-utilities';
+ export type {
+   StackProps,
+   InlineProps,
+diff --git a/scripts/bundle-data.ts b/scripts/bundle-data.ts
+--- a/scripts/bundle-data.ts
++++ b/scripts/bundle-data.ts
+@@ -25,6 +25,7 @@
+   sources: Record<string, SourceFile[]>;
+   tokens: SourceFile;
+   utility: SourceFile;
++  infrastructure?: SourceFile[];
+   propDetails: Record<string, ComponentPropDetails>;
+ }
+ 
+@@ -221,7 +222,17 @@
+     console.log(`Example validation: all examples use valid props`);
+   }
+ 
+-  return { registry, sources, tokens, utility, propDetails };
++  // Layer/main barrels are public source contracts, including type exports.
++  // Keep them in the bundle so template generation cannot silently erase them.
++  const infrastructure = ['index.ts', '1-tokens/index.ts',
++    ...Object.values(LAYER_DIR_MAP).map(dir => `${dir}/index.ts`)]
++    .filter(path => existsSync(join(PROTOLAB_ROOT, 'src/design-system', path)))
++    .map(path => ({
++      path: `design-system/${path}`,
++      content: readFileSync(join(PROTOLAB_ROOT, 'src/design-system', path), 'utf-8'),
++    }));
++
++  return { registry, sources, tokens, utility, infrastructure, propDetails };
+ }
+ 
+ /**
+diff --git a/scripts/check-template-contracts.mjs b/scripts/check-template-contracts.mjs
+--- /dev/null
++++ b/scripts/check-template-contracts.mjs
+@@ -0,0 +1,57 @@
++/** Run after bundle + template generation and installing the template's dev dependencies. */
++import { createRequire } from 'node:module';
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++
++const template = fileURLToPath(new URL('../template/ink-starter/', import.meta.url));
++const require = createRequire(path.join(template, 'package.json'));
++const ts = require('typescript');
++const configFile = ts.readConfigFile(path.join(template, 'tsconfig.json'), ts.sys.readFile);
++if (configFile.error) throw new Error(ts.flattenDiagnosticMessageText(configFile.error.messageText, '\n'));
++const config = ts.parseJsonConfigFileContent(configFile.config, ts.sys, template);
++const probePath = path.join(template, 'src/__public_api_contracts__.tsx');
++const probe = `
++import * as React from 'react';
++import { Button, IconButton, FilterTag, Text, Tooltip, Popover, Dropdown, Portal } from '@/design-system';
++import type { DataTableColumn, LocalNavProps, DropdownItemProps } from '@/design-system';
++import type { GlobalNavProps } from '@/design-system/5-patterns/GlobalNav';
++const columns: DataTableColumn<{ id: string }>[] = [{ key: 'id', header: 'ID' }];
++const nav: LocalNavProps = { sections: [] };
++const globalNav: GlobalNavProps = {};
++const items: DropdownItemProps[] = [{ label: 'Open' }];
++const valid = <>
++  <Button kind="primary">Save</Button>
++  <IconButton icon="close" variant="tertiary" aria-label="Close" />
++  <FilterTag label="Status" ref={React.createRef<HTMLButtonElement>()} />
++  <FilterTag label="Status" dismissible ref={React.createRef<HTMLDivElement>()} />
++  <Tooltip text="Help"><Button>Help</Button></Tooltip>
++  <Popover content="Details"><Button>Details</Button></Popover>
++  <Dropdown items={items}><Button>Actions</Button></Dropdown>
++</>;
++// @ts-expect-error Button uses kind.
++const invalidButton = <Button variant="primary">Save</Button>;
++// @ts-expect-error IconButton uses variant.
++const invalidIconButton = <IconButton icon="close" kind="tertiary" aria-label="Close" />;
++// @ts-expect-error Text uses size.
++const invalidText = <Text variant="body">Copy</Text>;
++// @ts-expect-error FilterTag cannot forward an SVG element ref.
++const invalidRef = <FilterTag label="Status" ref={React.createRef<SVGSVGElement>()} />;
++void [Portal, columns, nav, globalNav, valid, invalidButton, invalidIconButton, invalidText, invalidRef];
++`;
++const host = ts.createCompilerHost(config.options);
++const readFile = host.readFile.bind(host);
++const fileExists = host.fileExists.bind(host);
++host.readFile = file => file === probePath ? probe : readFile(file);
++host.fileExists = file => file === probePath || fileExists(file);
++const program = ts.createProgram([...config.fileNames, probePath], { ...config.options, noEmit: true }, host);
++const diagnostics = [...config.errors, ...ts.getPreEmitDiagnostics(program)];
++if (diagnostics.length) {
++  process.stderr.write(ts.formatDiagnosticsWithColorAndContext(diagnostics, {
++    getCanonicalFileName: file => file,
++    getCurrentDirectory: () => template,
++    getNewLine: () => '\n',
++  }));
++  process.exitCode = 1;
++} else {
++  console.log('Generated template and public API contracts pass.');
++}
+diff --git a/scripts/generate-template.ts b/scripts/generate-template.ts
+--- a/scripts/generate-template.ts
++++ b/scripts/generate-template.ts
+@@ -58,6 +58,7 @@
+   sources: Record<string, SourceFile[]>;
+   tokens: SourceFile;
+   utility: SourceFile;
++  infrastructure?: SourceFile[];
+ }
+ 
+ // ── Helpers ──────────────────────────────────────────────────────────
+@@ -168,7 +169,10 @@
+ 
+     const barrelPath = join(TEMPLATE_DIR, `src/design-system/${layerDir}/${comp.name}/index.ts`);
+     const virtualExports = hostVirtuals.get(comp.name);
+-    writeFile(barrelPath, componentBarrel(comp.name, virtualExports));
++    // The component's published index may also expose types/subcomponents.
++    if (!existsSync(barrelPath)) {
++      writeFile(barrelPath, componentBarrel(comp.name, virtualExports));
++    }
+   }
+ 
+   // Layer-level barrels
+@@ -184,6 +188,11 @@
+     join(TEMPLATE_DIR, 'src/design-system/index.ts'),
+     mainBarrel(layerComponents)
+   );
++  // Prefer the authoritative public API when a full source bundle includes it.
++  // Legacy bundles retain the generated-barrel fallback above.
++  for (const file of bundle.infrastructure ?? []) {
++    writeFile(join(TEMPLATE_DIR, 'src', file.path), file.content);
++  }
+   console.log('  Generated barrel exports');
+ 
+   // 6. Write infrastructure files
+@@ -351,7 +360,7 @@
+   id: string;
+   name: string;
+   status: string;
+-  statusKind: 'success' | 'warning' | 'info' | 'neutral';
++  statusKind: 'success' | 'warning' | 'emphasis' | 'subtle';
+   sender: string;
+   lastUpdated: string;
+ }
+@@ -363,7 +372,7 @@
+     header: 'Status',
+     sortable: true,
+     cell: (row: Agreement) => (
+-      <Badge kind={row.statusKind} size="small">{row.status}</Badge>
++      <Badge kind={row.statusKind}>{row.status}</Badge>
+     ),
+   },
+   { key: 'sender', header: 'Sender' },
+@@ -373,9 +382,9 @@
+ const agreements: Agreement[] = [
+   { id: '1', name: 'NDA - Acme Corporation', status: 'Completed', statusKind: 'success', sender: 'John Doe', lastUpdated: 'Mar 24, 2026' },
+   { id: '2', name: 'MSA - TechStart Inc', status: 'Waiting for Review', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 23, 2026' },
+-  { id: '3', name: 'SOW - Phase 2 Development', status: 'Draft', statusKind: 'neutral', sender: 'Jane Smith', lastUpdated: 'Mar 22, 2026' },
++  { id: '3', name: 'SOW - Phase 2 Development', status: 'Draft', statusKind: 'subtle', sender: 'Jane Smith', lastUpdated: 'Mar 22, 2026' },
+   { id: '4', name: 'Employment Agreement - Senior Engineer', status: 'Completed', statusKind: 'success', sender: 'HR Team', lastUpdated: 'Mar 21, 2026' },
+-  { id: '5', name: 'Vendor Agreement - CloudCo', status: 'Waiting for Signature', statusKind: 'info', sender: 'John Doe', lastUpdated: 'Mar 20, 2026' },
++  { id: '5', name: 'Vendor Agreement - CloudCo', status: 'Waiting for Signature', statusKind: 'emphasis', sender: 'John Doe', lastUpdated: 'Mar 20, 2026' },
+   { id: '6', name: 'Lease Amendment - Office Space', status: 'Completed', statusKind: 'success', sender: 'Legal Team', lastUpdated: 'Mar 19, 2026' },
+   { id: '7', name: 'Consulting Agreement - DesignLab', status: 'Action Required', statusKind: 'warning', sender: 'Jane Smith', lastUpdated: 'Mar 18, 2026' },
+ ];
+@@ -398,7 +407,7 @@
+           <PageHeader
+             title="Agreements"
+             showAIBadge
+-            actions={<Button kind="brand">New Agreement</Button>}
++            actions={<Button kind="primary">New Agreement</Button>}
+           />
+         }
+         filterBar={
+diff --git a/src/shared/project-templates.ts b/src/shared/project-templates.ts
+--- a/src/shared/project-templates.ts
++++ b/src/shared/project-templates.ts
+@@ -30,7 +30,8 @@
+       type: 'module',
+       scripts: {
+         dev: 'vite',
+-        build: 'vite build',
++        build: 'tsc --noEmit && vite build',
++        typecheck: 'tsc --noEmit',
+         preview: 'vite preview',
+       },
+       dependencies: {
+@@ -73,6 +74,7 @@
+       strict: true,
+       esModuleInterop: true,
+       skipLibCheck: true,
++      types: ['vite/client'],
+       paths: { '@/*': ['./src/*'] },
+       baseUrl: '.',
+     },

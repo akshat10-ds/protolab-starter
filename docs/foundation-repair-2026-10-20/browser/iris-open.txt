@@ -1,0 +1,186 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#home".
+1 AXWebArea Protolab, URL: localhost:5173/#home
+	2 container
+		396 container root
+			397 container
+				398 container
+					399 button App switcher
+					400 image DocuSign
+					401 link Description: Home, Value: localhost:5173/#
+					402 link Description: Agreements, Value: localhost:5173/#
+					403 link Description: Templates, Value: localhost:5173/#
+					404 link Description: Automations, Value: localhost:5173/#
+					405 link Description: Insights, Value: localhost:5173/#
+					406 link Description: Admin, Value: localhost:5173/#
+					407 button Search
+					408 button Notifications
+					409 button Tasks
+					410 button Help
+					411 button User menu
+				412 heading Welcome, Akshat Mishra, Value: 1
+					413 text Welcome, Akshat Mishra
+				414 button 7 open requests
+					415 text 7
+					416 text  open requests
+				417 button 3 upcoming renewals
+				418 button 6 completed
+					419 text 6
+					420 text  completed
+				421 pop up button (collapsed) Start, Secondary Actions: Expand
+					422 text Start
+				423 button Ask Iris to Send
+					424 text Ask Iris to Send
+				425 button Send Envelope
+					426 text Send Envelope
+				427 button Create Request
+					428 text Create Request
+				429 text Try dropping your documents anywhere on the home page to get started!
+				430 button Close drop zone banner
+				431 heading Tasks (1), Value: 2
+					432 text Tasks  (1)
+				433 button View all
+				434 heading Needs To Sign, Value: 3
+					435 text Needs To Sign
+				436 button More actions for Consulting Agreement
+				437 link Description: Consulting Agreement — Acme Technologies, Value: localhost:5173/#agreements
+				438 text From: Akshat Mishra
+				439 button Open signing task
+				440 heading Agreement activity, Value: 2
+					441 text Agreement activity
+				442 button View agreement activity
+				443 button View all
+				444 link Description: Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf, Value: localhost:5173/#agreements
+				445 text 6 days ago
+				446 text Voided
+				447 button View Complete with Docusign: rhi.pdf, Sample_Service_Agreement.pdf
+				448 link Description: Consulting Agreement — Acme Technologies, Value: localhost:5173/#agreements
+				449 text 2 weeks ago
+				450 progress indicator Description: Envelope progress, Value: 3
+				451 text Need to Sign
+				452 button View Consulting Agreement — Acme Technologies
+				453 link Description: Complete with Docusign: Sample_Service_Agreement.pdf, Value: localhost:5173/#agreements
+				454 text 2 weeks ago
+				455 text Completed
+				456 button View Complete with Docusign: Sample_Service_Agreement.pdf
+				457 link Description: Change Order.docx, Value: localhost:5173/#agreements
+				458 text Expiring on 10/23/2026
+				459 text Expiring Soon
+				460 button View Change Order.docx
+				461 link Description: SOW(2).docx, Value: localhost:5173/#agreements
+				462 text Expiring on 10/23/2026
+				463 text Expiring Soon
+				464 button View SOW(2).docx
+				465 link Description: SOW(1).docx, Value: localhost:5173/#agreements
+				466 text Expiring on 10/31/2026
+				467 text Expiring Soon
+				468 button View SOW(1).docx
+				469 heading Templates, Value: 2
+					470 text Templates
+				471 button View all
+				472 text Favorite
+				473 link Description: quick send, Value: localhost:5173/#templates
+				474 container
+					475 text Last used on  03/13/2026
+				476 text Favorite
+				477 link Description: shared template info, Value: localhost:5173/#templates
+				478 container
+					479 text Last used on  08/12/2025
+				480 text Add favorite template
+				481 text Send future documents faster with favorited templates.
+				482 button Browse templates
+				483 container
+					484 text English (US) |
+					485 link Description: Contact Us, Value: support.docusign.com/contactSupport
+					486 link Description: Terms of Use, Value: docusign.com/legal/terms-and-conditions
+					487 link Description: Privacy, Value: docusign.com/privacy
+					488 link Description: Intellectual Property, Value: docusign.com/ip
+					489 link Description: Trust, Value: docusign.com/trust
+					490 text Version: 1.13043 · Copyright © 2026 Docusign, Inc. All rights reserved.
+			491 container Iris
+				492 splitter Description: Resize panel, Value: 480
+				493 container
+					494 button Open menu
+					495 pop up button (collapsed) Description: Switch agent, Secondary Actions: Expand
+						496 image Iris
+					497 button New chat
+					498 button Open fullscreen
+					499 button Close
+					500 container
+						501 text Jump back in Ask about terms, dates, or how these agreements connect.
+						502 container Get started · 0 of 4
+							503 button (expanded) Get started · 0 of 4, ID: get-started-header-_r_69_, Secondary Actions: Collapse
+								504 text Get started
+								505 text · 
+								506 text 0 of 4
+							507 button Dismiss get started
+							508 container Get started · 0 of 4, ID: get-started-panel-_r_69_
+								509 content list
+									510 button Add a source
+									511 button Ask a question
+									512 button Visualize the hierarchy
+									513 button Explore different agents
+					514 text Suggested Context
+					515 text :  2 agreements
+					516 button Add
+					517 button Dismiss suggested context
+					518 container
+						519 text Ask, @mention, or / for actions
+						520 text entry area (settable) Ask a question...
+						521 pop up button (collapsed) Description: Add, Secondary Actions: Expand
+						522 button (disabled) Send
+					523 text Responses use AI. Not legal advice.
+		343 button Help: Start feedback mode, v3.0.2 Switch to light mode Output Detail Standard React Components Hide Until Restart Marker Color Indigo Blue Cyan Green Yellow Orange Red Clear on copy/send Block page interactions
+			344 button
+				345 image
+			346 button
+				347 image
+			348 button
+				349 image
+			350 button
+				351 image
+			352 container
+				353 link agentation.com/
+				354 text v 3.0.2
+				355 button Switch to light mode
+					356 image
+				357 text Output Detail
+				358 image
+				359 button Standard
+				360 text React Components
+				361 image
+				362 checkbox (settable, integer) 1
+				363 text Hide Until Restart
+				364 image
+				365 checkbox (settable, integer) 0
+				366 text Marker Color
+				367 button Indigo
+				368 button Blue
+				369 button Cyan
+				370 button Green
+				371 button Yellow
+				372 button Orange
+				373 button Red
+				374 checkbox (settable, integer) Description: Clear on copy/send, Value: 0
+				375 image
+				376 image
+				377 checkbox (settable, integer) Description: Block page interactions, Value: 1
+				378 image
+				379 button Manage MCP & Webhooks
+					380 text Manage MCP & Webhooks
+					381 image
+				382 button Manage MCP & Webhooks
+					383 image
+					384 text Manage MCP & Webhooks
+				385 text MCP Connection
+				386 image
+				387 container
+					388 text MCP connection allows agents to receive and act on annotations.
+					389 link Description: Learn more, Value: agentation.dev/mcp
+				390 text Webhooks
+				391 image
+				392 checkbox (disabled, settable, integer) Description: Auto-Send, Value: 1, ID: agentation-auto-send
+				393 text The webhook URL will receive live annotation changes and annotation data.
+				394 text entry area (settable)
+		395 image
+
+The focused UI element is 423 button Ask Iris to Send

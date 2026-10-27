@@ -3,7 +3,6 @@
  * Figma ref: node 20574:43257
  * ecru-10 bg, 4px radius, forward icon + label
  */
-@import '@ink/1-tokens/tokens.css';
 
 @keyframes chipFadeIn {
   from { opacity: 0; transform: translateY(4px); }

@@ -1,0 +1,118 @@
+src/ai-system/composites/ChatInput/ChatInput.tsx(1125,17): error TS2322: Type '{ icon: string | undefined; label: string; active: true; dismissible: boolean; onDismiss: (() => void) | undefined; onClick: (() => void) | undefined; }' is not assignable to type 'IntrinsicAttributes & FilterTagProps & RefAttributes<HTMLDivElement>'.
+  Property 'icon' does not exist on type 'IntrinsicAttributes & FilterTagProps & RefAttributes<HTMLDivElement>'.
+src/ai-system/composites/ChatInput/ChatInput.tsx(1156,19): error TS2322: Type '{ icon: string | undefined; label: string; active: true; dismissible: boolean; onDismiss: (() => void) | undefined; onClick: (() => void) | undefined; }' is not assignable to type 'IntrinsicAttributes & FilterTagProps & RefAttributes<HTMLDivElement>'.
+  Property 'icon' does not exist on type 'IntrinsicAttributes & FilterTagProps & RefAttributes<HTMLDivElement>'.
+src/ai-system/patterns/ArtifactViewer/AgreementView.tsx(105,47): error TS2322: Type '{ children: Element; text: string; size: string; }' is not assignable to type 'IntrinsicAttributes & TooltipProps'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & TooltipProps'.
+src/ai-system/patterns/ArtifactViewer/AgreementView.tsx(117,43): error TS2322: Type '{ children: Element; text: string; size: string; }' is not assignable to type 'IntrinsicAttributes & TooltipProps'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & TooltipProps'.
+src/ai-system/patterns/ArtifactViewer/AgreementView.tsx(130,47): error TS2322: Type '{ children: Element; text: string; size: string; }' is not assignable to type 'IntrinsicAttributes & TooltipProps'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & TooltipProps'.
+src/ai-system/patterns/ArtifactViewer/AgreementView.tsx(141,21): error TS2322: Type '{ children: string; variant: string; size: "small"; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/ai-system/patterns/ArtifactViewer/AgreementView.tsx(210,46): error TS2322: Type '{ children: Element; text: string; size: string; }' is not assignable to type 'IntrinsicAttributes & TooltipProps'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & TooltipProps'.
+src/ai-system/patterns/ArtifactViewer/SourceListView.tsx(160,13): error TS2322: Type '{ children: string; variant: string; size: "medium"; onClick: () => void; disabled: boolean; fullWidth: true; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/design-system/3-primitives/Switch/Switch.tsx(5,18): error TS2430: Interface 'SwitchProps' incorrectly extends interface 'Omit<InputHTMLAttributes<HTMLInputElement>, "size">'.
+  Types of property 'onChange' are incompatible.
+    Type '((checked: boolean) => void) | undefined' is not assignable to type 'ChangeEventHandler<HTMLInputElement, HTMLInputElement> | undefined'.
+      Type '(checked: boolean) => void' is not assignable to type 'ChangeEventHandler<HTMLInputElement, HTMLInputElement>'.
+        Types of parameters 'checked' and 'event' are incompatible.
+          Type 'ChangeEvent<HTMLInputElement, HTMLInputElement>' is not assignable to type 'boolean'.
+src/design-system/3-primitives/Tooltip/Tooltip.tsx(66,22): error TS2554: Expected 1 arguments, but got 0.
+src/design-system/3-primitives/Tooltip/Tooltip.tsx(66,29): error TS2503: Cannot find namespace 'NodeJS'.
+src/design-system/3-primitives/Tooltip/Tooltip.tsx(221,5): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Object literal may only specify known properties, and 'ref' does not exist in type 'Partial<unknown> & Attributes'.
+src/design-system/3-primitives/Tooltip/Tooltip.tsx(224,23): error TS2339: Property 'onMouseEnter' does not exist on type '{}'.
+src/design-system/3-primitives/Tooltip/Tooltip.tsx(228,23): error TS2339: Property 'onMouseLeave' does not exist on type '{}'.
+src/design-system/3-primitives/Tooltip/Tooltip.tsx(232,23): error TS2339: Property 'onFocus' does not exist on type '{}'.
+src/design-system/3-primitives/Tooltip/Tooltip.tsx(236,23): error TS2339: Property 'onBlur' does not exist on type '{}'.
+src/design-system/4-composites/Breadcrumb/Breadcrumb.tsx(77,17): error TS2322: Type '{ icon: string; size: "small"; kind: string; "aria-label": string; onClick: (() => void) | undefined; className: string; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/4-composites/Breadcrumb/Breadcrumb.tsx(124,13): error TS2322: Type '{ icon: string; size: "small"; kind: string; "aria-label": string; onClick: (e: MouseEvent<Element, MouseEvent>) => void; className: string; href: string | undefined; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/4-composites/Callout/Callout.tsx(138,17): error TS2322: Type '{ icon: string; size: "medium"; kind: string; onClick: (() => void) | undefined; "aria-label": string; className: string; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/4-composites/Chip/Chip.tsx(29,17): error TS2554: Expected 0 arguments, but got 1.
+src/design-system/4-composites/Chip/Chip.tsx(55,21): error TS2554: Expected 0 arguments, but got 1.
+src/design-system/4-composites/Dropdown/Dropdown.tsx(376,5): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Object literal may only specify known properties, and ''aria-expanded'' does not exist in type 'Partial<unknown> & Attributes'.
+src/design-system/4-composites/FileUpload/FileUpload.tsx(273,33): error TS2322: Type '"lg"' is not assignable to type 'IconSize | undefined'.
+src/design-system/4-composites/FilterTag/FilterTag.tsx(87,9): error TS2322: Type 'ForwardedRef<HTMLDivElement>' is not assignable to type 'Ref<HTMLButtonElement> | undefined'.
+  Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'Ref<HTMLButtonElement> | undefined'.
+    Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLButtonElement | null>'.
+      Type 'HTMLDivElement | null' is not assignable to type 'HTMLButtonElement | null'.
+        Type 'HTMLDivElement' is missing the following properties from type 'HTMLButtonElement': disabled, form, formAction, formEnctype, and 15 more.
+src/design-system/4-composites/Popover/Popover.tsx(130,5): error TS18046: 'children.props' is of type 'unknown'.
+src/design-system/4-composites/Popover/Popover.tsx(188,5): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Object literal may only specify known properties, and 'ref' does not exist in type 'Partial<unknown> & Attributes'.
+src/design-system/4-composites/SearchInput/SearchInput.tsx(14,18): error TS2430: Interface 'SearchInputProps' incorrectly extends interface 'Omit<InputHTMLAttributes<HTMLInputElement>, "size">'.
+  Types of property 'onChange' are incompatible.
+    Type '((value: string) => void) | undefined' is not assignable to type 'ChangeEventHandler<HTMLInputElement, HTMLInputElement> | undefined'.
+      Type '(value: string) => void' is not assignable to type 'ChangeEventHandler<HTMLInputElement, HTMLInputElement>'.
+        Types of parameters 'value' and 'event' are incompatible.
+          Type 'ChangeEvent<HTMLInputElement, HTMLInputElement>' is not assignable to type 'string'.
+src/design-system/4-composites/SearchInput/SearchInput.tsx(75,33): error TS2554: Expected 1 arguments, but got 0.
+src/design-system/4-composites/SearchInput/SearchInput.tsx(75,40): error TS2503: Cannot find namespace 'NodeJS'.
+src/design-system/4-composites/Table/TableActionBar.tsx(40,15): error TS2322: Type '{ children: (string | Element | undefined)[]; key: number; variant: "primary" | "secondary" | "tertiary" | "destructive"; size: "small"; onClick: () => void; disabled: boolean | undefined; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/design-system/4-composites/Table/TableColumnControl.tsx(165,17): error TS2322: Type '{ children: string; variant: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/design-system/4-composites/Table/TableColumnControl.tsx(169,15): error TS2322: Type '{ children: string; variant: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/design-system/4-composites/Table/TableColumnControl.tsx(172,15): error TS2322: Type '{ children: string; variant: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/design-system/4-composites/TaskCard/TaskCard.tsx(97,15): error TS2322: Type '"small"' is not assignable to type '"xs" | "xl" | "sm" | "md" | "lg" | undefined'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(208,15): error TS2322: Type '{ children: string; variant: string; color: "secondary"; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(224,17): error TS2322: Type '{ children: string; variant: string; color: "secondary"; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(231,19): error TS2322: Type '{ children: string; variant: string; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(243,21): error TS2322: Type '{ icon: string; size: "small"; kind: string; onClick: () => void | undefined; "aria-label": string; className: string | undefined; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(253,21): error TS2322: Type '{ icon: string; size: "small"; kind: string; onClick: () => void | undefined; "aria-label": string; className: string | undefined; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(266,19): error TS2322: Type '{ icon: string; size: "small"; kind: string; onClick: () => void; "aria-label": string; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(278,37): error TS2322: Type '"danger"' is not assignable to type '"success" | "primary" | "secondary" | "tertiary" | "error" | undefined'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(599,23): error TS2322: Type '{ children: string; variant: string; color: "secondary"; weight: "medium"; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(604,27): error TS2322: Type '{ children: string; variant: string; color: "secondary"; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(629,29): error TS2322: Type '{ children: string; variant: string; weight: "medium"; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(632,52): error TS2322: Type '{ children: string; variant: string; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(644,23): error TS2322: Type '{ children: string; variant: string; color: "secondary"; weight: "medium"; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(660,27): error TS2322: Type '{ children: string; variant: string; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(675,33): error TS2322: Type '"large"' is not assignable to type 'IconSize | undefined'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(677,15): error TS2322: Type '{ children: string[]; variant: string; color: "secondary"; align: string; }' is not assignable to type 'IntrinsicAttributes & TextProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & TextProps'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(704,13): error TS2322: Type '{ icon: string; size: "small"; kind: string; onClick: (() => void) | undefined; "aria-label": string; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(715,13): error TS2322: Type '{ icon: string; size: "small"; kind: string; onClick: (() => void) | undefined; "aria-label": string; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(724,13): error TS2322: Type '{ icon: string; size: "small"; kind: string; onClick: (() => void) | undefined; "aria-label": string; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/5-patterns/AIChat/AIChat.tsx(733,13): error TS2322: Type '{ icon: string; size: "small"; kind: string; onClick: (() => void) | undefined; "aria-label": string; }' is not assignable to type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+  Property 'kind' does not exist on type 'IntrinsicAttributes & IconButtonProps & RefAttributes<HTMLButtonElement>'.
+src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx(165,17): error TS2322: Type '{ children: string; variant: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx(169,15): error TS2322: Type '{ children: string; variant: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/design-system/5-patterns/DataTable/DataTableColumnControl.tsx(172,15): error TS2322: Type '{ children: string; variant: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & ButtonProps & RefAttributes<HTMLButtonElement | HTMLAnchorElement>'.
+src/design-system/5-patterns/LocalNav/LocalNav.tsx(281,49): error TS2322: Type '{ children: Element; content: string; side: string; }' is not assignable to type 'IntrinsicAttributes & TooltipProps'.
+  Property 'side' does not exist on type 'IntrinsicAttributes & TooltipProps'.
+src/design-system/5-patterns/LocalNav/LocalNav.tsx(442,77): error TS2322: Type '{ children: Element; content: string; side: string; }' is not assignable to type 'IntrinsicAttributes & TooltipProps'.
+  Property 'side' does not exist on type 'IntrinsicAttributes & TooltipProps'.
+src/design-system/6-layouts/DocuSignShell/DocuSignShell.tsx(4,15): error TS2305: Module '"../../5-patterns/GlobalNav"' has no exported member 'GlobalNavProps'.
+src/design-system/6-layouts/DocuSignShell/DocuSignShell.tsx(6,15): error TS2305: Module '"../../5-patterns/LocalNav"' has no exported member 'LocalNavProps'.
+src/design-system/6-layouts/DocuSignShell/DocuSignShell.tsx(65,14): error TS2741: Property 'sections' is missing in type '{}' but required in type 'LocalNavProps'.

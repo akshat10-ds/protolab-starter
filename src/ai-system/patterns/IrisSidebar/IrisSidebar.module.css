@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 
 /* =============================================================================
    IrisSidebar — wraps LocalNav with brand CTA, conversation history
@@ -309,4 +308,85 @@
 /* Hide when sidebar is collapsed */
 .wrapper:has([class*='navCollapsed']) .organizeMenu {
   display: none;
+}
+
+/* =============================================================================
+   Conversation row marks — 2026-08-24
+
+   ONE VOCABULARY ACROSS THREE SURFACES. `unreadDot` / `runningDot` /
+   `needsYouDot` are the same three class names `HeaderMenu` and
+   `ZeroQueryActions` use for the same three marks. They were `convUnread` and
+   friends here for one day, and that cost a debugging cycle: a live-DOM check
+   for `*runningDot` came back empty on a sidebar row and read as "the marks
+   never shipped", when it had only queried the one surface that named them
+   something else. Three surfaces, one selector.
+
+   A thread you are not in can still be working, waiting, or unread. These are
+   the three marks that say so, and they are deliberately the smallest thing
+   that can: a 6px dot. THIS IS A LIST, NOT A DASHBOARD — a row that has nothing
+   to report carries no mark at all and is the plain title it always was.
+   ============================================================================= */
+
+.convRow {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+  min-width: 0;
+}
+
+/* The title keeps the ellipsis, so a long one clips before a mark does. */
+.convTitle {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.unreadDot,
+.runningDot,
+.needsYouDot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--ink-radius-size-full);
+}
+
+/* Leading, accented — the one mark in the row that is about you, not the agent. */
+.unreadDot {
+  background: var(--ink-icon-color-accent);
+}
+
+/*
+ * THE PULSE IS THE SAME PULSE. `AgentThinking`'s next-step dot already breathes
+ * at this timing; the row borrows the motion rather than inventing a second
+ * "something is happening" idiom. Shimmer is the system's other live signal and
+ * it is wrong here — a sweep across every working row turns a quiet list loud.
+ */
+.runningDot {
+  background: var(--ink-neutral-fade-70);
+  animation: convDotPulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Stopped, waiting on a person. Same weight, no motion — that is the whole
+   difference, and it is enough. */
+.needsYouDot {
+  background: var(--ink-neutral-fade-70);
+}
+
+@keyframes convDotPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .runningDot {
+    animation: none;
+  }
 }

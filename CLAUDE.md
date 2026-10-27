@@ -1,66 +1,51 @@
 # ProtoLab Starter
 
-Ink Design System starter template — 63 production components, ready to prototype with AI.
+**Read [AGENTS.md](AGENTS.md) first — it holds the rules for building in this
+project (use `@/design-system`, never hand-roll UI, tokens not hex values, page
+conventions).** This file only covers the Claude Code specifics on top of it.
 
-## What This Is
+## Skills
 
-A Vite + React + TypeScript project pre-loaded with the complete Ink Design System (Docusign's component library). Use it to build high-fidelity prototypes that look and behave like the real product.
+| Skill | What it does |
+|---|---|
+| `/deploy` | Commit + push → shareable Vercel preview URL |
+| `/fork` | Build on top of another team member's prototype |
+| `/handoff` | Generate an engineer handoff doc with component inventory |
+| `/update` | Check for and apply design system component updates |
+| `/onboard` | Verify setup and show the getting-started guide |
+| `/reference-to-prototype` | Capture a live Docusign page and rebuild it with Ink components |
 
-## ProtoLab MCP (auto-connected)
+Definitions live in `.claude/skills/`.
 
-This project is connected to the ProtoLab MCP server via `.mcp.json`. The MCP provides:
+## Figma
 
-- **Composition intelligence** — knows how to combine components correctly
-- **Validation** — checks your code for wrong props, missing imports, hardcoded values
-- **Figma integration** — translates Figma designs to Ink components
-- **Component search** — find the right component for any UI need
+Handed a Figma frame or URL? Read [docs/figma-to-prototype.md](docs/figma-to-prototype.md)
+— name crosswalk, token mapping, and what to do about unmapped components.
+Coverage index: [docs/figma-code-connect.md](docs/figma-code-connect.md).
+The repaired inventory has 83 local template files, with 81 active targets and
+unresolved Alert/Popover stubs. Child/variant templates do not count as separate
+public families, and local files do not prove published Figma registration.
 
-### Recommended entry point
+## ProtoLab MCP (optional)
 
-Use the `plan_prototype` prompt for new screens:
-> "Build me a settings page with a sidebar, form fields, and a save button"
+`.mcp.json` connects to a hosted MCP server that adds component search,
+validation, and Figma translation tools. It's a convenience, not a requirement —
+the public Ink catalog is already in this repo, so everything works if the server is
+unreachable or you removed the config.
 
-The MCP will analyze your request, map it to Ink components, show you a layout plan, and then build it.
+The catalog now includes EmptyState, SegmentedControl, SelectTile/SelectTileGroup,
+PreviewCard, Panel/Rail, Toast, Tree, WorkflowStepper, ColorPicker, StarRating,
+ZoomControl, Hotspot, Meter, Tag, ToggleButton and AvatarGroup. Check the
+`@/design-system` barrel and current props before composing an approximation.
 
-## Available Skills
-
-- `/deploy` — commit + push → get a shareable Vercel preview URL
-- `/fork` — build on top of another team member's prototype
-- `/handoff` — generate engineer handoff document with component inventory
-- `/update` — check for and apply design system component updates
-- `/onboard` — verify setup and show getting-started guide
-
-## Design System Structure
-
-Components are organized in 6 layers (higher layers compose lower ones):
-
-```
-src/design-system/
-├── 1-tokens/      — CSS custom properties (colors, spacing, typography)
-├── 2-utilities/   — Stack, Grid, Inline, Container, Spacer
-├── 3-primitives/  — Button, Input, Card, Icon, Badge, Select, ...
-├── 4-composites/  — Modal, Tabs, ComboBox, Accordion, Dropdown, ...
-├── 5-patterns/    — DataTable, GlobalNav, LocalNav, PageHeader, FilterBar, ...
-└── 6-layouts/     — DocuSignShell, AgreementTableView
-```
-
-All components are imported from `@/design-system`:
-```tsx
-import { Button, DataTable, DocuSignShell } from '@/design-system';
-```
+When it is connected, the `plan_prototype` prompt is a good entry point for a
+new screen: it maps the request to components and shows a layout plan before
+building.
 
 ## Commands
 
 ```bash
-npm run dev      # Start dev server
+npm run dev      # http://localhost:5173
 npm run build    # Production build
 npm run preview  # Preview production build
 ```
-
-## Key Conventions
-
-- **DocuSignShell** wraps every page — always include `globalNav` and optionally `localNav`
-- **DataTable** is data-driven — pass `columns` + `data`, never use children
-- **Tables are NOT wrapped in Cards** (Docusign convention)
-- Use **design tokens** (CSS custom properties) — never hardcode colors or spacing
-- Import all components from `@/design-system` barrel export

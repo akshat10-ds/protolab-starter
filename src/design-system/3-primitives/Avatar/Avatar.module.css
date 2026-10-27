@@ -6,7 +6,8 @@
   color: var(--ink-neutral-70);
   font-family: var(--ink-font-family);
   font-weight: var(--ink-font-weight-medium); /* 500 from Figma */
-  overflow: hidden;
+  position: relative;
+  overflow: visible;
   flex-shrink: 0;
 }
 
@@ -62,6 +63,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: inherit;
 }
 
 .initials {
@@ -79,8 +81,7 @@
 }
 
 .placeholder {
-  width: 60%;
-  height: 60%;
+  flex-shrink: 0;
   color: var(--ink-icon-color-emphasis); /* #130032 */
 }
 
@@ -139,4 +140,21 @@
 .colorsign {
   background-color: var(--ink-recipient-bg-color-sign);
   color: var(--ink-recipient-font-color-sign);
+}
+
+.shadow { box-shadow: var(--ink-shadow-elevated); }
+.border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--ink-focus-width) solid var(--ink-white-100);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.badge {
+  position: absolute;
+  right: calc(-1 * var(--ink-spacing-50));
+  bottom: calc(-1 * var(--ink-spacing-50));
+  border-radius: var(--ink-radius-size-full);
+  display: inline-flex;
 }

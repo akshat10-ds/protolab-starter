@@ -1,6 +1,5 @@
 /* Ink Design System - Slider Component Styles */
 /* Updated to match Figma specifications */
-@import '../../1-tokens/tokens.css';
 
 .wrapper {
   display: flex;

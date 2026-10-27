@@ -19,8 +19,23 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--ink-spacing-100);
+  gap: var(--ink-spacing-50);
   width: 100%;
+}
+
+/*
+ * "Suggestions" — the section label above the stack. Frame 381:51512: 12/600 at
+ * `font-color-subtle`, 4px to the first row. It names the species so the rows
+ * do not have to: with one icon for every suggestion and no type badge, this
+ * line is where the taxonomy is said, once.
+ */
+.sectionLabel {
+  margin: 0 0 var(--ink-spacing-50) 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-semibold);
+  line-height: 1.5;
+  color: var(--ink-font-color-neutral-subtle);
 }
 
 /* ---------------------------------------------------------------------------
@@ -30,7 +45,8 @@
 .row {
   display: flex;
   align-items: center;
-  gap: var(--ink-spacing-100);
+  /* 4px, per frame 381:51512 — the icon and its label are one phrase. */
+  gap: var(--ink-spacing-50);
   /*
    * The tint reaches the composer card's edge; the icon and label do not.
    *
@@ -52,7 +68,14 @@
 
   width: calc(100% + var(--zq-row-bleed) * 2);
   margin-inline: calc(var(--zq-row-bleed) * -1);
-  padding: var(--ink-spacing-100) var(--zq-pad, var(--zq-row-bleed));
+  /*
+   * 8 / 16 / 8 / left, per frame 381:51512. The RIGHT is always 16 — it is the
+   * frame's number and it is what the bleed already produced on the cold state,
+   * so nothing moves there. Only the LEFT is a knob, because only the left has
+   * two alignments to satisfy.
+   */
+  padding: var(--ink-spacing-100) var(--ink-spacing-200) var(--ink-spacing-100)
+    var(--zq-pad, var(--zq-row-bleed));
   border: none;
   border-radius: var(--ink-radius-size-xs);
   background: none;
@@ -114,6 +137,11 @@
    Label
    --------------------------------------------------------------------------- */
 
+/*
+ * 14 / Medium at `font-color-subtle`. Frame 381:51512 dropped it a step from
+ * the Semibold-on-default this carried: the row is a suggestion, not a heading,
+ * and a stack of them at heading weight competed with the greeting above.
+ */
 .label {
   flex: 1;
   min-width: 0;
@@ -122,8 +150,8 @@
   align-items: center;
   font-size: var(--ink-font-body-s-size);
   line-height: var(--ink-font-body-s-line-height);
-  font-weight: var(--ink-font-weight-semibold);
-  color: var(--ink-font-color-default);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-neutral-subtle);
 }
 
 /* ---------------------------------------------------------------------------
@@ -175,5 +203,52 @@
     animation: none;
     opacity: 1;
     transform: none;
+  }
+}
+
+/*
+ * Conversation marks — 2026-08-24. The third copy of the sidebar's three dots,
+ * because the compact menu draws history through these rows and a thread that
+ * is working has to say so wherever it is listed.
+ *
+ * Written out rather than shared: CSS-module keyframes are file-scoped, and a
+ * 6px dot in three files is a smaller thing to keep in step than a shared
+ * stylesheet with three importers.
+ */
+.unreadDot,
+.runningDot,
+.needsYouDot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--ink-radius-size-full);
+}
+
+.unreadDot {
+  background: var(--ink-icon-color-accent);
+}
+
+.runningDot {
+  background: var(--ink-neutral-fade-70);
+  animation: zeroQueryDotPulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.needsYouDot {
+  background: var(--ink-neutral-fade-70);
+}
+
+@keyframes zeroQueryDotPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .runningDot {
+    animation: none;
   }
 }

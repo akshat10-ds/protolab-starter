@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-21",
+  "tokens": {
+    "variables": 855,
+    "values": 3380,
+    "styles": 49,
+    "totalChecks": 10844,
+    "failures": 0
+  },
+  "checks": {
+    "starterTypecheck": "pass",
+    "starterBuild": "pass",
+    "appAudit": {
+      "baseline": false,
+      "findings": 0
+    },
+    "tokenTests": {
+      "passed": 11
+    },
+    "upstreamTests": {
+      "passed": 257,
+      "skipped": 5
+    },
+    "canonicalAiTests": {
+      "passed": 8
+    },
+    "preparedAiTests": {
+      "passed": 4
+    },
+    "canonicalAndPreparedSourceContracts": "pass",
+    "templateContracts": "pass",
+    "browser": "10,844 computed CSS checks passed; Home, Agreements and Iris rendered"
+  },
+  "bundleHash": "7428ea7b76fb3f5d",
+  "css": {
+    "bytes": 873110,
+    "gzipBytes": 107730
+  },
+  "remainingLimits": [
+    "Checks are pinned to the verified 2026-10-21 Figma snapshot; later changes require a fresh read-only export.",
+    "Token/style values are synchronized; exhaustive component/flow pixel parity is a separate scope.",
+    "The existing JavaScript chunk-size advisory remains; production build succeeds."
+  ]
+}

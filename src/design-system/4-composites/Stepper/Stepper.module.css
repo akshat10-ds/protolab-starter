@@ -1,6 +1,5 @@
 /* Ink Design System - Stepper Component Styles */
 /* Ported from [ds-ui] [INK] Progress Stepper (851:8080) + ProgressStepper.Item (523:25136). */
-@import '../../1-tokens/tokens.css';
 
 .stepper {
   display: flex;
@@ -239,3 +238,14 @@
 .disabled:hover .stepIconWrapper {
   transform: none;
 }
+
+.visited .stepIconWrapper { background: var(--ink-status-bg-color-past); color: var(--ink-icon-color-emphasis); }
+.visited .connector { background: var(--ink-bar-track-color-visited); }
+.compact { display: flex; align-items: center; justify-content: space-between; gap: var(--ink-spacing-200); font-family: var(--ink-font-family); }
+.compactTitle { font-size: var(--ink-font-body-m-size); font-weight: var(--ink-font-weight-medium); color: var(--ink-font-color-default); }
+.progressRing { display: grid; place-items: center; width: var(--ink-spacing-600); height: var(--ink-spacing-600); border-radius: var(--ink-radius-full); background: conic-gradient(var(--ink-bar-track-color-visited) var(--step-progress), var(--ink-bar-track-color-default) 0); flex-shrink: 0; }
+.progressRing > span { display: grid; place-items: center; width: var(--ink-spacing-500); height: var(--ink-spacing-500); border-radius: var(--ink-radius-full); background: var(--ink-bg-color-default); color: var(--ink-font-color-default); font-size: var(--ink-font-detail-s-size); }
+
+.compactTitle, .compact .stepDescription { font-size: var(--ink-font-body-s-size); line-height: var(--ink-font-body-s-line-height); }
+.progressRing { width: var(--ink-spacing-500); height: var(--ink-spacing-500); background: conic-gradient(var(--ink-bar-fill-color-default) var(--step-progress), var(--ink-bar-track-color-default) 0); }
+.progressRing > span { width: var(--ink-spacing-400); height: var(--ink-spacing-400); font-size: var(--ink-font-detail-xs-size); }

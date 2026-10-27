@@ -1,0 +1,32 @@
+{
+  "reason": "Untracked compiler-emitted sibling files from the same14:21:19burst as isolated source outputs. Preserved outside source before browser integration.",
+  "files": [
+    {
+      "path": "src/App.js",
+      "bytes": 162519,
+      "modified": "2026-10-20T14:21:19.600033",
+      "sha256": "12000196d5e4e3b30b528e7016c38887697728899cf11b251cc376458cb5eedd",
+      "tsSiblings": [
+        "src/App.tsx"
+      ]
+    },
+    {
+      "path": "src/iris/scenarios.js",
+      "bytes": 36785,
+      "modified": "2026-10-20T14:21:19.578535",
+      "sha256": "36a34ce138e82bf5c4a6f5ab14e52d26f63bca9287ac99cc77e7c34da08921df",
+      "tsSiblings": [
+        "src/iris/scenarios.tsx"
+      ]
+    },
+    {
+      "path": "src/lib/utils.js",
+      "bytes": 143,
+      "modified": "2026-10-20T14:21:19.308562",
+      "sha256": "b214b943f98fa626793e534455395469649352c879007ef0e8d0dda26fb64ee1",
+      "tsSiblings": [
+        "src/lib/utils.ts"
+      ]
+    }
+  ]
+}

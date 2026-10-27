@@ -1,0 +1,2747 @@
+{
+  "scope": "Supplement to component-file audit: current System page only; Third Party/File Type/Country Flags/Brand pages not compared to runtime.",
+  "fileKey": "Y7VyYvcCvXjG1pgeXicozZ",
+  "counts": {
+    "systemMasters": 589,
+    "deprecatedMasters": 7,
+    "active24pxMasters": 291,
+    "active20pxMasters": 291,
+    "localPathEntries": 300,
+    "directNameMatches": 285,
+    "documentedAliasMatches": 9
+  },
+  "localToFigma": [
+    {
+      "localName": "sliders-horizontal",
+      "viewBox": "0 0 24 24",
+      "figmaName": null,
+      "figmaId": null,
+      "mapping": "unmatched",
+      "figmaVectorCount": null,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "align-bottom",
+      "viewBox": "0 0 24 24",
+      "figmaName": "alignBottom",
+      "figmaId": "8:3424",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "align-center",
+      "viewBox": "0 0 24 24",
+      "figmaName": "alignCenter",
+      "figmaId": "1258:242",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "align-end",
+      "viewBox": "0 0 24 24",
+      "figmaName": "alignEnd",
+      "figmaId": "8:3445",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "align-mid",
+      "viewBox": "0 0 24 24",
+      "figmaName": "alignMid",
+      "figmaId": "1258:241",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "align-start",
+      "viewBox": "0 0 24 24",
+      "figmaName": "alignStart",
+      "figmaId": "8:3507",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "align-top",
+      "viewBox": "0 0 24 24",
+      "figmaName": "alignTop",
+      "figmaId": "8:3517",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "ai-flow",
+      "viewBox": "0 0 24 24",
+      "figmaName": "aiFlow",
+      "figmaId": "6516:12",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "ai-iris",
+      "viewBox": "0 0 24 24",
+      "figmaName": "AI_iris",
+      "figmaId": "2800:343",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 9,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "ai-iris-filled",
+      "viewBox": "0 0 24 24",
+      "figmaName": null,
+      "figmaId": null,
+      "mapping": "unmatched",
+      "figmaVectorCount": null,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "ai-spark",
+      "viewBox": "0 0 24 24",
+      "figmaName": "AI_spark",
+      "figmaId": "2800:345",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "ai-spark-filled",
+      "viewBox": "0 0 24 24",
+      "figmaName": "AI_sparkFilled",
+      "figmaId": "2800:347",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrow-down",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowDown",
+      "figmaId": "8:3502",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrow-left",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowLeft",
+      "figmaId": "8:3592",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrow-nested",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowNested",
+      "figmaId": "3964:133",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrow-nested-small",
+      "viewBox": "0 0 16 16",
+      "figmaName": null,
+      "figmaId": null,
+      "mapping": "unmatched",
+      "figmaVectorCount": null,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrow-right",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowRight",
+      "figmaId": "8:3479",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrow-up",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowUp",
+      "figmaId": "8:3591",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrow-up-left",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowUpLeft",
+      "figmaId": "8:3588",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrow-up-right",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowUpRight",
+      "figmaId": "1258:238",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrows-in",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowsIn",
+      "figmaId": "3397:192",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "arrows-out",
+      "viewBox": "0 0 24 24",
+      "figmaName": "arrowsOut",
+      "figmaId": "3397:194",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "at",
+      "viewBox": "0 0 24 24",
+      "figmaName": "at",
+      "figmaId": "8:3562",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "audio-wave",
+      "viewBox": "0 0 24 24",
+      "figmaName": "audioWave",
+      "figmaId": "1258:240",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "award",
+      "viewBox": "0 0 24 24",
+      "figmaName": "award",
+      "figmaId": "8:3440",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bag",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bag",
+      "figmaId": "1258:237",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bell",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bell",
+      "figmaId": "8:3527",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bell-filled",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bellFilled",
+      "figmaId": "2738:25",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bell-slash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bellSlash",
+      "figmaId": "1258:239",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bold",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bold",
+      "figmaId": "8:3580",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bolt",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bolt",
+      "figmaId": "1259:278",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "book",
+      "viewBox": "0 0 24 24",
+      "figmaName": "book",
+      "figmaId": "2055:47",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "book-open",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bookOpen",
+      "figmaId": "8:1307",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "book-person",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bookPerson",
+      "figmaId": "8:3436",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bookmark",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bookmark",
+      "figmaId": "1259:277",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bookmark-filled",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bookmarkFilled",
+      "figmaId": "3987:133",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "boolean",
+      "viewBox": "0 0 24 24",
+      "figmaName": null,
+      "figmaId": null,
+      "mapping": "unmatched",
+      "figmaVectorCount": null,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "box-plus-above",
+      "viewBox": "0 0 24 24",
+      "figmaName": "boxPlusAbove",
+      "figmaId": "8:3460",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "box-plus-after",
+      "viewBox": "0 0 24 24",
+      "figmaName": "boxPlusAfter",
+      "figmaId": "8:3579",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "box-plus-before",
+      "viewBox": "0 0 24 24",
+      "figmaName": "boxPlusBefore",
+      "figmaId": "8:3509",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "box-plus-below",
+      "viewBox": "0 0 24 24",
+      "figmaName": "boxPlusBelow",
+      "figmaId": "8:3578",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "briefcase",
+      "viewBox": "0 0 24 24",
+      "figmaName": "briefcase",
+      "figmaId": "2055:48",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "brightness",
+      "viewBox": "0 0 24 24",
+      "figmaName": "brightness",
+      "figmaId": "8:3523",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "browser",
+      "viewBox": "0 0 24 24",
+      "figmaName": "browser",
+      "figmaId": "8:3581",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "building-civic",
+      "viewBox": "0 0 24 24",
+      "figmaName": "buildingCivic",
+      "figmaId": "8:3552",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "building-company",
+      "viewBox": "0 0 24 24",
+      "figmaName": "buildingCompany",
+      "figmaId": "8:3555",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "building-generic",
+      "viewBox": "0 0 24 24",
+      "figmaName": "buildingGeneric",
+      "figmaId": "1258:246",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "building-person",
+      "viewBox": "0 0 24 24",
+      "figmaName": "buildingPerson",
+      "figmaId": "3015:23",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "bulleted-list",
+      "viewBox": "0 0 24 24",
+      "figmaName": "bulletedList",
+      "figmaId": "8:3576",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "calendar",
+      "viewBox": "0 0 24 24",
+      "figmaName": "calendar",
+      "figmaId": "8:3427",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "camera",
+      "viewBox": "0 0 24 24",
+      "figmaName": "camera",
+      "figmaId": "8:3590",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "carbon-copy",
+      "viewBox": "0 0 24 24",
+      "figmaName": "carbonCopy",
+      "figmaId": "3082:119",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "certificate",
+      "viewBox": "0 0 24 24",
+      "figmaName": "certificate",
+      "figmaId": "8:3559",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "chart-bar",
+      "viewBox": "0 0 24 24",
+      "figmaName": "chartBar",
+      "figmaId": "8:3439",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "chart-pie",
+      "viewBox": "0 0 24 24",
+      "figmaName": "chartPie",
+      "figmaId": "1258:249",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "check",
+      "viewBox": "0 0 24 24",
+      "figmaName": "check",
+      "figmaId": "8:3415",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "checkbox",
+      "viewBox": "0 0 24 24",
+      "figmaName": "checkbox",
+      "figmaId": "8:3419",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "chevron-down",
+      "viewBox": "0 0 24 24",
+      "figmaName": "chevronDown",
+      "figmaId": "8:3442",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "chevron-left",
+      "viewBox": "0 0 24 24",
+      "figmaName": "chevronLeft",
+      "figmaId": "8:3587",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "chevron-right",
+      "viewBox": "0 0 24 24",
+      "figmaName": "chevronRight",
+      "figmaId": "8:3437",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "chevron-up",
+      "viewBox": "0 0 24 24",
+      "figmaName": "chevronUp",
+      "figmaId": "8:3586",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "clear-formatting",
+      "viewBox": "0 0 24 24",
+      "figmaName": "clearFormatting",
+      "figmaId": "4948:58",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "clipboard",
+      "viewBox": "0 0 24 24",
+      "figmaName": "clipboard",
+      "figmaId": "8:3558",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "clock",
+      "viewBox": "0 0 24 24",
+      "figmaName": "clock",
+      "figmaId": "8:3567",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "close",
+      "viewBox": "0 0 24 24",
+      "figmaName": "close",
+      "figmaId": "8:3584",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "cloud-download",
+      "viewBox": "0 0 24 24",
+      "figmaName": "cloudDownload",
+      "figmaId": "1258:247",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "cloud-upload",
+      "viewBox": "0 0 24 24",
+      "figmaName": "cloudUpload",
+      "figmaId": "8:3557",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "code-bracket",
+      "viewBox": "0 0 24 24",
+      "figmaName": "codeBracket",
+      "figmaId": "8:3556",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "color-filter",
+      "viewBox": "0 0 24 24",
+      "figmaName": "colorFilter",
+      "figmaId": "8:3406",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "comment",
+      "viewBox": "0 0 24 24",
+      "figmaName": "comment",
+      "figmaId": "8:3457",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "comment-pencil",
+      "viewBox": "0 0 24 24",
+      "figmaName": "commentPencil",
+      "figmaId": "8:3554",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "comment-plus",
+      "viewBox": "0 0 24 24",
+      "figmaName": "commentPlus",
+      "figmaId": "8:3426",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "compare",
+      "viewBox": "0 0 24 24",
+      "figmaName": "compare",
+      "figmaId": "4533:33",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "compass",
+      "viewBox": "0 0 24 24",
+      "figmaName": "compass",
+      "figmaId": "1258:251",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "computer-chip",
+      "viewBox": "0 0 24 24",
+      "figmaName": "computerChip",
+      "figmaId": "1258:250",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "container-enlarge",
+      "viewBox": "0 0 24 24",
+      "figmaName": "containerEnlarge",
+      "figmaId": "1258:252",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "container-reduce",
+      "viewBox": "0 0 24 24",
+      "figmaName": "containerReduce",
+      "figmaId": "1258:253",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "control-fast-forward",
+      "viewBox": "0 0 24 24",
+      "figmaName": "controlFastForward",
+      "figmaId": "1258:255",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "control-next",
+      "viewBox": "0 0 24 24",
+      "figmaName": "controlNext",
+      "figmaId": "1258:254",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "control-pause",
+      "viewBox": "0 0 24 24",
+      "figmaName": "controlPause",
+      "figmaId": "451:174",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "control-play",
+      "viewBox": "0 0 24 24",
+      "figmaName": "controlPlay",
+      "figmaId": "451:173",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "control-previous",
+      "viewBox": "0 0 24 24",
+      "figmaName": "controlPrevious",
+      "figmaId": "1259:256",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "control-rewind",
+      "viewBox": "0 0 24 24",
+      "figmaName": "controlRewind",
+      "figmaId": "1259:257",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "control-stop",
+      "viewBox": "0 0 24 24",
+      "figmaName": "controlStop",
+      "figmaId": "451:175",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "credit-card",
+      "viewBox": "0 0 24 24",
+      "figmaName": "creditCard",
+      "figmaId": "8:3537",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "crop",
+      "viewBox": "0 0 24 24",
+      "figmaName": "crop",
+      "figmaId": "8:3516",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "crown",
+      "viewBox": "0 0 24 24",
+      "figmaName": "crown",
+      "figmaId": "1106:13",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "currency-dollar",
+      "viewBox": "0 0 24 24",
+      "figmaName": "currencyDollar",
+      "figmaId": "1259:259",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "currency-euro",
+      "viewBox": "0 0 24 24",
+      "figmaName": "currencyEuro",
+      "figmaId": "1259:260",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "currency-general",
+      "viewBox": "0 0 24 24",
+      "figmaName": "currencyGeneral",
+      "figmaId": "1259:261",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "currency-rupes",
+      "viewBox": "0 0 24 24",
+      "figmaName": "currencyRupes",
+      "figmaId": "1259:262",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "data-read",
+      "viewBox": "0 0 24 24",
+      "figmaName": "dataRead",
+      "figmaId": "1259:263",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "data-read-write",
+      "viewBox": "0 0 24 24",
+      "figmaName": "dataReadWrite",
+      "figmaId": "1259:264",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "data-server",
+      "viewBox": "0 0 24 24",
+      "figmaName": "dataServer",
+      "figmaId": "1259:265",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "data-stack",
+      "viewBox": "0 0 24 24",
+      "figmaName": "dataStack",
+      "figmaId": "1259:266",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "device-desktop",
+      "viewBox": "0 0 24 24",
+      "figmaName": "deviceDesktop",
+      "figmaId": "8:3497",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "device-keyboard",
+      "viewBox": "0 0 24 24",
+      "figmaName": "deviceKeyboard",
+      "figmaId": "1259:269",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "device-laptop",
+      "viewBox": "0 0 24 24",
+      "figmaName": "deviceLaptop",
+      "figmaId": "1259:270",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "device-mobile",
+      "viewBox": "0 0 24 24",
+      "figmaName": "deviceMobile",
+      "figmaId": "8:3474",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "device-tablet",
+      "viewBox": "0 0 24 24",
+      "figmaName": "deviceTablet",
+      "figmaId": "8:3471",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "devices",
+      "viewBox": "0 0 24 24",
+      "figmaName": "devices",
+      "figmaId": "8:3520",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "diamond-stack",
+      "viewBox": "0 0 24 24",
+      "figmaName": "diamondStack",
+      "figmaId": "302:53",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "document",
+      "viewBox": "0 0 24 24",
+      "figmaName": "document",
+      "figmaId": "8:3585",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "document-empty",
+      "viewBox": "0 0 24 24",
+      "figmaName": "documentEmpty",
+      "figmaId": "1259:273",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "document-gear",
+      "viewBox": "0 0 24 24",
+      "figmaName": "documentGear",
+      "figmaId": "3082:129",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "document-lock",
+      "viewBox": "0 0 24 24",
+      "figmaName": "documentLock",
+      "figmaId": "6308:17",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "document-pencil",
+      "viewBox": "0 0 24 24",
+      "figmaName": "documentPencil",
+      "figmaId": "8:3549",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "document-person",
+      "viewBox": "0 0 24 24",
+      "figmaName": "documentPerson",
+      "figmaId": "2055:49",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "document-plus",
+      "viewBox": "0 0 24 24",
+      "figmaName": "documentPlus",
+      "figmaId": "1259:274",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "document-stack",
+      "viewBox": "0 0 24 24",
+      "figmaName": "documentStack",
+      "figmaId": "8:3413",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "download",
+      "viewBox": "0 0 24 24",
+      "figmaName": "download",
+      "figmaId": "8:3541",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "duplicate",
+      "viewBox": "0 0 24 24",
+      "figmaName": "duplicate",
+      "figmaId": "8:3538",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "envelope",
+      "viewBox": "0 0 24 24",
+      "figmaName": "envelope",
+      "figmaId": "8:3469",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "envelope-open",
+      "viewBox": "0 0 24 24",
+      "figmaName": "envelopeOpen",
+      "figmaId": "1259:275",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "eraser",
+      "viewBox": "0 0 24 24",
+      "figmaName": "eraser",
+      "figmaId": "2618:132",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "export",
+      "viewBox": "0 0 24 24",
+      "figmaName": "export",
+      "figmaId": "8:3536",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "expression",
+      "viewBox": "0 0 24 24",
+      "figmaName": "expression",
+      "figmaId": "8:3465",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "external-link",
+      "viewBox": "0 0 24 24",
+      "figmaName": "externalLink",
+      "figmaId": "8:3443",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "eye",
+      "viewBox": "0 0 24 24",
+      "figmaName": "eye",
+      "figmaId": "8:3452",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "eye-slash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "eyeSlash",
+      "figmaId": "8:3490",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "eyedropper",
+      "viewBox": "0 0 24 24",
+      "figmaName": "eyedropper",
+      "figmaId": "8:3476",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "field",
+      "viewBox": "0 0 24 24",
+      "figmaName": "field",
+      "figmaId": "8:3535",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "field-insert",
+      "viewBox": "0 0 24 24",
+      "figmaName": "fieldInsert",
+      "figmaId": "3402:117",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "field-merge",
+      "viewBox": "0 0 24 24",
+      "figmaName": "fieldMerge",
+      "figmaId": "8:3433",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "filter",
+      "viewBox": "0 0 24 24",
+      "figmaName": "filter",
+      "figmaId": "8:3512",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "fingerprint",
+      "viewBox": "0 0 24 24",
+      "figmaName": "fingerprint",
+      "figmaId": "3019:4",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "flag",
+      "viewBox": "0 0 24 24",
+      "figmaName": "flag",
+      "figmaId": "8:3522",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "flash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "flash",
+      "figmaId": "8:3441",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "flash-slash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "flashSlash",
+      "figmaId": "8:3416",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "folder",
+      "viewBox": "0 0 24 24",
+      "figmaName": "folder",
+      "figmaId": "8:3420",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "folder-open",
+      "viewBox": "0 0 24 24",
+      "figmaName": "folderOpen",
+      "figmaId": "8:3411",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "folder-plus",
+      "viewBox": "0 0 24 24",
+      "figmaName": "folderPlus",
+      "figmaId": "1259:276",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "formula",
+      "viewBox": "0 0 24 24",
+      "figmaName": "formula",
+      "figmaId": "8:3545",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "forward",
+      "viewBox": "0 0 24 24",
+      "figmaName": "forward",
+      "figmaId": "2738:30",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "gear",
+      "viewBox": "0 0 24 24",
+      "figmaName": "gear",
+      "figmaId": "8:3531",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "gem",
+      "viewBox": "0 0 24 24",
+      "figmaName": "gem",
+      "figmaId": "1260:310",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "globe-language",
+      "viewBox": "0 0 24 24",
+      "figmaName": "globeLanguage",
+      "figmaId": "8:3498",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "gripper-bar",
+      "viewBox": "0 0 24 24",
+      "figmaName": "gripperBar",
+      "figmaId": "8:3529",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "heading",
+      "viewBox": "0 0 24 24",
+      "figmaName": "heading",
+      "figmaId": "8:3595",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "health",
+      "viewBox": "0 0 24 24",
+      "figmaName": "health",
+      "figmaId": "2055:42",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "help",
+      "viewBox": "0 0 24 24",
+      "figmaName": "help",
+      "figmaId": "8:3577",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "hierarchy",
+      "viewBox": "0 0 24 24",
+      "figmaName": "hierarchy",
+      "figmaId": "8:3525",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "highlighter",
+      "viewBox": "0 0 24 24",
+      "figmaName": "highlighter",
+      "figmaId": "4948:65",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "history",
+      "viewBox": "0 0 24 24",
+      "figmaName": "history",
+      "figmaId": "578:12",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "home",
+      "viewBox": "0 0 24 24",
+      "figmaName": "home",
+      "figmaId": "8:3483",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "id-badge",
+      "viewBox": "0 0 24 24",
+      "figmaName": "idBadge",
+      "figmaId": "1260:311",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "id-card",
+      "viewBox": "0 0 24 24",
+      "figmaName": "idCard",
+      "figmaId": "8:3524",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "image",
+      "viewBox": "0 0 24 24",
+      "figmaName": "image",
+      "figmaId": "8:3515",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "inbox",
+      "viewBox": "0 0 24 24",
+      "figmaName": "inbox",
+      "figmaId": "8:3481",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "initials",
+      "viewBox": "0 0 24 24",
+      "figmaName": "initials",
+      "figmaId": "451:149",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "insert",
+      "viewBox": "0 0 24 24",
+      "figmaName": "insert",
+      "figmaId": "8:3519",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "italics",
+      "viewBox": "0 0 24 24",
+      "figmaName": "italics",
+      "figmaId": "8:3575",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "key",
+      "viewBox": "0 0 24 24",
+      "figmaName": "key",
+      "figmaId": "2055:43",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "layout-card",
+      "viewBox": "0 0 24 24",
+      "figmaName": "layoutCard",
+      "figmaId": "8:3466",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "layout-detail",
+      "viewBox": "0 0 24 24",
+      "figmaName": "layoutDetail",
+      "figmaId": "8:3514",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "layout-grid",
+      "viewBox": "0 0 24 24",
+      "figmaName": "layoutGrid",
+      "figmaId": "8:3518",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "layout-hybrid",
+      "viewBox": "0 0 24 24",
+      "figmaName": "layoutHybrid",
+      "figmaId": "1260:312",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "leaf",
+      "viewBox": "0 0 24 24",
+      "figmaName": "leaf",
+      "figmaId": "1260:313",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "lightbulb",
+      "viewBox": "0 0 24 24",
+      "figmaName": "lightbulb",
+      "figmaId": "6662:41",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "line",
+      "viewBox": "0 0 24 24",
+      "figmaName": null,
+      "figmaId": null,
+      "mapping": "unmatched",
+      "figmaVectorCount": null,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "line-height",
+      "viewBox": "0 0 24 24",
+      "figmaName": "lineHeight",
+      "figmaId": "8:3528",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "link",
+      "viewBox": "0 0 24 24",
+      "figmaName": "link",
+      "figmaId": "8:3513",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "location-pin",
+      "viewBox": "0 0 24 24",
+      "figmaName": "locationPin",
+      "figmaId": "8:3464",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "lock",
+      "viewBox": "0 0 24 24",
+      "figmaName": "lock",
+      "figmaId": "8:3444",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "logic",
+      "viewBox": "0 0 24 24",
+      "figmaName": "logic",
+      "figmaId": "8:3462",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "margin",
+      "viewBox": "0 0 24 24",
+      "figmaName": "margin",
+      "figmaId": "1658:27",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "megaphone",
+      "viewBox": "0 0 24 24",
+      "figmaName": "megaphone",
+      "figmaId": "1260:314",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "menu",
+      "viewBox": "0 0 24 24",
+      "figmaName": "menu",
+      "figmaId": "8:3583",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "merge-cell",
+      "viewBox": "0 0 24 24",
+      "figmaName": "mergeCell",
+      "figmaId": "8:3574",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "messages",
+      "viewBox": "0 0 24 24",
+      "figmaName": "messages",
+      "figmaId": "8:3454",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "microphone",
+      "viewBox": "0 0 24 24",
+      "figmaName": "microphone",
+      "figmaId": "8:3511",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "microphone-slash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "microphoneSlash",
+      "figmaId": "8:3542",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "minus",
+      "viewBox": "0 0 24 24",
+      "figmaName": "minus",
+      "figmaId": "8:3499",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "movie",
+      "viewBox": "0 0 24 24",
+      "figmaName": "movie",
+      "figmaId": "1260:298",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "multi-arrow",
+      "viewBox": "0 0 24 24",
+      "figmaName": "multiArrow",
+      "figmaId": "8:3434",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "music-note",
+      "viewBox": "0 0 24 24",
+      "figmaName": "musicNote",
+      "figmaId": "1260:299",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "notary",
+      "viewBox": "0 0 24 24",
+      "figmaName": "notary",
+      "figmaId": "8:3506",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "note",
+      "viewBox": "0 0 24 24",
+      "figmaName": "note",
+      "figmaId": "8:3504",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "number",
+      "viewBox": "0 0 24 24",
+      "figmaName": "number",
+      "figmaId": "8:3493",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "number-global",
+      "viewBox": "0 0 24 24",
+      "figmaName": "numberGlobal",
+      "figmaId": "8:3409",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "numbered-list",
+      "viewBox": "0 0 24 24",
+      "figmaName": "numberedList",
+      "figmaId": "8:3510",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "overflow-horizontal",
+      "viewBox": "0 0 24 24",
+      "figmaName": "overflowHorizontal",
+      "figmaId": "8:3505",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "overflow-vertical",
+      "viewBox": "0 0 24 24",
+      "figmaName": "overflowVertical",
+      "figmaId": "8:3503",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "page-break",
+      "viewBox": "0 0 24 24",
+      "figmaName": "pageBreak",
+      "figmaId": "8:3573",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "paint-brush-line",
+      "viewBox": "0 0 24 24",
+      "figmaName": "paintBrushLine",
+      "figmaId": "451:150",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "paint-bucket",
+      "viewBox": "0 0 24 24",
+      "figmaName": "paintBucket",
+      "figmaId": "1260:300",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "paint-palette",
+      "viewBox": "0 0 24 24",
+      "figmaName": "paintPalette",
+      "figmaId": "8:3501",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "paint-roller",
+      "viewBox": "0 0 24 24",
+      "figmaName": "paintRoller",
+      "figmaId": "8:3495",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "panel",
+      "viewBox": "0 0 24 24",
+      "figmaName": "panel",
+      "figmaId": "6662:24",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "panel-filled",
+      "viewBox": "0 0 24 24",
+      "figmaName": "panelFilled",
+      "figmaId": "6662:26",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "paperclip",
+      "viewBox": "0 0 24 24",
+      "figmaName": "paperclip",
+      "figmaId": "8:3533",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "pencil",
+      "viewBox": "0 0 24 24",
+      "figmaName": "pencil",
+      "figmaId": "8:3472",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "pencil-box",
+      "viewBox": "0 0 24 24",
+      "figmaName": "pencilBox",
+      "figmaId": "3966:144",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "pencil-ruler",
+      "viewBox": "0 0 24 24",
+      "figmaName": "pencilRuler",
+      "figmaId": "1260:296",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "people",
+      "viewBox": "0 0 24 24",
+      "figmaName": "people",
+      "figmaId": "8:3461",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "people-witness",
+      "viewBox": "0 0 24 24",
+      "figmaName": "peopleWitness",
+      "figmaId": "3082:138",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "percent",
+      "viewBox": "0 0 24 24",
+      "figmaName": "percent",
+      "figmaId": "1260:302",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "person",
+      "viewBox": "0 0 24 24",
+      "figmaName": "person",
+      "figmaId": "8:3432",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "person-circle",
+      "viewBox": "0 0 24 24",
+      "figmaName": "personCircle",
+      "figmaId": "2055:50",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "person-plus",
+      "viewBox": "0 0 24 24",
+      "figmaName": "personPlus",
+      "figmaId": "8:3429",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "person-scan",
+      "viewBox": "0 0 24 24",
+      "figmaName": "personScan",
+      "figmaId": "1260:303",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "person-sign",
+      "viewBox": "0 0 24 24",
+      "figmaName": "personSign",
+      "figmaId": "3082:149",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "plugin",
+      "viewBox": "0 0 24 24",
+      "figmaName": "plugin",
+      "figmaId": "1260:304",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "plus",
+      "viewBox": "0 0 24 24",
+      "figmaName": "plus",
+      "figmaId": "8:3500",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "power",
+      "viewBox": "0 0 24 24",
+      "figmaName": "power",
+      "figmaId": "1260:305",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "printer",
+      "viewBox": "0 0 24 24",
+      "figmaName": "printer",
+      "figmaId": "8:3422",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "process-spinner",
+      "viewBox": "0 0 24 24",
+      "figmaName": "processSpinner",
+      "figmaId": "545:61",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "push-pin",
+      "viewBox": "0 0 24 24",
+      "figmaName": "pushPin",
+      "figmaId": "1260:306",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "radio",
+      "viewBox": "0 0 24 24",
+      "figmaName": "radio",
+      "figmaId": "8:3494",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "receipt",
+      "viewBox": "0 0 24 24",
+      "figmaName": "receipt",
+      "figmaId": "1260:307",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "redo",
+      "viewBox": "0 0 24 24",
+      "figmaName": "redo",
+      "figmaId": "8:3560",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "refresh",
+      "viewBox": "0 0 24 24",
+      "figmaName": "refresh",
+      "figmaId": "8:3582",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "reply",
+      "viewBox": "0 0 24 24",
+      "figmaName": "reply",
+      "figmaId": "2738:31",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "reply-all",
+      "viewBox": "0 0 24 24",
+      "figmaName": "replyAll",
+      "figmaId": "2738:32",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "rotate-left",
+      "viewBox": "0 0 24 24",
+      "figmaName": "rotateLeft",
+      "figmaId": "8:3570",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "rotate-right",
+      "viewBox": "0 0 24 24",
+      "figmaName": "rotateRight",
+      "figmaId": "8:3593",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "ruler",
+      "viewBox": "0 0 24 24",
+      "figmaName": "ruler",
+      "figmaId": "2055:44",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "scan",
+      "viewBox": "0 0 24 24",
+      "figmaName": "scan",
+      "figmaId": "8:3492",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "search",
+      "viewBox": "0 0 24 24",
+      "figmaName": "search",
+      "figmaId": "8:3530",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "select",
+      "viewBox": "0 0 24 24",
+      "figmaName": "select",
+      "figmaId": "8:3489",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "send",
+      "viewBox": "0 0 24 24",
+      "figmaName": "send",
+      "figmaId": "8:3438",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "settings",
+      "viewBox": "0 0 24 24",
+      "figmaName": "gear",
+      "figmaId": "8:3531",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "share-android",
+      "viewBox": "0 0 24 24",
+      "figmaName": "shareAndroid",
+      "figmaId": "8:3487",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "share-desktop",
+      "viewBox": "0 0 24 24",
+      "figmaName": "shareDesktop",
+      "figmaId": "8:3551",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "share-ios",
+      "viewBox": "0 0 24 24",
+      "figmaName": "shareIos",
+      "figmaId": "8:3482",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "share-web",
+      "viewBox": "0 0 24 24",
+      "figmaName": "shareWeb",
+      "figmaId": "8:3467",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "shield",
+      "viewBox": "0 0 24 24",
+      "figmaName": "shield",
+      "figmaId": "8:3480",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "shield-check",
+      "viewBox": "0 0 24 24",
+      "figmaName": "shieldCheck",
+      "figmaId": "8:3478",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "shopping-cart",
+      "viewBox": "0 0 24 24",
+      "figmaName": "shoppingCart",
+      "figmaId": "2055:45",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "sign",
+      "viewBox": "0 0 24 24",
+      "figmaName": "sign",
+      "figmaId": "8:3456",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "signal",
+      "viewBox": "0 0 24 24",
+      "figmaName": "signal",
+      "figmaId": "1260:308",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "sort",
+      "viewBox": "0 0 24 24",
+      "figmaName": "sort",
+      "figmaId": "1260:309",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "spark",
+      "viewBox": "0 0 24 24",
+      "figmaName": "AI_spark",
+      "figmaId": "2800:345",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "speedometer",
+      "viewBox": "0 0 24 24",
+      "figmaName": "speedometer",
+      "figmaId": "8:3418",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "stamp",
+      "viewBox": "0 0 24 24",
+      "figmaName": "stamp",
+      "figmaId": "8:3475",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "star",
+      "viewBox": "0 0 24 24",
+      "figmaName": "star",
+      "figmaId": "8:3477",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "star-filled",
+      "viewBox": "0 0 24 24",
+      "figmaName": "starFilled",
+      "figmaId": "8:3449",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "status-check",
+      "viewBox": "0 0 24 24",
+      "figmaName": "statusCheck",
+      "figmaId": "8:3572",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "status-end",
+      "viewBox": "0 0 24 24",
+      "figmaName": "statusEnd",
+      "figmaId": "2761:128",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "status-error",
+      "viewBox": "0 0 24 24",
+      "figmaName": "statusError",
+      "figmaId": "8:3540",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "status-info",
+      "viewBox": "0 0 24 24",
+      "figmaName": "statusInfo",
+      "figmaId": "8:3594",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "status-verify",
+      "viewBox": "0 0 24 24",
+      "figmaName": "statusVerify",
+      "figmaId": "1258:243",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "status-void",
+      "viewBox": "0 0 24 24",
+      "figmaName": "statusVoid",
+      "figmaId": "8:3526",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "status-warn",
+      "viewBox": "0 0 24 24",
+      "figmaName": "statusWarn",
+      "figmaId": "8:3550",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "strikethrough",
+      "viewBox": "0 0 24 24",
+      "figmaName": "strikethrough",
+      "figmaId": "8:3571",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "subscript",
+      "viewBox": "0 0 24 24",
+      "figmaName": "subscript",
+      "figmaId": "4949:113",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "superscript",
+      "viewBox": "0 0 24 24",
+      "figmaName": "superscript",
+      "figmaId": "4949:115",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "support",
+      "viewBox": "0 0 24 24",
+      "figmaName": "support",
+      "figmaId": "8:3425",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "swatch",
+      "viewBox": "0 0 24 24",
+      "figmaName": "swatch",
+      "figmaId": "8:3431",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "table",
+      "viewBox": "0 0 24 24",
+      "figmaName": "table",
+      "figmaId": "8:3414",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "table-border-slash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "tableBorderOff",
+      "figmaId": "8:3569",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "tag",
+      "viewBox": "0 0 24 24",
+      "figmaName": "tag",
+      "figmaId": "8:3561",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "target",
+      "viewBox": "0 0 24 24",
+      "figmaName": "target",
+      "figmaId": "1260:297",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "task-list",
+      "viewBox": "0 0 24 24",
+      "figmaName": "taskList",
+      "figmaId": "8:3408",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "templates",
+      "viewBox": "0 0 24 24",
+      "figmaName": "templates",
+      "figmaId": "8:3430",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text",
+      "viewBox": "0 0 24 24",
+      "figmaName": "text",
+      "figmaId": "8:3417",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-align-center",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textAlignCenter",
+      "figmaId": "8:3568",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-align-end",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textAlignEnd",
+      "figmaId": "8:3532",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-align-start",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textAlignStart",
+      "figmaId": "8:3407",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-block",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textBlock",
+      "figmaId": "8:1305",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-color",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textColor",
+      "figmaId": "8:3491",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-indent-left",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textIndentLeft",
+      "figmaId": "8:3566",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-indent-right",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textIndentRight",
+      "figmaId": "8:3428",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-justify-center",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textJustifyCenter",
+      "figmaId": "8:3458",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-long",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textLong",
+      "figmaId": "8:3565",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "text-short",
+      "viewBox": "0 0 24 24",
+      "figmaName": "textShort",
+      "figmaId": "8:3564",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "thumbs-down",
+      "viewBox": "0 0 24 24",
+      "figmaName": "thumbsDown",
+      "figmaId": "8:3421",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "thumbs-down-filled",
+      "viewBox": "0 0 24 24",
+      "figmaName": "thumbsDownFilled",
+      "figmaId": "8:3412",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "thumbs-up",
+      "viewBox": "0 0 24 24",
+      "figmaName": "thumbsUp",
+      "figmaId": "8:3450",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "thumbs-up-filled",
+      "viewBox": "0 0 24 24",
+      "figmaName": "thumbsUpFilled",
+      "figmaId": "8:3539",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "ticket",
+      "viewBox": "0 0 24 24",
+      "figmaName": "ticket",
+      "figmaId": "3082:159",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "toggle",
+      "viewBox": "0 0 24 24",
+      "figmaName": "toggle",
+      "figmaId": "8:3485",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "transaction",
+      "viewBox": "0 0 24 24",
+      "figmaName": "transactions",
+      "figmaId": "8:3463",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "trash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "trash",
+      "figmaId": "8:3459",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "trend-negative",
+      "viewBox": "0 0 24 24",
+      "figmaName": "trendNegative",
+      "figmaId": "1260:290",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "trend-positive",
+      "viewBox": "0 0 24 24",
+      "figmaName": "trendPositive",
+      "figmaId": "1260:291",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "underline",
+      "viewBox": "0 0 24 24",
+      "figmaName": "underline",
+      "figmaId": "8:3543",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "undo",
+      "viewBox": "0 0 24 24",
+      "figmaName": "undo",
+      "figmaId": "8:3448",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "unlock",
+      "viewBox": "0 0 24 24",
+      "figmaName": "unlock",
+      "figmaId": "8:3486",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "unmerge-cell",
+      "viewBox": "0 0 24 24",
+      "figmaName": "unmergeCell",
+      "figmaId": "8:3563",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "upload",
+      "viewBox": "0 0 24 24",
+      "figmaName": "upload",
+      "figmaId": "8:3546",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "video-camera",
+      "viewBox": "0 0 24 24",
+      "figmaName": "videoCamera",
+      "figmaId": "8:3455",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "video-camera-slash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "videoCameraSlash",
+      "figmaId": "8:3547",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "volume-high",
+      "viewBox": "0 0 24 24",
+      "figmaName": "volumeHigh",
+      "figmaId": "1260:292",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "volume-low",
+      "viewBox": "0 0 24 24",
+      "figmaName": "volumeLow",
+      "figmaId": "1260:293",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "volume-slash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "volumeSlash",
+      "figmaId": "1260:294",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "waffle",
+      "viewBox": "0 0 24 24",
+      "figmaName": "waffle",
+      "figmaId": "8:3473",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "wallet",
+      "viewBox": "0 0 24 24",
+      "figmaName": "wallet",
+      "figmaId": "8:3484",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "wifi",
+      "viewBox": "0 0 24 24",
+      "figmaName": "wifi",
+      "figmaId": "8:3453",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "wifi-slash",
+      "viewBox": "0 0 24 24",
+      "figmaName": "wifiSlash",
+      "figmaId": "1260:295",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "workflow",
+      "viewBox": "0 0 24 24",
+      "figmaName": "workflow",
+      "figmaId": "8:3447",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "wrench",
+      "viewBox": "0 0 24 24",
+      "figmaName": "wrench",
+      "figmaId": "2055:46",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "zoom-in",
+      "viewBox": "0 0 24 24",
+      "figmaName": "zoomIn",
+      "figmaId": "8:3446",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "zoom-out",
+      "viewBox": "0 0 24 24",
+      "figmaName": "zoomOut",
+      "figmaId": "8:3435",
+      "mapping": "direct-normalized-name",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "edit",
+      "viewBox": "0 0 24 24",
+      "figmaName": "pencil",
+      "figmaId": "8:3472",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "info",
+      "viewBox": "0 0 24 24",
+      "figmaName": "statusInfo",
+      "figmaId": "8:3594",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "database",
+      "viewBox": "0 0 24 24",
+      "figmaName": "dataServer",
+      "figmaId": "1259:265",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "presentation",
+      "viewBox": "0 0 24 24",
+      "figmaName": null,
+      "figmaId": null,
+      "mapping": "unmatched",
+      "figmaVectorCount": null,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "more-vertical",
+      "viewBox": "0 0 24 24",
+      "figmaName": "overflowVertical",
+      "figmaId": "8:3503",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    },
+    {
+      "localName": "user",
+      "viewBox": "0 0 24 24",
+      "figmaName": "person",
+      "figmaId": "8:3432",
+      "mapping": "documented-alias",
+      "figmaVectorCount": 1,
+      "geometryComparison": "path geometry extracted; not all glyphs rendered or geometrically normalized"
+    }
+  ],
+  "figma24pxWithoutDirectLocalOrDocumentedAlias": [
+    {
+      "name": "AI_irisInverse",
+      "nodeId": "4469:31"
+    },
+    {
+      "name": "documentAnalyze",
+      "nodeId": "7426:71"
+    },
+    {
+      "name": "documentSplit",
+      "nodeId": "7426:73"
+    },
+    {
+      "name": "folderCopy",
+      "nodeId": "7426:75"
+    }
+  ],
+  "localUnmatched": [
+    "sliders-horizontal",
+    "ai-iris-filled",
+    "arrow-nested-small",
+    "boolean",
+    "line",
+    "presentation"
+  ],
+  "limits": [
+    "Name mappings are not path equality.",
+    "No current full normalized path or raster-equivalence comparison of every glyph.",
+    "Small Icon uses same path as medium scaled to16px, while live small masters have their own geometry in20px containers.",
+    "AIIcon, IrisIcon, IrisIconInverse separately source-reviewed and current AI glyph screenshots inspected."
+  ]
+}

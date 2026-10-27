@@ -139,3 +139,14 @@
   flex-direction: column;
   width: 100%;
 }
+
+/* The ratio belongs to the image, independently of its position in the card. */
+.card .image.ratio-16-9 { aspect-ratio: 16 / 9; }
+.card .image.ratio-3-2 { aspect-ratio: 3 / 2; }
+.card .image.ratio-1-1 { aspect-ratio: 1; }
+.card .image.spacing-floating { margin: var(--ink-spacing-200); border-radius: var(--ink-radius-size-s); }
+.card.imageTop .image.spacing-floating { width: calc(100% - var(--ink-spacing-400)); }
+.card .image.spacing-document-preview { padding: var(--ink-spacing-300); background: var(--ink-bg-color-canvas-page); }
+.card .image.spacing-document-preview img { position: relative; object-fit: contain; }
+.image { box-sizing: border-box; }
+.imageStart .image { min-height: 0; align-self: flex-start; }

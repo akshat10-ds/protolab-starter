@@ -1,0 +1,222 @@
+Browser tab: 7, Title: "ProtoLab foundation verification", URL: "http://127.0.0.1:5190/tests/browser/index.html".
+1 AXWebArea ProtoLab foundation verification, URL: 127.0.0.1:5190/tests/browser/index.html
+	2 container
+		3 container root
+			4 heading ProtoLab foundation verification, Value: 1
+				5 text ProtoLab foundation verification
+			6 text Isolated source candidate. Controls below expose their results for review.
+			7 tab group Tabs
+				8 tab (selected, settable, boolean) New families, Value: 1
+				9 tab (selectable, settable, boolean) Forms, Value: 0
+				10 tab (selectable, settable, boolean) Composites, Value: 0
+			11 container New families
+				12 heading New family verification, Value: 2
+					13 text New family verification
+				14 checkbox Bold, Value: 0
+				15 checkbox Show labels, Value: 0
+				16 checkbox (disabled) Disabled toggle, Value: 1
+				17 button Explain this field
+				18 container
+					19 text Hotspot opens:  0
+				20 text Strength
+				21 text Strong
+				22 level indicator Strength, Value: 82.5
+				23 text Legal
+				24 button Remove Legal
+				25 heading Segmented choice and zoom, Value: 3
+					26 text Segmented choice and zoom
+				27 Display view
+					28 radio button List, Value: 1
+					29 radio button (disabled) Unavailable, Value: 0
+					30 radio button Grid, Value: 0
+				31 container
+					32 text Selected view:  list
+				33 container Zoom
+					34 button Zoom in
+					35 container
+						36 text 100 %
+					37 button Zoom out
+				38 container Prototype rating
+					39 text Prototype rating
+					40 Prototype rating
+						41 radio button 1 out of 5: Poor, Value: 0
+							42 text 1
+							43 text  out of 5: 
+							44 text Poor
+						45 radio button 2 out of 5: Below average, Value: 0
+							46 text 2
+							47 text  out of 5: 
+							48 text Below average
+						49 radio button 3 out of 5: Neutral, Value: 0
+							50 text 3
+							51 text  out of 5: 
+							52 text Neutral
+						53 radio button 4 out of 5: Above average, Value: 0
+							54 text 4
+							55 text  out of 5: 
+							56 text Above average
+						57 radio button 5 out of 5: Excellent, Value: 0
+							58 text 5
+							59 text  out of 5: 
+							60 text Excellent
+					61 text Not rated
+				62 container
+					63 text Rating value:  0
+				64 button Show timed notification
+				65 button Show loading notification
+				66 container Delivery channel
+					67 text Delivery channel
+					68 container
+						69 radio button (settable, integer) Description: Email, Value: 1
+						70 text Email Send a link
+					71 container
+						72 radio button (settable, integer) Description: SMS, Value: 0
+						73 text SMS Send a text
+					74 container
+						75 radio button (disabled, settable, integer) Description: Unavailable channel, Value: 0
+						76 text Unavailable channel
+				77 container
+					78 text Selected channel:  email
+				79 text Agreement folders
+				80 outline Folders
+					81 row (expanded) Description: Legal, Value: 1, Secondary Actions: Collapse
+						82 container
+							83 button Collapse Legal
+							84 text Legal
+						85 container
+							86 row Description: Contracts, Value: 1
+								87 text Contracts
+							88 row Description: Archive, Value: 1
+								89 text Archive
+							90 row (disabled, collapsed) Description: Restricted, Value: 0, Secondary Actions: Expand
+								91 container
+									92 button (disabled) Expand Restricted
+									93 text Restricted
+					94 row Description: Sales, Value: 0
+						95 text Sales
+				96 container
+					97 text Selected folders:  legal, contracts, archive
+				98 container
+					99 text Move event:  legal after sales
+				100 content list Workflow progress
+					101 text Prepare
+					102 container
+						103 button (collapsed) Review agreement, Secondary Actions: Expand
+						104 button Review
+						105 text Confirm the agreement details
+					106 text Send
+				107 container Highlight color
+					108 container
+						109 slider (settable, integer) Description: Saturation, Value: 73
+						110 slider (settable, integer) Description: Brightness, Value: 87
+					111 slider (settable, integer) Description: Hue, Value: 4
+					112 text Hex
+					113 text field (settable) Hex, Value: #DE483D
+					114 button Pick a color from screen
+					115 container Color swatches
+						116 checkbox #000000, Value: 0
+						117 checkbox #434343, Value: 0
+						118 checkbox #666666, Value: 0
+						119 checkbox #999999, Value: 0
+						120 checkbox #B7B7B7, Value: 0
+						121 checkbox #CCCCCC, Value: 0
+						122 checkbox #D9D9D9, Value: 0
+						123 checkbox #EFEFEF, Value: 0
+						124 checkbox #FFFFFF, Value: 0
+						125 checkbox #980000, Value: 0
+						126 checkbox #FF0000, Value: 0
+						127 checkbox #FF9900, Value: 0
+						128 checkbox #FFFF00, Value: 0
+						129 checkbox #00FF00, Value: 0
+						130 checkbox #00FFFF, Value: 0
+						131 checkbox #4A86E8, Value: 0
+						132 checkbox #0000FF, Value: 0
+						133 checkbox #9900FF, Value: 0
+						134 checkbox #FF00FF, Value: 0
+						135 button (collapsed) Description: Show more colors, Secondary Actions: Expand
+					136 container Saved colors
+						137 button Save current color
+				138 container
+					139 text Selected color:  #DE483D
+				140 container Image fill
+					141 container Upload files
+						142 text Drag image file here
+						143 container
+							144 text Max file size:  10 MB
+						145 button Choose image
+					146 slider (settable, integer) Description: Hue, Value: 4
+					147 text Hex
+					148 text field (settable) Hex, Value: #DE483D
+					149 button Pick a color from screen
+					150 container Color swatches
+						151 checkbox #000000, Value: 0
+						152 checkbox #434343, Value: 0
+						153 checkbox #666666, Value: 0
+						154 checkbox #999999, Value: 0
+						155 checkbox #B7B7B7, Value: 0
+						156 checkbox #CCCCCC, Value: 0
+						157 checkbox #D9D9D9, Value: 0
+						158 checkbox #EFEFEF, Value: 0
+						159 checkbox #FFFFFF, Value: 0
+						160 checkbox #980000, Value: 0
+						161 checkbox #FF0000, Value: 0
+						162 checkbox #FF9900, Value: 0
+						163 checkbox #FFFF00, Value: 0
+						164 checkbox #00FF00, Value: 0
+						165 checkbox #00FFFF, Value: 0
+						166 checkbox #4A86E8, Value: 0
+						167 checkbox #0000FF, Value: 0
+						168 checkbox #9900FF, Value: 0
+						169 checkbox #FF00FF, Value: 0
+						170 button (collapsed) Description: Show more colors, Secondary Actions: Expand
+					171 container Saved colors
+						172 button Save current color
+				173 container Controlled red color
+					174 container
+						175 slider (settable, integer) Description: Saturation, Value: 100
+						176 slider (settable, integer) Description: Brightness, Value: 100
+					177 slider (settable, integer) Description: Hue, Value: 0
+					178 text Hex
+					179 text field (settable) Hex, Value: #FF0000
+					180 button Pick a color from screen
+					181 container Color swatches
+						182 checkbox #000000, Value: 0
+						183 checkbox #434343, Value: 0
+						184 checkbox #666666, Value: 0
+						185 checkbox #999999, Value: 0
+						186 checkbox #B7B7B7, Value: 0
+						187 checkbox #CCCCCC, Value: 0
+						188 checkbox #D9D9D9, Value: 0
+						189 checkbox #EFEFEF, Value: 0
+						190 checkbox #FFFFFF, Value: 0
+						191 checkbox #980000, Value: 0
+						192 checkbox #FF0000, Value: 1
+						193 checkbox #FF9900, Value: 0
+						194 checkbox #FFFF00, Value: 0
+						195 checkbox #00FF00, Value: 0
+						196 checkbox #00FFFF, Value: 0
+						197 checkbox #4A86E8, Value: 0
+						198 checkbox #0000FF, Value: 0
+						199 checkbox #9900FF, Value: 0
+						200 checkbox #FF00FF, Value: 0
+						201 button (collapsed) Description: Show more colors, Secondary Actions: Expand
+					202 container Saved colors
+						203 button Save current color
+				204 container
+					205 text Requested controlled color:  #00FF00
+				206 heading No agreements found, Value: 2
+					207 text No agreements found
+				208 text Search another term to find agreements.
+				209 button Create agreement
+				210 text Try another search.
+				211 container
+					212 image Sample agreement document
+					213 text Draft
+					214 heading Consulting agreement, Value: 3
+						215 text Consulting agreement
+					216 text Agreement preview
+					217 button Preview options
+					218 button Open Consulting agreement
+		219 container Notifications
+
+The focused UI element is 195 checkbox #00FF00, Value: 0

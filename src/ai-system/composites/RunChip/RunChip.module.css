@@ -1,0 +1,300 @@
+/*
+ * The one-row card. Same tokens as the FINS lifecycle object's row — a subtle
+ * hairline, `radius-size-s`, the surface's own background — because the two are
+ * one grammar even though they are two components.
+ *
+ * No outer margin: the spacing belongs to the stream this lands in, and
+ * `ConversationLayout` already gives a turn its gap.
+ */
+.wrap {
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-s);
+  background: var(--ink-bg-color-default);
+}
+
+/*
+ * Label left, quiet state right, one band — the receipt's geometry, at the
+ * lifecycle row's padding.
+ */
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  /*
+    THE SAME 12/16 THE TASK CARD AND THE WORKSPACE ROW USE. Akshat, 2026-08-25,
+    on the three of them stacked in one thread: *"padding, aligned should be
+    consistent?"* This row was 8/12, which started its words at a different x
+    from the two objects directly above and below it.
+  */
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  min-width: 0;
+}
+
+/*
+ * The agent's own mark. It says whose work this row is, in both states — and
+ * under the pointer it says the row opens.
+ *
+ * A 24 BOX around a 16 glyph, which is the lead column the task card and the
+ * workspace row both use, so all three start their words at one x.
+ */
+.glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--ink-icon-color-subtle);
+}
+
+/*
+ * THE SWAP. Both glyphs live in the box and only opacity moves — rendering one
+ * or the other would resize the slot between a spark and a chevron and shove
+ * the line sideways on every hover.
+ */
+.glyphSwap {
+  position: relative;
+}
+
+.glyphSwap > * {
+  transition:
+    opacity var(--ai-motion-duration-handle, 180ms) ease,
+    transform var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.glyphChevron {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+}
+
+.press:hover .glyphMark,
+.press:focus-visible .glyphMark {
+  opacity: 0;
+}
+
+.press:hover .glyphChevron,
+.press:focus-visible .glyphChevron {
+  opacity: 1;
+}
+
+/*
+ * OPEN KEEPS THE CHEVRON, AND TURNS IT DOWN. Akshat, 2026-08-25: *"when the
+ * chevron expands, the chevron should point down."* `aria-expanded` is only on
+ * the expanding press, so the record door's chevron stays pointing right — it
+ * leaves for somewhere else and never opens in place.
+ */
+.press[aria-expanded='true'] .glyphMark {
+  opacity: 0;
+}
+
+.press[aria-expanded='true'] .glyphChevron {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glyphSwap > * {
+    transition: none;
+  }
+}
+
+/*
+ * The line: the current activity while the run is live, the counts once it has
+ * landed. It gives way before the duration does — a chip that has lost its
+ * elapsed has stopped saying the one thing only it can say.
+ */
+.line {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-default);
+}
+
+/* Elapsed while live, the run's duration once it has landed. */
+.meta {
+  flex-shrink: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-font-color-neutral-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * WITH A CLAUSE ON IT, THE META GIVES WAY TOO. Bare seconds never overflow, so
+ * the rule above holds for every chip that has no expectation; a sentence in
+ * that slot would otherwise crush the activity line in a narrow panel.
+ */
+.metaClause {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--ink-icon-color-subtle);
+}
+
+/*
+ * THE WHOLE ROW IS THE DOOR. The resolved chip has one destination and no
+ * second control, so the row is the button — no nested-control problem to
+ * design around, unlike the lifecycle object's row.
+ */
+.press {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: inherit;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+/*
+ * AND IT LOOKS LIKE A DOOR AT REST. Akshat, 2026-09-03: *"cann we make this
+ * pressable? ... it seems like when it's active this should have the active
+ * staet!"* The row WAS a button, but only the lead glyph ever reacted, so the
+ * card read as a flat receipt with a twitchy icon. A fill at rest is what makes
+ * a surface a control before the pointer arrives.
+ *
+ * The ladder is `.categoryTab`'s, unchanged: ecru-10 at rest, ecru-20 under the
+ * pointer, ecru-30 while it is held. One warm ramp the surface already speaks,
+ * so this is a third row joining a grammar rather than a fourth treatment.
+ */
+.press {
+  background: var(--ink-ecru-10);
+}
+
+.press:hover {
+  background: var(--ink-ecru-20);
+}
+
+.press:active {
+  background: var(--ink-ecru-30);
+}
+
+.press:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: -2px;
+}
+
+/*
+ * SELECTED — the chip whose thing is open in the pane beside it.
+ *
+ * `--ink-bg-active-subtle` is the token every selected row in this app already
+ * carries: the sidebar's thread rows, the agent list's row, `InlineNav`'s tab.
+ * A chip pointing at the open brief is the same fact as a selected row, so it
+ * is the same colour and not a new one.
+ *
+ * Repeated on `:hover` deliberately — `.press:hover` is two classes deep and
+ * would otherwise pull a selected chip back down the ecru ramp under the
+ * pointer, which reads as the selection being lost.
+ */
+.press.selected,
+.press.selected:hover {
+  background: var(--ink-bg-active-subtle);
+}
+
+/* =============================================================================
+   The chip that carries its own thinking — 2026-08-24
+
+   Akshat: "a little box that shows that the agent is working on thinking on
+   this. If I click on it, I can expand and see the thinking, but otherwise it
+   could just show us that it's working."
+
+   So the box does not become a different box when it opens. The row keeps its
+   geometry and the pairs unroll UNDER it, inside the same hairline, at
+   `AgentThinking`'s voice: quiet dots, secondary text, no rules between steps.
+   ============================================================================= */
+
+/* Rotates rather than swaps — the glyph is the same one either way, which is
+   what makes it read as this row opening instead of a new control appearing. */
+.chevron {
+  transition: transform var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/*
+ * Indented to the row's own text column, so the pairs hang off the line they
+ * came from. The hairline separates the receipt from its record without adding
+ * a second box.
+ */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-150);
+  padding-left: calc(var(--ink-spacing-150) + 14px + var(--ink-spacing-100));
+  border-top: 1px solid var(--ink-border-color-subtle);
+}
+
+.pair {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ink-spacing-100);
+  min-width: 0;
+}
+
+/* The same muted mark the thinking accordion uses for a step that has landed. */
+.pairDot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: var(--ink-radius-size-full);
+  background: var(--ink-neutral-40);
+}
+
+.pairText {
+  min-width: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  line-height: 20px;
+  color: var(--ink-font-color-secondary);
+}
+
+/*
+ * The record, as a text action. It lives in here and not on the row because the
+ * row already has a meaning — one press, one thing. A link is the lighter of
+ * the two, which is right: expanding is what people do, opening is the errand.
+ */
+.viewLink {
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  color: var(--ink-font-color-link-default);
+}
+
+.viewLink:hover {
+  text-decoration: underline;
+}
+
+.viewLink:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
+}

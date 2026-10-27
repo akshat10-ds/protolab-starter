@@ -12,7 +12,7 @@ Generate a HANDOFF.md document that gives engineers everything they need to buil
 
 1. Scan all `.tsx` files in `src/` (excluding `src/design-system/`) for Ink component imports
 2. Build a component inventory: which components are used, how many instances of each
-3. Call the ProtoLab MCP `validate_component_usage` tool on the main App.tsx (or page files) to check for issues
+3. If the ProtoLab MCP is connected, call `validate_component_usage` on the main App.tsx (or page files) to check for issues. If it isn't, skip it and check by hand against `AGENTS.md` — hardcoded colors/spacing, components not imported from `@/design-system`, tables wrapped in Cards, buttons without accessible names
 4. Generate `HANDOFF.md` with:
 
 ### HANDOFF.md Structure

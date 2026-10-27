@@ -56,6 +56,7 @@ export const SourceListView: React.FC<SourceListViewProps> = ({
   onSelectionConfirm,
   actionLabel = 'Chat with {count} {noun}',
 }) => {
+  const selectAllId = React.useId();
   // Pending selection — changes don't commit until button click
   const [pendingIds, setPendingIds] = useState<Set<string>>(
     () => selectedIds ?? new Set(sources.map((s) => s.id))
@@ -111,12 +112,12 @@ export const SourceListView: React.FC<SourceListViewProps> = ({
   return (
     <div className={styles.container}>
       {/* Select all row */}
-      <button type="button" className={styles.selectAll} onClick={handleSelectAll}>
-        <span className={styles.selectAllText}>Select all sources</span>
-        <div className={styles.checkboxWrap} onClick={(e) => e.stopPropagation()}>
-          <Checkbox checked={allSelected} onChange={handleSelectAll} label="" showLabel={false} />
+      <div className={styles.selectAll}>
+        <label id={`${selectAllId}-label`} htmlFor={selectAllId} className={styles.selectAllText}>Select all sources</label>
+        <div className={styles.checkboxWrap}>
+          <Checkbox id={selectAllId} aria-labelledby={`${selectAllId}-label`} checked={allSelected} onChange={handleSelectAll} label="" showLabel={false} />
         </div>
-      </button>
+      </div>
 
       <div className={styles.divider} />
 
@@ -144,7 +145,7 @@ export const SourceListView: React.FC<SourceListViewProps> = ({
                 <Checkbox
                   checked={isSelected}
                   onChange={() => toggleItem(source.id)}
-                  label=""
+                  label={`Select ${source.title}`}
                   showLabel={false}
                 />
               </div>
@@ -157,7 +158,7 @@ export const SourceListView: React.FC<SourceListViewProps> = ({
       {onSelectionConfirm && (
         <div className={styles.footer}>
           <Button
-            variant="brand"
+            kind="primary"
             size="medium"
             onClick={handleConfirm}
             disabled={count === 0}

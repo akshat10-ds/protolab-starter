@@ -1,45 +1,31 @@
 // url=https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq/-ds-ui--Component-Library?node-id=851-8080
 // source=src/design-system/4-composites/Stepper/Stepper.tsx
 // component=Stepper
-// drift: code Stepper maps to Figma "[INK] Progress Stepper" (37:2522), not
-// "[INK] Workflow Stepper" (37:2540). Chosen because Progress Stepper's "direction"
-// (row | column) maps 1:1 to code "orientation" (horizontal | vertical) and its items are
-// plain title+status steps like the code Step model; Workflow Stepper is two standalone
-// components whose items carry callToAction buttons and expandable content the code
-// component does not have. Figma "direction" maps to code "orientation".
+// Based on accepted current 2026-10-20 owner metadata; interaction states render through native behavior.
 import figma from 'figma'
 const instance = figma.selectedInstance
 
-const orientation = instance.getEnum('direction', {
-  row: 'horizontal',
-  column: 'vertical',
-})
-
-// Steps are child ProgressStepper.Item instances (Step 1..Step 3); read their titles
-const stepNodes = [
-  instance.findText('text', { traverseInstances: true, path: ['Step 1'] }),
-  instance.findText('text', { traverseInstances: true, path: ['Step 2'] }),
-  instance.findText('text', { traverseInstances: true, path: ['Step 3'] }),
-]
-const titles = stepNodes
-  .filter((node) => node && node.type === 'TEXT')
-  .map((node) => node.textContent)
-const stepsCode = titles.length > 0
-  ? titles.map((title, i) => `{ id: 'step-${i + 1}', title: '${title}' }`).join(',\n    ')
-  : "{ id: 'step-1', title: 'Step 1' }"
-
-// Figma-only property intentionally omitted: "isCompact" (no code prop). Per-item status
-// (current/visited/unvisited) is per-instance, not readable from the set.
-
+const orientation = instance.getEnum('direction', { row: 'horizontal', column: 'vertical' })
+const compact = instance.getEnum('isCompact', { False: false, True: true })
+const children = instance.findLayers(node => node.type === 'INSTANCE' && /^Step \d+$/.test(node.name))
+let steps = figma.code``
+let active = 0
+for (const [index, step] of children.entries()) {
+  if (step.type !== 'INSTANCE') continue
+  const text = step.findText('Step Text', { traverseInstances: true })
+  const status = step.getEnum('status', { current: 'active', visited: 'visited', unvisited: 'upcoming' })
+  const completed = step.getEnum('isComplete', { False: false, True: true })
+  const before = step.getBoolean('❖ Show Before Connector')
+  const end = step.getBoolean('❖ Show End Connector')
+  if (status === 'active') active = index
+  steps = figma.code`${steps}{ id: 'step-${index + 1}', title: ${JSON.stringify(text.type === 'TEXT' ? text.textContent : '')}, status: '${status}', completed: ${completed}, showBeforeConnector: ${before}, showEndConnector: ${end} },`
+}
+// Compact-only instances do not expose the full step collection: keep live summary text.
+const counter = instance.findText('Counter', { traverseInstances: true })
+const counts = counter.type === 'TEXT' ? counter.textContent.match(/(\d+)\s*\/\s*(\d+)/) : null
+const compactTitle = instance.findText('Step Title', { traverseInstances: true })
+const compactDetail = instance.findText('Step Detail', { traverseInstances: true })
 export default {
-  example: figma.code`<Stepper
-  orientation="${orientation}"
-  activeStep={0}
-  steps={[
-    ${stepsCode}
-  ]}
-/>`,
-  imports: ["import { Stepper } from '@/design-system'"],
-  id: 'stepper',
-  metadata: { nestable: false },
+  example: figma.code`<Stepper orientation="${orientation}" compact={${compact}}${compact && counts ? figma.code` compactCurrent={${Number(counts[1])}} compactTotal={${Number(counts[2])}}` : ''} activeStep={${active}} steps={[${steps}]}${compact && compactTitle.type === 'TEXT' ? figma.code` compactTitle={${JSON.stringify(compactTitle.textContent)}}` : ''}${compact && compactDetail.type === 'TEXT' ? figma.code` compactDetail={${JSON.stringify(compactDetail.textContent)}}` : ''} />`,
+  imports: ["import { Stepper } from '@/design-system'"], id: 'stepper', metadata: { nestable: false },
 }

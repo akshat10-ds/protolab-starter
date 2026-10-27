@@ -1,0 +1,50 @@
+{
+  "names": 9,
+  "references": 26,
+  "missing": {
+    "--ink-bg-canvas": [
+      "design-system/6-layouts/DocuSignShell/DocuSignShell.module.css:9"
+    ],
+    "--ink-bg-color-neutral-subtle": [
+      "design-system/5-patterns/AIChat/AIChat.module.css:280"
+    ],
+    "--ink-bg-color-neutral": [
+      "design-system/5-patterns/AIChat/AIChat.module.css:286"
+    ],
+    "--ink-font-color": [
+      "design-system/5-patterns/GlobalNav/GlobalNav.module.css:212"
+    ],
+    "--ink-spacing-75": [
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:104"
+    ],
+    "--ink-font-size-body-xs": [
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:116",
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:128",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:123",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:135",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:233",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:266",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:279",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:326",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:350",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:378",
+      "design-system/5-patterns/AgentPanel/AgentActionCard.module.css:419",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:129",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:340",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:357",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:364",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:378",
+      "design-system/5-patterns/AgentPanel/ThinkingSteps.module.css:413"
+    ],
+    "--ink-yellow-20": [
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:191"
+    ],
+    "--ink-yellow-60": [
+      "design-system/5-patterns/AgentPanel/AgentCanvas.module.css:192"
+    ],
+    "--ink-font-color-link-subtle": [
+      "design-system/5-patterns/DataTable/DataTable.module.css:788",
+      "design-system/5-patterns/DataTable/DataTable.module.css:801"
+    ]
+  }
+}

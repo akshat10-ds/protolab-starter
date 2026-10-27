@@ -12,6 +12,8 @@ export type BannerKind =
   | 'subtle'
   | 'neutral';
 export type BannerShape = 'square' | 'round';
+export type BannerAlignment = 'start' | 'center';
+export type BannerBorderRule = 'none' | 'top' | 'bottom' | 'both';
 
 export interface BannerAction {
   label: string;
@@ -30,6 +32,8 @@ export interface BannerProps {
   lineWrap?: boolean;
   /** Show bottom border */
   bottomBorder?: boolean;
+  borderRule?: BannerBorderRule;
+  alignment?: BannerAlignment;
   /** Optional icon name from Icon component */
   icon?: IconName;
   /** Custom icon element (takes precedence over icon prop) */
@@ -52,6 +56,8 @@ export const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
       shape = 'square',
       lineWrap = false,
       bottomBorder = false,
+      borderRule = bottomBorder ? 'bottom' : 'none',
+      alignment = 'center',
       icon,
       customIcon,
       action,
@@ -66,7 +72,9 @@ export const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
       styles[`kind-${kind}`],
       styles[`shape-${shape}`],
       lineWrap && styles.lineWrap,
-      bottomBorder && styles.bottomBorder,
+      (borderRule === 'bottom' || borderRule === 'both') && styles.bottomBorder,
+      (borderRule === 'top' || borderRule === 'both') && styles.topBorder,
+      styles[`align-${alignment}`],
       className,
     ]
       .filter(Boolean)
@@ -90,7 +98,7 @@ export const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                   {action.label}
                 </Link>
               ) : (
-                <Button kind="tertiary" size="small" onClick={action.onClick}>
+                <Button kind="secondary" size="small" onClick={action.onClick}>
                   {action.label}
                 </Button>
               )}

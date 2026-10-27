@@ -1,0 +1,158 @@
+import { SelectTile } from '@ds/ui'
+import { StatusBadge } from '@ds/ui'
+import { MegaphoneSmall } from '@ds/icons'
+
+const imgImageFpoSwap = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+
+function ImageFpoSwap({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[224px]"} data-node-id="23799:3505" data-name="_Image FPO (SWAP)">
+      <img alt="" className="absolute inset-0 max-w-none object-contain pointer-events-none size-full" src={imgImageFpoSwap} />
+    </div>
+  );
+}
+
+type InkSelectTileProps = {
+  className?: string;
+  direction?: "row";
+  disabled?: "False";
+  hasIcon?: "False";
+  image?: "fit";
+  readOnly?: "False";
+  selected?: "False";
+  state?: "Default";
+};
+
+function InkSelectTile({ className, direction = "row", disabled = "False", hasIcon = "False", image = "fit", readOnly = "False", selected = "False", state = "Default" }: InkSelectTileProps) {
+  return (
+    <CodeConnectSnippet data-node-id="2761:19351" data-name="selected=False, ❖ State=Default, direction=row, image=fit, HasIcon?=False, readOnly=False, disabled=False" data-snippet-language="React">
+      <SelectTile direction="row" description="A short, but also optional description" badge={<StatusBadge kind="promo" text="New" startElement={<MegaphoneSmall />} />} imageProps="fit" label="Select tile title" />
+    </CodeConnectSnippet>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontHeadingXXS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.16, weight: 500, lineHeight: 1.25, letterSpacing: font.letterSpacing.cozy), fontBadge: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.12, weight: 500, lineHeight: 1.5, letterSpacing: font.letterSpacing.wide), fontBodyS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.14, weight: 400, lineHeight: 1.399999976158142, letterSpacing: 0).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Select Tile
+**Node ID:** 2761:19350
+
+A flexible component that can be used to display relevant information or function like a radio-button or checkbox button
+
+  
+
+Props
+-----
+
+`**_selected:_**` Applies a "selected" style to the Select Tile
+
+  
+
+`**_❖ State:_**` The state of the Select Tile
+
+  
+
+`**_❖ Align Vertical:_**` The layout direction
+
+  
+
+`**_image:_**` The image element to display
+
+  
+
+`**_readOnly:_**` Set the Select Tile to read-only
+
+  
+
+`**_text:_**` The text to be displayed inside of the Select Tile
+
+  
+
+`**_❖ Description:_**` Displays description
+
+  
+
+`**_description:_**` An optional description
+
+  
+
+`**_badge:_**` Takes a Badge component to display in the upper end corner of Select Tile
+
+**Documentation:**
+- [Select Tile - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-form-selecttile--default)
+
+## displayLevel=heading-xxs
+**Node ID:** 6243:18106
+
+Heading styles make up the middle portion of the type scale and most often pairs with the body styling to create a strong parent-child relationship. Headings are useful for short, impactful sentences or to emphasize sections of content on a page.
+
+## _Heading
+**Node ID:** 6246:18107
+
+Heading allows components to render a more robust set of styles on top of the semantic H1-H6 levels.
+
+  
+
+`**_displayLevel:_**` An optional display level (i.e. importance indicated by size / style / casing) that may differ from the semantic HTML section heading level
+
+  
+
+`**_text:_**` The text to be displayed
+
+**Documentation:**
+- [https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-heading--default](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-heading--default)
+
+## kind=promo
+**Node ID:** 3003:2510
+
+The promo variant uses light text on a semantic blue background and is used to notify users of a new feature or product proposition.
+
+## [INK] Status Badge
+**Node ID:** 83:2801
+
+A status badge communicates the status of a related item to the user.
+
+  
+
+⚠️ _**This component uses forced modes**___. For screens that require large tap targets, set the layer mode to the equivalent Large Target mode.__
+
+  
+
+Props
+-----
+
+  
+
+_`**kind:**`_ The kind of the StatusBadge.
+
+  
+
+_`**menuTrigger:**`_ Displays a chevron to indicate the StatusBadge is clickable and triggers a menu
+
+  
+
+_`**text*:**`_ Text of the StatusBadge.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/72bffe-status-badge/b/6614b0](https://ink.docusign.com/94bc5d135/p/72bffe-status-badge/b/6614b0)
+- [Status Badge - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-statusbadge--default)
+
+## megaphoneSmall
+**Node ID:** 41065:2281
+
+megaphone, promotion, important announcement, announcement, attention, amplify
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

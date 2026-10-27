@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 
 /**
  * MessageBubble — Spec locked in Messages exploration (2026-03-18).
@@ -321,4 +320,131 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
+}
+
+/*
+ * The officer-action receipt — THE USER BUBBLE, with a check in it.
+ *
+ * Akshat, 2026-08-20: it should look like a message she sent. So `.bubble`
+ * carries the whole appearance — fill, radius, size, alignment — and this class
+ * adds one thing: the check, marking the act as done without painting a badge.
+ *
+ * It was a chip (no fill, xs, secondary) until that date, on the argument that
+ * a filled shape on the user's side reads as speech and nobody SAID "You
+ * approved: …". The press is her turn; it now looks like one.
+ *
+ * The glyph is inline, not a flex item, so a receipt that wraps to two lines
+ * keeps the check on the first line with the words rather than centred against
+ * the block.
+ */
+.actionReceipt {
+  margin: 0;
+}
+
+/*
+ * green-100, not the icon set's success green-80. Akshat's frame picks the
+ * darker one and draws it at 16 — the ring reads as a mark of record next to
+ * 14px text, where the lighter 20px confirmation glyph reads as a banner.
+ */
+.actionReceipt svg {
+  vertical-align: -3px;
+  margin-right: var(--ink-spacing-50);
+  color: var(--ink-font-color-success);
+}
+
+/* Caption over bubble. The frame's 7 is the scale's 8 — there is no 7. */
+.receiptStack {
+  gap: var(--ink-spacing-100);
+}
+
+.receiptCaption {
+  font-size: var(--ink-font-size-xxs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.32px;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* ============================================
+   ANSWER RECORD — the HITL answer, in the thread
+   ============================================ */
+
+/*
+ * Two registers on one line: the question is context and the answer is the
+ * fact, so the question drops to the quiet colour and the answer holds default
+ * ink. Nothing else changes — it is the user bubble.
+ */
+.answerQuestion {
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.answerValue {
+  color: var(--ink-font-color-default);
+}
+
+/*
+ * The condensed block — a BATCH of answers. Dashed, because a record of an
+ * exchange is not a thing she said; unfilled, because a filled block of six
+ * Q+A pairs is a document sitting in the middle of a conversation.
+ */
+.answerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  max-width: 540px;
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  border: 1px dashed var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-s);
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Six lines, then the door. The clamp is the dose. */
+.answerBlockClamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.answerPair {
+  margin: 0 0 var(--ink-spacing-50);
+}
+
+.answerMore {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.answerMore:hover {
+  color: var(--ink-font-color-default);
+  text-decoration: underline;
+}
+
+/* ============================================
+   BRAND TONE — the user's side, filled (opt-in)
+   ============================================ */
+
+/*
+ * Akshat, 2026-09-03: *"for the imessage type things - can we maybe change the
+ * chat color to a blue so its more obvious?"*
+ *
+ * Ink's own filled-brand contract, both halves of it: the CTA brand fill and
+ * the font colour Ink pairs with that fill. No new hex (§3), and the contrast
+ * question is already answered by the token pair rather than by this file.
+ *
+ * Additive only — `.bubble` is untouched, so a bubble without `tone` computes
+ * exactly what it computed yesterday.
+ */
+.bubbleBrand {
+  background: var(--ink-cta-bg-color-brand-default);
+  color: var(--ink-cta-font-color-brand);
 }

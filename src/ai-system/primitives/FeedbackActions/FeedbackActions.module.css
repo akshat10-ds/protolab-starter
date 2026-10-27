@@ -4,7 +4,6 @@
  * Minimal action row: copy → thumbs-up → thumbs-down
  * Uses Ink design tokens exclusively.
  */
-@import '@ink/1-tokens/tokens.css';
 
 /* Action row container */
 .actions {

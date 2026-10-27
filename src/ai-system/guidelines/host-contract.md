@@ -11,8 +11,13 @@ Spread `panel.hostStyle` on the page element. Opening the chat compresses
 the page (`width: calc(100% - Npx)`); content reflows into the narrower
 width. The chat never floats over content.
 
-**2 — In sidebar mode, the app's left nav collapses** to its compact state, so
-the page keeps usable width while the chat is open.
+**2 — Opening the panel collapses the app's left nav** to its compact state, so
+the page keeps usable width while the chat is open; closing it brings the nav
+back. Drive it from `panel.mode !== 'closed'` — every open mode collapses the
+nav, not just sidebar — and keep it the host's own state: the nav, its start
+menu and all, is host chrome, and the panel never reaches into it. Akshat,
+2026-08-19: *"when you open iris on a page — it should collapse the left
+sidebar — so it should've collapse the start menu on this completed page."*
 
 **3 — Keep the shell mounted.** A closed panel is zero-width, not unmounted —
 conversation state surviving a close/reopen is part of the contract with the

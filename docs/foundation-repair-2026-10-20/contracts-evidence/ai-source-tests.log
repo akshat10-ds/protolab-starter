@@ -1,0 +1,10 @@
+
+ RUN  v3.2.4 /private/tmp/protolab-foundation-repair/ink
+
+ ✓ tests/ai-source.spec.mjs (8 tests) 12ms
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  14:44:51
+   Duration  3.22s (transform 1.38s, setup 0ms, collect 2.85s, tests 12ms, environment 0ms, prepare 107ms)
+

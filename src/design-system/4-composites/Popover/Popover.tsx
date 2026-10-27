@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useLayoutEffect, useId } from 'react';
+import { Portal } from '../../2-utilities/Portal';
 import styles from './Popover.module.css';
 
 export type PopoverPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -8,7 +9,7 @@ export interface PopoverProps {
   /** The content to display in the popover */
   content: React.ReactNode;
   /** The element that triggers the popover */
-  children: React.ReactElement;
+  children: React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
   /** Position of the popover relative to the trigger */
   position?: PopoverPosition;
   /** Alignment of the popover */
@@ -25,6 +26,8 @@ export interface PopoverProps {
   closeOnClickOutside?: boolean;
   /** Close on escape key */
   closeOnEscape?: boolean;
+  /** Accessible name of the nonmodal dialog. */
+  label?: string;
   /** Data QA attribute for testing */
   'data-qa'?: string;
 }
@@ -40,6 +43,7 @@ export const Popover: React.FC<PopoverProps> = ({
   showArrow = true,
   closeOnClickOutside = true,
   closeOnEscape = true,
+  label = 'Details',
   'data-qa': dataQa,
 }) => {
   const [internalOpen, setInternalOpen] = useState(defaultOpen);
@@ -47,7 +51,9 @@ export const Popover: React.FC<PopoverProps> = ({
   const open = isControlled ? controlledOpen : internalOpen;
 
   const [coords, setCoords] = useState({ top: 0, left: 0 });
-  const triggerRef = useRef<HTMLElement>(null);
+  const wrapperRef = useRef<HTMLSpanElement>(null);
+  const dialogId = useId();
+  const triggerElement = () => wrapperRef.current?.firstElementChild as HTMLElement | null;
   const popoverRef = useRef<HTMLDivElement>(null);
 
   const setOpen = (newOpen: boolean) => {
@@ -58,9 +64,10 @@ export const Popover: React.FC<PopoverProps> = ({
   };
 
   const calculatePosition = () => {
-    if (!triggerRef.current || !popoverRef.current) return;
+    const trigger = triggerElement();
+    if (!trigger || !popoverRef.current) return;
 
-    const triggerRect = triggerRef.current.getBoundingClientRect();
+    const triggerRect = trigger.getBoundingClientRect();
     const popoverRect = popoverRef.current.getBoundingClientRect();
     const gap = showArrow ? 12 : 8;
 
@@ -124,10 +131,10 @@ export const Popover: React.FC<PopoverProps> = ({
     setCoords({ top, left });
   };
 
-  const handleTriggerClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setOpen(!open);
+  const handleTriggerClick = (e: React.MouseEvent<HTMLElement>) => {
     children.props.onClick?.(e);
+    if (!e.defaultPrevented) setOpen(!open);
+    e.stopPropagation();
   };
 
   // Handle click outside
@@ -137,9 +144,9 @@ export const Popover: React.FC<PopoverProps> = ({
     const handleClickOutside = (e: MouseEvent) => {
       if (
         popoverRef.current &&
-        triggerRef.current &&
+        wrapperRef.current &&
         !popoverRef.current.contains(e.target as Node) &&
-        !triggerRef.current.contains(e.target as Node)
+        !wrapperRef.current.contains(e.target as Node)
       ) {
         setOpen(false);
       }
@@ -155,7 +162,9 @@ export const Popover: React.FC<PopoverProps> = ({
 
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        e.preventDefault();
         setOpen(false);
+        triggerElement()?.focus();
       }
     };
 
@@ -164,11 +173,9 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [open, closeOnEscape]);
 
   // Update position when open
-  useEffect(() => {
-    if (open) {
-      calculatePosition();
-    }
-  }, [open]);
+  useLayoutEffect(() => {
+    if (open) calculatePosition();
+  }, [open, position, align, showArrow, content]);
 
   // Update position on scroll/resize
   useEffect(() => {
@@ -182,20 +189,21 @@ export const Popover: React.FC<PopoverProps> = ({
       window.removeEventListener('scroll', handleUpdate, true);
       window.removeEventListener('resize', handleUpdate);
     };
-  }, [open]);
+  }, [open, position, align, showArrow]);
 
   const trigger = React.cloneElement(children, {
-    ref: triggerRef,
     onClick: handleTriggerClick,
     'aria-expanded': open,
-    'aria-haspopup': 'true',
+    'aria-haspopup': 'dialog',
+    'aria-controls': open ? dialogId : undefined,
   });
 
   return (
-    <span data-ink-component="Popover" data-ink-prop-placement={position}>
+    <span ref={wrapperRef} data-ink-component="Popover" data-ink-prop-placement={position}>
       {trigger}
       {open && (
-        <div
+        <Portal><div
+          id={dialogId}
           ref={popoverRef}
           className={`${styles.popover} ${styles[position]}`}
           style={{
@@ -203,11 +211,12 @@ export const Popover: React.FC<PopoverProps> = ({
             left: `${coords.left}px`,
           }}
           role="dialog"
+          aria-label={label}
           data-qa={dataQa}
         >
           {content}
           {showArrow && <div className={styles.arrow} />}
-        </div>
+        </div></Portal>
       )}
     </span>
   );

@@ -1,0 +1,6459 @@
+{
+  "auditDate": "2026-10-20",
+  "fileKey": "nAKX1rO3Mir2OCBdCkC5oq",
+  "scope": "All published owners on18 assigned primitive/form pages, including internal and group masters",
+  "ownerCount": 41,
+  "actualVariantAndStandaloneSpecimenCount": 570,
+  "descendantNodeRecordCount": 6816,
+  "screenshotCount": 25,
+  "method": [
+    "Current published property graph and full per-variant/descendant appearance metadata",
+    "Current get_design_context with default screenshot for every direct mapped family; DateInput and standalone DatePicker sparse masters drilled into child specimens",
+    "Current TSX/CSS/local .figma.ts and tokens.css inspection",
+    "25 current Figma screenshots downloaded using tool-provided curl instructions; tool asset URLs redacted from saved contexts",
+    "No source/Figma edits; no runtime zoo and no runtime visual parity claim"
+  ],
+  "priorityPolicy": "Key screens and consequential variant, state, geometry, token, type or reusable-API differences; minor insets/row density are observations. Conditional gaps are not universal fix requirements.",
+  "limitations": [
+    "Actual extant variants were captured; arbitrary property overrides and every Cartesian combination were not rendered.",
+    "Some imported icon masters have missing identity in extraction; imported geometry/fill/text/bindings remain captured.",
+    "Code Connect snippets point to upstream @ds/ui and are not proof of current local styles.",
+    "No runtime visual comparisons, viewport checks, keyboard tests or accessible-name browser queries were run. Source accessibility findings are identified as such."
+  ],
+  "findings": [
+    {
+      "id": "PRIM-01",
+      "priority": 2,
+      "title": "Name compact ComboButton actions",
+      "ownerNodeIds": [
+        "17:168"
+      ],
+      "category": "accessibility/source",
+      "claim": "Compact branches render only Icon in the main button and the API exposes no text/name prop. App.tsx:3305 currently uses that branch; the main action is unnamed in source. Dropdown uses only aria-label despite the project requirement for in-button text.",
+      "figmaEvidence": [
+        "17:168"
+      ],
+      "localEvidence": [
+        "src/design-system/4-composites/ComboButton/ComboButton.tsx:9",
+        "src/design-system/4-composites/ComboButton/ComboButton.tsx:67",
+        "src/App.tsx:3305"
+      ],
+      "recommendation": "Add an accessible-name path that renders sr-only text in both internal buttons through the upstream design system bundle.",
+      "fixScope": "necessary for the current compact list-screen action",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-02",
+      "priority": 2,
+      "title": "Preserve Button icon slot geometry",
+      "ownerNodeIds": [
+        "10:557"
+      ],
+      "category": "geometry/source",
+      "claim": "Local CSS forces start/end SVGs to16px for both mapped sizes. Current Figma startElement is24px in medium and20px in small; passing a larger Icon cannot escape the descendant selector.",
+      "figmaEvidence": [
+        "8894:21299",
+        "8894:21300",
+        "8894:24211",
+        "8894:24212"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Button/Button.module.css:237",
+        "src/App.tsx:2227",
+        "src/App.tsx:3317"
+      ],
+      "recommendation": "Use size-specific element dimensions from the current Figma slots; inspect actual key-screen icon rendering before changing every callsite.",
+      "fixScope": "relevant to current Share, Manage Parties and filter CTAs",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-03",
+      "priority": 2,
+      "title": "Represent the two ComboBox field families explicitly",
+      "ownerNodeIds": [
+        "5517:2448",
+        "5836:25700",
+        "5496:944",
+        "5642:1902",
+        "7264:825"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "The template targets non-editable Combobox but source always filters via text input and shows a clear button whenever value is set, together with the chevron. It cannot configure size, leading element, trigger/clear alternatives, groups/loading/cascading, option descriptions or slots.",
+      "figmaEvidence": [
+        "5517:2448",
+        "5836:25700",
+        "5496:944",
+        "5642:1902",
+        "7264:825"
+      ],
+      "localEvidence": [
+        "src/design-system/4-composites/ComboBox/ComboBox.tsx:5",
+        "src/design-system/4-composites/ComboBox/ComboBox.tsx:257",
+        "src/design-system/4-composites/ComboBox/ComboBox.figma.ts:4"
+      ],
+      "recommendation": "Expose the family choices needed by actual agreement/recipient/settings screens, then update the local mapping from the upstream bundle. Do not hand-roll a second select widget.",
+      "fixScope": "conditional on a key screen using this capability",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-04",
+      "priority": 2,
+      "title": "Use the current ComboBox listbox surface",
+      "ownerNodeIds": [
+        "5496:944"
+      ],
+      "category": "surface/token discrepancy",
+      "claim": "All three current Figma listbox roots are white with10% neutral stroke and low elevation. Code uses glass frost, blur10px, a2px border and box-shadow:none. The comment claiming no Figma shadow is stale.",
+      "figmaEvidence": [
+        "5496:971",
+        "7264:826",
+        "5715:23979"
+      ],
+      "localEvidence": [
+        "src/design-system/4-composites/ComboBox/ComboBox.module.css:191"
+      ],
+      "recommendation": "Replace stale surface assumptions in the upstream source with the current white/elevation treatment; verify on a key form screen.",
+      "fixScope": "when a key screen opens ComboBox",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-05",
+      "priority": 2,
+      "title": "Make DatePicker labels and keyboard opening work",
+      "ownerNodeIds": [
+        "28226:6401"
+      ],
+      "category": "accessibility/source",
+      "claim": "label is rendered without htmlFor and the input is not nested in it. Opening is attached to a div click with no keyboard handler or calendar trigger button; the value is controlled/readOnly with no native typing change path.",
+      "figmaEvidence": [
+        "28226:6401",
+        "28226:6402"
+      ],
+      "localEvidence": [
+        "src/design-system/4-composites/DatePicker/DatePicker.tsx:177"
+      ],
+      "recommendation": "Associate label/error/help IDs with the input and provide a named keyboard-operable picker trigger in the upstream component.",
+      "fixScope": "necessary when DatePicker is used on a key date/filter screen",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-06",
+      "priority": 2,
+      "title": "Expose only the required DateInput/calendar capabilities",
+      "ownerNodeIds": [
+        "28226:6401",
+        "7482:13585",
+        "28218:14649",
+        "36936:5174",
+        "36936:6079"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "DateInput size/usePicker/readOnly axes are omitted. No standalone/mobile/month-year-selector/date-range mode exists; both digit families have40px cells and range states that are not represented.",
+      "figmaEvidence": [
+        "28226:6401",
+        "7482:13585",
+        "36936:6079",
+        "28218:14649",
+        "36936:5174"
+      ],
+      "localEvidence": [
+        "src/design-system/4-composites/DatePicker/DatePicker.tsx:7",
+        "src/design-system/4-composites/DatePicker/DatePicker.figma.ts:4"
+      ],
+      "recommendation": "Prioritize small date filters, no-picker/typed entry or range selection only when required by a selected key screen. Treat internal calendar/digit owners as implementation parts rather than five new mandatory exports.",
+      "fixScope": "conditional on a key screen using this capability",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-07",
+      "priority": 2,
+      "title": "Correct calendar selection emphasis and typography",
+      "ownerNodeIds": [
+        "36936:6079",
+        "36936:5174",
+        "28218:14649"
+      ],
+      "category": "state/token/typography discrepancy",
+      "claim": "Current selected digit backgrounds are dark cobalt #260559 with white text. Local selected day uses cobalt60 #a598ff, white and semibold; current calendar day text is16/400, source is14/400. This changes selected-state contrast and density beyond small inset tolerance.",
+      "figmaEvidence": [
+        "28218:14681",
+        "28218:14682",
+        "36936:5241",
+        "36936:5243",
+        "36936:5246"
+      ],
+      "localEvidence": [
+        "src/design-system/4-composites/DatePicker/DatePicker.module.css:176",
+        "src/design-system/4-composites/DatePicker/DatePicker.module.css:198"
+      ],
+      "recommendation": "Use the current selected semantic fill and16px day typography in the upstream calendar; verify selected/today/disabled states on the selected key screen.",
+      "fixScope": "when a key screen opens the calendar",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-08",
+      "priority": 2,
+      "title": "Associate Switch label and disabled copy",
+      "ownerNodeIds": [
+        "171:3566"
+      ],
+      "category": "accessibility/state/source",
+      "claim": "The label prop becomes a sibling span outside the label containing the input, so the visible label does not name/toggle it. Disabled opacity affects only the control. With description but no label, description is discarded by the label&& branch.",
+      "figmaEvidence": [
+        "171:3566",
+        "170:3533"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Switch/Switch.tsx:58",
+        "src/design-system/3-primitives/Switch/Switch.tsx:88",
+        "src/design-system/3-primitives/Switch/Switch.module.css:22"
+      ],
+      "recommendation": "Connect text and description to the switch and apply disabled treatment to the whole labeled control in the upstream bundle.",
+      "fixScope": "necessary whenever a key settings screen uses labeled Switch",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-09",
+      "priority": 2,
+      "title": "Support Badge menuTrigger when required",
+      "ownerNodeIds": [
+        "83:2801"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "Current published Status Badge has menuTrigger boolean, with hidden chevron layers on every kind. Local Badge props, render and template do not expose it.",
+      "figmaEvidence": [
+        "83:2801",
+        "44036:74",
+        "44038:26594"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Badge/Badge.tsx:14",
+        "src/design-system/3-primitives/Badge/Badge.tsx:64",
+        "src/design-system/3-primitives/Badge/Badge.figma.ts:1"
+      ],
+      "recommendation": "Add an accessible menu-trigger variant upstream if a selected key screen uses interactive status badges; static status badges need no workaround.",
+      "fixScope": "conditional on a key screen using this capability",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-10",
+      "priority": 2,
+      "title": "Preserve Avatar fallback identity and optional treatments",
+      "ownerNodeIds": [
+        "871:18543"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "Square/no-image/no-initials variants use buildingCompany; local fallback always uses person and60% dimensions. Figma exposes shadow/badge/border but local API has none.",
+      "figmaEvidence": [
+        "17273:35026",
+        "17273:35031",
+        "17273:35032",
+        "17273:35037"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Avatar/Avatar.tsx:5",
+        "src/design-system/3-primitives/Avatar/Avatar.tsx:59",
+        "src/design-system/3-primitives/Avatar/Avatar.module.css:101"
+      ],
+      "recommendation": "Implement the square entity fallback and optional treatments required by selected person/party/recipient screens in the upstream bundle.",
+      "fixScope": "conditional on a key screen using this capability",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-11",
+      "priority": 3,
+      "title": "Surface the existing AvatarGroup through the barrel",
+      "ownerNodeIds": [
+        "872:18918"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "AvatarGroup.tsx exists but Avatar/index.ts and the top-level barrel do not export it. Consumers following AGENTS.md cannot reuse it without a prohibited deep import.",
+      "figmaEvidence": [
+        "872:18918"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Avatar/AvatarGroup.tsx:5",
+        "src/design-system/3-primitives/Avatar/index.ts:1",
+        "src/design-system/index.ts:2"
+      ],
+      "recommendation": "Export and document the existing group upstream if multi-avatar key screens require it; verify its overlap border treatment.",
+      "fixScope": "conditional family/export coverage",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-12",
+      "priority": 2,
+      "title": "Allow IconButton notification badge",
+      "ownerNodeIds": [
+        "14:953"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "Published badge boolean controls the positioned AlertBadge dot. Local IconButton renders only Icon and its mapping deliberately omits badge.",
+      "figmaEvidence": [
+        "14:953",
+        "30894:10072"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/IconButton/IconButton.tsx:5",
+        "src/design-system/3-primitives/IconButton/IconButton.tsx:50",
+        "src/design-system/3-primitives/IconButton/IconButton.figma.ts:25"
+      ],
+      "recommendation": "Expose the optional badge upstream when a selected shell or notification key screen needs it.",
+      "fixScope": "conditional on a key screen using this capability",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-13",
+      "priority": 2,
+      "title": "Make Text Box slots available without custom controls",
+      "ownerNodeIds": [
+        "144:17002"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "Current Text Box exposes leading/trailing elements, inputHelp and characterCount. Local Input API has none and renders only the native input between label and error. These cannot be configured through its template.",
+      "figmaEvidence": [
+        "144:17002",
+        "144:17003"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Input/Input.tsx:5",
+        "src/design-system/3-primitives/Input/Input.figma.ts:36"
+      ],
+      "recommendation": "Add required slots/help/counter capabilities upstream for selected form screens, using SearchInput for its existing dedicated search case.",
+      "fixScope": "conditional on a key screen using this capability",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-14",
+      "priority": 3,
+      "title": "Keep TextArea leading-element gap explicit",
+      "ownerNodeIds": [
+        "261:2190"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "Live startElement boolean has no code prop. Existing other states, read-only surface and character-count API are present.",
+      "figmaEvidence": [
+        "261:2190"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/TextArea/TextArea.tsx:8",
+        "src/design-system/3-primitives/TextArea/TextArea.figma.ts:35"
+      ],
+      "recommendation": "Only add a leading slot upstream if a selected key screen requires one.",
+      "fixScope": "conditional coverage",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-15",
+      "priority": 2,
+      "title": "Match visible Spinner ring geometry",
+      "ownerNodeIds": [
+        "474:12179"
+      ],
+      "category": "geometry/source calculation",
+      "claim": "Figma INSIDE strokes occupy16/40/80px with2/4/8px widths. SVG viewBox50 and r20 yields actual outer diameters14.8/36/72px inside those containers; stroke width alone is matched.",
+      "figmaEvidence": [
+        "474:12166",
+        "474:12163",
+        "474:12160"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Spinner/Spinner.tsx:32",
+        "src/design-system/3-primitives/Spinner/Spinner.tsx:43"
+      ],
+      "recommendation": "Check ring geometry at the key loading screen and adjust circle radius/viewBox in the upstream component.",
+      "fixScope": "key loading-state geometry",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-16",
+      "priority": 2,
+      "title": "Use emphasis red for StatusLight alert text",
+      "ownerNodeIds": [
+        "166:2875"
+      ],
+      "category": "token discrepancy",
+      "claim": "Current alert Status Text uses #a6003f (emphasis red100). Local .alert .text uses --ink-font-color-error (#c70547, red90).",
+      "figmaEvidence": [
+        "166:2871",
+        "166:2874"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/StatusLight/StatusLight.module.css:98"
+      ],
+      "recommendation": "Use the live emphasis semantic text token upstream when an alert light is used.",
+      "fixScope": "conditional alert-state token correction",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-17",
+      "priority": 2,
+      "title": "Connect Tooltip to its trigger semantically",
+      "ownerNodeIds": [
+        "196:1439"
+      ],
+      "category": "accessibility/source",
+      "claim": "Tooltip can appear on focus but the cloned trigger receives no aria-describedby and the portal tooltip has no ID; role=tooltip alone does not associate it with the control.",
+      "figmaEvidence": [
+        "196:1439"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Tooltip/Tooltip.tsx:220",
+        "src/design-system/3-primitives/Tooltip/Tooltip.tsx:253"
+      ],
+      "recommendation": "Provide a stable tooltip ID and preserve/append the trigger describedby in the upstream bundle.",
+      "fixScope": "necessary for key screens relying on tooltip descriptions",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-18",
+      "priority": 3,
+      "title": "Preserve 99+ AlertBadge text in translation",
+      "ownerNodeIds": [
+        "4:409"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "Template parseInt(\"99+\",10) becomes99; runtime only renders99+ for values greater than99. The translated badge therefore loses its plus sign. parseInt(... )||1 also changes0 to1.",
+      "figmaEvidence": [
+        "4:409"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/AlertBadge/AlertBadge.figma.ts:10",
+        "src/design-system/3-primitives/AlertBadge/AlertBadge.tsx:24"
+      ],
+      "recommendation": "Normalize capped count text to a value greater than99, preserving the visible output.",
+      "fixScope": "mapping-only observation",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-19",
+      "priority": 3,
+      "title": "Keep Radio error icon difference visible",
+      "ownerNodeIds": [
+        "274:4817"
+      ],
+      "category": "source/API discrepancy",
+      "claim": "Figma radio error specimen uses a status-error icon next to error copy. Radio.tsx renders only the string, unlike Checkbox which renders the icon.",
+      "figmaEvidence": [
+        "274:4817"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Radio/Radio.tsx:55"
+      ],
+      "recommendation": "Add the error icon upstream if aligning an error-heavy selected key screen; do not treat this as a full-flow blocker.",
+      "fixScope": "conditional visual observation",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-20",
+      "priority": 3,
+      "title": "Review extra text Button shadows",
+      "ownerNodeIds": [
+        "10:557"
+      ],
+      "category": "surface/source discrepancy",
+      "claim": "All40 current Figma Button roots have effects=[]; brand/primary/danger CSS adds resting and hover shadows.",
+      "figmaEvidence": [
+        "10:557"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Button/Button.module.css:93",
+        "src/design-system/3-primitives/Button/Button.module.css:109",
+        "src/design-system/3-primitives/Button/Button.module.css:165"
+      ],
+      "recommendation": "Inspect key-screen appearance before removing the extra shadows upstream.",
+      "fixScope": "low-priority surface observation",
+      "runtimeRenderParity": "unverified"
+    },
+    {
+      "id": "PRIM-21",
+      "priority": 3,
+      "title": "Use medium weight for visible Spinner label",
+      "ownerNodeIds": [
+        "474:12179"
+      ],
+      "category": "typography discrepancy",
+      "claim": "Current hidden-by-default /text layers are14px weight500; local .labelVisible is14px weight400.",
+      "figmaEvidence": [
+        "474:12169",
+        "474:12171",
+        "474:12173"
+      ],
+      "localEvidence": [
+        "src/design-system/3-primitives/Spinner/Spinner.module.css:77"
+      ],
+      "recommendation": "Use weight500 upstream if the selected key loading screen shows the label.",
+      "fixScope": "conditional typography observation",
+      "runtimeRenderParity": "unverified"
+    }
+  ],
+  "owners": [
+    {
+      "nodeId": "871:18543",
+      "name": "[INK] Avatar",
+      "pageName": "Avatar",
+      "pageId": "37:2506",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=871-18543",
+      "publishedProperties": {
+        "shadow": {
+          "name": "shadow",
+          "type": "BOOLEAN",
+          "key": "shadow#871:68",
+          "defaultValue": false
+        },
+        "badge": {
+          "name": "badge",
+          "type": "BOOLEAN",
+          "key": "badge#872:136",
+          "defaultValue": false
+        },
+        "border": {
+          "name": "border",
+          "type": "BOOLEAN",
+          "key": "border#17194:0",
+          "defaultValue": false
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "XSmall",
+            "Small",
+            "Medium",
+            "Large"
+          ],
+          "defaultValue": "Large"
+        },
+        "colorIndex": {
+          "name": "colorIndex",
+          "type": "VARIANT",
+          "key": "colorIndex",
+          "variantOptions": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "sign"
+          ],
+          "defaultValue": "0"
+        },
+        "shape": {
+          "name": "shape",
+          "type": "VARIANT",
+          "key": "shape",
+          "variantOptions": [
+            "square",
+            "round"
+          ],
+          "defaultValue": "round"
+        },
+        "image": {
+          "name": "image",
+          "type": "VARIANT",
+          "key": "image",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "initials": {
+          "name": "initials",
+          "type": "VARIANT",
+          "key": "initials",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "True"
+        }
+      },
+      "variantAxes": {
+        "size": [
+          "XSmall",
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "colorIndex": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "sign"
+        ],
+        "shape": [
+          "square",
+          "round"
+        ],
+        "image": [
+          "False",
+          "True"
+        ],
+        "initials": [
+          "True",
+          "False"
+        ]
+      },
+      "localComponent": "Avatar",
+      "localSource": "src/design-system/3-primitives/Avatar/Avatar.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Avatar/Avatar.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "size XSmall/Small/Medium/Large → xsmall/small/medium/large; shape round → circle; numeric colors and sign; image/initials derive from src/initials.",
+      "stateAndAppearanceReview": "48/40/32/24 dimensions, square corner radii and current cozy/wide/open tracking are present. All 104 extant variants cover the actual published combinations, not a Cartesian product. Shadow, badge, border have no API. Square fallback glyph differs.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2506.json.gz",
+      "actualVariantCount": 104,
+      "actualVariantIds": [
+        "871:18553",
+        "17273:34806",
+        "871:18565",
+        "17273:34811",
+        "871:18577",
+        "17273:34816",
+        "871:18589",
+        "17273:34821",
+        "871:18601",
+        "17273:34826",
+        "871:18613",
+        "17273:34831",
+        "871:18625",
+        "17273:34836",
+        "871:18637",
+        "17273:34841",
+        "871:18649",
+        "17273:34846",
+        "871:18661",
+        "21445:5210",
+        "17273:34851",
+        "21445:5267",
+        "871:18557",
+        "17273:34856",
+        "871:18569",
+        "17273:34861",
+        "871:18581",
+        "17273:34866",
+        "871:18593",
+        "17273:34871",
+        "871:18605",
+        "17273:34876",
+        "871:18617",
+        "17273:34881",
+        "871:18629",
+        "17273:34886",
+        "871:18641",
+        "17273:34891",
+        "871:18653",
+        "17273:34896",
+        "871:18665",
+        "21445:5215",
+        "17273:34901",
+        "21445:5272",
+        "871:18561",
+        "17273:34906",
+        "871:18573",
+        "17273:34911",
+        "871:18585",
+        "17273:34916",
+        "871:18597",
+        "17273:34921",
+        "871:18609",
+        "17273:34926",
+        "871:18621",
+        "17273:34931",
+        "871:18633",
+        "17273:34936",
+        "871:18645",
+        "17273:34941",
+        "871:18657",
+        "17273:34946",
+        "871:18669",
+        "21445:5220",
+        "17273:34951",
+        "21445:5277",
+        "3572:470",
+        "17273:34956",
+        "3572:475",
+        "17273:34961",
+        "3572:480",
+        "17273:34966",
+        "3572:485",
+        "17273:34971",
+        "3572:490",
+        "17273:34976",
+        "3572:495",
+        "17273:34981",
+        "3572:500",
+        "17273:34986",
+        "3572:505",
+        "17273:34991",
+        "3572:510",
+        "17273:34996",
+        "3572:515",
+        "21445:5225",
+        "17273:35001",
+        "21445:5282",
+        "871:18544",
+        "17273:35006",
+        "871:18547",
+        "17273:35011",
+        "871:18550",
+        "17273:35016",
+        "3631:130",
+        "17273:35021",
+        "872:19198",
+        "17273:35026",
+        "872:19202",
+        "17273:35032",
+        "872:19206",
+        "17273:35038",
+        "3631:134",
+        "17273:35044"
+      ],
+      "descendantNodeRecordCount": 536,
+      "rootGeometry": [
+        [
+          24,
+          24
+        ],
+        [
+          32,
+          32
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          48,
+          48
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 20,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 125
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": -0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 16,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 125
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": -0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 10,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.3199999928474426
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-avatar.png",
+      "findings": [
+        "PRIM-10"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "872:18918",
+      "name": "[INK] Avatar Group",
+      "pageName": "Avatar",
+      "pageId": "37:2506",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=872-18918",
+      "publishedProperties": {
+        "❖ Image": {
+          "name": "❖ Image",
+          "type": "VARIANT",
+          "key": "❖ Image",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "xsmall",
+            "small",
+            "medium",
+            "large"
+          ],
+          "defaultValue": "xsmall"
+        }
+      },
+      "variantAxes": {
+        "❖ Image": [
+          "True",
+          "False"
+        ],
+        "size": [
+          "xsmall",
+          "small",
+          "medium",
+          "large"
+        ]
+      },
+      "localComponent": "AvatarGroup",
+      "localSource": "src/design-system/3-primitives/Avatar/AvatarGroup.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Source exists but is not publicly exported",
+      "apiCoverage": "avatars/max/size are implemented in AvatarGroup.tsx, but neither Avatar/index.ts nor design-system barrel exports AvatarGroup.",
+      "stateAndAppearanceReview": "All eight image/size variants are present in Figma. White overlap borders are part of group treatment. A consumer following the required barrel imports cannot reuse the existing group implementation.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2506.json.gz",
+      "actualVariantCount": 8,
+      "actualVariantIds": [
+        "872:18811",
+        "872:18917",
+        "6543:4836",
+        "6543:4875",
+        "6543:4929",
+        "6543:5007",
+        "6543:4935",
+        "6543:5013"
+      ],
+      "descendantNodeRecordCount": 96,
+      "rootGeometry": [
+        [
+          76,
+          24
+        ],
+        [
+          100,
+          32
+        ],
+        [
+          124,
+          40
+        ],
+        [
+          148,
+          48
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 10,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.3199999928474426
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 16,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 125
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": -0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 20,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 125
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": -0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-avatar-group.png",
+      "findings": [
+        "PRIM-11"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "4:409",
+      "name": "[INK] Alert Badge",
+      "pageName": "AlertBadge",
+      "pageId": "0:1",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=4-409",
+      "publishedProperties": {
+        "value": {
+          "name": "value",
+          "type": "TEXT",
+          "key": "value#4:10",
+          "defaultValue": "9"
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "emphasis",
+            "subtle"
+          ],
+          "defaultValue": "emphasis"
+        },
+        "BadgeWidth": {
+          "name": "BadgeWidth",
+          "type": "VARIANT",
+          "key": "BadgeWidth",
+          "variantOptions": [
+            "single",
+            "double",
+            "dot"
+          ],
+          "defaultValue": "single"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "emphasis",
+          "subtle"
+        ],
+        "BadgeWidth": [
+          "single",
+          "double",
+          "dot"
+        ]
+      },
+      "localComponent": "AlertBadge",
+      "localSource": "src/design-system/3-primitives/AlertBadge/AlertBadge.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/AlertBadge/AlertBadge.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "value text → numeric value; BadgeWidth=dot → dot; single/double width derives from value.",
+      "stateAndAppearanceReview": "Both kinds and all six specimens have 20px count /12px dot height, 2px white border and 12px/500/1.5 text. Local source uses these tokens. Width is content-derived rather than a forced specimen width.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-0-1.json.gz",
+      "actualVariantCount": 6,
+      "actualVariantIds": [
+        "4:390",
+        "4:419",
+        "4:436",
+        "4:450",
+        "4:452",
+        "4:454"
+      ],
+      "descendantNodeRecordCount": 10,
+      "rootGeometry": [
+        [
+          12,
+          12
+        ],
+        [
+          20,
+          20
+        ],
+        [
+          24,
+          20
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-alert-badge.png",
+      "findings": [
+        "PRIM-18"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "10:557",
+      "name": "[INK] Button",
+      "pageName": "Button",
+      "pageId": "10:538",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=10-557",
+      "publishedProperties": {
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#10:23",
+          "defaultValue": "Button"
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "BOOLEAN",
+          "key": "startElement#10:24",
+          "defaultValue": false
+        },
+        "menuTrigger": {
+          "name": "menuTrigger",
+          "type": "BOOLEAN",
+          "key": "menuTrigger#10:26",
+          "defaultValue": false
+        },
+        "loading": {
+          "name": "loading",
+          "type": "BOOLEAN",
+          "key": "loading#12:28",
+          "defaultValue": false
+        },
+        "❖ Focus": {
+          "name": "❖ Focus",
+          "type": "BOOLEAN",
+          "key": "❖ Focus#9803:0",
+          "defaultValue": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "primary",
+            "secondary",
+            "tertiary",
+            "danger",
+            "brand"
+          ],
+          "defaultValue": "brand"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "medium",
+            "small"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "default",
+            "hover",
+            "active"
+          ],
+          "defaultValue": "default"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "false",
+            "true"
+          ],
+          "defaultValue": "false"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "primary",
+          "secondary",
+          "tertiary",
+          "danger",
+          "brand"
+        ],
+        "size": [
+          "medium",
+          "small"
+        ],
+        "❖ State": [
+          "default",
+          "hover",
+          "active"
+        ],
+        "disabled": [
+          "false",
+          "true"
+        ]
+      },
+      "localComponent": "Button",
+      "localSource": "src/design-system/3-primitives/Button/Button.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Button/Button.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "text → children; five kinds; medium/small; startElement/menuTrigger/loading; native disabled; CSS hover/active/focus-visible.",
+      "stateAndAppearanceReview": "All five kinds and medium/small states exist locally; larger sizes, rounded and inverted are local additions. Primary default is intentional per project CTA convention. Icon slots and extra shadows differ.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-10-538.json.gz",
+      "actualVariantCount": 40,
+      "actualVariantIds": [
+        "8894:21299",
+        "8894:21304",
+        "8894:21309",
+        "8894:21314",
+        "10:541",
+        "12:610",
+        "12:624",
+        "12:638",
+        "18:234",
+        "18:239",
+        "18:243",
+        "18:247",
+        "22:1018",
+        "22:1023",
+        "22:1027",
+        "22:1031",
+        "8894:21360",
+        "8894:21365",
+        "8894:21370",
+        "8894:21375",
+        "8894:24211",
+        "8894:24236",
+        "8894:24261",
+        "8894:24281",
+        "8894:24201",
+        "8894:24226",
+        "8894:24251",
+        "8894:24286",
+        "8894:24206",
+        "8894:24231",
+        "8894:24256",
+        "8894:24271",
+        "8894:24191",
+        "8894:24216",
+        "8894:24241",
+        "8894:24276",
+        "8894:24196",
+        "8894:24221",
+        "8894:24246",
+        "8894:24266"
+      ],
+      "descendantNodeRecordCount": 235,
+      "rootGeometry": [
+        [
+          80,
+          32
+        ],
+        [
+          80,
+          40
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 16,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-button.png",
+      "findings": [
+        "PRIM-02",
+        "PRIM-20"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "14:953",
+      "name": "[INK] Icon Button",
+      "pageName": "Button",
+      "pageId": "10:538",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=14-953",
+      "publishedProperties": {
+        "icon": {
+          "name": "icon",
+          "type": "INSTANCE_SWAP",
+          "key": "icon#177:2",
+          "defaultValue": "41751:4258"
+        },
+        "❖ Icon (Small)": {
+          "name": "❖ Icon (Small)",
+          "type": "INSTANCE_SWAP",
+          "key": "❖ Icon (Small)#9038:17",
+          "defaultValue": "41751:4260"
+        },
+        "badge": {
+          "name": "badge",
+          "type": "BOOLEAN",
+          "key": "badge#30792:0",
+          "defaultValue": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "primary",
+            "secondary",
+            "tertiary",
+            "danger",
+            "brand"
+          ],
+          "defaultValue": "brand"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "small",
+            "medium"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "default",
+            "hover",
+            "active"
+          ],
+          "defaultValue": "default"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "false",
+            "true"
+          ],
+          "defaultValue": "false"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "primary",
+          "secondary",
+          "tertiary",
+          "danger",
+          "brand"
+        ],
+        "size": [
+          "small",
+          "medium"
+        ],
+        "❖ State": [
+          "default",
+          "hover",
+          "active"
+        ],
+        "disabled": [
+          "false",
+          "true"
+        ]
+      },
+      "localComponent": "IconButton",
+      "localSource": "src/design-system/3-primitives/IconButton/IconButton.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/IconButton/IconButton.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "kind → variant; icon swap → kebab icon name placeholder; small/medium; native disabled and aria-label.",
+      "stateAndAppearanceReview": "All five kinds and two sizes have CSS hover/active/focus-visible. API lacks the live badge property. Danger default transparent/error icon is already implemented.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-10-538.json.gz",
+      "actualVariantCount": 40,
+      "actualVariantIds": [
+        "14:945",
+        "8894:26975",
+        "14:959",
+        "8894:26977",
+        "14:969",
+        "8894:26979",
+        "14:989",
+        "14:991",
+        "14:993",
+        "14:1019",
+        "8942:18177",
+        "14:1021",
+        "8942:18179",
+        "14:1023",
+        "8942:18181",
+        "2301:10559",
+        "8894:26981",
+        "2301:10561",
+        "2301:10563",
+        "8942:18183",
+        "8894:26895",
+        "8894:26897",
+        "8894:26899",
+        "8894:27019",
+        "8894:27021",
+        "8894:27023",
+        "8894:26901",
+        "8894:26903",
+        "8894:26905",
+        "8894:26913",
+        "8894:26907",
+        "8942:18231",
+        "8894:26909",
+        "8942:18233",
+        "8894:26911",
+        "8942:18235",
+        "8894:27025",
+        "8894:26915",
+        "8894:26917",
+        "8942:18237"
+      ],
+      "descendantNodeRecordCount": 200,
+      "rootGeometry": [
+        [
+          32,
+          32
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "textSpecifications": [],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-icon-button.png",
+      "findings": [
+        "PRIM-12"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "17:168",
+      "name": "[INK] Combo Button",
+      "pageName": "Button",
+      "pageId": "10:538",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=17-168",
+      "publishedProperties": {
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "primary",
+            "secondary",
+            "tertiary",
+            "brand"
+          ],
+          "defaultValue": "brand"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "medium",
+            "small"
+          ],
+          "defaultValue": "medium"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "compact": {
+          "name": "compact",
+          "type": "VARIANT",
+          "key": "compact",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ Is Hover/Active?": {
+          "name": "❖ Is Hover/Active?",
+          "type": "VARIANT",
+          "key": "❖ Is Hover/Active?",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "primary",
+          "secondary",
+          "tertiary",
+          "brand"
+        ],
+        "size": [
+          "medium",
+          "small"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ],
+        "compact": [
+          "False",
+          "True"
+        ],
+        "❖ Is Hover/Active?": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "ComboButton",
+      "localSource": "src/design-system/4-composites/ComboButton/ComboButton.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Available component without local template",
+      "apiCoverage": "kind → variant; size, compact, disabled; main/dropdown callbacks. Tertiary forces compact.",
+      "stateAndAppearanceReview": "All 18 specimens correspond to combinations of existing props. Compact main action cannot currently receive an accessible name; dropdown uses aria-label instead of text contrary to the project button convention.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-10-538.json.gz",
+      "actualVariantCount": 18,
+      "actualVariantIds": [
+        "17:152",
+        "8971:19431",
+        "8971:19339",
+        "8971:19434",
+        "18:202",
+        "8971:19437",
+        "2301:12710",
+        "8971:19440",
+        "8971:19342",
+        "8971:19443",
+        "2301:12713",
+        "8971:19446",
+        "18:320",
+        "18:411",
+        "2301:12755",
+        "8971:20090",
+        "8971:20093",
+        "8971:20096"
+      ],
+      "descendantNodeRecordCount": 114,
+      "rootGeometry": [
+        [
+          52,
+          32
+        ],
+        [
+          60,
+          40
+        ],
+        [
+          112,
+          32
+        ],
+        [
+          120,
+          40
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 16,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-combo-button.png",
+      "findings": [
+        "PRIM-01"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "19:484",
+      "name": "[INK] Toggle Button",
+      "pageName": "Button",
+      "pageId": "10:538",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=19-484",
+      "publishedProperties": {
+        "icon": {
+          "name": "icon",
+          "type": "INSTANCE_SWAP",
+          "key": "icon#180:12",
+          "defaultValue": "41751:4642"
+        },
+        "icon (Small)": {
+          "name": "icon (Small)",
+          "type": "INSTANCE_SWAP",
+          "key": "icon (Small)#9038:0",
+          "defaultValue": "41751:5870"
+        },
+        "showText": {
+          "name": "showText",
+          "type": "BOOLEAN",
+          "key": "showText#44934:0",
+          "defaultValue": false
+        },
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#44935:17",
+          "defaultValue": "Button"
+        },
+        "HasIcon?": {
+          "name": "HasIcon?",
+          "type": "BOOLEAN",
+          "key": "HasIcon?#45023:0",
+          "defaultValue": true
+        },
+        "selected": {
+          "name": "selected",
+          "type": "VARIANT",
+          "key": "selected",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "small",
+            "medium"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "inactive": {
+          "name": "inactive",
+          "type": "VARIANT",
+          "key": "inactive",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "selected": [
+          "False",
+          "True"
+        ],
+        "size": [
+          "small",
+          "medium"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "inactive": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": null,
+      "localSource": null,
+      "directLocalTemplate": null,
+      "mappingStatus": "Figma-only family; compose supported parts",
+      "apiCoverage": "Toggle: Button kind/active/aria-pressed or IconButton with selected kind, not a new raw control. Round: IconButton with a token radius style.",
+      "stateAndAppearanceReview": "No dedicated public export or local template exists. Missing export alone is not a key-screen blocker. Add an upstream reusable API only when a selected key screen requires the exact family behavior.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-10-538.json.gz",
+      "actualVariantCount": 16,
+      "actualVariantIds": [
+        "19:466",
+        "2382:9379",
+        "2382:9412",
+        "2382:9434",
+        "2382:9489",
+        "2382:9492",
+        "2382:9495",
+        "2382:9498",
+        "8971:19872",
+        "8971:19874",
+        "8971:19876",
+        "8971:19878",
+        "8971:19880",
+        "8971:19882",
+        "8971:19884",
+        "8971:19886"
+      ],
+      "descendantNodeRecordCount": 72,
+      "rootGeometry": [
+        [
+          32,
+          32
+        ],
+        [
+          40,
+          40
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 16,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-toggle-button.png",
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "17431:43925",
+      "name": "_[INK] Round Button",
+      "pageName": "Button",
+      "pageId": "10:538",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=17431-43925",
+      "publishedProperties": {
+        "icon": {
+          "name": "icon",
+          "type": "INSTANCE_SWAP",
+          "key": "icon#177:2",
+          "defaultValue": "41751:4258"
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "primary",
+            "secondary",
+            "tertiary",
+            "danger",
+            "brand"
+          ],
+          "defaultValue": "brand"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "medium"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "default",
+            "hover",
+            "active"
+          ],
+          "defaultValue": "default"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "primary",
+          "secondary",
+          "tertiary",
+          "danger",
+          "brand"
+        ],
+        "size": [
+          "medium"
+        ],
+        "❖ State": [
+          "default",
+          "hover",
+          "active"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": null,
+      "localSource": null,
+      "directLocalTemplate": null,
+      "mappingStatus": "Figma-only family; compose supported parts",
+      "apiCoverage": "Toggle: Button kind/active/aria-pressed or IconButton with selected kind, not a new raw control. Round: IconButton with a token radius style.",
+      "stateAndAppearanceReview": "No dedicated public export or local template exists. Missing export alone is not a key-screen blocker. Add an upstream reusable API only when a selected key screen requires the exact family behavior.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-10-538.json.gz",
+      "actualVariantCount": 20,
+      "actualVariantIds": [
+        "17431:43926",
+        "17431:43928",
+        "17431:43930",
+        "17431:43932",
+        "17431:43934",
+        "17431:43936",
+        "17431:43938",
+        "17431:43940",
+        "17431:43942",
+        "17431:43944",
+        "17431:43946",
+        "17431:43948",
+        "17431:43950",
+        "17431:43952",
+        "17431:43954",
+        "17431:43956",
+        "17431:43958",
+        "17431:43960",
+        "17431:43962",
+        "17431:43964"
+      ],
+      "descendantNodeRecordCount": 60,
+      "rootGeometry": [
+        [
+          40,
+          40
+        ]
+      ],
+      "textSpecifications": [],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "377:23064",
+      "name": "[INK] Checkbox",
+      "pageName": "Checkbox",
+      "pageId": "37:2508",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=377-23064",
+      "publishedProperties": {
+        "endElement": {
+          "name": "endElement",
+          "type": "BOOLEAN",
+          "key": "endElement#287:27",
+          "defaultValue": false
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "BOOLEAN",
+          "key": "startElement#287:28",
+          "defaultValue": false
+        },
+        "❖ Description": {
+          "name": "❖ Description",
+          "type": "BOOLEAN",
+          "key": "❖ Description#287:30",
+          "defaultValue": false
+        },
+        "showLabel": {
+          "name": "showLabel",
+          "type": "BOOLEAN",
+          "key": "showLabel#287:31",
+          "defaultValue": true
+        },
+        "❖ Show Error Message": {
+          "name": "❖ Show Error Message",
+          "type": "BOOLEAN",
+          "key": "❖ Show Error Message#3106:0",
+          "defaultValue": true
+        },
+        "checked": {
+          "name": "checked",
+          "type": "VARIANT",
+          "key": "checked",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        },
+        "indeterminate": {
+          "name": "indeterminate",
+          "type": "VARIANT",
+          "key": "indeterminate",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ Error": {
+          "name": "❖ Error",
+          "type": "VARIANT",
+          "key": "❖ Error",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        }
+      },
+      "variantAxes": {
+        "checked": [
+          "True",
+          "False"
+        ],
+        "indeterminate": [
+          "True",
+          "False"
+        ],
+        "❖ Error": [
+          "False",
+          "True"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ]
+      },
+      "localComponent": "Checkbox",
+      "localSource": "src/design-system/3-primitives/Checkbox/Checkbox.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Checkbox/Checkbox.figma.ts",
+      "mappingStatus": "Direct mapped component; groups are composition references",
+      "apiCoverage": "checked/indeterminate/error/disabled/showLabel/showErrorMessage and start/end slots map; native checked/defaultChecked and callbacks; groups use Checkbox plus Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/active, checked/unchecked/indeterminate and error/disabled CSS exist. showLabel=false hides only labelText correctly. Group masters have no independent reusable API or template; they can be composed without introducing custom controls.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2508.json.gz",
+      "actualVariantCount": 15,
+      "actualVariantIds": [
+        "377:23065",
+        "1566:18040",
+        "1566:18128",
+        "377:23118",
+        "377:23632",
+        "377:23085",
+        "1566:18068",
+        "1566:18156",
+        "377:23141",
+        "377:23642",
+        "377:23107",
+        "1566:18098",
+        "1566:18186",
+        "377:23154",
+        "377:23653"
+      ],
+      "descendantNodeRecordCount": 207,
+      "rootGeometry": [
+        [
+          127,
+          40
+        ],
+        [
+          127,
+          95
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-checkbox.png",
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1220:9370",
+      "name": "[INK] Checkbox group (Basic)",
+      "pageName": "Checkbox",
+      "pageId": "37:2508",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1220-9370",
+      "publishedProperties": {
+        "showLegend": {
+          "name": "showLegend",
+          "type": "BOOLEAN",
+          "key": "showLegend#1220:8",
+          "defaultValue": true
+        },
+        "description": {
+          "name": "description",
+          "type": "BOOLEAN",
+          "key": "description#1220:12",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#37585:0",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Checkbox",
+      "localSource": "src/design-system/3-primitives/Checkbox/Checkbox.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Composition reference; no dedicated local export/template",
+      "apiCoverage": "checked/indeterminate/error/disabled/showLabel/showErrorMessage and start/end slots map; native checked/defaultChecked and callbacks; groups use Checkbox plus Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/active, checked/unchecked/indeterminate and error/disabled CSS exist. showLabel=false hides only labelText correctly. Group masters have no independent reusable API or template; they can be composed without introducing custom controls.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2508.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1220:9370"
+      ],
+      "descendantNodeRecordCount": 49,
+      "rootGeometry": [
+        [
+          225,
+          240
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1220:9369",
+      "name": "[INK] Checkbox group (Nested)",
+      "pageName": "Checkbox",
+      "pageId": "37:2508",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1220-9369",
+      "publishedProperties": {
+        "showLegend": {
+          "name": "showLegend",
+          "type": "BOOLEAN",
+          "key": "showLegend#1220:10",
+          "defaultValue": true
+        },
+        "description": {
+          "name": "description",
+          "type": "BOOLEAN",
+          "key": "description#1220:14",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#37585:4",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Checkbox",
+      "localSource": "src/design-system/3-primitives/Checkbox/Checkbox.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Composition reference; no dedicated local export/template",
+      "apiCoverage": "checked/indeterminate/error/disabled/showLabel/showErrorMessage and start/end slots map; native checked/defaultChecked and callbacks; groups use Checkbox plus Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/active, checked/unchecked/indeterminate and error/disabled CSS exist. showLabel=false hides only labelText correctly. Group masters have no independent reusable API or template; they can be composed without introducing custom controls.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2508.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1220:9369"
+      ],
+      "descendantNodeRecordCount": 53,
+      "rootGeometry": [
+        [
+          225,
+          224
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1220:9368",
+      "name": "[INK] Checkbox group (Error)",
+      "pageName": "Checkbox",
+      "pageId": "37:2508",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1220-9368",
+      "publishedProperties": {
+        "showLegend": {
+          "name": "showLegend",
+          "type": "BOOLEAN",
+          "key": "showLegend#1220:9",
+          "defaultValue": true
+        },
+        "description": {
+          "name": "description",
+          "type": "BOOLEAN",
+          "key": "description#1220:13",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#37585:2",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Checkbox",
+      "localSource": "src/design-system/3-primitives/Checkbox/Checkbox.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Composition reference; no dedicated local export/template",
+      "apiCoverage": "checked/indeterminate/error/disabled/showLabel/showErrorMessage and start/end slots map; native checked/defaultChecked and callbacks; groups use Checkbox plus Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/active, checked/unchecked/indeterminate and error/disabled CSS exist. showLabel=false hides only labelText correctly. Group masters have no independent reusable API or template; they can be composed without introducing custom controls.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2508.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1220:9368"
+      ],
+      "descendantNodeRecordCount": 57,
+      "rootGeometry": [
+        [
+          225,
+          248
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1220:9367",
+      "name": "[INK] Checkbox group (Disabled)",
+      "pageName": "Checkbox",
+      "pageId": "37:2508",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1220-9367",
+      "publishedProperties": {
+        "showLegend": {
+          "name": "showLegend",
+          "type": "BOOLEAN",
+          "key": "showLegend#1220:11",
+          "defaultValue": true
+        },
+        "description": {
+          "name": "description",
+          "type": "BOOLEAN",
+          "key": "description#1220:15",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#37585:3",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Checkbox",
+      "localSource": "src/design-system/3-primitives/Checkbox/Checkbox.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Composition reference; no dedicated local export/template",
+      "apiCoverage": "checked/indeterminate/error/disabled/showLabel/showErrorMessage and start/end slots map; native checked/defaultChecked and callbacks; groups use Checkbox plus Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/active, checked/unchecked/indeterminate and error/disabled CSS exist. showLabel=false hides only labelText correctly. Group masters have no independent reusable API or template; they can be composed without introducing custom controls.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2508.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1220:9367"
+      ],
+      "descendantNodeRecordCount": 47,
+      "rootGeometry": [
+        [
+          225,
+          224
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "5496:944",
+      "name": "[INK] Combobox Listbox",
+      "pageName": "ComboBox",
+      "pageId": "5491:1515",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=5496-944",
+      "publishedProperties": {
+        "cascadedSelection": {
+          "name": "cascadedSelection",
+          "type": "BOOLEAN",
+          "key": "cascadedSelection#41012:0",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#42302:75",
+          "defaultValue": "-1:-1"
+        },
+        "loading": {
+          "name": "loading",
+          "type": "VARIANT",
+          "key": "loading",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ Show Groups": {
+          "name": "❖ Show Groups",
+          "type": "VARIANT",
+          "key": "❖ Show Groups",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "loading": [
+          "False",
+          "True"
+        ],
+        "❖ Show Groups": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "ComboBox",
+      "localSource": "src/design-system/4-composites/ComboBox/ComboBox.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "Local mapping targets non-editable Combobox but code always has editable filtering, always clear-on-value, and flat single selection. options provide only value/label/disabled.",
+      "stateAndAppearanceReview": "Medium/default/error/disabled is implemented. No size, read-only selection mode, leading element, showTrigger, onClear control, groups, option descriptions/slots, loading or cascaded API. Current surface also differs. Do not conflate family coverage with a complete Combobox implementation.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-5491-1515.json.gz",
+      "actualVariantCount": 3,
+      "actualVariantIds": [
+        "5496:971",
+        "7264:826",
+        "5715:23979"
+      ],
+      "descendantNodeRecordCount": 99,
+      "rootGeometry": [
+        [
+          320,
+          40
+        ],
+        [
+          320,
+          232
+        ],
+        [
+          320,
+          317
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "SemiBold"
+          },
+          "fontSize": 12,
+          "fontWeight": 600,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-combobox-listbox.png",
+      "findings": [
+        "PRIM-03",
+        "PRIM-04"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "5836:25700",
+      "name": "[INK] Editable Combobox",
+      "pageName": "ComboBox",
+      "pageId": "5491:1515",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=5836-25700",
+      "publishedProperties": {
+        "value": {
+          "name": "value",
+          "type": "TEXT",
+          "key": "value#260:0",
+          "defaultValue": "Option A"
+        },
+        "showLabel": {
+          "name": "showLabel",
+          "type": "BOOLEAN",
+          "key": "showLabel#260:6",
+          "defaultValue": true
+        },
+        "inputHelp": {
+          "name": "inputHelp",
+          "type": "BOOLEAN",
+          "key": "inputHelp#260:12",
+          "defaultValue": false
+        },
+        "❖ Description": {
+          "name": "❖ Description",
+          "type": "BOOLEAN",
+          "key": "❖ Description#375:29",
+          "defaultValue": false
+        },
+        "placeholder": {
+          "name": "placeholder",
+          "type": "TEXT",
+          "key": "placeholder#5712:0",
+          "defaultValue": ""
+        },
+        "HasStartElement?": {
+          "name": "HasStartElement?",
+          "type": "BOOLEAN",
+          "key": "HasStartElement?#5725:27",
+          "defaultValue": true
+        },
+        "showTrigger": {
+          "name": "showTrigger",
+          "type": "BOOLEAN",
+          "key": "showTrigger#5853:0",
+          "defaultValue": true
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "SLOT",
+          "key": "startElement#42302:44",
+          "defaultValue": "-1:-1"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "small",
+            "medium"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "❖ Placeholder": {
+          "name": "❖ Placeholder",
+          "type": "VARIANT",
+          "key": "❖ Placeholder",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "True"
+        },
+        "❖ Error": {
+          "name": "❖ Error",
+          "type": "VARIANT",
+          "key": "❖ Error",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "onClear": {
+          "name": "onClear",
+          "type": "VARIANT",
+          "key": "onClear",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "size": [
+          "small",
+          "medium"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "❖ Placeholder": [
+          "False",
+          "True"
+        ],
+        "❖ Error": [
+          "False",
+          "True"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ],
+        "onClear": [
+          "True",
+          "False"
+        ]
+      },
+      "localComponent": "ComboBox",
+      "localSource": "src/design-system/4-composites/ComboBox/ComboBox.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Partially represented by ComboBox; no independent template",
+      "apiCoverage": "Local mapping targets non-editable Combobox but code always has editable filtering, always clear-on-value, and flat single selection. options provide only value/label/disabled.",
+      "stateAndAppearanceReview": "Medium/default/error/disabled is implemented. No size, read-only selection mode, leading element, showTrigger, onClear control, groups, option descriptions/slots, loading or cascaded API. Current surface also differs. Do not conflate family coverage with a complete Combobox implementation.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-5491-1515.json.gz",
+      "actualVariantCount": 30,
+      "actualVariantIds": [
+        "5836:25713",
+        "5852:328",
+        "5836:25725",
+        "5852:340",
+        "5836:25737",
+        "5852:352",
+        "5858:1893",
+        "5858:1906",
+        "5858:2106",
+        "5858:1919",
+        "23908:4061",
+        "23908:4073",
+        "23908:4097",
+        "23908:4109",
+        "23908:4133",
+        "23908:4145",
+        "23908:4170",
+        "23908:4183",
+        "23908:4208",
+        "23908:4220",
+        "25996:7267",
+        "5836:26276",
+        "5836:26302",
+        "5858:1880",
+        "5858:2094",
+        "25996:7288",
+        "23908:4085",
+        "23908:4121",
+        "23908:4157",
+        "23908:4196"
+      ],
+      "descendantNodeRecordCount": 570,
+      "rootGeometry": [
+        [
+          320,
+          56
+        ],
+        [
+          320,
+          64
+        ],
+        [
+          320,
+          80
+        ],
+        [
+          320,
+          88
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-editable-combo-box.png",
+      "findings": [
+        "PRIM-03"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "5517:2448",
+      "name": "[INK] Combobox",
+      "pageName": "ComboBox",
+      "pageId": "5491:1515",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=5517-2448",
+      "publishedProperties": {
+        "value": {
+          "name": "value",
+          "type": "TEXT",
+          "key": "value#260:0",
+          "defaultValue": "Option A"
+        },
+        "showLabel": {
+          "name": "showLabel",
+          "type": "BOOLEAN",
+          "key": "showLabel#260:6",
+          "defaultValue": true
+        },
+        "inputHelp": {
+          "name": "inputHelp",
+          "type": "BOOLEAN",
+          "key": "inputHelp#260:12",
+          "defaultValue": false
+        },
+        "❖ Description": {
+          "name": "❖ Description",
+          "type": "BOOLEAN",
+          "key": "❖ Description#375:29",
+          "defaultValue": false
+        },
+        "placeholder": {
+          "name": "placeholder",
+          "type": "TEXT",
+          "key": "placeholder#5712:6",
+          "defaultValue": ""
+        },
+        "HasStartElement?": {
+          "name": "HasStartElement?",
+          "type": "BOOLEAN",
+          "key": "HasStartElement?#22725:0",
+          "defaultValue": false
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "SLOT",
+          "key": "startElement#42302:23",
+          "defaultValue": "-1:-1"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "small",
+            "medium"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "❖ Placeholder": {
+          "name": "❖ Placeholder",
+          "type": "VARIANT",
+          "key": "❖ Placeholder",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "True"
+        },
+        "❖ Error": {
+          "name": "❖ Error",
+          "type": "VARIANT",
+          "key": "❖ Error",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "size": [
+          "small",
+          "medium"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "❖ Placeholder": [
+          "False",
+          "True"
+        ],
+        "❖ Error": [
+          "False",
+          "True"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "ComboBox",
+      "localSource": "src/design-system/4-composites/ComboBox/ComboBox.tsx",
+      "directLocalTemplate": "src/design-system/4-composites/ComboBox/ComboBox.figma.ts",
+      "mappingStatus": "Partial family mapping; internal pieces are not exposed",
+      "apiCoverage": "Local mapping targets non-editable Combobox but code always has editable filtering, always clear-on-value, and flat single selection. options provide only value/label/disabled.",
+      "stateAndAppearanceReview": "Medium/default/error/disabled is implemented. No size, read-only selection mode, leading element, showTrigger, onClear control, groups, option descriptions/slots, loading or cascaded API. Current surface also differs. Do not conflate family coverage with a complete Combobox implementation.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-5491-1515.json.gz",
+      "actualVariantCount": 20,
+      "actualVariantIds": [
+        "5836:25287",
+        "5517:2449",
+        "5517:2467",
+        "5836:27071",
+        "5517:2485",
+        "5836:27087",
+        "5858:1931",
+        "5858:1941",
+        "5858:1951",
+        "5858:1961",
+        "23908:2825",
+        "23908:2837",
+        "23908:2849",
+        "23908:2861",
+        "23908:2873",
+        "23908:2885",
+        "23908:2897",
+        "23908:2910",
+        "23908:2923",
+        "23908:2935"
+      ],
+      "descendantNodeRecordCount": 340,
+      "rootGeometry": [
+        [
+          320,
+          56
+        ],
+        [
+          320,
+          64
+        ],
+        [
+          320,
+          80
+        ],
+        [
+          320,
+          88
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-combo-box.png",
+      "findings": [
+        "PRIM-03"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "5642:1902",
+      "name": "Child/[INK] ComboBox.Option",
+      "pageName": "ComboBox",
+      "pageId": "5491:1515",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=5642-1902",
+      "publishedProperties": {
+        "HasEndElement?": {
+          "name": "HasEndElement?",
+          "type": "BOOLEAN",
+          "key": "HasEndElement?#326:4",
+          "defaultValue": false
+        },
+        "HasStartElement?": {
+          "name": "HasStartElement?",
+          "type": "BOOLEAN",
+          "key": "HasStartElement?#326:5",
+          "defaultValue": false
+        },
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#326:11",
+          "defaultValue": "ComboBox Option"
+        },
+        "description": {
+          "name": "description",
+          "type": "TEXT",
+          "key": "description#326:14",
+          "defaultValue": "Description text"
+        },
+        "❖ Description": {
+          "name": "❖ Description",
+          "type": "BOOLEAN",
+          "key": "❖ Description#409:0",
+          "defaultValue": false
+        },
+        "showCheckMark": {
+          "name": "showCheckMark",
+          "type": "BOOLEAN",
+          "key": "showCheckMark#5723:19",
+          "defaultValue": true
+        },
+        "❖ Show End Elements": {
+          "name": "❖ Show End Elements",
+          "type": "BOOLEAN",
+          "key": "❖ Show End Elements#5836:0",
+          "defaultValue": true
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "SLOT",
+          "key": "startElement#42302:79",
+          "defaultValue": "-1:-1"
+        },
+        "endElement": {
+          "name": "endElement",
+          "type": "SLOT",
+          "key": "endElement#42302:97",
+          "defaultValue": "-1:-1"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        },
+        "selected": {
+          "name": "selected",
+          "type": "VARIANT",
+          "key": "selected",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "disabled": [
+          "True",
+          "False"
+        ],
+        "selected": [
+          "True",
+          "False"
+        ]
+      },
+      "localComponent": "ComboBox",
+      "localSource": "src/design-system/4-composites/ComboBox/ComboBox.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "Local mapping targets non-editable Combobox but code always has editable filtering, always clear-on-value, and flat single selection. options provide only value/label/disabled.",
+      "stateAndAppearanceReview": "Medium/default/error/disabled is implemented. No size, read-only selection mode, leading element, showTrigger, onClear control, groups, option descriptions/slots, loading or cascaded API. Current surface also differs. Do not conflate family coverage with a complete Combobox implementation.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-5491-1515.json.gz",
+      "actualVariantCount": 8,
+      "actualVariantIds": [
+        "5642:1903",
+        "5642:1915",
+        "5642:1927",
+        "7882:953",
+        "9061:44067",
+        "9061:44078",
+        "9061:44089",
+        "9061:44100"
+      ],
+      "descendantNodeRecordCount": 106,
+      "rootGeometry": [
+        [
+          300,
+          36
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "SemiBold"
+          },
+          "fontSize": 14,
+          "fontWeight": 600,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [
+        "PRIM-03"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "7264:825",
+      "name": "Child/[INK] Combobox.Group",
+      "pageName": "ComboBox",
+      "pageId": "5491:1515",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=7264-825",
+      "publishedProperties": {
+        "HasTitle?": {
+          "name": "HasTitle?",
+          "type": "BOOLEAN",
+          "key": "HasTitle?#7264:3",
+          "defaultValue": true
+        },
+        "HasDivider?": {
+          "name": "HasDivider?",
+          "type": "BOOLEAN",
+          "key": "HasDivider?#7264:4",
+          "defaultValue": true
+        },
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#7292:0",
+          "defaultValue": "Group title"
+        },
+        "description": {
+          "name": "description",
+          "type": "TEXT",
+          "key": "description#33942:0",
+          "defaultValue": "Description text"
+        },
+        "HasDescription?": {
+          "name": "HasDescription?",
+          "type": "BOOLEAN",
+          "key": "HasDescription?#33942:1",
+          "defaultValue": false
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "BOOLEAN",
+          "key": "startElement#33942:2",
+          "defaultValue": false
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "ComboBox",
+      "localSource": "src/design-system/4-composites/ComboBox/ComboBox.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "Local mapping targets non-editable Combobox but code always has editable filtering, always clear-on-value, and flat single selection. options provide only value/label/disabled.",
+      "stateAndAppearanceReview": "Medium/default/error/disabled is implemented. No size, read-only selection mode, leading element, showTrigger, onClear control, groups, option descriptions/slots, loading or cascaded API. Current surface also differs. Do not conflate family coverage with a complete Combobox implementation.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-5491-1515.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "7264:825"
+      ],
+      "descendantNodeRecordCount": 8,
+      "rootGeometry": [
+        [
+          272,
+          51
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "SemiBold"
+          },
+          "fontSize": 12,
+          "fontWeight": 600,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [
+        "PRIM-03"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "28226:6401",
+      "name": "[INK] DateInput",
+      "pageName": "DatePicker",
+      "pageId": "7339:117",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=28226-6401",
+      "publishedProperties": {
+        "❖ Formatting Instructions": {
+          "name": "❖ Formatting Instructions",
+          "type": "TEXT",
+          "key": "❖ Formatting Instructions#7893:0",
+          "defaultValue": "(MM/DD/YYYY)"
+        },
+        "showFormattingInstructions": {
+          "name": "showFormattingInstructions",
+          "type": "BOOLEAN",
+          "key": "showFormattingInstructions#7893:11",
+          "defaultValue": true
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "medium",
+            "small"
+          ],
+          "defaultValue": "medium"
+        },
+        "usePicker": {
+          "name": "usePicker",
+          "type": "VARIANT",
+          "key": "usePicker",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "True"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "error": {
+          "name": "error",
+          "type": "VARIANT",
+          "key": "error",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "readOnly": {
+          "name": "readOnly",
+          "type": "VARIANT",
+          "key": "readOnly",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "size": [
+          "medium",
+          "small"
+        ],
+        "usePicker": [
+          "True",
+          "False"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "error": [
+          "False",
+          "True"
+        ],
+        "readOnly": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "DatePicker",
+      "localSource": "src/design-system/4-composites/DatePicker/DatePicker.tsx",
+      "directLocalTemplate": "src/design-system/4-composites/DatePicker/DatePicker.figma.ts",
+      "mappingStatus": "DateInput is directly mapped; calendar/digit owners are internal references",
+      "apiCoverage": "DateInput maps error and formatting instructions → helperText; code value/onChange use Date. Calendar is always available through a read-only text input.",
+      "stateAndAppearanceReview": "Only medium/picker/single-date behavior exists. min/max/date format are local additions. No small, usePicker=false, normal typed entry, explicit month/year selector, standalone calendar, mobile or date range API. These are conditional coverage gaps, not universal blockers. Calendar state palette and keyboard/name behavior need attention.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-7339-117.json.gz",
+      "actualVariantCount": 20,
+      "actualVariantIds": [
+        "28226:6402",
+        "28226:6405",
+        "28226:6408",
+        "28226:6411",
+        "28226:6414",
+        "28226:6417",
+        "28226:6420",
+        "28226:6423",
+        "28226:6426",
+        "28226:6429",
+        "28356:6421",
+        "28356:6424",
+        "28356:6427",
+        "28356:6430",
+        "28356:6433",
+        "28356:6436",
+        "28356:6439",
+        "28356:6442",
+        "28356:6445",
+        "28356:6448"
+      ],
+      "descendantNodeRecordCount": 904,
+      "rootGeometry": [
+        [
+          216,
+          96
+        ],
+        [
+          216,
+          98
+        ],
+        [
+          216,
+          101
+        ],
+        [
+          216,
+          104
+        ],
+        [
+          216,
+          106
+        ],
+        [
+          216,
+          109
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-date-input.png",
+      "findings": [
+        "PRIM-05",
+        "PRIM-06"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "7482:13585",
+      "name": "_[INK] DatePicker",
+      "pageName": "DatePicker",
+      "pageId": "7339:117",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=7482-13585",
+      "publishedProperties": {
+        "showMonthYearSelector": {
+          "name": "showMonthYearSelector",
+          "type": "VARIANT",
+          "key": "showMonthYearSelector",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        },
+        "Month Year Selector Type": {
+          "name": "Month Year Selector Type",
+          "type": "VARIANT",
+          "key": "Month Year Selector Type",
+          "variantOptions": [
+            "N/A",
+            "Month",
+            "Year"
+          ],
+          "defaultValue": "N/A"
+        }
+      },
+      "variantAxes": {
+        "showMonthYearSelector": [
+          "True",
+          "False"
+        ],
+        "Month Year Selector Type": [
+          "N/A",
+          "Month",
+          "Year"
+        ]
+      },
+      "localComponent": "DatePicker",
+      "localSource": "src/design-system/4-composites/DatePicker/DatePicker.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "DateInput maps error and formatting instructions → helperText; code value/onChange use Date. Calendar is always available through a read-only text input.",
+      "stateAndAppearanceReview": "Only medium/picker/single-date behavior exists. min/max/date format are local additions. No small, usePicker=false, normal typed entry, explicit month/year selector, standalone calendar, mobile or date range API. These are conditional coverage gaps, not universal blockers. Calendar state palette and keyboard/name behavior need attention.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-7339-117.json.gz",
+      "actualVariantCount": 4,
+      "actualVariantIds": [
+        "7482:13468",
+        "28512:6379",
+        "32829:1782",
+        "32850:2801"
+      ],
+      "descendantNodeRecordCount": 175,
+      "rootGeometry": [
+        [
+          304,
+          296
+        ],
+        [
+          304,
+          344
+        ],
+        [
+          304,
+          352
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [
+        "PRIM-06"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "28218:14649",
+      "name": "_Digit",
+      "pageName": "DatePicker",
+      "pageId": "7339:117",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=28218-14649",
+      "publishedProperties": {
+        "Date Text": {
+          "name": "Date Text",
+          "type": "TEXT",
+          "key": "Date Text#7482:0",
+          "defaultValue": "10"
+        },
+        "selected": {
+          "name": "selected",
+          "type": "VARIANT",
+          "key": "selected",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active",
+            "Focus"
+          ],
+          "defaultValue": "Default"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "Current Day": {
+          "name": "Current Day",
+          "type": "VARIANT",
+          "key": "Current Day",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        },
+        "Date Range": {
+          "name": "Date Range",
+          "type": "VARIANT",
+          "key": "Date Range",
+          "variantOptions": [
+            "None",
+            "Start",
+            "Mid",
+            "End"
+          ],
+          "defaultValue": "None"
+        }
+      },
+      "variantAxes": {
+        "selected": [
+          "False",
+          "True"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active",
+          "Focus"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ],
+        "Current Day": [
+          "True",
+          "False"
+        ],
+        "Date Range": [
+          "None",
+          "Start",
+          "Mid",
+          "End"
+        ]
+      },
+      "localComponent": "DatePicker",
+      "localSource": "src/design-system/4-composites/DatePicker/DatePicker.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "DateInput maps error and formatting instructions → helperText; code value/onChange use Date. Calendar is always available through a read-only text input.",
+      "stateAndAppearanceReview": "Only medium/picker/single-date behavior exists. min/max/date format are local additions. No small, usePicker=false, normal typed entry, explicit month/year selector, standalone calendar, mobile or date range API. These are conditional coverage gaps, not universal blockers. Calendar state palette and keyboard/name behavior need attention.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-7339-117.json.gz",
+      "actualVariantCount": 43,
+      "actualVariantIds": [
+        "28218:14650",
+        "28218:14654",
+        "28218:14658",
+        "28218:14662",
+        "28218:14665",
+        "28218:14668",
+        "28218:14671",
+        "28218:14674",
+        "28218:14677",
+        "28218:14681",
+        "28218:14684",
+        "28218:14687",
+        "28218:14691",
+        "28218:14694",
+        "28218:14697",
+        "28218:14701",
+        "28218:14705",
+        "28218:14710",
+        "29084:3573",
+        "29084:3578",
+        "29084:3828",
+        "28218:14714",
+        "28218:14718",
+        "28218:14722",
+        "28218:14744",
+        "28218:14727",
+        "28218:14731",
+        "28218:14735",
+        "28218:14739",
+        "29084:3582",
+        "28218:14748",
+        "28218:14752",
+        "28218:14756",
+        "28218:14760",
+        "28218:14764",
+        "28218:14769",
+        "28218:14773",
+        "28218:14777",
+        "29084:3674",
+        "28218:14780",
+        "29084:3832",
+        "29084:3678",
+        "29084:3682"
+      ],
+      "descendantNodeRecordCount": 166,
+      "rootGeometry": [
+        [
+          40,
+          40
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [
+        "PRIM-06",
+        "PRIM-07"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "36936:5174",
+      "name": "_Blocks / [INK] Digit",
+      "pageName": "DatePicker",
+      "pageId": "7339:117",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=36936-5174",
+      "publishedProperties": {
+        "❖ Selected": {
+          "name": "❖ Selected",
+          "type": "VARIANT",
+          "key": "❖ Selected",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active",
+            "Focus"
+          ],
+          "defaultValue": "Default"
+        },
+        "❖ Disabled": {
+          "name": "❖ Disabled",
+          "type": "VARIANT",
+          "key": "❖ Disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ Current Day": {
+          "name": "❖ Current Day",
+          "type": "VARIANT",
+          "key": "❖ Current Day",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ Null Block": {
+          "name": "❖ Null Block",
+          "type": "VARIANT",
+          "key": "❖ Null Block",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ Date Range": {
+          "name": "❖ Date Range",
+          "type": "VARIANT",
+          "key": "❖ Date Range",
+          "variantOptions": [
+            "None",
+            "Start",
+            "Mid",
+            "End"
+          ],
+          "defaultValue": "None"
+        }
+      },
+      "variantAxes": {
+        "❖ Selected": [
+          "False",
+          "True"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active",
+          "Focus"
+        ],
+        "❖ Disabled": [
+          "False",
+          "True"
+        ],
+        "❖ Current Day": [
+          "False",
+          "True"
+        ],
+        "❖ Null Block": [
+          "False",
+          "True"
+        ],
+        "❖ Date Range": [
+          "None",
+          "Start",
+          "Mid",
+          "End"
+        ]
+      },
+      "localComponent": "DatePicker",
+      "localSource": "src/design-system/4-composites/DatePicker/DatePicker.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "DateInput maps error and formatting instructions → helperText; code value/onChange use Date. Calendar is always available through a read-only text input.",
+      "stateAndAppearanceReview": "Only medium/picker/single-date behavior exists. min/max/date format are local additions. No small, usePicker=false, normal typed entry, explicit month/year selector, standalone calendar, mobile or date range API. These are conditional coverage gaps, not universal blockers. Calendar state palette and keyboard/name behavior need attention.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-7339-117.json.gz",
+      "actualVariantCount": 36,
+      "actualVariantIds": [
+        "36936:5175",
+        "36936:5181",
+        "36936:5199",
+        "36936:5205",
+        "36936:5211",
+        "36936:5217",
+        "36936:5223",
+        "36936:5229",
+        "36936:5235",
+        "36936:5241",
+        "36936:5247",
+        "36936:5253",
+        "36936:5259",
+        "36936:5265",
+        "36936:5271",
+        "36936:5278",
+        "36936:5285",
+        "36936:5292",
+        "36936:5299",
+        "36936:5306",
+        "36936:5313",
+        "36936:5320",
+        "36936:5327",
+        "36936:5333",
+        "36936:5339",
+        "36936:5345",
+        "36936:5351",
+        "36936:5357",
+        "36936:5363",
+        "36936:5370",
+        "36936:5377",
+        "36936:5383",
+        "36936:5389",
+        "36936:5395",
+        "36936:5401",
+        "36936:5407"
+      ],
+      "descendantNodeRecordCount": 226,
+      "rootGeometry": [
+        [
+          40,
+          40
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [
+        "PRIM-06",
+        "PRIM-07"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "36936:6079",
+      "name": "[INK] DatePicker",
+      "pageName": "DatePicker",
+      "pageId": "7339:117",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=36936-6079",
+      "publishedProperties": {
+        "showMonthYearSelector": {
+          "name": "showMonthYearSelector",
+          "type": "VARIANT",
+          "key": "showMonthYearSelector",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "❖ Mobile": {
+          "name": "❖ Mobile",
+          "type": "VARIANT",
+          "key": "❖ Mobile",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "showMonthYearSelector": [
+          "False",
+          "True"
+        ],
+        "❖ Mobile": [
+          "True",
+          "False"
+        ]
+      },
+      "localComponent": "DatePicker",
+      "localSource": "src/design-system/4-composites/DatePicker/DatePicker.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "DateInput maps error and formatting instructions → helperText; code value/onChange use Date. Calendar is always available through a read-only text input.",
+      "stateAndAppearanceReview": "Only medium/picker/single-date behavior exists. min/max/date format are local additions. No small, usePicker=false, normal typed entry, explicit month/year selector, standalone calendar, mobile or date range API. These are conditional coverage gaps, not universal blockers. Calendar state palette and keyboard/name behavior need attention.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-7339-117.json.gz",
+      "actualVariantCount": 4,
+      "actualVariantIds": [
+        "36936:6092",
+        "36976:5797",
+        "36936:6294",
+        "36976:6842"
+      ],
+      "descendantNodeRecordCount": 1134,
+      "rootGeometry": [
+        [
+          324,
+          388
+        ],
+        [
+          344,
+          412
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-standalone-calendar.png",
+      "findings": [
+        "PRIM-06",
+        "PRIM-07"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "55:2626",
+      "name": "[INK] Link",
+      "pageName": "Link",
+      "pageId": "37:2513",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=55-2626",
+      "publishedProperties": {
+        "showIconForNewWindow": {
+          "name": "showIconForNewWindow",
+          "type": "BOOLEAN",
+          "key": "showIconForNewWindow#55:8",
+          "defaultValue": false
+        },
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#55:10",
+          "defaultValue": "Download the App"
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "default",
+            "subtle"
+          ],
+          "defaultValue": "default"
+        },
+        "discrete": {
+          "name": "discrete",
+          "type": "VARIANT",
+          "key": "discrete",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "small",
+            "medium"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "default",
+            "hover",
+            "active",
+            "visited"
+          ],
+          "defaultValue": "default"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "default",
+          "subtle"
+        ],
+        "discrete": [
+          "False",
+          "True"
+        ],
+        "size": [
+          "small",
+          "medium"
+        ],
+        "❖ State": [
+          "default",
+          "hover",
+          "active",
+          "visited"
+        ],
+        "disabled": [
+          "True",
+          "False"
+        ]
+      },
+      "localComponent": "Link",
+      "localSource": "src/design-system/3-primitives/Link/Link.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Link/Link.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "kind/size/discrete/disabled; text → children; showIconForNewWindow → external; href must be supplied.",
+      "stateAndAppearanceReview": "Both kinds, two mapped sizes, underline/discrete, hover/active/visited and disabled are present in CSS. Current subtle semantic tokens already corrected; do not repeat historical token findings. xs is a local extra.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2513.json.gz",
+      "actualVariantCount": 32,
+      "actualVariantIds": [
+        "55:2625",
+        "79:2644",
+        "79:2651",
+        "79:2658",
+        "79:2674",
+        "79:2677",
+        "79:2680",
+        "79:2683",
+        "79:2714",
+        "20625:2278",
+        "79:2717",
+        "79:2720",
+        "79:2726",
+        "20625:2287",
+        "79:2729",
+        "79:2732",
+        "8983:20630",
+        "8983:20633",
+        "8983:20636",
+        "8983:20639",
+        "8983:20642",
+        "8983:20645",
+        "8983:20648",
+        "8983:20651",
+        "8983:20654",
+        "20625:2296",
+        "8983:20657",
+        "8983:20660",
+        "8983:20663",
+        "20625:2305",
+        "8983:20666",
+        "8983:20669"
+      ],
+      "descendantNodeRecordCount": 99,
+      "rootGeometry": [
+        [
+          116,
+          20
+        ],
+        [
+          116,
+          32
+        ],
+        [
+          133,
+          24
+        ],
+        [
+          133,
+          40
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-link.png",
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "471:9459",
+      "name": "[INK] Progress Bar",
+      "pageName": "ProgressBar",
+      "pageId": "37:2520",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=471-9459",
+      "publishedProperties": {
+        "content": {
+          "name": "content",
+          "type": "TEXT",
+          "key": "content#471:4",
+          "defaultValue": "100%"
+        },
+        "HasLabel?": {
+          "name": "HasLabel?",
+          "type": "BOOLEAN",
+          "key": "HasLabel?#471:5",
+          "defaultValue": true
+        },
+        "HasContent?": {
+          "name": "HasContent?",
+          "type": "BOOLEAN",
+          "key": "HasContent?#471:6",
+          "defaultValue": true
+        },
+        "label": {
+          "name": "label",
+          "type": "TEXT",
+          "key": "label#471:7",
+          "defaultValue": "Label"
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "success",
+            "info"
+          ],
+          "defaultValue": "info"
+        },
+        "❖ Variant": {
+          "name": "❖ Variant",
+          "type": "VARIANT",
+          "key": "❖ Variant",
+          "variantOptions": [
+            "determinate",
+            "indeterminate"
+          ],
+          "defaultValue": "determinate"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "success",
+          "info"
+        ],
+        "❖ Variant": [
+          "determinate",
+          "indeterminate"
+        ]
+      },
+      "localComponent": "ProgressBar",
+      "localSource": "src/design-system/3-primitives/ProgressBar/ProgressBar.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/ProgressBar/ProgressBar.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "HasLabel?/HasContent? → showLabel/showContent; variant and kind; content text; numeric progress is parsed by template or supplied by app.",
+      "stateAndAppearanceReview": "Info/success and determinate/indeterminate are implemented with tokenized 4px track. Label text 14/500, content 14/400 agree in source. Animation timing and the stop-indicator stacking need a render before claiming parity.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2520.json.gz",
+      "actualVariantCount": 4,
+      "actualVariantIds": [
+        "471:9377",
+        "472:2084",
+        "472:2106",
+        "471:9441"
+      ],
+      "descendantNodeRecordCount": 52,
+      "rootGeometry": [
+        [
+          321,
+          28
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontSize": 16,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 24
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-progress-bar.png",
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "474:12179",
+      "name": "[INK] Progress Circle",
+      "pageName": "ProgressCircle",
+      "pageId": "37:2521",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=474-12179",
+      "publishedProperties": {
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#474:10",
+          "defaultValue": "Loading..."
+        },
+        "HasText?": {
+          "name": "HasText?",
+          "type": "BOOLEAN",
+          "key": "HasText?#474:14",
+          "defaultValue": false
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "defaultValue": "large"
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "default",
+            "subtle"
+          ],
+          "defaultValue": "default"
+        }
+      },
+      "variantAxes": {
+        "size": [
+          "small",
+          "medium",
+          "large"
+        ],
+        "kind": [
+          "default",
+          "subtle"
+        ]
+      },
+      "localComponent": "Spinner",
+      "localSource": "src/design-system/3-primitives/Spinner/Spinner.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Spinner/Spinner.figma.ts",
+      "mappingStatus": "Direct mapped Progress Circle",
+      "apiCoverage": "size/kind; text → label; HasText? → showLabel.",
+      "stateAndAppearanceReview": "Container sizes and stroke widths correspond to Figma 16/40/80 and2/4/8, but SVG circle radius yields a smaller visible ring. Both kind tokens exist. Visible label weight differs.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2521.json.gz",
+      "actualVariantCount": 6,
+      "actualVariantIds": [
+        "474:12178",
+        "474:12195",
+        "474:12177",
+        "474:12200",
+        "474:12176",
+        "474:12205"
+      ],
+      "descendantNodeRecordCount": 30,
+      "rootGeometry": [
+        [
+          16,
+          16
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          80,
+          80
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-spinner.png",
+      "findings": [
+        "PRIM-15",
+        "PRIM-21"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "274:4817",
+      "name": "[INK] Radio Button",
+      "pageName": "RadioButton",
+      "pageId": "37:2523",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=274-4817",
+      "publishedProperties": {
+        "ShowLabel?": {
+          "name": "ShowLabel?",
+          "type": "BOOLEAN",
+          "key": "ShowLabel?#274:14",
+          "defaultValue": true
+        },
+        "HasDescription?": {
+          "name": "HasDescription?",
+          "type": "BOOLEAN",
+          "key": "HasDescription?#375:35",
+          "defaultValue": false
+        },
+        "checked": {
+          "name": "checked",
+          "type": "VARIANT",
+          "key": "checked",
+          "variantOptions": [
+            "false",
+            "true"
+          ],
+          "defaultValue": "false"
+        },
+        "HasError?": {
+          "name": "HasError?",
+          "type": "VARIANT",
+          "key": "HasError?",
+          "variantOptions": [
+            "false",
+            "true"
+          ],
+          "defaultValue": "false"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "false",
+            "true"
+          ],
+          "defaultValue": "false"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        }
+      },
+      "variantAxes": {
+        "checked": [
+          "false",
+          "true"
+        ],
+        "HasError?": [
+          "false",
+          "true"
+        ],
+        "disabled": [
+          "false",
+          "true"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ]
+      },
+      "localComponent": "Radio",
+      "localSource": "src/design-system/3-primitives/Radio/Radio.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Radio/Radio.figma.ts",
+      "mappingStatus": "Direct mapped component; groups are composition references",
+      "apiCoverage": "checked/disabled/native name/value; ShowLabel? → inverse hideLabel; error/description strings; groups compose Radio, Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/checked/error/disabled CSS exist; corrected selected-hover rules are already present. Native grouped behavior comes through shared name. Error text omits Figma status icon. No separate group component is needed to represent simple groups.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2523.json.gz",
+      "actualVariantCount": 10,
+      "actualVariantIds": [
+        "274:4816",
+        "274:4810",
+        "1566:18243",
+        "274:4814",
+        "274:4811",
+        "274:4809",
+        "274:4812",
+        "1566:18250",
+        "274:4815",
+        "274:4813"
+      ],
+      "descendantNodeRecordCount": 99,
+      "rootGeometry": [
+        [
+          116,
+          40
+        ],
+        [
+          116,
+          95
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-radio.png",
+      "findings": [
+        "PRIM-19"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1114:5532",
+      "name": "[INK] Radio Buttton Group (Nested)",
+      "pageName": "RadioButton",
+      "pageId": "37:2523",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1114-5532",
+      "publishedProperties": {
+        "showLegend": {
+          "name": "showLegend",
+          "type": "BOOLEAN",
+          "key": "showLegend#1226:2",
+          "defaultValue": true
+        },
+        "description": {
+          "name": "description",
+          "type": "BOOLEAN",
+          "key": "description#1226:6",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#38903:28",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Radio",
+      "localSource": "src/design-system/3-primitives/Radio/Radio.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Composition reference; no dedicated local export/template",
+      "apiCoverage": "checked/disabled/native name/value; ShowLabel? → inverse hideLabel; error/description strings; groups compose Radio, Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/checked/error/disabled CSS exist; corrected selected-hover rules are already present. Native grouped behavior comes through shared name. Error text omits Figma status icon. No separate group component is needed to represent simple groups.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2523.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1114:5532"
+      ],
+      "descendantNodeRecordCount": 44,
+      "rootGeometry": [
+        [
+          225,
+          224
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1114:5530",
+      "name": "[INK] Radio Buttton Group (Disabled)",
+      "pageName": "RadioButton",
+      "pageId": "37:2523",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1114-5530",
+      "publishedProperties": {
+        "showLegend": {
+          "name": "showLegend",
+          "type": "BOOLEAN",
+          "key": "showLegend#1226:3",
+          "defaultValue": true
+        },
+        "description": {
+          "name": "description",
+          "type": "BOOLEAN",
+          "key": "description#1226:7",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#38903:29",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Radio",
+      "localSource": "src/design-system/3-primitives/Radio/Radio.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Composition reference; no dedicated local export/template",
+      "apiCoverage": "checked/disabled/native name/value; ShowLabel? → inverse hideLabel; error/description strings; groups compose Radio, Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/checked/error/disabled CSS exist; corrected selected-hover rules are already present. Native grouped behavior comes through shared name. Error text omits Figma status icon. No separate group component is needed to represent simple groups.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2523.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1114:5530"
+      ],
+      "descendantNodeRecordCount": 42,
+      "rootGeometry": [
+        [
+          225,
+          224
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1114:5529",
+      "name": "[INK] Radio Button Group (Error)",
+      "pageName": "RadioButton",
+      "pageId": "37:2523",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1114-5529",
+      "publishedProperties": {
+        "showLegend": {
+          "name": "showLegend",
+          "type": "BOOLEAN",
+          "key": "showLegend#1226:0",
+          "defaultValue": true
+        },
+        "description": {
+          "name": "description",
+          "type": "BOOLEAN",
+          "key": "description#1226:5",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#38903:27",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Radio",
+      "localSource": "src/design-system/3-primitives/Radio/Radio.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Composition reference; no dedicated local export/template",
+      "apiCoverage": "checked/disabled/native name/value; ShowLabel? → inverse hideLabel; error/description strings; groups compose Radio, Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/checked/error/disabled CSS exist; corrected selected-hover rules are already present. Native grouped behavior comes through shared name. Error text omits Figma status icon. No separate group component is needed to represent simple groups.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2523.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1114:5529"
+      ],
+      "descendantNodeRecordCount": 52,
+      "rootGeometry": [
+        [
+          225,
+          248
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1114:5531",
+      "name": "[INK] Radio Button Group (Basic)",
+      "pageName": "RadioButton",
+      "pageId": "37:2523",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1114-5531",
+      "publishedProperties": {
+        "showLegend": {
+          "name": "showLegend",
+          "type": "BOOLEAN",
+          "key": "showLegend#1226:1",
+          "defaultValue": true
+        },
+        "description": {
+          "name": "description",
+          "type": "BOOLEAN",
+          "key": "description#1226:4",
+          "defaultValue": false
+        },
+        "children": {
+          "name": "children",
+          "type": "SLOT",
+          "key": "children#38903:26",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Radio",
+      "localSource": "src/design-system/3-primitives/Radio/Radio.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Composition reference; no dedicated local export/template",
+      "apiCoverage": "checked/disabled/native name/value; ShowLabel? → inverse hideLabel; error/description strings; groups compose Radio, Stack/Text and semantic grouping.",
+      "stateAndAppearanceReview": "Default/hover/checked/error/disabled CSS exist; corrected selected-hover rules are already present. Native grouped behavior comes through shared name. Error text omits Figma status icon. No separate group component is needed to represent simple groups.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2523.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1114:5531"
+      ],
+      "descendantNodeRecordCount": 43,
+      "rootGeometry": [
+        [
+          225,
+          224
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "259:5197",
+      "name": "[INK] Select",
+      "pageName": "Select",
+      "pageId": "37:2524",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=259-5197",
+      "publishedProperties": {
+        "value": {
+          "name": "value",
+          "type": "TEXT",
+          "key": "value#260:0",
+          "defaultValue": "Option A"
+        },
+        "showLabel": {
+          "name": "showLabel",
+          "type": "BOOLEAN",
+          "key": "showLabel#260:6",
+          "defaultValue": true
+        },
+        "inputHelp": {
+          "name": "inputHelp",
+          "type": "BOOLEAN",
+          "key": "inputHelp#260:12",
+          "defaultValue": false
+        },
+        "❖ Description": {
+          "name": "❖ Description",
+          "type": "BOOLEAN",
+          "key": "❖ Description#375:29",
+          "defaultValue": false
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "medium",
+            "small"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "❖ Error": {
+          "name": "❖ Error",
+          "type": "VARIANT",
+          "key": "❖ Error",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "size": [
+          "medium",
+          "small"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "❖ Error": [
+          "False",
+          "True"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "Select",
+      "localSource": "src/design-system/3-primitives/Select/Select.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Select/Select.figma.ts",
+      "mappingStatus": "Direct mapped component; options utility is a composition reference",
+      "apiCoverage": "showLabel → inverse hideLabel; small/medium; error/description; selected option text is rendered as children; native select values and change events.",
+      "stateAndAppearanceReview": "All ten specimens are represented by props/CSS. inputHelp has no independent API. Local small and medium value line-height is1.2 versus Figma1.5; treated as a low-priority fitting adjustment, not a key-screen blocker.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2524.json.gz",
+      "actualVariantCount": 10,
+      "actualVariantIds": [
+        "259:5176",
+        "259:5172",
+        "259:5175",
+        "259:5173",
+        "259:5174",
+        "23910:4146",
+        "23910:4155",
+        "23910:4164",
+        "23910:4173",
+        "23910:4183"
+      ],
+      "descendantNodeRecordCount": 132,
+      "rootGeometry": [
+        [
+          320,
+          56
+        ],
+        [
+          320,
+          64
+        ],
+        [
+          320,
+          80
+        ],
+        [
+          320,
+          88
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-select.png",
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1225:8060",
+      "name": "Utilities / [INK] Select Options",
+      "pageName": "Select",
+      "pageId": "37:2524",
+      "type": "COMPONENT",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1225-8060",
+      "publishedProperties": {
+        "OS Select": {
+          "name": "OS Select",
+          "type": "SLOT",
+          "key": "OS Select#37638:60",
+          "defaultValue": "-1:-1"
+        }
+      },
+      "variantAxes": {},
+      "localComponent": "Select",
+      "localSource": "src/design-system/3-primitives/Select/Select.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "showLabel → inverse hideLabel; small/medium; error/description; selected option text is rendered as children; native select values and change events.",
+      "stateAndAppearanceReview": "All ten specimens are represented by props/CSS. inputHelp has no independent API. Local small and medium value line-height is1.2 versus Figma1.5; treated as a low-priority fitting adjustment, not a key-screen blocker.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2524.json.gz",
+      "actualVariantCount": 1,
+      "actualVariantIds": [
+        "1225:8060"
+      ],
+      "descendantNodeRecordCount": 26,
+      "rootGeometry": [
+        [
+          320,
+          152
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontSize": 10,
+          "fontWeight": 700,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 24
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 24
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 24
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1108:5083",
+      "name": "_[INK] Slider Control",
+      "pageName": "Slider",
+      "pageId": "37:2526",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1108-5083",
+      "publishedProperties": {
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "showTooltip": {
+          "name": "showTooltip",
+          "type": "VARIANT",
+          "key": "showTooltip",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "showTooltip": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "Slider",
+      "localSource": "src/design-system/3-primitives/Slider/Slider.tsx",
+      "directLocalTemplate": null,
+      "mappingStatus": "Internal/family reference; no independent public API",
+      "apiCoverage": "showLabel → inverse hideLabel; start/endElement toggles → icon strings; controlled numeric value/onChange; showTooltip controls hover/drag tooltip.",
+      "stateAndAppearanceReview": "Default/hover/active/disabled and16px thumb with4px track are present. start/end icon actions are supported. Tooltip only appears on pointer hover/drag in source, so keyboard presentation and touch need separate runtime checking.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2526.json.gz",
+      "actualVariantCount": 4,
+      "actualVariantIds": [
+        "1108:5080",
+        "1108:5082",
+        "1108:5668",
+        "1108:5534"
+      ],
+      "descendantNodeRecordCount": 16,
+      "rootGeometry": [
+        [
+          16,
+          16
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": null,
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "1108:6861",
+      "name": "[INK] Slider",
+      "pageName": "Slider",
+      "pageId": "37:2526",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=1108-6861",
+      "publishedProperties": {
+        "showLabel": {
+          "name": "showLabel",
+          "type": "BOOLEAN",
+          "key": "showLabel#1108:7",
+          "defaultValue": true
+        },
+        "❖ Description": {
+          "name": "❖ Description",
+          "type": "BOOLEAN",
+          "key": "❖  Description#1108:9",
+          "defaultValue": false
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "BOOLEAN",
+          "key": "startElement#1191:0",
+          "defaultValue": true
+        },
+        "endElement": {
+          "name": "endElement",
+          "type": "BOOLEAN",
+          "key": "endElement#1191:3",
+          "defaultValue": true
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "disabled": [
+          "True",
+          "False"
+        ]
+      },
+      "localComponent": "Slider",
+      "localSource": "src/design-system/3-primitives/Slider/Slider.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Slider/Slider.figma.ts",
+      "mappingStatus": "Direct mapped component; control is internal",
+      "apiCoverage": "showLabel → inverse hideLabel; start/endElement toggles → icon strings; controlled numeric value/onChange; showTooltip controls hover/drag tooltip.",
+      "stateAndAppearanceReview": "Default/hover/active/disabled and16px thumb with4px track are present. start/end icon actions are supported. Tooltip only appears on pointer hover/drag in source, so keyboard presentation and touch need separate runtime checking.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2526.json.gz",
+      "actualVariantCount": 4,
+      "actualVariantIds": [
+        "1108:6302",
+        "12461:14134",
+        "12461:14167",
+        "1499:10570"
+      ],
+      "descendantNodeRecordCount": 82,
+      "rootGeometry": [
+        [
+          256,
+          64
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-slider.png",
+      "findings": [],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "83:2801",
+      "name": "[INK] Status Badge",
+      "pageName": "StatusBadge",
+      "pageId": "37:2528",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=83-2801",
+      "publishedProperties": {
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#83:12",
+          "defaultValue": "Status badge"
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "BOOLEAN",
+          "key": "startElement#25816:0",
+          "defaultValue": true
+        },
+        "menuTrigger": {
+          "name": "menuTrigger",
+          "type": "BOOLEAN",
+          "key": "menuTrigger#44021:0",
+          "defaultValue": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "subtle",
+            "emphasis",
+            "success",
+            "warning",
+            "alert",
+            "promo",
+            "promoSubtle"
+          ],
+          "defaultValue": "subtle"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "subtle",
+          "emphasis",
+          "success",
+          "warning",
+          "alert",
+          "promo",
+          "promoSubtle"
+        ]
+      },
+      "localComponent": "Badge",
+      "localSource": "src/design-system/3-primitives/Badge/Badge.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Badge/Badge.figma.ts",
+      "mappingStatus": "Direct mapped Status Badge",
+      "apiCoverage": "text, startElement and seven kinds map; menuTrigger is newly exposed live but has no code API/template mapping.",
+      "stateAndAppearanceReview": "All seven kind fills/font/icon tokens and24px specimen height are represented. Local default startElement=false differs from Figma true but template passes it explicitly. Missing menu trigger is conditional on an interactive badge screen.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2528.json.gz",
+      "actualVariantCount": 7,
+      "actualVariantIds": [
+        "83:2800",
+        "103:197",
+        "103:201",
+        "103:203",
+        "105:207",
+        "3003:2510",
+        "29416:36775"
+      ],
+      "descendantNodeRecordCount": 52,
+      "rootGeometry": [
+        [
+          111,
+          24
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-badge.png",
+      "findings": [
+        "PRIM-09"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "166:2875",
+      "name": "[INK] Status Light",
+      "pageName": "StatusLight",
+      "pageId": "37:2529",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=166-2875",
+      "publishedProperties": {
+        "HasText?": {
+          "name": "HasText?",
+          "type": "BOOLEAN",
+          "key": "HasText?#166:0",
+          "defaultValue": true
+        },
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#166:1",
+          "defaultValue": "Status light"
+        },
+        "kind": {
+          "name": "kind",
+          "type": "VARIANT",
+          "key": "kind",
+          "variantOptions": [
+            "alert",
+            "neutral",
+            "success",
+            "warning"
+          ],
+          "defaultValue": "neutral"
+        },
+        "noFill": {
+          "name": "noFill",
+          "type": "VARIANT",
+          "key": "noFill",
+          "variantOptions": [
+            "True",
+            "False"
+          ],
+          "defaultValue": "False"
+        },
+        "opaque": {
+          "name": "opaque",
+          "type": "VARIANT",
+          "key": "opaque",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "kind": [
+          "alert",
+          "neutral",
+          "success",
+          "warning"
+        ],
+        "noFill": [
+          "True",
+          "False"
+        ],
+        "opaque": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "StatusLight",
+      "localSource": "src/design-system/3-primitives/StatusLight/StatusLight.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/StatusLight/StatusLight.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "HasText? → showText; kind/noFill/opaque; text or children.",
+      "stateAndAppearanceReview": "All nine extant specimens have corresponding props. Local opaque=true default differs from Figma false; template explicitly emits opaque=false. Alert text token differs from current emphasis red; remaining core geometry matches source values.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2529.json.gz",
+      "actualVariantCount": 9,
+      "actualVariantIds": [
+        "16953:59929",
+        "26868:12714",
+        "167:1190",
+        "166:2858",
+        "166:2871",
+        "20861:2606",
+        "20861:2610",
+        "20861:2614",
+        "20861:2618"
+      ],
+      "descendantNodeRecordCount": 36,
+      "rootGeometry": [
+        [
+          80,
+          24
+        ],
+        [
+          96,
+          24
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-status-light.png",
+      "findings": [
+        "PRIM-16"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "171:3566",
+      "name": "[INK] Switch",
+      "pageName": "Switch",
+      "pageId": "37:2530",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=171-3566",
+      "publishedProperties": {
+        "HasDescription?": {
+          "name": "HasDescription?",
+          "type": "BOOLEAN",
+          "key": "HasDescription?#171:17",
+          "defaultValue": false
+        },
+        "showLabel": {
+          "name": "showLabel",
+          "type": "BOOLEAN",
+          "key": "showLabel#1382:0",
+          "defaultValue": true
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "on": {
+          "name": "on",
+          "type": "VARIANT",
+          "key": "on",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "❖ State": [
+          "Default",
+          "Active"
+        ],
+        "on": [
+          "False",
+          "True"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "Switch",
+      "localSource": "src/design-system/3-primitives/Switch/Switch.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Switch/Switch.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "on → checked; label omitted for showLabel=false; description string; native disabled and boolean callback.",
+      "stateAndAppearanceReview": "On/off and active/disabled source states exist with36x20 track and12px thumb. Label is a sibling span, so the label prop does not name/toggle the input. Disabled opacity affects only control, not sibling label/description. Description-only use renders nothing.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2530.json.gz",
+      "actualVariantCount": 6,
+      "actualVariantIds": [
+        "170:3533",
+        "1382:3018",
+        "1382:3067",
+        "1382:3072",
+        "171:3674",
+        "200:483"
+      ],
+      "descendantNodeRecordCount": 61,
+      "rootGeometry": [
+        [
+          83,
+          40
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-switch.png",
+      "findings": [
+        "PRIM-08"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "261:2190",
+      "name": "[INK] Text Area",
+      "pageName": "TextArea",
+      "pageId": "37:2534",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=261-2190",
+      "publishedProperties": {
+        "value": {
+          "name": "value",
+          "type": "TEXT",
+          "key": "value#261:1",
+          "defaultValue": "Latest version looks great! Lets run this by legal before we publish to the rest of the company."
+        },
+        "characterCount": {
+          "name": "characterCount",
+          "type": "BOOLEAN",
+          "key": "characterCount#261:14",
+          "defaultValue": true
+        },
+        "HasDescription?": {
+          "name": "HasDescription?",
+          "type": "BOOLEAN",
+          "key": "HasDescription?#375:8",
+          "defaultValue": false
+        },
+        "showLabel": {
+          "name": "showLabel",
+          "type": "BOOLEAN",
+          "key": "showLabel#375:16",
+          "defaultValue": true
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "BOOLEAN",
+          "key": "startElement#23490:0",
+          "defaultValue": false
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "HasError?": {
+          "name": "HasError?",
+          "type": "VARIANT",
+          "key": "HasError?",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "readOnly": {
+          "name": "readOnly",
+          "type": "VARIANT",
+          "key": "readOnly",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "placeholder": {
+          "name": "placeholder",
+          "type": "VARIANT",
+          "key": "placeholder",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "HasError?": [
+          "False",
+          "True"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ],
+        "readOnly": [
+          "False",
+          "True"
+        ],
+        "placeholder": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "TextArea",
+      "localSource": "src/design-system/3-primitives/TextArea/TextArea.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/TextArea/TextArea.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "value/placeholder/readOnly/disabled/showLabel/description/error and characterCount map; maxLength=200 is a template placeholder.",
+      "stateAndAppearanceReview": "Body16/400, label14/500, helper12/500 and default/hover/active/error/read-only/disabled styling exist. Read-only fill and border removal are already present. startElement has no API. Error/counter wrapping and defaultValue counter accuracy require runtime checks.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2534.json.gz",
+      "actualVariantCount": 7,
+      "actualVariantIds": [
+        "261:1730",
+        "261:2240",
+        "261:2189",
+        "261:2187",
+        "261:2185",
+        "261:2186",
+        "261:2188"
+      ],
+      "descendantNodeRecordCount": 118,
+      "rootGeometry": [
+        [
+          384,
+          112
+        ],
+        [
+          384,
+          136
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-text-area.png",
+      "findings": [
+        "PRIM-14"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "144:17002",
+      "name": "[INK] Text Box",
+      "pageName": "TextBox",
+      "pageId": "37:2535",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=144-17002",
+      "publishedProperties": {
+        "showLabel": {
+          "name": "showLabel",
+          "type": "BOOLEAN",
+          "key": "showLabel#143:96",
+          "defaultValue": true
+        },
+        "characterCount": {
+          "name": "characterCount",
+          "type": "BOOLEAN",
+          "key": "characterCount#143:102",
+          "defaultValue": false
+        },
+        "value": {
+          "name": "value",
+          "type": "TEXT",
+          "key": "value#143:108",
+          "defaultValue": "Input text"
+        },
+        "startElement": {
+          "name": "startElement",
+          "type": "BOOLEAN",
+          "key": "startElement#143:114",
+          "defaultValue": false
+        },
+        "endElement": {
+          "name": "endElement",
+          "type": "BOOLEAN",
+          "key": "endElement#144:120",
+          "defaultValue": true
+        },
+        "HasDescription?": {
+          "name": "HasDescription?",
+          "type": "BOOLEAN",
+          "key": "HasDescription?#375:1",
+          "defaultValue": false
+        },
+        "inputHelp": {
+          "name": "inputHelp",
+          "type": "BOOLEAN",
+          "key": "inputHelp#1624:0",
+          "defaultValue": false
+        },
+        "size": {
+          "name": "size",
+          "type": "VARIANT",
+          "key": "size",
+          "variantOptions": [
+            "medium",
+            "small"
+          ],
+          "defaultValue": "medium"
+        },
+        "❖ State": {
+          "name": "❖ State",
+          "type": "VARIANT",
+          "key": "❖ State",
+          "variantOptions": [
+            "Default",
+            "Hover",
+            "Active"
+          ],
+          "defaultValue": "Default"
+        },
+        "HasError?": {
+          "name": "HasError?",
+          "type": "VARIANT",
+          "key": "HasError?",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "disabled": {
+          "name": "disabled",
+          "type": "VARIANT",
+          "key": "disabled",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "placeholder": {
+          "name": "placeholder",
+          "type": "VARIANT",
+          "key": "placeholder",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        },
+        "readOnly": {
+          "name": "readOnly",
+          "type": "VARIANT",
+          "key": "readOnly",
+          "variantOptions": [
+            "False",
+            "True"
+          ],
+          "defaultValue": "False"
+        }
+      },
+      "variantAxes": {
+        "size": [
+          "medium",
+          "small"
+        ],
+        "❖ State": [
+          "Default",
+          "Hover",
+          "Active"
+        ],
+        "HasError?": [
+          "False",
+          "True"
+        ],
+        "disabled": [
+          "False",
+          "True"
+        ],
+        "placeholder": [
+          "False",
+          "True"
+        ],
+        "readOnly": [
+          "False",
+          "True"
+        ]
+      },
+      "localComponent": "Input",
+      "localSource": "src/design-system/3-primitives/Input/Input.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Input/Input.figma.ts",
+      "mappingStatus": "Direct mapped Text Box",
+      "apiCoverage": "value/placeholder/readOnly/disabled/showLabel/description/error and small/medium map; native input callbacks.",
+      "stateAndAppearanceReview": "Body16/400, label14/500 and default/hover/active/error/read-only/disabled CSS exist. Read-only fill and border removal are already present. Live start/end slots, count and inputHelp cannot be expressed through the local API.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2535.json.gz",
+      "actualVariantCount": 14,
+      "actualVariantIds": [
+        "144:17003",
+        "1336:10115",
+        "261:2063",
+        "144:17021",
+        "144:17039",
+        "144:17030",
+        "144:17012",
+        "23910:2094",
+        "23910:2107",
+        "23910:2120",
+        "23910:2133",
+        "23910:2146",
+        "23910:2161",
+        "23910:2174"
+      ],
+      "descendantNodeRecordCount": 272,
+      "rootGeometry": [
+        [
+          320,
+          56
+        ],
+        [
+          320,
+          64
+        ],
+        [
+          320,
+          80
+        ],
+        [
+          320,
+          88
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 14,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Medium"
+          },
+          "fontSize": 12,
+          "fontWeight": 500,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0.1599999964237213
+          }
+        },
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 150
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        },
+        {
+          "fontSize": 16,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 24
+          },
+          "letterSpacing": {
+            "unit": "PERCENT",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-input.png",
+      "findings": [
+        "PRIM-13"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    },
+    {
+      "nodeId": "196:1439",
+      "name": "[INK] Tooltip",
+      "pageName": "Tooltip",
+      "pageId": "37:2538",
+      "type": "COMPONENT_SET",
+      "figmaUrl": "https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq?node-id=196-1439",
+      "publishedProperties": {
+        "text": {
+          "name": "text",
+          "type": "TEXT",
+          "key": "text#196:0",
+          "defaultValue": "This is a tooltip"
+        },
+        "alignment": {
+          "name": "alignment",
+          "type": "VARIANT",
+          "key": "alignment",
+          "variantOptions": [
+            "start",
+            "center",
+            "end"
+          ],
+          "defaultValue": "center"
+        },
+        "location": {
+          "name": "location",
+          "type": "VARIANT",
+          "key": "location",
+          "variantOptions": [
+            "above",
+            "after",
+            "before",
+            "below"
+          ],
+          "defaultValue": "above"
+        }
+      },
+      "variantAxes": {
+        "alignment": [
+          "start",
+          "center",
+          "end"
+        ],
+        "location": [
+          "above",
+          "after",
+          "before",
+          "below"
+        ]
+      },
+      "localComponent": "Tooltip",
+      "localSource": "src/design-system/3-primitives/Tooltip/Tooltip.tsx",
+      "directLocalTemplate": "src/design-system/3-primitives/Tooltip/Tooltip.figma.ts",
+      "mappingStatus": "Direct mapped component",
+      "apiCoverage": "text/location/alignment map; required trigger children provided by app; local delay/disabled extras.",
+      "stateAndAppearanceReview": "All12 location/alignment combinations have CSS; background, inverse text, white border, low elevation and14/400 text are present. Source flips/slides within viewport. Accessible description association is missing; runtime placement and edge behavior unverified.",
+      "appearanceEvidence": "docs/figma-library-review-2026-10-20/evidence/page-37-2538.json.gz",
+      "actualVariantCount": 12,
+      "actualVariantIds": [
+        "196:1440",
+        "15762:21604",
+        "196:1480",
+        "196:1444",
+        "15897:2368",
+        "196:1472",
+        "196:1448",
+        "15897:2377",
+        "196:1456",
+        "196:1452",
+        "15897:2386",
+        "196:1460"
+      ],
+      "descendantNodeRecordCount": 96,
+      "rootGeometry": [
+        [
+          110,
+          36
+        ]
+      ],
+      "textSpecifications": [
+        {
+          "fontName": {
+            "family": "DS Indigo",
+            "style": "Regular"
+          },
+          "fontSize": 14,
+          "fontWeight": 400,
+          "lineHeight": {
+            "unit": "PERCENT",
+            "value": 139.9999976158142
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          }
+        }
+      ],
+      "referenceScreenshot": "docs/figma-library-review-2026-10-20/evidence/primitive-tooltip.png",
+      "findings": [
+        "PRIM-17"
+      ],
+      "runtimeRenderParity": "unverified: no runtime component zoo or per-state browser captures were created"
+    }
+  ]
+}

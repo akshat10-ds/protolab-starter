@@ -1,0 +1,114 @@
+import { ZoomControl } from '@ds/ui'
+import { IconButton } from '@ds/ui'
+import { ZoomOut } from '@ds/icons'
+import { ZoomIn } from '@ds/icons'
+
+type InkZoomControlProps = {
+  className?: string;
+  direction?: "row" | "column";
+};
+
+export default function InkZoomControl({ className, direction = "column" }: InkZoomControlProps) {
+  if (direction === "row") {
+    return (
+      <CodeConnectSnippet data-node-id="3638:3158" data-name="direction=row" data-snippet-language="React">
+        <ZoomControl value="100%" direction="row" stripped zoomInButton={<IconButton accessibilityText="Fill in..." kind="tertiary" size="medium" icon={<ZoomIn />} />} zoomOutButton={<IconButton accessibilityText="Fill in..." kind="tertiary" size="medium" icon={<ZoomOut />} />} max="400" min="25" value={Number("100%")} max={Number("400")} min={Number("25")} />
+      </CodeConnectSnippet>
+    );
+  }
+  return (
+    <CodeConnectSnippet data-node-id="3638:3157" data-name="direction=column" data-snippet-language="React">
+      <ZoomControl value="100%" direction="column" stripped zoomInButton={<IconButton accessibilityText="Fill in..." kind="tertiary" size="medium" icon={<ZoomIn />} />} zoomOutButton={<IconButton accessibilityText="Fill in..." kind="tertiary" size="medium" icon={<ZoomOut />} />} max="400" min="25" value={Number("100%")} max={Number("400")} min={Number("25")} />
+    </CodeConnectSnippet>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontDetailS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.12, weight: 500, lineHeight: 1.5, letterSpacing: font.letterSpacing.wide).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Zoom Control
+**Node ID:** 3638:3159
+
+Zoom Controls allow users to magnify or minimize their screen view
+
+  
+
+Props
+-----
+
+`**_direction_**`: The layout direction of the Zoom Control buttons. Accepts the value of 'row' or 'column'.
+
+  
+
+`**_value_**`: The current zoom level.
+
+  
+
+`**_floating_**`: Display the Zoom Control with a floating container.
+
+**Documentation:**
+- [Zoom Control - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-zoomcontrol--default)
+
+## kind=tertiary, size=medium, ❖ State=default, disabled=false
+**Node ID:** 14:1019
+
+When additional clarity is required, an icon can be added alongside text to reinforce an action. If the icon is well-suited to conveying an action on its own, it can appear by itself
+
+## [INK] Icon Button
+**Node ID:** 14:953
+
+If the icon is well-suited to conveying an action on its own, it can appear by itself.
+
+  
+
+Props
+-----
+
+  
+
+_`**kind:**`_ The kind of the `Button`.
+
+  
+
+_`**❖ State:**`_ The state of the `Button`.
+
+  
+
+_`**disabled:**`_ Applies the 'disabled' attribute.
+
+  
+
+_`**❖ Icon:**`_ The icon to be displayed.
+
+  
+
+_`**badge:**`_ The AlertBadge to be displayed.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/241afc-button/t/45206c](https://ink.docusign.com/94bc5d135/p/241afc-button/t/45206c)
+- [Icon Button - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-button--with-icon)
+
+## zoomIn
+**Node ID:** 41751:4656
+
+zoom, zoom in, increase viewing, enlarge
+
+## zoomOut
+**Node ID:** 41751:3320
+
+zoom, zoom out, decrease viewing, minimize
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

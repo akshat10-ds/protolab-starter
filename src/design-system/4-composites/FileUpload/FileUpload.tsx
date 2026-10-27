@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 import styles from './FileUpload.module.css';
-import { Icon } from '@/design-system';
+import { Icon } from '../../3-primitives/Icon';
 import { IconButton } from '../../3-primitives/IconButton';
+import { Button } from '../../3-primitives/Button';
 
 export type FileStatus = 'uploading' | 'success' | 'error';
 
@@ -15,6 +16,15 @@ export interface UploadedFile {
 }
 
 export interface FileUploadProps {
+  id?: string;
+  small?: boolean;
+  background?: boolean;
+  showBodyText?: boolean;
+  showSecondaryActionButton?: boolean;
+  /** Defaults to a working Browse files action. */
+  primaryAction?: React.ReactNode;
+  secondaryAction?: React.ReactNode;
+  primaryActionLabel?: string;
   /** Callback when files are selected */
   onFilesSelect?: (files: File[]) => void;
   /** Callback when file upload status changes */
@@ -46,6 +56,14 @@ export interface FileUploadProps {
 const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
   (
     {
+      id,
+      small = false,
+      background = false,
+      showBodyText = true,
+      showSecondaryActionButton = true,
+      primaryAction,
+      secondaryAction,
+      primaryActionLabel = 'Browse files',
       onFilesSelect,
       onFileChange,
       onFileRemove,
@@ -67,6 +85,13 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
     const [error, setError] = React.useState<string>('');
     const inputRef = React.useRef<HTMLInputElement>(null);
     const dragCounter = React.useRef(0);
+    const generatedId = React.useId();
+    const inputId = id || generatedId;
+    const intervals = React.useRef(new Map<string, ReturnType<typeof setInterval>>());
+    const onFileChangeRef = React.useRef(onFileChange);
+    onFileChangeRef.current = onFileChange;
+    React.useEffect(() => { onFileChangeRef.current?.(files); }, [files]);
+    React.useEffect(() => () => { intervals.current.forEach(clearInterval); }, []);
 
     React.useImperativeHandle(ref, () => inputRef.current!);
 
@@ -110,6 +135,7 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
 
     const handleFiles = (newFiles: FileList | File[]) => {
       setError('');
+      if (disabled) return;
       const fileArray = Array.from(newFiles);
 
       if (!multiple && fileArray.length > 1) {
@@ -164,23 +190,27 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
             if (f.id === fileId) {
               if (progress >= 100) {
                 clearInterval(interval);
+                intervals.current.delete(fileId);
                 return { ...f, status: 'success' as FileStatus, progress: 100 };
               }
               return { ...f, progress };
             }
             return f;
           });
-          onFileChange?.(updatedFiles);
           return updatedFiles;
         });
       }, 200);
+      intervals.current.set(fileId, interval);
     };
 
     const handleRemoveFile = (fileId: string) => {
+      if (disabled) return;
+      const interval = intervals.current.get(fileId);
+      if (interval) clearInterval(interval);
+      intervals.current.delete(fileId);
       const newFiles = files.filter((f) => f.id !== fileId);
       setFiles(newFiles);
       onFileRemove?.(fileId);
-      onFileChange?.(newFiles);
     };
 
     const handleDragEnter = (e: React.DragEvent) => {
@@ -235,20 +265,15 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
       }
     };
 
-    const getFileIcon = (file: File) => {
-      if (file.type.startsWith('image/')) {
-        return URL.createObjectURL(file);
-      }
-      return null;
-    };
-
     return (
       <div data-ink-component="FileUpload" className={cn(styles.wrapper, className)}>
-        {label && <label className={styles.label}>{label}</label>}
+        {label && <label htmlFor={inputId} className={styles.label}>{label}</label>}
 
         <div
           className={cn(
             styles.dropzone,
+            small && styles.small,
+            background && styles.background,
             isDragging && styles.dragging,
             disabled && styles.disabled,
             error && styles.error
@@ -257,9 +282,17 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
           onDragLeave={handleDragLeave}
           onDragOver={handleDragOver}
           onDrop={handleDrop}
-          onClick={handleClick}
+          onClick={(event) => {
+            if (event.target === inputRef.current || (event.target as HTMLElement).closest('button, a')) return;
+            handleClick();
+          }}
+          role="group"
+          aria-disabled={disabled || undefined}
+          aria-label={label || 'Upload files'}
+          aria-describedby={error ? `${inputId}-error` : showBodyText && helperText ? `${inputId}-help` : undefined}
         >
           <input
+            id={inputId}
             ref={inputRef}
             type="file"
             className={styles.input}
@@ -270,33 +303,27 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
           />
 
           <div className={styles.dropzoneContent}>
-            <Icon name="upload" size="lg" className={styles.uploadIcon} />
+            <Icon name="upload" size="medium" className={styles.uploadIcon} />
             <div className={styles.dropzoneText}>{placeholder}</div>
-            {helperText && !error && <div className={styles.dropzoneHelper}>{helperText}</div>}
-            {error && <div className={styles.errorText}>{error}</div>}
-            {maxSize && (
+            {showBodyText && helperText && !error && <div id={`${inputId}-help`} className={styles.dropzoneHelper}>{helperText}</div>}
+            {error && <div id={`${inputId}-error`} role="alert" className={styles.errorText}>{error}</div>}
+            {showBodyText && maxSize && (
               <div className={styles.dropzoneHelper}>Max file size: {formatFileSize(maxSize)}</div>
             )}
+            <div className={styles.browseActions}>
+              {primaryAction ?? <Button kind="primary" disabled={disabled} onClick={event => { event.stopPropagation(); handleClick(); }}>{primaryActionLabel}</Button>}
+              {showSecondaryActionButton && secondaryAction}
+            </div>
           </div>
         </div>
 
         {showFileList && files.length > 0 && (
           <div className={styles.fileList}>
             {files.map((uploadedFile) => {
-              const fileIcon = getFileIcon(uploadedFile.file);
-
               return (
                 <div key={uploadedFile.id} className={styles.fileItem}>
                   <div className={styles.filePreview}>
-                    {fileIcon ? (
-                      <img
-                        src={fileIcon}
-                        alt={uploadedFile.file.name}
-                        className={styles.fileImage}
-                      />
-                    ) : (
-                      <Icon name="document" size="medium" className={styles.fileIconDefault} />
-                    )}
+                    <FilePreview file={uploadedFile.file} />
                   </div>
 
                   <div className={styles.fileInfo}>
@@ -342,7 +369,8 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
                         e.stopPropagation();
                         handleRemoveFile(uploadedFile.id);
                       }}
-                      aria-label="Remove file"
+                      aria-label={`Remove ${uploadedFile.file.name}`}
+                      disabled={disabled}
                       className={styles.removeButton}
                     />
                   </div>
@@ -359,3 +387,13 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
 FileUpload.displayName = 'InkFileUpload';
 
 export { FileUpload };
+
+function FilePreview({ file }: { file: File }) {
+  const [preview, setPreview] = React.useState<string>();
+  React.useEffect(() => {
+    if (!file.type.startsWith('image/')) return;
+    const url = URL.createObjectURL(file); setPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [file]);
+  return preview ? <img src={preview} alt={file.name} className={styles.fileImage} /> : <Icon name="document" size="medium" className={styles.fileIconDefault} />;
+}

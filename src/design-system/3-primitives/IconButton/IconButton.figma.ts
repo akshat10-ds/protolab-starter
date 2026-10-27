@@ -18,11 +18,12 @@ const variant = instance.getEnum('kind', {
 const size = instance.getEnum('size', { small: 'small', medium: 'medium' })
 const disabled = instance.getEnum('disabled', { false: false, true: true })
 
-// Figma-only properties intentionally omitted: "❖ State", "❖ Icon (Small)" (design-only),
-// "badge" (no code prop on IconButton)
+const badge = instance.getBoolean('badge')
+// Icon names and action labels are contextual application bindings.
+// Dynamic SVG templates cannot safely be coerced into the icon-name string API.
 
 export default {
-  example: figma.code`<IconButton icon="icon-name" variant="${variant}" size="${size}"${disabled ? ' disabled' : ''} aria-label="Icon button" />`,
+  example: figma.code`<IconButton icon={iconName} badge={${badge}} variant="${variant}" size="${size}"${disabled ? ' disabled' : ''} aria-label={actionLabel} />`,
   imports: ["import { IconButton } from '@/design-system'"],
   id: 'icon-button',
   metadata: { nestable: true },

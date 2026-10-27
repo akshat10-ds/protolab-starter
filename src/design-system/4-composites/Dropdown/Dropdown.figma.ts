@@ -1,43 +1,28 @@
 // url=https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq/-ds-ui--Component-Library?node-id=11096-31227
 // source=src/design-system/4-composites/Dropdown/Dropdown.tsx
 // component=Dropdown
-// drift: code Dropdown maps to Figma "[INK] Menu (Basic)" (Menu page holds six sets — Basic,
-// Shortcuts, Icon, Section titles + Divider, Nested, Selectable; Basic is the primary set).
-// Figma "glass" variant maps to code "variant" ('glass' | 'solid').
+// Based on accepted current 2026-10-20 owner metadata; interaction states render through native behavior.
 import figma from 'figma'
 const instance = figma.selectedInstance
 
 const variant = instance.getEnum('glass', { True: 'glass', False: 'solid' })
-
-// Menu items are child Menu.Item instances (Item 1..Item 6); read their text into the items array
-const itemNodes = [
-  instance.findText('text', { traverseInstances: true, path: ['Item 1'] }),
-  instance.findText('text', { traverseInstances: true, path: ['Item 2'] }),
-  instance.findText('text', { traverseInstances: true, path: ['Item 3'] }),
-  instance.findText('text', { traverseInstances: true, path: ['Item 4'] }),
-  instance.findText('text', { traverseInstances: true, path: ['Item 5'] }),
-  instance.findText('text', { traverseInstances: true, path: ['Item 6'] }),
-]
-const labels = itemNodes
-  .filter((node) => node && node.type === 'TEXT')
-  .map((node) => node.textContent)
-const itemsCode = labels.length > 0
-  ? labels.map((label) => `{ label: '${label}', onClick: () => {} }`).join(',\n    ')
-  : "{ label: 'Menu item', onClick: () => {} }"
-
-// Figma-only property intentionally omitted: none. Per-item Figma props (selected, disabled,
-// startElement, description, shortcut hint) are per-instance, not readable from the set.
-
+const children = instance.findLayers(node => node.type === 'INSTANCE' && /Item \d+|Menu[.]Item|Menu[.]Group|Menu[.]Divider|^Title \d+$|^Divider$/.test(node.name))
+let items = figma.code``
+for (const item of children) {
+  if (item.type !== 'INSTANCE') continue
+  if (/Divider/.test(item.name)) { items = figma.code`${items}{ divider: true },`; continue }
+  if (/Group|^Title \d+$/.test(item.name)) { items = figma.code`${items}{ section: ${JSON.stringify(item.getString('title'))} },`; continue }
+  const label = item.getString('text')
+  const disabled = item.getEnum('disabled', { True: true, False: false })
+  const selected = item.getEnum('selected', { True: true, False: false })
+  const kind = item.getEnum('kind', { Default: 'default', Alert: 'alert' })
+  const description = item.getBoolean('HasDescription?') ? item.getString('description') : undefined
+  const start = item.getBoolean('HasStartElement?') ? item.getSlot('startElement') : undefined
+  const end = item.getBoolean('HasEndElement?') ? item.getSlot('endElement') : undefined
+  const shortcut = item.findText('Shortcut Text', { traverseInstances: true })
+  items = figma.code`${items}{ label: ${JSON.stringify(label)}, disabled: ${disabled}, selected: ${selected}, kind: '${kind}', onClick: () => {}${description ? figma.code`, description: ${JSON.stringify(description)}` : ''}${start ? figma.code`, icon: (<>${start}</>)` : ''}${end ? figma.code`, endElement: (<>${end}</>)` : ''}${shortcut.type === 'TEXT' ? figma.code`, shortcut: ${JSON.stringify(shortcut.textContent)}` : ''} },`
+}
 export default {
-  example: figma.code`<Dropdown
-  variant="${variant}"
-  items={[
-    ${itemsCode}
-  ]}
->
-  <button>Open menu</button>
-</Dropdown>`,
-  imports: ["import { Dropdown } from '@/design-system'"],
-  id: 'dropdown',
-  metadata: { nestable: false },
+  example: figma.code`<Dropdown variant="${variant}" items={[${items}]}><Button kind="secondary" menuTrigger>Open menu</Button></Dropdown>`,
+  imports: ["import { Dropdown, Button } from '@/design-system'"], id: 'dropdown', metadata: { nestable: false },
 }

@@ -1,0 +1,9 @@
+.meter { display: flex; flex-direction: column; gap: var(--ink-spacing-50); width: 100%; color: var(--ink-font-color-default); font-family: var(--ink-font-family-default); font-size: var(--ink-font-body-s-size); line-height: var(--ink-font-body-s-line-height); }
+.labels { display: flex; justify-content: space-between; gap: var(--ink-spacing-200); }
+.label { font-weight: var(--ink-font-weight-medium); }
+.track { height: var(--ink-bar-width-s); width: 100%; position: relative; background: var(--ink-bar-track-color-default); border-radius: var(--ink-radius-full); overflow: hidden; }
+.fill { height: 100%; display: block; background: var(--ink-bar-fill-color-default); }
+.semantic-high .fill { background: var(--ink-bar-fill-color-success); }
+.semantic-medium .fill { background: var(--ink-bar-fill-color-warning); }
+.semantic-low .fill { background: var(--ink-bar-fill-color-error); }
+.stop { position: absolute; inset-block: 0; inset-inline-end: 0; width: var(--ink-bar-width-s); border-radius: var(--ink-radius-full); background: var(--ink-bar-stop-indicator-color); }

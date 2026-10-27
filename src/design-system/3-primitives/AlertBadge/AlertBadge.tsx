@@ -5,7 +5,7 @@ export type AlertBadgeKind = 'emphasis' | 'subtle';
 
 export interface AlertBadgeProps {
   /** Number to display in the badge (1-99+) */
-  value?: number;
+  value?: number | '99+';
   /** Visual style of the badge */
   kind?: AlertBadgeKind;
   /** Show as a dot indicator instead of number */
@@ -20,8 +20,8 @@ export const AlertBadge: React.FC<AlertBadgeProps> = ({
   dot = false,
   className,
 }) => {
-  const displayValue = value > 99 ? '99+' : value.toString();
-  const isMultipleDigits = value >= 10;
+  const displayValue = value === '99+' || value > 99 ? '99+' : value.toString();
+  const isMultipleDigits = value === '99+' || value >= 10;
 
   const badgeClasses = [
     styles.badge,

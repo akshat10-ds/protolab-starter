@@ -58,7 +58,7 @@ ol.list .item::before {
   content: counter(list-counter) '.';
   margin-right: var(--ink-spacing-100); /* 8px */
   color: var(--ink-neutral-60);
-  font-weight: var(--ink-font-weight-medium);
+  font-weight: var(--ink-font-weight-regular);
 }
 
 /* List Item */
@@ -159,7 +159,7 @@ ol.list .item::before {
 
 .description {
   font-size: var(--ink-font-size-xs); /* 12px */
-  font-weight: var(--ink-font-weight-regular);
+  font-weight: var(--ink-font-weight-medium);
   line-height: var(--ink-line-height-normal);
   color: var(--ink-neutral-60);
   word-break: break-word;

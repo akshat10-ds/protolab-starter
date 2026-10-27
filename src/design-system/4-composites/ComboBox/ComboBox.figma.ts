@@ -1,35 +1,25 @@
 // url=https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq/-ds-ui--Component-Library?node-id=5517-2448
 // source=src/design-system/4-composites/ComboBox/ComboBox.tsx
 // component=ComboBox
-// Mapped to "[INK] Combobox" (5517:2448) — the primary set; "[INK] Editable Combobox" and
-// "[INK] Combobox Listbox" are variants/parts without a distinct code component.
-// Drift: Figma "showLabel" is the inverse of code "hideLabel". Figma "value" is the displayed
-// option label, code "value" is the option value — passed through as-is. "❖ Error" (variant)
-// maps to the code "error" string with placeholder text. "inputHelp" maps to code "description".
-// Figma "size" and "startElement" have no code props. Code label/options/onChange are required
-// and emitted as placeholders.
+// Based on accepted current 2026-10-20 owner metadata; interaction states render through native behavior.
 import figma from 'figma'
 const instance = figma.selectedInstance
 
 const value = instance.getString('value')
 const placeholder = instance.getString('placeholder')
-const hideLabel = instance.getBoolean('showLabel', { true: false, false: true })
-const hasHelp = instance.getBoolean('inputHelp')
+const hideLabel = !instance.getBoolean('showLabel')
 const disabled = instance.getEnum('disabled', { False: false, True: true })
-const hasError = instance.getEnum('❖ Error', { False: false, True: true })
-
-// Figma-only properties intentionally omitted: "❖ State", "❖ Placeholder", "❖ Description",
-// "size", "startElement" (no code props)
+const error = instance.getEnum('❖ Error', { False: false, True: true })
+const size = instance.getEnum('size', { small: 'small', medium: 'medium' })
+const isPlaceholder = instance.getEnum('❖ Placeholder', { False: false, True: true })
+const start = instance.getBoolean('HasStartElement?') ? instance.getSlot('startElement') : undefined
+const labelNode = instance.findText('Label string', { traverseInstances: true })
+const label = labelNode.type === 'TEXT' ? labelNode.textContent : ''
+const help = instance.getBoolean('inputHelp') ? instance.findInstance('inputHelp', { traverseInstances: true }) : null
+const helpCode = help?.type === 'INSTANCE' ? help.executeTemplate().example : undefined
+const desc = instance.getBoolean('❖ Description') ? instance.findText('Description string', { traverseInstances: true }) : null
 
 export default {
-  example: figma.code`<ComboBox
-  label="Label"${hideLabel ? '\n  hideLabel' : ''}${hasHelp ? "\n  description=\"Helper text\"" : ''}${hasError ? "\n  error=\"Error message\"" : ''}${disabled ? '\n  disabled' : ''}
-  placeholder="${placeholder}"
-  value="${value}"
-  onChange={(value) => {}}
-  options={[{ value: 'option-a', label: 'Option A' }]}
-/>`,
-  imports: ["import { ComboBox } from '@/design-system'"],
-  id: 'combobox',
-  metadata: { nestable: false },
+  example: figma.code`<ComboBox editable={false} label={${JSON.stringify(label)}} size="${size}"${hideLabel ? ' hideLabel' : ''}${disabled ? ' disabled' : ''}${error ? ' error="Error"' : ''}${start ? figma.code` startElement={<>${start}</>}` : ''}${helpCode ? figma.code` inputHelp={<>${helpCode}</>}` : ''}${desc?.type === 'TEXT' ? figma.code` description={${JSON.stringify(desc.textContent)}}` : ''} placeholder={${JSON.stringify(isPlaceholder ? value : placeholder)}} value={${JSON.stringify(isPlaceholder ? '' : value)}} onChange={(value) => {}} clearable={false} showTrigger={true} options={[${isPlaceholder ? '' : figma.code`{ value: ${JSON.stringify(value)}, label: ${JSON.stringify(value)} }`}]} />`,
+  imports: ["import { ComboBox } from '@/design-system'"], id: 'combobox', metadata: { nestable: true },
 }

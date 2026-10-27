@@ -15,8 +15,13 @@ export interface PaginationProps {
   onPageChange: (page: number) => void;
   /** Display mode */
   mode?: PaginationMode;
+  size?: 'small' | 'medium';
+  totalItems?: number;
+  showInfo?: boolean;
   /** Show items per page selector */
   showItemsPerPage?: boolean;
+  hideItemsPerPageLabel?: boolean;
+  itemsPerPageFormat?: 'number' | 'per-page';
   /** Items per page options */
   itemsPerPageOptions?: number[];
   /** Current items per page */
@@ -38,7 +43,12 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   onPageChange,
   mode = 'full',
+  size = 'medium',
+  totalItems,
+  showInfo = false,
   showItemsPerPage = false,
+  hideItemsPerPageLabel = false,
+  itemsPerPageFormat = 'number',
   itemsPerPageOptions = [10, 25, 50, 100],
   itemsPerPage = 10,
   onItemsPerPageChange,
@@ -47,6 +57,7 @@ const Pagination: React.FC<PaginationProps> = ({
   disabled = false,
   className,
 }) => {
+  const selectorId = React.useId();
   const canGoPrevious = currentPage > 1;
   const canGoNext = currentPage < totalPages;
 
@@ -108,7 +119,7 @@ const Pagination: React.FC<PaginationProps> = ({
       pages.push(totalPages);
     }
 
-    return pages.map((page, index) => {
+    return pages.map((page) => {
       if (typeof page === 'string') {
         return (
           <span key={page} className={styles.dots}>
@@ -136,7 +147,11 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div data-ink-component="Pagination" className={cn(styles.container, className)}>
+    <div data-ink-component="Pagination" className={cn(styles.container, styles[size], className)}>
+      <div className={styles.navigation}>
+      {showInfo && <span className={styles.pageInfo}>{totalItems !== undefined
+        ? `${Math.min((currentPage - 1) * itemsPerPage + 1, totalItems)}-${Math.min(currentPage * itemsPerPage, totalItems)} of ${totalItems}`
+        : `Page ${currentPage} of ${totalPages}`}</span>}
       <nav className={cn(styles.pagination, disabled && styles.disabled)} aria-label="Pagination">
         {mode === 'simple' ? (
           <>
@@ -168,7 +183,7 @@ const Pagination: React.FC<PaginationProps> = ({
           <>
             {showFirstLast && (
               <IconButton
-                icon="chevron-left"
+                icon="control-previous"
                 size="small"
                 variant="tertiary"
                 onClick={() => handlePageChange(1)}
@@ -197,7 +212,7 @@ const Pagination: React.FC<PaginationProps> = ({
             />
             {showFirstLast && (
               <IconButton
-                icon="chevron-right"
+                icon="control-next"
                 size="small"
                 variant="tertiary"
                 onClick={() => handlePageChange(totalPages)}
@@ -208,22 +223,23 @@ const Pagination: React.FC<PaginationProps> = ({
           </>
         )}
       </nav>
+      </div>
 
       {showItemsPerPage && (
         <div className={styles.itemsPerPage}>
-          <label htmlFor="items-per-page" className={styles.label}>
+          <label htmlFor={selectorId} className={cn(styles.label, hideItemsPerPageLabel && styles.srOnly)}>
             Items per page:
           </label>
           <select
-            id="items-per-page"
+            id={selectorId}
             className={styles.select}
             value={itemsPerPage}
-            onChange={(e) => onItemsPerPageChange?.(Number(e.target.value))}
+            onChange={(e) => { onItemsPerPageChange?.(Number(e.target.value)); onPageChange(1); }}
             disabled={disabled}
           >
             {itemsPerPageOptions.map((option) => (
               <option key={option} value={option}>
-                {option}
+                {option}{itemsPerPageFormat === 'per-page' ? ' / Page' : ''}
               </option>
             ))}
           </select>

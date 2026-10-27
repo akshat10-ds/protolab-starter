@@ -1,0 +1,20 @@
+--- a/system/ai-system/patterns/IrisAgent/IrisAgent.tsx
++++ b/system/ai-system/patterns/IrisAgent/IrisAgent.tsx
+@@ -3685,7 +3685,7 @@
+               {onNewConversation && (
+                 <Tooltip text="New chat">
+                   <IconButton
+-                    icon="pencil-box-small"
++                    icon="pencil-box"
+                     variant="tertiary"
+                     size="small"
+                     aria-label="New chat"
+@@ -3950,7 +3950,7 @@
+             {onNewConversation && (
+               <Tooltip text="New chat">
+                 <IconButton
+-                  icon="pencil-box-small"
++                  icon="pencil-box"
+                   variant="tertiary"
+                   size="small"
+                   aria-label="New chat"

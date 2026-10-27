@@ -102,7 +102,7 @@ export const AgreementView: React.FC<AgreementViewProps> = ({
       <div className={styles.header}>
         <div className={styles.headerLeft}>
           {onPrevDocument && (
-            <Tooltip text="Previous document" size="compact">
+            <Tooltip text="Previous document">
               <IconButton
                 icon="chevron-left"
                 size="small"
@@ -114,7 +114,7 @@ export const AgreementView: React.FC<AgreementViewProps> = ({
           )}
           <span className={styles.headerTitle}>{title}</span>
           {onNextDocument && (
-            <Tooltip text="Next document" size="compact">
+            <Tooltip text="Next document">
               <IconButton
                 icon="chevron-right"
                 size="small"
@@ -127,7 +127,7 @@ export const AgreementView: React.FC<AgreementViewProps> = ({
         </div>
         <div className={styles.headerRight}>
           {onOpenExternal && (
-            <Tooltip text="Open in Navigator" size="compact">
+            <Tooltip text="Open in Navigator">
               <IconButton
                 icon="external-link"
                 size="small"
@@ -138,7 +138,7 @@ export const AgreementView: React.FC<AgreementViewProps> = ({
             </Tooltip>
           )}
           {onDownload && (
-            <Button variant="secondary" size="small" onClick={onDownload}>
+            <Button kind="secondary" size="small" onClick={onDownload}>
               Download
             </Button>
           )}
@@ -207,7 +207,7 @@ export const AgreementView: React.FC<AgreementViewProps> = ({
         </div>
 
         <div className={styles.toolbarRight}>
-          <Tooltip text="Search in document" size="compact">
+          <Tooltip text="Search in document">
             <IconButton
               icon="search"
               size="small"

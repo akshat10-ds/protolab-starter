@@ -17,14 +17,15 @@
 
 .container.disabled {
   cursor: not-allowed;
-  opacity: 0.25; /* Figma disabled opacity */
+
 }
 
 .input {
   position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 }
 
@@ -154,3 +155,6 @@
 .container:not(.disabled):active .track:not(.checked) .thumb {
   background-color: var(--ink-form-control-thumb-bg-active); /* #37039e */
 }
+
+.wrapper { cursor: pointer; }
+.wrapperDisabled { opacity: var(--ink-opacity-disabled); cursor: not-allowed; }

@@ -205,7 +205,7 @@ const Message: React.FC<MessageProps> = ({
   if (isSystem) {
     return (
       <div className={styles.systemMessage}>
-        <Text variant="caption" color="secondary">
+        <Text size="sm" color="secondary">
           {message.content}
         </Text>
       </div>
@@ -221,14 +221,14 @@ const Message: React.FC<MessageProps> = ({
     <div className={`${styles.message} ${isUser ? styles.userMessage : styles.assistantMessage}`}>
       <div className={styles.messageContent}>
         {showTimestamp && (
-          <Text variant="caption" color="secondary">
+          <Text size="sm" color="secondary">
             {formatTime(message.timestamp)}
           </Text>
         )}
 
         {message.content && (
           <div className={styles.messageBubble}>
-            <Text variant="body">{message.content}</Text>
+            <Text size="md">{message.content}</Text>
           </div>
         )}
 
@@ -240,7 +240,7 @@ const Message: React.FC<MessageProps> = ({
                   <IconButton
                     icon={feedback === 'positive' ? 'thumbs-up-filled' : 'thumbs-up'}
                     size="small"
-                    kind="tertiary"
+                    variant="tertiary"
                     onClick={() => onFeedback?.(feedback === 'positive' ? null : 'positive')}
                     aria-label="Mark as helpful"
                     className={feedback === 'positive' ? styles.feedbackActive : undefined}
@@ -250,7 +250,7 @@ const Message: React.FC<MessageProps> = ({
                   <IconButton
                     icon={feedback === 'negative' ? 'thumbs-down-filled' : 'thumbs-down'}
                     size="small"
-                    kind="tertiary"
+                    variant="tertiary"
                     onClick={() => onFeedback?.(feedback === 'negative' ? null : 'negative')}
                     aria-label="Mark as not helpful"
                     className={feedback === 'negative' ? styles.feedbackActive : undefined}
@@ -263,7 +263,7 @@ const Message: React.FC<MessageProps> = ({
                 <IconButton
                   icon="duplicate"
                   size="small"
-                  kind="tertiary"
+                  variant="tertiary"
                   onClick={handleCopy}
                   aria-label="Copy message"
                 />
@@ -275,7 +275,7 @@ const Message: React.FC<MessageProps> = ({
         {message.status === 'error' && (
           <Inline gap="small" align="center">
             <Icon name="status-warn" size="small" />
-            <Text variant="caption" color="danger">
+            <Text size="sm" color="error">
               Failed to send
             </Text>
             <Button kind="tertiary" size="small" onClick={() => onAction?.('retry', message)}>
@@ -446,14 +446,14 @@ const InputArea: React.FC<InputAreaProps> = ({
         {/* Expand/Collapse button - shows when content is long */}
         {isLongContent && (
           <Tooltip text={isExpanded ? 'Collapse' : 'Expand'} location="above" alignment="end">
-            <button
-              type="button"
+            <IconButton
+              icon={isExpanded ? 'arrows-in' : 'arrows-out'}
+              variant="secondary"
+              size="small"
               className={styles.expandButton}
               onClick={() => setIsExpanded(!isExpanded)}
               aria-label={isExpanded ? 'Collapse input' : 'Expand input'}
-            >
-              <Icon name={isExpanded ? 'arrows-in' : 'arrows-out'} size="small" />
-            </button>
+            />
           </Tooltip>
         )}
         <div className={styles.inputContent}>
@@ -596,12 +596,12 @@ const Welcome: React.FC<WelcomeProps> = ({
                 role={onSuggestedActionsHeaderClick ? 'button' : undefined}
                 tabIndex={onSuggestedActionsHeaderClick ? 0 : undefined}
               >
-                <Text variant="caption" color="secondary" weight="medium">
+                <Text size="sm" color="secondary" weight="medium">
                   {suggestedActionsTitle}
                 </Text>
                 {suggestedActionsActionText && onSuggestedActionsHeaderClick && (
                   <Inline gap="small" align="center" className={styles.sectionHeaderAction}>
-                    <Text variant="caption" color="secondary">
+                    <Text size="sm" color="secondary">
                       {suggestedActionsActionText}
                     </Text>
                     <Icon name="chevron-right" size="small" />
@@ -626,10 +626,10 @@ const Welcome: React.FC<WelcomeProps> = ({
                       />
                     </div>
                     <div className={styles.suggestionContent}>
-                      <Text variant="body" weight="medium">
+                      <Text size="md" weight="medium">
                         {action.label}
                       </Text>
-                      {action.description && <Text variant="caption">{action.description}</Text>}
+                      {action.description && <Text size="sm">{action.description}</Text>}
                     </div>
                   </button>
                 ))}
@@ -641,7 +641,7 @@ const Welcome: React.FC<WelcomeProps> = ({
           {suggestedQuestions && suggestedQuestions.length > 0 && (
             <div className={styles.suggestionsSection}>
               <Inline gap="small" align="center" className={styles.sectionHeader}>
-                <Text variant="caption" color="secondary" weight="medium">
+                <Text size="sm" color="secondary" weight="medium">
                   {suggestedQuestionsTitle}
                 </Text>
                 <Icon name="chevron-right" size="small" />
@@ -657,7 +657,7 @@ const Welcome: React.FC<WelcomeProps> = ({
                     <div className={styles.suggestionIcon}>
                       <Icon name="help" size="medium" />
                     </div>
-                    <Text variant="body">{question}</Text>
+                    <Text size="md">{question}</Text>
                   </button>
                 ))}
               </Stack>
@@ -672,9 +672,9 @@ const Welcome: React.FC<WelcomeProps> = ({
     <div className={styles.welcome}>
       <Stack gap="medium" align="center">
         <div className={styles.welcomeIcon}>
-          <Icon name="messages" size="large" />
+          <Icon name="messages" size="medium" />
         </div>
-        <Text variant="body" color="secondary" align="center">
+        <Text size="md" color="secondary" style={{ textAlign: 'center' }}>
           Start a conversation with {assistantName}
         </Text>
       </Stack>
@@ -701,7 +701,7 @@ const Header: React.FC<HeaderProps> = ({ onShowHistory, onNewChat, onMaximize, o
           <IconButton
             icon="menu"
             size="small"
-            kind="tertiary"
+            variant="tertiary"
             onClick={onShowHistory}
             aria-label="Show history"
           />
@@ -712,7 +712,7 @@ const Header: React.FC<HeaderProps> = ({ onShowHistory, onNewChat, onMaximize, o
           <IconButton
             icon="plus"
             size="small"
-            kind="tertiary"
+            variant="tertiary"
             onClick={onNewChat}
             aria-label="New chat"
           />
@@ -721,7 +721,7 @@ const Header: React.FC<HeaderProps> = ({ onShowHistory, onNewChat, onMaximize, o
           <IconButton
             icon="container-enlarge"
             size="small"
-            kind="tertiary"
+            variant="tertiary"
             onClick={onMaximize}
             aria-label="Maximize"
           />
@@ -730,7 +730,7 @@ const Header: React.FC<HeaderProps> = ({ onShowHistory, onNewChat, onMaximize, o
           <IconButton
             icon="close"
             size="small"
-            kind="tertiary"
+            variant="tertiary"
             onClick={onClose}
             aria-label="Close"
           />

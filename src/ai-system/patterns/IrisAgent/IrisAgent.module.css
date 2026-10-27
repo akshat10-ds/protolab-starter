@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 @import '../../tokens/color.css';
 
 /* =============================================================================
@@ -294,6 +293,46 @@
   transform: translateX(0);
 }
 
+.fileDropSurface {
+  position: relative;
+  isolation: isolate;
+}
+
+.fileDropOverlay {
+  position: absolute;
+  inset: var(--ink-spacing-100);
+  z-index: var(--ink-z-sticky);
+  display: grid;
+  place-items: center;
+  padding: var(--ink-spacing-300);
+  border: 1px dashed var(--ink-neutral-fade-30);
+  border-radius: var(--ink-radius-size-m);
+  background: var(--ink-white-fade-90);
+  color: var(--ink-font-color-default);
+  pointer-events: none;
+  user-select: none;
+}
+
+.fileDropPrompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  text-align: center;
+}
+
+.fileDropTitle {
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-md);
+  font-weight: var(--ink-font-weight-medium);
+}
+
+.fileDropHint {
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  color: var(--ink-font-color-secondary);
+}
+
 /* =============================================================================
    WELCOME STATE
    ============================================================================= */
@@ -311,13 +350,23 @@
   padding-bottom: var(--ink-spacing-600);
 }
 
+.welcomeAreaTop {
+  /* A cold state that carries its own board starts at the top, not a fifth of
+     the way down. 24px, the same token `.chatMessages` pads with, so the board
+     and the conversation's first turn sit at one height. */
+  padding-top: var(--ink-spacing-300);
+}
+
 .welcomeContent {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
+  /* Was 36px. Spacing is the scale of 8 — 8/16/24/32/40/48, with only 4 and 12
+     outside it. Akshat, 2026-09-04, `journal/taste.md` e28. Ink ships 36px as
+     `--ink-spacing-350` from before that rule; an old token is not licence. */
+  gap: var(--ink-spacing-400);
   width: 100%;
   max-width: 720px;
   padding: 0 var(--ink-spacing-400);
@@ -371,6 +420,23 @@
 .inputHero {
   position: relative;
   width: 100%;
+  /* THE GLOW IS THE INPUT'S, SO IT CANNOT BE WIDER THAN THE INPUT. Akshat,
+     2026-09-04: "I like it but just the gradient should be only behind the
+     input". The `::before` glow is inset against this hero. A host that widens
+     the cold state — `coldStateWidth={960}` for a two-column board — stretched
+     the hero to 960 while the input held at 720, and the glow ran past its
+     right edge.
+     720 is `ChatInput`'s own cap. That component writes the number as a
+     literal on `.shellWithMenu`, `.shell` and `.wrapper`, and it exposes no
+     variable, so the number is copied here. If you change one, change the
+     other: `composites/ChatInput/ChatInput.module.css`. */
+  max-width: 720px;
+  /* The greeting above and the cold-state slot below both start at the
+     column's left edge, so the input starts there with them. `.welcomeContent`
+     is a flex column and it centres its children. Without this line, the cap
+     above moves the input right inside a wider column. The cap sets the glow's
+     width, not the input's position. */
+  align-self: flex-start;
   isolation: isolate;
   animation: revealUp 600ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
 }
@@ -462,72 +528,15 @@
 }
 
 /*
- * ACTIVE — this card's set is the one filling the right pane.
- *
- * The preview is gone, so the card is a header and nothing else: no hairline to
- * separate it from, and the fill runs the whole box. Indigo 10 is the tint that
- * already means "this belongs to Iris" on the context chip; here it means the
- * same thing about a place rather than a thing — you are looking at this one.
- *
- * Shape does the work before colour does. A card that has collapsed to one line
- * beside four that have not is legible without reading the label at all, which
- * is why the collapse and the state are one change and not two.
+ * ACTIVE is not drawn here. A card whose set is filling the pane is not this
+ * card in another paint — it is `CollapsedHandoff`, the system's one drawing of
+ * "your contents are in the pane, press to stop", which the receipt and the
+ * FINS recommendation preview also use. The rationale that used to sit in this
+ * block lives in that component. Only the flow spacing stays behind, because it
+ * belongs to the message stream and not to the row.
  */
-.inlineResultsWrap[data-active] {
-  border-color: var(--ai-indigo-10);
-  background: var(--ai-indigo-10);
-}
-
-.inlineResultsWrap[data-active] .inlineResultsHeader {
-  border-bottom: none;
-}
-
-.inlineResultsWrap[data-active] .inlineResultsLabel {
-  color: var(--ink-font-color-default);
-}
-
-/*
- * Collapsed, the whole row is the control that closes the pane — the card says
- * "you are looking at this", so pressing it stops. It needs to look pressable:
- * a cursor and a hover a shade deeper than its own fill, which is the same
- * "hover tints the whole card" grammar `InsightList` uses.
- */
-.inlineResultsWrap[data-active] .inlineResultsHeader[role='button'] {
-  cursor: pointer;
-  border-radius: inherit;
-  transition: background var(--ai-motion-duration-handle, 180ms) ease;
-}
-
-.inlineResultsWrap[data-active] .inlineResultsHeader[role='button']:hover {
-  background: var(--ink-ecru-20);
-}
-
-.inlineResultsWrap[data-active] .inlineResultsHeader[role='button']:focus-visible {
-  outline: 2px solid var(--ink-border-color-accent);
-  outline-offset: -2px;
-}
-
-/*
- * "Close", in the slot "See all" occupies on an expanded card. Hidden at rest
- * so the collapsed row stays one quiet line; the row is already saying where
- * you are, and a standing second label would make it say two things.
- *
- * `opacity`, not `display`, so the row does not change width when it appears.
- */
-.inlineResultsClose {
-  flex-shrink: 0;
-  opacity: 0;
-  font-family: var(--ink-font-family-default);
-  font-size: var(--ink-font-size-xs);
-  font-weight: var(--ink-font-weight-medium);
-  letter-spacing: 0.16px;
-  color: var(--ink-font-color-default);
-  transition: opacity var(--ai-motion-duration-handle, 180ms) ease;
-}
-
-.inlineResultsHeader[role='button']:hover .inlineResultsClose,
-.inlineResultsHeader[role='button']:focus-visible .inlineResultsClose {
-  opacity: 1;
+.inlineResultsCollapsed {
+  margin: var(--ink-spacing-100) 0;
 }
 
 .inlineResultsLabel {
@@ -667,9 +676,67 @@
   animation: suggestionSlideIn 350ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/*
+ * The fullscreen suggestion's mark — 16 in a 24 box, the row geometry every
+ * other suggestion surface uses. The gap is a margin on the icon rather than
+ * `gap` on the row, so a label-only button's rule is untouched.
+ */
+.suggestionItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-right: var(--ink-spacing-50);
+  color: var(--ink-icon-color-subtle);
+}
+
 .suggestionItem:hover {
   background: var(--ink-ecru-10);
   color: var(--ink-neutral-140);
+}
+
+/* Opt-in workspace cold state, Figma 140:11536. The source uses 36px blocks. */
+.welcomeWorkspace {
+  padding-block: 0;
+}
+
+.welcomeWorkspace .welcomeContent {
+  flex-shrink: 0;
+  margin-block: auto;
+  gap: var(--ink-spacing-350);
+}
+
+.welcomeWorkspace.welcomeAreaTop {
+  padding-block: var(--ink-spacing-300);
+}
+
+.welcomeWorkspace.welcomeAreaTop .welcomeContent {
+  margin-block: 0;
+}
+
+.welcomeWorkspace .inputHero::before {
+  content: none;
+}
+
+.welcomeWorkspace .categoryTabs {
+  flex-wrap: wrap;
+}
+
+.welcomeWorkspace .categoryTabActive {
+  background: var(--ink-neutral-20);
+}
+
+.welcomeWorkspace .suggestionItem {
+  min-height: 40px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--ink-ecru-90);
+}
+
+.welcomeWorkspace .suggestionItem:hover {
+  color: var(--ink-font-color-default);
 }
 
 @keyframes suggestionSlideIn {
@@ -705,14 +772,39 @@
 }
 
 .chatMessages::-webkit-scrollbar {
+  /* The bar itself paints a default background under the track. A transparent
+     TRACK alone lets that show — a pale full-height strip with no thumb in it,
+     which is what Akshat kept seeing. Both must be transparent. The width is
+     the reserved gutter and does not change, so nothing moves. */
   width: 5px;
+  background: transparent;
 }
 .chatMessages::-webkit-scrollbar-track {
   background: transparent;
 }
 .chatMessages::-webkit-scrollbar-thumb {
-  background: var(--ink-neutral-20);
+  /* Absent at rest. The 5px gutter above is still reserved, so nothing moves
+     when the thumb is painted — only its colour changes. */
+  background: transparent;
   border-radius: 3px;
+}
+.chatMessages:hover::-webkit-scrollbar-thumb,
+.chatMessages:focus-within::-webkit-scrollbar-thumb {
+  background: var(--ink-neutral-20);
+}
+
+/* Firefox, which ignores every rule above. Guarded, because Chrome drops the
+   whole `::-webkit-scrollbar` block the moment `scrollbar-color` is set on the
+   same element — and `thin` is not 5px, so the gutter would widen. No
+   `scrollbar-width` here: `auto` keeps Firefox's own gutter unchanged too. */
+@supports not selector(::-webkit-scrollbar) {
+  .chatMessages {
+    scrollbar-color: transparent transparent;
+  }
+  .chatMessages:hover,
+  .chatMessages:focus-within {
+    scrollbar-color: var(--ink-neutral-20) transparent;
+  }
 }
 .chatMessages::-webkit-scrollbar-thumb:hover {
   background: var(--ink-neutral-30);
@@ -733,9 +825,23 @@
 }
 
 /* Inline slot after the last turn — left-aligned with assistant content */
-.chatSuffixSlot {
+/*
+ * Where the suggestion stack lands under a turn — `chatSuffix`, and the
+ * follow-up rows beside it.
+ *
+ * `--zq-bleed: 0` because the thread has ONE left edge. The cold state's rows
+ * bleed 16px past the content column so their tint reaches the composer card
+ * while their icon stays on the greeting's edge; there is no second edge here
+ * to reach, and a row hanging 16px left of the message it belongs to reads as
+ * belonging to something else. Zeroing the pad with it gives the frame's own
+ * padding, 8/16/8/0.
+ */
+.chatSuffixSlot,
+.followUpSlot {
   padding: var(--ink-spacing-100) 0 var(--ink-spacing-200);
   max-width: 620px;
+  --zq-bleed: 0px;
+  --zq-pad: 0px;
 }
 
 /* =============================================================================
@@ -1194,6 +1300,35 @@ button.panelIdentity:focus-visible {
  * (`.pageSingleColumn .chatMessages`), and because a wider composer truncates
  * the hovered-query preview less.
  */
+/*
+ * THE EMPTY BAND HAS A CEILING.
+ *
+ * `margin-top: auto` bottom-anchored the greeting against the composer, which
+ * is right at panel height and wrong at monitor height: on a 1000px panel it
+ * left ~600px of nothing above the words and pushed them roughly 250px below
+ * where anyone looks first. The bloom does not need that much room — its mask
+ * dissolves by about a third of the panel — so the space above the greeting is
+ * now a capped spacer instead of an unbounded one.
+ *
+ * It still collapses: on a short panel the spacer shrinks to whatever is left
+ * and the block sits against the composer exactly as it did. The cap is the
+ * knob — raise it to sink the greeting, lower it to lift.
+ */
+.panelWelcome::before {
+  content: '';
+  flex: 1 1 auto;
+  min-height: 0;
+  /*
+   * Unbounded by default — the block sits against the composer and the bloom
+   * owns everything above, which is what both cold-state frames draw (Akshat,
+   * 2026-08-20: "why is there so much gap here" — the gap below the content is
+   * the one that reads broken). Set --iris-cold-band to cap the band and lift
+   * the greeting toward the eye line instead; the 360px cap that briefly held
+   * here traded a void above for a void below and lost.
+   */
+  max-height: var(--iris-cold-band, none);
+}
+
 .panelWelcomeContent {
   /*
    * 24px, not 16 — the cold state sits further off the panel edge than the
@@ -1206,7 +1341,8 @@ button.panelIdentity:focus-visible {
   flex-direction: column;
   gap: var(--ink-spacing-300);
   max-width: var(--iris-chat-measure);
-  margin: auto auto 0;
+  /* The spacer above owns the top gap now; this only centres horizontally. */
+  margin: 0 auto;
   width: 100%;
   position: relative;
 }
@@ -1242,7 +1378,10 @@ button.panelIdentity:focus-visible {
  *
  * Hiding it was the other answer and it is the worse one: the stream is the
  * only region of this surface that scrolls, and at fullscreen it is most of the
- * page. So the container goes full width and the measure moves into
+ * page. (The at-rest hiding at the foot of this file is not that hiding: the
+ * bar is still drawn here, at the screen's right edge where this block put it,
+ * as soon as the pointer or the keyboard is in the box.) So the container goes
+ * full width and the measure moves into
  * `padding-inline` — the bar returns to the column's right edge, which is the
  * screen's, and the text keeps its column.
  *
@@ -2018,50 +2157,36 @@ button.menuAccordionHeader:hover span:first-child {
 }
 
 /*
- * WHICH REGION FLEXES. Frame 163:21261, measured: 1807 total = 338 rail + 482
- * chat + 987 pane. The chat holds a panel's measure and the pane takes every
- * pixel left over — the inverse of what this file did, where the chat flexed
- * and the pane was pinned at 520 (frame 153:19655, which draws no pane).
+ * WHICH REGION FLEXES — THE CHAT DOES. Akshat, 2026-08-19: *"when you open the
+ * sidebar the width should be like 1/3 and not 2/3"*, and then: *"the pane
+ * width is dependent on what you see… if it's agreement it should be 2/3 but
+ * for sources, progress 1/3 is good. we probably want it to be resizable
+ * too!"*
  *
- * The frame is right about the job. The chat's content is capped at 620 and
- * centred, so a flexing chat at 1807 spends its surplus on empty gutters either
- * side of a 620px column, while the pane — a table, an agreement — is the one
- * region that can use the room. Ground, conversation, the thing you opened.
+ * SUPERSEDED: frame 163:21261 (1807 = 338 rail + 482 chat + 987 pane) pinned
+ * the chat at 480 and gave the pane every pixel left over. That is what he was
+ * reviewing when he said 1/3, and the frame lost. The pane now opens at a width
+ * its OWN CONTENT asks for — `PANE_SIZE` in `artifactRenderers.tsx`, one entry
+ * per kind — and the chat takes the remainder, which at 1600 with a progress
+ * artifact is 1067 against 533.
  *
- * FLAGGED FOR HIS REVIEW: the frame gives one width, so the *relationship* is
- * inferred, not the pixels. 480 is the panel's own `sidebarWidth`, not the
- * frame's 482 (drawing noise), and both regions keep `flex-shrink: 1` so a
- * fullscreen narrower than 1338 shrinks them together rather than overflowing.
- * At 1807 that arithmetic returns the frame: chat 480, pane 989.
+ * The old argument for the frame was that a flexing chat spends its surplus on
+ * empty gutters beside a 620px column. It is answered rather than ignored: the
+ * measure at fullscreen is 720 (see the block near the end of this file), the
+ * pane's width is now capped by kind so the surplus is real, and the divider
+ * between them is draggable, so a chat that is too wide for its content is a
+ * drag away from not being.
  *
- * IT SITS ON `.rightArea`, NOT ON `.panelChatColumn`. At fullscreen the pane is
- * a sibling of the chat chrome rather than a column inside it, so the chrome is
- * the flex item the pane divides the row with. `.panelChatColumn` goes back to
- * its base `flex: 1` and simply fills the chrome. Below fullscreen this rule
- * does not match and the pane is inside `.contentSurface`, exactly as before.
+ * WHAT IS LEFT ON `.rightArea` is the 480 basis on the rule below and its
+ * `flex-grow: 1` — no override, which is why the rule that used to sit here is
+ * gone rather than set back to 1. The pane's side of the pairing is an inline
+ * `flex-basis` from `IrisAgent.tsx` over `flex: 0 1 520px` in
+ * `ArtifactDock.module.css`: grow 0 there, grow 1 here, and the room lands in
+ * the chat.
  *
- * `:not(.chatColumnCollapsed)` because this rule outranks the ARTIFACT EXPANDED
- * block on specificity and would otherwise pin the chrome open. The class moves
- * onto `.rightArea` at fullscreen for the same reason the 480 does. The pane's
- * own `[data-expanded]` rule is unaffected — see ArtifactDock.module.css.
- *
- * `[data-pane-open]` is stamped by IrisAgent when the host passes an
- * `artifactSlot`. Without it a fullscreen chat with nothing beside it would sit
- * at 480 with the surplus abandoned to its right.
+ * `[data-pane-open]` is still stamped by IrisAgent and is still read — by the
+ * measure block below — so removing this rule does not orphan the attribute.
  */
-.pageCompact[data-fullscreen][data-pane-open] .rightArea:not(.chatColumnCollapsed) {
-  /*
-    Only `flex-grow` changes here. The 480 basis lives on the base rule below,
-    so opening the pane interpolates one value.
-
-    It used to be the `flex` shorthand, which set basis 0% → 480px alongside a
-    grow flip of 1 → 0. Basis was in the transition list and grow was not, so
-    the first open ran them against each other: measured, the pane entered at
-    149% of its final width and shrank while the chat vanished and grew back.
-    Every open after that was a hard cut, because the basis was already 480.
-  */
-  flex-grow: 0;
-}
 
 /*
  * The chrome folds with the same 320ms as the column it replaces, so expanding
@@ -2069,8 +2194,9 @@ button.menuAccordionHeader:hover span:first-child {
  * it `.rightArea` never collapses and needs no transition.
  */
 .pageCompact[data-fullscreen] .rightArea {
-  /* The chat column's width when a pane is beside it. Held here, not on the
-     `[data-pane-open]` rule, so opening the pane changes `flex-grow` alone. */
+  /* The chat's floor, not its width. It grows past this into whatever the pane
+     does not take; the basis only decides who gives way when the two of them no
+     longer fit, and 480 is the panel's own `sidebarWidth`. */
   flex-basis: 480px;
   transition:
     flex-grow 320ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -2291,9 +2417,10 @@ button.menuAccordionHeader:hover span:first-child {
  * sidebar layout. Akshat named no dose, so the precedent is the value and this
  * variable is the knob if he wants more.
  *
- * It does nothing while the pane is open, and that is correct rather than a
- * gap: the chat chrome is pinned at 480 there (see `[data-pane-open]` above),
- * so no measure above 480 can bite.
+ * IT ALSO BITES WHILE THE PANE IS OPEN, since 2026-08-19. The chat used to be
+ * pinned at 480 beside a pane and no measure above 480 could reach it; the pane
+ * is now the pinned region and the chat is the one that grows, so at 1600 with
+ * a narrow pane the conversation gets 720 of its 1067 and is centred in it.
  */
 .pageCompact[data-fullscreen] {
   --iris-chat-measure: 720px;
@@ -2361,4 +2488,134 @@ button.menuAccordionHeader:hover span:first-child {
   .pageCompact[data-fullscreen] .rightArea {
     transition: none;
   }
+}
+
+/* =============================================================================
+   Feedback row — always on screen
+   ============================================================================= */
+
+/*
+  NO REST STATE TO DESIGN, because there is no hidden state any more.
+
+  This rule used to fade the row out and bring it back on hover, in two
+  different shapes across two days — a zero-height overlay that painted over the
+  block beneath it, then a reserved band that read as a hole. Akshat, 2026-08-25,
+  on the hole: *"it looks like there's a huge gap, and it's not clear to me what
+  happened… maybe we just show it by default, and that solves everything."*
+
+  It does. The row is content: it takes its own height, it is visible on every
+  finished answer, and the space between one answer and the next is the row
+  rather than an absence. `opacity`, `pointer-events`, `z-index`, `position`,
+  `overflow` and the opaque ground on the child were all machinery for hiding
+  and are gone with it.
+
+  Kept as a class rather than deleted outright: the row still needs to be
+  addressable — `ConversationLayout` reads it to know a turn ends in one, which
+  is what sets the gap under it.
+*/
+.feedbackRow {
+  display: flex;
+}
+
+/* Preserve row geometry and reveal before a keyboard action is used. */
+@media (hover: hover) and (pointer: fine) {
+  .feedbackReveal { opacity: 0; pointer-events: none; }
+  :global([data-role='assistant']):hover .feedbackReveal,
+  .feedbackReveal:focus-within { opacity: 1; pointer-events: auto; }
+}
+
+.chatMessages.followLatest,
+.panelChatMessages.followLatest { scroll-behavior: auto; }
+
+/*
+ * The turn's clock, at the far end of the meta row. `margin-left: auto` is what
+ * puts it there, and it holds whether the rating icons are drawn beside it or
+ * the host has taken them off — a status post keeps its time either way.
+ *
+ * Muted and small, because it is metadata: it answers "when", it does not
+ * compete with the answer above it. Draws only when the host sets
+ * `ChatMessage.timestamp`, which no surface does today.
+ */
+.messageTime {
+  margin-left: auto;
+  /* `align-self`, not `align-items` on the row — the row's own default is what
+     the rating icons have always sized against, and it stays untouched. */
+  align-self: center;
+  font-size: var(--ink-font-detail-s-size);
+  color: var(--ink-font-color-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/*
+ * SCROLLBAR: ABSENT AT REST.
+ *
+ * These containers never styled their bar, so with macOS "always show
+ * scrollbars" they paint a permanent classic bar down the reading edge. Only
+ * the colour changes here: `scrollbar-width` stays `auto`, so the gutter keeps
+ * the exact width it reserves today and nothing moves between the two states.
+ * `auto` restores the platform's own thumb, so the bar looks the same as it
+ * always did when it is wanted.
+ *
+ * CSS cannot observe scrolling: wheel scrolling implies the pointer is over the
+ * box, which `:hover` covers; keyboard scrolling is `:focus-within`.
+ */
+.panelChatMessages,
+.menuRailScroll,
+.menuPage {
+  scrollbar-color: transparent transparent;
+}
+
+.panelChatMessages:hover,
+.panelChatMessages:focus-within,
+.menuRailScroll:hover,
+.menuRailScroll:focus-within,
+.menuPage:hover,
+.menuPage:focus-within {
+  scrollbar-color: auto;
+}
+
+/* =============================================================================
+   Date divider — the day boundary in a long transcript
+
+   Akshat, 2026-09-03: *"let's add date dividers in the imessage style chat?"*
+
+   STANDING ALONE, NO HAIRLINES EITHER SIDE. This file deletes a hairline three
+   times over — the rail's ("no hairline"), the pane's ("a line and a step
+   together"), the right edge's ("the border-right hairline is therefore
+   deleted") — because a rule drawn beside space that already separates is the
+   separation stated twice. The transcript's turns are held apart by 24px and
+   nothing else; a dated break is the same gesture, one size louder. Rules would
+   also have to stop somewhere, and where they stopped would be a second column
+   width nobody decided. The word on the ground says it.
+
+   The quiet register: 12px, the secondary ink the header title and the meta
+   rows already speak, centred. No new colour, nothing on the surface behind it.
+   ============================================================================= */
+
+.dateDivider {
+  align-self: stretch;
+  margin: var(--ink-spacing-300) 0;
+  text-align: center;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.5;
+  color: var(--ink-font-color-secondary);
+}
+
+/*
+ * THE DIVIDER OWNS THE GAP UNDER IT.
+ *
+ * `ConversationLayout`'s surface is a flex column, so margins do not collapse:
+ * the turn below would add its own 24 to this one's and the break would sit
+ * lopsided, 24 above and 48 below. Both turn kinds carry `data-role`, so one
+ * rule reaches both, and (0,2,0) beats `.userTurn` / `.assistantTurn`.
+ *
+ * The adjacency rules in ConversationLayout — receipt-then-answer, and the
+ * feedback row's 24 — stop matching when a divider sits between the two turns.
+ * That is correct: a day passed, and the day is the gap now.
+ */
+.dateDivider + [data-role] {
+  margin-top: 0;
 }

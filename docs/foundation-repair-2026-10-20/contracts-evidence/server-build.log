@@ -1,0 +1,32 @@
+   ▲ Next.js 15.5.12
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1320ms
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/8) ...
+   Generating static pages (2/8) 
+   Generating static pages (4/8) 
+   Generating static pages (6/8) 
+ ✓ Generating static pages (8/8)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    12.6 kB         115 kB
+├ ○ /_not-found                            994 B         103 kB
+├ ƒ /api/[transport]                       131 B         102 kB
+├ ƒ /api/dashboard                         131 B         102 kB
+├ ƒ /api/prototypes                        131 B         102 kB
+├ ○ /compare                             3.29 kB         105 kB
+├ ○ /dashboard                           4.66 kB         107 kB
+└ ○ /prototypes                          2.68 kB         105 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/244-37907e698101bffb.js         46 kB
+  ├ chunks/963b816d-104fe314802ba84e.js  54.2 kB
+  └ other shared chunks (total)           1.9 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

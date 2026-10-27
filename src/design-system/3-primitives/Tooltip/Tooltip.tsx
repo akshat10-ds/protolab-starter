@@ -12,7 +12,7 @@ export interface TooltipProps {
   /** The text to display inside the Tooltip */
   text?: string;
   /** The element that triggers the tooltip */
-  children: React.ReactElement;
+  children: React.ReactElement<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
   /** The preferred location of the Tooltip relative to its anchor element */
   location?: TooltipLocation;
   /**
@@ -63,7 +63,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
   const [actualLocation, setActualLocation] = useState<TooltipLocation>(tooltipLocation);
   const triggerRef = useRef<HTMLElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const tooltipId = React.useId();
 
   const calculatePosition = () => {
     if (!triggerRef.current || !tooltipRef.current) return;
@@ -168,8 +169,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
   };
 
   const handleMouseEnter = () => {
-    if (disabled) return;
+    if (disabled || !tooltipText) return;
 
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
       setVisible(true);
     }, delay);
@@ -218,20 +220,30 @@ export const Tooltip: React.FC<TooltipProps> = ({
   }
 
   const trigger = React.cloneElement(children, {
-    ref: triggerRef,
-    onMouseEnter: (e: React.MouseEvent) => {
+    ref: (node: HTMLElement | null) => {
+      triggerRef.current = node;
+      const childRef = children.props.ref;
+      if (typeof childRef === 'function') return childRef(node);
+      if (childRef) childRef.current = node;
+    },
+    'aria-describedby': [children.props['aria-describedby'], visible && !disabled ? tooltipId : undefined].filter(Boolean).join(' ') || undefined,
+    onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => {
+      if (e.key === 'Escape') handleMouseLeave();
+      children.props.onKeyDown?.(e);
+    },
+    onMouseEnter: (e: React.MouseEvent<HTMLElement>) => {
       handleMouseEnter();
       children.props?.onMouseEnter?.(e);
     },
-    onMouseLeave: (e: React.MouseEvent) => {
+    onMouseLeave: (e: React.MouseEvent<HTMLElement>) => {
       handleMouseLeave();
       children.props?.onMouseLeave?.(e);
     },
-    onFocus: (e: React.FocusEvent) => {
+    onFocus: (e: React.FocusEvent<HTMLElement>) => {
       handleMouseEnter();
       children.props?.onFocus?.(e);
     },
-    onBlur: (e: React.FocusEvent) => {
+    onBlur: (e: React.FocusEvent<HTMLElement>) => {
       handleMouseLeave();
       children.props?.onBlur?.(e);
     },
@@ -259,6 +271,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
               top: `${coords.top}px`,
               left: `${coords.left}px`,
             }}
+            id={tooltipId}
             role="tooltip"
             data-qa={dataQa}
           >

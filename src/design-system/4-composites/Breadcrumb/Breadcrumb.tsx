@@ -41,9 +41,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
 }) => {
   // Separator is always chevron-right per Figma spec
   const renderSeparator = (key: string | number) => (
-    <span className={styles.separator} key={`sep-${key}`} aria-hidden="true">
+    <li className={styles.separator} key={`sep-${key}`} aria-hidden="true">
       <Icon name="chevron-right" size="small" />
-    </span>
+    </li>
   );
 
   const renderItems = () => {
@@ -74,7 +74,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
               <IconButton
                 icon="overflow-horizontal"
                 size="small"
-                kind="tertiary"
+                variant="tertiary"
                 aria-label="Show more breadcrumbs"
                 onClick={onOverflowClick}
                 className={styles.overflowButton}
@@ -118,15 +118,14 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
     if (showAsRootIcon) {
       return (
         <li className={styles.item}>
-          <IconButton
-            icon="folder"
-            size="small"
-            kind="tertiary"
-            aria-label={item.label}
-            onClick={handleClick}
-            className={styles.rootIconButton}
-            href={item.href}
-          />
+          {item.href ? (
+            <a href={item.href} onClick={handleClick} className={styles.rootIconButton} aria-label={item.label}>
+              <Icon name="folder" size="small" />
+            </a>
+          ) : (
+            <IconButton icon="folder" size="small" variant="tertiary" aria-label={item.label}
+              onClick={handleClick} className={styles.rootIconButton} />
+          )}
         </li>
       );
     }

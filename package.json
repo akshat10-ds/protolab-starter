@@ -4,11 +4,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/check-source-shadows.mjs && npm run tokens:check && vite build",
     "preview": "vite preview",
     "eval:setup": "npm install --no-save --no-audit --no-fund tsx @anthropic-ai/sdk",
     "eval:button": "npm run eval:setup && tsx evals/button-skill.eval.ts",
-    "eval:tables": "npm run eval:setup && tsx evals/no-nested-tables.eval.ts"
+    "eval:tables": "npm run eval:setup && tsx evals/no-nested-tables.eval.ts",
+    "audit:design-system": "node scripts/design-system-audit.mjs",
+    "test:audit:design-system": "node --test scripts/design-system-audit.test.mjs",
+    "typecheck": "node scripts/check-source-shadows.mjs && tsc --noEmit",
+    "tokens:check": "node scripts/sync-figma-tokens.mjs",
+    "tokens:generate": "node scripts/sync-figma-tokens.mjs --write-source",
+    "test:tokens": "node --test scripts/figma-token-model.test.mjs",
+    "test:source-shadows": "node --test scripts/check-source-shadows.test.mjs"
   },
   "dependencies": {
     "agentation": "^3.0.2",

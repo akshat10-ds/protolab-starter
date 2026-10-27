@@ -1,0 +1,269 @@
+import { PreviewCard } from '@ds/ui'
+import { IconButton } from '@ds/ui'
+import { OverflowVertical } from '@ds/icons'
+import { StatusBadge } from '@ds/ui'
+import { StatusInfoSmall } from '@ds/icons'
+
+const imgImage = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+const imgStartElement = "[REDACTED_TEMPORARY_FIGMA_ASSET]";
+
+type ChildInkPreviewCardImageProps = {
+  className?: string;
+  badge?: boolean;
+  kind?: "document";
+  ratio?: "3:2";
+};
+
+function ChildInkPreviewCardImage({ className, badge = true, kind = "document", ratio = "3:2" }: ChildInkPreviewCardImageProps) {
+  return (
+    <div className={className || "aspect-[240/160] bg-[var(--bgColorCanvasDocument,#f0eff0)] relative w-[240px]"} data-node-id="1467:17879">
+      <div className="absolute inset-[16px_16px_0_16px]" data-node-id="23799:3550" data-name="image">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <img alt="" className="absolute h-[139.3%] left-0 max-w-none top-[-0.52%] w-full" src={imgImage} />
+        </div>
+      </div>
+      {badge && (
+        <div className="absolute bg-[var(--statusBgColorEmphasis,#2b2843)] content-stretch flex h-[24px] items-center min-w-[30px] pl-[var(--gap50,4px)] pr-[8px] right-[8px] rounded-[var(--radiusSizeXS,4px)] top-[8px]" data-node-id="1475:18869" data-name="StatusBadge">
+          <div className="relative shrink-0 size-[20px]" data-node-id="I1475:18869;25816:13613" data-name="startElement">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStartElement} />
+          </div>
+          <div className="content-stretch flex items-center justify-center pl-[var(--gap50,4px)] relative shrink-0" data-node-id="I1475:18869;25816:13390" data-name="text.padding">
+            <p className="[word-break:break-word] font-[family-name:var(--'\'DSIndigo\',DSIndigo,Helvetica,Arial,sans-serif','DS_Indigo:Medium')] font-[var(--font.fontWeight.500,normal)] leading-[1.5] relative shrink-0 text-[color:var(--fontColorInverse,white)] text-[length:var(--font.fontSize.12,12px)] tracking-[var(--font.letterSpacing.wide,0.16px)] whitespace-nowrap" data-node-id="I1475:18869;103:198">
+              Status badge
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+type InkPreviewCardProps = {
+  className?: string;
+  state?: "Default" | "Hover" | "Active" | "Selected [PR]";
+};
+
+export default function InkPreviewCard({ className, state = "Default" }: InkPreviewCardProps) {
+  if (state === "Hover") {
+    return (
+      <CodeConnectSnippet data-node-id="1467:17982" data-name="❖ State=Hover" data-snippet-language="React">
+        <PreviewCard heading={<PreviewCard.Heading action={<IconButton accessibilityText="Fill in..." kind="tertiary" size="medium" icon={<OverflowVertical />} />} description="This is a short description" level="6" text="Preview card header" />} children={<PreviewCard.Image ratio="3:2" kind="document" badge={<StatusBadge kind="emphasis" text="Status badge" startElement={<StatusInfoSmall />} />} />} />
+      </CodeConnectSnippet>
+    );
+  }
+  if (state === "Active") {
+    return (
+      <CodeConnectSnippet data-node-id="1467:17998" data-name="❖ State=Active" data-snippet-language="React">
+        <PreviewCard heading={<PreviewCard.Heading action={<IconButton accessibilityText="Fill in..." kind="tertiary" size="medium" icon={<OverflowVertical />} />} description="This is a short description" level="6" text="Preview card header" />} children={<PreviewCard.Image ratio="3:2" kind="document" badge={<StatusBadge kind="emphasis" text="Status badge" startElement={<StatusInfoSmall />} />} />} />
+      </CodeConnectSnippet>
+    );
+  }
+  if (state === "Selected [PR]") {
+    return (
+      <CodeConnectSnippet data-node-id="1467:18014" data-name="❖ State=Selected [PR]" data-snippet-language="React">
+        <PreviewCard heading={<PreviewCard.Heading description="This is a short description" level="6" text="Preview card header" />} children={<PreviewCard.Image ratio="3:2" kind="document" badge={<StatusBadge kind="emphasis" text="Status badge" startElement={<StatusInfoSmall />} />} />} />
+      </CodeConnectSnippet>
+    );
+  }
+  return (
+    <CodeConnectSnippet data-node-id="1467:14575" data-name="❖ State=Default" data-snippet-language="React">
+      <PreviewCard heading={<PreviewCard.Heading action={<IconButton accessibilityText="Fill in..." kind="tertiary" size="medium" icon={<OverflowVertical />} />} description="This is a short description" level="6" text="Preview card header" />} children={<PreviewCard.Image ratio="3:2" kind="document" badge={<StatusBadge kind="emphasis" text="Status badge" startElement={<StatusInfoSmall />} />} />} />
+    </CodeConnectSnippet>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontBadge: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.12, weight: 500, lineHeight: 1.5, letterSpacing: font.letterSpacing.wide), fontHeadingXXS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.16, weight: 500, lineHeight: 1.25, letterSpacing: font.letterSpacing.cozy), fontBodyS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.400, size: font.fontSize.14, weight: 400, lineHeight: 1.399999976158142, letterSpacing: 0).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] PreviewCard
+**Node ID:** 1467:14574
+
+Preview cards group information to present as a series of related items.
+
+  
+
+Props
+-----
+
+  
+
+`**_❖ State_**`: The state of the Preview Card
+
+  
+
+Rules
+-----
+
+*   Action is not applicable for Selected state
+*   If placing cards in a grid and the data causes mismatched heights, change Heading layer height to Fill and Preview card height to Fixed to keep the heights even
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/v/0/p/46bba3-preview-card](https://ink.docusign.com/94bc5d135/v/0/p/46bba3-preview-card)
+- [Preview Card - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-previewcard--configure)
+
+## Child/[INK] PreviewCard.Image
+**Node ID:** 1467:17881
+
+Pass `PreviewCard.Image` to provide an image to the Preview Card.
+
+  
+
+Props
+-----
+
+`**_kind:_**` Applies padding around PreviewCard.Image if set to `document`
+
+  
+
+`**_ratio*:_**` The aspect ratio of the PreviewCard.Image
+
+  
+
+`**_badge:_**` Single Badge to display over the top-end of the PreviewCard.Image
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/v/0/p/46bba3-preview-card/t/page-46bba3-78725611-085322-3](https://ink.docusign.com/94bc5d135/v/0/p/46bba3-preview-card/t/page-46bba3-78725611-085322-3)
+
+## kind=emphasis
+**Node ID:** 103:197
+
+The emphasis variant uses light text on a dark background and is useful for communicating information that must capture attention.
+
+## [INK] Status Badge
+**Node ID:** 83:2801
+
+A status badge communicates the status of a related item to the user.
+
+  
+
+⚠️ _**This component uses forced modes**___. For screens that require large tap targets, set the layer mode to the equivalent Large Target mode.__
+
+  
+
+Props
+-----
+
+  
+
+_`**kind:**`_ The kind of the StatusBadge.
+
+  
+
+_`**menuTrigger:**`_ Displays a chevron to indicate the StatusBadge is clickable and triggers a menu
+
+  
+
+_`**text*:**`_ Text of the StatusBadge.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/72bffe-status-badge/b/6614b0](https://ink.docusign.com/94bc5d135/p/72bffe-status-badge/b/6614b0)
+- [Status Badge - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-statusbadge--default)
+
+## statusInfoSmall
+**Node ID:** 40945:2255
+
+status, info, information, neutral, alert
+
+## Child/[INK] PreviewCard.Heading
+**Node ID:** 1467:17894
+
+Pass `PreviewCard.Heading` to provide the content of the Preview Card
+
+  
+
+Props
+-----
+
+`**_text*:_**` The text to be displayed
+
+  
+
+`**_❖ Description:_**` Displays description
+
+  
+
+`**_description:_**` An optional description
+
+  
+
+`**_action:_**` The call to action of the PreviewCard
+
+## displayLevel=heading-xxs
+**Node ID:** 6243:18106
+
+Heading styles make up the middle portion of the type scale and most often pairs with the body styling to create a strong parent-child relationship. Headings are useful for short, impactful sentences or to emphasize sections of content on a page.
+
+## _Heading
+**Node ID:** 6246:18107
+
+Heading allows components to render a more robust set of styles on top of the semantic H1-H6 levels.
+
+  
+
+`**_displayLevel:_**` An optional display level (i.e. importance indicated by size / style / casing) that may differ from the semantic HTML section heading level
+
+  
+
+`**_text:_**` The text to be displayed
+
+**Documentation:**
+- [https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-heading--default](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-heading--default)
+
+## kind=tertiary, size=medium, ❖ State=default, disabled=false
+**Node ID:** 14:1019
+
+When additional clarity is required, an icon can be added alongside text to reinforce an action. If the icon is well-suited to conveying an action on its own, it can appear by itself
+
+## [INK] Icon Button
+**Node ID:** 14:953
+
+If the icon is well-suited to conveying an action on its own, it can appear by itself.
+
+  
+
+Props
+-----
+
+  
+
+_`**kind:**`_ The kind of the `Button`.
+
+  
+
+_`**❖ State:**`_ The state of the `Button`.
+
+  
+
+_`**disabled:**`_ Applies the 'disabled' attribute.
+
+  
+
+_`**❖ Icon:**`_ The icon to be displayed.
+
+  
+
+_`**badge:**`_ The AlertBadge to be displayed.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/241afc-button/t/45206c](https://ink.docusign.com/94bc5d135/p/241afc-button/t/45206c)
+- [Icon Button - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-button--with-icon)
+
+## overflowVertical
+**Node ID:** 41751:4310
+
+android overflow actions, android overflow menu, android menu overflow, android menu, native android
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

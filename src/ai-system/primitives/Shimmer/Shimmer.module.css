@@ -1,0 +1,45 @@
+/*
+ * A single pale sweep, on a loop. It is the accent colour at 8% — enough to
+ * read as light moving across a surface, not enough to tint the surface.
+ *
+ * `overflow: hidden` clips the sweep to the box; the radius is inherited from
+ * whatever the caller drew, so a rounded card is swept to its own corners.
+ */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    var(--ink-status-bg-color-current) 50%,
+    transparent 80%
+  );
+  opacity: 0.08;
+  transform: translateX(-100%);
+  animation: aiShimmerSweep var(--ai-motion-duration-shimmer, 1800ms) linear infinite;
+}
+
+@keyframes aiShimmerSweep {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/*
+ * The sweep stops outright rather than running fast — the duration token is
+ * not collapsed for a loop, so the component has to do it here.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .shimmer::after {
+    animation: none;
+    opacity: 0;
+  }
+}

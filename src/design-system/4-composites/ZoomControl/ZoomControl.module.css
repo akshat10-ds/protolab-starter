@@ -1,0 +1,5 @@
+.control { display: inline-flex; align-items: center; gap: var(--ink-spacing-50); padding: var(--ink-spacing-50); border-radius: var(--ink-radius-md); }
+.column { flex-direction: column; }
+.row { flex-direction: row; }
+.surface { background: var(--ink-cta-bg-color-tertiary-default); }
+.value { min-width: var(--ink-spacing-400); text-align: center; color: var(--ink-font-color-default); font-family: var(--ink-font-family-default); font-size: var(--ink-font-detail-s-size); font-weight: var(--ink-font-weight-medium); line-height: var(--ink-font-detail-s-line-height); }

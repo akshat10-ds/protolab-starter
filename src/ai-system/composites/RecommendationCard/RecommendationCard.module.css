@@ -1,0 +1,1238 @@
+/*
+ * The same card recipe as `AgreementSnapshot` and `InsightList` — white fill,
+ * subtle hairline, radius s. A recommendation is not a new kind of box.
+ */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  padding: var(--ink-spacing-150) var(--ink-spacing-200);
+  border: 1px solid var(--ink-border-color-subtle);
+  border-radius: var(--ink-radius-size-s);
+  background: var(--ink-bg-color-default);
+}
+
+/* The dismiss X rides the title's line, so the card loses no vertical band to it. */
+.head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100);
+}
+
+/*
+ * The flag archetype's mark. It sits where the AI mark would, on the title's
+ * first line — the same slot, the other meaning. Error red is the only red Ink
+ * has and it is the right one: this is the card that says stop.
+ */
+.flagMark {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 20px;
+  color: var(--ink-icon-color-error);
+}
+
+/*
+ * The optional lead mark (2026-08-24) — the suggestion's own glyph, at the
+ * flag's slot and the flag's height, in the standing subtle icon colour. Quiet
+ * on purpose: it names who is suggesting, it does not raise the card.
+ *
+ * The GLYPH is 16, matching every row surface that draws the same mark — one
+ * icon at one size, which is half of the inconsistency Akshat flagged. The BOX
+ * stays 20 rather than the rows' 24: it shares the title's line with `flagMark`
+ * and a taller box here would put the two marks at different heights.
+ */
+.leadIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 20px;
+  color: var(--ink-icon-color-subtle);
+}
+
+/*
+ * THE LEAD COLUMN'S WIDTH, ONCE. 522:30018 draws the glyph in a 24 box with 8
+ * to the words, and the decisions below start at the WORDS, not at the card's
+ * padding edge. Two rules need that 24 — the glyph's own box and the actions'
+ * indent — so it is one variable rather than the same number typed twice and
+ * free to drift.
+ */
+.brief {
+  --rec-lead: 24px;
+}
+
+.brief .leadIcon {
+  height: var(--rec-lead);
+  width: var(--rec-lead);
+  justify-content: center;
+}
+
+.title,
+.titleButton {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+}
+
+.titleButton {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.titleButton:hover {
+  text-decoration: underline;
+}
+
+.titleButton:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+/*
+ * The way back out of an expanded row, and the only control in the head. The
+ * dismiss X used to sit beside it; it was removed 2026-08-19 (one dismiss per
+ * card, and it is the button in the actions row), so this now carries the
+ * negative right margin that used to belong to the X — its 32px hit area
+ * reaching the card's optical edge without driving the first row taller.
+ */
+.collapseUp {
+  flex-shrink: 0;
+  margin-block: -6px;
+  margin-right: -8px;
+}
+
+.meta {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * Three lines and then an ellipsis. The rest is not hidden, it is elsewhere —
+ * `onReview` opens the object in the dock, which is where a long read belongs.
+ */
+.body {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  color: var(--ink-font-color-neutral-subtle);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------------
+   "Why this?" — the source, as a question
+   --------------------------------------------------------------------------- */
+
+/*
+ * It replaced a `Source: …` chip (2026-08-19). The chip was a filled pill
+ * carrying a sentence it had to truncate; this is a question in the card's
+ * quietest register that answers itself in place. `align-self: flex-start`
+ * keeps the target the width of its own label — a full-width row would read as
+ * a section header rather than a control.
+ */
+.why {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ink-spacing-50);
+}
+
+/* The `.askIris` register — a label, not a button. The card carries one weight
+   of decision and one of question, and this is the question. */
+.whyToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ink-spacing-50);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.whyToggle:hover {
+  color: var(--ink-font-color-default);
+}
+
+.whyToggle:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+/* One paragraph, and it wraps — the chip's ellipsis is what made the source
+   unreadable, so nothing here truncates. */
+.whyBody {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--ink-spacing-100);
+}
+
+/*
+ * The same text-action register `AgreementSnapshot` gives "See all" — a label,
+ * not a button, so the card carries one weight of decision and one of question.
+ */
+.askIris {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-default);
+}
+
+.askIris:hover {
+  text-decoration: underline;
+}
+
+.askIris:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+/* ---------------------------------------------------------------------------
+   Compact — the zero-query preview row
+   --------------------------------------------------------------------------- */
+
+/*
+ * Akshat, 2026-08-19: "the recommendation card looks too heavy and we probably
+ * should show some with a way to see all."
+ *
+ * Same box as the card above — same hairline, same radius, same fill — turned on
+ * its side and emptied. It reads as the same object at a lower weight, which is
+ * the whole trick: nothing new was drawn, the body and the buttons were removed.
+ * The padding matches `ProgressReceipt`'s row, so a receipt and a stack of these
+ * make one column rather than two stacks of boxes.
+ */
+.compact {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+  width: 100%;
+  padding: var(--ink-spacing-100) var(--ink-spacing-150) var(--ink-spacing-100)
+    var(--ink-spacing-200);
+  text-align: left;
+  transition: background-color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+button.compact {
+  cursor: pointer;
+}
+
+button.compact:hover {
+  background: var(--ink-neutral-10);
+}
+
+button.compact:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+}
+
+.compactText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* `.title` is `flex: 1` for the full card's head row; in this column it would
+   claim the height instead. */
+.compact .title {
+  flex: none;
+}
+
+.compactChevron {
+  flex-shrink: 0;
+  color: var(--ink-icon-color-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .compact {
+    transition: none;
+  }
+}
+
+/*
+ * The decline step. One line and its two buttons, in the space the actions row
+ * had — the card does not grow into a dialog to ask one optional question.
+ */
+.decline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+}
+
+/* ---------------------------------------------------------------------------
+   brief — the 2026-08-24 anatomy
+   --------------------------------------------------------------------------- */
+
+/*
+ * Akshat's card (Figma 511:29081), plus what the reviews demanded of it. Same
+ * box as `.card` — same hairline, same radius, same fill, same 12/16 padding —
+ * because a recommendation is still not a new kind of box. What changed is the
+ * order of the words inside it.
+ *
+ * His card is 76px tall because it holds one line of eyebrow, one of title and
+ * one button on the right rail. This one holds a reason line and TWO decisions,
+ * and two 80px buttons plus an overflow on a 432px rail would leave the title
+ * about 190px. So the actions drop below the words. That is the one place the
+ * drawing gives ground to the reviews, and the reviews outrank it.
+ */
+.brief {
+  gap: var(--ink-spacing-100);
+}
+
+/*
+ * THE DECISIONS LINE UP WITH THE WORDS. 522:30018 nests the actions INSIDE the
+ * text column, so REVIEW and DISMISS start at the title's left edge and the
+ * glyph's column stays empty beneath it. Here they cannot nest — the words are a
+ * button and a button inside a button is not a thing — so the indent is drawn
+ * rather than inherited: the lead box plus the row's 8, read off `--rec-lead` so
+ * it cannot drift from the glyph it is clearing.
+ *
+ * SO DOES THE EXPANSION. Everything the title governs lines up with the title —
+ * the reason, the evidence it opens onto, and the decisions. Akshat, 2026-08-25:
+ * *"padding, aligned should be consistent?"* One rule, one edge, and the glyph's
+ * column runs empty down the whole card.
+ *
+ * THE REASON RIDES THE SAME RULE, for the same reason: in the frame it is the
+ * second line of the text column, so it starts where the title starts. Here it
+ * is a sibling of the title's ROW — the row is what holds the glyph — so
+ * without this it sat 32px to the title's left, which is the misalignment
+ * Akshat caught.
+ *
+ * ONLY WHERE THERE IS A GLYPH. `.hasLead` is set by the component, because a
+ * card with no mark has no column to clear and the indent would be 32px of
+ * nothing.
+ *
+ * AND THE GAP ABOVE THEM IS 16, not the card's 8 — the drawing separates the
+ * decisions from the words by twice what it spends between the words
+ * themselves, which is what makes them read as a second thing rather than a
+ * third line.
+ */
+.brief.hasLead > .actions,
+.brief.hasLead > .decline,
+.brief.hasLead .briefText > .reason {
+  padding-left: calc(var(--rec-lead) + var(--ink-spacing-100));
+}
+
+/*
+ * THE EXPANSION TAKES A MARGIN, NOT A PADDING, and that is the whole difference
+ * between the two rules. Akshat, 2026-08-25: *"the divider only needs to be
+ * aligned to the start of the content and not go all the way to the left."*
+ *
+ * Its hairline is drawn on the element's own box, so padding moved the WORDS in
+ * and left the rule where it was — a divider starting 32px to the left of
+ * everything it divides. A margin moves the box, and the rule starts where the
+ * content starts.
+ */
+.brief.hasLead > .expansion {
+  margin-left: calc(var(--rec-lead) + var(--ink-spacing-100));
+}
+
+.brief > .actions,
+.brief > .decline {
+  margin-top: var(--ink-spacing-100);
+}
+
+/*
+ * THE PRESS TARGET. The whole block of words, and nothing else — the buttons
+ * are its siblings, so there is no nested control and no aiming. It is a `div`
+ * when there is nothing to expand, which is why every rule here is written to
+ * survive both elements.
+ */
+.briefText {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--ink-spacing-50);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: var(--ink-font-family-default);
+}
+
+button.briefText {
+  cursor: pointer;
+}
+
+button.briefText:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 4px;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+/*
+ * The first and only row of words: mark, then title. The eyebrow row that used
+ * to sit above it is gone (2026-08-25) and so are its rules. `flex-start`
+ * because the title is allowed to wrap and a centred mark against two lines sits
+ * at neither of them.
+ */
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100);
+}
+
+/*
+ * THE GLYPH THAT BECOMES A CHEVRON. Akshat, 2026-08-25, frames 551:35199 and
+ * 551:35200 — the type mark at rest, `chevron-right` under the pointer, in the
+ * same slot.
+ *
+ * BOTH GLYPHS ARE ALWAYS IN THE BOX, stacked, and only their opacity moves.
+ * Swapping the rendered icon instead would resize the slot between two glyphs
+ * of different widths and nudge the title sideways on every hover — the one
+ * thing a hover affordance must not do.
+ *
+ * `focus-within` rather than `hover` alone: the words are a button, so a
+ * keyboard reaches this card and has to be told the same thing the pointer is.
+ */
+.leadSwap {
+  position: relative;
+  justify-content: center;
+}
+
+.leadSwap .leadGlyph,
+.leadSwap .leadChevron {
+  transition: opacity var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.leadSwap .leadChevron {
+  position: absolute;
+  opacity: 0;
+  transition:
+    opacity var(--ai-motion-duration-handle, 180ms) ease,
+    transform var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+/*
+ * AND IT POINTS DOWN ONCE IT IS OPEN. Akshat, 2026-08-25: *"when the chevron
+ * expands, the chevron should point down for both of these."* Right is a
+ * promise that something opens; down is the state of having opened it, and the
+ * 90° turn between them is the same rotation every disclosure in the system
+ * makes. An expanded card still showing `›` is the glyph describing the closed
+ * state of a thing that is open.
+ */
+.leadSwap .leadChevronOpen {
+  transform: rotate(90deg);
+}
+
+/*
+ * OPEN KEEPS THE CHEVRON, POINTER OR NOT. Once the card is expanded the glyph
+ * has to stay the chevron — falling back to the type mark the moment the
+ * pointer leaves would make the open card look closed.
+ */
+.brief.isOpen .leadSwap .leadGlyph {
+  opacity: 0;
+}
+
+.brief.isOpen .leadSwap .leadChevron {
+  opacity: 1;
+}
+
+.brief:hover .leadSwap .leadGlyph,
+.brief:focus-within .leadSwap .leadGlyph {
+  opacity: 0;
+}
+
+.brief:hover .leadSwap .leadChevron,
+.brief:focus-within .leadSwap .leadChevron {
+  opacity: 1;
+}
+
+/* The swap is information, not decoration — it still happens, it just cuts. */
+@media (prefers-reduced-motion: reduce) {
+  .leadSwap .leadGlyph,
+  .leadSwap .leadChevron {
+    transition: none;
+  }
+}
+
+.titleRow .briefTitle {
+  flex: 1;
+  min-width: 0;
+}
+
+/*
+ * The words and the two corner controls, side by side. The stack takes the room
+ * and they take the corner; `flex-start` keeps the 32px icon button from hanging
+ * below a one-line title, and the negative block margin keeps it from driving
+ * that line taller — the same trick `.collapseUp` uses.
+ */
+.briefHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ink-spacing-100);
+}
+
+.briefHead .briefText {
+  width: auto;
+  flex: 1;
+  min-width: 0;
+}
+
+.overflowTop {
+  flex-shrink: 0;
+  margin-block: -6px;
+  margin-right: -8px;
+}
+
+/*
+ * The chevron's own box, last on the title's row and after the `⋯` (2026-08-25,
+ * Akshat swapped the two). 24 against the title's ~20px line, pulled back 2px
+ * each side so it does not drive the row taller; that puts its centre on the
+ * same line as the 32px overflow button pulled back 6px.
+ */
+.briefChevronSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin-block: -2px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.briefChevron {
+  flex-shrink: 0;
+  color: var(--ink-icon-color-subtle);
+  transition: transform var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.briefChevronOpen {
+  transform: rotate(180deg);
+}
+
+/*
+ * The loudest line on the card. SEMIBOLD, not medium — 522:30018 sets the title
+ * in `DS Indigo SemiBold` at 14/140%, and medium was the weight this card
+ * carried before the frame existed.
+ */
+.briefTitle {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-semibold);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+}
+
+/*
+ * THE WHY. Gmail's dose, and it wraps. It was clamped to one line and the clamp
+ * was the contract being enforced; Akshat lifted it on 2026-08-25 —
+ * *"description can be longer if needed"* — so a reason a few words over ends
+ * where it ends instead of ellipsing. The copy did not get longer; it just
+ * stopped being cut.
+ */
+.reason {
+  font-size: var(--ink-font-size-xs);
+  /* `DS Indigo Medium` at 12/150% with 0.16 tracking (522:30018). It was
+     regular and untracked, which read a step quieter than the drawing. */
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/*
+ * The expansion. It is separated by the card's own hairline rather than by a
+ * gap, because what is above it is a summary and what is below it is the
+ * evidence, and the line is what says so.
+ *
+ * And it CLOSES with the same line. Akshat, 2026-08-25: "when you expand the
+ * recommendation add a divider after the content too — right now it's flowing
+ * into the buttons below." So the evidence is bounded on both sides, same
+ * token, same thickness, same 8px of air on each face of the rule — two rules
+ * on one card that do not match is worse than one.
+ *
+ * It is dropped when the expansion is last: the actions row is conditional in
+ * brief, and a hairline against the card's own bottom edge separates nothing
+ * from nothing.
+ */
+.expansion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-100);
+  padding-top: var(--ink-spacing-100);
+  border-top: 1px solid var(--ink-border-color-subtle);
+  animation: recExpand var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.expansion:not(:last-child) {
+  padding-bottom: var(--ink-spacing-100);
+  border-bottom: 1px solid var(--ink-border-color-subtle);
+}
+
+@keyframes recExpand {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+}
+
+/* Nothing truncates down here. The reason line is the short answer; this is the
+   long one, and a long answer that ellipses has answered nothing. */
+.expansionBody {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  color: var(--ink-font-color-neutral-subtle);
+  white-space: pre-line;
+}
+
+/*
+ * "Which eight." A definition list, label left and the value in effect right —
+ * the value is the half that makes it a check rather than a list, so it gets
+ * the readable colour and the label stays quiet.
+ */
+.checks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  margin: 0;
+}
+
+.check {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--ink-spacing-150);
+}
+
+.checkLabel {
+  margin: 0;
+  min-width: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* It wraps rather than overflowing — a configured value is often a sentence
+   ("$640,000 — ceiling $832,750"), and the value is the half worth reading. */
+.checkValue {
+  margin: 0;
+  text-align: right;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.5;
+  color: var(--ink-font-color-default);
+}
+
+/* Section · version · effective date. Both reviews named this string as the
+   thing that earns the card its credibility, so it gets its own line. */
+.policy {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+/* ---------------------------------------------------------------------------
+   The quiet register — `actionRegister="text"`
+   --------------------------------------------------------------------------- */
+
+/*
+ * The same register `.askIris` and `.whyToggle` already carry: a label, not a
+ * chip. Two of them, identical — `stance` has nothing to spend here, because two
+ * labels at the same weight are the same label twice.
+ *
+ * They are still real buttons. The padding is not decoration: it is the hit
+ * area, 24px tall against a 16px line, which is the floor a text control has to
+ * clear to stay pressable. The uppercase here is a typographic register, not a
+ * rewording — the same move as small caps, not a copy change. The string stays
+ * exactly what the host passed, in the host's casing; the CSS displays it
+ * uppercased. Akshat's Figma spec (522:29956).
+ */
+.textActions {
+  gap: var(--ink-spacing-200);
+}
+
+.textAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-semibold);
+  letter-spacing: 0.16px;
+  color: var(--ink-font-color-neutral-subtle);
+  text-transform: uppercase;
+}
+
+.textAction:hover {
+  text-decoration: underline;
+}
+
+.textAction:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+/* The rest of the verbs, pushed to the far edge so the two decisions read as a
+   pair and this reads as neither of them. */
+.overflowSlot {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .briefChevron {
+    transition: none;
+  }
+
+  .expansion {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   `fields` — the card's subject, visible while closed.
+
+   `checks` sit in the expansion because a rationale is wanted once. These are
+   the four things the reader came for, so they are legible without a gesture:
+   two columns, label over value, at body size rather than the expansion's
+   smaller register.
+   --------------------------------------------------------------------------- */
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ink-spacing-200) var(--ink-spacing-300);
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  min-width: 0;
+}
+
+.fieldLabel {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+}
+
+.fieldValue {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+  /* Secondary, not default — measured off 608:39810 and 608:39928 ("Docusign +
+     1" etc. render at 70% ink, the label above it at 90%). The value is the
+     quieter of the pair; the label is what a reader scans for. */
+  color: var(--ink-font-color-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+   THE SUMMARY ARCHETYPE — a card whose subject is a document, not a decision.
+
+   Set by passing `fields`, so no card drawn today moves. Every value below is
+   measured off the three states this archetype ships (Iris Chat Platform →
+   Visual Explorations → closed `608:39810`, hover `608:39928`, expanded
+   `608:40275`), where it differs from the card's own:
+
+     padding   16 all round, not 12/16
+     title     Medium, not SemiBold
+     reason    14 at 70%, not 12 Medium — it is the card's prose here, and a
+               summary's prose is body text rather than a caption
+     action    a filled tertiary Button reading "Review" in sentence case, in
+               all three states — not the quiet uppercase text link. (An
+               earlier pass read the frame as a violet link; re-measuring
+               608:39810 turned up a real `[INK] Button` instance,
+               kind=tertiary size=small, in every state. D9 now leaves
+               `actionRegister` at its default and passes `stance="asks"` so
+               the standing accept button draws tertiary instead of secondary.)
+
+   The Figma component and this one had drifted; this reconciles them for the
+   one archetype rather than restyling every card in flight.
+   --------------------------------------------------------------------------- */
+
+.card.summary {
+  padding: var(--ink-spacing-200);
+}
+
+.card.summary .briefTitle {
+  font-weight: var(--ink-font-weight-medium);
+}
+
+.card.summary .reason {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-regular);
+  line-height: 1.4;
+  color: var(--ink-font-color-secondary);
+}
+
+/*
+ * THE RULE BETWEEN THE PROSE AND THE FIELDS. All three frames draw a 1px hairline
+ * here (border-subtle, the same 10%-ink token every other card divider uses) —
+ * missing from the build entirely before this pass. Drawn as `.fields`'s own
+ * top border rather than a separate element: one fewer node, and the divider
+ * inherits the same indent as the grid it sits above.
+ *
+ * THE GAP ABOVE IT IS 16, composed the same way `.actions` already composes
+ * its 16 (comment above, line ~345): the card's own flex gap (8) plus this
+ * margin (8) = ink-spacing-200. THE GAP BELOW IT is `padding-top`, a plain 16 —
+ * there is no second gap to compose it from since the border occupies no flex
+ * slot of its own.
+ */
+.card.summary .fields {
+  margin-top: var(--ink-spacing-100);
+  border-top: 1px solid var(--ink-border-color-subtle);
+  padding-top: var(--ink-spacing-200);
+}
+
+/*
+ * INDENTED TO THE WORDS, not the card's padding edge — the same rule `.actions`
+ * and `.reason` already follow (line ~350), extended to `.fields` because all
+ * three frames draw the grid in the same column as the prose above it, past
+ * the AI mark. Scoped to `.summary` so no other `fields`-less card is touched;
+ * `hasLead` guards it the same way it guards the other two selectors, since
+ * `--rec-lead` is only meaningful when there is a lead glyph to clear.
+ */
+.card.summary.hasLead > .fields {
+  padding-left: calc(var(--rec-lead) + var(--ink-spacing-100));
+}
+
+/*
+ * THE GAP ABOVE THE BUTTON IS 24 HERE, not the standing brief's 16 (line ~372:
+ * `.brief > .actions { margin-top: var(--ink-spacing-100) }`, composing 8+8).
+ * Measured off 608:39810: the field grid ends and the button starts 24px
+ * later — one more field row's worth of a rest than the standing card gives
+ * its actions. Composed the same way: the card's flex gap (8) plus this
+ * margin (16) = ink-spacing-300. Scoped to `.summary` alone, so the standing
+ * 16 stands for every other `brief` card.
+ */
+.card.summary .actions {
+  margin-top: var(--ink-spacing-200);
+}
+
+/* The frame bolds the answer inside the prose — the type, the counts — so the
+   eye lands on what changed instead of reading a paragraph to find it. */
+.card.summary .reason strong {
+  font-weight: var(--ink-font-weight-semibold);
+  color: var(--ink-font-color-default);
+}
+
+/* The lead keeps the frame's 24 box while the glyph inside it is 12, so the
+   title's left edge does not move when the mark changes size. */
+.card.summary .leadIcon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* In the summary archetype the expansion's pairs are the SAME OBJECT as the
+   pairs above them — four more fields, not a different register. The frame
+   draws both groups as one 2-up grid at body size (`608:40275`), so the
+   expansion adopts the field grammar rather than the checks list's small,
+   right-aligned one. */
+.card.summary .checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ink-spacing-200) var(--ink-spacing-300);
+}
+
+.card.summary .check {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--ink-spacing-50);
+  min-width: 0;
+}
+
+.card.summary .checkLabel {
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+}
+
+.card.summary .checkValue {
+  text-align: left;
+  font-size: var(--ink-font-size-sm);
+  line-height: 1.4;
+  color: var(--ink-font-color-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ORDER: the four the card always shows come BEFORE the four the expansion
+   adds. In the DOM the expansion precedes `fields`, because for a
+   recommendation the rationale belongs directly under the reason it explains.
+   A summary reads the other way — the base fields, then the rest — so the
+   archetype reorders them rather than the component moving its markup and
+   changing every card that expands. Frame `608:40275`. */
+.card.summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.card.summary > .briefHead {
+  order: 0;
+}
+
+.card.summary > .fields {
+  order: 1;
+}
+
+.card.summary > .fieldsFooter {
+  order: 2;
+}
+
+.card.summary > .expansion {
+  order: 3;
+  border-top: 1px solid var(--ink-border-color-subtle);
+  padding-top: var(--ink-spacing-200);
+}
+
+.card.summary > .actions {
+  order: 4;
+}
+
+/* ---------------------------------------------------------------------------
+   THE SUMMARY'S HOVER — the swap already existed and was too quiet to read.
+
+   Two faults, and the icon could only fix one of them.
+
+   1. The cross-fade was opacity alone. Two different silhouettes trading
+      places at the same size read as a smudge rather than a change, so the
+      chevron now ARRIVES: it scales up from 0.7 as the mark scales down. One
+      object changing state, not two images dissolving.
+
+   2. Nothing else on the card moved, so the press row was given the faintest
+      ground. AKSHAT REMOVED IT (2026-09-01): *"can we remove the hover state on
+      the card... don't love that."* The card earns its restraint back — every
+      pair now underlines and grows a mark under the pointer, so the surface is
+      already answering in three places. A fourth tint on top of that is the
+      card fidgeting.
+
+      The mark's swap stays. That is the part he asked for, and it says what
+      the press DOES; the tint only said a press exists, which the card no
+      longer needs to announce.
+   --------------------------------------------------------------------------- */
+
+.card.summary .leadSwap .leadGlyph,
+.card.summary .leadSwap .leadChevron {
+  transition:
+    opacity var(--ai-motion-duration-handle, 180ms) ease,
+    transform var(--ai-motion-duration-handle, 180ms) cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.card.summary .leadSwap .leadChevron {
+  transform: scale(0.7);
+}
+
+.card.summary .briefText:hover .leadSwap .leadChevron,
+.card.summary .briefText:focus-visible .leadSwap .leadChevron,
+.card.summary.isOpen .leadSwap .leadChevron {
+  transform: scale(1);
+}
+
+.card.summary.isOpen .leadSwap .leadChevronOpen {
+  transform: scale(1) rotate(90deg);
+}
+
+.card.summary .briefText:hover .leadSwap .leadGlyph,
+.card.summary .briefText:focus-visible .leadSwap .leadGlyph {
+  transform: scale(0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card.summary .leadSwap .leadGlyph,
+  .card.summary .leadSwap .leadChevron {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   ASKING ABOUT A PAIR — the value goes, the mark beside it asks.
+
+   Both verbs sit on the value, because the value is the thing a reader is
+   looking at. The text opens the panel that holds it; the AI mark beside it
+   asks about it. Two marks this small cannot carry two different promises on
+   shape alone, so each states its own in a tooltip.
+
+   NOTHING IS ADDED AT REST. The mark's width is reserved and its opacity is 0
+   until the pair is under the pointer or holds focus, so revealing it never
+   moves the value. A card at rest looks exactly as it did.
+   --------------------------------------------------------------------------- */
+
+/* The value line is now two things side by side, so it lays out as a row. */
+.card.summary .fieldValue,
+.card.summary .checkValue {
+  display: flex;
+  align-items: center;
+  gap: var(--ink-spacing-100);
+}
+
+/* The tooltip anchors to the bounding box, and Ink draws it flush. Akshat,
+   2026-09-01: *"can we move it a bit higher? it's too close to the titles."*
+   So the box grows upward and the margin takes the growth back: the text does
+   not move a pixel, the tooltip clears the row, and the hit target gets taller
+   at the same time. Better than changing the vendored Tooltip's flush spacing,
+   which is the Figma spec for every other tooltip in the app. */
+.fieldLink {
+  padding: var(--ink-spacing-100) 0;
+  margin: calc(var(--ink-spacing-100) * -1) 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--ink-border-color-subtle);
+  cursor: pointer;
+  transition: text-decoration-color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.fieldLink:hover,
+.fieldLink:focus-visible {
+  color: var(--ink-font-color-default);
+  text-decoration-color: currentColor;
+}
+
+.fieldAsk {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  /* A taller box for the pointer, with the growth taken back so the word sits
+     on the value's baseline rather than pushing the row. */
+  padding: var(--ink-spacing-100) 0;
+  margin: calc(var(--ink-spacing-100) * -1) 0;
+  border: none;
+  background: none;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+  /* The card's own secondary ink, not the AI violet. This is a verb the
+     reader performs, not a thing the machine did. */
+  color: var(--ink-font-color-neutral-subtle);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--ai-motion-duration-handle, 180ms) ease,
+    color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.fieldAsk:hover {
+  color: var(--ink-font-color-default);
+}
+
+.field:hover .fieldAsk,
+.field:focus-within .fieldAsk,
+.check:hover .fieldAsk,
+.check:focus-within .fieldAsk {
+  opacity: 1;
+}
+
+.fieldLink:focus-visible,
+.fieldAsk:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fieldLink,
+  .fieldAsk {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   THE SUMMARY'S EXIT — it weighs what the rest of the card weighs.
+
+   Akshat, 2026-09-01: *"now the review feels too heavy."* He is right, and the
+   reason is that the card changed under it. When Review was the only thing on
+   the card a person could press, a filled button was the honest weight. Now all
+   eight pairs open something and the title row expands, so a filled button at
+   the foot is the loudest control on a card where it is the ninth way to do
+   what the other eight already do.
+
+   So it drops into the card's own link grammar: sentence case, the same size as
+   a value, the same underline that everywhere else on this card means "goes
+   somewhere". NOT the standing quiet register's uppercase micro-caps — that was
+   already ruled wrong for this card (2026-08-25).
+   --------------------------------------------------------------------------- */
+
+.card.summary .textAction {
+  min-height: 0;
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--ink-font-color-default);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--ink-border-color-subtle);
+  transition: text-decoration-color var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.card.summary .textAction:hover,
+.card.summary .textAction:focus-visible {
+  color: var(--ink-font-color-default);
+  text-decoration-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card.summary .textAction {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   THE ACCEPT ON THE TITLE'S ROW.
+
+   Akshat, 2026-09-01: *"can the review all extractions show up in the same line
+   at the end where we have summary showing?"*
+
+   The catch: "Summary" and the prose under it are one press target, so the
+   accept is a sibling of BOTH, and as a plain flex item it takes its width out
+   of the prose as well — the paragraph goes narrow to make room for a link that
+   is not on its line.
+
+   Subgrid fixes it properly. The head owns the rows AND the columns; the press
+   target spans all of them and hands its own two children straight through, so
+   the title takes column 1 of row 1 and shares that row with the accept, while
+   the prose takes the whole of row 2. Grid columns are shared down every row,
+   which is why the prose has to be told to span them — that is the whole bug
+   the first attempt hit. No magic numbers, and nothing leaves the button.
+   --------------------------------------------------------------------------- */
+
+.card.summary .briefHead {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: start;
+}
+
+.card.summary .briefHead .briefText {
+  display: grid;
+  grid-row: 1 / 3;
+  grid-column: 1 / -1;
+  grid-template-rows: subgrid;
+  grid-template-columns: subgrid;
+  width: auto;
+  min-width: 0;
+}
+
+.card.summary .briefHead .titleRow {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+/* Row 2 spans every column: the accept is on the title's line, not the
+   paragraph's, so the paragraph keeps the card's full width. */
+.card.summary .briefHead .reason {
+  grid-row: 2;
+  grid-column: 1 / -1;
+}
+
+.card.summary .topAction {
+  grid-row: 1;
+  grid-column: 2;
+  align-self: center;
+  white-space: nowrap;
+  /* AND IT ARRIVES WITH THE POINTER. Akshat, 2026-09-01: *"the review all can
+     show on hover?"* — the same demotion the pair marks take. It costs nothing
+     to hide it: the grid column holds its width whether the link is painted or
+     not, so the title never moves and the reveal is a fade, not a reflow.
+
+     At rest the card is a summary and reads as one. The exit is for the moment
+     a person has decided to leave, which is a moment they are already pointing
+     at the card. */
+  opacity: 0;
+  transition: opacity var(--ai-motion-duration-handle, 180ms) ease;
+}
+
+.card.summary:hover .topAction,
+.card.summary:focus-within .topAction {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card.summary .topAction {
+    transition: none;
+  }
+}
+
+.card.summary .briefHead .overflowTop {
+  grid-row: 1;
+  grid-column: 3;
+}
+
+.topAction {
+  flex-shrink: 0;
+  align-self: center;
+  white-space: nowrap;
+}
+
+/* MATCHING THE FRAME'S MEASURE. Frame 653:22493 sets the prose 367 wide inside
+   a 398 content box — inset ~32 on the RIGHT as well as the left, so the
+   paragraph is a column rather than the full width of the card. Flagged on
+   2026-08-25 and left unreproduced pending his ruling; his ruling arrived
+   2026-09-01: "match the exact figma in the card". */
+.card.summary .reason {
+  padding-right: var(--ink-spacing-400);
+}

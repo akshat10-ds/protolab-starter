@@ -1,0 +1,14 @@
+[
+  {
+    "nodeId": "123:919",
+    "status": "fulfilled",
+    "isError": true,
+    "message": "This is an invalid node selection. Ask the user to select a node from a visible page on the canvas."
+  },
+  {
+    "nodeId": "19467:181071",
+    "status": "fulfilled",
+    "isError": true,
+    "message": "The provided node ID was not found in the file. The node may have been deleted, or the ID was extracted incorrectly. Verify the node ID against the URL — for example, https://figma.com/design/:fileKey/:fileName?node-id=1-2 maps to nodeId `1:2`. If the ID looks right, ask the user to confirm the node still exists in the file."
+  }
+]

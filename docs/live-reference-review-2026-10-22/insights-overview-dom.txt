@@ -1,0 +1,416 @@
+- complementary "1DS Devtool Toolbar":
+  - button "Import Map Overrides":
+    - img "Import Map Overrides"
+  - generic: "|"
+  - button "Yggdrasil":
+    - img "Yggdrasil"
+  - generic: "|"
+  - button "Heimdall":
+    - img "Heimdall"
+  - generic: "|"
+  - button "Performance":
+    - img "Performance"
+  - generic: "|"
+  - button "Scene Manager":
+    - img "Scene Manager"
+  - generic: "|"
+  - button "Kody":
+    - img "Kody"
+  - generic: "|"
+  - button "Settings":
+    - img "Settings"
+- button "Skip to main content"
+- banner:
+  - button "Apps Menu":
+    - generic: Apps Menu
+  - link "Docusign logo, homepage":
+    - /url: https://apps.dev.docusign.net/api/send/home
+    - img "Docusign logo, homepage"
+  - navigation:
+    - list:
+      - link "Home":
+        - /url: /send/home
+        - generic: Home
+      - link "Agreements":
+        - /url: /send/documents
+        - generic: Agreements
+      - link "Templates":
+        - /url: /send/templates
+        - generic: Templates
+      - link "Automations":
+        - /url: /send/agents
+        - generic: Automations
+      - link "Insights":
+        - /url: /send/reports
+        - generic: Insights
+      - link "Admin":
+        - /url: /admin
+        - generic: Admin
+  - button "Launch Search":
+    - dialog "Search":
+      - generic: Search
+      - combobox "Search"
+  - button "tasks":
+    - generic: tasks
+  - button "Notifications":
+    - generic: Notifications
+  - button "help":
+    - generic: help
+  - button "Icon displaying your initials Profile":
+    - img "Icon displaying your initials": 3G
+    - generic: Profile
+- main:
+  - navigation "Secondary":
+    - button "Create":
+      - generic: Create
+    - separator
+    - list:
+      - button "Overview":
+        - generic "Overview"
+      - button "Procurement Hub":
+        - generic "Procurement Hub"
+      - button "Dashboards":
+        - generic "Dashboards"
+      - button "Components.ReportingLegacy.CollapseDashboards" [expanded]:
+      - button "My dashboard":
+        - generic "My dashboard"
+      - button "Administrator dashboard":
+        - generic "Administrator dashboard"
+      - button "Agreements":
+        - generic "Agreements"
+      - button "Obligations":
+        - generic "Obligations"
+      - button "Renewals":
+        - generic "Renewals"
+      - button "Requests":
+        - generic "Requests"
+      - button "AI Assistant and Agent Usage":
+        - generic "AI Assistant and Agent Usage"
+      - button "Custom Dashboards":
+        - generic "Custom Dashboards"
+      - button "Components.ReportingLegacy.CollapseCustomDashboards" [expanded]:
+      - button "Obligations":
+        - generic "Obligations"
+      - button "Untitled":
+        - generic "Untitled"
+      - button "Obligations":
+        - generic "Obligations"
+      - button "new":
+        - generic "new"
+      - button "Untitled23":
+        - generic "Untitled23"
+      - button "Reports":
+        - generic "Reports"
+  - heading "Overview" [level=1]
+  - generic: Find reports or dashboards
+  - combobox "Find reports or dashboards"
+  - button "Find reports or dashboards":
+  - heading "Your Recents" [level=5]
+  - list "Your Recents":
+    - button "parties viewed today":
+      - generic: parties
+      - generic: viewed today
+    - button "The agreements by type zein viewed today":
+      - generic: The agreements by type zein
+      - generic: viewed today
+    - button "obl lol viewed today":
+      - generic: obl lol
+      - generic: viewed today
+    - button "Expiring agreements viewed 1 day ago":
+      - generic: Expiring agreements
+      - generic: viewed 1 day ago
+    - button "Upcoming renewals viewed 1 day ago":
+      - generic: Upcoming renewals
+      - generic: viewed 1 day ago
+  - button "View all":
+    - generic: View all
+  - heading "Your Starred" [level=5]
+  - list "Your Starred":
+    - button "new":
+      - generic: new
+    - button "Agreements Dashboard":
+      - generic: Agreements Dashboard
+  - heading "Suggested Reports" [level=5]
+  - generic: Beta
+  - text: AI Generated Recommendations
+  - button "Average Total Contract Value by Line of Business Save":
+    - heading "Average Total Contract Value by Line of Business" [level=3]
+    - button "Save":
+      - generic: Save
+  - 'heading "Aggregation: Average • Measure: Total Contract Value • Group by: Line of Business" [level=4]':
+    - generic: "Aggregation: Average • Measure: Total Contract Value • Group by: Line of Business"
+  - application "- bar chart":
+    - button
+    - button
+    - button "SALES"
+    - button
+    - button "Empty"
+    - button
+    - button "HR"
+    - button
+    - button "PROCUREMENT": PROCUREM...
+    - generic: Line of Business
+    - generic: $0
+    - generic: $25M
+    - generic: $50M
+    - generic: $75M
+    - generic: $100M
+    - generic: $85M
+    - generic: $16M
+    - generic: $2.8M
+    - generic: $32K
+  - button "Count of Agreements by Status Save":
+    - heading "Count of Agreements by Status" [level=3]
+    - button "Save":
+      - generic: Save
+  - 'heading "Aggregation: Count • Measure: Agreements • Group by: Status" [level=4]':
+    - generic: "Aggregation: Count • Measure: Agreements • Group by: Status"
+  - application "- pie chart":
+    - generic: 2,706Total
+    - generic: 1,993
+    - generic: 73.6%
+    - generic: Active
+  - table:
+    - rowgroup:
+      - row "Active 2K":
+        - cell "Active":
+          - generic "Active"
+        - cell "2K"
+      - row "Inactive 621":
+        - cell "Inactive":
+          - generic "Inactive"
+        - cell "621"
+      - row "Empty 92":
+        - cell "Empty":
+          - generic "Empty"
+        - cell "92"
+  - button "Count of Agreements by Location Save":
+    - heading "Count of Agreements by Location" [level=3]
+    - button "Save":
+      - generic: Save
+  - 'heading "Aggregation: Count • Measure: Agreements • Group by: Location" [level=4]':
+    - generic: "Aggregation: Count • Measure: Agreements • Group by: Location"
+  - application "- bar chart":
+    - button
+    - button
+    - button "Empty"
+    - button
+    - button "San Francisco"
+    - button
+    - button "Chicago"
+    - generic: Location
+    - generic: "0"
+    - generic: "700"
+    - generic: 1.4K
+    - generic: 2.1K
+    - generic: 2.8K
+    - generic: 2.7K
+    - generic: "1"
+    - generic: "1"
+  - heading "Weekly Insights" [level=5]
+  - button "All agreements":
+    - heading "All agreements" [level=3]
+  - generic: Count
+  - generic: 2,706
+  - generic: Agreements
+  - button "New agreements ingested":
+    - heading "New agreements ingested" [level=3]
+  - generic: Count
+  - generic: "11"
+  - generic: Agreements
+  - button "Expiring agreements":
+    - heading "Expiring agreements" [level=3]
+  - generic: Count
+  - generic: 1,713
+  - generic: Agreements
+  - button "Upcoming renewals":
+    - heading "Upcoming renewals" [level=3]
+  - 'heading "Aggregation: Count • Measure: Agreements • Group by: Renewal Notice Date • Segment by: Agreement Type" [level=4]':
+    - generic: "Aggregation: Count • Measure: Agreements • Group by: Renewal Notice Date • Segment by: Agreement Type"
+  - application "- bar chart":
+    - button
+    - button
+    - generic: Oct 23 2026
+    - button
+    - generic: Oct 26 2026
+    - button
+    - generic: Nov 02 2026
+    - button
+    - generic: Nov 09 2026
+    - button
+    - generic: Nov 16 2026
+    - button
+    - generic: Nov 23 2026
+    - button
+    - generic: Nov 30 2026
+    - button
+    - generic: Dec 07 2026
+    - button
+    - generic: Dec 14 2026
+    - button
+    - generic: Dec 21 2026
+    - button
+    - generic: Dec 28 2026
+    - button
+    - generic: Jan 04 2027
+    - button
+    - generic: Jan 11 2027
+    - button
+    - generic: Jan 18 2027
+    - generic: Renewal Notice Date
+    - generic: "0"
+    - generic: "400"
+    - generic: "800"
+    - generic: 1.6K
+    - generic: "2"
+  - heading "Review your agreements" [level=5]
+  - button "View Agreements Dashboard":
+    - generic: View Agreements Dashboard
+  - 'button "Upcoming renewals Renewal Notice Date: Next 12 Months; Renewal Type: Auto Renew +2 Open Report Options Menu"':
+    - heading "Upcoming renewals" [level=3]
+    - generic: "Renewal Notice Date: Next 12 Months; Renewal Type: Auto Renew +2"
+    - button "Open Report Options Menu"
+  - 'heading "Aggregation: Count • Measure: Agreements • Group by: Renewal Notice Date • Segment by: Agreement Type" [level=4]':
+    - generic: "Aggregation: Count • Measure: Agreements • Group by: Renewal Notice Date • Segment by: Agreement Type"
+  - application "- bar chart":
+    - button
+    - button
+    - generic: Oct 2026
+    - button
+    - generic: Nov 2026
+    - button
+    - generic: Dec 2026
+    - button
+    - generic: Jan 2027
+    - button
+    - generic: Feb 2027
+    - button
+    - generic: Mar 2027
+    - button
+    - generic: Apr 2027
+    - button
+    - generic: May 2027
+    - button
+    - generic: Jun 2027
+    - button
+    - generic: Jul 2027
+    - button
+    - generic: Aug 2027
+    - button
+    - generic: Sep 2027
+    - button
+    - generic: Oct 2027
+    - generic: Renewal Notice Date
+    - generic: "0"
+    - generic: "400"
+    - generic: "800"
+    - generic: 1.2K
+    - generic: 1.6K
+    - generic: "7"
+  - button "Agreement types Open Report Options Menu":
+    - heading "Agreement types" [level=3]
+    - button "Open Report Options Menu"
+  - 'heading "Aggregation: Count • Measure: Agreements • Group by: Agreement Type" [level=4]':
+    - generic: "Aggregation: Count • Measure: Agreements • Group by: Agreement Type"
+  - application "- pie chart":
+    - generic: 2,706Total
+    - generic: 2,305
+    - generic: 85.1%
+    - generic: Master Service …
+  - table:
+    - rowgroup:
+      - button "Master Service Agreement 2.3K":
+        - cell "Master Service Agreement":
+          - generic "Master Service Agreement"
+        - cell "2.3K"
+      - button "Miscellaneous 93":
+        - cell "Miscellaneous":
+          - generic "Miscellaneous"
+        - cell "93"
+      - button "Empty 29":
+        - cell "Empty":
+          - generic "Empty"
+        - cell "29"
+      - button "Lease 29":
+        - cell "Lease":
+          - generic "Lease"
+        - cell "29"
+      - button "CIIANCA 23":
+        - cell "CIIANCA":
+          - generic "CIIANCA"
+        - cell "23"
+      - button "Handbook 18":
+        - cell "Handbook":
+          - generic "Handbook"
+        - cell "18"
+      - button "SpaceX Launch Agreement 16":
+        - cell "SpaceX Launch Agreement":
+          - generic "SpaceX Launch Agreement"
+        - cell "16"
+      - button "Services Agreement 14":
+        - cell "Services Agreement":
+          - generic "Services Agreement"
+        - cell "14"
+      - button "Form 13":
+        - cell "Form":
+          - generic "Form"
+        - cell "13"
+      - button "Others 166":
+        - cell "Others":
+          - generic "Others"
+        - cell "166"
+  - heading "Explore Docusign Insights" [level=5]
+  - heading "Review Upcoming Renewals" [level=3]
+  - paragraph: Discover key metrics on your agreements
+  - button "Review":
+    - generic: Review
+  - heading "Review Envelope Dashboard" [level=3]
+  - paragraph: Discover key metrics on your envelopes
+  - button "Review":
+    - generic: Review
+  - heading "Create custom dashboards" [level=3]
+  - paragraph: Customize your dashboard to fit your needs
+  - button "Create":
+    - generic: Create
+  - heading "Create custom reports" [level=3]
+  - paragraph: Customize your reports to fit your needs
+  - button "Create":
+    - generic: Create
+  - paragraph: Resources
+  - link "Suggest a feature, opens in new window":
+    - /url: https://community.docusign.com/ideas
+    - generic: Suggest a feature
+  - link "eSignature Report Help Docs, opens in new window":
+    - /url: https://support.docusign.com/s/document-item?bundleId=cnu1642812012214&topicId=wou1578456440763.html&language=en_US&langSet=1&_LANG=enus
+    - generic: eSignature Report Help Docs
+  - link "Agreement dashboard Help Docs, opens in new window":
+    - /url: https://support.docusign.com/s/document-item?bundleId=pqz1702943441912&topicId=jyq1749000353004.html&language=en_US&langSet=1&_LANG=enus
+    - generic: Agreement dashboard Help Docs
+- contentinfo:
+  - list:
+    - button "Language Selector, current selection English (US)":
+      - generic: English (US)
+    - link "Contact Us, opens in new window":
+      - /url: https://support.docusign.com/contactSupport
+      - text: Contact Us
+    - text: "|"
+    - link "Terms of Use, opens in new window":
+      - /url: https://www.docusign.com/legal/terms-and-conditions
+      - text: Terms of Use
+    - text: "|"
+    - link "Privacy, opens in new window":
+      - /url: https://www.docusign.com/privacy
+      - text: Privacy
+    - text: "|"
+    - link "Intellectual Property, opens in new window":
+      - /url: https://www.docusign.com/ip
+      - text: Intellectual Property
+    - text: "|"
+    - link "Trust, opens in new window":
+      - /url: https://www.docusign.com/trust
+      - text: Trust
+    - text: "|"
+    - listitem: "Version: 1.1.3807"
+  - generic: Copyright © 2026 Docusign, Inc. All rights reserved
+- status
+- generic: "700"

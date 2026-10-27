@@ -1,0 +1,145 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 190
+~1 AXWebArea Protolab, URL: localhost:5173/#
++					468 container
++						469 text 128 Master Service Agreement  documents have  Limitation of Liability Clause
+~					191 text You can now track and compare clauses across your agreements to flag risks and nonstandard terms.
+~					192 button View Agreements
++			470 button Close agreement
++			471 text Batterii MLA_00992.pdf
++			472 button Set a notification
++			473 container
++				474 button Download
++				475 pop up button More download actions
++			476 container
++				477 text Page number
++				478 text field Page number, Value: 1
++				479 text / 5
++				480 button Previous page
++				481 button Next page
++				482 button Zoom in
++				483 text 100%
++				484 button Zoom out
++				485 button Search document
++			486 checkbox Description: Details, Value: 1
++			487 checkbox Description: Obligations, Value: 0
++			488 checkbox Description: Agreement sets, Value: 0
++			489 checkbox Description: Related agreements, Value: 0
++			490 checkbox Description: Chat, Value: 0
++			491 container
++				492 heading Details, Value: 2
++					493 text Details
++				494 button Edit
++				495 button Create new Fields or Clauses
++				496 text AI-Assisted It looks like this agreement type is 
++				497 text License
++				498 text . There are 
++				499 text 34
++				500 text  fields and 
++				501 text 5
++				502 text  new suggestions for you to review.
++				503 button Review All
++				504 text Find details
++				505 text field (settable) Find details
++				506 text AGREEMENT TYPE License
++				507 button (expanded) General AI Suggested, Secondary Actions: Collapse
++					508 text General
++					509 text AI Suggested
++				510 container General AI Suggested
++					511 text STATUS
++					512 text Inactive
++					513 text PARTIES
++					514 text Batterii, LLC
++					515 link Description: View, Value: localhost:5173/#
++					516 text ABC COMPANY INC
++					517 link Description: View, Value: localhost:5173/#
++					518 text FILE NAME
++					519 text Batterii MLA_00992.pdf
++					520 text LINE OF BUSINESS
++					521 text Unspecified
++					522 text LANGUAGES
++					523 text English
++					524 button Show 7 empty fields
++				525 button (expanded) Termination AI Suggested, Secondary Actions: Collapse
++					526 text Termination
++					527 text AI Suggested
++				528 container Termination AI Suggested
++					529 text TERMINATION FOR CONVENIENCE - NOTICE PERIOD
++					530 text 30 days
++					531 button Show 1 empty field
++				532 button (collapsed) Renewal, Secondary Actions: Expand
++				533 button (collapsed) Payment, Secondary Actions: Expand
++				534 button (expanded) Legal and Compliance AI Suggested, Secondary Actions: Collapse
++					535 text Legal and Compliance
++					536 text AI Suggested
++				537 container Legal and Compliance AI Suggested
++					538 text GOVERNING LAW
++					539 text Ohio
++					540 button Show 4 empty fields
++				541 button (expanded) Clauses AI Suggested, Secondary Actions: Collapse
++					542 text Clauses
++					543 text AI Suggested
++				544 container Clauses AI Suggested
++					545 text ASSIGNMENT CLAUSE #1
++					546 text Found
++					547 text ASSIGNMENT CLAUSE #2
++					548 text Found
++					549 text CHANGE OF CONTROL CLAUSE #1
++					550 text Found
++					551 text CHANGE OF CONTROL CLAUSE #2
++					552 text Found
++					553 text CONFIDENTIALITY CLAUSE #1
++					554 text Found
++					555 text CONFIDENTIALITY CLAUSE #2
++					556 text Found
++					557 text INDEMNIFICATION CLAUSE
++					558 text Found
++					559 text INTELLECTUAL PROPERTY RIGHTS CLAUSE #1
++					560 text Found
++					561 text INTELLECTUAL PROPERTY RIGHTS CLAUSE #2
++					562 text Found
++					563 text INTELLECTUAL PROPERTY RIGHTS CLAUSE #3
++					564 text Found
++					565 text LIMITATION OF LIABILITY CLAUSE
++					566 text Found
++					567 text SEPARATION CLAUSE #1
++					568 text Found
++					569 text SEPARATION CLAUSE #2
++					570 text Found
++					571 text SEPARATION CLAUSE #3
++					572 text Found
++					573 text SEPARATION CLAUSE #4
++					574 text Found
++					575 text SERVICE LEVEL AGREEMENTS CLAUSE
++					576 text Found
++					577 text TERMINATION FOR BREACH CLAUSE #1
++					578 text Found
++					579 text TERMINATION FOR BREACH CLAUSE #2
++					580 text Found
++					581 text TERMINATION FOR BREACH CLAUSE #3
++					582 text Found
++			583 text 2135C Central Parkway Cincinnati, OH 45214
++			584 heading batterii, Value: 2
++				585 text batterii
++			586 text Inspiring Innovation™
++			587 heading Master Licensing Agreement, Value: 3
++				588 text Master Licensing Agreement
++			589 text This Agreement (the "License") is for the use of the Batterii SaaS Platform ("Batterii") as defined below. Use of Batterii SaaS Platform is expressly conditioned upon acceptance of "Company Name" ("Master Licensee") and compliance with the following terms and conditions.
++			590 heading 1.0 Definitions, Value: 4
++				591 text 1.0 Definitions
++			592 text The following terms have the meaning set forth herein:
++			593 container
++				594 text Customer Data  — All materials, including but not limited to graphic, picture, text, audio, video, software or information not generated by Batterii...
++			595 container
++				596 text Privacy Policy  — The Batterii Privacy Policy identifies the manner in which Batterii obtains, accesses and provides others with access to information obtained by Batterii...
++			597 heading 2.0 Grant of License, Value: 4
++				598 text 2.0 Grant of License
++			599 text Batterii grants Master Licensee, a non-exclusive, non-transferable, worldwide right to use Batterii SaaS as set forth herein.
++			600 heading 3.0 Fee and Payment, Value: 4
++				601 text 3.0 Fee and Payment
++			602 text The License fee shall be billed in advance of the usage by mutually agreed time periods; typically quarterly, semi-annually or annually.
++			603 heading 4.0 License Term, Value: 4
++				604 text 4.0 License Term
++			605 text This license shall be for the agreed term unless terminated in writing by Master Licensee or by Batterii.
+The focused UI element is 227 link Description: Obligation Management – Supported Extractions (Limited) (1).pdf, URL: localhost:5173/#

@@ -1,0 +1,23 @@
+{
+  "signingTaskRow": true,
+  "draftTaskRow": true,
+  "draftSubject": "Northstar — Support Services Addendum",
+  "requestTaskRow": true,
+  "workspaceTaskRow": true,
+  "templatePages": 3,
+  "attachedTemplate": true,
+  "templateSubject": "Design & Build Agreement",
+  "activityTitle": {
+    "boxHeight": 20,
+    "fontSize": "16px",
+    "fontWeight": "500",
+    "lineHeight": "20px"
+  },
+  "brandMentions": null,
+  "hoverBackground": "rgba(255, 255, 255, 0.5)",
+  "inverseIris": "ai-iris-inverse",
+  "overflow": false,
+  "tooltip": "Next 30 days",
+  "tooltipFont": "12px",
+  "iconWarnings": []
+}

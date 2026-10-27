@@ -162,14 +162,14 @@ export function TableColumnControl<T = any>({
   const footer = (
     <div className={styles.footer}>
       {initialColumns && hasChanges && (
-        <Button variant="tertiary" onClick={handleReset}>
+        <Button kind="tertiary" onClick={handleReset}>
           Reset
         </Button>
       )}
-      <Button variant="secondary" onClick={onCancel}>
+      <Button kind="secondary" onClick={onCancel}>
         Cancel
       </Button>
-      <Button variant="primary" onClick={handleSave}>
+      <Button kind="primary" onClick={handleSave}>
         Save
       </Button>
     </div>

@@ -1,0 +1,13 @@
+// url=https://www.figma.com/design/nAKX1rO3Mir2OCBdCkC5oq/-ds-ui--Component-Library?node-id=424-4019
+// source=src/design-system/4-composites/Callout/Callout.tsx
+// component=Inline
+// Based on accepted current 2026-10-20 owner metadata; interaction states render through native behavior.
+import figma from 'figma'
+const instance = figma.selectedInstance
+
+const stacked = instance.getEnum('❖ Stacked', { False: false, True: true })
+const secondary = instance.getBoolean('ShowSecondaryActionButton') ? instance.findInstance('SecondaryAction', { traverseInstances: true }) : null
+const primary = instance.findInstance('PrimaryAction', { traverseInstances: true })
+const secondaryCode = secondary?.type === 'INSTANCE' ? secondary.executeTemplate().example : undefined
+const primaryCode = primary.type === 'INSTANCE' ? primary.executeTemplate().example : undefined
+export default { example: stacked ? figma.code`<Stack gap="small"><>${secondaryCode}${primaryCode}</></Stack>` : figma.code`<Inline gap="large"><>${secondaryCode}${primaryCode}</></Inline>`, imports: ["import { Inline, Stack } from '@/design-system'"], id: 'callout-footer', metadata: { nestable: true } }

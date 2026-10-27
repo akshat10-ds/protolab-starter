@@ -1,0 +1,2 @@
+# Keep document previews intact across checkouts and out of text diffs.
+*.pdf binary

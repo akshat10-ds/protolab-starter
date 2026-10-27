@@ -1,0 +1,157 @@
+[
+  {
+    "area": "Admin",
+    "fields": 0,
+    "heading": "Admin overview",
+    "rows": 0
+  },
+  {
+    "area": "Admin",
+    "fields": 2,
+    "heading": "Groups",
+    "rows": 5
+  },
+  {
+    "area": "Admin",
+    "fields": 2,
+    "heading": "Permission profiles",
+    "rows": 3
+  },
+  {
+    "area": "Admin",
+    "fields": 5,
+    "heading": "Account settings",
+    "rows": 0
+  },
+  {
+    "area": "Admin",
+    "fields": 3,
+    "heading": "Brands",
+    "rows": 0
+  },
+  {
+    "area": "Admin",
+    "fields": 3,
+    "heading": "Security settings",
+    "rows": 0
+  },
+  {
+    "area": "Admin",
+    "fields": 5,
+    "heading": "Signing settings",
+    "rows": 0
+  },
+  {
+    "area": "Admin",
+    "fields": 4,
+    "heading": "Sending settings",
+    "rows": 0
+  },
+  {
+    "area": "Admin",
+    "fields": 2,
+    "heading": "Connected apps",
+    "rows": 5
+  },
+  {
+    "area": "Admin",
+    "fields": 2,
+    "heading": "Users",
+    "rows": 5
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "Shared with Me",
+    "rows": 6
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "Favorites",
+    "rows": 2
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "Clauses",
+    "rows": 5
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "Document Templates",
+    "rows": 5
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "Workspace Templates",
+    "rows": 5
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "Workflow Templates",
+    "rows": 5
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "My Web Forms",
+    "rows": 3
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "Shared Web Forms",
+    "rows": 2
+  },
+  {
+    "area": "Templates",
+    "cards": 0,
+    "heading": "All Web Forms",
+    "rows": 5
+  },
+  {
+    "area": "Templates",
+    "cards": 34,
+    "heading": "Template Gallery",
+    "rows": 0
+  },
+  {
+    "area": "Templates",
+    "heading": "Elastic Templates",
+    "rows": 5
+  },
+  {
+    "area": "Automations",
+    "cards": 0,
+    "heading": "Active workflows",
+    "rows": 3
+  },
+  {
+    "area": "Automations",
+    "cards": 0,
+    "heading": "Draft workflows",
+    "rows": 2
+  },
+  {
+    "area": "Automations",
+    "cards": 0,
+    "heading": "Activity",
+    "rows": 5
+  },
+  {
+    "area": "Automations",
+    "cards": 6,
+    "heading": "Workflow templates",
+    "rows": 0
+  },
+  {
+    "area": "Automations",
+    "cards": 0,
+    "heading": "Workflows",
+    "rows": 6
+  }
+]

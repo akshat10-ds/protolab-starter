@@ -1,0 +1,104 @@
+/*
+ * The dock supplies `.well` and its padding. Everything here is the rhythm
+ * inside it: stepper, step detail, recommendations, separated by a rule rather
+ * than by boxes — the cards are the only boxes in this artifact.
+ */
+.step {
+  margin-top: var(--ink-spacing-300);
+  padding-top: var(--ink-spacing-200);
+  border-top: 1px solid var(--ink-border-color-subtle);
+}
+
+.stepTitle {
+  margin: 0;
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+  color: var(--ink-font-color-default);
+}
+
+.bullets {
+  margin: var(--ink-spacing-100) 0 0;
+  padding-left: var(--ink-spacing-250);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-50);
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-xs);
+  line-height: 1.5;
+  color: var(--ink-font-color-neutral-subtle);
+}
+
+.recs {
+  margin-top: var(--ink-spacing-300);
+  padding-top: var(--ink-spacing-200);
+  border-top: 1px solid var(--ink-border-color-subtle);
+}
+
+/* The whole header row toggles. The chevron shows the state; it is not the
+   target on its own. */
+.recsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--ink-spacing-200);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--ink-font-color-default);
+}
+
+.recsHeader:focus-visible {
+  outline: 2px solid var(--ink-border-color-accent);
+  outline-offset: 2px;
+  border-radius: var(--ink-radius-size-xs);
+}
+
+.recsTitle {
+  font-family: var(--ink-font-family-default);
+  font-size: var(--ink-font-size-sm);
+  font-weight: var(--ink-font-weight-medium);
+  line-height: 1.4;
+}
+
+.recsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ink-spacing-150);
+  margin-top: var(--ink-spacing-150);
+}
+
+/* The row's own control, inside its detail — revealed with the row, not
+   standing over it. Ink's tertiary small is already this register. */
+.eventAction {
+  margin: var(--ink-spacing-50) 0 0 calc(var(--ink-spacing-100) * -1);
+}
+
+/*
+ * The ring a focused recommendation gets when the reader was sent here by a
+ * count. It fires once and leaves nothing behind — a permanent highlight would
+ * be a selection, and nothing here is selected.
+ */
+.focusRing {
+  border-radius: var(--ink-radius-size-s);
+  animation: processFocusRing 1400ms ease-out;
+}
+
+@keyframes processFocusRing {
+  0%,
+  60% {
+    box-shadow: 0 0 0 2px var(--ink-border-color-accent);
+  }
+  100% {
+    box-shadow: 0 0 0 2px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focusRing {
+    animation: none;
+  }
+}

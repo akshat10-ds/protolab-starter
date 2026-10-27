@@ -23,7 +23,7 @@ export function TableActionBar({
   `.trim();
 
   return (
-    <div className={actionBarClasses} aria-hidden={!visible}>
+    <div className={actionBarClasses} role="toolbar" aria-label="Selection actions" aria-hidden={!visible} inert={!visible}>
       {/* Selected count */}
       <span className={styles.actionBarCount}>
         {selectedCount} Selected
@@ -37,7 +37,7 @@ export function TableActionBar({
           actions.map((action, index) => (
             <Button
               key={index}
-              variant={action.variant || 'secondary'}
+              kind={action.variant === 'destructive' ? 'danger' : action.variant || 'secondary'}
               size="small"
               onClick={() => action.onClick(selectedRows)}
               disabled={action.disabled}

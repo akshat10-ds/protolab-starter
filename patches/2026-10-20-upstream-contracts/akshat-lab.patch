@@ -1,0 +1,121 @@
+diff --git a/system/ai-system/composites/ChatInput/ChatInput.tsx b/system/ai-system/composites/ChatInput/ChatInput.tsx
+--- a/system/ai-system/composites/ChatInput/ChatInput.tsx
++++ b/system/ai-system/composites/ChatInput/ChatInput.tsx
+@@ -1483,7 +1483,6 @@
+               className={`${styles.contextRow} ${showContextAttention ? styles.contextAttention : ''}`}
+             >
+               <FilterTag
+-                icon={contextSource.icon}
+                 label={
+                   contextSource.count
+                     ? `${contextSource.label} (${contextSource.count})`
+@@ -1532,7 +1531,6 @@
+                 className={`${styles.contextInline} ${showContextAttention ? styles.contextAttention : ''}`}
+               >
+                 <FilterTag
+-                  icon={contextSource.icon}
+                   label={
+                     contextSource.count
+                       ? `${contextSource.label} (${contextSource.count})`
+diff --git a/system/ai-system/composites/CommandMenu/CommandMenu.tsx b/system/ai-system/composites/CommandMenu/CommandMenu.tsx
+--- a/system/ai-system/composites/CommandMenu/CommandMenu.tsx
++++ b/system/ai-system/composites/CommandMenu/CommandMenu.tsx
+@@ -55,7 +55,7 @@
+   /** Called when a context item or tool sub-item is selected */
+   onSelect: (item: CommandContextItem | CommandToolChild) => void;
+   /** Trigger element — passed through to Dropdown */
+-  children: React.ReactElement;
++  children: React.ComponentProps<typeof Dropdown>['children'];
+   /** Dropdown position relative to trigger */
+   position?: 'top' | 'bottom' | 'left' | 'right';
+   /** Dropdown alignment */
+diff --git a/system/ai-system/patterns/ArtifactViewer/AgreementView.tsx b/system/ai-system/patterns/ArtifactViewer/AgreementView.tsx
+--- a/system/ai-system/patterns/ArtifactViewer/AgreementView.tsx
++++ b/system/ai-system/patterns/ArtifactViewer/AgreementView.tsx
+@@ -102,7 +102,7 @@
+       <div className={styles.header}>
+         <div className={styles.headerLeft}>
+           {onPrevDocument && (
+-            <Tooltip text="Previous document" size="compact">
++            <Tooltip text="Previous document">
+               <IconButton
+                 icon="chevron-left"
+                 size="small"
+@@ -114,7 +114,7 @@
+           )}
+           <span className={styles.headerTitle}>{title}</span>
+           {onNextDocument && (
+-            <Tooltip text="Next document" size="compact">
++            <Tooltip text="Next document">
+               <IconButton
+                 icon="chevron-right"
+                 size="small"
+@@ -127,7 +127,7 @@
+         </div>
+         <div className={styles.headerRight}>
+           {onOpenExternal && (
+-            <Tooltip text="Open in Navigator" size="compact">
++            <Tooltip text="Open in Navigator">
+               <IconButton
+                 icon="external-link"
+                 size="small"
+@@ -138,7 +138,7 @@
+             </Tooltip>
+           )}
+           {onDownload && (
+-            <Button variant="secondary" size="small" onClick={onDownload}>
++            <Button kind="secondary" size="small" onClick={onDownload}>
+               Download
+             </Button>
+           )}
+@@ -207,7 +207,7 @@
+         </div>
+ 
+         <div className={styles.toolbarRight}>
+-          <Tooltip text="Search in document" size="compact">
++          <Tooltip text="Search in document">
+             <IconButton
+               icon="search"
+               size="small"
+diff --git a/system/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx b/system/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx
+--- a/system/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx
++++ b/system/ai-system/patterns/ArtifactViewer/SourceDiscoveryView.tsx
+@@ -466,7 +466,7 @@
+         <div className={styles.pickerFooter}>
+           <span className={styles.footerCount}>{count} selected</span>
+           <Button
+-            variant="brand"
++            kind="brand"
+             size="medium"
+             disabled={count === 0}
+             onClick={() => onSelect?.(selectedIds)}
+@@ -522,7 +522,7 @@
+         {/* Footer */}
+         {tableCount > 0 && (
+           <div className={styles.footer}>
+-            <Button variant="brand" size="medium" onClick={handleTableConfirm} fullWidth>
++            <Button kind="brand" size="medium" onClick={handleTableConfirm} fullWidth>
+               Analyze {tableCount} {tableCount === 1 ? 'agreement' : 'agreements'}
+             </Button>
+           </div>
+@@ -829,7 +829,7 @@
+       {/* Footer — confirm selection */}
+       {count > 0 && (
+         <div className={styles.footer}>
+-          <Button variant="brand" size="medium" onClick={handleConfirm} fullWidth>
++          <Button kind="brand" size="medium" onClick={handleConfirm} fullWidth>
+             {isAddingMore ? `Update sources (${count})` : `Analyze ${count} ${noun}`}
+           </Button>
+         </div>
+diff --git a/system/ai-system/patterns/ArtifactViewer/SourceListView.tsx b/system/ai-system/patterns/ArtifactViewer/SourceListView.tsx
+--- a/system/ai-system/patterns/ArtifactViewer/SourceListView.tsx
++++ b/system/ai-system/patterns/ArtifactViewer/SourceListView.tsx
+@@ -157,7 +157,7 @@
+       {onSelectionConfirm && (
+         <div className={styles.footer}>
+           <Button
+-            variant="brand"
++            kind="brand"
+             size="medium"
+             onClick={handleConfirm}
+             disabled={count === 0}

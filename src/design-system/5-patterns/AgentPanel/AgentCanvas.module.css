@@ -5,7 +5,6 @@
  * Uses Ink Design System tokens for consistent theming.
  */
 
-@import '../../../design-system/1-tokens/tokens.css';
 
 /* =============================================================================
    Container
@@ -101,9 +100,9 @@
 .documentTitle {
   display: flex;
   align-items: center;
-  gap: var(--ink-spacing-75);
+  gap: var(--ink-spacing-100);
   font-family: var(--ink-font-family), system-ui, sans-serif;
-  font-size: var(--ink-font-size-body-s);
+  font-size: var(--ink-font-body-s-size);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-neutral-100);
   white-space: nowrap;
@@ -113,7 +112,7 @@
 
 .pageIndicator {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-neutral-70);
   padding: var(--ink-spacing-50) var(--ink-spacing-100);
@@ -125,7 +124,7 @@
 
 .zoomIndicator {
   font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
-  font-size: var(--ink-font-size-body-xs);
+  font-size: var(--ink-font-detail-s-size);
   font-weight: var(--ink-font-weight-medium);
   color: var(--ink-neutral-70);
   min-width: 40px;
@@ -183,24 +182,4 @@
   background: var(--ink-white-100);
   opacity: 0.9;
   z-index: 10;
-}
-
-/* Highlight regions in document (for annotations) */
-.highlight {
-  position: absolute;
-  background: var(--ink-yellow-20);
-  border: 2px solid var(--ink-yellow-60);
-  border-radius: var(--ink-radius-size-xs);
-  pointer-events: none;
-  animation: highlightPulse 2s var(--ink-motion-curve-opacity) infinite;
-}
-
-@keyframes highlightPulse {
-  0%,
-  100% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
 }

@@ -2,7 +2,6 @@
  * DataTableActionBar Styles - Production Match
  */
 
-@import '../../1-tokens/tokens.css';
 
 .actionBar {
   display: flex;

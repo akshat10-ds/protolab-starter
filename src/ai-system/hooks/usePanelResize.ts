@@ -171,6 +171,14 @@ export function usePanelResize({
       setIsResizing(true);
       (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
       document.body.dataset.panelResizing = 'true';
+      /*
+        A selection made BEFORE the drag survives it — `user-select: none`
+        stops a new one starting, it does not clear an old one. The result
+        reads as "dragging the divider selected the page", because the
+        highlight sits there moving under the panel. Dropping the range at
+        pointer-down is the whole fix.
+      */
+      window.getSelection?.()?.removeAllRanges();
 
       const startX = e.clientX;
       const startWidth = isSnappedClosed ? minWidth : width;

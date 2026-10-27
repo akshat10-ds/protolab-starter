@@ -154,3 +154,48 @@
     transition: none;
   }
 }
+
+/*
+ * Conversation marks — 2026-08-24. The sidebar's three dots, in the peek.
+ *
+ * Written out again rather than shared: CSS-module keyframes are file-scoped,
+ * and a 6px dot in two files is a smaller thing to keep in step than a shared
+ * stylesheet with two importers.
+ */
+.unreadDot,
+.runningDot,
+.needsYouDot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--ink-radius-size-full);
+}
+
+.unreadDot {
+  background: var(--ink-icon-color-accent);
+}
+
+.runningDot {
+  background: var(--ink-neutral-fade-70);
+  animation: menuDotPulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.needsYouDot {
+  background: var(--ink-neutral-fade-70);
+}
+
+@keyframes menuDotPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .runningDot {
+    animation: none;
+  }
+}

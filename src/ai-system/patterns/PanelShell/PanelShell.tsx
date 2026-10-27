@@ -17,6 +17,7 @@
 
 import React from 'react';
 import type { PanelEdge, PanelHandleProps, PanelMode } from '../../hooks/usePanelMode';
+import { ResizeHandle } from './ResizeHandle';
 import styles from './PanelShell.module.css';
 
 // =============================================================================
@@ -90,10 +91,11 @@ export const PanelShell: React.FC<PanelShellProps> = ({
       // A zero-width shell is still in the sequential focus order without this.
       inert={isClosed}
     >
+      {/* A right-side panel carries its divider on its left edge, and the
+          reverse. The handle itself is `ResizeHandle` — shared with the
+          chat/pane seam, so both dividers are one feel. */}
       {handleVisible && handleProps && (
-        <div className={styles.handle} {...handleProps}>
-          <div className={styles.handleBar} />
-        </div>
+        <ResizeHandle placement={edge === 'right' ? 'left' : 'right'} {...handleProps} />
       )}
       <div className={styles.content}>{children}</div>
     </aside>

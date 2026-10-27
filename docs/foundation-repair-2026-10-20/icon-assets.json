@@ -1,0 +1,122 @@
+[
+  {
+    "name": "iris-petals.svg",
+    "bytes": 1522,
+    "sha256": "f5f4fa8b48dbc98394c93e3faf2ceac5ab10e797a24b66d8ff41277d93dca7ae",
+    "width": "21.375",
+    "height": "21.375",
+    "viewBox": "0 0 21.375 21.375"
+  },
+  {
+    "name": "iris-main.svg",
+    "bytes": 3329,
+    "sha256": "d76923f675bc2d73bfcf9a430bf0b25c6e3ab63cb5fc494bfdbf29aef0433123",
+    "width": "18",
+    "height": "18",
+    "viewBox": "0 0 18 18"
+  },
+  {
+    "name": "inverse-petals.svg",
+    "bytes": 2492,
+    "sha256": "447cf27d938b27e71e8bbc4c0bdd9cdf557d7e6ab624f94f6c416922bf500460",
+    "width": "24",
+    "height": "24",
+    "viewBox": "0 0 24 24"
+  },
+  {
+    "name": "inverse-main.svg",
+    "bytes": 2007,
+    "sha256": "d1c7f07be3aeeb029a138afc67fc1741efd93fff67b4bb057d4754baea5fa022",
+    "width": "17.9901",
+    "height": "17.9791",
+    "viewBox": "0 0 17.9901 17.9791"
+  },
+  {
+    "name": "spark-aispark.svg",
+    "bytes": 1848,
+    "sha256": "ab5a5407aa76aced6e7499644c31044209ceb542e2eb20fff6f554f4c739d917",
+    "width": "24",
+    "height": "24",
+    "viewBox": "0 0 24 24"
+  },
+  {
+    "name": "spark-filled-aisparkfilled.svg",
+    "bytes": 1456,
+    "sha256": "0cbed916d090e3780ec6dfcd2f38e21502642542f70f94da0585def0896b5517",
+    "width": "24",
+    "height": "24",
+    "viewBox": "0 0 24 24"
+  },
+  {
+    "name": "document-analyze-documentanalyze.svg",
+    "bytes": 649,
+    "sha256": "ce5bcc75f3afab649831f4a19259bf75d0b61b513fd46371bcc51af6a9f61fbc",
+    "width": "24",
+    "height": "24",
+    "viewBox": "0 0 24 24"
+  },
+  {
+    "name": "document-split-documentsplit.svg",
+    "bytes": 402,
+    "sha256": "4bae5a1eb7ffc2fc36b902c7b7466d9ecf4c34a4fb2f11f40b6d965fcae35936",
+    "width": "24",
+    "height": "24",
+    "viewBox": "0 0 24 24"
+  },
+  {
+    "name": "folder-copy-foldercopy.svg",
+    "bytes": 354,
+    "sha256": "9bea5be4419c78f963871b9ddaa9e51af8440d74f55029bac1c145a6d0603382",
+    "width": "24",
+    "height": "24",
+    "viewBox": "0 0 24 24"
+  },
+  {
+    "name": "inverse-small-petals.svg",
+    "bytes": 2481,
+    "sha256": "862b339b6c8b705ea6d220d57cdc3d7f2072c7f9561316fbb0b56ee56bb1cba1",
+    "width": "20",
+    "height": "20",
+    "viewBox": "0 0 20 20"
+  },
+  {
+    "name": "inverse-small-main.svg",
+    "bytes": 1932,
+    "sha256": "e4ca083a7ba144a15337db33d0845014f3e734b73c25d95207e4fdf5aaec12fc",
+    "width": "13.9898",
+    "height": "13.984",
+    "viewBox": "0 0 13.9898 13.984"
+  },
+  {
+    "name": "spark-small-aisparksmall.svg",
+    "bytes": 1850,
+    "sha256": "f4153e9514157d2eef7543a50d7be1cd50d31ef577269984963efc31d51c5f75",
+    "width": "20",
+    "height": "20",
+    "viewBox": "0 0 20 20"
+  },
+  {
+    "name": "spark-filled-small-aisparkfilledsmall.svg",
+    "bytes": 1460,
+    "sha256": "9db1c2c8900becd53156880b571c00bc61431cd27ac13218771addeafd86fe90",
+    "width": "20",
+    "height": "20",
+    "viewBox": "0 0 20 20"
+  },
+  {
+    "name": "iris-small-artwork-petals.svg",
+    "bytes": 1508,
+    "sha256": "4071c3a59ed28aeb7fea5cbb293ff76ca6e336862fa13bca66032370a5d9ee75",
+    "width": "16.625",
+    "height": "16.625",
+    "viewBox": "0 0 16.625 16.625"
+  },
+  {
+    "name": "iris-small-artwork-main.svg",
+    "bytes": 3314,
+    "sha256": "56ea3d4eaf8c64b2bd8d062dbe9bdac62492946f4c7eeee4eaaeac85dba37b69",
+    "width": "14",
+    "height": "14",
+    "viewBox": "0 0 14 14"
+  }
+]

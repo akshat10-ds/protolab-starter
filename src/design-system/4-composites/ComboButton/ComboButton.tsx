@@ -13,6 +13,11 @@ export interface ComboButtonProps {
   size?: ComboButtonSize;
   /** Main button text (ignored for tertiary which is icon-only) */
   children?: React.ReactNode;
+  /** Accessible text rendered inside the main action, including compact mode. */
+  accessibilityText?: string;
+  /** Accessible text rendered inside the dropdown action. */
+  dropdownLabel?: string;
+  dropdownExpanded?: boolean;
   /** Disabled state */
   disabled?: boolean;
   /** Click handler for main button */
@@ -35,6 +40,9 @@ export const ComboButton = React.forwardRef<HTMLDivElement, ComboButtonProps>(
       variant = 'brand',
       size = 'medium',
       children,
+      accessibilityText,
+      dropdownLabel = 'Show options',
+      dropdownExpanded,
       disabled = false,
       onClick,
       onDropdownClick,
@@ -65,13 +73,14 @@ export const ComboButton = React.forwardRef<HTMLDivElement, ComboButtonProps>(
     return (
       <div data-ink-component="ComboButton" data-ink-prop-kind={variant} data-ink-prop-size={size} ref={ref} className={wrapperClasses}>
         <button type="button" className={mainButtonClasses} onClick={onClick} disabled={disabled}>
+          {(compact || accessibilityText) && <span className={styles.srOnly}>{accessibilityText || children || 'Perform action'}</span>}
           {startIcon && !compact && (
             <Icon name={startIcon} size={size === 'small' ? 'small' : 'medium'} />
           )}
           {compact && startIcon ? (
             <Icon name={startIcon} size={size === 'small' ? 'small' : 'medium'} />
           ) : (
-            <span className={styles.text}>{children}</span>
+            <span className={styles.text} aria-hidden={accessibilityText ? true : undefined}>{children}</span>
           )}
         </button>
         <button
@@ -79,8 +88,10 @@ export const ComboButton = React.forwardRef<HTMLDivElement, ComboButtonProps>(
           className={dropdownButtonClasses}
           onClick={onDropdownClick}
           disabled={disabled}
-          aria-label="Show options"
+          aria-haspopup="menu"
+          aria-expanded={dropdownExpanded}
         >
+          <span className={styles.srOnly}>{dropdownLabel}</span>
           <Icon name="chevron-down" size="small" />
         </button>
       </div>

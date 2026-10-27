@@ -86,6 +86,34 @@ openedIds, open, setOpenId, close, toggleExpanded }`. Pass it to `IrisAgent`'s
   them. It is the dock's tab strip, not a fixture shelf.
 - **`close` drops `expanded`** so a later reopen never inherits a fullscreen
   used on something else.
+- **An open dock raises the panel's floor to `THREE_COLUMN_MIN_WIDTH` (916).**
+  480 chat + 420 dock card + the card's own 16px gutter. Every write to the
+  width goes through `usePanelResize`, which clamps against this, so the drag,
+  the arrow keys and the contract control are all governed by one number and no
+  mode ever flips under the pointer. Contracting out of fullscreen with the dock
+  open therefore lands on **host + chat + dock** — three real columns — rather
+  than restoring a 480 that could not hold them.
+
+  Below `916 + 51` of extent there is no room for three columns; the floor is
+  clamped to the extent, which reads as fullscreen. Narrowing the WINDOW under a
+  three-column panel promotes the panel to fullscreen; the dock stays open
+  either way.
+
+  This replaced **"leaving fullscreen closes the dock"** (2026-08-19). That rule
+  cured a real defect — a 420px card in a 480px panel with a ~40px chat sliver —
+  by closing something the user had opened. Akshat: *"we shouldn't automatically
+  collapse the right sidebar if they start narrowing the chat."* The floor kills
+  the same defect by making the squeezed frame unreachable.
+- **The host gets a floor too — `THREE_COLUMN_MIN_HOST_WIDTH` (800).** The 916
+  is entirely about the panel's side of the seam; at 1440 it leaves the page 524
+  and Navigator's insights band shrinks to one word per line. Measured live at
+  1440/1600/1700/1800 with the sources column open, the band's CTA card stops
+  clipping its own action row at a host of ~786; 800 is that rounded up. Only
+  `artifact.open(id, { fullscreen: false })` consults it — below the threshold
+  the dock opens fullscreen, which is the fullscreen-first rule doing its
+  existing job. It is deliberately NOT applied to the drag floor: contracting
+  out of fullscreen at 1440 still lands on 916 and a 524px host, because raising
+  the floor would change the drag for every prototype.
 - **`expanded` is its own axis** — it folds the chat column inside the panel; it
   is not panel fullscreen and never touches the host page.
 
@@ -100,10 +128,18 @@ Three durations, named once in `tokens/motion.css`.
   `--ai-motion-duration-artifact`. The dock is *mounted* by the host, and
   transitions do not fire on insertion — before the keyframe there were zero
   motion events anywhere in the panel when it opened.
-- **The fullscreen entrance interpolates `flex-grow` alone.** The 480px basis
-  lives on the base rule. As a `flex` shorthand it flipped grow 1→0 in one
-  frame while basis transitioned 0%→480px, so the pane entered at 149% of its
-  final width and shrank, and every open after the first was a hard cut.
+- **The fullscreen entrance moved to the pane** (2026-08-19). It used to
+  interpolate the chat's `flex-grow` 1→0, because the chat gave up the room the
+  pane appeared in. The chat now GROWS and the pane holds a width of its own
+  (Akshat: *"when you open the sidebar the width should be like 1/3 and not
+  2/3"*), so there is no grow to flip: `ArtifactDock`'s `paneIn` keyframe sweeps
+  the pane's `flex-basis` 0 → its width instead, same duration and easing, and
+  the chat still gives the room back at the same rate. `.rightArea` keeps its
+  480px basis as a floor and its transitions for the expanded fold.
+  (The original bug is still the reason it is a keyframe and not a shorthand: as
+  a `flex` shorthand, grow flipped in one frame while basis transitioned, so the
+  pane entered at 149% of its final width and every open after the first was a
+  hard cut.)
 
 Closing the dock is still a cut — the host unmounts it, so there is nothing for
 CSS to animate.
@@ -111,6 +147,16 @@ CSS to animate.
 ## Defaults
 
 Right edge · sidebar 40% · min 360px · z-index 300 · drag-to-close off.
+
+## The divider
+
+`ResizeHandle` is the one drag divider in the system — `PanelShell` draws it on
+the panel edge (`placement="left" | "right"`, absolute, straddling the border)
+and `IrisAgent` draws it on the chat/pane seam (`placement="inline"`, a flex item
+with -8px margins, because the pane clips its own overflow). 16px target, 4px ×
+48px bar, hairline in every state. Akshat, 2026-08-18: *"border subtle only with
+1px and just highlight the dragger like we're doing it"* and *"we also need to
+have the entire divider be draggable."*
 
 ## Do / don't
 

@@ -6,6 +6,7 @@ import React from 'react';
 
 export type TableSize = 'small' | 'medium' | 'large';
 export type TableVariant = 'default' | 'bordered' | 'striped';
+export type TableBorderRule = 'none' | 'rows' | 'columns' | 'both';
 export type TableAlign = 'left' | 'center' | 'right';
 export type SortDirection = 'asc' | 'desc' | null;
 
@@ -118,6 +119,7 @@ export interface TableProps<T = any> {
   data: T[];
   /** Visual variant */
   variant?: TableVariant;
+  borderRule?: TableBorderRule;
   /** Size variant */
   size?: TableSize;
   /** Whether to show row hover state */

@@ -1,6 +1,4 @@
-> **Generated. Do not edit here.** This directory is a released copy of the used set of
-> `akshat-lab/system/ai-system`, replaced wholesale by `/release-chat-to-protolab`. Edits made
-> here are lost on the next release. The canonical source is Lab HQ.
+> **Generated. Do not edit here.** This directory is a released copy of the used set of `akshat-lab/system/ai-system`, replaced wholesale by the reviewed AI release workflow. Edits made here are lost on the next release. The canonical source is Lab HQ.
 
 # ai-system — the canonical AI/agent-experience design system
 

@@ -1,12 +1,11 @@
 /* Ink Design System - Accordion Component Styles */
-@import '../../1-tokens/tokens.css';
 
 .accordion {
   font-family: var(--ink-font-family);
 }
 
 /* Bordered variant: items have border-top separators */
-.accordion.bordered .item {
+.accordion .item.itemBordered {
   border-top: 1px solid var(--ink-border-color-subtle);
 }
 
@@ -226,3 +225,19 @@
 .content li {
   margin: var(--ink-spacing-1) 0;
 }
+
+.accordion .item { border-top: none; }
+.accordion .item.itemBordered { border-top: var(--ink-border-width-xs) solid var(--ink-border-color-subtle); }
+.accordion .height-compact .header { padding-block: var(--ink-spacing-100); }
+.accordion .height-default .header { padding-block: var(--ink-spacing-150); }
+.accordion .height-tall .header { padding-block: var(--ink-spacing-250); }
+.accordion .level-xs .title { font-size: var(--ink-font-size-sm); }
+.accordion .level-s .title { font-size: var(--ink-font-size-lg); }
+.panel[hidden] { display: none; }
+
+.accordion .item:not(.itemBordered) { border-top: none; border-radius: var(--ink-radius-size-s); }
+.accordion .itemOpen:not(.itemBordered) .header { background-color: var(--ink-item-bg-color-selected-subtle); border-radius: var(--ink-radius-size-s); }
+.accordion .height-compact .content { padding-bottom: var(--ink-spacing-200); }
+.accordion .height-default .content { padding-bottom: var(--ink-spacing-300); }
+.accordion .height-tall .content { padding-bottom: var(--ink-spacing-400); }
+.accordion .content.noPadding { padding: 0; }

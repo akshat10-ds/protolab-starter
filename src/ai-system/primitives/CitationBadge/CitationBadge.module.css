@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 
 /* Wrapper — inline so it flows with text */
 .wrapper {
@@ -13,9 +12,9 @@
   justify-content: center;
   min-width: 18px;
   height: 18px;
-  padding: 0 5px;
-  margin-left: 3px;
-  font-size: 11px;
+  padding: 0 var(--ink-spacing-50);
+  margin-left: var(--ink-spacing-50);
+  font-size: var(--ink-font-size-xs);
   font-weight: var(--ink-font-weight-medium);
   line-height: 1;
   color: var(--ink-cobalt-100);
@@ -42,6 +41,27 @@
   background: var(--ink-cobalt-100);
   border-color: var(--ink-cobalt-100);
   color: var(--ink-white-100);
+}
+
+/*
+ * OPEN — this badge's brief is the one showing beside the text.
+ *
+ * Akshat, 2026-09-02: *"it seems like when it's active this should have the
+ * active state!"* Three badges in one sentence open three different briefs, and
+ * all three looked the same. `RunChip` answered the same ruling in a1cab4f.
+ *
+ * Cobalt-30 is the active rung of the ramp the badge already sits on: Ink puts
+ * `--ink-cta-toggle-bg-selected-subtle` at cobalt-10, which is this chip's rest
+ * fill, and its active step at cobalt-30. Cobalt-20 and `--ink-bg-active-subtle`
+ * both sit one step from cobalt-10, which does not separate at 18px. Cobalt-30 is
+ * also the rest border, so the open chip reads solid to its edge.
+ *
+ * One class deep on purpose. `.button:hover .chip` is deeper and still wins, and
+ * that is right here: hover inverts the chip, so it is a stronger state than
+ * open, not a step back down the ramp that would read as the selection lost.
+ */
+.active .chip {
+  background: var(--ink-cobalt-30);
 }
 
 /* ============================================================================

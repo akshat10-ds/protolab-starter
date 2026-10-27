@@ -1,0 +1,9 @@
+src/App.tsx(12,3): error TS2305: Module '"@/design-system"' has no exported member 'BarChart'.
+src/App.tsx(17,3): error TS2305: Module '"@/design-system"' has no exported member 'IrisIconInverse'.
+src/App.tsx(805,13): error TS2741: Property 'label' is missing in type '{ divider: true; }' but required in type 'DropdownItemProps'.
+src/App.tsx(1079,43): error TS2322: Type '{ children: Element; variant: string; items: { label: string; onClick: () => void; }[]; }' is not assignable to type 'IntrinsicAttributes & DropdownProps'.
+  Property 'variant' does not exist on type 'IntrinsicAttributes & DropdownProps'.
+src/App.tsx(3241,11): error TS2322: Type '{ viewSelector: Element | undefined; search: { value: string; onChange: Dispatch<SetStateAction<string>>; placeholder: string; }; showSearchIndicator: boolean; rightAlignFilters: boolean; quickActions: Element[] | undefined; filters: Element; }' is not assignable to type 'IntrinsicAttributes & FilterBarProps'.
+  Property 'rightAlignFilters' does not exist on type 'IntrinsicAttributes & FilterBarProps'.
+src/App.tsx(3333,20): error TS2322: Type '{ bordered: true; columns: DataTableColumn<NavigatorAgreement>[]; data: NavigatorAgreement[]; getRowKey: (row: NavigatorAgreement) => string; ... 7 more ...; pagination: { ...; }; }' is not assignable to type 'IntrinsicAttributes & DataTableProps<NavigatorAgreement>'.
+  Property 'bordered' does not exist on type 'IntrinsicAttributes & DataTableProps<NavigatorAgreement>'.

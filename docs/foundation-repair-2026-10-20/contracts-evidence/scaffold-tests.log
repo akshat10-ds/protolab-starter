@@ -1,0 +1,14 @@
+
+ RUN  v3.2.4 /private/tmp/protolab-foundation-repair/ink
+
+ ✓ tests/integration/generation-contracts.test.ts (6 tests) 2708ms
+   ✓ Generated subset contracts > typechecks a real Button scaffold  511ms
+   ✓ Generated subset contracts > typechecks a real Input, Select, ComboBox, PageHeader, DocuSignShell scaffold  656ms
+   ✓ Generated subset contracts > typechecks a real DataTable, AgreementTableView, FilterBar, Tabs, Banner, Breadcrumb, IconButton, Badge, PageHeader scaffold  622ms
+   ✓ Generated subset contracts > typechecks a real Panel, Hotspot, Tree, ColorPicker, Toast, Dropdown, AvatarGroup scaffold  577ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  14:44:19
+   Duration  3.29s (transform 123ms, setup 0ms, collect 419ms, tests 2.71s, environment 0ms, prepare 44ms)
+

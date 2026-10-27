@@ -12,7 +12,7 @@ GitHub Copilot, Figma Make, or anything else.
 import { Button, Card, DataTable, DocuSignShell, Stack } from '@/design-system';
 ```
 
-63 components are already installed. Before you build anything, look for the
+The public Ink catalog is already installed. Before you build anything, look for the
 component that already does it:
 
 ```bash
@@ -30,16 +30,29 @@ component is almost always wrong.
 - ❌ Add Tailwind, or write utility classes like `className="flex gap-4 p-6"`
 - ❌ Hardcode a color, font, radius, or spacing value (`#4C00FB`, `16px`, `1rem`)
 - ❌ Write a `<button>`, `<input>`, `<table>`, or `<select>` by hand
-- ❌ Edit anything inside `src/design-system/` — it's generated and gets overwritten by `/update`
+- ❌ Edit anything inside `src/design-system/` or `src/ai-system/` — they're generated and get overwritten by `/update`
 
 ### Always do these
 
 - ✅ Import from the `@/design-system` barrel, never from deep paths
 - ✅ Use layout components — `Stack`, `Inline`, `Grid`, `Container`, `Spacer` — instead of custom flex CSS
 - ✅ Use design tokens for any value you can't get from a component prop:
-  `var(--ink-cobalt-100)`, `var(--ink-spacing-300)`, `var(--ink-text-secondary)`
+  `var(--ink-cobalt-100)`, `var(--ink-spacing-300)`, `var(--ink-font-secondary)`
   (full list: `src/design-system/1-tokens/tokens.css`)
-- ✅ Put your screens in `src/` outside `src/design-system/` — e.g. `src/pages/Settings.tsx`
+- ✅ Build new screens as views inside `src/App.tsx`, next to their closest sibling (see [docs/PATTERNS.md](docs/PATTERNS.md)), never inside `src/design-system/`
+
+## Docusign patterns first
+
+Whatever you're asked to build, follow this order:
+
+1. Extend an existing Docusign screen.
+2. Otherwise, use an existing layout: list, detail overlay, overview, empty state or Iris.
+3. Only if neither fits, build something new from the same parts: the shell, the page container, the type hierarchy and the spacing.
+
+Before building anything, read **[docs/PATTERNS.md](docs/PATTERNS.md)**. It has the
+map of `App.tsx`, the screen catalog, layout recipes and the type hierarchy. Also read
+**[docs/GOTCHAS.md](docs/GOTCHAS.md)**, which lists component props that look
+right but aren't.
 
 ## The six layers
 
@@ -49,34 +62,41 @@ Higher layers compose lower ones. Reach for the highest layer that fits.
 |---|---|---|
 | Layouts | `6-layouts/` | DocuSignShell, AgreementTableView |
 | Patterns | `5-patterns/` | DataTable, GlobalNav, LocalNav, PageHeader, FilterBar, AIChat, AgentPanel |
-| Composites | `4-composites/` | Modal, Tabs, ComboBox, Accordion, Dropdown, Drawer, Pagination, Stepper |
-| Primitives | `3-primitives/` | Button, Input, Card, Icon, Badge, Select, Avatar, Switch, Text, Heading |
+| Composites | `4-composites/` | Modal, Tabs, ComboBox, Panel/Rail, EmptyState, PreviewCard, SelectTile, SegmentedControl, Toast, Tree, WorkflowStepper |
+| Primitives | `3-primitives/` | Button, Input, Card, Icon, Badge, Avatar/AvatarGroup, ToggleButton, Hotspot, Meter, Tag, Text, Heading |
 | Utilities | `2-utilities/` | Stack, Grid, Inline, Container, Spacer, Portal |
 | Tokens | `1-tokens/` | CSS custom properties |
 
 Building a page header from a `Heading` + two `Button`s is a mistake when
 `PageHeader` exists. Same for `FilterBar`, `DataTable`, and `GlobalNav`.
 
+Previously missing families now have public components. Use `EmptyState`,
+`SegmentedControl`, `SelectTile`/`SelectTileGroup`, `PreviewCard`, `StarRating`,
+`ColorPicker`, `ZoomControl`, `Tree`, `Toast`/`ToastProvider`/`useToast`,
+`WorkflowStepper`, `Hotspot`, `Meter`, `Tag`, and `ToggleButton` instead of
+approximating them. Use `Panel`/`Rail` for supplemental in-flow panels and
+`Drawer` for modal drawers. Read the props before composing variants.
+
 ## Page conventions
 
-**Every screen is wrapped in `DocuSignShell`.** `globalNav` is required,
-`localNav` is optional (omit it for full-width pages like settings).
+**There is exactly one `DocuSignShell`, in `App.tsx`. Don't create another.**
+Every screen renders inside it as a view: it gets the global nav and its tab's left
+nav (`localNav`, which is omitted for full-width pages like settings) for free. A list
+screen inside the shell looks like this:
 
 ```tsx
-<DocuSignShell
-  globalNav={{ logo: <Logo />, navItems, user: { name: 'Akshat Mishra' } }}
-  localNav={{ sections, activeItemId: 'agreements' }}
+<AgreementTableView
+  pageHeader={<PageHeader title="Agreements" actions={<Button kind="primary">New</Button>} />}
+  filterBar={<FilterBar search={{ value: search, onChange: setSearch }} … />}
 >
-  <PageHeader title="Agreements" actions={<Button kind="primary">New</Button>} />
-  <FilterBar … />
-  <DataTable columns={columns} data={rows} />
-</DocuSignShell>
+  <DataTable columns={columns} data={rows} getRowKey={(r) => r.id} />
+</AgreementTableView>
 ```
 
 - **`DataTable` is data-driven** — pass `columns` and `data` arrays. It has no children.
 - **Tables are never wrapped in a `Card`.** That's the Docusign convention.
 - **Never nest a table inside a table** — no `DataTable` inside a `DataTable` cell, Card-in-table, or `<table>` inside `<td>`. See `.github/skills/no-nested-tables/`.
-- **Every button needs an accessible name**, as text inside the button. Icon-only buttons get a `<span className="sr-only">` label, not `aria-label`. See `.github/skills/button-accessible-labels/`.
+- **Every button needs an accessible name**, as text inside the button. Icon-only buttons get a `<span className="sr-only">` label, not `aria-label`. See `.github/skills/button-accessible-labels/`. (The Ink `IconButton` is the exception: its `aria-label` prop is required, so pass it.)
 - **Page CTAs use `kind="primary"`**, not `kind="brand"`.
 
 ## What's already here
@@ -86,8 +106,11 @@ Workspaces, Requests, Admin — built entirely from these components. It is the
 best reference in the repo: when you're unsure how something should look, find
 the closest screen there and follow its structure.
 
-To build a new screen, add a page component and route to it from `App.tsx`.
-Don't rewrite `App.tsx` from scratch unless asked.
+To build a new screen, add it as a view in `App.tsx` next to its closest sibling,
+following the recipe in [docs/PATTERNS.md](docs/PATTERNS.md). When copying from
+`App.tsx`, preserve its screen structure and compose through the current public
+components and tokens; see [docs/GOTCHAS.md](docs/GOTCHAS.md). Don't rewrite
+`App.tsx` from scratch unless asked.
 
 ## Running it
 
@@ -98,12 +121,14 @@ npm run dev      # http://localhost:5173
 
 ## Figma
 
-37 components are mapped to the `[ds-ui]` Figma library via colocated
-`<Name>.figma.ts` Code Connect files. If you're given a Figma frame or a
+The repaired local inventory has 83 colocated `.figma.ts` files: 81 active
+target URLs plus unresolved Alert and Popover stubs. Templates include child
+parts and variant owners; these are not component-family or published-registration
+counts. See the [coverage index](docs/figma-code-connect.md). If you're given a Figma frame or a
 Figma URL, read [docs/figma-to-prototype.md](docs/figma-to-prototype.md) first —
 it has the name crosswalk (Figma `Status Badge` → code `Badge`, `Text Box` →
 `Input`, and so on) and tells you what to do about the Figma components that
-have no code counterpart.
+need a mapping check. Local templates do not authorize writing to the Figma library.
 
 ## Optional: ProtoLab MCP
 

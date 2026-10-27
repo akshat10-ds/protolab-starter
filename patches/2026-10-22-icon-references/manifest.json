@@ -1,0 +1,9 @@
+{
+  "source": "/private/tmp/protolab-foundation-repair/ai/system/ai-system",
+  "prepared": "/private/tmp/protolab-icon-ai-used-set-20261022",
+  "backup": "/private/tmp/protolab-icon-refresh-20261022-before/patterns/IrisAgent/IrisAgent.tsx",
+  "path": "patterns/IrisAgent/IrisAgent.tsx",
+  "before": "c783655a615da7d59b31c275de5ed81a70c132482bec33a271d7996ce4bd3413",
+  "after": "0b6acb8bc7b17a63d4f918929468b9d993630862d583d3e6027bb0d239471c01",
+  "validation": "Full Ink + prepared AI source contracts pass; zero undefined token references."
+}

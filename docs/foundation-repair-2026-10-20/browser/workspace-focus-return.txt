@@ -1,0 +1,237 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#".
+1 AXWebArea Protolab, URL: localhost:5173/#
+	2 container
+		396 container
+			397 container
+				398 button App switcher
+				399 image DocuSign
+				400 link Description: Home, Value: localhost:5173/#
+				401 link Description: Agreements, Value: localhost:5173/#
+				402 link Description: Templates, Value: localhost:5173/#
+				403 link Description: Automations, Value: localhost:5173/#
+				404 link Description: Insights, Value: localhost:5173/#
+				405 link Description: Admin, Value: localhost:5173/#
+				406 button Search
+				407 button Notifications
+				408 button Tasks
+				409 button Help
+				410 button User menu
+			411 container
+				412 pop up button (collapsed) Start, Secondary Actions: Expand
+				413 content list
+					414 button All Agreements
+					415 button Drafts
+					416 button In Progress
+					417 button Completed
+					418 button Deleted
+				419 content list
+					420 container
+						421 button Folders
+						422 button More options for Folders
+				423 content list
+					424 button Parties
+					425 button Requests
+					426 button Signatories
+					427 button Workflows New
+						428 text Workflows
+						429 text New
+					430 button Workspaces
+						431 text Workspaces
+					432 button PowerForms
+					433 button Bulk Send
+				434 button Unlock navigation sidebar
+			435 container
+				436 heading Workspaces, Value: 1
+					437 text Workspaces
+				438 button Create Workspace
+			439 combo box (collapsed, settable) Secondary Actions: Expand
+			440 pop up button Created
+			441 pop up button Owned by
+			442 pop up button Active
+			443 button Clear
+			444 table
+				445 row
+					446 cell
+						447 container
+							448 checkbox (settable, integer) Description: Select all rows, Value: 0
+							449 text Select all rows
+					450 cell
+						451 text Name
+					452 cell
+						453 text Status
+					454 cell
+						455 text Created
+					456 cell
+						457 button Customize columns
+				458 row
+					459 cell
+						460 container
+							461 checkbox (settable, integer) Description: Select row 1, Value: 0
+							462 text Select row 1
+					463 cell
+						464 link Description: [Example] New Patient Intake, Value: localhost:5173/#
+					465 cell
+						466 text Active
+					467 cell
+						468 text 6/12/2026
+					469 cell
+						470 button View
+						471 button More actions
+				472 row
+					473 cell
+						474 container
+							475 checkbox (settable, integer) Description: Select row 2, Value: 0
+							476 text Select row 2
+					477 cell
+						478 link Description: Acme Corp – Acquisition Due Diligence, Value: localhost:5173/#
+					479 cell
+						480 text Active
+					481 cell
+						482 text 5/28/2026
+					483 cell
+						484 button View
+						485 button More actions
+				486 row
+					487 cell
+						488 container
+							489 checkbox (settable, integer) Description: Select row 3, Value: 0
+							490 text Select row 3
+					491 cell
+						492 link Description: Q3 Vendor Onboarding, Value: localhost:5173/#
+					493 cell
+						494 text Active
+					495 cell
+						496 text 5/14/2026
+					497 cell
+						498 button View
+						499 button More actions
+				500 row
+					501 cell
+						502 container
+							503 checkbox (settable, integer) Description: Select row 4, Value: 0
+							504 text Select row 4
+					505 cell
+						506 link Description: 2026 Commercial Lease Closings, Value: localhost:5173/#
+					507 cell
+						508 text Active
+					509 cell
+						510 text 4/30/2026
+					511 cell
+						512 button View
+						513 button More actions
+				514 row
+					515 cell
+						516 container
+							517 checkbox (settable, integer) Description: Select row 5, Value: 0
+							518 text Select row 5
+					519 cell
+						520 link Description: Contractor Statement of Work – DesignLab, Value: localhost:5173/#
+					521 cell
+						522 text Inactive
+					523 cell
+						524 text 3/19/2026
+					525 cell
+						526 button View
+						527 button More actions
+				528 row
+					529 cell
+						530 container
+							531 checkbox (settable, integer) Description: Select row 6, Value: 0
+							532 text Select row 6
+					533 cell
+						534 link Description: Series B Financing Round, Value: localhost:5173/#
+					535 cell
+						536 text Active
+					537 cell
+						538 text 2/26/2026
+					539 cell
+						540 button View
+						541 button More actions
+				542 row
+					543 cell
+						544 container
+							545 checkbox (settable, integer) Description: Select row 7, Value: 0
+							546 text Select row 7
+					547 cell
+						548 link Description: Employee Offer Packages – Spring Cohort, Value: localhost:5173/#
+					549 cell
+						550 text Inactive
+					551 cell
+						552 text 1/15/2026
+					553 cell
+						554 button View
+						555 button More actions
+			556 text Items per page
+			557 container
+				558 pop up button (collapsed, settable) Items per page, Value: 25 / Page, Secondary Actions: Expand
+					559 menu
+						560 5 / Page
+						561 10 / Page
+						562 (selected) 25 / Page
+						563 50 / Page
+			564 text 1 - 7  of  7
+			565 button (disabled) Previous page
+			566 button (disabled) Next page
+			567 container
+				568 text English (US) |
+				569 link Description: Contact Us, Value: support.docusign.com/contactSupport
+				570 link Description: Terms of Use, Value: docusign.com/legal/terms-and-conditions
+				571 link Description: Privacy, Value: docusign.com/privacy
+				572 link Description: Intellectual Property, Value: docusign.com/ip
+				573 link Description: Trust, Value: docusign.com/trust
+				574 text Version: 1.13043 · Copyright © 2026 Docusign, Inc. All rights reserved.
+		343 button Help: Start feedback mode, v3.0.2 Switch to light mode Output Detail Standard React Components Hide Until Restart Marker Color Indigo Blue Cyan Green Yellow Orange Red Clear on copy/send Block page interactions
+			344 button
+				345 image
+			346 button
+				347 image
+			348 button
+				349 image
+			350 button
+				351 image
+			352 container
+				353 link agentation.com/
+				354 text v 3.0.2
+				355 button Switch to light mode
+					356 image
+				357 text Output Detail
+				358 image
+				359 button Standard
+				360 text React Components
+				361 image
+				362 checkbox (settable, integer) 1
+				363 text Hide Until Restart
+				364 image
+				365 checkbox (settable, integer) 0
+				366 text Marker Color
+				367 button Indigo
+				368 button Blue
+				369 button Cyan
+				370 button Green
+				371 button Yellow
+				372 button Orange
+				373 button Red
+				374 checkbox (settable, integer) Description: Clear on copy/send, Value: 0
+				375 image
+				376 image
+				377 checkbox (settable, integer) Description: Block page interactions, Value: 1
+				378 image
+				379 button Manage MCP & Webhooks
+					380 text Manage MCP & Webhooks
+					381 image
+				382 button Manage MCP & Webhooks
+					383 image
+					384 text Manage MCP & Webhooks
+				385 text MCP Connection
+				386 image
+				387 container
+					388 text MCP connection allows agents to receive and act on annotations.
+					389 link Description: Learn more, Value: agentation.dev/mcp
+				390 text Webhooks
+				391 image
+				392 checkbox (disabled, settable, integer) Description: Auto-Send, Value: 1, ID: agentation-auto-send
+				393 text The webhook URL will receive live annotation changes and annotation data.
+				394 text entry area (settable)
+		395 image
+
+The focused UI element is 478 link Description: Acme Corp – Acquisition Due Diligence, URL: localhost:5173/#

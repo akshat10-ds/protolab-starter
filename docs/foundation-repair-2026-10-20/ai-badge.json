@@ -1,0 +1,47 @@
+{
+  "owner": "primitives_behavior",
+  "status": "integrated_and_checked_with_explicit_limits",
+  "authoringSource": "/private/tmp/protolab-foundation-repair/ink/protolab-source/src/design-system/4-composites/AIBadge",
+  "generatedStarterEdited": false,
+  "freshFigmaVisualMatchClaim": false,
+  "historicalFigmaTarget": "unresolved",
+  "changes": [
+    "Actual Callout above/below location and start alignment",
+    "Removed brittle heading/caret selectors",
+    "Named native button with retained public Span attribute event compatibility",
+    "Associated labelled nonmodal dialog with open-only controls ID",
+    "Focus dialog on open; Escape/close restore trigger; outside click preserves outside focus",
+    "Native Space/Enter activation avoids duplicate manual toggle; consumer handlers and default prevention preserved",
+    "Root-owned exact AI wrappers preserved"
+  ],
+  "verification": {
+    "strictSourceTypecheck": "passed",
+    "semanticTests": 4,
+    "allPrimitiveIconBadgeTests": 47,
+    "cua": {
+      "aboveDialogRect": true,
+      "belowDialogRect": true,
+      "bothHeadingsVisible": true,
+      "controlsResolvesToDialog": true,
+      "focusDialogOnOpen": true,
+      "escapeRestoresFocus": true,
+      "closeRestoresFocus": true,
+      "outsideClickDismisses": true,
+      "outsideActionRetainsFocus": true,
+      "spaceSingleActivation": true,
+      "consumerClickCallbackPreserved": true,
+      "screenshots": [
+        "ai-badge-bottom-cua.png",
+        "ai-badge-top-cua.png"
+      ],
+      "terminalBrowserAutomation": false
+    }
+  },
+  "risks": [
+    "Wrapper is now div instead of span to allow block Callout; inline-flex display is retained.",
+    "No fresh historical Figma visual-match claim."
+  ],
+  "fileUploadEvidence": "No new upload runtime claim; native IAB picker inaccessible to integrator, prior tests/evidence preserved.",
+  "evidence": "ai-badge.md",
+  "finalIntegrationEvidence": "browser/composites-icons-badge.png"
+}

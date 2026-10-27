@@ -1,0 +1,206 @@
+import { WorkflowStepper } from '@ds/ui'
+import { Button } from '@ds/ui'
+import { CheckSmall } from '@ds/icons'
+
+type InkWorkflowStepperCompactProps = {
+  className?: string;
+  children?: React.ReactNode | null;
+};
+
+export default function InkWorkflowStepperCompact({ className, children = null }: InkWorkflowStepperCompactProps) {
+  return (
+    <div className={className || "content-stretch flex flex-col items-start relative"} data-node-id="579:7398" data-name="[INK] Workflow Stepper (Compact)">
+      <div className="content-stretch flex flex-col items-start relative shrink-0" data-node-id="38038:17491" data-name="children">
+        {children || (
+          <>
+            <CodeConnectSnippet data-node-id="579:3630" data-name="Step 1" data-snippet-language="React">
+              <WorkflowStepper.Item isComplete text="Completed step" status="visited" description="Description text should be short." callToAction={<Button kind="secondary" size="small" text="Button" />}></WorkflowStepper.Item>
+            </CodeConnectSnippet>
+            <CodeConnectSnippet data-node-id="579:3944" data-name="Step 2" data-snippet-language="React">
+              <WorkflowStepper.Item isComplete text="Completed step" status="visited" description="Description text should be short." callToAction={<Button kind="secondary" size="small" text="Button" />}></WorkflowStepper.Item>
+            </CodeConnectSnippet>
+            <CodeConnectSnippet data-node-id="14297:13836" data-name="Step 3" data-snippet-language="React">
+              <WorkflowStepper.Item text="Step 3" status="current" description="Description text should be short." callToAction={<Button kind="secondary" size="small" text="Button" />}></WorkflowStepper.Item>
+            </CodeConnectSnippet>
+            <CodeConnectSnippet data-node-id="579:3973" data-name="Step 4" data-snippet-language="React">
+              <WorkflowStepper.Item text="Unvisited step" description="Description text should be short." callToAction={<Button kind="secondary" size="small" text="Button" />}></WorkflowStepper.Item>
+            </CodeConnectSnippet>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: fontElementLabel: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.14, weight: 500, lineHeight: 1.399999976158142, letterSpacing: 0), fontButtonS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.14, weight: 500, lineHeight: 1.399999976158142, letterSpacing: 0), fontHeadingXXS: Font(family: ""\"DS Indigo\",DSIndigo,Helvetica,Arial,sans-serif"", style: font.fontWeight.500, size: font.fontSize.16, weight: 500, lineHeight: 1.25, letterSpacing: font.letterSpacing.cozy).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## [INK] Workflow Stepper (Compact)
+**Node ID:** 579:7398
+
+Workflow steppers allow users to complete smaller, related tasks while guiding users through a set number of steps to complete an overall task.
+
+  
+
+Rules
+-----
+
+1.  \[SLOTS\] When adding or removing WorkflowStepper.Item, hide the Start connector line for the first step, and hide the End connector line for the last step
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/v/0/p/48f264-workflow-stepper](https://ink.docusign.com/94bc5d135/v/0/p/48f264-workflow-stepper)
+- [Workflow Stepper - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-workflowstepper--configure)
+
+## isComplete=True, status=visited
+**Node ID:** 577:10346
+
+The completed state with a checkmark indicates a step that has been finished and requires no further action.
+
+## Child/[INK] WorkflowStepper.Item
+**Node ID:** 577:10373
+
+Pass through `WorkflowStepper.Item` to provide steps to Workflow Stepper
+
+  
+
+Props
+-----
+
+`**_isComplete:_**` An item that has been completed
+
+  
+
+`**_~status:_**` Changes colors and icon of the WorkflowStepper.Item for the current status
+
+  
+
+`**_text*:_**` The text inside the WorkflowStepper.Item
+
+  
+
+`**_❖ Expand Content:_**` Displays Child / WorkflowStepper.Body below WorkflowStepper.Item
+
+  
+
+`**_❖ Description:_**` Displays a short description
+
+  
+
+`**_description:_**` A short description to support the text above it
+
+  
+
+`**_callToAction:_**` The call to action of the WorkflowStepper.Item
+
+  
+
+`**_❖ Show Before Connector:_**` Displays connector line before the indicator
+
+  
+
+`**_❖ Show End Connector:_**` Displays connector line after the indicator
+
+  
+
+**Rules**
+---------
+
+*   Hide `beforeConnector` if `WorkflowStepper.Item` is the first item
+*   Hide `endConnector` if `WorkflowStepper.Item` is the last item
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/v/0/p/48f264-workflow-stepper](https://ink.docusign.com/94bc5d135/v/0/p/48f264-workflow-stepper)
+- [Workflow Stepper Item - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/story/components-workflowstepper-workflowstepper-item--default)
+
+## checkSmall
+**Node ID:** 41751:5129
+
+done, complete, finished, check, checked, confirm
+
+## status=visited
+**Node ID:** 523:25183
+
+Timelines are used to show a chronological list of events that have occurred over a period of time.
+
+**Documentation:**
+- [https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-timeline](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-timeline)
+
+## kind=secondary, size=small, ❖ State=default, disabled=false
+**Node ID:** 8894:24206
+
+The secondary button styling should be applied to actions of medium importance or when there are multiple, equally important calls-to-action on the page, such as in a table
+
+## [INK] Button
+**Node ID:** 10:557
+
+`Buttons` give users a simple and direct way to take an action.
+
+  
+
+Props
+-----
+
+  
+
+`**_kind:_**` The kind of the `Button`.
+
+  
+
+`**_❖ State:_**` The state of the `Button`.
+
+  
+
+`**_disabled:_**` Applies the 'disabled' attribute.
+
+  
+
+`**_text:_**` The text to be displayed inside of the `Button`.
+
+  
+
+`**_startElement:_**` The provided icon will display at the start of the `Button`.
+
+  
+
+`**_menuTrigger:_**` Displays a caret icon at the end of the `Button`. When pressed, the `Button` will display a menu beneath it.
+
+  
+
+`**_loading:_**` Display a loading indicator in the `Button`. Cannot be used with an icon.
+
+**Documentation:**
+- [https://ink.docusign.com/94bc5d135/p/241afc-button/b/32e1a2](https://ink.docusign.com/94bc5d135/p/241afc-button/b/32e1a2)
+- [Button - Storybook](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-button--default)
+
+## isComplete=False, status=current
+**Node ID:** 577:10347
+
+The active state indicates a section of the workflow is currently being viewed.
+
+## status=unvisited
+**Node ID:** 523:25160
+
+Timelines are used to show a chronological list of events that have occurred over a period of time.
+
+**Documentation:**
+- [https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-timeline](https://github.docusignhq.com/pages/front-end-systems/ds-ui/?path=/docs/components-timeline)
+
+## isComplete=False, status=unvisited
+**Node ID:** 577:9320
+
+The default state indicates a step has not been viewed
+
+The generated code contains image and SVG URL constants, e.g. const image = '[REDACTED_TEMPORARY_FIGMA_ASSET]'. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

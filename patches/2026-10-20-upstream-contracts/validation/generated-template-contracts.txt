@@ -1,0 +1,1 @@
+Generated template and public API contracts pass.

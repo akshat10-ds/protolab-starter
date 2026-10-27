@@ -12,8 +12,8 @@
  */
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { Icon, IconButton } from '@ink';
-import { FilterTag } from '@ink';
+import { Button, Icon, IconButton, Tooltip } from '@ink';
+import { FilterTag, Popover } from '@ink';
 import { CommandMenu } from '@ai/composites/CommandMenu/CommandMenu';
 import type {
   CommandContextItem,
@@ -32,6 +32,62 @@ export interface ChatInputContextSource {
   count?: number;
   onClick?: () => void;
   onClear?: () => void;
+}
+
+/**
+ * Is this `+`-menu pick an AGENT, rather than a skill, a playbook or a source?
+ *
+ * Agents behave differently from every other command — they commit a chip and
+ * wait, where a tool command is sent the moment it is picked — so the question
+ * has to be answerable from the menu data, and by both doors, the same way.
+ *
+ * The answer is the PARENT CATEGORY, not the child. `CommandToolChild` carries
+ * no kind and adding one would make every host fixture declare it; the Agents
+ * branch already identifies itself (`id: 'agents'`, label `Agents`) and that is
+ * the test `IrisAgent.composerAgent` has always used to resolve the chip's name.
+ * One test, one place, so the chip and the send rule cannot disagree.
+ *
+ * Akshat, 2026-08-25: picking an agent never sends. Before this the rule was
+ * read off `description` — an agent with one line of copy fired a message, an
+ * agent without one committed a chip — so the same component behaved two ways
+ * depending on a fixture field.
+ */
+export function isAgentCommandItem(
+  item: CommandContextItem | CommandToolChild,
+  categories?: CommandToolCategory[]
+): boolean {
+  const parent = categories?.find((cat) => cat.children.some((child) => child.id === item.id));
+  return !!parent && (parent.id === 'agents' || parent.label === 'Agents');
+}
+
+/**
+ * The agent a committed slash token stands for — the composer's chip.
+ *
+ * An active agent is ONE OBJECT in the box, not the characters the user typed.
+ * The token at the head of the value is drawn as an accent chip; the text after
+ * it is the user's, unstyled and editable. Clicking the chip opens a popover
+ * naming the agent; leaving it (the popover's button, or backspace at the chip's
+ * boundary) calls `onRemove` and nothing else.
+ *
+ * The consumer resolves which agent the token names — it holds the roster — and
+ * passes this. `IrisAgent` derives it from `agents` and the `+` menu's Agents
+ * branch, so the same chip appears in every layout the composer appears in.
+ *
+ * PER MESSAGE, still. Removing the chip drops the token from the message; it
+ * never touches the header's persistent agent identity. Two mechanisms, two
+ * doors (IrisAgent SPEC).
+ */
+export interface ChatInputAgentChip {
+  /** The slash token at the head of the value, leading `/` included. */
+  token: string;
+  /** The agent's display name — the popover's heading. */
+  name: string;
+  /** One line under the heading. */
+  description?: string;
+  /** The popover's primary action. Defaults to `Switch to Iris`. */
+  leaveLabel?: string;
+  /** Leave the agent: the token comes out, the typed text stays. */
+  onRemove: () => void;
 }
 
 export interface ChatInputMentionItem {
@@ -55,6 +111,8 @@ export interface ChatInputProps {
 
   /** Send handler — called when user clicks send or presses Enter */
   onSend?: (content: string) => void;
+  /** Optional host-owned voice call action, shown instead of Send while empty. */
+  onVoiceCall?: () => void;
   /** Loading state — shows spinner on send button */
   isLoading?: boolean;
   /** Streaming state — shows stop button instead of send */
@@ -111,6 +169,9 @@ export interface ChatInputProps {
   /** Layout variant — "default" starts single-line, "expanded" starts multi-line */
   variant?: 'default' | 'expanded';
 
+  /** Flat surface without the resting shadow; expanded starts at 96px tall. */
+  appearance?: 'default' | 'flat';
+
   className?: string;
 
   // NEW — CommandMenu integration
@@ -144,6 +205,12 @@ export interface ChatInputProps {
   onMentionSelect?: (item: ChatInputMentionItem) => void;
   /** Mention trigger prefix (default: "@") */
   mentionPrefix?: string;
+
+  /**
+   * The agent whose token sits at the head of the value — drawn as a chip.
+   * Absent means no agent is active and the box is plain text.
+   */
+  agentChip?: ChatInputAgentChip;
 }
 
 // =============================================================================
@@ -216,12 +283,67 @@ function getCaretOffset(el: HTMLElement): number {
   }
 }
 
+/**
+ * Put the caret at `target` characters into the contentEditable.
+ *
+ * `chip` is the agent chip, if one is drawn. It is `contenteditable="false"` —
+ * an atom — so the caret must never land inside it: any offset that falls in the
+ * token resolves to the position immediately AFTER the chip, and the walk over
+ * the remaining text starts counting at `tokenLength`. Without the skip the
+ * restore after every keystroke dropped the caret into a node the browser will
+ * not type into, and the next character went nowhere.
+ */
+function placeCaret(
+  el: HTMLElement,
+  target: number,
+  chip: HTMLElement | null,
+  tokenLength: number
+) {
+  const sel = window.getSelection();
+  const afterChip = () => {
+    if (!chip) return;
+    const range = document.createRange();
+    range.setStartAfter(chip);
+    range.collapse(true);
+    sel?.removeAllRanges();
+    sel?.addRange(range);
+  };
+
+  try {
+    if (chip && target <= tokenLength) {
+      afterChip();
+      return;
+    }
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let offset = chip ? tokenLength : 0;
+    let node: Node | null;
+    while ((node = walker.nextNode())) {
+      if (chip?.contains(node)) continue;
+      const len = (node.textContent || '').length;
+      if (offset + len >= target) {
+        const range = document.createRange();
+        range.setStart(node, target - offset);
+        range.collapse(true);
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+        return;
+      }
+      offset += len;
+    }
+    // Nothing after the chip to land in — sit against its trailing edge.
+    afterChip();
+  } catch {
+    /* ignore */
+  }
+}
+
 export const ChatInput: React.FC<ChatInputProps> = ({
   value: controlledValue,
   onChange,
   placeholder = 'Ask a question...',
   disabled = false,
   onSend,
+  onVoiceCall,
   isLoading = false,
   isStreaming = false,
   onStop,
@@ -238,6 +360,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   focusKey = 0,
   maxExpandHeight = 200,
   variant = 'default',
+  appearance = 'default',
   className,
   commandContextItems,
   commandToolCategories,
@@ -248,6 +371,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   mentionItems,
   onMentionSelect,
   mentionPrefix = '@',
+  agentChip,
 }) => {
   // Uncontrolled fallback
   const isControlled = controlledValue !== undefined;
@@ -434,6 +558,76 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   const matchedCommand = matchedCommandItem?.label ?? null;
 
   // =========================================================================
+  // Agent chip — the token at the head of the value, drawn as one object
+  // =========================================================================
+
+  /*
+   * The token has to be the WHOLE first word, not a prefix of it: mid-typing,
+   * `/agreement-comparison-agentx` is not the agent, and a chip drawn over the
+   * first N characters of a word the user is still writing would be a lie.
+   */
+  const agentToken = agentChip?.token ?? '';
+  const chipActive =
+    !!agentChip && (currentValue === agentToken || currentValue.startsWith(`${agentToken} `));
+
+  /*
+   * THE CALLOUT OPENS ON HOVER, AND ON FOCUS.
+   *
+   * Akshat, 2026-08-25: hover, not click. Which makes the pointer's trip from
+   * the chip up to the "Switch to Iris" button the whole problem — a naive
+   * `mouseleave` shuts the callout the instant the pointer crosses the gap, and
+   * the button it contains can never be reached. Two things stop that: the
+   * close is scheduled, not immediate, so a crossing has time to finish; and the
+   * callout counts as part of the same hover region, so arriving in it cancels
+   * the close. The gap itself is bridged in CSS (`.agentPopover::after`) rather
+   * than left as a hole the pointer can fall through.
+   *
+   * Focus opens it too. The callout holds a real action, and a control reachable
+   * only by pointer is not reachable at all; the chip carries `tabindex="0"` and
+   * Escape closes what focus opened.
+   */
+  const [agentPopoverOpen, setAgentPopoverOpen] = useState(false);
+  const popoverCloseTimer = useRef<number | null>(null);
+
+  const openAgentPopover = useCallback(() => {
+    if (popoverCloseTimer.current !== null) {
+      window.clearTimeout(popoverCloseTimer.current);
+      popoverCloseTimer.current = null;
+    }
+    setAgentPopoverOpen(true);
+  }, []);
+
+  const closeAgentPopoverSoon = useCallback(() => {
+    if (popoverCloseTimer.current !== null) window.clearTimeout(popoverCloseTimer.current);
+    popoverCloseTimer.current = window.setTimeout(() => {
+      popoverCloseTimer.current = null;
+      setAgentPopoverOpen(false);
+    }, 180);
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (popoverCloseTimer.current !== null) window.clearTimeout(popoverCloseTimer.current);
+    },
+    []
+  );
+
+  /* The chip left; the popover cannot outlive its anchor. */
+  useEffect(() => {
+    if (!chipActive) setAgentPopoverOpen(false);
+  }, [chipActive]);
+
+  /** Is this event about the chip itself? */
+  const isChipTarget = (target: EventTarget | null) =>
+    !!(target as HTMLElement | null)?.closest?.('[data-agent-chip]');
+
+  /** Leave the agent. One path — the popover's button and Backspace both take it. */
+  const leaveAgent = useCallback(() => {
+    setAgentPopoverOpen(false);
+    agentChip?.onRemove();
+  }, [agentChip]);
+
+  // =========================================================================
   // Set value helper (updates state + notifies consumer)
   // =========================================================================
 
@@ -527,7 +721,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
   useEffect(() => {
     const el = inputRef.current;
-    if (!el || !matchedCommand) return;
+    if (!el || (!matchedCommand && !chipActive)) return;
 
     const raf = requestAnimationFrame(() => {
       if (!inputRef.current) return;
@@ -546,40 +740,55 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       }
 
       isUpdatingDOM.current = true;
-      const spaceIdx = currentValue.indexOf(' ');
-      if (spaceIdx === -1) {
-        el.innerHTML = `<span class="${styles.commandSlash}">${escapeHtml(currentValue)}</span>`;
-      } else {
+      if (chipActive) {
+        /*
+         * THE CHIP OWNS THE DOM WHEN IT IS DRAWN.
+         *
+         * `contenteditable="false"` is what makes it one object rather than N
+         * characters: the browser deletes it whole, will not put a caret in it,
+         * and hands us the click without moving the selection. The rest of the
+         * value is a plain text node — the user's sentence, unstyled and fully
+         * editable, exactly as they typed it.
+         *
+         * An agent token also satisfies `matchedCommand`, so the cobalt-text
+         * branch below is skipped here; two rAFs writing the same node would
+         * fight over the caret.
+         */
         el.innerHTML =
-          `<span class="${styles.commandSlash}">${escapeHtml(currentValue.slice(0, spaceIdx))}</span>` +
-          `<span class="${styles.commandDesc}">${escapeHtml(currentValue.slice(spaceIdx))}</span>`;
+          `<span class="${styles.agentChip}" data-agent-chip contenteditable="false"` +
+          ` role="button" tabindex="0" aria-label="${escapeHtml(agentChip!.name)}, active agent">` +
+          `${escapeHtml(agentToken)}</span>` +
+          escapeHtml(currentValue.slice(agentToken.length));
+      } else {
+        const spaceIdx = currentValue.indexOf(' ');
+        if (spaceIdx === -1) {
+          el.innerHTML = `<span class="${styles.commandSlash}">${escapeHtml(currentValue)}</span>`;
+        } else {
+          el.innerHTML =
+            `<span class="${styles.commandSlash}">${escapeHtml(currentValue.slice(0, spaceIdx))}</span>` +
+            `<span class="${styles.commandDesc}">${escapeHtml(currentValue.slice(spaceIdx))}</span>`;
+        }
       }
       isUpdatingDOM.current = false;
 
-      // Restore caret
-      try {
-        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-        let offset = 0;
-        let node: Node | null;
-        while ((node = walker.nextNode())) {
-          const len = (node.textContent || '').length;
-          if (offset + len >= caretOffset) {
-            const newRange = document.createRange();
-            newRange.setStart(node, caretOffset - offset);
-            newRange.collapse(true);
-            sel?.removeAllRanges();
-            sel?.addRange(newRange);
-            break;
-          }
-          offset += len;
-        }
-      } catch {
-        /* ignore */
+      /*
+       * Restore the caret — but only if the box had it. Rewriting the node
+       * destroys the selection it held; putting one back when the user is
+       * somewhere else (the chip's popover, say) would steal focus into a box
+       * they did not click.
+       */
+      if (el.contains(document.activeElement) || el === document.activeElement) {
+        placeCaret(
+          el,
+          caretOffset,
+          chipActive ? el.querySelector<HTMLElement>('[data-agent-chip]') : null,
+          agentToken.length
+        );
       }
     });
 
     return () => cancelAnimationFrame(raf);
-  }, [currentValue, matchedCommand]);
+  }, [currentValue, matchedCommand, chipActive, agentToken, agentChip?.name]);
 
   // =========================================================================
   // Multi-line detection: expand when scrollHeight > 28, collapse on empty
@@ -709,7 +918,22 @@ export const ChatInput: React.FC<ChatInputProps> = ({
     (item: CommandContextItem | CommandToolChild) => {
       // Insert as slash command in kebab-case: "Review Agent" → "/review-agent"
       const kebab = item.label.toLowerCase().replace(/\s+/g, '-');
-      const commandText = `/${kebab}`;
+      /*
+       * AN AGENT LANDS WITH ITS TRAILING SPACE; NOTHING ELSE DOES.
+       *
+       * The space is the same one the cold state's `onAttach` door writes, and
+       * it is load-bearing twice: it keeps the next keystroke out of the slash
+       * filter (`/review-agentx` would reopen the menu and kill the chip), and
+       * it is where the caret lands. It is written HERE rather than by the
+       * consumer's `onCommandSelect` so that `setValue` and the rAF below put
+       * the same string in state and in the DOM.
+       *
+       * Every other command keeps the bare token: a tool command is sent and
+       * the box is cleared, so a space would be a character nobody sees.
+       */
+      const commandText = isAgentCommandItem(item, commandToolCategories)
+        ? `/${kebab} `
+        : `/${kebab}`;
       // Close menus first
       setSlashMenuOpen(false);
       setSlashFilter('');
@@ -733,7 +957,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       });
       onCommandSelect?.(item);
     },
-    [onCommandSelect, setValue]
+    [onCommandSelect, setValue, commandToolCategories]
   );
 
   // =========================================================================
@@ -798,6 +1022,34 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
+      /*
+       * Escape closes the chip's popover and stops there. Without this it fell
+       * through to the slash branch below — which calls `clearInput()` — and a
+       * user who opened the popover mid-sentence lost the whole sentence.
+       */
+      if (e.key === 'Escape' && agentPopoverOpen) {
+        setAgentPopoverOpen(false);
+        return;
+      }
+
+      /*
+       * Backspace against the chip's trailing edge removes the agent, not a
+       * character of its token. The browser would delete the whole atom anyway
+       * — this makes it the same act as "Switch to Iris", so the typed text
+       * survives either way and one path does the leaving.
+       */
+      if (e.key === 'Backspace' && chipActive) {
+        const el = inputRef.current;
+        const sel = window.getSelection();
+        const caret = el ? getCaretOffset(el) : 0;
+        /* `> 0`: at the very start there is nothing behind the caret to delete. */
+        if (el && sel?.isCollapsed && caret > 0 && caret <= agentToken.length) {
+          e.preventDefault();
+          leaveAgent();
+          return;
+        }
+      }
+
       // Arrow navigation in slash dropdown
       if (slashMenuOpen && filteredFlatItems.length > 0) {
         if (e.key === 'ArrowDown') {
@@ -862,6 +1114,10 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       clearInput,
       handleCommandSelect,
       handleMentionSelect,
+      agentPopoverOpen,
+      chipActive,
+      agentToken,
+      leaveAgent,
     ]
   );
 
@@ -896,6 +1152,20 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           aria-label="Stop"
           onClick={onStop}
         />
+      );
+    }
+    if (onVoiceCall && !trimmedValue) {
+      return (
+        <Tooltip content="Start voice call">
+          <IconButton
+            icon="audio-wave"
+            size="small"
+            variant="brand"
+            aria-label="Start voice call"
+            onClick={() => { if (!disabled && !isLoading) onVoiceCall(); }}
+            disabled={disabled || isLoading}
+          />
+        </Tooltip>
       );
     }
     return (
@@ -959,6 +1229,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
   const shellClasses = [
     styles.shell,
+    appearance === 'flat' ? styles.shellFlat : '',
     isMultiLine ? styles.shellMulti : '',
     isCollapsing ? styles.shellCollapsing : '',
     flushTop ? styles.shellFlushTop : '',
@@ -1083,8 +1354,15 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               </span>
             )}
 
-            {/* Command description hint — shows after /command-name */}
-            {matchedCommandItem?.description && currentValue.indexOf(' ') === -1 && (
+            {/*
+              Command description hint — shows after /command-name.
+
+              Not under a chip: the hint is positioned by an invisible copy of
+              the value, and the chip is wider than its own characters, so the
+              two would disagree by exactly the chip's padding. The agent's
+              description lives in its popover now.
+            */}
+            {!chipActive && matchedCommandItem?.description && currentValue.indexOf(' ') === -1 && (
               <span className={styles.commandHint}>
                 {/* Invisible copy of command text to push description to the right */}
                 <span style={{ visibility: 'hidden', whiteSpace: 'pre' }}>{currentValue} </span>
@@ -1100,11 +1378,35 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               suppressContentEditableWarning
               onInput={handleInput}
               onKeyDown={handleKeyDown}
-              onFocus={() => {
+              /*
+                Delegated, because the chip is written into this node rather than
+                rendered — React has no element here to hang a handler on.
+                `mouseover`/`mouseout` and not `mouseenter`/`mouseleave`: only the
+                bubbling pair reaches a listener on the ancestor.
+              */
+              onMouseOver={(e) => {
+                if (chipActive && isChipTarget(e.target)) openAgentPopover();
+              }}
+              onMouseOut={(e) => {
+                if (chipActive && isChipTarget(e.target)) closeAgentPopoverSoon();
+              }}
+              /*
+                Pressing the chip must not put a caret in it — it is an object,
+                not a place to type. The callout is already open from the hover
+                that brought the pointer here.
+              */
+              onMouseDown={(e) => {
+                if (!chipActive || !isChipTarget(e.target)) return;
+                e.preventDefault();
+                openAgentPopover();
+              }}
+              onFocus={(e) => {
+                if (isChipTarget(e.target)) openAgentPopover();
                 setIsFocused(true);
                 animPlaceholder.pause();
               }}
-              onBlur={() => {
+              onBlur={(e) => {
+                if (isChipTarget(e.target)) closeAgentPopoverSoon();
                 setIsFocused(false);
                 setPlusMenuOpen(false);
                 setMentionMenuOpen(false);
@@ -1114,6 +1416,65 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               aria-label={placeholder}
               aria-disabled={disabled}
             />
+
+            {/*
+              THE CALLOUT, AND ITS ANCHOR.
+
+              A zero-size marker at the chip's own top-left corner. The chip is
+              always the head of the value, so its corner IS the text area's
+              corner — nothing is measured and nothing has to be kept in sync as
+              the user types.
+
+              Declared AFTER the input, though it is positioned over its corner:
+              DOM order is tab order, so the ✕ and "Switch to Iris" are the next
+              stops after the chip that opened them.
+
+              Ink's Popover does the rest. `position="top"` subtracts its own
+              height — Dropdown's arithmetic does not, which is why CommandMenu
+              has to correct it — and its boundary check clamps both axes, so the
+              callout cannot be cut off at the bottom of a short viewport.
+            */}
+            {chipActive && agentChip && (
+              <span className={styles.agentChipAnchor}>
+                <Popover
+                  open={agentPopoverOpen}
+                  onOpenChange={(open) => !open && setAgentPopoverOpen(false)}
+                  position="top"
+                  align="start"
+                  showArrow={false}
+                  content={
+                    <div
+                      className={styles.agentPopover}
+                      onMouseOver={openAgentPopover}
+                      onMouseOut={closeAgentPopoverSoon}
+                      onFocus={openAgentPopover}
+                      onBlur={closeAgentPopoverSoon}
+                    >
+                      <div className={styles.agentPopoverHead}>
+                        <span className={styles.agentPopoverName}>{agentChip.name}</span>
+                        <Tooltip text="Close">
+                          <IconButton
+                            icon="close"
+                            size="small"
+                            variant="tertiary"
+                            aria-label="Close agent details"
+                            onClick={() => setAgentPopoverOpen(false)}
+                          />
+                        </Tooltip>
+                      </div>
+                      {agentChip.description && (
+                        <p className={styles.agentPopoverDesc}>{agentChip.description}</p>
+                      )}
+                      <Button kind="primary" size="small" onClick={leaveAgent}>
+                        {agentChip.leaveLabel ?? 'Switch to Iris'}
+                      </Button>
+                    </div>
+                  }
+                >
+                  <span className={styles.agentChipTarget} />
+                </Popover>
+              </span>
+            )}
           </div>
 
           {/* Context tag (single-line mode — inline) */}
@@ -1122,7 +1483,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               className={`${styles.contextRow} ${showContextAttention ? styles.contextAttention : ''}`}
             >
               <FilterTag
-                icon={contextSource.icon}
+                startElement={contextSource.icon ? <Icon name={contextSource.icon} size="small" /> : undefined}
                 label={
                   contextSource.count
                     ? `${contextSource.label} (${contextSource.count})`
@@ -1132,6 +1493,24 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                 dismissible={!!contextSource.onClear}
                 onDismiss={contextSource.onClear}
                 onClick={contextSource.onClick}
+                /*
+                  THE CHEVRON ONLY WHERE THERE IS SOMEWHERE TO GO.
+
+                  Akshat, 2026-08-24: *"we don't need this chevron right next to
+                  the johnson mortgage thing."* Ink's `FilterTag` defaults
+                  `showTrigger` to true, so every context pill drew a
+                  dropdown mark — including the ones with no `onClick` at all,
+                  where pressing it does nothing. A mark must not promise what
+                  the control cannot do.
+
+                  Derived from the handler rather than given its own prop,
+                  because the handler IS the fact: `IrisAgent` already decides
+                  this way one layer up — the agreements pill passes
+                  `onClick` only when `agreements.length > 1`, so a single
+                  agreement has nothing to switch to and now says so. A pill
+                  that can open something keeps its chevron exactly as before.
+                */
+                showTrigger={!!contextSource.onClick}
               />
             </div>
           )}
@@ -1153,7 +1532,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                 className={`${styles.contextInline} ${showContextAttention ? styles.contextAttention : ''}`}
               >
                 <FilterTag
-                  icon={contextSource.icon}
+                  startElement={contextSource.icon ? <Icon name={contextSource.icon} size="small" /> : undefined}
                   label={
                     contextSource.count
                       ? `${contextSource.label} (${contextSource.count})`
@@ -1163,6 +1542,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
                   dismissible={!!contextSource.onClear}
                   onDismiss={contextSource.onClear}
                   onClick={contextSource.onClick}
+                  showTrigger={!!contextSource.onClick}
                 />
               </div>
             )}

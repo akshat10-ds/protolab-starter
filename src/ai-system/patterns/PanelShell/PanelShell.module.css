@@ -1,4 +1,3 @@
-@import '@ink/1-tokens/tokens.css';
 @import '../../tokens/motion.css';
 
 /* ============================================
@@ -89,12 +88,30 @@
   justify-content: center;
 }
 
-.shellRight .handle {
+/*
+ * PLACEMENT, on the handle itself rather than on the shell around it. The pane
+ * divider (`ResizeHandle placement="inline"`) has no shell in its ancestry, so
+ * a descendant selector could not reach it. Declared after `.handle` so the
+ * `inline` variant's `position` wins on source order.
+ */
+.handleLeft {
   left: -8px;
 }
 
-.shellLeft .handle {
+.handleRight {
   right: -8px;
+}
+
+/*
+ * The chat/pane seam. A flex item in the row it divides, not an absolute box:
+ * the pane clips its own overflow (radius, scrolling well), so a handle hanging
+ * 8px outside it would be cut in half. The -8px margins make its 16px cost the
+ * layout nothing, and it still straddles the border — 8px of chat, 8px of pane.
+ */
+.handleInline {
+  position: relative;
+  flex: 0 0 16px;
+  margin-inline: -8px;
 }
 
 /*

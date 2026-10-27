@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-10-22T16:57:47.944Z",
+  "home": true,
+  "pages": [
+    {
+      "area": "Agreements",
+      "heading": "All Agreements",
+      "rendered": true
+    },
+    {
+      "area": "Templates",
+      "heading": "My Templates",
+      "rendered": true
+    },
+    {
+      "area": "Automations",
+      "heading": "Workflows",
+      "rendered": true
+    },
+    {
+      "area": "Insights",
+      "heading": "Overview",
+      "rendered": true
+    },
+    {
+      "area": "Admin",
+      "heading": "Users",
+      "rendered": true
+    }
+  ]
+}

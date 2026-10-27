@@ -1,0 +1,9 @@
+.tag { display: inline-flex; align-items: center; gap: var(--ink-spacing-100); min-height: var(--ink-spacing-400); padding: 0 var(--ink-spacing-150); color: var(--ink-font-color-default); background: var(--ink-cta-bg-color-tertiary-default); border-radius: var(--ink-radius-sm); font-family: var(--ink-font-family-default); font-size: var(--ink-font-body-s-size); line-height: var(--ink-font-body-s-line-height); vertical-align: middle; }
+.tag:has(.close:hover) { background: var(--ink-cta-bg-color-tertiary-hover); }
+.tag:has(.close:active) { background: var(--ink-cta-bg-color-tertiary-active); }
+.start, .close { display: inline-flex; align-items: center; justify-content: center; }
+.close { border: 0; background: transparent; padding: 0; color: inherit; cursor: pointer; min-height: var(--ink-spacing-400); }
+.close:focus-visible { outline: var(--ink-border-width-s) solid var(--ink-border-color-focus); outline-offset: var(--ink-spacing-50); border-radius: var(--ink-radius-sm); }
+.disabled { color: var(--ink-font-color-disabled); }
+.close:disabled { cursor: default; }
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

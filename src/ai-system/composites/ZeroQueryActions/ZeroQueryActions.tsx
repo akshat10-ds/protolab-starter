@@ -73,6 +73,22 @@ export interface ZeroQueryActionItem {
   /** Ink icon name, drawn at Ink's `small` cut. Defaults per kind below. */
   icon?: string;
   onClick?: () => void;
+  /**
+   * THE ROW IS A THREAD, AND SOMETHING IS HAPPENING IN IT.
+   *
+   * Added 2026-08-24. The compact menu draws conversation history through these
+   * rows, so a history row that could not carry `ConversationItem`'s marks made
+   * the 480px panel — the surface Akshat actually uses — the one place a
+   * background agent was invisible. Same two fields, same names, same
+   * treatments as the sidebar rail and the hamburger peek: a running thread
+   * pulses, one waiting on a person holds still, unread leads with an accent
+   * dot.
+   *
+   * A suggestion row leaves both undefined and is drawn exactly as before.
+   */
+  status?: 'running' | 'needs-you' | 'done';
+  /** There is something in there you have not read. A dot at the row's lead. */
+  unread?: boolean;
 }
 
 /**
@@ -136,6 +152,18 @@ export interface ZeroQueryActionsProps {
    * A variant, not a change of default: the cold state keeps `plain`.
    */
   appearance?: 'plain' | 'card';
+  /**
+   * A label above the stack — "Suggestions". Frame 381:51512 put one there.
+   *
+   * WHERE THE STACK IS DECIDES. Akshat, 2026-08-20: a COMPOSER-ADJACENT stack
+   * — the cold state's rows, sitting against the input — stays bare, because
+   * it is the composer's own tail and a labelled section above another
+   * labelled section reads as two species of one thing. An IN-THREAD stack is
+   * a block among other blocks, with an answer above it, and says what it is:
+   * "Suggestions". Two consumers pass it (`IrisAgent`'s follow-up slot and the
+   * FINS host's `chatSuffix`); omit it and nothing is drawn.
+   */
+  sectionLabel?: string;
 }
 
 // =============================================================================
@@ -160,6 +188,20 @@ const DEFAULT_ICON: Record<ZeroQueryActionKind, string> = {
   prompt: 'comment',
   agent: 'flash',
 };
+
+/**
+ * THE suggestion icon — `arrow-nested-small`, frame 381:51512. Akshat,
+ * 2026-08-19: *"use that icon always for recommendations/suggestions."* One
+ * icon for every species; the prompt/action distinction survives in the data
+ * and stops being drawn.
+ *
+ * Not the per-kind default above, for the same reason those defaults are
+ * conservative: this is a small cut, it lives in a prototype's vendored Ink
+ * rather than in Ink proper, and a default naming a glyph a consumer does not
+ * have renders nothing at all. A surface that has it passes it. Promote it here
+ * once the small cuts ship in Ink.
+ */
+export const SUGGESTION_ICON = 'arrow-nested-small';
 
 /**
  * What a row draws when it declares neither `icon` nor `kind`.
@@ -193,11 +235,13 @@ export function ZeroQueryActions({
   animateIn = false,
   onPreview,
   appearance = 'plain',
+  sectionLabel,
 }: ZeroQueryActionsProps) {
   if (items.length === 0) return null;
 
   return (
     <div className={`${styles.list} ${appearance === 'card' ? styles.listCard : ''}`}>
+      {sectionLabel && <p className={styles.sectionLabel}>{sectionLabel}</p>}
       {items.map((item, i) => {
         const kind = item.kind ?? 'action';
         /*
@@ -255,6 +299,12 @@ export function ZeroQueryActions({
               and this surface uses the small one — a 16px mark in a 24px box,
               which is what the frames draw.
             */}
+            {/* Unread leads — the one mark in the row that is about the reader,
+                not the agent. Same slot it takes on every other history row. */}
+            {item.unread && (
+              <span className={styles.unreadDot} role="img" aria-label="Unread" />
+            )}
+
             <span className={styles.icon} aria-hidden="true">
               <Icon name={icon as never} size="small" />
             </span>
@@ -273,6 +323,15 @@ export function ZeroQueryActions({
               rows are examples, not a menu.
             */}
             <span className={styles.label}>{item.label}</span>
+
+            {/* State trails, per the grammar `RunChip` states: label left,
+                quiet state right. `done` and undefined draw nothing. */}
+            {item.status === 'running' && (
+              <span className={styles.runningDot} role="img" aria-label="Working" />
+            )}
+            {item.status === 'needs-you' && (
+              <span className={styles.needsYouDot} role="img" aria-label="Needs you" />
+            )}
           </button>
         );
       })}

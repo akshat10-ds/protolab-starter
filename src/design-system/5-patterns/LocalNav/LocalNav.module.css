@@ -1,4 +1,3 @@
-@import '../../1-tokens/tokens.css';
 
 .localNav {
   display: flex;
@@ -295,8 +294,21 @@
   min-height: 48px;
 }
 
+.menuRow {
+  position: relative;
+}
+
 .item.hasMenu {
-  padding-right: var(--ink-spacing-100); /* 8px - room for menu button */
+  /* Leave the same trailing action space without nesting interactive controls. */
+  padding-right: calc(var(--ink-spacing-400) + var(--ink-spacing-200));
+}
+
+.menuRow > .menuButton {
+  position: absolute;
+  right: var(--ink-spacing-200);
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 0;
 }
 
 .item:hover {

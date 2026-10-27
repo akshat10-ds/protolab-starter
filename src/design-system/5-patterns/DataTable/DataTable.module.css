@@ -5,7 +5,6 @@
  * These values are equivalent to production @ds/tokens.
  */
 
-@import '../../1-tokens/tokens.css';
 
 /* =============================================================================
    CSS Custom Properties - Production Values via Design Tokens
@@ -40,7 +39,7 @@
 
   /* Row Heights */
   --dt-row-compact: 48px;
-  --dt-row-default: 56px;
+  --dt-row-default: var(--ink-utility-table-item-height);
   --dt-row-tall: 96px;
 
   /* Header Height */
@@ -785,7 +784,7 @@
   display: inline;
   font-size: var(--ink-font-size-xs);
   font-weight: var(--ink-font-weight-regular);
-  color: var(--ink-font-color-link-subtle);
+  color: var(--ink-font-color-link-subtle-default);
   text-decoration: none;
 }
 
@@ -798,7 +797,7 @@
   display: block;
   font-size: var(--ink-font-size-xs);
   font-weight: var(--ink-font-weight-regular);
-  color: var(--ink-font-color-link-subtle);
+  color: var(--ink-font-color-link-subtle-default);
   text-decoration: none;
   margin-top: 2px;
 }

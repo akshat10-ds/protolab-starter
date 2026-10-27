@@ -1,0 +1,88 @@
+Browser tab: 4, Title: "Protolab", URL: "http://localhost:5173/#".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 398-425, 427-434, 587-727
+~1 AXWebArea Protolab, URL: localhost:5173/#
+~		396 container Acme Corp – Acquisition Due Diligence
+~			397 button Back
++			398 button Messages
++			399 button Share
++			400 pop up button Add
++			401 button More actions for Acme Corp – Acquisition Due Diligence
++			402 heading Acme Corp – Acquisition Due Diligence, Value: 1
++				403 text Acme Corp – Acquisition Due Diligence
++			404 text Active
++			405 tab group Tabs
++				406 tab (selected, settable, boolean) Overview, Value: 1
++				407 tab (selectable, settable, boolean) Documents, Value: 0
++			408 container Overview
++				409 table
++					410 row
++						411 cell
++							412 container
++								413 checkbox (settable, integer) Description: Select all rows, Value: 0
++								414 text Select all rows
++						415 cell
++							416 button Name
++						417 cell
++							418 text Recipients
++						419 cell
++							420 button Status
++						421 cell
++							422 button Last Change
++						423 cell
++							424 text Actions
++					425 row
++						426 cell
++							427 container
++								428 checkbox (settable, integer) Description: Select row 1, Value: 0
++								429 text Select row 1
++						430 cell
++							431 text [Example] Patient Intake Form
++							432 text Envelope
++						433 cell
++							434 text Unassigned
++						435 cell
++							436 text Draft
++						437 cell
++							438 text 6/12/2026
++							439 text 8:09 PM
++						440 cell
++							441 button Edit [Example] Patient Intake Form
++							442 button More actions for [Example] Patient Intake Form
++					443 row
++						444 cell
++							445 container
++								446 checkbox (settable, integer) Description: Select row 2, Value: 0
++								447 text Select row 2
++						448 cell
++							449 text [Example] Photo ID
++							450 text Upload Request
++						451 cell
++							452 text Unassigned
++						453 cell
++							454 text Draft
++						455 cell
++							456 text 6/12/2026
++							457 text 8:09 PM
++						458 cell
++							459 button Edit [Example] Photo ID
++							460 button More actions for [Example] Photo ID
++					461 row
++						462 cell
++							463 container
++								464 checkbox (settable, integer) Description: Select row 3, Value: 0
++								465 text Select row 3
++						466 cell
++							467 text [Example] Medical Insurance Card (Front & Back)
++							468 text Upload Request
++						469 cell
++							470 text Unassigned
++						471 cell
++							472 text Draft
++						473 cell
++							474 text 6/12/2026
++							475 text 8:09 PM
++						476 cell
++							477 button Edit [Example] Medical Insurance Card (Front & Back)
++							478 button More actions for [Example] Medical Insurance Card (Front & Back)
+The focused UI element is 397 button Back
