@@ -630,7 +630,7 @@ const requestColumns: DataTableColumn<RequestItem>[] = [
   },
 ];
 
-/* ═══════��═══════════════════════════════
+/* ═══════════════════════════════════════
    Workspaces Data (matches real DocuSign)
    ═══════════════════════════════════════ */
 
