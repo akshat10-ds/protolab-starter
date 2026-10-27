@@ -3827,7 +3827,7 @@ function CompletedInsightsPanel() {
 
 function getTabFromHash(): TabId {
   const hash = window.location.hash.replace('#', '');
-  return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'agreements';
+  return VALID_TABS.includes(hash as TabId) ? (hash as TabId) : 'home';
 }
 
 function PrototypeApp() {
